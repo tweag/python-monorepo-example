@@ -1,5 +1,5 @@
 ---
-title: A new ecosystem for Haskell: the JVM
+title: "A new ecosystem for Haskell: the JVM"
 author: Mathieu Boespflug, Alp Mestanogullari
 featured: yes
 ---
