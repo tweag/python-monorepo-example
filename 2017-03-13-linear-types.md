@@ -335,6 +335,3 @@ Stay tuned!
 [caires-pfenning]: http://dx.doi/org/10.1007/978-3-642-15375-4_16
 [wadler-session]: https://doi.org/10.1145/2398856.2364568
 [edsko-blog]: http://edsko.net/2017/01/08/linearity-in-haskell/
-
-<!--  LocalWords:  disjunction GHC kinded Seagate inlining Wadler
- -->
