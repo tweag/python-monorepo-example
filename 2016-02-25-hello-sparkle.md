@@ -1,5 +1,5 @@
 ---
-title: Haskell meets large scale distributed analytics
+title: Haskell meets large scale<br>distributed analytics
 author: Alp Mestanogullari, Mathieu Boespflug
 preview_image: /images/2016-02-25-hello-sparkle/preview_image.png
 featured: yes

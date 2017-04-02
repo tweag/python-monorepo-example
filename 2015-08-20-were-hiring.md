@@ -1,5 +1,5 @@
 ---
-title: We're hiring! (Software engineer / devops)
+title: We're hiring!<br>(Software engineer / devops)
 preview_image: /images/2015-08-20-were-hiring/preview_image.jpg
 featured: no
 ---

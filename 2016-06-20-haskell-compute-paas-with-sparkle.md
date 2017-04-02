@@ -1,5 +1,5 @@
 ---
-title: Haskell compute PaaS with sparkle
+title: Haskell compute PaaS<br>with sparkle
 author: Alp Mestanogullari, Mathieu Boespflug
 featured: yes
 ---
