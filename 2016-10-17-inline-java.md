@@ -23,7 +23,7 @@ obligatory "Hello World!" in Haskell, but with a twist: we call the
 Swing GUI toolkit to display our message to the world in a graphical
 dialog box.
 
-![A Swing GUI application in Haskell](/images/swing-helloworld.png)
+![A Swing GUI application in Haskell](../img/posts/swing-helloworld.png)
 
 ```haskell
 {-# LANGUAGE DataKinds #-}

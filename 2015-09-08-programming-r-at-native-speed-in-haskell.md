@@ -105,7 +105,7 @@ And get started in your browser:
 $ stack --docker exec ipython notebook
 ```
 
-![HaskellR in Jupyter](/images/haskellr-jupyter.png)
+![HaskellR in Jupyter](../img/posts/haskellr-jupyter.png)
 
 Or remain in your terminal:
 
@@ -147,7 +147,7 @@ y-ordinates using R's standard library `plot()` function:
   [r| plot(xs_hs, ys_hs) |]
 ```
 
-![Randomly generated points](/images/haskellr-plot1.png)
+![Randomly generated points](../img/posts/haskellr-plot1.png)
 
 Better yet: say we want some kind of visualization of the density
 estimation of these points. We can use R's 2D kernel density
@@ -158,7 +158,7 @@ estimation function, available out-of-the-box:
     image(k, col=topo.colors(8)) |]
 ```
 
-![Density estimation for our random points](/images/haskellr-plot2.png)
+![Density estimation for our random points](../img/posts/haskellr-plot2.png)
 
 Notice how in the above, some code appears delineated in
 quasiquotation blocks. This is a syntactic facility to tell the
