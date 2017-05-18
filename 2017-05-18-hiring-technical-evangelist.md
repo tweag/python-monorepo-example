@@ -38,8 +38,8 @@ has gone before. That's where you can help! If listening to customers
 about the challenges they're facing, talking to them about your
 experience using functional programming, sharing your success stories
 and coding a bunch sounds like your idea of a good day, we have just
-the role for you. We're looking to add a new member to our team:
-a *technical evangelist*.
+the role for you. We're looking to add a new member to our team in
+a pretty unique role: a *technical evangelist*.
 
 This is a senior developer role, but with a twist. You'll be getting
 your hands dirty and fighting from the trenches like the rest of us,
