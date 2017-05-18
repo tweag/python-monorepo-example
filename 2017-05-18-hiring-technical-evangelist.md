@@ -58,7 +58,8 @@ What we're looking for:
 
 We're a European company, with an international presence. This role is
 remote work compatible, but we'll be prioritizing candidates that are
-able to relocate to Europe.
+able to relocate anywere in Europe, or better yet at our headquarters
+here in Paris.
 
 If you're interested, shoot us an email
 at [jobs@tweag.io](mailto:jobs@tweag.io).
