@@ -51,7 +51,7 @@ there.
 
 What we're looking for:
 
-* excellent oral and written communication skills in English.
+* Excellent oral and written communication skills in English.
 * A passion for programming languages and a track record working with typed and untyped functional (Haskell, Scala, Clojure), system (Rust, C++, ...) or scientific (R, Python, Julia, ...) languages.
 * Experience writing technical content or explaining technical concepts in blog posts, forums, emails, or other channels.
 * A willingness to travel, engage with the community and speak at conferences.
