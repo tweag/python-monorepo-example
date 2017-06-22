@@ -102,33 +102,33 @@ the change reach the mainstream branch. This testing required a lot of
 effort, and yet despite that some bugs still slipped through the
 tests. Some of these bugs could have been caught by a type system.
 
-# And in practice?
+## Design principles
 
-## Interaction with standard nix
+A first and really important remark is that we don't want the typed
+nix to be incompatible with the legacy one. Our goal is not to invent
+a new language that could one day replace nix. Given the size of
+nixpkgs and the efforts invested in it, backward compatibility is
+primordial.
 
-A first and really important remark is that we don't want the typed nix to be
-incompatible with the legacy one. Our goal is not to invent a new language that
-could one day replace nix. Given the size of nixpkgs and the efforts invested
-in it, backward compatibility is primordial.
+The problem of course, is that the current code has not been designed
+with typing in mind. This code as it stands will probably never type
+check in any reasonable static type system. But thanks to the wonders
+of [gradual typing][gradual-typing], this isn't a real problem: we
+just have to gradually type the untypeable part. Furthermore, we have
+the chance of having Jeremy Siek − the inventor of gradual typing − in
+Paris for a month, and he already provided us some help in designing
+this.
 
-The problem of course, is that the current code has not been designed with
-typing in mind^[Just take a look at the internal of the nixos module system to
-understand how much it __really__, __really__ doesn't care about types], and
-thus could probably never type check in any reasonable static type system.
-But thanks to the wonders of gradual typing^[If you don't know what this is,
-[this](http://homes.soic.indiana.edu/jsiek/what-is-gradual-typing/) is a rather
-nice introduction, the gist of it being that in addition to static types, you
-got a special "gradual" type (often noted "?" or "☆") that means "I don't know
-how to type this, let's just assume it is well typed"], this isn't a real
-problem: we just have to gradually type the untypeable part. Furthermore, we
-have the chance of having Jeremy Siek − the inventor of gradual typing − in
-Paris for a month, and he already provided us some help in designing this.
+The gist of gradual types is the that in addition to static types, you
+got a special "gradual" type (often noted "?" or "☆") that means "I
+don't know how to type this, let's just assume it is well typed".
+
+[gradual-typing]: http://homes.soic.indiana.edu/jsiek/what-is-gradual-typing
 
 ## Some examples
 
-This is really nice, but no really concrete. So here are some examples to show
-how this could look like in practice.
-
+This is really nice, but no really concrete. So here are some examples
+to show how this could look like in practice.
 
 ### Simple ML-like type inference
 
@@ -145,9 +145,7 @@ Here is a sample nix expression (a simplified version of the
   )
 ```
 
-Let's show how this would be typed^[It is currently unclear what kind of
-inference is possible without adding type annotations at function definitions.
-For now, let's just assume we don't need any].
+Let's show how this would be typed:
 
 - First, this is a function definition, so with a type of the form `τ → σ`.
 
@@ -156,11 +154,7 @@ For now, let's just assume we don't need any].
   `outputs`, and may also contain anything else (because of the "...").
 
 - Furthermore, by looking at the default values for `meta` and `outputs`, we
-  can see that the `meta` field can have a record type^[In reality, we can't
-  say much about this, because the type system will probably have union types.
-  So knowing that `meta` can have a record type doesn't prevent it from having
-  any other type such as `int` if the expected type is `{...}|int` (where
-  `{...}` is the type of records and `|` denotes the union)] and `outputs` the
+  can see that the `meta` field can have a record type and `outputs` the
   type of a list of strings.
 
 - Knowing that the `derivation` builtins expects its `builder` argument to be a
@@ -170,7 +164,7 @@ For now, let's just assume we don't need any].
   (a list of derivations)
 
 - The result of the function is the result of the derivation built-in, which is
-  of type derivation^[Which in reality is just a special record type], so the
+  of type derivation (which in reality is just a special record type), so the
   return type `σ` will be `derivation`.
 
 All this put together, we got that the expression has type:
@@ -186,8 +180,7 @@ All this put together, we got that the expression has type:
 
 Where `=?` means that the field is optional, and `Any` is the super type of all
 types (as we don't know anything about how `meta` is used, we can't say much
-about his type.
-
+about his type).
 
 ### Introducing a type error...
 
@@ -209,6 +202,7 @@ Here the type system should make the same deductions, but will notice that
 argument of type `[string*]`. So this won't type check.
 
 ### ... And fixing it
+
 Now, we may write the (correct) function:
 
 ```nix
