@@ -3,95 +3,104 @@ title: Typing nix
 author: Théophane Hufschmitt
 ---
 
-We're currently working on adding a type-system to the nix language.
+*Théophane is a summer intern here at Tweag I/O. Thanks also in part
+to [the financial help][gofundme] from the Nix community, he's
+spending the next six months on devising a type system for the Nix
+language.*
 
-Thanks to [the financial help](https://www.gofundme.com/typing-nix) of the nix
-community, we welcome Théophane Hufschmitt for a six month internship with us.
+[gofundme]: https://www.gofundme.com/typing-nix
 
-Théophane is working on providing the nix language with a static type system,
-which is a long running issue and a much awaited feature for the language.
+# Nix, the purely functional package manager
 
-# Nix?
+[Nix][nix] is a cross platform tool for managing the *configuration*
+(set of packages installed, `/etc/` config files etc) of your system.
+It currently supports Linux and macOS and support for more platforms
+are in the works.
 
-## The purely functional package manager
+Conventional package managers
+([APT][apt], [Yum][yum], [pacman][pacman] and friends) treat the file
+system as one giant shared mutable data structure. The problem with
+this approach is that mutating global state is *hard*. Ever ended up
+with a hosed system because you lost power in the middle of a system
+upgrade? This is because package managers never figured out how to
+make mutation of the global state *atomic*. Wished you could easily
+rollback your system to a previous state and know for sure that this
+state is identical to how your system really was at some point in the
+past? Traditional package managers can't cope with this because
+tracking state changes precisely and exhaustively is again an unsolved
+problem when package update scripts are allowed to make arbitrary
+changes to arbitrary parts of such a huge piece of mutable state as
+your entire root filesystem.
 
-[Nix](https://nixos.org/nix) is a package manager for Linux (and other Unixes
-such as macOS).
+*Configuration management tools*
+([Chef][chef], [Puppet][puppet], [Salt][salt] and friends) were
+invented to ensure that the global state of your filesystem converges
+to some intended state that you can precisely and declaratively
+define. But in practice applying e.g. the same Salt configuration on
+two different machines with *a priori* divergent starting states
+seldom leaves both machines in exactly the same state. This also means
+that rolling back the configuration after an unfortunate change won't
+always restore the system to its exact original state.
 
-Conventional package manager (apt, rpm, pacman, ...) treat the file system as
-one giant shared mutable data-structure. Every programmer knows how having a
-giant shared mutable data-structure is an awful idea^[There probably are
-exceptions, of course, but in the general case, it is]. And in this regard,
-sysadmin is exactly like programming. This approach, while simple is the source
-of an incredible lot of problems in package management (like the lack of
-reproducibility, the difficulty of rolling-back, tho risk of putting the system
-in an inconsistent state because of a power failure in the middle of an
-upgrade...).
+Nix tries to solve this very problem by drastically reducing the
+amount of mutable state it has to manage. Less state and fewer ways to
+change that state means atomic updates and more reliable rollbacks.
+Drastically reducing mutable state... sound familiar? If you're
+a functional programmer, it should! In fact, this is just one page
+that Nix took from functional programming books. Good abstraction
+facilities for writing configurations is another one. Today we'll talk
+about borrowing yet another page: using powerful static type checking
+to provide guidance when configurations get refactored.
 
-Various "configuration management" tools try to abstract over this structure to
-give administrators a higher level view of the system. Yet, they operate on top
-of classical systems, and do only partially solve those problems. For example,
-applying the same configuration with [salt](https://saltstack.com/) on two
-different machines do not offer any guaranty that the result will be the same
-on both − which also means that rolling the configuration back after an
-unfortunate change won't always restore the system to its exact original state.
+[nix]: https://nixos.org/nix
+[apt]: https://wiki.debian.org/Apt
+[yum]: http://yum.baseurl.org/
+[pacman]: https://wiki.archlinux.org/index.php/pacman
+[chef]: https://www.chef.io/chef/
+[puppet]: https://puppet.com/solutions/configuration-management
+[salt]: https://saltstack.com/
 
-That's the kind of problems that nix aims to solve, by applying tools from the
-programming language world (in particular functional programming) to the system
-administration world.
+## Nix today
 
-## And what does it look like for real?
+Users typically specify the configuration of their system by reusing
+large amounts of configuration modules already written by the
+community. The largest collection of such modules, [Nixpkgs][nixpkgs],
+is today in incredibly active and diverse project. In fact that
+repository is
+now [one of most active repositories on all of Github][octoverse]. It
+has also fallen victim of its own success. Clocking in at over
+1 million lines of code, it's becoming increasingly difficult to
+perform global refactorings of all configuration modules at once.
+Indeed any such refactoring might silently break these modules. This
+is where type checking can help a great deal: the checker can tell you
+half way through a refactoring what other code needs to change and
+how.
 
-The result has been more than convincing: nix has an ever growing community
-(the nix package repository recently popped up as one of most active github
-repos^[classed sixth by number of reviewers on
-[octoverse](https://octoverse.github.com)]) and is used by a number of
-companies, including Mozilla, Lookout, Teamviewer
-and many others (and [tweag.io](http://tweag.io) of course).
+[octoverse]: https://octoverse.github.com
 
-Nix provides safe package management (in the sense that your system is never in
-an inconsistent state like it happens during the operations of other package
-managers), free rollbacks, transparent support for multiple versions of the
-same package (bye bye dependency hell) and by far more reproducibility
-guaranties than conventional package managers^[In a certain sense, it is rather
-similar to snaps, but with a totally different background that makes it really
-more flexible − and allows for much more sharing, in exchange of a possible
-higher entry barrier to understand the way it works].
+# Nix in the future, with types
 
-A Linux distribution ([nixOS](https://nixos.org)) has been realized on top of
-it, raising at the whole system level the benefits that nix gave locally, and
-an orchestration tool ([nixops](https://nixos.org/nixops), formerly charon) to
-raise this at the network level.
+Configurations in Nix are written in a full-fledged programming
+language, featuring all manner of primitive datatypes (numbers,
+strings, file paths, etc), anonymous records and first-class
+functions. This is a very big deal for writing configurations in the
+large. Functions allow code reuse and abstraction, two crucial
+ingredients without which writing out configurations by hand would
+become unwieldy.
 
-# Why would we type this?
-
-## What can we type?
-
-Nix is a package manager, but it is also a programming language that is used to
-describe the packages and their interactions (how to build them, their
-dependencies, etc..).
-Using a full featured programming language to do this (instead of simpler
-configuration files like for example the PKGBUILD files used by pacman) allows
-to abstract in a really nice way over build systems. Want to package a bunch of
-programs, all following the exact same building convention? Just add a function
-to describe their build process, and apply it to each one of the sources.
-
-## And why would we type this?
-
-This language is untyped. And given the size of the code base − nixpkgs, the nix
-package repository is almost 1 million lines of code big − things sometimes
-begin to be quite complicated as soon as you need to do some refactoring.
-
-A recent example was the addition of multiple-outputs derivation into nixpkgs.
-Without diving into the details of the change (you may have a look at
+This language is untyped. Lack of types have created challenges in the
+past. A recent example was the integration of multiple-output
+derivation into Nixpkgs. Without diving into the details of the change
+(have a look
+at
 [this](http://lipa.ms.mff.cuni.cz/%7Ecunav5am/nix/closure-size-notes.pdf) if
-you want some details), this was a modification which needed **a lot** of
-refactoring in nixpkgs.
+you want some details), this was a modification which needed **a lot**
+of refactoring in nixpkgs.
 
-Thanks to a rather intensive testing, most of the problems were fixed before
-the change reach the mainstream branch, but still, this required a lot of
-efforts, and some bugs still slipped through the tests, which could have been
-caught by a type system.
+Thanks to intensive testing, most of the problems were fixed before
+the change reach the mainstream branch. This testing required a lot of
+effort, and yet despite that some bugs still slipped through the
+tests. Some of these bugs could have been caught by a type system.
 
 # And in practice?
 
