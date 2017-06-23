@@ -1,5 +1,5 @@
 ---
-title: Typing nix
+title: Typing Nix
 author: Théophane Hufschmitt
 ---
 
@@ -94,7 +94,7 @@ derivation into Nixpkgs. Without diving into the details of the change
 at
 [this](http://lipa.ms.mff.cuni.cz/%7Ecunav5am/nix/closure-size-notes.pdf) if
 you want some details), this was a modification which needed **a lot**
-of refactoring in nixpkgs.
+of refactoring in Nixpkgs.
 
 Thanks to intensive testing, most of the problems were fixed before
 the change reach the mainstream branch. This testing required a lot of
@@ -104,9 +104,9 @@ tests. Some of these bugs could have been caught by a type system.
 ## Design principles
 
 A first and really important remark is that we don't want the typed
-nix to be incompatible with the legacy one. Our goal is not to invent
-a new language that could one day replace nix. Given the size of
-nixpkgs and the efforts invested in it, backward compatibility is
+Nix to be incompatible with the legacy one. Our goal is not to invent
+a new language that could one day replace Nix. Given the size of
+Nixpkgs and the efforts invested in it, backward compatibility is
 primordial.
 
 The problem of course, is that the current code has not been designed
@@ -131,8 +131,8 @@ to show how this could look like in practice.
 
 ### Simple ML-like type inference
 
-Here is a sample nix expression (a simplified version of the
-`stdenv.mkDerivation` function which is used in nixpkgs to build packages):
+Here is a sample Nix expression (a simplified version of the
+`stdenv.mkDerivation` function which is used in Nixpkgs to build packages):
 
 ```nix
 { buildInputs, meta ? {}, outputs ? [ "out" ], ... }@attrs:
@@ -237,7 +237,7 @@ function would then be:
 In reality, this is probably not inferable without annotating the type of the
 function − at least not according to the state of the art in type inference.
 If we write the function ourselves, no problem, we can just add type
-annotations, but if we use a function from nixpkgs that we don't want to mess
+annotations, but if we use a function from Nixpkgs that we don't want to mess
 with, we can circumvent the problem using gradual types. In this case, the
 type-checker would say "OK, I don't understand what's going on here, so I'll
 just give up and say that this has the type `? → ?`" − or probably something
