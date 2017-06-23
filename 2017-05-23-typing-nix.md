@@ -77,7 +77,7 @@ how.
 
 [octoverse]: https://octoverse.github.com
 
-# Nix in the future, with types
+## Nix in the future, with types
 
 Configurations in Nix are written in a full-fledged programming
 language, featuring all manner of primitive datatypes (numbers,
