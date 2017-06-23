@@ -5,8 +5,7 @@ author: Théophane Hufschmitt
 
 *Théophane is a summer intern here at Tweag I/O. Thanks also in part
 to [the financial help][gofundme] from the Nix community, he's
-spending the next six months on devising a type system for the Nix
-language.*
+spending six months on devising a type system for the Nix language.*
 
 [gofundme]: https://www.gofundme.com/typing-nix
 
@@ -114,9 +113,9 @@ The problem of course, is that the current code has not been designed
 with typing in mind. This code as it stands will probably never type
 check in any reasonable static type system. But thanks to the wonders
 of [gradual typing][gradual-typing], this isn't a real problem: we
-just have to gradually type the untypeable part. Furthermore, we have
+just have to gradually type the untypeable part. Furthermore, we had
 the chance of having Jeremy Siek − the inventor of gradual typing − in
-Paris for a month, and he already provided us some help in designing
+Paris for a month, and he provided us some substantial help in designing
 this.
 
 The gist of gradual types is the that in addition to static types, you
