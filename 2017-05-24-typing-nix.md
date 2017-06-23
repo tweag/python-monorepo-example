@@ -64,7 +64,7 @@ to provide guidance when configurations get refactored.
 Users typically specify the configuration of their system by reusing
 large amounts of configuration modules already written by the
 community. The largest collection of such modules, [Nixpkgs][nixpkgs],
-is today in incredibly active and diverse project. In fact that
+is today an incredibly active and diverse project. In fact that
 repository is
 now [one of most active repositories on all of Github][octoverse]. It
 has also fallen victim of its own success. Clocking in at over
@@ -247,7 +247,7 @@ return type should be a derivation, just not an exact static type.
 
 # Long is the road
 
-Of course, this is still at the very early stage: the theory is still a work in
+Of course, this is still at a very early stage: the theory is still a work in
 progress (thanks to the help of [Giuseppe Castagna](https://www.irif.fr/~gc/))
 and the implementation has just started.
 
