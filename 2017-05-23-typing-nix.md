@@ -58,6 +58,7 @@ to provide guidance when configurations get refactored.
 [chef]: https://www.chef.io/chef/
 [puppet]: https://puppet.com/solutions/configuration-management
 [salt]: https://saltstack.com/
+[nixpkgs]: https://github.com/NixOS/nixpkgs
 
 ## Nix today
 
