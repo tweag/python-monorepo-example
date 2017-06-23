@@ -245,7 +245,7 @@ slightly more precise because it is should always be possible to deduce for
 example that the argument must contain a field `buildInputs` and that the
 return type should be a derivation, just not an exact static type.
 
-# Long is the road
+## Long is the road
 
 Of course, this is still at a very early stage: the theory is still a work in
 progress (thanks to the help of [Giuseppe Castagna](https://www.irif.fr/~gc/))
