@@ -22,7 +22,7 @@ program is. We'll go with this:
 > For all the resources that a program consumes, there are finite
 > bounds such that for all valid inputs, a streaming program executes
 > to completion while never consuming resources beyond those bounds
-> (e.g. network connections, threads, file handles, memory)
+> (e.g. network connections, threads, file handles, memory).
 
 The resources that we call out in this definition are *scarce*. It's
 important to tame RAM usage, because the amount of fast volatile
@@ -33,7 +33,7 @@ per-process limits. And network connections each need their own
 buffers, consuming precious memory.
 
 Disk space, and sometimes even CPU time, are comparatively far less
-scarce, so we won't worry about those.
+scarce, so we won't worry about those here.
 
 It can be hard to reconcile the constraints of resource scarcity with
 another imperative: don't give up on writing programs from composable
@@ -56,14 +56,14 @@ headLine = unlines . take 1 . lines
 Simple enough. We could hook up this function to an input source
 somewhere on disk, and some output sink, but we'll need to make sure
 to satisfy the following conditions for the resulting program to be
-a streaming program:
+a *streaming* program:
 
 * evaluation of the output string should not be forced into memory all
   at once by any callers of `headLine`, and
 * the source of the input string needs to be closed *soon enough* to
   prevent open handles from accumulating.
   
-Additionally, for the program to be correct,
+Additionally, for the program to be a *correct* program,
 
 * the source of the input string should not be closed before the
   output string has been fully evaluated.
@@ -74,7 +74,7 @@ or an incorrect program. In Haskell, traditionally people have been
 exploiting lazy evaluation to build streaming programs: if we can
 somehow produce a string that represents the entire contents of
 a file, we could plug that string as an input to `headLine` and hope
-that only the first line will ever be evualuated and loaded in memory.
+that only the first line will ever be evaluated and loaded in memory.
 But this is a dangerous proposition. The type system is no longer
 distinguishing whether a `String` is a list of values, a computation
 which will produce the values on demand, or a computation which
@@ -145,11 +145,12 @@ is a list or a computation. It offers an effectful `Stream` abstraction
 as a sequence of computations on some parametric monad `m`, and each
 computation can produce a part of a potentially long list of values.
 
-The package `streaming` is associated with the package
+This `streaming` package has a companion package
+called
 [streaming-bytestring](http://hackage.haskell.org/package/streaming-bytestring),
 which provides an effectful ByteString abstraction. Similar to
-`Stream`s, a `ByteString` is a sequence of computations, each of
-which yields a part of a potentially long bytestring.
+`Stream`s, a `ByteString` is a sequence of computations, each of which
+yields a part of a potentially long bytestring.
 
 To fix ideas, let us consider the function `headLine` implemented
 with these abstractions.
@@ -217,15 +218,14 @@ SB.stdout :: MonadIO m => ByteString m r -> m r
 The call to `SB.stdout` will consume the effectful `ByteString` returned
 by `headLineStream` by printing it to the standard output.
 
-
 # Summary
 
-Streaming libraries allow writing composable streaming programs without
-relying on lazy IO. This simplifies reasoning on the order in which
-resources are acquired, used and released. However, no streaming library
-ensures that well-typed programs are streaming. The programmer is still
-responsible for getting resource management right.
+Streaming libraries allow writing composable streaming programs
+without relying on lazy IO. This simplifies reasoning on the order in
+which resources are acquired, used and released. However, no streaming
+library ensures that well-typed programs are always streaming. The
+programmer is still responsible for getting resource management right.
 
-In a next blogpost, we will delve in more detail on the features that
+In the next post, we'll delve in more detail on the features that
 streaming libraries provide and how they allow writing composable
 programs while keeping lazy IO out of the equation.
