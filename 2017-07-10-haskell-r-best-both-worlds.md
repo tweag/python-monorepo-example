@@ -5,10 +5,12 @@ featured: yes
 ---
 
 *A guest post by [Sigrid Keydana][sigrid-keydana] telling us the backstory behind the
-very cool trading app notebook she put together... Keras, ggplot2,
+very cool trading app notebook she put together... [Keras][keras], [ggplot2][ggplot2],
 Haskell and R all in one Jupyter notebook! Post originally appeared
 [here][original-post].*
 
+[keras]: https://keras.io/
+[ggplot2]: http://ggplot2.org/
 [sigrid-keydana]: https://recurrentnull.wordpress.com/about/
 [trading-notebook]: http://nbviewer.jupyter.org/github/skeydan/haskellR-intro/blob/master/stockmarket_demo.ipynb
 [original-post]: https://recurrentnull.wordpress.com/2017/07/07/haskellr/
