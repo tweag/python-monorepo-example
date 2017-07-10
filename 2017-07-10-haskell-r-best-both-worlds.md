@@ -1,6 +1,6 @@
 ---
 title: R and Haskell:<br>best of both worlds with HaskellR
-author: Jean-Philippe Bernardy and Arnaud Spiwack
+author: Sigrid Keydana
 featured: yes
 ---
 
