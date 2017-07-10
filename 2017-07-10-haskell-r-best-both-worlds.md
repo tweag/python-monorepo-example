@@ -4,10 +4,11 @@ author: Sigrid Keydana
 featured: yes
 ---
 
-*A guest post by [Sigrid Keydana][sigrid-keydana] telling us the backstory behind the
-very cool trading app notebook she put together... [Keras][keras], [ggplot2][ggplot2],
-Haskell and R all in one Jupyter notebook! Post originally appeared
-[here][original-post].*
+*A guest post by [Sigrid Keydana][sigrid-keydana] telling us the
+backstory behind the very
+cool [trading app notebook][trading-notebook] she put
+together... [Keras][keras], [ggplot2][ggplot2], Haskell and R all in
+one Jupyter notebook! Post originally appeared [here][original-post].*
 
 [keras]: https://keras.io/
 [ggplot2]: http://ggplot2.org/
