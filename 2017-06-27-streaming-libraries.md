@@ -27,7 +27,7 @@ headLine = unlines . take 1 . lines
 
 Simple enough. We could hook up this function to an input source
 somewhere on disk and some output sink like an output file.
-This program would use resources like memory, cpu time, file
+This program would use resources like memory, CPU time, file
 descriptors and disk space.
 
 If the amount of memory does not grow beyond a finite bound, for all
@@ -99,7 +99,7 @@ produces an empty output. This is because what `hGetContents` returns
 (something of type `String`) is really a *computation that performs
 I/O as a side effect*, not a regular value, despite what the type
 says. As soon as we evaluate `contents`, or any part of it, those side
-effects will have to occur. But in the example above, due to lazyness,
+effects will have to occur. But in the example above, due to laziness,
 any evaluation of `contents` will happen as part of the evaluation of
 `headLine`, and by the time that happens, the file handle is already
 closed, thus violating our third condition above. Here's a fix:
