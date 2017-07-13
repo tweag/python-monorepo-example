@@ -16,21 +16,31 @@ it.
 
 # Streaming programs
 
-Let's first start off with a precise definition of what a streaming
-program is. We'll go with this:
+Let's say we want to write a small utility that truncates any input to
+its topmost line. We can start with a pure function from input to
+output:
 
-> For all the resources that a program consumes, there are finite
-> bounds such that for all valid inputs, a streaming program executes
-> to completion while never consuming resources beyond those bounds
-> (e.g. network connections, threads, file handles, memory).
+```Haskell
+headLine :: String -> String
+headLine = unlines . take 1 . lines
+```
 
-The resources that we call out in this definition are *scarce*. It's
+Simple enough. We could hook up this function to an input source
+somewhere on disk and some output sink like an output file.
+This program would use resources like memory, cpu time, file
+descriptors and disk space.
+
+If the amount of memory does not grow beyond a finite bound, for all
+possible inputs, we say that the program runs in bounded memory. And
+more generally, we will say that **a program is streaming** if the
+usage of some resources considered *scarce* is bounded.
+
+In our example we care of memory and file handles. It's
 important to tame RAM usage, because the amount of fast volatile
 memory available on a computer is typically far smaller than the size
 of the program's input. Likewise, file descriptors aren't a commodity
-in infinite supply: by default operating systems impose aggressive
-per-process limits. And network connections each need their own
-buffers, consuming precious memory.
+in infinite supply: operating systems impose aggressive
+per-process limits by default.
 
 Disk space, and sometimes even CPU time, are comparatively far less
 scarce, so we won't worry about those here.
@@ -42,21 +52,11 @@ you end up with unmaintainable spaghetti. This is where streaming
 libraries can help: the idea is to define once and for all common
 patterns that enable building streaming *and* compositional programs.
 
-# A simple streaming program
 
-Let's say we want to write a small utility that truncates any input to
-its topmost line. We can start with a pure function from input to
-output:
+# Writing a streaming program
 
-```Haskell
-headLine :: String -> String
-headLine = unlines . take 1 . lines
-```
-
-Simple enough. We could hook up this function to an input source
-somewhere on disk, and some output sink, but we'll need to make sure
-to satisfy the following conditions for the resulting program to be
-a *streaming* program:
+Resuming our running example, we could make streaming program from
+function `headLine` provided that we satisfy the following conditions:
 
 * evaluation of the output string should not be forced into memory all
   at once by any callers of `headLine`, and
@@ -68,8 +68,10 @@ Additionally, for the program to be a *correct* program,
 * the source of the input string should not be closed before the
   output string has been fully evaluated.
 
-These conditions are as many opportunities for the programmer or the
-language's runtime system to screw up and end up with a non-streaming
+These conditions embody the amount of thinking that the programmer
+needs to do without help from the compiler. They are as many
+opportunities for the programmer or the language's runtime system
+to screw up and end up with a non-streaming
 or an incorrect program. In Haskell, traditionally people have been
 exploiting lazy evaluation to build streaming programs: if we can
 somehow produce a string that represents the entire contents of
@@ -86,8 +88,8 @@ Consider this attempt at a full program that uses `headLine`:
 import Control.Exception (bracket)
 import System.IO (hGetContents, hClose, openFile, IOMode(ReadMode))
 
-printHeadLine :: FilePath -> IO ()
-printHeadLine path = do
+printHeadLine1 :: FilePath -> IO ()
+printHeadLine1 path = do
     contents <- bracket (openFile path ReadMode) hClose hGetContents
     putStr $ headLine contents
 ```
@@ -107,8 +109,8 @@ import Control.DeepSeq (($!!))
 import Control.Exception (bracket)
 import System.IO (hGetContents, hClose, openFile, IOMode(ReadMode))
 
-printHeadLine :: FilePath -> IO ()
-printHeadLine path = do
+printHeadLine2 :: FilePath -> IO ()
+printHeadLine2 path = do
     str <- bracket (openFile path ReadMode) hClose \h -> do
       contents <- hGetContents h
       return $!! contents
@@ -137,17 +139,27 @@ So it turns out that we *can* write a correct and streaming program.
 But it would be great if the type checker could helps us verifying
 the three conditions above.
 
-## Streaming with `streaming`
 
-The package [streaming](http://hackage.haskell.org/package/streaming),
+## Streaming with a streaming library
+
+We turn now to show how streaming libraries help writing streaming
+programs. We will develop our discussion making use of the package
+[streaming](http://www.stackage.org/package/streaming),
+but the argument would work as well with other streaming libraries
+like
+[conduit](http://www.stackage.org/package/conduit),
+[pipes](http://www.stackage.org/package/pipes),
+[enumerator](http://www.stackage.org/package/enumerator) or
+[io-streams](http://www.stackage.org/package/io-streams).
+
+The package `streaming`,
 as other streaming libraries, helps discerning whether a value
 is a list or a computation. It offers an effectful `Stream` abstraction
 as a sequence of computations on some parametric monad `m`, and each
 computation can produce a part of a potentially long list of values.
 
-This `streaming` package has a companion package
-called
-[streaming-bytestring](http://hackage.haskell.org/package/streaming-bytestring),
+This `streaming` package has a companion package called
+[streaming-bytestring](http://www.stackage.org/package/streaming-bytestring),
 which provides an effectful ByteString abstraction. Similar to
 `Stream`s, a `ByteString` is a sequence of computations, each of which
 yields a part of a potentially long bytestring.
@@ -173,50 +185,59 @@ of the monad operations.
 
 ```Haskell
 SB.lines :: Monad m => ByteString m r -> Stream (ByteString m) m r
-Streaming.takes :: (Monad m, Functor f) => Int -> Stream f m r -> Stream f m ()
+Streaming.takes :: Monad m => Int -> Stream (ByteString m) m r -> Stream (ByteString m) m ()
 SB.unlines :: Monad m => Stream (ByteString m) m r -> ByteString m r
 ```
-The function starts by creating a stream of lines. Each line is itself
+The function starts by creating a stream of
+[lines](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:lines).
+Each line is itself
 an effectful bytestring. When the first bytestring is fully consumed,
 the bytestring for the second line becomes available.
 
-Then the function discards all the input except for the first bytestring,
-and finally it assembles a bytestring from the resulting stream.
+Then the function discards all the input except for the first bytestring
+([takes](https://www.stackage.org/haddock/lts-8.21/streaming-0.1.4.5/Streaming.html#v:takes)),
+and finally it assembles a bytestring from the resulting stream
+([unlines](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:unlines)).
 
 The conditions to ensure that the resulting program is streaming and
-correct are similar to the lazy IO example. But due to the fact that
-the types of values and effectful computations are discerned, the
-conditions are no longer expressed in terms of lazy evaluation.
- * The output is not fed to any function that loads all of the
-   output into memory like
-   [SB.toStrict](https://hackage.haskell.org/package/streaming-bytestring-0.1.4.6/docs/Data-ByteString-Streaming-Char8.html#v:toStrict),
- * the second condition of the lazy IO example remains the same and
- * the output shall not be used after the source of the input
-   stream is closed.
+correct follow.
+ * The output `ByteString` is not fed to any function that loads all of
+   the output into memory like
+   [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
+ * the source of the input `ByteString` needs to be closed *soon enough* to
+   prevent open handles from accumulating and
+ * the output `ByteString` shall not be used after the source of the
+   input `ByteString` is closed.
 
-These condition are common to the existing streaming libraries.
-Pick any of them, implement function `headLines` with it and
-observe the conditions. It will be difficult for them to become
-simpler, unless we start considering experimental approaches like
-using linear types.
+Now these conditions do not refer to some *evaluation* that may happen
+lazily. The programmer is no longer responsible for discerning
+values from effectful computations, the compiler will do it for her.
+Thus, by using a streaming library, we are reducing the amount of unaided
+thinking that the programmer needs to invest.
 
 Let us consider the full program for the sake of completeness.
 ```Haskell
 printHeadLineStream :: FilePath -> IO ()
 printHeadLineStream fp =
-  runResourceT $ SB.stdout $ headLineStream $ SB.readFile fp
+    runResourceT $ SB.stdout $ headLineStream $ SB.readFile fp
 ```
 
-`printHeadLineStream` calls `SB.readFile` which produces an effectful
+`printHeadLineStream` calls
+[SB.readFile](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:readFile)
+which produces an effectful
 stream with the contents of the file. The file is created using the
-`MonadResource` class which ensures the file is closed before
-`runResourceT` completes.
+[MonadResource](https://www.stackage.org/haddock/lts-8.21/resourcet-1.1.9/Control-Monad-Trans-Resource.html#t:MonadResource)
+class to ensures the file is closed before
+[runResourceT](https://www.stackage.org/haddock/lts-8.21/resourcet-1.1.9/Control-Monad-Trans-Resource.html#v:runResourceT)
+completes.
 
 ```Haskell
 SB.stdout :: MonadIO m => ByteString m r -> m r
 ```
-The call to `SB.stdout` will consume the effectful `ByteString` returned
-by `headLineStream` by printing it to the standard output.
+The call to
+[SB.stdout](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:stdout)
+will consume the effectful `ByteString` returned by `headLineStream`
+by printing it to the standard output.
 
 # Summary
 
