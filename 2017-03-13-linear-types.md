@@ -288,7 +288,7 @@ An important takeaway is how haskelly this all looks: just replace
 `->` by `⊸` and linearity kicks in. Usual datatypes, including tuples,
 take a linear meaning in a linear context. The technical details of
 how this is achieved are exposed in the [article][paper]. Edsko de
-Vries wrote [a blog post](edsko-blog) where he compares the trade-offs
+Vries wrote [a blog post][edsko-blog] where he compares the trade-offs
 of related type systems; he comes in favour of a system where types
 are segregated into linear types and unrestricted types, but our
 position is that such a system, perhaps more flexible, would be more
