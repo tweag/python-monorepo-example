@@ -212,7 +212,7 @@ correct are as follows:
 
 These might look similar to the conditions we had to satisfy
 previously, but now these conditions do not refer to some *evaluation*
-that may happen lazily. The programmer is no longer responsible for
+that may happen lazily. Programmers are no longer responsible for
 distinguishing values from effectful computations, the compiler will
 do it for them. Thus, **by using a streaming library, we are reducing
 the amount of unaided bookkeeping that the programmer needs to
