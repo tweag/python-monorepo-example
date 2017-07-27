@@ -4,9 +4,9 @@ author: Facundo Domínguez and Mathieu Boespflug
 ---
 
 In school, we're taught that I/O is a simple affair: read data in,
-write some data out. Rinse, repeat. But then as practitioners we
-realize matters are often more complicated. For one, I/O is slow, so
-we probably want operations to overlap (i.e. be processed
+write data out. Rinse, repeat. But then as practitioners we realize
+matters are often more complicated. For one, I/O is slow, so we
+probably want operations to overlap (i.e. be processed
 asynchronously), especially if we have to perform many I/O operations.
 In this post, we’ll talk about another topic that any functional
 programmer will stumble upon at some point along their infinite path
