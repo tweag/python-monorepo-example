@@ -39,14 +39,12 @@ possible inputs, we say that the program runs in bounded memory. And
 more generally, we will say that **a program is streaming** if the
 usage of some resources considered *scarce* is bounded.
 
-In our example we care of memory and file handles. It's
+In our example we care about memory and file handles. It's
 important to constrain RAM usage, because the amount of fast volatile
-memory available on a computer is typically far smaller than the size
+memory available in a computer is typically far smaller than the size
 of the program's input. Likewise, file descriptors aren't a commodity
 in infinite supply: operating systems impose strict per-process limits
-by default.
-
-Disk space, and sometimes even CPU time, are comparatively far less
+by default. Disk space, and sometimes even CPU time, are comparatively far less
 scarce, so we won't worry about those here.
 
 It can be hard to reconcile the constraints of resource scarcity with
@@ -63,7 +61,7 @@ Resuming our running example, we could make a streaming program from
 function `headLine` provided that we satisfy the following conditions:
 
 * evaluation of the output string should not be forced into memory all
-  at once by any callers of `headLine`, and
+  at once by any callers of `headLine` and
 * the source of the input string needs to be closed *soon enough* to
   prevent open handles from accumulating.
   
@@ -74,13 +72,13 @@ Additionally, for the program to be a *correct* program,
 
 These conditions embody the amount of thinking that the programmer
 needs to do without help from the compiler.
-They present some opportunities for the programmer or the language’s
+They present opportunities for the programmer or the language’s
 runtime system to screw up, so that we end up with a program that is
 either not streaming or is incorrect.
 In Haskell, traditionally, people have been
 exploiting lazy evaluation to build streaming programs: if we can
 somehow produce a string that represents the entire contents of
-a file, we could plug that string as an input to `headLine` and hope
+a file, we could plug that string as an input into `headLine` and hope
 that only the first line will ever be evaluated and loaded in memory.
 But this is a dangerous assumption. The type system no longer
 distinguishes whether a `String` is a list of values, a computation
@@ -141,14 +139,14 @@ printHeadLine path = do
 ```
 
 So it turns out that we *can* write a correct and streaming program.
-But it would be great if the type checker could help us verifying
+But it would be great if the type checker could help us verify
 the three conditions above.
 
 
 ## Streaming with a streaming library
 
-We turn now to show how streaming libraries help writing streaming
-programs. We will develop our discussion making use of the package
+We now turn to showing how streaming libraries help writing streaming
+programs. We will do so by making use of the package
 [streaming](http://www.stackage.org/package/streaming),
 but the argument would work as well with other streaming libraries
 like
@@ -158,14 +156,14 @@ like
 [io-streams](http://www.stackage.org/package/io-streams).
 
 The package `streaming`,
-as other streaming libraries, helps discerning whether a value
+as other streaming libraries, helps to discern whether a value
 is a list or a computation. It offers an effectful `Stream` abstraction
 as a sequence of computations on some parametric monad `m`, and each
 computation can produce a part of a potentially long list of values.
 
 This `streaming` package has a companion package called
 [streaming-bytestring](http://www.stackage.org/package/streaming-bytestring),
-which provides an effectful ByteString abstraction. Similar to
+which provides an effectful `ByteString` abstraction. Similar to
 `Stream`s, a `ByteString` is a sequence of computations, each of which
 yields a part of a potentially long bytestring.
 
@@ -215,10 +213,10 @@ correct follow.
    input `ByteString` is closed.
 
 Now these conditions do not refer to some *evaluation* that may happen
-lazily. The programmer is no longer responsible for discerning
-values from effectful computations, the compiler will do it for her.
+lazily. The programmer is no longer responsible for distinguishing
+values from effectful computations, the compiler will do it for them.
 Thus, by using a streaming library, we are reducing the amount of unaided
-thinking that the programmer needs to invest.
+bookkeeping that the programmer needs to conduct.
 
 Let us consider the full program for the sake of completeness.
 ```Haskell
@@ -246,12 +244,12 @@ by printing it to the standard output.
 
 # Summary
 
-Streaming libraries allow writing composable streaming programs
+Streaming libraries support writing composable streaming programs
 without relying on lazy I/O. This simplifies reasoning about the order in
 which resources are acquired, used, and released. However, no streaming
 library ensures that well-typed programs are always streaming. The
 programmer is still responsible for getting resource management right.
 
-In another blogpost, we'll delve in more detail on the features that
+In a future blogpost, we will delve in more detail on the features that
 streaming libraries provide and how they allow writing composable
 programs while keeping lazy I/O out of the equation.
