@@ -1,22 +1,18 @@
 ---
-title: Streaming programs for the layman
+title: Streaming programs without lazyness:<br> a short primer
 author: Facundo Domínguez and Mathieu Boespflug
 ---
 
-When we are learning programming, we are taught that
-I/O is a simple affair: read some data, then write some data.
-Rinse & repeat. But then as practitioners
-we realize matters are often more complicated.
-For example, I/O is slow. Hence, we probably want operations
-to overlap (i.e. be processed asynchronously) — especially,
-if we have to perform many I/O operations
-
-In this post, we’ll talk about another topic that any
-functional programmer will stumble over on their infinite path
-to enlightenment: streaming resources. Did you ever wonder
-what they are about? This post will explain the basics and
-motivate why you will want to think about this topic.
-
+In school, we're taught that I/O is a simple affair: read data in,
+write some data out. Rinse, repeat. But then as practitioners we
+realize matters are often more complicated. For one, I/O is slow, so
+we probably want operations to overlap (i.e. be processed
+asynchronously), especially if we have to perform many I/O operations.
+In this post, we’ll talk about another topic that any functional
+programmer will stumble upon at some point along their infinite path
+to enlightenment: streaming resources. Did you ever wonder what they
+are about? This post is an attempt at explaining why you'd want to
+think about this topic.
 
 # Streaming programs
 
@@ -29,23 +25,23 @@ headLine :: String -> String
 headLine = unlines . take 1 . lines
 ```
 
-Simple enough.  We could hook this function up to an input source,
-possibly located somewhere on disk, and also to some output sink.
-This program would use resources like memory, CPU time, file
-descriptors and disk space.
+Simple enough. We could hook this function up to an input source,
+possibly located somewhere on disk, and also to some output sink. This
+program would use resources like memory, CPU time, file descriptors
+and disk space.
 
 If the amount of memory does not grow beyond a finite bound, for all
-possible inputs, we say that the program runs in bounded memory. And
-more generally, we will say that **a program is streaming** if the
-usage of some resources considered *scarce* is bounded.
+possible inputs, we say that the program runs in bounded memory. More
+generally, we will say that **a program is streaming** if the usage of
+some resources considered *scarce* is bounded.
 
-In our example we care about memory and file handles. It's
-important to constrain RAM usage, because the amount of fast volatile
-memory available in a computer is typically far smaller than the size
-of the program's input. Likewise, file descriptors aren't a commodity
-in infinite supply: operating systems impose strict per-process limits
-by default. Disk space, and sometimes even CPU time, are comparatively far less
-scarce, so we won't worry about those here.
+In our example we care about memory and file handles. It's important
+to tame RAM usage, because the amount of fast volatile memory
+available in a computer is typically far smaller than the size of the
+program's input. Likewise, file descriptors aren't a commodity in
+infinite supply: operating systems impose aggressive per-process
+limits by default. Disk space, and sometimes even CPU time, are
+comparatively far less scarce, so we won't worry about those here.
 
 It can be hard to reconcile the constraints of resource scarcity with
 another imperative: don't give up on writing programs from composable
@@ -71,19 +67,18 @@ Additionally, for the program to be a *correct* program,
   output string has been fully evaluated.
 
 These conditions embody the amount of thinking that the programmer
-needs to do without help from the compiler.
-They present opportunities for the programmer or the language’s
-runtime system to screw up, so that we end up with a program that is
-either not streaming or is incorrect.
-In Haskell, traditionally, people have been
-exploiting lazy evaluation to build streaming programs: if we can
-somehow produce a string that represents the entire contents of
-a file, we could plug that string as an input into `headLine` and hope
-that only the first line will ever be evaluated and loaded in memory.
-But this is a dangerous assumption. The type system no longer
-distinguishes whether a `String` is a list of values, a computation
-which will produce the values on demand, or a computation which
-requires a file handle to complete successfully.
+needs to do without help from the compiler. They present opportunities
+for the programmer or the language’s runtime system to screw up, so
+that we end up with a program that is either not streaming or is
+incorrect. In Haskell, traditionally, people have been exploiting lazy
+evaluation to build streaming programs: if we can somehow produce
+a string that represents the entire contents of a file, we could plug
+that string as an input into `headLine` and hope that only the first
+line will ever be evaluated and loaded in memory. But this is
+a dangerous assumption. The type system no longer distinguishes
+whether a `String` is a list of values, a computation which will
+produce the values on demand, or a computation which requires a file
+handle to complete successfully.
 
 Consider this attempt at a full program that uses `headLine`:
 
@@ -145,30 +140,32 @@ the three conditions above.
 
 ## Streaming with a streaming library
 
-We now turn to showing how streaming libraries help writing streaming
-programs. We will do so by making use of the package
-[streaming](http://www.stackage.org/package/streaming),
-but the argument would work as well with other streaming libraries
+Streaming libraries are a great help to write correct streaming
+programs. There are many out there, but we'll focus here on
+the [streaming](http://www.stackage.org/package/streaming) package.
+The argument would work as well with other streaming libraries
 like
 [conduit](http://www.stackage.org/package/conduit),
 [pipes](http://www.stackage.org/package/pipes),
-[enumerator](http://www.stackage.org/package/enumerator) or
-[io-streams](http://www.stackage.org/package/io-streams).
+[enumerator](http://www.stackage.org/package/enumerator)
+or [io-streams](http://www.stackage.org/package/io-streams).
 
-The package `streaming`,
-as other streaming libraries, helps to discern whether a value
-is a list or a computation. It offers an effectful `Stream` abstraction
-as a sequence of computations on some parametric monad `m`, and each
-computation can produce a part of a potentially long list of values.
+The `streaming` package, like other streaming libraries, helps to
+discern whether a value is a list or a computation. It offers an
+effectful `Stream` abstraction as a sequence of computations on some
+parametric monad `m`. Each computation can produce a part of
+a potentially long list of values.
 
-This `streaming` package has a companion package called
+This `streaming` package has a companion package
+called
 [streaming-bytestring](http://www.stackage.org/package/streaming-bytestring),
 which provides an effectful `ByteString` abstraction. Similar to
-`Stream`s, a `ByteString` is a sequence of computations, each of which
-yields a part of a potentially long bytestring.
+`Stream`'s, a `ByteString` is a sequence of computations, each of
+which yields a part of a potentially long bytestring.
 
 To be concrete, let us consider the function `headLine` implemented
 with these abstractions.
+
 ```Haskell
 import qualified Data.ByteString.Streaming (ByteString)
 import qualified Data.ByteString.Streaming.Char8 as SB
@@ -177,10 +174,11 @@ import qualified Streaming
 headLineStream :: Monad m => ByteString m r -> ByteString m ()
 headLineStream = SB.unlines . Streaming.takes 1 . SB.lines
 ```
+
 This function transforms an effectful bytestring. It might not reside
 fully in memory, but it may be produced in chunks as the bytestring is
 consumed. In contrast to lazy `ByteString`s, the effectful bytestring
-produces the chunks through the monad `m` rather than through lazy
+produces the chunks in the monad `m` rather than through lazy
 evaluation. Thus the type makes explicit that some computation happens
 as the bytestring is consumed, and it becomes possible to reason about
 the order in which resources are acquired, used, and released in terms
@@ -203,7 +201,7 @@ and finally, it assembles a bytestring from the resulting stream
 ([unlines](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:unlines)).
 
 The conditions to ensure that the resulting program is streaming and
-correct follow.
+correct are as follows:
  * The output `ByteString` is not fed to any function that loads all of
    the output into memory like
    [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
@@ -212,13 +210,16 @@ correct follow.
  * the output `ByteString` shall not be used after the source of the
    input `ByteString` is closed.
 
-Now these conditions do not refer to some *evaluation* that may happen
-lazily. The programmer is no longer responsible for distinguishing
-values from effectful computations, the compiler will do it for them.
-Thus, by using a streaming library, we are reducing the amount of unaided
-bookkeeping that the programmer needs to conduct.
+These might look similar to the conditions we had to satisfy
+previously, but now these conditions do not refer to some *evaluation*
+that may happen lazily. The programmer is no longer responsible for
+distinguishing values from effectful computations, the compiler will
+do it for them. Thus, **by using a streaming library, we are reducing
+the amount of unaided bookkeeping that the programmer needs to
+conduct.**
 
-Let us consider the full program for the sake of completeness.
+Let us consider the full program for the sake of completeness:
+
 ```Haskell
 printHeadLineStream :: FilePath -> IO ()
 printHeadLineStream fp =
@@ -237,6 +238,7 @@ completes.
 ```Haskell
 SB.stdout :: MonadIO m => ByteString m r -> m r
 ```
+
 The call to
 [SB.stdout](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:stdout)
 will consume the effectful `ByteString` returned by `headLineStream`
@@ -244,12 +246,15 @@ by printing it to the standard output.
 
 # Summary
 
-Streaming libraries support writing composable streaming programs
-without relying on lazy I/O. This simplifies reasoning about the order in
-which resources are acquired, used, and released. However, no streaming
-library ensures that well-typed programs are always streaming. The
-programmer is still responsible for getting resource management right.
+Streaming libraries support writing *composable* streaming programs
+without relying on lazy I/O. This simplifies reasoning about the order
+in which resources are acquired, used, and released. However, no
+streaming library today guarantees that well-typed programs are always
+streaming. The programmer is still responsible for getting resource
+management right (but there are other libraries to help with that too,
+like [resourcet](http://hackage.haskell.org/package/resourcet)).
 
-In a future blogpost, we will delve in more detail on the features that
-streaming libraries provide and how they allow writing composable
-programs while keeping lazy I/O out of the equation.
+In the next blog post in this series, we will delve in more detail
+into the features that streaming libraries provide and how they allow
+writing composable programs while keeping lazy I/O out of the
+equation.
