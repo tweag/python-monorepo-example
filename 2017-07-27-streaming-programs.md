@@ -1,5 +1,5 @@
 ---
-title: Streaming programs without lazyness:<br> a short primer
+title: Streaming programs without laziness:<br> a short primer
 author: Facundo Domínguez and Mathieu Boespflug
 ---
 
