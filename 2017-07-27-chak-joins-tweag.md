@@ -1,5 +1,5 @@
 ---
-title: I am a functional programming evangelist
+title: I am a <br>functional programming evangelist
 author: Manuel M T Chakravarty
 featured: yes
 ---
