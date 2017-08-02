@@ -68,7 +68,7 @@ Good! Now, what is the type of `s` in `bind s`? It must be `Socket
 Unbound` so that I can apply `bind`. Wait! When the `bind` call
 returns, `s` must not be `Unbound` anymore. It must be `Bound`. So…
 the type of `s` seems to change over time. This is the idea
-of [_typestate_][typestate-wikipedia].
+of [_typestates_][typestate-wikipedia].
 
 To implement a typestate for socket, maybe I could simply return a
 socket with its type changed like so:
@@ -110,10 +110,11 @@ listen :: Socket Bound ⊸ IOL 1 (Socket Listening)
 ```
 
 What we've done here is precisely and safely captured the state of the
-socket at the type-level. This is a prototypical example,
-demonstrating how linear types help us to be more precise about the
-use of resources, so that the type checker assists us in avoiding
-faulty resource use.
+socket at the type-level. The type tells you exactly what to do next
+with a socket. And GHC won't let you reuse old states by accident.
+This is a prototypical example, demonstrating how linear types help us
+to be more precise about the use of resources, so that the type
+checker assists us in avoiding faulty resource use.
 
 In the next post in the series, we'll take a look at how linear types
 can pave the way towards safe zero-copy packed data exchange across
