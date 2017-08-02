@@ -4,18 +4,18 @@ author: Arnaud Spiwack
 featured: yes
 ---
 
-Last time [we wrote][blog-post-one] about linear types, our work
-towards extending GHC with linear types was in its infancy. We were
-fresh out of the design phase, we had an prototype implementation but
-it was just a proof of concept: there was precious little you could do
-with it.
+At the time of [our first post on linear types][blog-post-one], we
+were fresh out of the design phase of extending GHC with linear
+types. We had a prototype implementation, but it was just a proof of
+concept: there was precious little you could do with it.
 
 A few months down the line, and we are in a very different place. We
-have revamped our [paper][paper], and I trust you will find it much
-more fun to read. Our [branch][prototype] of GHC is now working
-fine. It's not anything close to bug-free, but it's a nice little
-playground. There is a Docker image for easy use with Stack, and
-everything. It is all in the `README`: check it out.
+revamped our [paper][paper], and I trust you will find it much more
+fun to read. Our [branch][prototype] of GHC is now perfectly useable
+as a playground to experiment with linear types, even if there are
+still bugs and the diagnostics still need to be improved. We also
+provide a Docker image for easy use with Stack. It is all in the
+`README`: check it out!
 
 Today, I would like to work you through some of the new exciting
 examples that we have worked into the paper.
@@ -23,12 +23,12 @@ examples that we have worked into the paper.
 
 # IO protocols #
 
-Say you want to speak something across a network. So, you use
-the [socket][socket-library] library. You open the doc and see that to
+Say you want to communicate across a network. So, you use
+the [socket][socket-library] library. You open the documentation and find that to
 use a TCP socket, on a server, you first need to `bind` the socket to an
 address. At this point the socket isn't doing anything: you need to
 `listen` for incoming traffic. Now the socket receives messages from
-the network, specifically connection requests, that you must
+the network, specifically connection requests, which you must
 `accept`. An `accept` call returns a new socket which can `receive` a
 TCP stream.
 
@@ -42,14 +42,14 @@ The type of `listen` is:
 listen :: Socket -> IO ()
 ```
 
-It's really not all that helpful. In Haskell, we like our types to
+These types are really not that helpful. In Haskell, we like our types to
 tell us what we can do with a value. But when I have a `Socket`, I can
-maybe `bind` it or `listen` with it, but certainly not both.
+maybe `bind` it or `listen` to it, but certainly not both.
 
 What we really need is that the type of a socket be indexed by the
-kind of things I can do with it. Something along the lines of:
+kind of things we can do with it. Something along the lines of:
 ```haskell
-data State = Unbound | Bound | Listening | Connected
+data State = Unbound | Bound | Listening | …
 data Socket (s :: State)
 
 bind :: Socket Unbound -> IO ()
@@ -71,13 +71,13 @@ bind :: Socket Unbound -> IO (Socket Bound)
 do { s' <- bind s; … }
 ```
 I can then use `s'` as evidence that the socket has been
-bound. But I also still have the old `s` hanging about which claims to
+bound. But I also have the old `s` still hanging about. And `s` claims to
 be unbound: we can go back in time. One has to be careful not to use
 `s` ever again to avoid ill effects: types have failed us once again.
 
 What we need is the ability to _consume_ the old `s`, to make it
-inaccessible. Which, coincidentally, is exactly what linear types make
-possible. We just need to make `IO` a little bit more general so that
+inaccessible. Which, coincidentally, is exactly what linear types
+enable. We just need to make `IO` a little bit more general, so that
 it can return both linear and non-linear values:
 ```haskell
 data IOL p a
@@ -95,16 +95,20 @@ listen :: Socket Bound ⊸ IOL 1 (Socket Listening)
 …
 ```
 
+This is a prototypical example, demonstrating how linear types help us
+to be more precise about the use of resources, so that the type
+checker assists us in avoiding faulty resource use.
+
 # Packed representation of data types #
 
-And now, for something completely different: data type representation.
+And now, for something completely different: optimised data type representation.
 
 Let us consider a simple tree type:
 ```haskell
 data Tree = Branch Tree Tree | Leaf Int
 ```
 We are used to see this represented as a pointer structure in the
-heap. But what if we actually represented as an array, in preorder traversal. So that
+heap. But what if, instead, we actually represent it as an array, in preorder traversal. So that
 `Branch (Branch (Leaf 1) (Leaf 2)) (Branch (Leaf 3) (Branch (Leaf 4)
 (Leaf 5)))` is represented as:
 ```haskell
@@ -122,10 +126,10 @@ array-of-byte representation saves the cost of serialising and
 deserialising data, which is a common bottleneck of distributed
 applications. If you have heard of [compact normal forms][cnf], it is
 pretty much the same idea. If you want to know more Ryan Newton, one
-of my co-author on the linear type paper, has co-authored an
+of my co-authors on the linear type paper, has also been involved in an
 entire [article on such representations][gibbon].
 
-To program with such a data structure I need a pattern-matching
+To program with such a data structure, I need a pattern-matching
 operation:
 ```haskell
 type Packed (l :: [*])
@@ -133,7 +137,7 @@ type Packed (l :: [*])
 caseTree :: Packed (Tree ': r) -> Either (Packed (Tree ': Tree ': r)) (Int, Packed r)
 ```
 The type is a bit weird, indexed with a list of types: this is because
-in the `Branch` case, we can't return two sub-packed-trees. Indeed, we
+in the `Branch` case, we can't return two packed sub-trees. Indeed, we
 don't know the size of the left sub-tree, so we need to traverse it
 before we can get to the right sub-tree. Instead we just return a
 packed representation of _two trees_.
@@ -146,7 +150,7 @@ pack :: a -> Packed [a]
 ```
 However, relying on them to build new `Packed Tree`-s is extremely
 wasteful: one of the reasons for using such a representation was to avoid
-(de)serialisation. Instead, we want to create new `Packed Tree` by
+(de)serialisation. Instead, we want to create new `Packed Tree`-s by
 explicitly writing into a buffer.
 
 Writing into a buffer calls for the `ST` monad. But there is the
@@ -155,15 +159,15 @@ disastrous effects. So we reach for linear types again. An added bonus
 is that linearly-used write-only buffers are actually pure, so no need
 for a monad at all.
 
-The type of write-buffers is:
+The type of write-buffers is
 ```haskell
 type Need (l :: [*]) (t :: *)
 ```
-Where `Need '[Tree, Tree, Int] Tree` should be understood as "write two
-`Tree`-s and an `Int` and you will get a `Tree`". As illustrated
+where `Need '[Tree, Tree, Int] Tree` should be understood as "write two
+`Tree`-s and an `Int` and you will get a `Tree`", as illustrated
 by the `finish` function:
 ```haskell
-finish :: Need '[] t ⊸ t
+finish :: Need '[] t ⊸ Packed [t]
 ```
 Buffers are filled with "constructors":
 ```haskell
@@ -179,10 +183,10 @@ alloc :: (Need '[Tree] Tree ⊸ Unrestricted r) ⊸ Unrestricted r
 data Unrestricted a where Unrestricted :: a -> Unrestricted a
 ```
 
-What I find amazing about this API is that it changes an mind-bendingly
+What I find amazing about this API is that it changes a mind-bendingly
 hard problem: programming directly with serialised forms of data
 types; into a rather comfortable situation. Thanks to linear types!
-I'll leave the bravest reader with an exercise: implement `pack` and
+I'll leave you with an exercise, if you like a challenge: implement `pack` and
 `unpack` in terms of the other primitives. You may want to use
 a [type checker][prototype].
 
