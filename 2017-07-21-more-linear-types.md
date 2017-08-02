@@ -193,8 +193,3 @@ a [type checker][prototype].
 [typestate-wikipedia]: https://en.wikipedia.org/wiki/Typestate_analysis
 [gibbon]: http://dx.doi.org/10.4230/LIPIcs.ECOOP.2017.26
 [cnf]: https://doi.org/10.1145/2858949.2784735
-
-<!--  LocalWords:  GHC README TCP typestates typestate deserialising
- -->
-<!--  LocalWords:  preorder deserialisation
- -->
