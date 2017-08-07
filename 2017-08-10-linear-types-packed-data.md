@@ -1,10 +1,12 @@
 ---
-title: Safe and efficient binary serialization <br>with linear types
+title: Safe and efficient binary representation <br>with linear types
 author: Arnaud Spiwack
 featured: yes
 ---
 
-TODO intro
+[Last time][blog-post-sockets], we saw that, with linear types, we
+could precisely capture the state of sockets _in their types_. In this
+post, I want to track the 
 
 # Packed representation of data types #
 
@@ -116,6 +118,7 @@ a [type checker][prototype].
 [paper]: https://github.com/tweag/linear-types/releases/download/v2.0/hlt.pdf
 [prototype]: https://github.com/tweag/ghc/tree/linear-types
 [blog-post-one]: http://www.tweag.io/posts/2017-03-13-linear-types.html
+[blog-post-sockets]: http://www.tweag.io/posts/2017-08-03-linear-typestates.html
 [socket-library]: https://www.stackage.org/package/socket
 [typestate-wikipedia]: https://en.wikipedia.org/wiki/Typestate_analysis
 [gibbon]: http://dx.doi.org/10.4230/LIPIcs.ECOOP.2017.26
