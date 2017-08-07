@@ -81,7 +81,7 @@ type Need (l :: [*]) (t :: *)
 ```
 
 where `Need '[Tree, Tree, Int] Tree` should be understood as "write two
-`Tree`-s and an `Int` and you will get a `Tree`", as illustrated
+`Tree`-s and an `Int` and you will get a (packed) `Tree`", as illustrated
 by the `finish` function:
 
 ```haskell
