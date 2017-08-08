@@ -4,11 +4,11 @@ author: Arnaud Spiwack
 featured: yes
 ---
 
-[Last time][blog-post-sockets], we saw that, with linear types, we
-could precisely capture the state of sockets _in their types_. In this
-post, I want to use the same idea of tracking states in types, but
-applied to a more unusual example from our [paper][paper]: optimized
-data type representation.
+We saw [Last time][blog-post-sockets] that with linear types, we could
+precisely capture the state of sockets _in their types_. In this post,
+I want to use the same idea of tracking states in types, but applied
+to a more unusual example from our [paper][paper]: optimized data type
+representation.
 
 Consider a simple tree type:
 
@@ -28,18 +28,19 @@ preorder traversal. That is,
 +--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
 ```
 
-Why would anybody want to do such a thing? One of several reasons
-is that there are no pointers _at all_ in this
-representation. This means that the garbage collector never needs to
-traverse this structure. A second reason is that it is a very cache
-friendly representation. Yet another reason is that you may be sending
-or receiving this tree over the network, and working directly on an
-array-of-byte representation saves the cost of serializing and
-deserializing data, which is a common bottleneck in distributed
-applications. If you have heard of [compact normal forms][cnf], it is
-pretty much the same idea. If you want to know more, Ryan Newton, one
-of the coauthors on the [linear-type paper][paper], has also been involved in an
-entire [article on such representations][gibbon].
+Why would anybody want to do such a thing? Because,
+
+* There are no pointers _at all_ in this representation. This means
+that the garbage collector never needs to traverse this structure.
+* It is a very cache friendly representation.
+* You may be sending or receiving this tree over the network, and
+working directly on an array-of-byte representation saves the cost of
+serializing and deserializing data, which is a common bottleneck in
+distributed applications. If you have heard
+of [compact normal forms][cnf], it is pretty much the same idea. (If
+you want to know more, Ryan Newton, one of the coauthors on
+the [linear-type paper][paper], has also been involved in an
+entire [article on such representations][gibbon].)
 
 To program with such a data structure, I need a pattern-matching
 operation:
@@ -47,12 +48,14 @@ operation:
 ```haskell
 type Packed (l :: [*])
 
-caseTree :: Packed (Tree ': r) -> Either (Packed (Tree ': Tree ': r)) (Int, Packed r)
+caseTree
+  :: Packed (Tree ': r)
+  -> Either (Packed (Tree ': Tree ': r)) (Int, Packed r)
 ```
 
-The type is a bit weird, indexed with a list of types: this is because
+The type is indexed by a list of types. This is because
 in the `Branch` case, we can't return two packed subtrees. Indeed, we
-don't know the size of the left subtree, so we need to traverse it
+don't know the size of the left subtree. So we need to traverse it
 before we can get to the right subtree. Instead we just return a
 packed representation of _two trees_.
 
@@ -64,7 +67,7 @@ unpack :: Packed [a] -> a
 pack :: a -> Packed [a]
 ```
 
-However, relying on them to build new `Packed Tree`-s is extremely
+However, relying on them to build new `Packed Tree`-s is
 wasteful: one of the reasons for using such a representation was to avoid
 (de)serialisation. Instead, we want to create new `Packed Tree`-s by
 explicitly writing into a buffer.
