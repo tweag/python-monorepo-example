@@ -240,7 +240,6 @@ scoped instance of `Ord (ReflectedOrd s a)` (for some dynamically generated
 > unreflectOrd :: ReflectedOrd s a -> a
 > unreflectOrd (ReflectOrd a) = a
 >
->
 > -- | Creates a `ReifiedOrd` with an comparison function. The equality function
 > -- | is deduced from the comparison.
 > fromCompare :: (a -> a -> Ordering) -> ReifiedOrd a
@@ -248,14 +247,26 @@ scoped instance of `Ord (ReflectedOrd s a)` (for some dynamically generated
 >   reifiedEq = \x y -> ord x y == EQ,
 >   reifiedCompare = ord }
 
-Further reading
-===============
+Wrap up & further reading
+=========================
 
-- A [talk by Edward Kmett][reflecion-talk], the author of the reflection
+We've reached the end of our journey. And we've seen along the way that we can
+enjoy the safety of type class, which makes it safe to write function like
+`merge` in Haskell, while still having the flexibility to instantiate the type
+class from a dynamic arguments, such as options from the command line. Since
+type class instances are canonically attached to types, such dynamic instances
+must come with dynamically generated types. This is what type class reflection
+is all about.
+
+If you want to delve deeper into the subject of type-class reflection, let me,
+as I'm wrapping up this tutorial, leave you with a few pointers to further
+material:
+
+- A [talk by Edward Kmett][reflection-talk], the author of the reflection
   package, on the importance of the global coherence of type classes and about
   reflection
 - There is no built-in support for reflection in GHC, this [tutorial by Austin
-  Seipp][reflecion-impl-tutorial] goes over the _very unsafe_, internal compiler
+  Seipp][reflection-impl-tutorial] goes over the _very unsafe_, internal compiler
   representation dependent, implementation of the library
 - John Wiegley [discusses an application of
   reflection][reflection-wiegly-use-case] in relation with QuickCheck.
