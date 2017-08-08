@@ -42,7 +42,6 @@ and start playing, there is a bit of boilerplate to get out of the way first.
 
 > {-# LANGUAGE FlexibleContexts #-}
 > {-# LANGUAGE ScopedTypeVariables #-}
-> {-# LANGUAGE TypeApplications #-}
 > {-# LANGUAGE UndecidableInstances #-}
 >
 > module Reflection where
@@ -209,11 +208,11 @@ is, using `Reifies`.
 
 > instance Reifies s (ReifiedOrd a) => Eq (ReflectedOrd s a) where
 >   (==) (ReflectOrd x) (ReflectOrd y) =
->     reifiedEq (reflect (Proxy @s)) x y
+>     reifiedEq (reflect (Proxy :: Proxy s)) x y
 >
 > instance Reifies s (ReifiedOrd a) => Ord (ReflectedOrd s a) where
 >   compare (ReflectOrd x) (ReflectOrd y) =
->     reifiedCompare (reflect (Proxy @s)) x y
+>     reifiedCompare (reflect (Proxy :: Proxy s)) x y
 
 Notice that because of the `Reifies` on the left of the instances GHC does not
 know that it will for sure terminate during typeclass resolution (hence the use
