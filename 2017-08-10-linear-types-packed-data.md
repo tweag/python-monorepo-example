@@ -37,15 +37,15 @@ Why would anybody want to do such a thing? Because,
 * It is a very cache friendly representation, because data commonly
   accessed together lives contiguously in memory.
 * You may be sending or receiving this tree over the network, and
-working directly on an array-of-byte representation saves the cost of
-serializing and deserializing data, which is a common bottleneck in
-distributed applications. If you have heard
-of [compact normal forms][cnf], it is pretty much the same idea. (If
-you want to know more, Ryan Newton, one of the coauthors on
-the [linear-type paper][paper], has also been involved in an
-entire [article on such representations][gibbon].)
+  working directly on an array-of-byte representation saves the cost
+  of serializing and deserializing data, which is a common bottleneck
+  in distributed applications. If you have heard
+  of [compact normal forms][cnf], it is pretty much the same idea. (If
+  you want to know more, Ryan Newton, one of the coauthors on
+  the [linear-type paper][paper], has also been involved in an
+  entire [article on such representations][gibbon].)
 
-To program with such a data structure, I need a pattern-matching
+To program with such a data structure, I need a pattern matching
 operation:
 
 ```haskell
@@ -84,7 +84,7 @@ reach for linear types again. An added bonus is that linearly-used
 write-only buffers are observationally pure, so no need for a monad at
 all.
 
-The type of write-buffers is
+The type of write buffers is
 
 ```haskell
 type Need (l :: [*]) (t :: *)
