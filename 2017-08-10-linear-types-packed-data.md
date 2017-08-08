@@ -4,7 +4,7 @@ author: Arnaud Spiwack
 featured: yes
 ---
 
-We saw [Last time][blog-post-sockets] that with linear types, we could
+We saw [last time][blog-post-sockets] that with linear types, we could
 precisely capture the state of sockets _in their types_. In this post,
 I want to use the same idea of tracking states in types, but applied
 to a more unusual example from our [paper][paper]: optimized data type
