@@ -85,7 +85,9 @@ where `Need '[Tree, Tree, Int] Tree` should be understood as "write two
 by the `finish` function:
 
 ```haskell
-finish :: Need '[] t ⊸ Packed [t]
+-- `Unrestricted` means that the returned value is not linear: you get
+-- as many uses as you wish
+finish :: Need '[] t ⊸ Unrestricted (Packed [t])
 ```
 
 Buffers are filled with "constructors":
