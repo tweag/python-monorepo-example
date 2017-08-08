@@ -31,8 +31,11 @@ preorder traversal. That is,
 Why would anybody want to do such a thing? Because,
 
 * There are no pointers _at all_ in this representation. This means
-that the garbage collector never needs to traverse this structure.
-* It is a very cache friendly representation.
+  that the garbage collector never needs to traverse this structure.
+  Less work for the garbage collector means more predictable latencies
+  and better throughput.
+* It is a very cache friendly representation, because data commonly
+  accessed together lives contiguously in memory.
 * You may be sending or receiving this tree over the network, and
 working directly on an array-of-byte representation saves the cost of
 serializing and deserializing data, which is a common bottleneck in
