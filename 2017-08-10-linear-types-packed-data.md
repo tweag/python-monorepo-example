@@ -7,7 +7,8 @@ featured: yes
 [Last time][blog-post-sockets], we saw that, with linear types, we
 could precisely capture the state of sockets _in their types_. In this
 post, I want to use the same idea of tracking states in types, but
-applied to something more unusual: optimized data type representation.
+applied to a more unusual example from our [paper][paper]: optimized
+data type representation.
 
 Consider a simple tree type:
 
@@ -37,7 +38,7 @@ array-of-byte representation saves the cost of serializing and
 deserializing data, which is a common bottleneck in distributed
 applications. If you have heard of [compact normal forms][cnf], it is
 pretty much the same idea. If you want to know more, Ryan Newton, one
-of the coauthors on the linear type paper, has also been involved in an
+of the coauthors on the [linear-type paper][paper], has also been involved in an
 entire [article on such representations][gibbon].
 
 To program with such a data structure, I need a pattern-matching
@@ -69,10 +70,13 @@ wasteful: one of the reasons for using such a representation was to avoid
 explicitly writing into a buffer.
 
 Writing into a buffer calls for the `ST` monad. But there is the
-business of the index. Just like with the socket above, we could go back in time to
-disastrous effects. So we reach for linear types again. An added bonus
-is that linearly-used write-only buffers are actually pure, so no need
-for a monad at all.
+business of the index. Just like with the sockets
+of [my previous post][blog-post-sockets], we could go back in time to
+disastrous effects: we could write two trees in two interleaved
+histories and get out an inconsistent mix of these histories. So we
+reach for linear types again. An added bonus is that linearly-used
+write-only buffers are observationally pure, so no need for a monad at
+all.
 
 The type of write-buffers is
 
