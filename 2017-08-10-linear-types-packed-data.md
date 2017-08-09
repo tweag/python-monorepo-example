@@ -48,7 +48,7 @@ To program with such a data structure, I need a pattern matching
 operation:
 
 ```haskell
-type Packed (l :: [*])
+data Packed (l :: [*])
 
 caseTree
   :: Packed (Tree ': r)
@@ -86,7 +86,7 @@ all.
 The type of write buffers is
 
 ```haskell
-type Need (l :: [*]) (t :: *)
+data Need (l :: [*]) (t :: *)
 ```
 
 where `Need '[Tree, Tree, Int] Tree` should be understood as "write two
