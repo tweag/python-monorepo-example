@@ -19,13 +19,12 @@ data Tree = Branch Tree Tree | Leaf Int
 We are used to seeing this represented as a pointer structure in the
 heap. But what if, instead, we actually represent it as an array, in
 preorder traversal. That is,
-`Branch (Branch (Leaf 1) (Leaf 2)) (Branch (Leaf 3) (Branch (Leaf 4)
-(Leaf 5)))` would be represented as:
+`Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be represented as:
 
 ```haskell
-+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| Branch | Branch |  Leaf  |   1    |  Leaf  |   2    | Branch |  Leaf  |   3    | Branch |  Leaf  |   4    |  Leaf  |   5    |
-+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Branch | Branch |  Leaf  |   1    |  Leaf  |   2    |  Leaf  |   3    |
++--------+--------+--------+--------+--------+--------+--------+--------+
 ```
 
 Why would anybody want to do such a thing? Because,
