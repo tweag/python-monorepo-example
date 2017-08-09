@@ -10,11 +10,18 @@ I want to use the same idea of tracking states in types, but applied
 to a more unusual example from our [paper][paper]: optimized data type
 representation.
 
-Consider a simple tree type:
+For the sake of concreteness, let's focus our attention on a simple
+tree type:
 
 ```haskell
 data Tree = Branch Tree Tree | Leaf Int
 ```
+
+# Network communication and serialization
+
+# Compact normal forms
+
+# Programming with serialized representations
 
 We are used to seeing this represented as a pointer structure in the
 heap. But what if, instead, we actually represent it as an array, in
