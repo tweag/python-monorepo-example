@@ -19,6 +19,28 @@ data Tree = Branch Tree Tree | Leaf Int
 
 # Network communication and serialization
 
+Say I have one such `Tree`. And suppose that, I want to use a service,
+on a different machine accross network, that applies adds `1` to all the
+leaves of the tree.
+
+The process would look like this:
+
+1. I serialize my tree into a binary form and send it accross the
+   network
+2. The service deserializes the tree and adds `1` to the leaves
+3. The service serializes the updated tree and sends it accross the
+   network
+4. I deserialize this tree to retrieve the result
+
+These are _four_ copies of the tree data-structure, converting back
+and force between a pointer representation, which Haskell can use, and
+a binary representation, which can be sent over the network. For a
+single remote procedure call.
+
+This illustrates how the overhead of serialization and deserialization
+is far from trivial in distributed application. To the point where it
+can become the main bottleneck of an application.
+
 # Compact normal forms
 
 # Programming with serialized representations
