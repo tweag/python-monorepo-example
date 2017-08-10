@@ -67,7 +67,7 @@ main = withJVM [] $ do
 We are coercing a Haskell value of type `Double` into a Java value of
 the primitive type `double`, which is then used in the quasiquotation
 in the form of an antiquoted variable.
-When `inline-java` gives this quasiquotation to `javac`, it feeds if a
+When `inline-java` gives this quasiquotation to `javac`, it feeds it a
 method of the form
 
 ```Java
@@ -169,7 +169,7 @@ main = withJVM [] $ do
 ```
 
 In this example, `text` has type `J ('Class "java.lang.String")` and
-the antiquotation variable `$text` is expected to have type
+the antiquoted variable `$text` is expected to have type
 `java.lang.String`.
 Conversely, we can use `reify`, to create a Haskell value from the
 reference produced by a quasiquotation.
