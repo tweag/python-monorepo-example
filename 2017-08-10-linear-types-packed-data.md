@@ -20,19 +20,20 @@ data Tree = Branch Tree Tree | Leaf Int
 # Network communication and serialization
 
 Say I have one such `Tree`. And suppose that, I want to use a service,
-on a different machine accross network, that applies adds `1` to all the
+on a different machine across network, that applies adds `1` to all the
 leaves of the tree.
 
 The process would look like this:
 
-1. I serialize my tree into a binary form and send it accross the
+1. I serialize my tree into a binary form and send it across the
    network
-2. The service deserializes the tree and adds `1` to the leaves
-3. The service serializes the updated tree and sends it accross the
+2. The service deserializes the tree
+3. The service adds `1` to the leaves
+4. The service serializes the updated tree and sends it across the
    network
-4. I deserialize this tree to retrieve the result
+5. I deserialize this tree to retrieve the result
 
-These are _four_ copies of the tree data-structure, converting back
+These are _five_ copies of the tree data-structure, converting back
 and force between a pointer representation, which Haskell can use, and
 a binary representation, which can be sent over the network. For a
 single remote procedure call.
@@ -43,12 +44,55 @@ can become the main bottleneck of an application.
 
 # Compact normal forms
 
+To overcome this, [compact normal forms][cnf] were introduced in GHC
+8.2. The idea is dispense with the specialised binary representation
+and to send the pointer representation through the network.
+
+Of course, this only works if the service in implemented in Haskell
+too. Also, you can still only send byte strings across the network.
+
+To bridge the gap, data is copied into a _contiguous_ region of memory,
+and the region itself can be seen as a bytestring. The interface is
+(roughly) as follows:
+
+```haskell
+compact   :: Tree -> Compact Tree
+unCompact :: Compact Tree -> Tree
+```
+
+The difference with serialization and deserialization is that while
+`compact t` copies `t` into a form amenable to network communication,
+`unCompact` is _free_ because, in the compact region, the `Tree` is
+still a bunch of pointers. So our remote call would look like this:
+
+1. I `compact` my tree and send it across the network
+2. The service retrieves the tree and adds `1` to the leaves
+3. The service compacts the updated tree and sends it accross the
+   network.
+
+When I recieve the tree, it is already in a pointer representation, so
+we are down to 3 copies! We also get two additional benefits from
+compact normal forms:
+
+- A `Tree` in compact normal form is close to its subtrees, so tree
+  traversals will be cache friendly: it is likely that following a
+  pointer will land into already prefetched cache
+- Compact regions have no _outgoing_ pointers. It means that the
+  garbage collector never needs to traverse a compact region: a
+  compact region does not keep other heap object alive. Less work for
+  the garbage collector means both more predictable latencies and
+  better throughput.
+
 # Programming with serialized representations
 
-We are used to seeing this represented as a pointer structure in the
-heap. But what if, instead, we actually represent it as an array, in
-preorder traversal. That is,
-`Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be represented as:
+Compact normal forms save a lot of copies. But they still _impose_ one
+copy as `compact` is the only way to introduce a compact value. To
+address that let's make an even more radical departure from the
+traditional model: compact normal form do away with the binary
+representation and send the pointer representation instead; let us do
+the opposite, and compute directly with the binary representation!
+That is, `Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be
+represented as:
 
 ```haskell
 +--------+--------+--------+--------+--------+--------+--------+--------+
@@ -56,25 +100,31 @@ preorder traversal. That is,
 +--------+--------+--------+--------+--------+--------+--------+--------+
 ```
 
-Why would anybody want to do such a thing? Because,
+If you want to know more, Ryan Newton, one of my coauthors on
+the [linear-type paper][paper], and also a co-author on
+the [compact-normal-form paper][cnf] has also been involved in an
+entire [article on such representations][gibbon].
 
-* There are no pointers _at all_ in this representation. This means
-  that the garbage collector never needs to traverse this structure.
-  Less work for the garbage collector means more predictable latencies
-  and better throughput.
-* It is a very cache friendly representation, because data commonly
-  accessed together lives contiguously in memory.
-* You may be sending or receiving this tree over the network, and
-  working directly on an array-of-byte representation saves the cost
-  of serializing and deserializing data, which is a common bottleneck
-  in distributed applications. If you have heard
-  of [compact normal forms][cnf], it is pretty much the same idea. (If
-  you want to know more, Ryan Newton, one of the coauthors on
-  the [linear-type paper][paper], has also been involved in an
-  entire [article on such representations][gibbon].)
+In the meantime, let's return to our example. The remote call now has
+a _single_ copy, which is due to our immutable programming model,
+rather than due to networking:
 
-To program with such a data structure, I need a pattern matching
-operation:
+1. I send my tree, _the service adds `1` to the leaves of the tree_,
+   and sends the result back
+   
+Notice that, when we are looking at the first cell of the
+array-representation of the tree above, we know that we are looking at
+a `Branch` node, but we have no way to know where the right subtree
+start in the array. The only way we will be able to access subtrees is
+by doing left-to-right traversals, the pinacle of cache-friendliness.
+
+If this all starts to sound a little crazy. It's probably because it
+kind of is. It is super tricky to program like such a data
+representation. It is so error prone that, despite the performance
+edge, that even the very dedicated C programmers don't do it.
+
+The issue is not so much in the reading, that is emulating
+pattern-matching, which is readily typed in Haskell:
 
 ```haskell
 data Packed (l :: [*])
@@ -84,33 +134,36 @@ caseTree
   -> Either (Packed (Tree ': Tree ': r)) (Int, Packed r)
 ```
 
-The type is indexed by a list of types. This is because
-in the `Branch` case, we can't return two packed subtrees. Indeed, we
-don't know the size of the left subtree. So we need to traverse it
-before we can get to the right subtree. Instead we just return a
-packed representation of _two trees_.
+There is a twist: `Packed` takes a list of types, rather than a
+type. This is because of the right-subtree issue that I mentionned
+above: once I've read a `Branch` tag, have a pointer to the
+left subtree, but not to the right subtree. So all I can say is that I
+have a pointer which is follows by the representation of two
+consecutive trees (in the example above, this means a pointer to the
+second `Branch` tag).
 
-But how do we create a new `Packed Tree`? In the compact normal form
-paper, we are given two functions:
+The creation of trees is a much tricker business. Operationally we
+want to write into an array, but we can't just use a mutable array for
+this: it is too easy to get wrong. We need, at least
 
-```haskell
-unpack :: Packed [a] -> a
-pack :: a -> Packed [a]
-```
-
-However, relying on them to build new `Packed Tree`-s is
-wasteful: one of the reasons for using such a representation was to avoid
-(de)serialisation. Instead, we want to create new `Packed Tree`-s by
-explicitly writing into a buffer.
-
-Writing into a buffer calls for the `ST` monad. But there is the
-business of the index. Just like with the sockets
-of [my previous post][blog-post-sockets], we could go back in time to
-disastrous effects: we could write two trees in two interleaved
-histories and get out an inconsistent mix of these histories. So we
-reach for linear types again. An added bonus is that linearly-used
-write-only buffers are observationally pure, so no need for a monad at
-all.
+- To write each cell only once, otherwise we can get inconsistent, nonsensical
+  trees such as
+  ```haskell
+  +--------+--------+--------+--------+--------+--------+--------+--------+
+  | Branch | Branch |   0    |   1    |  Leaf  |   2    |  Leaf  |   3    |
+  +--------+--------+--------+--------+--------+--------+--------+--------+
+  ```
+- To write complete trees otherwise we may get things like
+  ```haskell
+  +--------+--------+--------+--------+--------+--------+--------+--------+
+  | Branch | Branch |  Leaf  |   1    |  Leaf  |   2    |        |        |
+  +--------+--------+--------+--------+--------+--------+--------+--------+
+  ```
+  where the blank cells contain garbage
+  
+You will have noticed that these are precisely the invariant that
+linear types afford! An added bonus is that linear types make our
+arrays observationally pure, so no need for, say, the `ST` monad.
 
 The type of write buffers is
 
@@ -128,15 +181,17 @@ by the `finish` function:
 finish :: Need '[] t ⊸ Unrestricted (Packed [t])
 ```
 
-Buffers are filled with "constructors":
+To construct a tree, we use constructor-like functions (though,
+because we are construting the tree top-down, the arrows are in the
+opposite direction of regular constructors):
 
 ```haskell
 leaf :: Int -> Need (Tree':r) t ⊸ Need r t
 branch :: Need (Tree':r) ⊸ Need (Tree':Tree':r)
 ```
 
-Finally (or initially!) we need to allocate a buffer. The following
-pattern expresses that the buffer _must_ be used linearly:
+Finally (or initially!) we need to allocate an array. The following
+idiom expresses that the array _must_ be used linearly:
 
 ```haskell
 alloc :: (Need '[Tree] Tree ⊸ Unrestricted r) ⊸ Unrestricted r
@@ -145,12 +200,23 @@ alloc :: (Need '[Tree] Tree ⊸ Unrestricted r) ⊸ Unrestricted r
 data Unrestricted a where Unrestricted :: a -> Unrestricted a
 ```
 
+Because the `Need` array is used linearly, both `leaf` and `branch`
+make their argument unavailable. This ensures that we can only write, at
+any time, in the left-most empty cell, saving us from inconsistent
+trees. The type of `finish`, makes sure that we never construct a
+partial tree. Mission accomplished!
+
 What I find amazing about this API is that it changes a mind-bendingly
-hard problem: programming directly with serialized forms of data
+hard problem: programming directly with binary representation of data
 types, into a rather comfortable situation. The key ingredient is
-linear types. I'll leave you with an exercise, if you like a challenge: implement `pack` and
-`unpack` in terms of the other primitives. You may want to use
-a [type checker][prototype].
+linear types. I'll leave you with an exercise, if you like a
+challenge: implement `pack` and `unpack` analogs of compact region
+primitves:
+```haskell
+unpack :: Packed [a] -> a
+pack :: a -> Packed [a]
+```
+You may want to use a [type checker][prototype].
 
 [paper]: https://github.com/tweag/linear-types/releases/download/v2.0/hlt.pdf
 [prototype]: https://github.com/tweag/ghc/tree/linear-types
