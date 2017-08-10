@@ -65,7 +65,8 @@ main = withJVM [] $ do
 ```
 
 We are coercing a Haskell value of type `Double` into a Java value of
-the primitive type `double`, which is then used in the quasiquotation.
+the primitive type `double`, which is then used in the quasiquotation
+in the form of an antiquoted variable.
 When `inline-java` gives this quasiquotation to `javac`, it feeds if a
 method of the form
 
@@ -112,8 +113,7 @@ block of statements.
 We are coercing a Java value of type `int` into a Haskell
 value of type `Int32`. The quasiquoter arranges for the coercion to
 happen after the JVM finishes evaluating the Java expression.
-
-As it was the case for using Haskell values in quasiquotations, the
+As it was the case for antiquoted variables, the
 return type of the quasiquotation needs to be an instance of 
 `Language.Java.Coercible a ty`.
 
@@ -140,7 +140,6 @@ corresponds to the Haskell type `a`. A value of type `J (Interp a)`
 is a reference to a Java object of type `Interp a`.
 With `reify` we can convert a java object to a Haskell value.
 With `reflect` we can convert a Haskell value back into a Java object.
-
 As with the type class `Coercible`, the package `jvm` already provides a
 few instances of `Reify` and `Reflect`. For example
 
@@ -172,7 +171,6 @@ main = withJVM [] $ do
 In this example, `text` has type `J ('Class "java.lang.String")` and
 the antiquotation variable `$text` is expected to have type
 `java.lang.String`.
-
 Conversely, we can use `reify`, to create a Haskell value from the
 reference produced by a quasiquotation.
 
