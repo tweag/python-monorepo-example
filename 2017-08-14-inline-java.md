@@ -77,11 +77,12 @@ void fresh_name(double $d) { System.out.println($d); }
 At runtime, `inline-java` passes the result of the coercion as
 the argument `$d`. Any instance of `Language.Java.Coercible a ty` can be
 used in the same way, where `a` stands for the Haskell type and `ty`
-stands for an encoding of the Java type.
+stands for an encoding of the Java type (`JType`).
 The package `jvm` defines a few instances, and the user can
 define its own.
 
 ```Haskell
+class Coercible a (ty :: JType) | a -> ty
 instance Coercible Bool ('Prim "boolean")
 instance Coercible CChar ('Prim "byte")
 instance Coercible Char ('Prim "char")
@@ -126,7 +127,7 @@ For these types, which would deserve a more elaborate representation in
 Java, we use the classes `Reflect` and `Reify` from the package `jvm`.
 
 ```Haskell
-type family Interp a
+type family Interp a :: JType
 
 class Reify a where
   reify :: J (Interp a) -> IO a
@@ -146,12 +147,16 @@ few instances of `Reify` and `Reflect`. For example
 ```Haskell
 type instance Interp ByteString = 'Array ('Prim "byte")
 instance Reify ByteString
+instance Reflect ByteString
 type instance Interp Text = 'Class "java.lang.String"
 instance Reify Text
+instance Reflect Text
 type instance Interp Double = 'Class "java.lang.Double"
 instance Reify Double
+instance Reflect Double
 type instance Interp [a] = 'Array (Interp a)
 instance Reify a => Reify [a]
+instance Reflect a => Reflect [a]
 ```
 
 There is an instance of `Coercible (J ty) ty`. So we can use
