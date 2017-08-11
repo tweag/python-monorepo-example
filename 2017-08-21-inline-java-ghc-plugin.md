@@ -5,12 +5,11 @@ featured: yes
 ---
 
 Language interoperation requires solving how to convert values from one
-language to another, and in addition it requires a mechanism for
-invoking code in one of the languages from the other.
+language to another. In addition, it requires a mechanism for
+invoking code written in one of the languages from the other.
 There are different flavours of the problem according to factors like
-whether the languages are compiled, interpreted, the foreign interfaces
-they offer and whether they use garbage collectors to keep track of
-which values are still in use.
+whether the languages are compiled or interpreted, the foreign interfaces
+they offer and whether they use garbage collectors to manage memory.
 In this post we present a technique to invoke code in a
 statically-typed language from Haskell. To be concrete, we will
 be summarizing our experience when writing
@@ -66,7 +65,7 @@ to have the bytecode executed.
 
 A notable characteristic of this approach, is that we know at compile time
 if types are correct. The Java quasiquotation can't return a Java object
-when the Haskell side expects it to return a primitive double. Even if
+when the Haskell side expects it to return a primitive `double`. Even if
 the Haskell side expected an object, say of type `java.util.List`, the
 Java quasiquotation can't return an object of type `java.lang.String` either.
 And conversely for arguments, Java and Haskell need to agree on what the
@@ -81,15 +80,16 @@ The particular innards of this is not interesting to us now, but what
 matters is that it allows to translates types across languages. For
 instance,
 
-Haskell type | Java type
-------------------------
-Double       | double
-[Double]     | double[]
-ByteString   | byte[]
-Text         | java.lang.String
+| Haskell type | Java type        |
+| -------------|------------------|
+| Double       | double           |
+| [Double]     | double[]         |
+| ByteString   | byte[]           |
+| Text         | java.lang.String |
 
 The `javac` compiler gets the translated type with the quasiquotation.
 In our running example this would be
+
 ```Java
 double fresh_name(double $x) {
     System.out.println($x);
@@ -100,7 +100,7 @@ double fresh_name(double $x) {
 Finally, the `javac` compiler type-checks the quasiquotation. Type
 mismatches would be discovered and reported at this stage.
 
-The first step has been the trickiest to pull off in this process.
+By far, the first step has been the trickiest to pull off in this process.
 Namely, figuring out which types GHC has inferred for the antiquoted
 variables and which type is expected of the quasiquotation.
 
@@ -149,7 +149,7 @@ In essence, a
 is a set of Core-to-Core passes that we can
 ask GHC to add to the compilation pipeline. The passes can be inserted
 anywhere in the Core pipeline, and in particular, they can be inserted
-right at the beginning, just after typechecking and desugaring has
+right at the beginning, just after typechecking and desugaring have
 occurred.
 Terms in the internal Core language carry the types that have been
 inferred at the typechecking stage, making possible to see these types
@@ -176,17 +176,17 @@ qqMarker = error "inline-java: The Plugin is not enabled."
 ```
 
 The GHC Plugin is supposed to replace the call to qqMarker with an
-appropriate call to the generated Java method. But the all-important
-point is that in core, the calls to qqMarker are annotated with the
-types we want to learn.
+appropriate call to the generated Java method. The all-important
+point, however, is that the calls to `qqMarker` are annotated with the
+types we want to learn in Core.
 
 ```Haskell
 main :: IO ()
 main = ...
        qqMarker
-	     @ "{ System.out.println($x); return $x + 1; }"
-		 @ Double
-		 @ Double
+         @ "{ System.out.println($x); return $x + 1; }"
+         @ Double
+         @ Double
 	   ...
 ```
 
@@ -202,7 +202,7 @@ the option `-fplugin=Language.Java.Inline.Plugin`. But this is only until
 Template Haskell earns
 [the ability to tell GHC which plugins to use](https://phabricator.haskell.org/D3821).
 
-#Summary
+# Summary
 
 By using a GHC plugin, we have simplified `inline-java` from a
 complicated spaghetti which sprung from attempting to use 
