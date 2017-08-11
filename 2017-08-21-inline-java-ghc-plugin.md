@@ -79,9 +79,8 @@ living in the package [jvm](https://github.com/tweag/inline-java/jvm).
 The particular innards of this is not interesting to us now, but what
 matters is that it allows to translates types across languages. For
 instance,
-
 | Haskell type | Java type        |
-| -------------|------------------|
+| ------------:|-----------------:|
 | Double       | double           |
 | [Double]     | double[]         |
 | ByteString   | byte[]           |
