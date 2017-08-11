@@ -79,12 +79,12 @@ living in the package [jvm](https://github.com/tweag/inline-java/jvm).
 The particular innards of this is not interesting to us now, but what
 matters is that it allows to translates types across languages. For
 instance,
-| Haskell type | Java type        |
-| ------------:|-----------------:|
-| Double       | double           |
-| [Double]     | double[]         |
-| ByteString   | byte[]           |
-| Text         | java.lang.String |
+| Haskell type | Java type         |
+|:-------------|------------------:|
+| Double       |            double |
+| [Double]     |          double[] |
+| ByteString   |            byte[] |
+| Text         |  java.lang.String |
 
 The `javac` compiler gets the translated type with the quasiquotation.
 In our running example this would be
@@ -117,24 +117,24 @@ data Info =
       ...
 ```
 
-If we have an antiquoted variable `$x` surely we can use `reify 'x` to
-learn the Haskell type? This doesn't quite work, because type checking
-is not finished when `reify` is evaluated. And from then on, we went
+If we have an antiquoted variable `$x`, surely we can use `reify 'x` to
+learn the Haskell type. Well, this doesn't quite work, because type checking
+is not finished when `reify` is evaluated. Thenceforth, we went
 downhill proposing patches to Template Haskell in order to get our hands
 on the inferred types.
-
-If you want to check it, here there is the list of related issues for
+If you want to check it, here there are the related issues for
 your amusement
 ([1](https://ghc.haskell.org/trac/ghc/wiki/TemplateHaskell/Reify),
 [2](https://ghc.haskell.org/trac/ghc/ticket/12777),
 [3](https://ghc.haskell.org/trac/ghc/ticket/12778),
 [4](https://ghc.haskell.org/trac/ghc/ticket/13608)).
-After many discussions with Simon Peyton Jones, and a great deal of
+
+After many discussions with Simon Peyton Jones, and some deal of
 creative hacking, we could kind of get the inferred types for antiquoted
 variables, but only for as long as the java quasiquotation didn't appear
 inside Template Haskell brackets (`[| ... |]`). Moreover, we made no
-progress at all getting the expected type of the quasiquotation.
-Every idea we came up required difficult compromises in the design.
+progress getting the expected type of the quasiquotation.
+Every idea we came up with, required difficult compromises in the design.
 In the meantime, we had to choose between checking at runtime the type
 of the values returned by quasiquotations or using unsafe coercions.
 
