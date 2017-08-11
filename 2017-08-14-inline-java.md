@@ -248,4 +248,4 @@ otherwise occur when relying on the lower-level packages `jni` and
 
 You might have noticed that in our examples we are creating references
 to java objects, yet this references are never explicitly destroyed.
-In a future blogpost we will see how to manage these java references.
+In a future post we will see how to manage them.
