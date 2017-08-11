@@ -10,7 +10,7 @@ invoking code written in one of the languages from the other.
 There are different flavours of the problem according to factors like
 whether the languages are compiled or interpreted, the foreign interfaces
 they offer and whether they use garbage collectors to manage memory.
-In this post we present a technique to invoke code in a
+In this post we present a technique to invoke code written in a
 statically-typed language from Haskell. To be concrete, we will
 be summarizing our experience when writing
 [inline-java](https://github.com/tweag/inline-java).
