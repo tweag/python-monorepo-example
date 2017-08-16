@@ -111,7 +111,7 @@ rather than due to networking:
 
 1. I send my tree, _the service adds `1` to the leaves of the tree_,
    and sends the result back
-   
+
 Notice that, when we are looking at the first cell of the
 array-representation of the tree above, we know that we are looking at
 a `Branch` node, but we have no way to know where the right subtree
@@ -160,7 +160,7 @@ this: it is too easy to get wrong. We need, at least
   +--------+--------+--------+--------+--------+--------+--------+--------+
   ```
   where the blank cells contain garbage
-  
+
 You will have noticed that these are precisely the invariants that
 linear types afford! An added bonus is that linear types make our
 arrays observationally pure, so no need for, say, the `ST` monad.
@@ -206,6 +206,34 @@ any time, in the left-most empty cell, saving us from inconsistent
 trees. The type of `finish`, makes sure that we never construct a
 partial tree. Mission accomplished!
 
+The main routine of our service can now be implemented as follows:
+```haskell
+add1 :: Packed '[Tree] -> Packed '[Tree]
+add1 tree = getUnrestricted finished
+  where
+    -- Allocates the destination array and run the main loop
+    finished :: Unrestricted (Packed '[Tree])
+    finished = alloc (\need -> finishNeed (mapNeed tree need))
+
+    -- Main loop: given an packed array and a need array with
+    -- corresponding types (starting with a tree), adds 1 to the
+    -- leaves of the first tree and returns the rest of the
+    -- arrays. Notice how `mapNeed` is chained twice in the `Branch`
+    -- case.
+    mapNeed :: Packed (Tree ': r) -> Need (Tree ': r) Tree ⊸ (Unrestricted (Packed r), Need r Tree)
+    mapNeed trees need = case (caseTree trees) of
+      Left subtrees -> mapNeed' (mapNeed subtrees (branch need))
+      Right (n, otherTrees) -> (Unrestricted otherTrees, leaf (n+1) need)
+
+    -- Curried variant of the main loop
+    mapNeed' :: (Unrestricted (Packed (Tree ': r)), Need (Tree ': r) Tree) ⊸ (Unrestricted (Packed r), Need r Tree)
+    mapNeed' (Unrestricted trees, need) = mapNeed h n
+
+    -- The `finish` primitive with an extra unrestricted argument
+    finishNeed :: (Unrestricted (Packed '[]), Need '[] Tree) ⊸ Unrestricted (Has '[Tree])
+    finishNeed (Unrestricted _, need) = finish need
+```
+
 What I find amazing about this API is that it changes a mind-bendingly
 hard problem: programming directly with binary representation of data
 types, into a rather comfortable situation. The key ingredient is
@@ -217,6 +245,8 @@ unpack :: Packed [a] -> a
 pack :: a -> Packed [a]
 ```
 You may want to use a [type checker][prototype].
+
+
 
 [paper]: https://github.com/tweag/linear-types/releases/download/v2.0/hlt.pdf
 [prototype]: https://github.com/tweag/ghc/tree/linear-types
