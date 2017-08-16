@@ -8,15 +8,15 @@ In our
 [introductory post](http://www.tweag.io/posts/2016-10-17-inline-java.html)
 for
 [inline-java](https://github.com/tweag/inline-java)
-we showed how calling methods written in Java from Haskell was possible.
-In addition, it was shown how Haskell's type system was leveraged to
-polish rough edges of using low level interfaces like the
+we showed how we could call methods written in Java from Haskell.
+We also showed how we leveraged Haskell's type system to polish
+the rough edges of using low level interfaces like the
 [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html).
 
-In this post we bring a tutorial with practical aspects of using
-`inline-java`, from marshalling values between Haskell and Java to
-type checking that both sides exchange values of the types they
-are expected to.
+In this post, we present a tutorial with practical aspects of using
+`inline-java`, we cover the marshalling of values between Haskell and
+Java and how we leverage the type checker to ensure that both sides
+exchange values of appropriate types.
 
 # Invoking java methods
 
@@ -33,7 +33,7 @@ main = withJVM [] [java| { System.out.println("Hello Java!"); } |]
 ```
 
 The function `withJVM` starts an instance of the Java Virtual Machine (JVM),
-and the `java` quasiquotation executes the java code given to it as a block
+and the `java` quasiquotation executes the java code passed to it as a block
 of statements. The program can be built and executed with
 
 ```
@@ -46,7 +46,7 @@ GHC doesn't parse or generate any Java. Neither does `inline-java`.
 So how can this program possibly work? The answer is that `inline-java`
 feeds the quasiquotation to the `javac` compiler, which generates some
 bytecode that is stored in the object file of the module. At runtime,
-`inline-java` arranges the bytecode to be given to the JVM using the
+`inline-java` arranges the bytecode to be handed to the JVM using the
 package [jni](https://github.com/tweag/jni).
 Finally, inline-java makes use of the package
 [jvm](https://github.com/tweag/jvm)
@@ -55,7 +55,7 @@ to have the bytecode executed.
 # Marshalling values
 
 Now, suppose we have some value in Haskell that we want to provide as
-argument to a java method. 
+an argument to a Java method.
 
 ```Haskell
 main :: IO ()
@@ -67,7 +67,7 @@ main = withJVM [] $ do
 We are coercing a Haskell value of type `Double` into a Java value of
 the primitive type `double`, which is then used in the quasiquotation
 in the form of an antiquoted variable.
-When `inline-java` gives this quasiquotation to `javac`, it feeds it a
+When `inline-java` passes this quasiquotation to `javac`, it feeds it a
 method of the form
 
 ```Java
@@ -123,7 +123,7 @@ return type of the quasiquotation needs to be an instance of
 Coercing values is useful enough until we consider how to marshal values
 which do not have an obvious counterpart in Java. For instance, what do
 we coerce a Haskell list or a vector to?
-For these types, which would deserve a more elaborate representation in
+As these types require a more elaborate representation in
 Java, we use the classes `Reflect` and `Reify` from the package `jvm`.
 
 ```Haskell
@@ -139,10 +139,10 @@ class Reflect a where
 The type family `Interp a` stands for the Java type that
 corresponds to the Haskell type `a`. A value of type `J (Interp a)`
 is a reference to a Java object of type `Interp a`.
-With `reify` we can convert a java object to a Haskell value.
+With `reify` we can convert a Java object to a Haskell value.
 With `reflect` we can convert a Haskell value back into a Java object.
 As with the type class `Coercible`, the package `jvm` already provides a
-few instances of `Reify` and `Reflect`. For example
+few instances of `Reify` and `Reflect`. For example,
 
 ```Haskell
 type instance Interp ByteString = 'Array ('Prim "byte")
@@ -191,12 +191,12 @@ main = withJVM [] $ do
 
 One of the strengths of `inline-java` is that it makes it difficult to
 get an ill-typed interaction between Haskell and Java. What if a
-quasiquotation returned a value of a type unexpected to the Haskell
-side? What if any of the methods used in the quasiquotation are used
+quasiquotation returned a value of a type that the Haskell side does not
+expect? What if any of the methods used in the quasiquotation are used
 with arguments of the wrong type?
 
-The short answer to both questions is that most of the time, GHC and
-`javac` will catch the type mistakes.
+The short answer to both questions is that, most of the time, GHC and
+`javac` will catch the type mismatches.
 
 ```Haskell
 main :: IO ()
@@ -207,7 +207,7 @@ main = withJVM [] $ do
 ```
 
 Based on the instances of `Reify` and `Coercible` that are in scope,
-Haskell is able to pin with precision what Java type the quasiquotation
+Haskell is able to determine with precision what Java type the quasiquotation
 should return. In this program, the Haskell side expects Java to return
 an array of doubles (`java.lang.Double[]` when the Java side is
 returning an array of strings (`java.lang.String[]`). The `javac`
@@ -222,14 +222,14 @@ $ ghc hello.hs
 ```
 
 When making calls with wrong argument or return types to Java methods,
-the functions in the package `jvm` would produce a runtime error.
+the functions in the package `jvm` produce a runtime error.
 Usually the programmer would get an exception called `NoSuchMethodError`
 and the name of the offending method. The error produced by
 `inline-java` improves this in two aspects. Firstly, we get the error at
 build time. Secondly, the error message points precisely at either the
 return type or the argument with the mismatched type. 
 
-Is there any type error that cannot be caught at build time? There is,
+Are there any type errors that cannot be caught at build time? There is,
 indeed. For instance, a quasiquotation can yield or use objects of type
 `java.lang.Object`. The Haskell or the Java side may need then to
 downcast these objects, which can fail if the objects are downcasted to
@@ -239,7 +239,7 @@ alone.
 # Summary
 
 In this blogpost we have covered the basics of marshalling values
-between Haskell and Java, and using `inline-java` for invoking Java
+between Haskell and Java and using `inline-java` for invoking Java
 methods.
 The package `inline-java` not only makes Java code convenient to embed
 in Haskell programs, it also prevents coding mistakes which could
@@ -247,5 +247,5 @@ otherwise occur when relying on the lower-level packages `jni` and
 `jvm`.
 
 You might have noticed that in our examples we are creating references
-to java objects, yet this references are never explicitly destroyed.
+to Java objects, yet this references are never explicitly destroyed.
 In a future post we will see how to manage them.
