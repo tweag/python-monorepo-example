@@ -18,16 +18,7 @@ Over time, we realised that this is not sufficient either. Tools like `hsc2hs` a
 
 Inline foreign code in Haskell sidesteps these issues. The effort to implement an inline library for a foreign language is fixed and supports an arbitrary number of foreign language libraries of arbitrary size without any further overhead. Documentation is naturally just the original and marshalling overhead is in proportion to its use in any single application. Admittedly, a user now needs to know both Haskell and the foreign language, but, given the documentation issue, that was always the case for large APIs.
 
-I have illustrated this in a talk at the 2014 Haskell Symposium, where I introduced [language-c-inline](https://hackage.haskell.org/package/language-c-inline) to use Objective-C code inline in Haskell to code against macOS APIs. You can watch the talk on YouTube.
-
-<iframe width=”560” height="315" src="https://www.youtube.com/embed/pm_WFnWqn20" frameborder="0" allowfullscreen></iframe>
-
-OR
-
-<video width="100%" controls>
-  <source src="http://www.youtube.com/watch?v=pm_WFnWqn20" type="video/mp4">
-  Your browser does not support the video tag: go to http://www.youtube.com/watch?v=pm_WFnWqn20
-</video>
+I have illustrated this in a talk at the 2014 Haskell Symposium, where I introduced [language-c-inline](https://hackage.haskell.org/package/language-c-inline) to use Objective-C code inline in Haskell to code against macOS APIs. You can watch [the talk on YouTube](https://www.youtube.com/embed/pm_WFnWqn20).
 
 ## I was not alone
 What I didn’t know at the time is that Mathieu Boespflug, Alexander Vershilov, and Facundo Domínguez drew the same inspiration as I did from Geoff Mainland’s work on [Quasiquoting Support for GHC](https://www.cs.drexel.edu/~mainland/projects/quasiquoting/) and independently developed [`inline-r`](https://tweag.github.io/HaskellR/), a Haskell library for inline [R code](https://www.r-project.org/). Subsequently, Mathieu worked with Francesco Mazzoli on [`inline-c`](https://github.com/fpco/inline-c/tree/master/inline-c) and developed [`inline-java`](https://github.com/tweag/inline-java#readme) with Facundo Domínguez.
