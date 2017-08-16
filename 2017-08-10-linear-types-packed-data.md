@@ -19,19 +19,19 @@ data Tree = Branch Tree Tree | Leaf Int
 
 # Network communication and serialization
 
-Say I have one such `Tree`. And suppose that, I want to use a service,
+Say, I have one such `Tree`. And suppose that I want to use a service,
 on a different machine across network, that applies adds `1` to all the
 leaves of the tree.
 
 The process would look like this:
 
 1. I serialize my tree into a binary form and send it across the
-   network
-2. The service deserializes the tree
-3. The service adds `1` to the leaves
+   network.
+2. The service deserializes the tree.
+3. The service adds `1` to the leaves.
 4. The service serializes the updated tree and sends it across the
-   network
-5. I deserialize this tree to retrieve the result
+   network.
+5. I deserialize this tree to retrieve the result.
 
 These are _five_ copies of the tree data-structure, converting back
 and force between a pointer representation, which Haskell can use, and
@@ -45,7 +45,7 @@ can become the main bottleneck of an application.
 # Compact normal forms
 
 To overcome this, [compact normal forms][cnf] were introduced in GHC
-8.2. The idea is dispense with the specialised binary representation
+8.2. The idea is to dispense with the specialised binary representation
 and to send the pointer representation through the network.
 
 Of course, this only works if the service in implemented in Haskell
@@ -65,8 +65,8 @@ The difference with serialization and deserialization is that while
 `unCompact` is _free_ because, in the compact region, the `Tree` is
 still a bunch of pointers. So our remote call would look like this:
 
-1. I `compact` my tree and send it across the network
-2. The service retrieves the tree and adds `1` to the leaves
+1. I `compact` my tree and send it across the network.
+2. The service retrieves the tree and adds `1` to the leaves.
 3. The service compacts the updated tree and sends it accross the
    network.
 
@@ -88,7 +88,7 @@ compact normal forms:
 Compact normal forms save a lot of copies. But they still _impose_ one
 copy as `compact` is the only way to introduce a compact value. To
 address that let's make an even more radical departure from the
-traditional model: compact normal form do away with the binary
+traditional model: compact normal forms do away with the binary
 representation and send the pointer representation instead; let us do
 the opposite, and compute directly with the binary representation!
 That is, `Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be
@@ -115,13 +115,13 @@ rather than due to networking:
 Notice that, when we are looking at the first cell of the
 array-representation of the tree above, we know that we are looking at
 a `Branch` node, but we have no way to know where the right subtree
-start in the array. The only way we will be able to access subtrees is
+starts in the array. The only way we will be able to access subtrees is
 by doing left-to-right traversals, the pinacle of cache-friendliness.
 
 If this all starts to sound a little crazy. It's probably because it
-kind of is. It is super tricky to program like such a data
+kind of is. It is super tricky to program with such a data
 representation. It is so error prone that, despite the performance
-edge, that even the very dedicated C programmers don't do it.
+edge, even the very dedicated C programmers don't do it.
 
 The issue is not so much in the reading, that is emulating
 pattern-matching, which is readily typed in Haskell:
@@ -136,9 +136,9 @@ caseTree
 
 There is a twist: `Packed` takes a list of types, rather than a
 type. This is because of the right-subtree issue that I mentionned
-above: once I've read a `Branch` tag, have a pointer to the
+above: once I've read a `Branch` tag, I have a pointer to the
 left subtree, but not to the right subtree. So all I can say is that I
-have a pointer which is follows by the representation of two
+have a pointer which is followed by the representation of two
 consecutive trees (in the example above, this means a pointer to the
 second `Branch` tag).
 
@@ -161,7 +161,7 @@ this: it is too easy to get wrong. We need, at least
   ```
   where the blank cells contain garbage
   
-You will have noticed that these are precisely the invariant that
+You will have noticed that these are precisely the invariants that
 linear types afford! An added bonus is that linear types make our
 arrays observationally pure, so no need for, say, the `ST` monad.
 
@@ -182,7 +182,7 @@ finish :: Need '[] t ⊸ Unrestricted (Packed [t])
 ```
 
 To construct a tree, we use constructor-like functions (though,
-because we are construting the tree top-down, the arrows are in the
+because we are constructing the tree top-down, the arrows are in the
 opposite direction of regular constructors):
 
 ```haskell
