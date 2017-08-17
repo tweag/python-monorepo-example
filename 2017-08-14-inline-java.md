@@ -1,5 +1,5 @@
 ---
-title: Painless Java for the Functional Programmer
+title: Using the JVM from Haskell made easy
 author: Facundo Domínguez
 featured: yes
 ---
