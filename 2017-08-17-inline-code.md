@@ -29,7 +29,7 @@ The latter is where foreign inline code, once again, provides an unorthodox solu
 
 ## Come as you are
 
-The fundamental design philosophy behind inline code is to **accept that there are multiple language environments and work with that**. We don't try to shoehorn the semantics of one language into the other. We don't even force a particular style for calling such functions. Indeed you can call Haskell, R, C, Objective-C or Java functions with each of their respective syntaxes. In some cases, this has crucial consequences. For instance, R has special syntax for variadic functions with labeled arguments and default values, none of which Haskell has. `inline-r` lets you e.g. call R's `plot()` function the way it was meant to be called:
+The fundamental design philosophy behind inline code is to **accept that there are multiple language environments and work with that**. We don't try to shoehorn the semantics of one language into the other. We don't even force a particular style for calling such functions. Indeed you can call Haskell, R, C, Objective-C or Java functions with each of their respective syntaxes. In some cases, this has crucial consequences. For instance, R has special syntax for variadic functions with labeled arguments and default values, none of which Haskell has. [`inline-r` lets you](https://tweag.github.io/HaskellR/docs/using-h.html) e.g. call R's `plot()` function the way it was meant to be called:
 
 ```
 H> let xs = [x :: Double | x <- [1..10]]
