@@ -1,5 +1,5 @@
 ---
-title: Diversity: the key to success
+title: "Diversity: the key to success"
 author: Manuel M T Chakravarty
 featured: yes
 ---
