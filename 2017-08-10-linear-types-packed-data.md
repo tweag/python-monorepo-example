@@ -25,13 +25,13 @@ leaves of the tree.
 
 The process would look like this:
 
-1. I serialize my tree into a binary form and send it across the
-   network.
-2. The service deserializes the tree.
-3. The service adds `1` to the leaves.
-4. The service serializes the updated tree and sends it across the
-   network.
-5. I deserialize this tree to retrieve the result.
+- I serialize my tree into a binary form and send it across the
+  network.
+- The service deserializes the tree.
+- The service adds `1` to the leaves.
+- The service serializes the updated tree and sends it across the
+  network.
+- I deserialize this tree to retrieve the result.
 
 These are _five_ copies of the tree data-structure, converting back
 and force between a pointer representation, which Haskell can use, and
@@ -65,10 +65,10 @@ The difference with serialization and deserialization is that while
 `unCompact` is _free_ because, in the compact region, the `Tree` is
 still a bunch of pointers. So our remote call would look like this:
 
-1. I `compact` my tree and send it across the network.
-2. The service retrieves the tree and adds `1` to the leaves.
-3. The service compacts the updated tree and sends it accross the
-   network.
+- I `compact` my tree and send it across the network.
+- The service retrieves the tree and adds `1` to the leaves.
+- The service compacts the updated tree and sends it accross the
+  network.
 
 When I recieve the tree, it is already in a pointer representation, so
 we are down to 3 copies! We also get two additional benefits from
@@ -109,8 +109,8 @@ In the meantime, let's return to our example. The remote call now has
 a _single_ copy, which is due to our immutable programming model,
 rather than due to networking:
 
-1. I send my tree, _the service adds `1` to the leaves of the tree_,
-   and sends the result back
+- I send my tree, _the service adds `1` to the leaves of the tree_,
+  and sends the result back
 
 Notice that, when we are looking at the first cell of the
 array-representation of the tree above, we know that we are looking at
