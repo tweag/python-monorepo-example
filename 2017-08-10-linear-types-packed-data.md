@@ -220,17 +220,22 @@ add1 tree = getUnrestricted finished
     -- leaves of the first tree and returns the rest of the
     -- arrays. Notice how `mapNeed` is chained twice in the `Branch`
     -- case.
-    mapNeed :: Packed (Tree ': r) -> Need (Tree ': r) Tree ⊸ (Unrestricted (Packed r), Need r Tree)
+    mapNeed
+      :: Packed (Tree ': r) -> Need (Tree ': r) Tree
+      ⊸ (Unrestricted (Packed r), Need r Tree)
     mapNeed trees need = case (caseTree trees) of
       Left subtrees -> mapNeed' (mapNeed subtrees (branch need))
       Right (n, otherTrees) -> (Unrestricted otherTrees, leaf (n+1) need)
 
     -- Curried variant of the main loop
-    mapNeed' :: (Unrestricted (Packed (Tree ': r)), Need (Tree ': r) Tree) ⊸ (Unrestricted (Packed r), Need r Tree)
+    mapNeed'
+      :: (Unrestricted (Packed (Tree ': r)), Need (Tree ': r) Tree)
+      ⊸  (Unrestricted (Packed r), Need r Tree)
     mapNeed' (Unrestricted trees, need) = mapNeed h n
 
     -- The `finish` primitive with an extra unrestricted argument
-    finishNeed :: (Unrestricted (Packed '[]), Need '[] Tree) ⊸ Unrestricted (Has '[Tree])
+    finishNeed
+      :: (Unrestricted (Packed '[]), Need '[] Tree) ⊸ Unrestricted (Has '[Tree])
     finishNeed (Unrestricted _, need) = finish need
 ```
 
