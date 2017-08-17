@@ -27,13 +27,34 @@ What I didn’t know at the time is that Mathieu Boespflug, Alexander Vershilov,
 
 The latter is where foreign inline code, once again, provides an unorthodox solution to an old problem. In an attempt to fit into the ubiquitous Java ecosystem, there has been a string of failed attempts to compile Haskell to JVM code — although, maybe, [one](http://eta-lang.org) will eventually be successful, even if at a [steep price](http://eta-lang.org/docs/html/faq.html#how-different-is-eta-from-ghc). Integration with Java is highly attractive as it opens the door to many applications and commercial opportunities. In addition, successful entrants into the JVM ecosystem, such as Scala and Clojure, suggest that generating JVM bytecode is the opportune approach.
 
-Nevertheless, inline Java in Haskell provides a simpler alternative with many benefits: 
+## Come as you are
 
-* The implementation of a new code generator for the JVM is a large and complicated endeavour; hence, the many failed attempts. Even if completed, it creates a high maintenance load. In contrast, `inline-java` is a very manageable project.
+The fundamental design philosophy behind inline code is to **accept that there are multiple language environments and work with that**. We don't try to shoehorn the semantics of one language into the other. We don't even force a particular style for calling such functions. Indeed you can call Haskell, R, C, Objective-C or Java functions with each of their respective syntaxes. In some cases, this has crucial consequences. For instance, R has special syntax for variadic functions with labeled arguments and default values, none of which Haskell has. `inline-r` lets you e.g. call R's `plot()` function the way it was meant to be called:
+
+```
+H> let xs = [1..10]
+H> let ys = [x^2 | x <- xs]
+H> [r| plot(xs_hs, ys_hs, col = "red", main = "A quadratic function") |]
+```
+
+Objective-C has special syntax for sending messages to objects. It's
+convenient to be able to reuse documentation snippets that use this
+pervasive idiom.
+
+But this design philosophy has further consequences still. All of the projects you saw mentioned above let each language not just keep their syntax, but also their runtimes. GCC or LLVM compiles C and Objective-C to native code. The reference R interpreter parses and executes R code on-the-fly. Java code gets compiled to JVM bytecode, using configuration extracted from Java build tools (Gradle, Maven, ...). And yes, it is GHC that compiles Haskell to native code, like it always did. To run Haskell on JVM based enterprise middlewares, we package it up as a JAR and load the native code into the JVM dynamically.
+
+You could take the motto to be "each language, come as you are". There are tradeoffs to this approach. The bad news is that,
+
+* when multiple compilers are involved, we have to mesh multiple build toolchains together;
+* when multiple garbage collectors are involved, we need to make sure live data in one language is not considered garbage in the other. This is a tricky problem in general.
+
+But on the flip side:
+
+* We spare ourselves implementing new code generators, e.g. for the JVM. The many failed attempts attest to the difficulty of this endeauvour.
 * By generating JVM bytecode, you lose access to all existing packages that depend on foreign code, such as C libraries. In contrast, `inline-java` happily enables projects involving Haskell, Java, and C without any need to change existing packages.
-* The runtime characteristics of Haskell code are not particularly well matched with those that the JVM is optimised for. Haskell has a much higher allocation rate than Java, it has entirely different update patterns due to purity and laziness, and it relies on different control flow, including heavily reliance on tail calls and their optimised implementation. In contrast, `inline-java` just uses the tried and tested GHC native code as is.
+* Each language is an equal citizen and the semantics and runtime behaviour of each is preserved. Note in particular that the runtime characteristics of Haskell code are not all that well matched with those that the JVM is optimised for. Haskell has a much higher allocation rate than Java, it has entirely different update patterns due to purity and laziness, and it relies on different control flow, including heavily reliance on tail calls and their optimised implementation. In this case, `inline-java` just uses the tried and tested GHC native code as is.
 
-Moreover, we can still maintain the convenience of bundled distribution, as the Java archive (JAR) format is sufficiently flexible to allow arbitrary native code alongside JVM bytecode in a single self-contained bundle — we detailed this in a previous post on the [Haskell compute PaaS with Sparkle](http://www.tweag.io/posts/2016-06-20-haskell-compute-paas-with-sparkle.html).
+Each language is its own first-class citizen, but that's not to say each language forces a particular way to package things. We can still maintain the convenience of bundled distribution, as the Java archive (JAR) format is sufficiently flexible to allow arbitrary native code alongside JVM bytecode in a single self-contained bundle — we detailed this in a previous post on the [Haskell compute PaaS with Sparkle](http://www.tweag.io/posts/2016-06-20-haskell-compute-paas-with-sparkle.html). Conversely, we also routinely [embed Java bytecode](http://blog.tweag.io/posts/2016-10-17-inline-java.html) in Haskell binaries packaged as RPM's.
 
 ## Happy coexistence
 
