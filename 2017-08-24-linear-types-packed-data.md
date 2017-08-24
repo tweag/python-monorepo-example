@@ -248,9 +248,9 @@ add1 tree = getUnrestricted finished
     finishNeed (Unrestricted _, need) = finish need
 ```
 
-In the end, what we have is a method to communicate and compute over
+In the end, what we have is **a method to communicate and compute over
 trees without having to perform any extra copies in Haskell because of
-network communication.
+network communication**.
 
 What I like about this API is that it turns a highly error-prone
 endeavour, programming directly with serialized representation of data
