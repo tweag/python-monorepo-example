@@ -1,5 +1,5 @@
 ---
-title: Safe and efficient binary representation <br>with linear types
+title: Compact normal forms + linear types <br>= efficient network communication
 author: Arnaud Spiwack
 featured: yes
 ---
@@ -7,11 +7,13 @@ featured: yes
 We saw [last time][blog-post-sockets] that with linear types, we could
 precisely capture the state of sockets _in their types_. In this post,
 I want to use the same idea of tracking states in types, but applied
-to a more unusual example from our [paper][paper]: optimized data type
-representation.
+to a more unusual example from our [paper][paper]: sending rich
+structured data types across the network and back with as little
+copying as possible.
 
-For the sake of concreteness, let's focus our attention on a simple
-tree type:
+Our approach to this problem works for values of any datatype, but for
+the sake of simplicity, we'll consider here simple tree values of the
+following datatype:
 
 ```haskell
 data Tree = Branch Tree Tree | Leaf Int
@@ -19,13 +21,13 @@ data Tree = Branch Tree Tree | Leaf Int
 
 # Network communication and serialization
 
-Say, I have one such `Tree`. And suppose that I want to use a service,
-on a different machine across network, that applies adds `1` to all the
+Say I have one such `Tree`. And suppose that I want to use a service,
+on a different machine across the network, that adds `1` to all the
 leaves of the tree.
 
 The process would look like this:
 
-- I serialize my tree into a binary form and send it across the
+- I serialize my tree into a serialized form and send it across the
   network.
 - The service deserializes the tree.
 - The service adds `1` to the leaves.
@@ -33,23 +35,23 @@ The process would look like this:
   network.
 - I deserialize this tree to retrieve the result.
 
-These are _five_ copies of the tree data-structure, converting back
-and force between a pointer representation, which Haskell can use, and
-a binary representation, which can be sent over the network. For a
-single remote procedure call.
+This process involves copying the tree structure *5 times*, converting
+back and force between a pointer representation, which Haskell can
+use, and a serialized representation, which can be sent over the
+network. For a single remote procedure call.
 
-This illustrates how the overhead of serialization and deserialization
-is far from trivial in distributed application. To the point where it
-can become the main bottleneck of an application.
+This goes to show that it should be no surprise when overhead of
+serialization and deserialization in a distributed application is
+significant. It can even become the main bottleneck.
 
 # Compact normal forms
 
 To overcome this, [compact normal forms][cnf] were introduced in GHC
-8.2. The idea is to dispense with the specialised binary representation
+8.2. The idea is to dispense with the specialised serialized representation
 and to send the pointer representation through the network.
 
-Of course, this only works if the service in implemented in Haskell
-too. Also, you can still only send byte strings across the network.
+Of course, this only works if the service is implemented in Haskell
+too. Also, you can still only send bytestrings across the network.
 
 To bridge the gap, data is copied into a _contiguous_ region of memory,
 and the region itself can be seen as a bytestring. The interface is
@@ -70,13 +72,13 @@ still a bunch of pointers. So our remote call would look like this:
 - The service compacts the updated tree and sends it accross the
   network.
 
-When I recieve the tree, it is already in a pointer representation, so
-we are down to 3 copies! We also get two additional benefits from
-compact normal forms:
+When I recieve the tree, it is already in a pointer representation
+(remember, `unCompact` is free), so we are down to 3 copies! We also
+get two additional benefits from compact normal forms:
 
 - A `Tree` in compact normal form is close to its subtrees, so tree
   traversals will be cache friendly: it is likely that following a
-  pointer will land into already prefetched cache
+  pointer will land into already prefetched cache.
 - Compact regions have no _outgoing_ pointers. It means that the
   garbage collector never needs to traverse a compact region: a
   compact region does not keep other heap object alive. Less work for
@@ -87,12 +89,12 @@ compact normal forms:
 
 Compact normal forms save a lot of copies. But they still _impose_ one
 copy as `compact` is the only way to introduce a compact value. To
-address that let's make an even more radical departure from the
-traditional model: compact normal forms do away with the binary
-representation and send the pointer representation instead; let us do
-the opposite, and compute directly with the binary representation!
-That is, `Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be
-represented as:
+address that we could make an even more radical departure from the
+traditional model. While compact normal forms do away with the
+serialized representation and send the pointer representation instead,
+let's go in the opposite direction, and compute directly with the
+serialized representation! That is, `Branch (Branch (Leaf 1) (Leaf 2))
+(Leaf 3))` would be represented as a single contiguous buffer in memory:
 
 ```haskell
 +--------+--------+--------+--------+--------+--------+--------+--------+
@@ -110,21 +112,26 @@ a _single_ copy, which is due to our immutable programming model,
 rather than due to networking:
 
 - I send my tree, _the service adds `1` to the leaves of the tree_,
-  and sends the result back
+  and sends the result back.
 
-Notice that, when we are looking at the first cell of the
+Notice that when we are looking at the first cell of the
 array-representation of the tree above, we know that we are looking at
-a `Branch` node, but we have no way to know where the right subtree
-starts in the array. The only way we will be able to access subtrees is
-by doing left-to-right traversals, the pinacle of cache-friendliness.
+a `Branch` node. The left subtree comes immediately after, so that one
+is readily available. But there is a problem: we have no way to know
+where the right subtree starts in the array, so we can't just jump to
+it. The only way we will be able to access subtrees is by doing
+left-to-right traversals, the pinacle of cache-friendliness.
 
 If this all starts to sound a little crazy. It's probably because it
-kind of is. It is super tricky to program with such a data
-representation. It is so error prone that, despite the performance
-edge, even the very dedicated C programmers don't do it.
+kind of is. **It is very tricky to program with such a data
+representation**. It is so error prone that, despite the performance
+edge, our empirical observation is that even very dedicated
+C programmers don't do it.
 
-The issue is not so much in the reading, that is emulating
-pattern-matching, which is readily typed in Haskell:
+The hard part isn't so much directly consuming a representation of the
+above form. It's constructing them in the first place. We'll get to
+that in a minute, but first let's look at what consuming trees looks
+like:
 
 ```haskell
 data Packed (l :: [*])
@@ -134,17 +141,19 @@ caseTree
   -> Either (Packed (Tree ': Tree ': r)) (Int, Packed r)
 ```
 
-There is a twist: `Packed` takes a list of types, rather than a
-type. This is because of the right-subtree issue that I mentionned
-above: once I've read a `Branch` tag, I have a pointer to the
-left subtree, but not to the right subtree. So all I can say is that I
-have a pointer which is followed by the representation of two
-consecutive trees (in the example above, this means a pointer to the
-second `Branch` tag).
+We have a datatype `Packed` of trees represented as above. We define
+a one-step unfolding function, `caseTree`, which you can as well think
+of as an elaborate `case-of` (pattern matching) construct. There is
+a twist: `Packed` is indexed by a list of types. This is because of
+the right-subtree issue that I mentionned above: once I've read
+a `Branch` tag, I have a pointer to the left subtree, but not to the
+right subtree. So all I can say is that I have a pointer which is
+followed by the representation of two consecutive trees (in the
+example above, this means a pointer to the second `Branch` tag).
 
-The creation of trees is a much tricker business. Operationally we
-want to write into an array, but we can't just use a mutable array for
-this: it is too easy to get wrong. We need, at least
+The construction of trees is a much trickier business. Operationally
+we want to write into an array, but we can't just use a mutable array
+for this: it is too easy to get wrong. We need at least:
 
 - To write each cell only once, otherwise we can get inconsistent, nonsensical
   trees such as
@@ -162,7 +171,7 @@ this: it is too easy to get wrong. We need, at least
   where the blank cells contain garbage
 
 You will have noticed that these are precisely the invariants that
-linear types afford! An added bonus is that linear types make our
+linear types afford. An added bonus is that linear types make our
 arrays observationally pure, so no need for, say, the `ST` monad.
 
 The type of write buffers is
@@ -239,19 +248,21 @@ add1 tree = getUnrestricted finished
     finishNeed (Unrestricted _, need) = finish need
 ```
 
-What I find amazing about this API is that it changes a mind-bendingly
-hard problem: programming directly with binary representation of data
+In the end, what we have is a method to communicate and compute over
+trees without having to perform any extra copies in Haskell because of
+network communication.
+
+What I like about this API is that it turns a highly error-prone
+endeavour, programming directly with serialized representation of data
 types, into a rather comfortable situation. The key ingredient is
-linear types. I'll leave you with an exercise, if you like a
-challenge: implement `pack` and `unpack` analogs of compact region
+linear types. I'll leave you with an exercise, if you like
+a challenge: implement `pack` and `unpack` analogs of compact region
 primitves:
 ```haskell
 unpack :: Packed [a] -> a
 pack :: a -> Packed [a]
 ```
 You may want to use a [type checker][prototype].
-
-
 
 [paper]: https://github.com/tweag/linear-types/releases/download/v2.0/hlt.pdf
 [prototype]: https://github.com/tweag/ghc/tree/linear-types
