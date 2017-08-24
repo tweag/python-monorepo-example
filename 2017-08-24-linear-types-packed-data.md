@@ -36,9 +36,9 @@ The process would look like this:
 - I deserialize this tree to retrieve the result.
 
 This process involves copying the tree structure *5 times*, converting
-back and force between a pointer representation, which Haskell can
+back and forth between a pointer representation, which Haskell can
 use, and a serialized representation, which can be sent over the
-network. For a single remote procedure call.
+network, for a single remote procedure call.
 
 This goes to show that it should be no surprise when overhead of
 serialization and deserialization in a distributed application is
@@ -196,7 +196,7 @@ opposite direction of regular constructors):
 
 ```haskell
 leaf :: Int -> Need (Tree':r) t ⊸ Need r t
-branch :: Need (Tree':r) ⊸ Need (Tree':Tree':r)
+branch :: Need (Tree':r) t ⊸ Need (Tree':Tree':r) t
 ```
 
 Finally (or initially!) we need to allocate an array. The following
@@ -236,7 +236,7 @@ add1 tree = getUnrestricted finished
       Left subtrees -> mapNeed' (mapNeed subtrees (branch need))
       Right (n, otherTrees) -> (Unrestricted otherTrees, leaf (n+1) need)
 
-    -- Curried variant of the main loop
+    -- Uncurried variant of the main loop
     mapNeed'
       :: (Unrestricted (Packed (Tree ': r)), Need (Tree ': r) Tree)
       ⊸  (Unrestricted (Packed r), Need r Tree)
@@ -257,7 +257,7 @@ endeavour, programming directly with serialized representation of data
 types, into a rather comfortable situation. The key ingredient is
 linear types. I'll leave you with an exercise, if you like
 a challenge: implement `pack` and `unpack` analogs of compact region
-primitves:
+primitives:
 ```haskell
 unpack :: Packed [a] -> a
 pack :: a -> Packed [a]
