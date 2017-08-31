@@ -27,6 +27,7 @@ Let's start with a simple program.
 ```Haskell
 -- hello.hs
 {-# LANGUAGE QuasiQuotes #-}
+{-# OPTIONS_GHC -fplugin=Language.Java.Inline.Plugin #-}
 import Foreign.JNI (withJVM)
 import Language.Java.Inline
 
@@ -43,6 +44,10 @@ $ ghc hello.hs
 $ ./hello
 Hello Java!
 ```
+
+Because part of inline-java is implemented in a GHC plugin, we tell GHC
+to use this plugin with the pragma `OPTIONS_GHC`. Every module using
+inline-java needs to ask for the plugin in the same way.
 
 GHC doesn't parse or generate any Java. Neither does `inline-java`.
 So how can this program possibly work? The answer is that `inline-java`
