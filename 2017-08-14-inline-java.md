@@ -252,7 +252,5 @@ The package `inline-java` not only makes Java code convenient to embed
 in Haskell programs, it also prevents coding mistakes which could
 otherwise occur when relying on the lower-level packages `jni` and
 `jvm`.
-
-You might have noticed that in our examples we are creating references
-to Java objects, yet this references are never explicitly destroyed.
-In a future post we will see how to manage them.
+In a future post we will discuss how `inline-java` makes use of a GHC
+plugin to ensure type-safety.
