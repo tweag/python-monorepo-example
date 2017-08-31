@@ -17,6 +17,8 @@ In this post, we present a tutorial with practical aspects of using
 `inline-java`, we cover the marshalling of values between Haskell and
 Java and how we leverage the type checker to ensure that both sides
 exchange values of appropriate types.
+[This git repository](https://github.com/tweag/hello-java) contains the
+minimal configuration necessary to try the examples that follow.
 
 # Invoking java methods
 
