@@ -216,7 +216,7 @@ main = withJVM [] $ do
 Based on the instances of `Reify` and `Coercible` that are in scope,
 Haskell is able to determine with precision what Java type the quasiquotation
 should return. In this program, the Haskell side expects Java to return
-an array of doubles (`java.lang.Double[]` when the Java side is
+an array of doubles (`java.lang.Double[]`) when the Java side is
 returning an array of strings (`java.lang.String[]`). The `javac`
 compiler complains.
 
