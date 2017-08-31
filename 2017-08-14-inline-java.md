@@ -49,8 +49,8 @@ Because part of inline-java is implemented in a GHC plugin, we tell GHC
 to use this plugin with the pragma `OPTIONS_GHC`. Every module using
 inline-java needs to ask for the plugin in the same way.
 
-GHC doesn't parse or generate any Java. Neither does `inline-java`.
-So how can this program possibly work? The answer is that `inline-java`
+GHC doesn't parse any Java and neither does `inline-java`. So how can
+this program possibly work? The answer is that `inline-java`
 feeds the quasiquotation to the `javac` compiler, which generates some
 bytecode that is stored in the object file of the module. At runtime,
 `inline-java` arranges the bytecode to be handed to the JVM using the
