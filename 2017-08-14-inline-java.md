@@ -85,8 +85,8 @@ At runtime, `inline-java` passes the result of the coercion as
 the argument `$d`. Any instance of `Language.Java.Coercible a ty` can be
 used in the same way, where `a` stands for the Haskell type and `ty`
 stands for an encoding of the Java type (`JType`).
-The package `jvm` defines a few instances, and the user can
-define its own.
+The package `jvm` defines a few instances, and users can define their
+own.
 
 ```Haskell
 class Coercible a (ty :: JType) | a -> ty
