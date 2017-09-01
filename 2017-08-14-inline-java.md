@@ -14,7 +14,9 @@ the rough edges of using low level interfaces like the
 [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html).
 
 In this post, we present a tutorial with practical aspects of using
-`inline-java`, we cover the marshalling of values between Haskell and
+the freshly released
+[inline-java-0.7.0](http://hackage.haskell.org/package/inline-java-0.7.0).
+We cover the marshalling of values between Haskell and
 Java and how we leverage the type checker to ensure that both sides
 exchange values of appropriate types.
 [This git repository](https://github.com/tweag/hello-java) contains the
