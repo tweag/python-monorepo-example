@@ -23,7 +23,7 @@ Specifically, a free object is *generated* by something less powerful, and then
 the idea is that to map to something we now only need to provide a definition
 over the generating object (which is easier).
 
-To give an eample, in high-school you may have been asked to manipulate lots of
+To give an example, in high-school you may have been asked to manipulate lots of
 maps `f :: R^n -> R^m`. Now `R^n` happens to be a free object over any set of
 vectors that form a *basis*. So instead of defining the function `f` over *all*
 the points of `R^n`, which would be tedious, we just define it over the `n`
@@ -153,7 +153,7 @@ monad (`[a] -> a`).
 
 ## Free monads in the real world
 
-Okay, so how do we use free monods in ur codebase?
+Okay, so how do we use free monads in your codebase?
 
 The idea is to create languages defined by functors for each piece of
 functionality in our system. These can be thought of as APIs.
@@ -195,8 +195,8 @@ getLine :: Console String
 getLine = liftF (GetLine id)
 ```
 
-At the top-most level you want to create a functor representing your business
-logic. In this case we are making some software for people who want to organise
+At the top-most level, you want to create a functor representing your business
+logic. In this case, we are making some software for people who want to organise
 social clubs.
 
 ```haskell
@@ -243,7 +243,7 @@ sumNat _   psi (InR x) = psi x
 ```
 because `Sum` is the coproduct in the category of functors.
 
-Using some helper functins:
+Using some helper functions:
 ```haskell
 left :: (Functor f, Functor g) => Free f a -> Free (Sum f g) a
 left = interp (Free . InL . fmap pure)
@@ -285,7 +285,7 @@ mockKeyValIO = ...
 
 Finally, we interpret our business logic into a free monad representing all the
 functionality we need: `Console` and `KeyVal`. This takes care of translating
-our high level API into the nitty gritty of which keys are used in our Redis
+our high-level API into the nitty gritty of which keys are used in our Redis
 system.
 
 ```haskell
