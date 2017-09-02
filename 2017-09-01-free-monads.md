@@ -43,20 +43,26 @@ data Free f a
   | Free (f (Free f a))
 ```
 
-Now if `f` is a functor, and we let `m` be `Free f`, what are the types of
-`Pure` and `Free`?
+To try and understand this definition, let's assume `f` is a functor, and we let
+`m` be `Free f`, then what are the types of `Pure` and `Free`?
 
 ```haskell
 Pure :: a -> m a        -- looks like pure
 Free :: f (m a) -> m a  -- looks like join
 ```
 
-So essentially all we are doing is "freely adjoining" these two operators, which
-we well know are what makes up a monad. Here `Free` says that you can squash
-down any `f`-structure of monadic values.
+So essentially all we are doing is "adjoining" these two operators, which we
+well know are what makes up a monad. Here `Free` says that you can squash down
+any `f`-structure of monadic values. When you apply `Free` to a functor, you get
+another functor back:
 
-This makes `Free f` a monad whenever `f` is a functor:
+```haskell
+instance Functor f => Functor (Free f) where
+  fmap g (Free fx) = Free (fmap g <$> fx)
+  fmap g (Pure x)  = Pure (g x)
+```
 
+But more is true, `Free f` is a monad:
 ```haskell
 instance Functor f => Monad (Free f) where
   Pure x  >>= g  =  g x
@@ -68,7 +74,8 @@ transformations*, which is what we use when we want to talk about mapping one
 functor into another.
 
 ```haskell
-type NatTrans f g = forall a. f a -> g a
+infixr 0 ~>
+type f ~> g = forall x. f x -> g x
 ```
 
 An actual natural transformation `phi` should obey this law:
@@ -79,18 +86,37 @@ fmap t . phi = phi . fmap t
 Happily, this law is automatic in Haskell (i.e. it's impossible to define a
 natural transformation between functors that breaks this law).
 
-If your natural transformation `phi` is actually between two monads, `m` and `n`
-say, then the proper notion of morphism between them is a _monad morphism_. This
-is a natural transformation with a bunch of extra properties that make sure you
-aren't doing something insane.
+One important piece of structure is that not only does `Free` take functors to functors, it also maps natural transformations to naturaral transformations:
 
-First of all: `phi . pure = pure`. That is, it should take pure values to pure values.
-Second, if we have something of type `m (m a)` there are now several ways we can
-get and `n a`:
+```haskell
+freeM :: (Functor f, Functor g) => f ~> g -> Free f ~> Free g
+freeM phi (Pure x) = Pure x
+freeM phi (Free fx) = Free $ phi (freeM phi <$> fx)
+```
+
+This makes `Free` a *functor*, not a haskell-functor, but a functor of categories: from the category of functors and natural transformations to itself.
+
+So now the first important remark is that `Free` doesn't do anything if we apply it to something that is already a monad, and this is neatly expressed by the natural transformation:
+
+```haskell
+monad :: Monad m => Free m ~> m
+monad (Pure x) = pure x
+monad (Free mfx) = do
+  fx <- mfx
+  monad fx
+```
+
+If you have two monads, `m` and `n`, then the proper notion of morphism between them is a
+_monad morphism_. This is a natural transformation `phi :: m ~> n` with a bunch of extra
+properties that make sure you aren't doing something insane.
+
+First of all: `phi . pure = pure`. That is, it should take pure values to pure
+values. Second, if we have something of type `m (m a)` there are now several
+ways we can get and `n a`:
 - Sequence in `m`, and then translate: `phi . join`.
-- Or, translate the two parts independently, and then sequence in `n`: `join . (fmap phi) . phi`.
-If you want to translate between monads in a sensible way, these should
-obviously produce the same thing!
+- Or, translate the two parts independently, and then sequence in `n`: `join .
+(fmap phi) . phi`. If you want to translate between monads in a sensible way,
+these should obviously produce the same thing!
 
 Monad morphisms are often called _interpretations_ because they interpret,
 sensibly, computations into other computations.
@@ -102,24 +128,14 @@ free.
 
 ```haskell
 -- | Buy one natural transformation, and get this monad morphism for free!
-interp :: (Functor f, Monad m) => NatTrans f m -> NatTrans (Free f) m
-interp _ (Pure x) = pure x
-interp trans (Free fx) = do
-  let mx = trans fx
-  x <- mx
-  interp trans x
+interp :: (Functor f, Monad m) => f ~> m -> Free f ~> m
+interp phi = monad . freeM phi
 ```
 
-Great! So lets recap: `Free` takes functors to monads and `interp` takes
-morphisms between functors to morphisms between monads. So we just defined a
-functor (a real one, not a haskell one, between categories) between the category
-of haskell-functors and natural transformations and the category of
-haskell-monads and monad morphisms. What's more, this functor is left-adjoint to
-the "forgetful functor", the one that takes a monad and considers it as just a
-plain old functor.
-
-(We'll start using the notation `~>` for morphisms in categories other than
-`Hask`.)
+Great! So lets recap: `Free` is actually a functor mapping haskell-functors to
+haskell-monads. What's more, this functor is left-adjoint to the "forgetful
+functor", the one that takes a monad `m` and considers it as just a plain old
+haskell-functor.
 
 What does that mouthful of abstract nonsense mean? It means that morphisms of
 monads `Free f ~> m` are the same as natural transformations of functors `f ~>
@@ -127,29 +143,27 @@ m`. And that means that that **ALL** interpretations of `Free f` can be obtained
 by using the `interp` function. So you don't need to ever worry about some
 complicated interpretation not being definable with `interp`.
 
-The functor `Free` (being the left side of an adjunction) itself defines monad
-(the categorical sort) on the category of functors. And the algebras of this
-monad are.. _monads_! (the haskell ones).
+The functor `Free` (being the left side of an adjunction) itself defines a monad
+(of the categorical sort) on the category of haskell-functors. And the algebras
+of this monad are.. _monads_! (the haskell ones).
 
-Indeed if we have a natural transformation
+So in fact `Free` is so essential to the concept of monad that it contains the
+definition of what a monad is within itself, and so, we could redefine haskell's
+monad typeclass (we'll call our new class `Monad'`) as just being algebras for `Free`:
+
 ```haskell
-alpha : Free m ~> m
-```
-This gives us:
-```haskell
-pure : a -> m a
-pure = alpha . Pure
-```
-and
-```haskell
-join : m (m a) -> m a
-join mmx = alpha . Free . fmap Free . fmap (fmap Pure)
+class Functor m => Monad' m where
+  monad :: Free m ~> m
 ```
 
-So `Free` really is so essential to the concept of monad that it contains the
-definition of monads within itself, in the same way that the monad of lists
-defines monoids, because all you need to get a monoid is an algebra of the list
-monad (`[a] -> a`).
+And we can see that it's just as powerful as `Monad`:
+```haskell
+pure' :: Monad' m => a -> m a
+pure' = monad . Pure
+
+join' :: Monad' m => m (m a) -> m a
+join' = monad . Free . fmap (Free . fmap Pure)
+```
 
 ## Free monads in the real world
 
