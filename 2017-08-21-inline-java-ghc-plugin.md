@@ -4,21 +4,23 @@ author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
 ---
 
-Language interoperation requires solving how to convert values from one
-language to another. In addition, it requires a mechanism for
-invoking code written in one of the languages from the other.
+Language interoperation presents us with two main challenges: (1) we
+need to devise a way to convert values from one language into the other
+and (2) we require a mechanism to invoke code written in one language
+by code written in the other language.
 There are different flavours of the problem according to factors like
 whether the languages are compiled or interpreted, the foreign interfaces
 they offer and whether they use garbage collectors to manage memory.
 In this post we present a technique to invoke code written in a
-statically-typed language from Haskell. To be concrete, we will
-be summarizing our experience when writing
+statically-typed language from Haskell; more precisely, we will
+be summarizing what we learnt when writing
 [inline-java](https://github.com/tweag/inline-java).
 
-# Calling to Java
+# Calling Java
 
 The package `inline-java` allows to invoke code written in Java using
-a Haskell language feature known as quasiquotes.
+a Haskell language feature known as
+[quasiquotes](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=jjWDm9wAAAAJ:2osOgNQ5qMEC).
 
 ```Haskell
 -- hello.hs
@@ -36,7 +38,7 @@ main = withJVM [] $ do
 ```
 
 The function `withJVM` starts an instance of the Java Virtual Machine (JVM),
-and the `java` quasiquotation executes the java code given to it as a block
+and the `java` quasiquotation executes the Java code passed to it as a block
 of statements.
 In this example, the Haskell value `x` of type `Double` is coerced into
 a Java value of primitive type `double`, which is then used whenever the
@@ -55,8 +57,8 @@ GHC doesn't parse or generate any Java. Neither does `inline-java`.
 So how can this program possibly work? The answer is that `inline-java`
 feeds the quasiquotation to the `javac` compiler, which generates some
 bytecode that is stored in the object file of the module. At runtime,
-`inline-java` arranges the bytecode to be given to the JVM using the
-package [jni](https://github.com/tweag/jni).
+`inline-java` arranges for the bytecode to be handed to the JVM using
+the package [jni](https://github.com/tweag/jni).
 Finally, inline-java makes use of the package
 [jvm](https://github.com/tweag/jvm)
 to have the bytecode executed.
@@ -68,16 +70,18 @@ if types are correct. The Java quasiquotation can't return a Java object
 when the Haskell side expects it to return a primitive `double`. Even if
 the Haskell side expected an object, say of type `java.util.List`, the
 Java quasiquotation can't return an object of type `java.lang.String` either.
-And conversely for arguments, Java and Haskell need to agree on what the
-type of arguments are, or a compile-time error ensues.
+And conversely for arguments, Java and Haskell need to agree on the
+type of arguments, or a compile-time error ensues.
 
-Type checking across language boundaries works as follows. First, GHC
+Given that no one compiler analyses both languages, how can
+type-checking work across language boundaries? Fortunately, both
+compilers can be put to cooperate on the task. First, GHC
 infers the types of the antiquoted variables and the return type which
 is expected of the quasiquotation. Then, these types are translated to
 Java types. The translation is conducted by a machinery of type classes
 living in the package [jvm](https://github.com/tweag/inline-java/jvm).
-The particular innards of this is not interesting to us now, but what
-matters is that it allows to translates types across languages. For
+The details of this process are not important at this point. What
+matters is that it enables us to translate types across languages. For
 instance,
 | Haskell type | Java type         |
 |:-------------|------------------:|
@@ -86,8 +90,8 @@ instance,
 | ByteString   |            byte[] |
 | Text         |  java.lang.String |
 
-The `javac` compiler gets the translated type with the quasiquotation.
-In our running example this would be
+The translated types are passed to `javac` together with the rest of the
+quasiquoted Java code. In our running example this would be
 
 ```Java
 double fresh_name(double $x) {
@@ -99,14 +103,15 @@ double fresh_name(double $x) {
 Finally, the `javac` compiler type-checks the quasiquotation. Type
 mismatches would be discovered and reported at this stage.
 
-By far, the first step has been the trickiest to pull off in this process.
-Namely, figuring out which types GHC has inferred for the antiquoted
-variables and which type is expected of the quasiquotation.
+It turns out that, of this whole process, the first step is by far the
+most intricate. Specifically, for inline-java to determine the types
+that GHC inferred for the antiquoted variables and for the entire
+quasiquotation.
 
 # Looking for the types
 
-At first, finding the types looked trivial. There is this Template
-Haskell primitive called
+At first, it appears as if determining these types is trivial. There is
+a Template Haskell primitive called
 [reify](https://www.stackage.org/haddock/lts-9.0/template-haskell-2.11.1.0/Language-Haskell-TH.html#v:reify).
 ```Haskell
 reify :: Name -> Q Info
@@ -117,42 +122,45 @@ data Info =
       ...
 ```
 
-If we have an antiquoted variable `$x`, surely we can use `reify 'x` to
-learn the Haskell type. Well, this doesn't quite work, because type checking
-is not finished when `reify` is evaluated. Thenceforth, we went
-downhill proposing patches to Template Haskell in order to get our hands
-on the inferred types.
-If you want to check it, here there are the related issues for
-your amusement
-([1](https://ghc.haskell.org/trac/ghc/wiki/TemplateHaskell/Reify),
-[2](https://ghc.haskell.org/trac/ghc/ticket/12777),
-[3](https://ghc.haskell.org/trac/ghc/ticket/12778),
-[4](https://ghc.haskell.org/trac/ghc/ticket/13608)).
+Given an antiquoted variable `$x`, we ought to be able to use `reify 'x`
+to determine its Haskell type. Well, except that this doesn't quite
+work, as type checking is not finished when `reify` gets evaluated. From
+there, we went down a rabbit hole of trying to propose patches to
+Template Haskell to reliably get our hands on the inferred types.
+If you want to follow the intricacies of our journey, here are the
+related GHC issues for your amusement:
+[initial discussion](https://ghc.haskell.org/trac/ghc/wiki/TemplateHaskell/Reify),
+[12777](https://ghc.haskell.org/trac/ghc/ticket/12777),
+[12778](https://ghc.haskell.org/trac/ghc/ticket/12778),
+[13608](https://ghc.haskell.org/trac/ghc/ticket/13608).
 
 After many discussions with Simon Peyton Jones, and some deal of
 creative hacking, we could kind of get the inferred types for antiquoted
 variables, but only for as long as the java quasiquotation didn't appear
 inside Template Haskell brackets (`[| ... |]`). Moreover, we made no
 progress getting the expected type of the quasiquotation.
-Every idea we came up with, required difficult compromises in the design.
-In the meantime, we had to choose between checking at runtime the type
-of the values returned by quasiquotations or using unsafe coercions.
+Every idea we came up with required difficult compromises in the design.
+In the meantime, we had to choose between checking the type of the
+values returned by quasiquotations at runtime or using unsafe coercions,
+neither of which is an attractive option.
 
-Eventually, it came to our attention that Template Haskell was not the
-only way to query the output of the type checker.
+Eventually, we learnt that Template Haskell was not the only way to
+query the output of the type checker.
 
 # Enter GHC Core plugins
 
-In essence, a
-[Core plugin](https://downloads.haskell.org/~ghc/8.0.2/docs/html/users_guide/extending_ghc.html#core-plugins-in-more-detail)
-is a set of Core-to-Core passes that we can
+The GHC compiler uses an explicitly typed intermediate language known as
+Core. All type applications of terms in Core are explicit, making it
+possible to learn the types inferred at the type-checking phase
+by inspecting the Core terms.
+In order to get our hands on Core terms, we can use
+[Core plugins](https://downloads.haskell.org/~ghc/8.0.2/docs/html/users_guide/extending_ghc.html#core-plugins-in-more-detail).
+We could think of a Core plugin as a set of Core-to-Core passes that we
+can
 ask GHC to add to the compilation pipeline. The passes can be inserted
 anywhere in the Core pipeline, and in particular, they can be inserted
-right at the beginning, just after typechecking and desugaring have
-occurred.
-Terms in the internal Core language carry the types that have been
-inferred at the typechecking stage, making possible to see these types
-by walking over the Core tree.
+right after desugaring, the phase which generates Core from the abstract
+syntax tree of a Haskell program.
 
 Quasiquotations dissapear from the abstract syntax tree when Template
 Haskell is executed. This happens well before the plugin passes.
@@ -166,30 +174,30 @@ main :: IO ()
 main = withJVM [] $ do
     let x = 1.5 :: Double
     y <- qqMarker
-	   (Proxy :: Proxy "{ System.out.println($x); return $x + 1; }")
+	   "{ System.out.println($x); return $x + 1; }"
 	   x
     print (y :: Double)
 
-qqMarker :: forall input args r. Proxy input -> args -> IO r
+qqMarker :: forall args r. String -> args -> IO r
 qqMarker = error "inline-java: The Plugin is not enabled."
 ```
 
-The GHC Plugin is supposed to replace the call to qqMarker with an
+The GHC Plugin is supposed to replace the call to `qqMarker` with an
 appropriate call to the generated Java method. The all-important
 point, however, is that the calls to `qqMarker` are annotated with the
-types we want to learn in Core.
+types we want to determine in Core.
 
 ```Haskell
 main :: IO ()
 main = ...
        qqMarker
-         @ "{ System.out.println($x); return $x + 1; }"
          @ Double
          @ Double
+         "{ System.out.println($x); return $x + 1; }"
 	   ...
 ```
 
-The second and third type parameter give us the types of the antiquoted
+The type parameters provide us with the type of the antiquoted
 variable and the expected type of the quasiquotation. From here, the
 plugin has all the information it needs to generate the Java code to
 feed to `javac`. In addition, the plugin can inject the generated bytecode
@@ -205,8 +213,9 @@ Template Haskell earns
 
 By using a GHC plugin, we have simplified `inline-java` from a
 complicated spaghetti which sprung from attempting to use 
-Template Haskell's `reify` and didn't quite addressed the type lookup
-problem in a robust way. Now we have a linear story which starts by
+Template Haskell's `reify` and didn't fully addressed the type lookup
+problem in a robust way. Now we have a straight forward story which
+starts by
 introducing the `qqMarker` beacons, attaches the Java bytecode in the
 plugin phase and ends by loading it at runtime into the JVM.
 
@@ -218,7 +227,7 @@ Core changes relatively little over the years, and anyway, a pass that
 looks for some markers is hardly going to change a lot even if Core
 did change.
 
-Many thanks to Simon Peyton Jones for its patience to walk with us over
-our attempts to _fix_ Template Haskell. Without a dialog with the
-compiler implementors it would have been difficult to scout as wider a
-range of the design space.
+Many thanks to Simon Peyton Jones for his patience to walk with us over
+our attempts to _fix_ Template Haskell. Without this dialog with the
+compiler implementors, it would have been difficult for us to explore as
+much of the design space as we needed to.
