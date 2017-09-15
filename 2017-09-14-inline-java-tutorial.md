@@ -28,7 +28,7 @@ the minimal configuration necessary to try the examples that follow.
 Let's start with a simple program.
 
 ```Haskell
--- hello.hs
+-- hello-java.hs
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fplugin=Language.Java.Inline.Plugin #-}
 import Language.Java (withJVM)
@@ -42,15 +42,7 @@ main = withJVM [] [java| { System.out.println("Hello Java!"); } |]
 
 The function [`withJVM`][withjvm] starts an instance of the Java
 Virtual Machine (JVM), and the `java` quasiquotation executes the java
-code passed to it as a block of statements. The program can be built
-and executed with
-
-```
-$ ghc hello.hs
-$ ./hello
-Hello Java!
-```
-
+code passed to it as a block of statements.
 Because part of inline-java is implemented in a GHC plugin, we tell GHC
 to use this plugin with the pragma `OPTIONS_GHC`. Every module using
 inline-java needs to ask for the plugin in the same way (this
@@ -230,7 +222,7 @@ returning an array of strings (`java.lang.String[]`). The `javac`
 compiler complains.
 
 ```
-$ ghc hello.hs
+$ ghc hello-java.hs
 [1 of 1] Compiling Main             ( Main.hs, Main.o )
 .../Inline__main_Main.java:5: error: incompatible types: String[] cannot be converted to Double[]
 { return  new String[] {"a", "b"} ; } // .hs:10
