@@ -28,7 +28,7 @@ the minimal configuration necessary to try the examples that follow.
 Let's start with a simple program.
 
 ```Haskell
--- hello.hs
+-- hello-java.hs
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fplugin=Language.Java.Inline.Plugin #-}
 import Language.Java (withJVM)
@@ -46,8 +46,8 @@ code passed to it as a block of statements. The program can be built
 and executed from inside the above mentioned folder with
 
 ```
-$ stack --nix exec ghc hello.hs
-$ ./hello
+$ stack --nix build
+$ stack --nix exec hello-java
 Hello Java!
 ```
 
@@ -230,7 +230,7 @@ returning an array of strings (`java.lang.String[]`). The `javac`
 compiler complains.
 
 ```
-$ ghc hello.hs
+$ stack --nix build
 [1 of 1] Compiling Main             ( Main.hs, Main.o )
 .../Inline__main_Main.java:5: error: incompatible types: String[] cannot be converted to Double[]
 { return  new String[] {"a", "b"} ; } // .hs:10
