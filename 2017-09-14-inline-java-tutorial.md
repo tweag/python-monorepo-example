@@ -43,10 +43,10 @@ main = withJVM [] [java| { System.out.println("Hello Java!"); } |]
 The function [`withJVM`][withjvm] starts an instance of the Java
 Virtual Machine (JVM), and the `java` quasiquotation executes the java
 code passed to it as a block of statements. The program can be built
-and executed with
+and executed from inside the above mentioned folder with
 
 ```
-$ ghc hello.hs
+$ stack --nix exec ghc hello.hs
 $ ./hello
 Hello Java!
 ```
