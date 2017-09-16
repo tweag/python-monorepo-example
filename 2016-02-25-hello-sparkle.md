@@ -175,5 +175,3 @@ Deep within sparkle lies a proto _inline-java_ waiting to break free, much in th
 - seamlessly support conversing between Java and Haskell using more diverse composite datatypes: we currently know how to efficiently swap strings, numeric types and arrays, but a number of composite datatypes such as tuples could gainfully be exchanged using a standardized data model, such as JSON/CBOR, or protobuf.
 
 In short, plenty of new directions to contribute towards. :)
-
-**Like what you saw? We're [hiring](http://tweagio.strikingly.com/!)**
