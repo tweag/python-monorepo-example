@@ -63,8 +63,8 @@ this program possibly work? The answer is that `inline-java` feeds the
 quasiquotation to the `javac` compiler, which generates some bytecode
 that is stored in the object file of the module. At runtime,
 `inline-java` arranges the bytecode to be handed to the JVM using
-the [jni](https://github.com/tweag/jni) package. Finally, inline-java
-makes use of the package [jvm](https://github.com/tweag/jvm) to have
+the [jni](https://www.stackage.org/package/jni) package. Finally, inline-java
+makes use of the package [jvm](https://www.stackage.org/package/jvm) to have
 the bytecode executed.
 
 # Marshalling values
