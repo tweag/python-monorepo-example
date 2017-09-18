@@ -14,7 +14,7 @@ codebase. The problem I came across in a particular project was the following:
 - You want to run only one of these (or none at all if they all fail).
 
 So now we need to be able to run things without running them. Free monads help
-here because if you target it a free monad, you know it'll be easy to interpret
+here because if you target a free monad, you know it'll be easy to interpret
 it in many target environments. This is because they are *free*, and the
 definition of a free object (in a category) says that they are easy to map
 *from*.
