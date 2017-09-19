@@ -52,8 +52,7 @@ Free :: f (m a) -> m a  -- looks like join
 ```
 
 So essentially all we are doing is "adjoining" these two operators, which we
-well know are what makes up a monad. Here `Free` says that you can squash down
-any `f`-structure of monadic values. When you apply `Free` to a functor, you get
+well know are what makes up a monad. When you apply `Free` to a functor, you get
 another functor back:
 
 ```haskell
@@ -65,6 +64,7 @@ instance Functor f => Functor (Free f) where
 But more is true, `Free f` is a monad:
 ```haskell
 instance Functor f => Monad (Free f) where
+  return = Pure
   Pure x  >>= g  =  g x
   Free fx >>= g  =  Free ((>>= g) <$> fx)
 ```
@@ -83,10 +83,8 @@ An actual natural transformation `phi` should obey this law:
 fmap t . phi = phi . fmap t
 ```
 
-Happily, this law is automatic in Haskell (i.e. it's impossible to define a
-natural transformation between functors that breaks this law).
-
-One important piece of structure is that not only does `Free` take functors to functors, it also maps natural transformations to naturaral transformations:
+One important piece of structure is that not only does `Free` take functors to
+functors, it also maps natural transformations to natural transformations:
 
 ```haskell
 freeM :: (Functor f, Functor g) => f ~> g -> Free f ~> Free g
@@ -333,3 +331,16 @@ main =
   real showClubSiblings
   -- mock showClubSiblings
 ```
+
+
+TODO:
+
+Talk about how I actually used free monads more.
+
+i.e. the problem is:
+- We have a collection of possibly failing computations which also use IO.
+- The reasons for failure might be IO, but in a lot of cases it is completely
+  independent of IO.
+- The IO operations are very slow.
+- We want to get process the collection of computations as quickly as possible,
+  and so, we want failing computations to fail as quickly as possible.
