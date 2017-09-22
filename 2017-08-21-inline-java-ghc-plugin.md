@@ -1,20 +1,26 @@
 ---
-title: GHC plugins for language interoperation
+title: "GHC compiler plugins in the wild: typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
 ---
 
-Language interoperation presents us with two main challenges: (1) we
-need to devise a way to convert values from one language into the other
-and (2) we require a mechanism to invoke code written in one language
-by code written in the other language.
-There are different flavours of the problem according to factors like
-whether the languages are compiled or interpreted, the foreign interfaces
-they offer and whether they use garbage collectors to manage memory.
-In this post we present a technique to invoke code written in a
-statically-typed language from Haskell; more precisely, we will
-be summarizing what we learnt when writing
-[inline-java](https://github.com/tweag/inline-java).
+[Previously][inline-java-tutorial], we discussed how to
+*use* [inline-java][inline-java-stackage] to call any Java function
+from Haskell. The reverse is also true, though that will be a topic
+for a future post. In this post, we'll dive underneath the hood to
+talk a little about *how* inline-java does its deed.
+
+You might find it an interesting read for at least the following
+reason: since the latest v0.7 release of inline-java, it's an example
+use of a recent feature of GHC called compiler plugins. These allow
+you to introspect and transform types and the abstract syntax tree
+before handing them off to later stages of the compiler pipeline. We
+use this to good effect in order to check that argument and return
+types on the Java side line up with those on the Haskell side, and
+*vice versa*.
+
+[inline-java-tutorial]: ./2017-09-15-inline-java-tutorial.html
+[inline-java-stackage]: https://www.stackage.org/package/inline-java
 
 # Calling Java
 
