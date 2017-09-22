@@ -170,7 +170,7 @@ Quasiquotations disapear from the abstract syntax tree when Template
 Haskell is executed. This happens well before the plugin passes.
 In order to enable the plugin to find the location of the
 quasiquotations, the quasiquoter can insert some artificial
-function call as a beacon or marker. In `inline-java`, the program
+function call as a beacon or marker. In `inline-java`, our example program
 looks something as follows after Template Haskell runs.
 
 ```Haskell
