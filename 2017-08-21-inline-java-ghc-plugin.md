@@ -6,7 +6,7 @@ featured: yes
 
 [Previously][inline-java-tutorial], we discussed how to
 *use* [inline-java][inline-java-stackage] to call any Java function
-from Haskell. The reverse is also true, though that will be a topic
+from Haskell. The reverse is also possible, though that will be a topic
 for a future post. In this post, we'll dive underneath the hood to
 talk a little about *how* inline-java does its deed.
 
