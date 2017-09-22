@@ -16,8 +16,8 @@ use of a recent feature of GHC called compiler plugins. These allow
 you to introspect and transform types and the abstract syntax tree
 before handing them off to later stages of the compiler pipeline. We
 use this to good effect in order to check that argument and return
-types on the Java side line up with those on the Haskell side, and
-*vice versa*.
+types on the Java side line up with those on the Haskell side (and
+*vice versa*).
 
 [inline-java-tutorial]: ./2017-09-15-inline-java-tutorial.html
 [inline-java-stackage]: https://www.stackage.org/package/inline-java
@@ -30,7 +30,6 @@ as
 [quasiquotes](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=jjWDm9wAAAAJ:2osOgNQ5qMEC).
 
 ```Haskell
--- hello.hs
 {-# LANGUAGE QuasiQuotes #-}
 import Language.Java (withJVM)
 import Language.Java.Inline
@@ -62,7 +61,7 @@ bytecode that is stored in the object file of the module. At runtime,
 `inline-java` arranges for the bytecode to be handed to the JVM using
 the [jni](https://www.stackage.org/package/jni) package.
 Finally, `inline-java` makes use of the
-[jvm](https://www.stackage.org/package/jvm) package
+[`jvm`](https://www.stackage.org/package/jvm) package
 to have the bytecode executed.
 
 # Type safety
@@ -83,7 +82,7 @@ compilers can be put to cooperate on the task. First, GHC
 infers the types of the antiquoted variables and the return type which
 is expected of the quasiquotation. Then, these types are translated to
 Java types. The translation is conducted by a machinery of type classes
-living in the package [jvm](https://github.com/tweag/inline-java/jvm).
+living in the [jvm](https://github.com/tweag/inline-java/jvm) package.
 The details of this process are not important at this point. What
 matters is that it enables us to translate types across languages. For
 instance,
