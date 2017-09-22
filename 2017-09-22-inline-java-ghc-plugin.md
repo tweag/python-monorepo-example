@@ -38,8 +38,8 @@ main :: IO ()
 main = withJVM [] $ do
     let x = 1.5 :: Double
     y <- [java| { System.out.println($x);
-	              return $x + 1;
-	            } |]
+                  return $x + 1;
+                } |]
     print (y :: Double)
 ```
 
