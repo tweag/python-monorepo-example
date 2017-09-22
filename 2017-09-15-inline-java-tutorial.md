@@ -1,5 +1,5 @@
 ---
-title: "Java from Haskell: a tutorial"
+title: "Java from Haskell:<br/> a tutorial"
 author: Facundo Domínguez
 featured: yes
 ---
