@@ -24,14 +24,15 @@ types on the Java side line up with those on the Haskell side, and
 
 # Calling Java
 
-The package `inline-java` allows to invoke code written in Java using
-a Haskell language feature known as
+`inline-java` makes it possible to invoke code written in Java using
+a Haskell language feature known
+as
 [quasiquotes](https://scholar.google.com/citations?view_op=view_citation&citation_for_view=jjWDm9wAAAAJ:2osOgNQ5qMEC).
 
 ```Haskell
 -- hello.hs
 {-# LANGUAGE QuasiQuotes #-}
-import Foreign.JNI (withJVM)
+import Language.Java (withJVM)
 import Language.Java.Inline
 
 main :: IO ()
@@ -46,38 +47,35 @@ main = withJVM [] $ do
 The function `withJVM` starts an instance of the Java Virtual Machine (JVM),
 and the `java` quasiquotation executes the Java code passed to it as a block
 of statements.
+
 In this example, the Haskell value `x` of type `Double` is coerced into
 a Java value of primitive type `double`, which is then used whenever the
 antiquoted variable `$x` appears inside the quasiquotation.
 When the quasiquotation finishes executing, the Java value resulting
 from evaluating `$x + 1` is coerced back to a Haskell value of type
-`Double`. The program can be built and executed with
-
-```
-$ ghc hello.hs
-$ ./hello
-1.5
-```
+`Double`.
 
 GHC doesn't parse or generate any Java. Neither does `inline-java`.
 So how can this program possibly work? The answer is that `inline-java`
 feeds the quasiquotation to the `javac` compiler, which generates some
 bytecode that is stored in the object file of the module. At runtime,
 `inline-java` arranges for the bytecode to be handed to the JVM using
-the package [jni](https://www.stackage.org/package/jni).
-Finally, inline-java makes use of the package
-[jvm](https://www.stackage.org/package/jvm)
+the [jni](https://www.stackage.org/package/jni) package.
+Finally, `inline-java` makes use of the
+[jvm](https://www.stackage.org/package/jvm) package
 to have the bytecode executed.
 
-# Type-safety
+# Type safety
 
-A notable characteristic of this approach, is that we know at compile time
-if types are correct. The Java quasiquotation can't return a Java object
-when the Haskell side expects it to return a primitive `double`. Even if
-the Haskell side expected an object, say of type `java.util.List`, the
-Java quasiquotation can't return an object of type `java.lang.String` either.
-And conversely for arguments, Java and Haskell need to agree on the
-type of arguments, or a compile-time error ensues.
+A notable characteristic of this approach is that we know at compile
+time if types are correct. We know that Java won't return an object if
+on the Haskell side we expect a double, because the Java side knows
+it's on the hook for handing us a double. `javac` will raise a compile
+time error if the Java code doesn't do that. Even if the Haskell side
+expected an object, say of type `java.util.List`, the Java
+quasiquotation can't return an object of type `java.lang.String`
+either. And conversely for arguments, Java and Haskell need to agree
+on the type of arguments, or a compile-time error ensues.
 
 Given that no one compiler analyses both languages, how can
 type-checking work across language boundaries? Fortunately, both
@@ -89,6 +87,7 @@ living in the package [jvm](https://github.com/tweag/inline-java/jvm).
 The details of this process are not important at this point. What
 matters is that it enables us to translate types across languages. For
 instance,
+
 | Haskell type | Java type         |
 |:-------------|------------------:|
 | Double       |            double |
@@ -106,12 +105,12 @@ double fresh_name(double $x) {
 }
 ```
 
-Finally, the `javac` compiler type-checks the quasiquotation. Type
-mismatches would be discovered and reported at this stage.
+Finally, the `javac` compiler type checks the quasiquotation. Type
+mismatches will be discovered and reported at this stage.
 
-It turns out that, of this whole process, the first step is by far the
-most intricate. Specifically, for inline-java to determine the types
-that GHC inferred for the antiquoted variables and for the entire
+It turns out that the first step is by far the most intricate.
+Specifically, for inline-java to query the types that GHC inferred for
+the antiquoted variables, and also query the type of the entire
 quasiquotation.
 
 # Looking for the types
@@ -130,7 +129,7 @@ data Info =
 
 Given an antiquoted variable `$x`, we ought to be able to use `reify 'x`
 to determine its Haskell type. Well, except that this doesn't quite
-work, as type checking is not finished when `reify` gets evaluated. From
+work, because type checking is not finished when `reify` gets evaluated. From
 there, we went down a rabbit hole of trying to propose patches to
 Template Haskell to reliably get our hands on the inferred types.
 If you want to follow the intricacies of our journey, here are the
@@ -157,8 +156,8 @@ query the output of the type checker.
 
 The GHC compiler uses an explicitly typed intermediate language known as
 Core. All type applications of terms in Core are explicit, making it
-possible to learn the types inferred at the type-checking phase
-by inspecting the Core terms.
+possible to learn the types inferred at the type checking phase
+by inspecting Core terms.
 In order to get our hands on Core terms, we can use
 [Core plugins](https://downloads.haskell.org/~ghc/8.0.2/docs/html/users_guide/extending_ghc.html#core-plugins-in-more-detail).
 We could think of a Core plugin as a set of Core-to-Core passes that we
@@ -168,7 +167,7 @@ anywhere in the Core pipeline, and in particular, they can be inserted
 right after desugaring, the phase which generates Core from the abstract
 syntax tree of a Haskell program.
 
-Quasiquotations dissapear from the abstract syntax tree when Template
+Quasiquotations disapear from the abstract syntax tree when Template
 Haskell is executed. This happens well before the plugin passes.
 In order to enable the plugin to find the location of the
 quasiquotations, the quasiquoter can insert some artificial
@@ -212,7 +211,7 @@ be located at runtime so it can be loaded in the JVM.
 
 Now the user needs to remember to tell GHC to use the plugin by passing it
 the option `-fplugin=Language.Java.Inline.Plugin`. But this is only until
-Template Haskell earns
+Template Haskell learns
 [the ability to tell GHC which plugins to use](https://phabricator.haskell.org/D3821).
 
 # Summary
