@@ -1,5 +1,5 @@
 ---
-title: "GHC compiler plugins in the wild: typing Java"
+title: "GHC compiler plugins in the wild:<br/> typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
 ---
