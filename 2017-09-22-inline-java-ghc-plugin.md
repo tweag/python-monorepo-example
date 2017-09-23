@@ -166,7 +166,7 @@ anywhere in the Core pipeline, and in particular, they can be inserted
 right after desugaring, the phase which generates Core from the abstract
 syntax tree of a Haskell program.
 
-Quasiquotations disapear from the abstract syntax tree when Template
+Quasiquotations disappear from the abstract syntax tree when Template
 Haskell is executed. This happens well before the plugin passes.
 In order to enable the plugin to find the location of the
 quasiquotations, the quasiquoter can insert some artificial
