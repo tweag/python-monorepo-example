@@ -4,7 +4,7 @@ author: Manuel M T Chakravarty
 featured: yes
 ---
 
-*This is the third post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html) and [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), too.
+*This is the third post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html) and [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), too.*
 
 In the [previous post](http://www.tweag.io/posts/2017-08-31-hmatrix.html) of this series, we discussed commonly used vector and matrix routines, which are available in highly-optimised implementations in most programming languages. However, often we need to implement our own custom array algorithms. To this end, the [Haskell standard (Haskell 2010)](https://www.haskell.org/onlinereport/haskell2010/) already comes with a simple [array API](https://www.haskell.org/onlinereport/haskell2010/haskellch14.html#x22-20100014) in the form of the `Data.Array` standard module. These arrays are *immutable*, *boxed*, and *non-strict*. This allows for the elegant, high-level description of many array algorithms, but it is suboptimal for compute-intensive applications as boxing and non-strictness, especially in combination with the reliance on association lists for array construction, lead to code that is [very difficult for the Haskell compiler to optimise](https://link.springer.com/chapter/10.1007/978-3-540-44833-4_2), resulting in rather limited performance.
 
