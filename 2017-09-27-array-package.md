@@ -37,7 +37,7 @@ array :: Ix i => (i, i) -> [(i, e)] -> Array i e
 The elegance of `wavefront` is in the recursive definition of the array `arr`. In the expression `arr!(i,j-1) + arr!(i-1,j-1) + arr!(i-1,j)`, we access the elements to the left, top, and top-left of the current one by appropriate indexing of the very array that we are currently in the process of defining. Such a recursive dependency is only valid for a non-strict data structure.
 
 ## Boxing
-Unfortunately, the expressiveness of non-strict arrays comes at a price, especially if the array elements are simple numbers. Instead of being able to store those numeric elements in-place in the array, non-strict arrays require a *boxed* representation, where the elements are pointers to heap objects containing the numeric values. This additional indirection requires extra memory and drastically reduces the efficiency of array access, especially in tight loops. The layout difference between an unboxed and a boxed representation is illustrated below.
+Unfortunately, the expressiveness of non-strict arrays comes at a price, especially if the array elements are simple numbers. Instead of being able to store those numeric elements in-place in the array, non-strict arrays require a *boxed* representation, where the elements are pointers to heap objects containing the numeric values. This additional indirection requires extra memory and drastically reduces the efficiency of array access, especially in tight loops. The layout difference between an unboxed (left) and a boxed (right) representation is illustrated below.
 
 ![Minimise Plot](../img/posts/unboxed-vs-boxed.png)
 
