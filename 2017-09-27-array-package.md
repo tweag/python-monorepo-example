@@ -39,7 +39,7 @@ The elegance of `wavefront` is in the recursive definition of the array `arr`. I
 ## Boxing
 Unfortunately, the expressiveness of non-strict arrays comes at a price, especially if the array elements are simple numbers. Instead of being able to store those numeric elements in-place in the array, non-strict arrays require a *boxed* representation, where the elements are pointers to heap objects containing the numeric values. This additional indirection requires extra memory and drastically reduces the efficiency of array access, especially in tight loops. The layout difference between an unboxed (left) and a boxed (right) representation is illustrated below.
 
-![Minimise Plot](../img/posts/unboxed-vs-boxed.png)
+<img title="Boxed versus unboxed array representation" alt="Boxed versus unboxed array representation" src="../img/posts/unboxed-vs-boxed.png" style="max-width: 100%;max-height: 100%;"></img>
 
 While both strict and non-strict data structures admit boxed representations, non-strict structures typically require boxing. To provide an alternative to the standard non-strict arrays, the [`array` package](https://hackage.haskell.org/package/array) provides strict, unboxed arrays of type `Data.Array.Unboxed.UArray i e`. By way of overloading via the type class [`Data.Array.IArray.IArray`](https://hackage.haskell.org/package/array-0.5.2.0/docs/Data-Array-IArray.html#t:IArray), they provide the same API as the standard non-strict, boxed arrays. However, the element type is restricted to basic types that can be stored unboxed, such as integral and floating-point numeric types.
 
