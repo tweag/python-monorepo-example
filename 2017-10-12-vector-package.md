@@ -43,9 +43,11 @@ The modules `Data.Vector` and `Data.Vector.Unboxed` instantiate the generic fram
 Due to this generic set up, array algorithms can be implemented generically and, then, used with all of the concrete instances. It is also perfectly possible to extend `vector` with your own flavour of arrays; for example, for interoperability with another array library.
 
 ## Convex hull
-One of the algorithms included in the benchmarks that are part of `vector` is the [quickhull algorithm](https://en.wikipedia.org/wiki/Quickhull) for computing the convex hull of a set of points. Quickhull is —just like quicksort— a split-based divide-and-conquer algorithm. It begins by dividing the set of points into two by drawing a line between the leftmost and rightmost point in the set. Then, it recursively operates on these two sets of points. In each recursive invocation, the point furthest from the last dividing line gives rise to two new lines (using the two end points of the that last dividing line). This is illustrated by the following animation from [Wikimedia Commons](https://commons.wikimedia.org/).
+One of the algorithms included in the benchmarks that are part of `vector` is the [quickhull algorithm](https://en.wikipedia.org/wiki/Quickhull) for computing the convex hull of a set of points. Quickhull is —just like quicksort— a split-based divide-and-conquer algorithm. It begins by dividing the set of points into two by drawing a line between the leftmost and rightmost point in the set. Then, it recursively operates on these two sets of points. In each recursive invocation, the point furthest from the last dividing line gives rise to two new lines (using the two end points of the that last dividing line). This is illustrated by the following animation from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File%3AAnimation_depicting_the_quickhull_algorithm.gif).
 
-<a title=”By Maonus (Own work) [CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AAnimation_depicting_the_quickhull_algorithm.gif"><img style="max-width: 100%;max-height: 100%;" alt="Animation depicting the quickhull algorithm" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animation_depicting_the_quickhull_algorithm.gif"/></a>
+<center>
+<img style="max-width: 50%;max-height: 50%;" alt="Animation depicting the quickhull algorithm" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animation_depicting_the_quickhull_algorithm.gif"/>
+</center>
 
 Given a `Vector` of x/y-coordinates, we can implement the initial step of quickhull, namely determining the left and rightmost point, as follows:
 
