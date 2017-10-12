@@ -4,7 +4,7 @@ author: Manuel M T Chakravarty
 featured: yes
 ---
 
-*This is the fourth post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html), [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), and [third](http://www.tweag.io/posts/2017-09-27-array-package.html), too.
+*This is the fourth post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html), [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), and [third](http://www.tweag.io/posts/2017-09-27-array-package.html), too.*
 
 In the [previous post](http://www.tweag.io/posts/2017-09-27-array-package.html) of this series, we explored the basic, down-to-earth, index-based array interfaces that have their roots in the Haskell standard libraries. We also discussed the need for *strictness*, *unboxing*, and a *two-phase* initialisation strategy, freezing mutable structures after they have been populated. With those basics out of the way, we can now explore the design of higher-level, *collection-oriented* array interfaces whose efficient implementation critically relies on those basic techniques.
 
