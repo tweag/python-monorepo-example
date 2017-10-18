@@ -1,0 +1,42 @@
+---
+title: Announcing the GHC DevOps Group
+author: Manuel M T Chakravarty
+featured: yes
+---
+As Haskell is increasingly used in production environments, the Haskell toolchain is of critical importance to a growing number of people and organisations. At the heart of this toolchain is [GHC (The Glasgow Haskell Compiler)](https://www.haskell.org/ghc/). Conceived as a research project by [Simon Peyton Jones](https://www.microsoft.com/en-us/research/people/simonpj/), GHC has long existed at the intersection of research and commercial use, due to the increasing popularity of Haskell. To provide stability and a basic level of support, the project was generously supported by Microsoft Research for many years. Unfortunately, in recent years, that support has diminished while, simultaneously, the commercial use of GHC steadily rose.
+
+## Shared responsibility
+In response to this situation, GHC HQ together with several stakeholder organisations decided to work together to improve the situation and to provide shared leadership and a broader pool of resources for the DevOps aspects of GHC development. As a concrete first step in this new partnership, we announced the formation of the *GHC DevOps Group* at the 2017 Haskell Implementors’ Workshop in Oxford. 
+
+## Our mission
+As set out in the group’s [charter](https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter), the mission of the GHC DevOps Group is threefold:
+
+* to take leadership of the DevOps aspects of GHC,
+* to resource it better, and
+* to broaden the sense of community ownership and control of GHC.
+
+As important as the goals are the group’s non-goals. The GHC DevOps group is exclusively concerned with the processes and tools for code development, community contributions, and regular, reliable & well-tested releases. It is about **how** features get into GHC and are shipped to users. In contrast, it is *not* concerned with the choice of **which** features go into GHC. This is the responsibility of the [GHC Steering Committee and proposals process](https://github.com/ghc-proposals/ghc-proposals/#ghc-proposals).
+
+## Our current goals
+During its formation, the group identified (1) moving to two calendar-based GHC releases per year and (2) lowering the barrier to contributing to GHC as its two initial goals.
+
+### Quality calendar-based releases every six months
+As Ben Gamari documented in detail in his [Reflections on GHC’s release schedule](https://ghc.haskell.org/trac/ghc/blog/2017-release-schedule), actual GHC release dates are hard to predict and initial release quality is often low due to critical bugs. These are the typical symptoms that modern DevOps processes, such as continuous integration, testing, and delivery, are designed to eliminate. Hence, we are working towards reliable continuous building and testing of GHC as well as pre-merge commit testing. In addition, the entire set of release artefacts is to be built and provided during that same process.
+
+The main choice that we are currently facing is whether to build our own solution and maintain our own infrastructure based on [Jenkins](https://jenkins.io) or whether to use 3rd party services, such as [CircleCI](https://circleci.com) and [AppVeyor](https://www.appveyor.com), instead. Jenkins provides more flexibility (especially with respect to the supported architectures and operating systems), but at the expense of far greater development and maintenance costs — that is, developer time that otherwise could be invested in improving GHC itself. In contrast, the use of CircleCI and AppVeyor minimise the work needed to set up and maintain the infrastructure, but at the cost of being dependent on those 3rd parties, including their choice of directly supported architectures and operating systems.
+
+Recently, it turned out that Jenkins also comes with rather disconcerting security risks. For a summary of the requirements as well as the pros and cons of the two alternative approaches, have a look at the [CI Trac Wiki page](https://ghc.haskell.org/trac/ghc/wiki/ContinuousIntegration).
+
+### Lowering the barrier to entry
+Although, only a limited number of developers will feel confident in extending GHC’s type checker, there are many parts of the compiler and associated tools and libraries that are well within reach of any competent Haskell dev. Hence, we feel that —just like other prominent open-source projects— we should make it as easy as possible to build, modify, and contribute to GHC. For better or worse, today, the gold standard for source control and processing code contributions is GitHub — if only, because virtually every professional developer, especially if engaged in open-source work, is already familiar with it. 
+
+In contrast, GHC currently requires contributors to use the [Phabricator](https://ghc.haskell.org/trac/ghc/wiki/Phabricator) tool. This is not only unfamiliar to most, but also requires the local installation of the command line tool Arcanist. In addition, Phabricator requires maintaining our own Phabricator installation and is known to be cumbersome to integrate with CI tool chains (tying this in with the first goal).
+
+Hence, we are discussing to lower the barrier to entry while simultaneously lowering our set up and maintenance costs by moving from Phabricator to GitHub.
+
+## Transparency and contributions
+If you are interested in the details of the discussion, please have a look at the [`ghc-dev-ops@haskell.org` archives](https://mail.haskell.org/pipermail/ghc-devops-group/). To provide transparency to the wider GHC user and developer community, all discussions of the GHC DevOps Group will be recorded on that mailing list. 
+
+Please let us know what you think. Feel free to approach any [member](https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter#Membership) of the GHC DevOps Group with feedback or suggestions. For a broader discussion, you may want to follow up on the general [`ghc-devs`](https://mail.haskell.org/cgi-bin/mailman/listinfo/ghc-devs) mailing list.
+
+If you or your organisation depend on GHC and you want to help with its continued development and maintenance, [please get in touch](mailto:manuel.chakravarty@tweag.io).
