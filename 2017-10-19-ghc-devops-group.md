@@ -7,7 +7,7 @@ As Haskell is increasingly used in production environments, the Haskell toolchai
 thirty years ago as a research project by [Simon Peyton Jones](https://www.microsoft.com/en-us/research/people/simonpj/), GHC has long existed at the intersection of research and commercial use, due to the increasing popularity of Haskell. To provide stability and a basic level of support, the project was generously supported by Microsoft Research for many years. However, as more and more companies and others are using GHC in mission-critical ways, the bar is going up. We need a solid, reliable, well-engineered, predictable GHC toolchain; and we need to do that without compromising GHC innovation and vitality.
 
 ## Shared responsibility
-In response to this situation, GHC HQ together with several stakeholder organisations decided to work together to improve the situation and to provide shared leadership and a broader pool of resources for the DevOps aspects of GHC development. As a concrete first step in this new partnership, we announced the formation of the *GHC DevOps Group* at the 2017 Haskell Implementors’ Workshop in Oxford. 
+In response to this situation, GHC HQ together with several stakeholder organisations decided to work together to improve the situation and to provide shared leadership and a broader pool of resources for the DevOps aspects of GHC development. As a concrete first step in this new partnership, we announced the formation of the *GHC DevOps Group* at the 2017 Haskell Implementors’ Workshop in Oxford.
 
 ## Our mission
 As set out in the group’s [charter](https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter), the mission of the GHC DevOps Group is threefold:
@@ -39,7 +39,7 @@ In contrast, GHC currently requires contributors to use the [Phabricator](https:
 Hence, we are discussing to lower the barrier to entry while simultaneously lowering our set up and maintenance costs by moving from Phabricator to GitHub.
 
 ## Transparency and contributions
-If you are interested in the details of the discussion, please have a look at the [`ghc-dev-ops@haskell.org` archives](https://mail.haskell.org/pipermail/ghc-devops-group/). To provide transparency to the wider GHC user and developer community, all discussions of the GHC DevOps Group will be recorded on that mailing list. 
+If you are interested in the details of the discussion, please have a look at the [`ghc-dev-ops@haskell.org` archives](https://mail.haskell.org/pipermail/ghc-devops-group/). To provide transparency to the wider GHC user and developer community, all discussions of the GHC DevOps Group will be recorded on that mailing list.
 
 Please let us know what you think. Feel free to approach any [member](https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter#Membership) of the GHC DevOps Group with feedback or suggestions. For a broader discussion, you may want to follow up on the general [`ghc-devs`](https://mail.haskell.org/cgi-bin/mailman/listinfo/ghc-devs) mailing list.
 
