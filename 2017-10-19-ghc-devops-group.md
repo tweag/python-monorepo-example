@@ -16,7 +16,7 @@ As set out in the group’s [charter](https://ghc.haskell.org/trac/ghc/wiki/DevO
 * to resource it better, and
 * to broaden the sense of community ownership and control of GHC.
 
-As important as the goals are the group’s non-goals. The GHC DevOps group is exclusively concerned with the processes and tools for code development, community contributions, and regular, reliable & well-tested releases. It is about **how** features get into GHC and are shipped to users. In contrast, it is *not* concerned with the choice of **which** features go into GHC. This is the responsibility of the [GHC Steering Committee and proposals process](https://github.com/ghc-proposals/ghc-proposals/#ghc-proposals).
+As important as the goals are the group’s non-goals. The GHC DevOps group is exclusively concerned with the processes and tools for code development, community contributions, and regular, reliable & well-tested releases. It is about **how** features get into GHC and are shipped to users. In contrast, it is *not* concerned with the choice of **which** features go into GHC, let alone the content of the libraries it ships with. This is the responsibility of the [GHC Steering Committee and proposals process](https://github.com/ghc-proposals/ghc-proposals/#ghc-proposals), and the [Core Libraries Committee](https://wiki.haskell.org/Core_Libraries_Committee), respectively.
 
 ## Our current goals
 During its formation, the group identified two initial goals (1) moving to two calendar-based GHC releases per year and (2) lowering the barrier to contributing to GHC.
