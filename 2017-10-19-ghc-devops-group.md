@@ -1,5 +1,5 @@
 ---
-title: Announcing the GHC DevOps Group
+title: Announcing the <br>GHC DevOps Group
 author: Manuel M T Chakravarty
 featured: yes
 ---
