@@ -4,7 +4,16 @@ author: Manuel M T Chakravarty
 featured: yes
 ---
 
-[Last week’s blog post](http://www.tweag.io/posts/2017-10-19-ghc-devops-group.html) introduced the [GHC DevOps Group](https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter) and outlined some of the group’s goals. This week is about one of Tweag I/O’s efforts in which we are helping the group achieve its goals with concrete engine room work.
+A recent development in Haskell land is the formation of
+the [GHC DevOps Group][ghc-devops-charter], which was the topic
+of [last week’s blog post][ghc-devops-blog-post]. The group is
+a community of parties committed to the future of GHC. Tweag I/O is
+one such party. We are helping the group achieve its goals with
+concrete engine room work. We presented our plans at the Haskell
+Implementor's Workshop, but here's a post for those who weren't there.
+
+[ghc-devops-charter]: https://ghc.haskell.org/trac/ghc/wiki/DevOpsGroupCharter
+[ghc-devops-blog-post]: http://www.tweag.io/posts/2017-10-19-ghc-devops-group.html
 
 ## GHC release quality
 GHC’s past [release schedule](https://ghc.haskell.org/trac/ghc/blog/2017-release-schedule) and release quality is varied. In fact, if our impressions are representative, many users dread major GHC releases — in particular, the pain that it inflicts on package and package infrastructure maintainers. The GHC DevOps Group is committed to improve the situation by helping to bring state-of-the-art [continuous integration to GHC development](https://ghc.haskell.org/trac/ghc/wiki/ContinuousIntegration).
