@@ -24,21 +24,21 @@ Building of, so called, *Stackage snapshots* is a two-phase process. First, a Do
 
 To perform regression testing, we need to alter both steps. Firstly, we use `stackage:nightly` as the basis for a Docker image that contains all the same non-Haskell dependencies, but includes the latest development version of GHC. We call it `stackage:head`. This is illustrated in the below diagram.
 
-<center><img title="Stackage Docker images" alt="Stackage Docker images" src="../img/posts/StackageDocker-squashed.jpg" style="max-width: 75%;max-height: 75%;"></img></center>
+<center><img title="Stackage Docker images" alt="Stackage Docker images" src="../img/posts/StackageDocker-squashed.jpg" style="max-width: 50%;max-height: 50%;"></img></center>
 
 ## Pruning constraints
 The second step in the Stackage build process, based on `stackage-curator`, is itself a two-phase process. First, `stackage-curator` converts a specification of *build constraints* into a concrete build plan. These build constraints are manually maintained by a group of people known as the *Stackage curators*. Secondly, `stackage-curator` (the tool) executes the build plan by building all packages in the package set. 
 
 However, not every generated build plan can be executed. In the case, of package version conflicts, we may get an invalid plan. When using the latest development version of GHC, the HEAD, in combination with the build constraints of Stackage Nightly (which is curated to work with the latest stable release version of GHC), we invariably get an invalid plan. As we want regression testing to be a fully automatic process, we don’t want any manual intervention in the form of manually curating a set of build constraints specifically for GHC HEAD. Instead, we use a simple Haskell script that prunes the build constraints by simply removing all packages that participate in a conflict. We call the resulting set of build constraints the *pruned build constraints*. They are, then, used to build packages. That build process may fail for individual packages if there is a regression or a conscious change in GHC. Overall, we get the following architecture.
 
-<center><img title="Stackage HEAD build process" alt="Stackage HEAD build process" src="../img/posts/Stackage-Regression-squashed.jpg" style="max-width: 75%;max-height: 75%;"></img></center>
+<center><img title="Stackage HEAD build process" alt="Stackage HEAD build process" src="../img/posts/Stackage-Regression-squashed.jpg" style="max-width: 65%;max-height: 65%;"></img></center>
 
 ## Assessing changes to GHC
 One of the interesting questions that we want to answer with the HEAD build of Stackage is whether a change to GHC involves a regression. Given that a HEAD build will typically involve failing packages and package failure may have a variety of reasons, it seems difficult to make that determination.
 
 However, a change to GHC is always a change with respect to a particular earlier version of GHC HEAD — this may be in the form of a pull request or a differential. Hence, what we are actually interested in is the *change* in package failures between two only slightly different versions of GHC. Any package whose build fails for both versions can simply be ignored. In contrast, whenever a pull request or differential leads to a *new* package failure, we have got a situation, where a code reviewer or code author needs to assess whether the failure is acceptable (GHC’s behaviour or core library APIs underwent a planned change) or whether it indicates a regression.
 
-<center><img title="Comparing builds before and after a change" alt="Comparing builds before and after a change" src="../img/posts/StackageCompare.png" style="max-width: 75%;max-height: 75%;"></img></center>
+<center><img title="Comparing builds before and after a change" alt="Comparing builds before and after a change" src="../img/posts/StackageCompare-squashed.jpg" style="max-width: 65%;max-height: 65%;"></img></center>
 
 ## Collaboration
 A welcome side effect of this scheme is that GHC developers notice which packages are affected by planned changes to GHC and the core libraries. This enables them to notify package developers long before the next release candidate is published, which in turn empowers package developers to adapt to those changes early, or, at least, they have a longer lead time to plan and schedule the work involved.
