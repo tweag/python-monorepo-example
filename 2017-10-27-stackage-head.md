@@ -33,7 +33,7 @@ Building of so called *Stackage snapshots* is a two-phase process. First, a Dock
 
 To perform regression testing of GHC HEAD, we need to alter both steps. Firstly, we use `stackage:nightly` as the basis for a Docker image that contains all the same non-Haskell dependencies, but includes the latest development version of GHC. We call it `stackage:head`. This is illustrated in the below diagram.
 
-<center><img title="Stackage Docker images" alt="Stackage Docker images" src="../img/posts/StackageDocker-squashed.jpg" style="max-width: 50%;max-height: 50%;”></img></center>
+<center><img title="Stackage Docker images" alt="Stackage Docker images" src="../img/posts/StackageDocker-squashed.jpg" style="max-width: 50%;max-height: 50%;"></img></center>
 
 ## Pruning constraints
 The second step in the Stackage build process, based on `stackage-curator`, is itself a two-phase process. First, `stackage-curator` converts a specification of *build constraints* into a concrete build plan. These build constraints are manually maintained by a group of people known as the *Stackage curators*. Secondly, `stackage-curator` (the tool) executes the build plan by building all packages in the package set. 
