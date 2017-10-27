@@ -47,7 +47,7 @@ One of the interesting questions that we want to answer with the HEAD build of S
 
 However, a change to GHC is always a change with respect to a particular earlier version of GHC HEAD — this may be in the form of a pull request or a differential. Hence, what we are actually interested in is the *change* in package failures between two only slightly different versions of GHC. Any package whose build fails for both versions can simply be ignored. In contrast, whenever a pull request or differential leads to a *new* package failure, we have got a situation, where a code reviewer or code author needs to assess whether the failure is acceptable (GHC’s behaviour or core library APIs underwent a planned change) or whether it indicates a regression.
 
-<center><img title=”Comparing builds before and after a change” alt=”Comparing builds before and after a change" src="../img/posts/StackageCompare-squashed.jpg” style="max-width: 65%;max-height: 65%;"></img></center>
+<center><img title="Comparing builds before and after a change" alt="Comparing builds before and after a change" src="../img/posts/StackageCompare-squashed.jpg" style="max-width: 65%;max-height: 65%;"></img></center>
 
 ## Collaboration
 
