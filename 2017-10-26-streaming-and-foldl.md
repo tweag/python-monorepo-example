@@ -124,8 +124,8 @@ statistics are computed:
 the combination of which will give us a `Fold a (Summary v a)`, something that
 will consume a stream of `a`'s and output a summary. At this point, nothing is
 consumed, we have only composed folds together, and a `Fold` is oblivious of the
-exact nature of the input will fold. Running it on any `Foldable` datatype for
-instance is just a matter of calling:
+exact nature of the input. Running it on any `Foldable` datatype for instance is
+just a matter of calling:
 
 ```haskell
 L.fold (summarizeBy id 3 3) [1..100]
