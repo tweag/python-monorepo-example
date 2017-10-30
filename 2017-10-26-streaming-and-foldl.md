@@ -8,19 +8,15 @@ If Haskell was a god in a religion where icons were allowed, often would he be
 depicted with the ravens Modularity and Abstraction flying above him, hovering
 the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
-wisdom^[Yes, of course Haskell would be one-eyed. And he'd have a list of like 200 awe-inspiring nicknames, like _The Monadbringer_ or _The Father of all things pure_, but that's another story].
-And in his hand, the mighty Haskell would wield the Spear of Lazy Lists, which
-is said to have the power to tackle each and every problem the world might have
-to
-face^[Full cosmogony in the religion of Haskell is left as an exercise to the reader].
-And to honour him, we would code and abstract everything with lazy lists. For
-millenia would lists be used to map, to filter, to separate, to merge, to group
-data, and so forth.
+wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
+Lists, which is said to have the power to tackle each and every problem the
+world might have to face[^2].  And to honour him, we would code and abstract
+everything with lazy lists. For millenia would lists be used to map, to filter,
+to separate, to merge, to group data, and so forth.
 
 But, one day, the Real-World
-Serpent^[Yes, all that buildup for [a lousy pun](https://en.wikipedia.org/wiki/J%C3%B6rmungandr),
-I know], son of the wicked Foldr^[Also seen written as _Folður_], would
-come. And the Real-World Serpent carries an eternal hatred towards like lazy
+Serpent[^3], son of the wicked Foldr[^4], would
+come. And the Real-World Serpent carries an eternal hatred towards lazy
 lists. Oh, that dreaded Serpent, that will throw everything it can muster to
 prevent us from staying within the warm comfort of abstraction and laziness. The
 Serpent will assemble its minions, _Early-close_ and _Strictness of effects_,
@@ -136,7 +132,7 @@ L.fold (summarizeBy id 3 3) [1..100]
 ```
 
 The only function not provided by `foldl` is the `collect`
-function^[`foldl` provides `minimum` and `maximum`, but here we want more than that]. Defining
+function[^5]. Defining
 it as a brand new `Fold` is simple:
 
 ```haskell
@@ -248,7 +244,17 @@ And both `streaming` and `foldl` will guarantee that the original input stream w
 be read _only once_.
 
 These techniques are currently being applied by Tweag in the context of a
-project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery
-which is a consulting company for _in silico_ clinical trials, namely simulation
-of virtual patients through biomodeling. Parts of this blog post are actual code
-from the tools we develop with them.
+project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery is a
+consulting company for _in silico_ clinical trials, namely simulation of virtual
+patients through biomodeling. Parts of this blog post are actual code from the
+tools we develop with them.
+
+[^1]: Yes, of course Haskell would be one-eyed. And he'd have a list of like 200
+    awe-inspiring nicknames, like _The Monadbringer_ or _The Father of all
+    things pure_, but that's another story.
+[^2]: Full cosmogony in the religion of Haskell is left as an exercise to the
+    reader.
+[^3]: Yes, all that buildup for
+    [a lousy pun](https://en.wikipedia.org/wiki/J%C3%B6rmungandr), I know.
+[^4]: Also seen written as _Folður_.
+[^5]: `foldl` provides `minimum` and `maximum`, but here we want more than that.
