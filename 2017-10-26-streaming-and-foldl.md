@@ -10,9 +10,9 @@ the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
 wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
 Lists, which is said to have the power to tackle each and every problem the
-world might have to face[^2].  And to honour him, we would code and abstract
+world might have to face.  And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, to filter,
-to separate, to merge, to group data, and so forth.
+to separate, to merge, to group data, and so forth[^2].
 
 <span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>, one day, the Real-World
 Serpent[^3], son of the wicked Foldr[^4], would
