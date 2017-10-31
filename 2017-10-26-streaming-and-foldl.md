@@ -27,8 +27,15 @@ final fight...
 So, long story short,
 [`streaming`](http://hackage.haskell.org/package/streaming) is a library that
 allows you to leverage the insights you have gained while manipulating lazy
-lists in Haskell to handle effectful streams of data. Here, we will be
-presenting `streaming` conjointly with another library,
+lists in Haskell to handle effectful streams of data. We already talked about
+`streaming` on this blog, with
+[this post](./2017-07-27-streaming-programs.html)
+discussing the IO part and
+[this one](./2017-10-05-streaming2.html) comparing it to
+[pipes](http://hackage.haskell.org/package/pipes) and
+[conduit](http://hackage.haskell.org/package/conduit). Here, we will be using
+`streaming` for some data processing and filtering. To this effect, we will use
+it conjointly with another library,
 [`foldl`](http://hackage.haskell.org/package/foldl), which gives us an
 Applicative interface to the usual list functions. In this blog post we will
 apply them to the task of computing some statistics about a distribution of
