@@ -1,5 +1,5 @@
 ---
-title: The Exodus to Streamgard, an epic poem
+title: The Exodus to Streamgard,<br/> an epic poem
 author: Yves Parès
 featured: yes
 ---
