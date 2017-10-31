@@ -1,10 +1,10 @@
 ---
-title: The Exode to Streamgard, an epic poem
+title: The Exodus to Streamgard, an epic poem
 author: Yves Parès
 featured: yes
 ---
 
-<span class="dropcap">I</span>f Haskell was a god in a religion where icons were allowed, often would he be
+<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god in a religion where icons were allowed, often would he be
 depicted with the ravens Modularity and Abstraction flying above him, hovering
 the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
@@ -14,7 +14,7 @@ world might have to face[^2].  And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, to filter,
 to separate, to merge, to group data, and so forth.
 
-<span class="dropcap">B</span>ut, one day, the Real-World
+<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>, one day, the Real-World
 Serpent[^3], son of the wicked Foldr[^4], would
 come. And the Real-World Serpent carries an eternal hatred towards lazy
 lists. Oh, that dreaded Serpent, that will throw everything it can muster to
