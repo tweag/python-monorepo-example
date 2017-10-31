@@ -238,14 +238,15 @@ summarizePassengers = L.purely S.fold (summarizeBy fare 3 3)
 ```
 
 where `m` can be any monad. This can be the bottom MonadResource or another
-`Stream`, `summarizePassengers` does not mind and does not have to!  `S.fold` is
-the basic folding function for stream that doesn't retain the stream end
-result. `L.purely fn f` "unpacks" a `Fold` `f` and calls a folding function
-`fn`. So now, getting our summaries is just a matter of
+`Stream`, `summarizePassengers` does not mind and does not have to! `Of` behaves
+like a tuple, so it simply means that we return both the newly computed
+`Summary` and an `a` (`a` may just be `()`). `S.fold` is the basic folding
+function for streams. `L.purely fn f` "unpacks" a `Fold` `f` and calls a folding
+function `fn`. So now, getting our summaries is just a matter of
 
 ```haskell
 runAll = runResourceT $ do
-  (summaryAlive :> summaryDead :> _) <-
+  (summaryAlive :> summaryDead :> ()) <-
     summarizePassengers $ summarizePassengers aliveDead
   ...
 ```
