@@ -62,13 +62,13 @@ data Summary v a = Summary
   deriving (Show)
 ```
 
-Nothing too fancy here, I just want to be able to compute the length, the
-smallest n elements, the biggest n' elements, the mean and the standard
-deviation of my distribution. We distinguish the types `a` and `v` here because
-our input distribution does not have to be numerical, as long as we have a
-projection `a -> v` available. This way, we can compute a summary of a stream of
-`(Double, String)` tuples, for instance, if the projection is just `fst`. In the
-simpler case of numerical distributions, we can provide a shortcut:
+Nothing too fancy here, I just want to be able to compute the length, the n
+smallest elements, the n' biggest elements, the mean and the standard deviation
+of my distribution. We distinguish the types `a` and `v` here because our input
+distribution does not have to be numerical, as long as we have a projection `a
+-> v` available. This way, we can compute a summary of a stream of `(Double,
+String)` tuples, for instance, if the projection is just `fst`. In the simpler
+case of numerical distributions, we can provide a shortcut:
 
 ```haskell
 type Summary' a = Summary a a
@@ -76,11 +76,11 @@ type Summary' a = Summary a a
 
 So let's have a little reminder of our conditions. We want to be able to read
 the input data only once. But, we still want modularity and reusability. We do
-not want to have to recode our Summary-computing function every time we want to
-add a new field, and we would like to reuse already existing functions computing
-these statistics. And this is where `foldl` comes in.
+not want to have to recode our `Summary`-computing function every time we want
+to add a new field, and we would like to reuse already existing functions
+computing these statistics. And this is where the `foldl` package comes in.
 
-`foldl` defines a type `Fold` this way:
+This package defines a type `Fold` as follows:
 
 ```haskell
 data Fold a b = forall acc. Fold (acc -> a -> acc) acc (acc -> b)
