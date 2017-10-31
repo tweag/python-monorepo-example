@@ -76,14 +76,14 @@ these statistics. And this is where `foldl` comes in.
 `foldl` defines a type `Fold` this way:
 
 ```haskell
-data Fold a b = forall x. Fold (x -> a -> x) x (x -> b)
+data Fold a b = forall acc. Fold (acc -> a -> acc) acc (acc -> b)
 ```
 
 You might recognize here the typical arguments of the classical `foldl` function
 of the `Prelude`: `a` is the type of each element of the input stream we
-consume, the first field `(x -> a -> x)` is an accumulation function and the
-second field `x` is the initial value of the accumulator.  The new thing is the
-`b` type parameter and the last field `(x -> b)`. This one is called
+consume, the first field `(acc -> a -> acc)` is an accumulation function and the
+second field `acc` is the initial value of the accumulator.  The new component
+is the `b` type parameter and the last field `(acc -> b)`. This one is called
 _extract_. It is used to extract the final value out of the accumulator. This is
 necessary so that `Fold a` can be a `Functor` and therefore an
 `Applicative`. See the
@@ -92,7 +92,7 @@ by Gabriel Gonzalez for more detail, though be aware that `Fold` had a different
 shape back then.
 
 Given we have an `Applicative` interface for `Fold`, we can compute a `Summary`
-this way:
+as follows:
 
 ```haskell
 import qualified Control.Foldl as L
@@ -109,21 +109,21 @@ summarizeBy f nMins nMaxes = Summary
 ```
 
 What's happening here? We are using a few of the functions already present in
-the `foldl` package and a new one, so let's delve into it a bit. `summarizeBy`
-takes a projection `f`, which we talked about earlier, the number of smallest
-elements we want to collect and the number of biggest elements. Then our five
-statistics are computed:
+the `foldl` package and a new one, so let's delve into it a bit. The function
+`summarizeBy` takes a projection `f`, which we talked about earlier, the number
+of smallest elements we want to collect and the number of biggest elements. Then
+our five statistics are computed:
 
-- `L.length :: L.Fold a Int` gives us the number of elements in the input
+- `L.length :: L.Fold a Int` gives us the number of elements in the input.
 - `collect`, which we will define a bit later, accumulates either the mins or
-  the maxes given a comparison function
+  the maxes given a comparison function.
 - `L.mean` gives us the average. We use `L.premap f` to turn it into a fold that
-  will work on our projection `f`
-- `L.std` gives us the standard deviation
+  will work on our projection `f`.
+- `L.std` gives us the standard deviation.
 
-the combination of which will give us a `Fold a (Summary v a)`, something that
+The combination of the above gives us a `Fold a (Summary v a)`, something that
 will consume a stream of `a`'s and output a summary. At this point, nothing is
-consumed, we have only composed folds together, and a `Fold` is oblivious of the
+consumed, we have only composed folds together, and a `Fold` is agnostic of the
 exact nature of the input. Running it on any `Foldable` datatype for instance is
 just a matter of calling:
 
@@ -131,9 +131,8 @@ just a matter of calling:
 L.fold (summarizeBy id 3 3) [1..100]
 ```
 
-The only function not provided by `foldl` is the `collect`
-function[^5]. Defining
-it as a brand new `Fold` is simple:
+The only function not provided by the `foldl` package is the `collect`
+function[^5]. Defining it as a brand new `Fold` is simple:
 
 ```haskell
 import Data.Sequence as Seq
@@ -249,12 +248,17 @@ consulting company for _in silico_ clinical trials, namely simulation of virtual
 patients through biomodeling. Parts of this blog post are actual code from the
 tools we develop with them.
 
+
 [^1]: Yes, of course Haskell would be one-eyed. And he'd have a list of like 200
     awe-inspiring nicknames, like _The Monadbringer_ or _The Father of all
     things pure_, but that's another story.
+    
 [^2]: Full cosmogony in the religion of Haskell is left as an exercise to the
     reader.
+    
 [^3]: Yes, all that buildup for
     [a lousy pun](https://en.wikipedia.org/wiki/J%C3%B6rmungandr), I know.
+    
 [^4]: Also seen written as _Folður_.
+
 [^5]: `foldl` provides `minimum` and `maximum`, but here we want more than that.
