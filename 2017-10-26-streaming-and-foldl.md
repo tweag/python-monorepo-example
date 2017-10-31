@@ -14,12 +14,13 @@ world might have to face.  And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, to filter,
 to separate, to merge, to group data, and so forth[^2].
 
-<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>, one day, the Real-World
-Serpent[^3], son of the wicked Foldr[^4], would
+<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>,
+one day, the Real-World Serpent[^3], son of the wicked Foldr[^4], would
 come. And the Real-World Serpent carries an eternal hatred towards lazy
 lists. Oh, that dreaded Serpent, that will throw everything it can muster to
 prevent us from staying within the warm comfort of abstraction and laziness. The
-Serpent will assemble its minions, _Early-close_ and _Strictness of effects_,
+Serpent will assemble its minions,
+[_Early-close_ and _Strictness of effects_](http://www.tweag.io/posts/2017-07-27-streaming-programs.html),
 and unleash its wrath upon our world. Foldl, son of Haskell and brother of
 Foldr, would lead humanity to its last bastion, Streamgard, and organize the
 final fight...
