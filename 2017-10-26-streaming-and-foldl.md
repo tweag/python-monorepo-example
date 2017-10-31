@@ -11,8 +11,8 @@ sit on the Throne of Purity and look upon the world with an eye full of
 wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
 Lists, which is said to have the power to tackle each and every problem the
 world might have to face.  And to honour him, we would code and abstract
-everything with lazy lists. For millenia would lists be used to map, to filter,
-to separate, to merge, to group data, and so forth[^2].*
+everything with lazy lists. For millenia would lists be used to map, filter,
+separate, merge, group, and so forth[^2].*
 
 *<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>,
 one day, the Real-World Serpent[^3], son of the wicked Foldr[^4], would
@@ -38,7 +38,7 @@ discussing the IO part and
 `streaming` for highly efficient data processing and filtering. To this effect, we will use
 it conjointly with another library,
 [`foldl`](http://hackage.haskell.org/package/foldl), which gives us an
-Applicative interface to the usual list functions. In this blog post we will
+`Applicative` interface to the usual list functions. In this blog post we will
 apply them to the task of computing some statistics about a distribution of
 data. We want to be able to:
 
