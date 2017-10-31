@@ -4,13 +4,13 @@ author: Yves Parès
 featured: yes
 ---
 
-*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god in a religion where icons were allowed, often would he be
+*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god, often would he be
 depicted with the ravens Modularity and Abstraction flying above him, hovering
 the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
 wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
 Lists, which is said to have the power to tackle each and every problem the
-world might have to face.  And to honour him, we would code and abstract
+world might have to face. And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, filter,
 separate, merge, group, and so forth[^2].*
 
@@ -67,13 +67,8 @@ Nothing too fancy here, I just want to be able to compute the length, the `n`
 smallest elements, the `n'` biggest elements, the mean and the standard deviation
 of my distribution. We distinguish the types `a` and `v` here because our input
 distribution does not have to be numerical, as long as we have a projection `a
--> v` available. We can compute a summary of a stream of `(Double,
-String)` tuples this way, for instance, if the projection is just `fst`. In the simpler
-case of numerical distributions, we can provide a shortcut:
-
-```haskell
-type Summary' a = Summary a a
-```
+-> v` available. This way, we can compute a summary of a stream of `(Double,
+String)` tuples, for instance, if the projection is just `fst`.
 
 So let's have a little reminder of our conditions. We want to be able to read
 the input data only once. But, we still want modularity and reusability. We do
@@ -96,11 +91,19 @@ _extract_. It is used to extract the final value out of the accumulator. This is
 necessary so that `Fold a` can be a `Functor` and therefore an
 `Applicative`. See the
 [original blog post](http://www.haskellforall.com/2013/08/composable-streaming-folds.html)
-by Gabriel Gonzalez for more detail, though be aware that `Fold` had a different
-shape back then.
+and [this talk](https://www.youtube.com/watch?v=6a5Ti0r8Q2s) by Gabriel Gonzalez
+for more detail, though be aware that `Fold` had a different shape back then.
 
-Given we have an `Applicative` interface for `Fold`, we can compute a `Summary`
-as follows:
+One of the central ideas of the `foldl` library is that `Fold` implements the
+`Applicative` type class:
+
+```haskell
+instance Applicative (Fold a)
+```
+
+Crucially, this instance combines two `Fold`s, into a guaranteed one-pass
+traversal of the data. Therefore we can safely decompose the computation of a
+`Summary` as follows:
 
 ```haskell
 import qualified Control.Foldl as L
@@ -164,7 +167,7 @@ earlier: an accumulation function (`insertPop`), an initial accumulator value
 `Fold` to turn the final sequence into a plain list).
 
 Now, the astute reader will notice we left `streaming` aside. Let's get back to
-it. Let's use as an input the classical
+it. Let's use as an input the classic
 [Titanic dataset](https://github.com/caesar0301/awesome-public-datasets/blob/master/Datasets/titanic.csv.zip):
 
 ```csv
@@ -207,7 +210,7 @@ streamCsv = decodeByName (BS.readFile ".../titanic.csv")
 Nothing too fancy here, just a bit of required boilerplate to be able to read
 `Passenger`s from the CSV file. `MonadResource` is necessary to track the files
 opened by our program. The type `Stream (Of Passenger) m ()` means that we will
-be manipulating a stream whose elements are `Passengers`s, that will run some
+be manipulating a stream whose elements are `Passenger`s, that will run some
 effects in a monad `m` and return no result in the end.
 
 Now, lets split that input in two different substreams:
@@ -230,19 +233,19 @@ expressed as:
 
 ```haskell
 summarizePassengers
-  :: (Monad m) => Stream (Of Passenger) m () -> m (Summary Double Passenger)
-summarizePassengers = L.purely S.fold_ (summarizeBy fare 3 3)
+  :: (Monad m) => Stream (Of Passenger) m a -> m (Of (Summary Double Passenger) a)
+summarizePassengers = L.purely S.fold (summarizeBy fare 3 3)
 ```
 
 where `m` can be any monad. This can be the bottom MonadResource or another
-`Stream`, `summarizePassengers` does not mind and does not have to!  `S.fold_`
-is the basic folding function for stream that doesn't retain the stream end
+`Stream`, `summarizePassengers` does not mind and does not have to!  `S.fold` is
+the basic folding function for stream that doesn't retain the stream end
 result. `L.purely fn f` "unpacks" a `Fold` `f` and calls a folding function
 `fn`. So now, getting our summaries is just a matter of
 
 ```haskell
 runAll = runResourceT $ do
-  (summaryDead :> summaryAlive :> _) <-
+  (summaryAlive :> summaryDead :> _) <-
     summarizePassengers $ summarizePassengers aliveDead
   ...
 ```
