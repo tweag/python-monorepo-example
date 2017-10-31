@@ -4,7 +4,7 @@ author: Yves Parès
 featured: yes
 ---
 
-If Haskell was a god in a religion where icons were allowed, often would he be
+<span class="dropcap">I</span>f Haskell was a god in a religion where icons were allowed, often would he be
 depicted with the ravens Modularity and Abstraction flying above him, hovering
 the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
@@ -14,7 +14,7 @@ world might have to face[^2].  And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, to filter,
 to separate, to merge, to group data, and so forth.
 
-But, one day, the Real-World
+<span class="dropcap">B</span>ut, one day, the Real-World
 Serpent[^3], son of the wicked Foldr[^4], would
 come. And the Real-World Serpent carries an eternal hatred towards lazy
 lists. Oh, that dreaded Serpent, that will throw everything it can muster to
@@ -29,9 +29,9 @@ So, long story short,
 allows you to leverage the insights you have gained while manipulating lazy
 lists in Haskell to handle effectful streams of data. We already talked about
 `streaming` on this blog, with
-[this post](./2017-07-27-streaming-programs.html)
+[this post](http://www.tweag.io/posts/2017-07-27-streaming-programs.html)
 discussing the IO part and
-[this one](./2017-10-05-streaming2.html) comparing it to
+[this one](http://www.tweag.io/posts/2017-10-05-streaming2.html) comparing it to
 [pipes](http://hackage.haskell.org/package/pipes) and
 [conduit](http://hackage.haskell.org/package/conduit). Here, we will be using
 `streaming` for some data processing and filtering. To this effect, we will use
