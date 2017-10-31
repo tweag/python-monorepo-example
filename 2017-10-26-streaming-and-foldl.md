@@ -4,7 +4,7 @@ author: Yves Parès
 featured: yes
 ---
 
-<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god in a religion where icons were allowed, often would he be
+*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god in a religion where icons were allowed, often would he be
 depicted with the ravens Modularity and Abstraction flying above him, hovering
 the world and reporting to him every detail of our whereabouts. Haskell would
 sit on the Throne of Purity and look upon the world with an eye full of
@@ -12,9 +12,9 @@ wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
 Lists, which is said to have the power to tackle each and every problem the
 world might have to face.  And to honour him, we would code and abstract
 everything with lazy lists. For millenia would lists be used to map, to filter,
-to separate, to merge, to group data, and so forth[^2].
+to separate, to merge, to group data, and so forth[^2].*
 
-<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>,
+*<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>,
 one day, the Real-World Serpent[^3], son of the wicked Foldr[^4], would
 come. And the Real-World Serpent carries an eternal hatred towards lazy
 lists. Oh, that dreaded Serpent, that will throw everything it can muster to
@@ -23,7 +23,7 @@ Serpent will assemble its minions,
 [_Early-close_ and _Strictness of effects_](http://www.tweag.io/posts/2017-07-27-streaming-programs.html),
 and unleash its wrath upon our world. Foldl, son of Haskell and brother of
 Foldr, would lead humanity to its last bastion, Streamgard, and organize the
-final fight...
+final fight...*
 
 So, long story short,
 [`streaming`](http://hackage.haskell.org/package/streaming) is a library that
@@ -35,16 +35,16 @@ discussing the IO part and
 [this one](http://www.tweag.io/posts/2017-10-05-streaming2.html) comparing it to
 [pipes](http://hackage.haskell.org/package/pipes) and
 [conduit](http://hackage.haskell.org/package/conduit). Here, we will be using
-`streaming` for some data processing and filtering. To this effect, we will use
+`streaming` for highly efficient data processing and filtering. To this effect, we will use
 it conjointly with another library,
 [`foldl`](http://hackage.haskell.org/package/foldl), which gives us an
 Applicative interface to the usual list functions. In this blog post we will
 apply them to the task of computing some statistics about a distribution of
-data. We want to be able:
+data. We want to be able to:
 
-- to process the input data stream _only once_,
-- never to repeat the effects which were used to produce that data stream,
-- to maintain the possibility to use the input stream as if it were a list, for
+- process the input data stream _only once (aka in one pass)_,
+- never repeat the effects that were used to produce that data stream,
+- maintain the possibility to use the input stream as if it were a list, for
   instance by splitting it into two subparts, sending each subpart to be
   processed by a specific function.
 
@@ -63,12 +63,12 @@ data Summary v a = Summary
   deriving (Show)
 ```
 
-Nothing too fancy here, I just want to be able to compute the length, the n
-smallest elements, the n' biggest elements, the mean and the standard deviation
+Nothing too fancy here, I just want to be able to compute the length, the `n`
+smallest elements, the `n'` biggest elements, the mean and the standard deviation
 of my distribution. We distinguish the types `a` and `v` here because our input
 distribution does not have to be numerical, as long as we have a projection `a
--> v` available. This way, we can compute a summary of a stream of `(Double,
-String)` tuples, for instance, if the projection is just `fst`. In the simpler
+-> v` available. We can compute a summary of a stream of `(Double,
+String)` tuples this way, for instance, if the projection is just `fst`. In the simpler
 case of numerical distributions, we can provide a shortcut:
 
 ```haskell
@@ -250,7 +250,7 @@ runAll = runResourceT $ do
 And both `streaming` and `foldl` will guarantee that the original input stream will
 be read _only once_.
 
-These techniques are currently being applied by Tweag in the context of a
+These techniques are currently being applied by Tweag I/O in the context of a
 project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery is a
 consulting company for _in silico_ clinical trials, namely simulation of virtual
 patients through biomodeling. Parts of this blog post are actual code from the
