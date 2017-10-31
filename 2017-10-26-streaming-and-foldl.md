@@ -240,9 +240,10 @@ summarizePassengers = L.purely S.fold (summarizeBy fare 3 3)
 where `m` can be any monad. This can be the bottom MonadResource or another
 `Stream`, `summarizePassengers` does not mind and does not have to! `Of` behaves
 like a tuple, so it simply means that we return both the newly computed
-`Summary` and an `a` (`a` may just be `()`). `S.fold` is the basic folding
-function for streams. `L.purely fn f` "unpacks" a `Fold` `f` and calls a folding
-function `fn`. So now, getting our summaries is just a matter of
+`Summary` and an `a` (`a` may just be `()`, but here we have to be a little more
+general). `S.fold` is the basic folding function for streams. `L.purely fn f`
+"unpacks" a `Fold` `f` and calls a folding function `fn`. So now, getting our
+summaries is just a matter of
 
 ```haskell
 runAll = runResourceT $ do
@@ -251,8 +252,9 @@ runAll = runResourceT $ do
   ...
 ```
 
-And both `streaming` and `foldl` will guarantee that the original input stream will
-be read _only once_.
+So in the end, we splitted the input file in two substreams, we computed various
+statistics twice, and despite all this `streaming` and `foldl` guarantee that
+the input will be read _only once_ in bounded memory.
 
 These techniques are currently being applied by Tweag I/O in the context of a
 project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery is a
