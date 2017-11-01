@@ -4,26 +4,28 @@ author: Yves Parès
 featured: yes
 ---
 
-*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span> Haskell was a god, often would he be
-depicted with the ravens Modularity and Abstraction flying above him, hovering
-the world and reporting to him every detail of our whereabouts. Haskell would
-sit on the Throne of Purity and look upon the world with an eye full of
-wisdom[^1]. And in his hand, the mighty Haskell would wield the Spear of Lazy
-Lists, which is said to have the power to tackle each and every problem the
-world might have to face. And to honour him, we would code and abstract
-everything with lazy lists. For millenia would lists be used to map, filter,
-separate, merge, group, and so forth[^2].*
+*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span>
+Haskell was a god, often would he be depicted with the ravens Modularity and
+Abstraction flying above him, hovering the world and reporting to him every
+detail of our whereabouts. Haskell would sit on the Throne of Purity and look
+upon the world with <span class="tooltip" title="Yes, of course Haskell would be one-eyed. And he'd have a list of like 200 awe-inspiring nicknames, like 'The Monadbringer' or 'The Father of all things pure', but that's another story.">an eye</span> full of wisdom. And in his hand, the mighty Haskell would
+wield the Spear of Lazy Lists, which is said to have the power to tackle each
+and every problem the world might have to face. And to honour him, we would
+code and abstract everything with lazy lists. For millenia would lists be used
+to map, filter, separate, merge, group, <span class="tooltip" title="Full cosmogony in the religion of Haskell is left as an exercise to the reader.">and
+so forth</span>.*
 
-*<span class="dropcap">B</span><span style="font-variant: small-caps;">ut</span>,
-one day, the Real-World Serpent[^3], son of the wicked Foldr[^4], would
-come. And the Real-World Serpent carries an eternal hatred towards lazy
-lists. Oh, that dreaded Serpent, that will throw everything it can muster to
-prevent us from staying within the warm comfort of abstraction and laziness. The
-Serpent will assemble its minions,
-[_Early-close_ and _Strictness of effects_](http://www.tweag.io/posts/2017-07-27-streaming-programs.html),
-and unleash its wrath upon our world. Foldl, son of Haskell and brother of
-Foldr, would lead humanity to its last bastion, Streamgard, and organize the
-final fight...*
+*<span class="dropcap">B</span><span style="font-variant:
+small-caps;">ut</span>, one day, <span class="tooltip" title="Yes, all that buildup for a lousy pun: https://en.wikipedia.org/wiki/J%C3%B6rmungandr">the
+Real-World Serpent</span>, son of the wicked <span class="tooltip" title="Also seen written as 'Folður'">Foldr</span>, would come. And the Real-World Serpent
+carries an eternal hatred towards lazy lists. Oh, that dreaded Serpent, that
+will throw everything it can muster to prevent us from staying within the warm
+comfort of abstraction and laziness. The Serpent will assemble its minions,
+[_Early-close_ and _Strictness of
+effects_](http://www.tweag.io/posts/2017-07-27-streaming-programs.html), and
+unleash its wrath upon our world. Foldl, son of Haskell and brother of Foldr,
+would lead humanity to its last bastion, Streamgard, and organize the final
+fight...*
 
 So, long story short,
 [`streaming`](http://hackage.haskell.org/package/streaming) is a library that
@@ -142,8 +144,8 @@ just a matter of calling:
 L.fold (summarizeBy id 3 3) [1..100]
 ```
 
-The only function not provided by the `foldl` package is the `collect`
-function[^5]. Defining it as a brand new `Fold` is simple:
+The only function <span class="tooltip" title="The foldl package provides 'minimum' and 'maximum', but here we want more than that.">not provided by the `foldl` package</span> is the `collect` function. Defining it as a brand new
+`Fold` is simple:
 
 ```haskell
 import Data.Sequence as Seq
@@ -261,18 +263,3 @@ project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery is a
 consulting company for _in silico_ clinical trials, namely simulation of virtual
 patients through biomodeling. Parts of this blog post are actual code from the
 tools we develop with them.
-
-
-[^1]: Yes, of course Haskell would be one-eyed. And he'd have a list of like 200
-    awe-inspiring nicknames, like _The Monadbringer_ or _The Father of all
-    things pure_, but that's another story.
-    
-[^2]: Full cosmogony in the religion of Haskell is left as an exercise to the
-    reader.
-    
-[^3]: Yes, all that buildup for
-    [a lousy pun](https://en.wikipedia.org/wiki/J%C3%B6rmungandr), I know.
-    
-[^4]: Also seen written as _Folður_.
-
-[^5]: `foldl` provides `minimum` and `maximum`, but here we want more than that.
