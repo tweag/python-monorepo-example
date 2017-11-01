@@ -1,5 +1,6 @@
 ---
 title: Compact normal forms + linear types <br>= efficient network communication
+shortTitle: Compact normal forms + linear types
 author: Arnaud Spiwack
 featured: yes
 ---
