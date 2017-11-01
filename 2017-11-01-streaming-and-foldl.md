@@ -16,8 +16,8 @@ to map, filter, separate, merge, group, <span class="tooltip" title="Full cosmog
 so forth</span>.*
 
 *<span class="dropcap">B</span><span style="font-variant:
-small-caps;">ut</span>, one day, <span class="tooltip" title="Yes, all that buildup for a lousy pun: https://en.wikipedia.org/wiki/J%C3%B6rmungandr">the
-Real-World Serpent</span>, son of the wicked <span class="tooltip" title="Also seen written as 'Folður'">Foldr</span>, would come. And the Real-World Serpent
+small-caps;">ut</span>, one day, the <span class="tooltip" title="Yes, all that buildup for a lousy pun">
+Real-[World Serpent](https://en.wikipedia.org/wiki/J%C3%B6rmungandr)</span>, son of the wicked <span class="tooltip" title="Also seen written as 'Folður'">Foldr</span>, would come. And the Real-World Serpent
 carries an eternal hatred towards lazy lists. Oh, that dreaded Serpent, that
 will throw everything it can muster to prevent us from staying within the warm
 comfort of abstraction and laziness. The Serpent will assemble its minions,
