@@ -259,7 +259,7 @@ statistics twice, and despite all this `streaming` and `foldl` guarantee that
 the input will be read _only once_ in bounded memory.
 
 These techniques are currently being applied by Tweag I/O in the context of a
-project with [Nova Discovery](http://www.novadiscovery.com). Nova Discovery is a
+project with [Novadiscovery](http://www.novadiscovery.com). Novadiscovery is a
 consulting company for _in silico_ clinical trials, namely simulation of virtual
 patients through biomodeling. Parts of this blog post are actual code from the
 tools we develop with them.
