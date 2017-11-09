@@ -7,7 +7,7 @@ featured: yes
 Among our tools, at Tweag I/O, is [type-class
 reflection][reflection-package]. We don't reach for it often, but it can be very
 useful.  Reflection is rather little known, and when it is, it is often spoken
-of with an hint of fear.
+of with a hint of fear.
 
 In this post, I want to convince you that reflection is not hard and that you
 ought to know about it. To that end, let me invite you to join me on a journey
@@ -22,7 +22,8 @@ What is reflection?
 ===================
 
 [Type-Class reflection][reflection-package] is a mechanism to use a value as a
-type-class instance. The types are a little scary:
+type-class instance. The types are a little puzzling at first, but by the end of
+this tutorial, they will make perfect sense:
 
 ```haskell
 class Reifies s a | s -> a where
@@ -51,8 +52,9 @@ and start playing, there is a bit of boilerplate to get out of the way first.
 
 Yes, I know:
 [`UndecidableInstances`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html?highlight=rebindablesyntax#ghc-flag--XUndecidableInstances). It
-is unfortunately required. Our usage will be safe, of course, but it is never
-pleasant to have this extension around.
+is unfortunately required. It means that we could technically send the type
+checker in an infinite loop. It is innocuous (it cannot accept bad programs),
+but unpleasant. Of course, we will be careful not to introduce such loops.
 
 
 Sorted lists
@@ -84,11 +86,17 @@ decide to take the union of two sorted list:
 > merge :: Ord a => SortedList a -> SortedList a -> SortedList a
 > merge left0 right0 = doMerge left0 (smallest left0) right0 (smallest right0)
 >   where
+>     -- doMerge ::
+>     --    SortedList a -> ViewSmallest a ->
+>     --    SortedList a -> ViewSmallest a -> SortedList a
+>     --
+>     -- Both arguments are passed in view form, for inspection, and in list form
+>     -- to be returned and for recursive calls.
 >     doMerge _ Empty right _ = right
 >     doMerge left _ _ Empty = left
 >     doMerge left (Smallest a l) right (Smallest b r) =
 >         case a <= b of
->           True-> unsafeCons a (merge l right)
+>           True -> unsafeCons a (merge l right)
 >           False -> unsafeCons b (merge left r)
 >
 > -- * Helper functions below
@@ -108,12 +116,15 @@ decide to take the union of two sorted list:
 > smallest (Sorted (a:l)) = Smallest a (Sorted l)
 > smallest (Sorted []) = Empty
 
-Note that we _need_ `Ord a`. If we passed an order as an argument, we could
-change the order between two calls to `merge`. There wouldn't be a good sense in
-which `SortedList a` actually represents sorted lists. With a type class, on the
-other hand, it is _guaranteed_ that we _always_ use the same comparison function
-for the same type. Therefore ensuring that `SortedList` are indeed sorted. No
-exception!
+We _need_ `Ord a` to hold in order to define `merge`. Indeed, type classes are
+_global_ and coherent: there is only one `Ord a` instance, and it is
+_guaranteed_ that `merge` always uses the same comparison function for `a`. This
+enforces that if `Ord a` holds, then `SortedList a` represents lists of `a`
+sorted according to the order defined by the unique `Ord a` instance:. In
+contrast, a function argument defining an order is _local_ to this function
+call. So if `merge` were to take the ordering as an extra argument, we could
+change the order for each call of `merge`; we couldn't even state that
+`SortedList a` are sorted.
 
 
 If it weren't for you meddling type classes
@@ -138,25 +149,24 @@ Composing with `forget`, this gives us a sorting function
 > sort :: Ord a => [a] -> [a]
 > sort l = forget (fromList l)
 
-Though that's not quite what we had setup to write. We wanted
+Though that's not quite what we had set up to write. We wanted
 ```haskell
 sortBy :: (a->a->Ordering) -> [a] -> [a]
 ```
 
 It is easy to define `sort` from `sortBy` (`sort = sortBy compare`). But we
 needed the typeclass for type safety of the `SortedList` interface. What to do?
-We would need to use a regular value as a type-class instance. Ooh! What may
-have sounded excentric when I first brought it up above is now exactly what we
-need!
+We would need to use a value as a type-class instance. Ooh! What may have
+sounded excentric when I first brought it up is now exactly what we need!
 
 Let's go back to type-class reflection and unravel these curious types we have
 glimpsed earlier. As I said when I discussed the type of `merge`: one property
-of type classes is that they are _canonically_ attached to a type. It may seem
+of type classes is that they are globally attached to a type. It may seem
 to render `sortBy` impossible: if I use `sortBy myOrd :: [a]->[a]` and `sortBy
 myOtherOrd :: [a]->[a]` on the same type, then I am creating two different
 instances of `Ord a`. This is forbidden.
 
-So what, if, instead, we created an _entirely new_ type each time we need an
+So what if, instead, we created an _entirely new_ type each time we need an
 order for `a`. Something like
 ```haskell
 newtype ReflectedOrd a = ReflectOrd a
@@ -166,8 +176,8 @@ one `newtype` once and for all, with an additional parameter.
 
 > newtype ReflectedOrd s a = ReflectOrd a
 
-Now, we only have to create a new parameter `s` at each `sortBy` call. This is
-done like this:
+Now, we only have to create a new parameter `s` locally at each `sortBy`
+call. This is done like this:
 
 ```haskell
 reify :: (forall s. …) -> …
@@ -176,28 +186,27 @@ reify :: (forall s. …) -> …
 What is happening here? Reify takes an argument which works for _any_ `s`. In
 particular, if every time we called `reify` we were to actually use a different
 `s` then the program would be correctly typed. Of course, we're not actually
-creating types. But the type checker must behave just as if we were! For
-instance if you were to call `reify (reify x)` then `x` would have two distinct
-parameters `s1` and `s2`: `s1` and `s2` behave as names for two different
-types. Crucially for us, this makes `ReflectOrd s1 a` and `ReflectOrd s2 a` two
-distinct types. This is called a [rank 2
-quantification](https://wiki.haskell.org/Rank-N_types).
+creating types. It is safe to reason just as if we were! For instance if you
+were to call `reify (reify x)` then `x` would have two distinct parameters `s1`
+and `s2`: `s1` and `s2` behave as names for two different types. Crucially for
+us, this makes `ReflectOrd s1 a` and `ReflectOrd s2 a` two distinct types. This
+is called a [rank 2 quantification](https://wiki.haskell.org/Rank-N_types).
 
 In order to have a single `reify` function, rather than one for every
 type-class, the `reflection` package introduces a generic type class so that you
 have:
 ```haskell
-reify :: forall e r. e -> (forall s. Reifies s e => Proxy s -> r) -> r
+reify :: forall d r. d -> (forall s. Reifies s e => Proxy s -> r) -> r
 ```
-Think of `e` as an _dictionary_ for `Ord`, and `Reifies s e` as a way to retrieve
+Think of `d` as a _dictionary_ for `Ord`, and `Reifies s d` as a way to retrieve
 that dictionary. The `Proxy s` is only there to satisfy the type-checker, which
 would otherwise complain that `s` does not appear anywhere. To reiterate: we can
-read `s` as a unique, dynamically generated type which is valid only in the
+read `s` as a unique generated type which is valid only in the
 scope of the `reify` function. For completeness, here is the the `Reifies` type
-class, which just gives us back our `e`:
+class, which just gives us back our `d`:
 ```haskell
-class Reifies s a | s -> a where
-  reflect :: proxy s -> e
+class Reifies s d | s -> d where
+  reflect :: proxy s -> d
 ```
 
 Sorting with reflection
@@ -227,12 +236,12 @@ is, using `Reifies`.
 
 Notice that because of the `Reifies` on the left of the instances GHC does not
 know that it will for sure terminate during typeclass resolution (hence the use
-of `UndecidableInstances`). However canonicity is ensured: these typeclass are,
-by definition, the only way to have an `Ord` instances on the `ReflectedOrd`
+of `UndecidableInstances`). However these are indeed global instances: by
+definition, they the only way to have an `Ord` instances on the `ReflectedOrd`
 type! Otherwise GHC would complain!
 
-And just like that, we are about done: if we `reify` a `ReifiedOrd a`, we have a
-scoped instance of `Ord (ReflectedOrd s a)` (for some dynamically generated
+We are about done: if we `reify` a `ReifiedOrd a`, we have a
+scoped instance of `Ord (ReflectedOrd s a)` (for some locally generated
 `s`). To sort our list, we simply need to convert between `[a]` and
 `ReflectedOrd s a`.
 
@@ -263,10 +272,9 @@ Wrap up & further reading
 We've reached the end of our journey. And we've seen along the way that we can
 enjoy the safety of type classes, which makes it safe to write function like
 `merge` in Haskell, while still having the flexibility to instantiate the type
-class from a dynamic arguments, such as options from the command line. Since
-type-class instances are canonically attached to types, such dynamic instances
-must come with dynamically generated types. This is what type class reflection
-is all about.
+class from a function argument, such as options from the command line. Since
+type-class instances are global, such local instances are defined globally for
+locally generated types. This is what type class reflection is all about.
 
 If you want to delve deeper into the subject of type-class reflection, let me,
 as I'm wrapping up this tutorial, leave you with a few pointers to further
