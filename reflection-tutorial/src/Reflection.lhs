@@ -91,11 +91,11 @@ decide to take the union of two sorted list:
 >           True-> unsafeCons a (merge l right)
 >           False -> unsafeCons b (merge left r)
 >
-> -- * Find helper functions below
+> -- * Helper functions below
 >
 > -- | 'unsafeCons' adds an element in front of the list. It is the burden of
-> -- | the programmer to ensure that this element is smaller than (or equal to)
-> -- | all the elements of the list.
+> --   the programmer to ensure that this element is smaller than (or equal to)
+> --   all the elements of the list.
 > unsafeCons :: a -> SortedList a -> SortedList a
 > unsafeCons a (Sorted l) = Sorted (a:l)
 >
@@ -120,7 +120,7 @@ If it weren't for you meddling type classes
 ===========================================
 
 That's it! we are done writing unsafe code. We can sort lists with the
-`SortedList` interface: we simply need to split the list in two parts sort said
+`SortedList` interface: we simply need to split the list in two parts, sort said
 parts, then merge them (you will have recognised [merge
 sort](https://en.wikipedia.org/wiki/Merge_sort)).
 
@@ -154,10 +154,10 @@ glimpsed earlier. As I said when I discussed the type of `merge`: one property
 of type classes is that they are _canonically_ attached to a type. It may seem
 to render `sortBy` impossible: if I use `sortBy myOrd :: [a]->[a]` and `sortBy
 myOtherOrd :: [a]->[a]` on the same type, then I am creating two different
-instances of `Ord a`. This is certainly not canonical.
+instances of `Ord a`. This is forbidden.
 
-So what, if, instead, we created an _entirely new_ type each time we create an
-instance for `a`. Something like
+So what, if, instead, we created an _entirely new_ type each time we need an
+order for `a`. Something like
 ```haskell
 newtype ReflectedOrd a = ReflectOrd a
 ```
@@ -166,20 +166,31 @@ one `newtype` once and for all, with an additional parameter.
 
 > newtype ReflectedOrd s a = ReflectOrd a
 
-We now how only to create a new parameter `s` at each `sortBy` call. And if you
-are familiar with the [`ST` monad][ST], you already know the solution: rank 2
-quantification. That is, we need a function of the form:
+Now, we only have to create a new parameter `s` at each `sortBy` call. This is
+done like this:
+
 ```haskell
 reify :: (forall s. …) -> …
 ```
+
+What is happening here? Reify takes an argument which works for _any_ `s`. In
+particular, if every time we called `reify` we were to actually use a different
+`s` then the program would be correctly typed. Of course, we're not actually
+creating types. But the type checker must behave just as if we were! For
+instance if you were to call `reify (reify x)` then `x` would have two distinct
+parameters `s1` and `s2`: `s1` and `s2` behave as names for two different
+types. Crucially for us, this makes `ReflectOrd s1 a` and `ReflectOrd s2 a` two
+distinct types. This is called a [rank 2
+quantification](https://wiki.haskell.org/Rank-N_types).
+
 In order to have a single `reify` function, rather than one for every
 type-class, the `reflection` package introduces a generic type class so that you
 have:
 ```haskell
 reify :: forall e r. e -> (forall s. Reifies s e => Proxy s -> r) -> r
 ```
-Think of `e` as an _evidence_ for `Ord`, and `Reifies s e` as a way to retrieve
-that evidence. The `Proxy s` is only there to satisfy the type-checker, which
+Think of `e` as an _dictionary_ for `Ord`, and `Reifies s e` as a way to retrieve
+that dictionary. The `Proxy s` is only there to satisfy the type-checker, which
 would otherwise complain that `s` does not appear anywhere. To reiterate: we can
 read `s` as a unique, dynamically generated type which is valid only in the
 scope of the `reify` function. For completeness, here is the the `Reifies` type
@@ -193,7 +204,7 @@ Sorting with reflection
 =======================
 
 All that's left to do is to use reflection to give an `Ord` instance to
-`ReflectedOrd`. We need an evidence for `Ord`: in order to build an `Ord`
+`ReflectedOrd`. We need an dictionary for `Ord`: in order to build an `Ord`
 instance, we need an equality function for the `Eq` subclass, and a comparison
 function for the instance proper:
 
@@ -201,9 +212,9 @@ function for the instance proper:
 >   reifiedEq :: a -> a -> Bool,
 >   reifiedCompare :: a -> a -> Ordering }
 
-Given an evidence of type `ReifiedOrd`, we can define instances for `Eq` and
+Given an dictionary of type `ReifiedOrd`, we can define instances for `Eq` and
 `Ord` of `ReflectedOrd`. But since type-class instances only take type-class
-instances as an argument, we need to provide the evidence as a type class. That
+instances as an argument, we need to provide the dictionary as a type class. That
 is, using `Reifies`.
 
 > instance Reifies s (ReifiedOrd a) => Eq (ReflectedOrd s a) where
@@ -228,7 +239,7 @@ scoped instance of `Ord (ReflectedOrd s a)` (for some dynamically generated
 > sortBy :: (a->a->Ordering) -> [a] -> [a]
 > sortBy ord l =
 >   reify (fromCompare ord) $ \ p ->
->     fmap unreflectOrd . sort . fmap (reflectOrd p) $ l
+>     map unreflectOrd . sort . map (reflectOrd p) $ l
 >
 > -- * Helper functions below
 >
@@ -239,8 +250,8 @@ scoped instance of `Ord (ReflectedOrd s a)` (for some dynamically generated
 > unreflectOrd :: ReflectedOrd s a -> a
 > unreflectOrd (ReflectOrd a) = a
 >
-> -- | Creates a `ReifiedOrd` with an comparison function. The equality function
-> -- | is deduced from the comparison.
+> -- | Creates a `ReifiedOrd` with a comparison function. The equality function
+> --   is deduced from the comparison.
 > fromCompare :: (a -> a -> Ordering) -> ReifiedOrd a
 > fromCompare ord = ReifiedOrd {
 >   reifiedEq = \x y -> ord x y == EQ,
@@ -250,10 +261,10 @@ Wrap up & further reading
 =========================
 
 We've reached the end of our journey. And we've seen along the way that we can
-enjoy the safety of type class, which makes it safe to write function like
+enjoy the safety of type classes, which makes it safe to write function like
 `merge` in Haskell, while still having the flexibility to instantiate the type
 class from a dynamic arguments, such as options from the command line. Since
-type class instances are canonically attached to types, such dynamic instances
+type-class instances are canonically attached to types, such dynamic instances
 must come with dynamically generated types. This is what type class reflection
 is all about.
 
@@ -284,4 +295,3 @@ material:
 [reflection-impl-tutorial]: https://www.schoolofhaskell.com/user/thoughtpolice/using-reflection
 [reflection-wiegley-use-case]: http://newartisans.com/2017/02/a-case-of-reflection/
 [coercible-talk]: https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell
-[ST]: https://www.stackage.org/haddock/lts-9.0/base-4.9.1.0/Control-Monad-ST.html
