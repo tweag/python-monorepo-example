@@ -84,37 +84,18 @@ What about longer lists though? We could go about it in several ways. Let's
 decide to take the union of two sorted list:
 
 > merge :: Ord a => SortedList a -> SortedList a -> SortedList a
-> merge left0 right0 = doMerge left0 (smallest left0) right0 (smallest right0)
+> merge (Sorted left0) (Sorted right0) = Sorted $ mergeList left0 right0
 >   where
->     -- doMerge ::
->     --    SortedList a -> ViewSmallest a ->
->     --    SortedList a -> ViewSmallest a -> SortedList a
->     --
->     -- Both arguments are passed in view form, for inspection, and in list form
->     -- to be returned and for recursive calls.
->     doMerge _ Empty right _ = right
->     doMerge left _ _ Empty = left
->     doMerge left (Smallest a l) right (Smallest b r) =
->         case a <= b of
->           True -> unsafeCons a (merge l right)
->           False -> unsafeCons b (merge left r)
->
-> -- * Helper functions below
->
-> -- | 'unsafeCons' adds an element in front of the list. It is the burden of
-> --   the programmer to ensure that this element is smaller than (or equal to)
-> --   all the elements of the list.
-> unsafeCons :: a -> SortedList a -> SortedList a
-> unsafeCons a (Sorted l) = Sorted (a:l)
->
-> -- | 'smallest' and 'ViewSmallest' help pattern-matching on a sorted list.
-> data ViewSmallest a
->   = Smallest a (SortedList a)
->   | Empty
->
-> smallest :: SortedList a -> ViewSmallest a
-> smallest (Sorted (a:l)) = Smallest a (Sorted l)
-> smallest (Sorted []) = Empty
+>     -- 'mergeList l1 l2' returns a sorted permutation of 'l1++l2' provided
+>     -- that 'l1' and 'l2' are sorted.
+>     mergeList :: Ord a => [a] -> [a] -> [a]
+>     mergeList [] right = right
+>     mergeList left [] = left
+>     mergeList left@(a:l) right@(b:r) =
+>         if a <= b then
+>           a : (mergeList l right)
+>         else
+>           b : (mergeList left r)
 
 We _need_ `Ord a` to hold in order to define `merge`. Indeed, type classes are
 _global_ and coherent: there is only one `Ord a` instance, and it is
