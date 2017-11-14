@@ -120,7 +120,7 @@ We _need_ `Ord a` to hold in order to define `merge`. Indeed, type classes are
 _global_ and coherent: there is only one `Ord a` instance, and it is
 _guaranteed_ that `merge` always uses the same comparison function for `a`. This
 enforces that if `Ord a` holds, then `SortedList a` represents lists of `a`
-sorted according to the order defined by the unique `Ord a` instance:. In
+sorted according to the order defined by the unique `Ord a` instance. In
 contrast, a function argument defining an order is _local_ to this function
 call. So if `merge` were to take the ordering as an extra argument, we could
 change the order for each call of `merge`; we couldn't even state that
@@ -161,10 +161,10 @@ sounded excentric when I first brought it up is now exactly what we need!
 
 Let's go back to type-class reflection and unravel these curious types we have
 glimpsed earlier. As I said when I discussed the type of `merge`: one property
-of type classes is that they are globally attached to a type. It may seem
-to render `sortBy` impossible: if I use `sortBy myOrd :: [a]->[a]` and `sortBy
-myOtherOrd :: [a]->[a]` on the same type, then I am creating two different
-instances of `Ord a`. This is forbidden.
+of type classes is that they are globally attached to a type. It may seem to
+impossible to `sortBy` in terms of `sort`: if I use `sortBy myOrd :: [a]->[a]`
+and `sortBy myOtherOrd :: [a]->[a]` on the same type, then I am creating two
+different instances of `Ord a`. This is forbidden.
 
 So what if, instead, we created an _entirely new_ type each time we need an
 order for `a`. Something like
@@ -196,7 +196,7 @@ In order to have a single `reify` function, rather than one for every
 type-class, the `reflection` package introduces a generic type class so that you
 have:
 ```haskell
-reify :: forall d r. d -> (forall s. Reifies s e => Proxy s -> r) -> r
+reify :: forall d r. d -> (forall s. Reifies s d => Proxy s -> r) -> r
 ```
 Think of `d` as a _dictionary_ for `Ord`, and `Reifies s d` as a way to retrieve
 that dictionary. The `Proxy s` is only there to satisfy the type-checker, which
@@ -213,7 +213,7 @@ Sorting with reflection
 =======================
 
 All that's left to do is to use reflection to give an `Ord` instance to
-`ReflectedOrd`. We need an dictionary for `Ord`: in order to build an `Ord`
+`ReflectedOrd`. We need a dictionary for `Ord`: in order to build an `Ord`
 instance, we need an equality function for the `Eq` subclass, and a comparison
 function for the instance proper:
 
@@ -221,7 +221,7 @@ function for the instance proper:
 >   reifiedEq :: a -> a -> Bool,
 >   reifiedCompare :: a -> a -> Ordering }
 
-Given an dictionary of type `ReifiedOrd`, we can define instances for `Eq` and
+Given a dictionary of type `ReifiedOrd`, we can define instances for `Eq` and
 `Ord` of `ReflectedOrd`. But since type-class instances only take type-class
 instances as an argument, we need to provide the dictionary as a type class. That
 is, using `Reifies`.
@@ -237,7 +237,7 @@ is, using `Reifies`.
 Notice that because of the `Reifies` on the left of the instances GHC does not
 know that it will for sure terminate during typeclass resolution (hence the use
 of `UndecidableInstances`). However these are indeed global instances: by
-definition, they the only way to have an `Ord` instances on the `ReflectedOrd`
+definition, they are the only way to have an `Ord` instances on the `ReflectedOrd`
 type! Otherwise GHC would complain!
 
 We are about done: if we `reify` a `ReifiedOrd a`, we have a
@@ -288,10 +288,10 @@ material:
   representation dependent, implementation of the library
 - John Wiegley [discusses an application of
   reflection][reflection-wiegly-use-case] in relation with QuickCheck.
-- You may have noticed, in the definition of `sortBy`, that we `fmap` the
+- You may have noticed, in the definition of `sortBy`, that we `map` the
   `reflectOrd` and `unreflectOrd` in order to convert between `a` and
   `ReflectedOrd s a`. However, while, `reflectOrd` and `unreflectOrd`, have no
-  computational cost, using them in combination with `fmap` will traverse the
+  computational cost, using them in combination with `map` will traverse the
   list. If you are dissatified with this situation, you will have to learn about
   the
   [Coercible](https://www.stackage.org/haddock/lts-9.0/base-4.9.1.0/Data-Coerce.html)
