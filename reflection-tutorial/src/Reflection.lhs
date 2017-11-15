@@ -21,19 +21,9 @@ But first:
 What is reflection?
 ===================
 
-[Type-Class reflection][reflection-package] is a mechanism to use a value as a
-type-class instance. The types are a little puzzling at first, but by the end of
-this tutorial, they will make perfect sense:
-
-```haskell
-class Reifies s a | s -> a where
-  reflect :: proxy s -> a
-reify :: forall a r. a -> (forall s. Reifies s a => Proxy s -> r) -> r
-```
-
-We will come back to these types later. The important thing, for the moment, is
-that `Reifies` and `reify` are the entirety of the interface for type-class
-reflection: we only have to understand three lines.
+Type-class reflection is a mechanism to use a value as a type-class
+instance. There is a [package on Hackage][reflection-package], implementing
+type-class reflection for GHC, which I will use for this tutorial.
 
 Literate Haskell
 ================
@@ -202,8 +192,10 @@ class Reifies s d | s -> d where
   reflect :: proxy s -> d
 ```
 
-The `| s -> d` part is called a [functional dependency](https://wiki.haskell.org/Functional_dependencies).
-It is used to help resolve type-class instances; we won't have to think about it.
+The `| s -> d` part is called a [functional
+dependency](https://wiki.haskell.org/Functional_dependencies).  It is used by
+GHC to figure out which type-class instance to use; we won't have to think about
+it.
 
 Sorting with reflection
 =======================
