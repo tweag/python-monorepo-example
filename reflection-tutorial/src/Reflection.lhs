@@ -130,10 +130,9 @@ needed the typeclass for type safety of the `SortedList` interface. What to do?
 We would need to use a value as a type-class instance. Ooh! What may have
 sounded excentric when I first brought it up is now exactly what we need!
 
-Let's go back to type-class reflection and unravel these curious types we have
-glimpsed earlier. As I said when I discussed the type of `merge`: one property
-of type classes is that they are globally attached to a type. It may seem to
-impossible to `sortBy` in terms of `sort`: if I use `sortBy myOrd :: [a]->[a]`
+As I said when I discussed the type of `merge`: one property
+of type classes is that they are globally attached to a type. It may seem
+impossible to implement `sortBy` in terms of `sort`: if I use `sortBy myOrd :: [a]->[a]`
 and `sortBy myOtherOrd :: [a]->[a]` on the same type, then I am creating two
 different instances of `Ord a`. This is forbidden.
 
@@ -164,7 +163,7 @@ reifyOrd :: (forall s. Ord (Reflected Ord s a) => …) -> …
 What is happening here? The `reifyOrd` function takes an argument which works
 for _any_ `s`. In particular, if every time we called `reifyOrd` we were to
 actually use a different `s` then the program would be correctly typed. Of
-course, we're not actually creating types. It is safe to reason just as if we
+course, we're not actually creating types: but it is safe to reason just as if we
 were! For instance if you were to call `reifyOrd (reifyOrd x)` then `x` would
 have two distinct parameters `s1` and `s2`: `s1` and `s2` behave as names for
 two different types. Crucially for us, this makes `ReflectOrded s1 a` and
