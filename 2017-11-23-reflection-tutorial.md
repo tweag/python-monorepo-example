@@ -1,5 +1,5 @@
 ---
-title: Type-class reflection: a tutorial
+title: "Type-class reflection: a tutorial"
 author: Arnaud Spiwack
 featured: yes
 ---
