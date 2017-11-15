@@ -313,5 +313,5 @@ to further material:
     dissatified with this situation, you will have to learn about the
     [Coercible](https://www.stackage.org/haddock/lts-9.0/base-4.9.1.0/Data-Coerce.html)
     type class. I would start with this [video from Simon Peyton
-    Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell)
+    Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell).
 
