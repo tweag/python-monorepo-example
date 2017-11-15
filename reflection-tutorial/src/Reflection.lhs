@@ -28,8 +28,8 @@ type-class reflection for GHC, which I will use for this tutorial.
 Literate Haskell
 ================
 
-This being a literate Haskell file, so that you can easily copy paste the code
-and start playing, there is a bit of boilerplate to get out of the way first.
+This blog post was generated from literate Haskell source, which you can find
+[here][lhs-sources].
 
 > {-# LANGUAGE FlexibleContexts #-}
 > {-# LANGUAGE ScopedTypeVariables #-}
@@ -281,3 +281,4 @@ material:
 [reflection-impl-tutorial]: https://www.schoolofhaskell.com/user/thoughtpolice/using-reflection
 [reflection-wiegley-use-case]: http://newartisans.com/2017/02/a-case-of-reflection/
 [coercible-talk]: https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell
+[lhs-sources]: https://gist.github.com/aspiwack/4f1e0cd9847c97aa46e822bc286b5382
