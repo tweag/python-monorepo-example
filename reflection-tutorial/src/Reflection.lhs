@@ -1,12 +1,12 @@
 ---
-title: Type Class reflection: a tutorial
+title: Type-class reflection: a tutorial
 author: Arnaud Spiwack
 featured: yes
 ---
 
 Among our tools, at Tweag I/O, is [type-class
 reflection][reflection-package]. We don't reach for it often, but it can be very
-useful.  Reflection is rather little known, and when it is, it is often spoken
+useful. Reflection is rather little known, and when it is, it is often spoken
 of with a hint of fear.
 
 In this post, I want to convince you that reflection is not hard and that you
