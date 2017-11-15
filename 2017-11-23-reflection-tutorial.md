@@ -23,11 +23,15 @@ But first:
 What is reflection?
 ===================
 
-Type-class reflection is a mechanism to use a value as a type-class
-instance. There is a [package on
+Type-class reflection is an extension of Haskell which makes it
+possible to use a value as a type-class instance. There is a [package
+on
 Hackage](https://www.stackage.org/haddock/lts-9.0/reflection-2.1.2/Data-Reflection.html),
 implementing type-class reflection for GHC, which I will use for this
-tutorial.
+tutorial. Type-class reflection being an extension of Haskell (that
+is, it can't be defined from other Haskell features), this
+implementation is GHC-specific and will probably not work with another
+compiler.
 
 Literate Haskell
 ================
