@@ -156,25 +156,34 @@ Except that we can't do a `newtype` every time we call `sortBy`. So let's make
 one `newtype` once and for all, with an additional parameter.
 
 > newtype ReflectedOrd s a = ReflectOrd a
+>
+> -- | Like `ReflectOrd` but takes a `Proxy` argument to help GHC with unification
+> reflectOrd :: Proxy s -> a -> ReflectedOrd s a
+> reflectOrd _ a = ReflectOrd a
+>
+> unreflectOrd :: ReflectedOrd s a -> a
+> unreflectOrd (ReflectOrd a) = a
 
 Now, we only have to create a new parameter `s` locally at each `sortBy`
 call. This is done like this:
 
 ```haskell
-reify :: (forall s. …) -> …
+reifyOrd :: (forall s. Ord (Reflected Ord s a) => …) -> …
 ```
 
-What is happening here? Reify takes an argument which works for _any_ `s`. In
-particular, if every time we called `reify` we were to actually use a different
-`s` then the program would be correctly typed. Of course, we're not actually
-creating types. It is safe to reason just as if we were! For instance if you
-were to call `reify (reify x)` then `x` would have two distinct parameters `s1`
-and `s2`: `s1` and `s2` behave as names for two different types. Crucially for
-us, this makes `ReflectOrd s1 a` and `ReflectOrd s2 a` two distinct types. This
-is called a [rank 2 quantification](https://wiki.haskell.org/Rank-N_types).
+What is happening here? The `reifyOrd` function takes an argument which works
+for _any_ `s`. In particular, if every time we called `reifyOrd` we were to
+actually use a different `s` then the program would be correctly typed. Of
+course, we're not actually creating types. It is safe to reason just as if we
+were! For instance if you were to call `reifyOrd (reifyOrd x)` then `x` would
+have two distinct parameters `s1` and `s2`: `s1` and `s2` behave as names for
+two different types. Crucially for us, this makes `ReflectOrded s1 a` and
+`ReflectOrded s2 a` two distinct types. Hence their `Ord` instance can be
+different. This is called a [rank 2
+quantification](https://wiki.haskell.org/Rank-N_types).
 
-In order to have a single `reify` function, rather than one for every
-type-class, the `reflection` package introduces a generic type class so that you
+In order to export a single `reify` function, rather than one for every
+type class, the `reflection` package introduces a generic type class so that you
 have:
 ```haskell
 reify :: forall d r. d -> (forall s. Reifies s d => Proxy s -> r) -> r
@@ -230,15 +239,6 @@ scoped instance of `Ord (ReflectedOrd s a)` (for some locally generated
 > sortBy ord l =
 >   reify (fromCompare ord) $ \ p ->
 >     map unreflectOrd . sort . map (reflectOrd p) $ l
->
-> -- * Helper functions below
->
-> -- | Like `ReflectOrd` but takes a `Proxy` argument to help GHC with unification
-> reflectOrd :: Proxy s -> a -> ReflectedOrd s a
-> reflectOrd _ a = ReflectOrd a
->
-> unreflectOrd :: ReflectedOrd s a -> a
-> unreflectOrd (ReflectOrd a) = a
 >
 > -- | Creates a `ReifiedOrd` with a comparison function. The equality function
 > --   is deduced from the comparison.
