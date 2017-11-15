@@ -185,19 +185,25 @@ quantification](https://wiki.haskell.org/Rank-N_types).
 In order to export a single `reify` function, rather than one for every
 type class, the `reflection` package introduces a generic type class so that you
 have:
+
 ```haskell
 reify :: forall d r. d -> (forall s. Reifies s d => Proxy s -> r) -> r
 ```
+
 Think of `d` as a _dictionary_ for `Ord`, and `Reifies s d` as a way to retrieve
 that dictionary. The `Proxy s` is only there to satisfy the type-checker, which
 would otherwise complain that `s` does not appear anywhere. To reiterate: we can
 read `s` as a unique generated type which is valid only in the
 scope of the `reify` function. For completeness, here is the the `Reifies` type
 class, which just gives us back our `d`:
+
 ```haskell
 class Reifies s d | s -> d where
   reflect :: proxy s -> d
 ```
+
+The `| s -> d` part is called a [functional dependency](https://wiki.haskell.org/Functional_dependencies).
+It is used to help resolve type-class instances; we won't have to think about it.
 
 Sorting with reflection
 =======================
