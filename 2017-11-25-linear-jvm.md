@@ -112,7 +112,7 @@ the references anymore.
 A major problem of using finalizers so profusely, is that they introduce
 undefined behavior in the presence of two garbage collectors.
 Suppose that the Java heap is crowded, the Garbage Collector of the JVM
-is desperate to kick some object outs of existence, and yet there is a
+is desperate to kick some objects out of existence, and yet there is a
 good chunk of references from Haskell-land to the Java Heap. The Haskell
 portion of the application is already done with the references, but
 there is plenty of space in the Haskell heap, and the Haskell's Garbage
@@ -126,11 +126,47 @@ the JVM will fail with an `OutOfMemory` exception.
 
 # Dynamic scopes
 
-Here we will discuss how we can force finalizers to run earlier by
-using the ResourceT monad transformer or local frames. The drawback
-of this approach is that the programmer is responsible for keeping
-scopes small enough to prevent large areas to be retained in the Java
-heap.
+Another solution is to define dynamic scopes where references are valid.
+A dynamic scope is a piece of the program traversed by the control flow
+from a well defined beginning to a well defined ending point. At the
+beginning of the scope we inject some code that declares that we are
+starting a new scope, and any local references created during the
+execution of the scope is associated to it. At the end of the scope,
+we inject some code to delete all the associated local references.
+In general, scopes are not allowed to overlap arbitrarily, but they can
+be nested.
+
+JNI offers a couple of functions `pushLocalFrame` and `popLocalFrame` to
+implement this idea. The package
+[resourcet](https://www.stackage.org/package/resourcet) is another
+option. We are still exposed to use local references after deleted, and
+to use them in threads where they are invalid, but the programmer no
+longer needs to remember to delete *individual* local references.  She
+does need to be careful of other things, though. Firstly, she has to
+remember to introduce enough scopes to always keep bounded the retained
+portion of the Java heap. And secondly, she has to make sure to not blow
+up the stack with too many nested scopes, as the following code could
+do.
+
+``` haskell
+sumIterator
+  :: Reify a
+  => J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
+  -> IO Int
+sumIterator it =
+    iteratorToStream it >>= go 0
+  where
+    go :: Int32 -> Stream (Of Int32) IO () -> IO Int32
+    go !acc s =
+      -- We create a new nested scope on every recursive call.
+      bracket_ (JNI.pushLocalFrame capacity) (JNI.popLocalFrame JNI.jnull) $ do
+        e <- next s
+        case e of
+          Left () -> return ()
+          Right (i, s) -> go (acc + i) s
+
+    capacity = ...
+```
 
 # Linear Types
 
