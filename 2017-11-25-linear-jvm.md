@@ -13,12 +13,12 @@ solution to the problem.
 
 # Unsafe bindings to Java
 
-The Java Virtual Machine offers an interface to manipulate Java objects,
-known as the Java Native Interface (JNI). This interface is available in
-C and is feasible to bind from Haskell as done in the
+The Java Virtual Machine (JVM) offers a foreign interface to manipulate
+Java objects, known as the Java Native Interface (JNI). This interface
+is available in C and is feasible to bind from Haskell as done in the
 [jni](https://www.stackage.org/package/jni) package.
 
-Because JNI makes possible to write a few mistakes that can be avoidable
+Because JNI makes possible to write a few mistakes that can be avoided
 with proper use of the type checker, a higher level wrapper interface
 is offered in the [jvm](https://www.stackage.org/package/jvm) package
 and even higher in
@@ -31,11 +31,98 @@ have been collected, and it is possible to accidentally retain large
 amounts of memory in the Java heap with references that live in the
 memory managed by Haskell.
 
+As a case of study, we offer the conversion of Java iterators to
+Haskell streams from the
+[streaming](https://www.stackage.org/package/streaming) package.
+
+``` haskell
+import Foreign.JNI
+import Language.Java as Java
+import Language.Java.Inline as Inline.
+import Streaming
+
+iteratorToStream
+  :: Reify a
+  => J ('Iface "java.util.Iterator" <> [Interp a])
+  -> IO (Stream (Of a) IO ())
+iteratorToStream itLocal = do
+    -- We make sure the iterator remains valid while we reference it.
+    it <- JNI.newGlobalRef itLocal
+    return $ Streaming.untilRight $ do
+      [Inline.java| $it.hasNext() |] >>= \case
+        False -> return (Right ())
+        True -> do
+          obj <- [Inline.java| $it.next() |]
+          Left <$> Java.reify obj
+```
+
+The input to this function is a reference to a Java iterator that
+produces object of some Java type described by `Interp a`. The output
+is a `Stream` yielding values of some type `a`. The Java objects are
+pulled from the iterator as the stream is consumed. The constraint
+`Reify a` states that we know how to convert Java objects of type
+`Interp a` to Haskell values of type `a`, and it enables our function
+to use the `reify` method to do the conversion.
+
+The above implementation of `iteratorToStream` is not deleting the
+references to Java objects that it obtains from the iterator. Does
+this constitute a leak? It depends. References in JNI can be local
+or global, and in this case the references we get from the iterator are
+local. A local reference is only valid in the thread in which it is
+created, and only for as long as the thread does not return from
+an ongoing native call (i.e. a call from Java to C or Haskell).
+If Java called into Haskell, and then Haskell invoked
+`iteratorToStream`, being local implies that the references will be
+deleted as soon as the control returns back to Java. If this doesn't
+happen for a while, then the local references can accumulate causing
+the live data on the heap to grow.
+
+A straightforward fix to this situation is to delete the reference
+after the Haskell value has been obtained.
+
+``` haskell
+    ...
+    bracket [Inline.java| $it.next() |]
+            JNI.deleteLocalRef
+            (fmap Left . Java.reify)
+```
+
+This puts the burden on the programmer to remember to delete the
+reference and to take care of not using it afterwards. Moreover,
+local references are only valid on the thread that created them,
+and therefore the programmer has to be careful to not exchange
+them with other threads.
+We endeavor next to find a way to have the compiler do check this
+checks.
+
 # Garbage Collector Finalizers
 
-Here we will discuss how finalizers do release references managed by
-Haskell, but since the Haskell GC has no pressure to collect when the
-Java Heap is full, this leads to sporadic OutOfMemory failures. 
+The solution that the `jni` package adopts for global references is
+to attach finalizers to Java references, and make the Garbage Collector
+in Haskell-land responsible for deleting them.
+Unlike local references, a global reference can be used in any thread
+and it is not destroyed when control returns to Java.
+
+Could we not deal with local references in the same way?
+This doesn't protect against the perils of using the local reference
+in a different thread, or using it in the same thread after they become
+invalid. But at least the programmer wouldn't have to remember to delete
+the references anymore.
+
+A major problem of using finalizers so profusely, is that they introduce
+undefined behavior in the presence of two garbage collectors.
+Suppose that the Java heap is crowded, the Garbage Collector of the JVM
+is desperate to kick some object outs of existence, and yet there is a
+good chunk of references from Haskell-land to the Java Heap. The Haskell
+portion of the application is already done with the references, but
+there is plenty of space in the Haskell heap, and the Haskell's Garbage
+Collector is basking in the sun with no pressure to run the finalizers
+that would delete the unused references.
+
+Sometimes, the application is lucky and the Haskell's GC runs just in
+time to delete the unused references, which lets the Java's GC clean
+the Java heap. Unfortunately, sometimes, the Haskell's GC won't run and
+the JVM will fail with an `OutOfMemory` exception.
 
 # Dynamic scopes
 
