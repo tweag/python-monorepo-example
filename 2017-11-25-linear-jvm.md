@@ -101,7 +101,14 @@ The solution that the `jni` package adopts for global references is
 to attach finalizers to Java references, and make the Garbage Collector
 in Haskell-land responsible for deleting them.
 Unlike local references, a global reference can be used in any thread
-and it is not destroyed when control returns to Java.
+and it is not destroyed when control returns to Java. In
+`iteratorToStream` we make the reference to the iterator global with
+`JNI.newGlobalRef`. This way, we know that the reference to the iterator
+remains valid while the stream is producing values. In principle, we
+don't know how many times the control flow will cross language
+boundaries before the stream is fully consumed in the calling context.
+Again, using a global reference is a practical way to ensure our
+reference remains valid throughout.
 
 Could we not deal with local references in the same way?
 This doesn't protect against the perils of using the local reference
