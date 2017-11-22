@@ -244,10 +244,12 @@ catch :: Exception e => IOL a ->. (e -> IO ()) -> IOL a
 ```
 
 This is a simpler approach with dynamic scopes because the programmer
-doesn't need to worry about inserting to little or too many scopes.
+doesn't need to worry about inserting too little or too many scopes.
 Scopes here are a device to clean up in exceptional cases without any
 concerns on when to clean up if exceptions do not occur.
 
 # Summary
 
-
+Mention the story to deal better with the iterator reference and stream finalizers.
+Discuss that Kiselyov regions can help protecting of use-after-free and use in other
+threads.
