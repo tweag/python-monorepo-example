@@ -157,8 +157,7 @@ do.
 
 ``` haskell
 sumIterator
-  :: Reify a
-  => J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
+  :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
   -> IO Int
 sumIterator it =
     iteratorToStream it >>= go 0
@@ -177,9 +176,77 @@ sumIterator it =
 
 # Linear Types
 
-Here we will devote dynamic scopes to cleanup in case of exceptions,
-and will use linear types to do prompt clean ups when exceptions do not
-occur.
+What if we used the GHC proposal for
+[linear types](https://github.com/ghc-proposals/ghc-proposals/pull/91)
+to treat our local references linearly? We restate our example with this
+approach.
+
+``` haskell
+import Foreign.JNI
+import Language.Java as Java
+import Language.Java.Inline as Inline.
+import Streaming
+
+iteratorToStream
+  :: Reify a
+  => J ('Iface "java.util.Iterator" <> [Interp a])
+  ->. IOL (Stream (Of a) IOL ())
+iteratorToStream itLocal = do
+    Unrestricted it <- JNI.newGlobalRef itLocal
+    return $ Streaming.untilRight $ do
+      [Inline.java| $it.hasNext() |] >>= \case
+        False -> return (Right ())
+        True -> do
+          obj0 <- [Inline.java| $it.next() |]
+          (obj1, Unrestricted a) <- Java.reify obj0
+          JNI.deleteLocalRef obj1
+          return a
+
+Java.reify :: J (Interp a) ->. IO (J (Interp a), Unrestricted a)
+JNI.newGlobalRef :: J ty ->. IOL (Unrestricted (J ty))
+```
+
+We are assuming that we have available a restricted form of monad
+`IOL` with the following operations.
+
+```
+return :: a ->. IOL a
+(>>=) :: IOL a ->. (a ->. IOL b) ->. IOL b
+```
+
+Provided that there are no exceptions, we get the compiler to check that
+the references to objects returned by the iterator are eventually
+deleted. Given that `obj1` must be used exactly once, it is not possible
+to forget deleting it. Using the reference after it has been deleted is
+equally forbidden by the type checker. And using a linear local
+reference in another thread is not possible either, while the operations
+on local references do not provide any means to send them to other
+threads.
+
+When there are exceptions involved, we complement the linear approach
+with a simpler form of dynamic scopes. We use a `javaCatch` primitive to
+define a scope.
+
+``` haskell
+sumIterator2
+  :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
+  ->. IOL Int
+sumIterator2 it = do
+   javaCatch (iteratorToStream it >>= Streaming.fold_ (+) 0 id)
+             someHandler
+
+javaCatch :: IOL a ->. (e -> IO ()) -> IOL a
+javaCatch io handler = do
+    JNI.pushLocalFrame capacity
+    catch io (\e -> JNI.popLocalFrame JNI.jnull >> handler e)
+
+catch :: Exception e => IOL a ->. (e -> IO ()) -> IOL a
+```
+
+This is a simpler approach with dynamic scopes because the programmer
+doesn't need to worry about inserting to little or too many scopes.
+Scopes here are a device to clean up in exceptional cases without any
+concerns on when to clean up if exceptions do not occur.
 
 # Summary
 
