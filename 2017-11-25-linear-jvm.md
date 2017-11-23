@@ -77,7 +77,12 @@ If Java called into Haskell, and then Haskell invoked
 `iteratorToStream`, being local implies that the references will be
 deleted as soon as the control returns back to Java. If this doesn't
 happen for a while, then the local references can accumulate causing
-the live data on the heap to grow.
+the live data on the heap to grow. Adding to the problem, the JVM
+can't deal very well with large and unknown amounts of local
+references. The JNI expects native calls to use only a few local
+references and expect the programmer to say in advance how many
+references will be needed. Failing to do so affects performance and
+can lead to failures.
 
 A straightforward fix to this situation is to delete the reference
 after the Haskell value has been obtained.
