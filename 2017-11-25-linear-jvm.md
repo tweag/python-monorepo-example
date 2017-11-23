@@ -233,16 +233,34 @@ define a scope.
 ``` haskell
 sumIterator2
   :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
-  ->. IOL Int
-sumIterator2 it = do
-   jcatch (iteratorToStream it >>= Streaming.fold_ (+) 0 id)
-          someHandler
+  ->. IOL Int32
+sumIterator2 it =
+   jcatch
+     (unrestrictIn32 <$> iteratorToStream it >>= Streaming.fold_ (+) 0 id)
+     someHandler
 
-jcatch :: Exception e => IOL a -> (e -> IOL ()) -> IOL a
+jcatch
+  :: Exception e
+  => IOL (Unrestricted a)
+  -> (e -> IOL (Unrestricted a))
+  -> IOL (Unrestricted a)
 jcatch io handler = do
     JNI.pushLocalFrame capacity
-    lcatch (io >> JNI.popLocalFrame JNI.jnull)
-           (\e -> JNI.popLocalFrame JNI.jnull >> handler e)
+    liftIO $ do
+      a <- catch
+        (runIOL $ do
+           ua <- io
+           () <- JNI.popLocalFrame JNI.jnull
+           return ua
+        )
+        (\e -> runIOL $ do
+          () <- JNI.popLocalFrame JNI.jnull
+          handler e
+        )
+      return $ Unrestricted a
+
+-- | A primitive possibly coming from a base library
+unrestrictInt32 :: Int32 ->. Unrestricted Int32
 ```
 
 These dynamic scopes are simpler because the programmer
