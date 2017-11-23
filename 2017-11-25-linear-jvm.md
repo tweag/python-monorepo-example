@@ -92,7 +92,7 @@ reference and to take care of not using it afterwards. Moreover,
 local references are only valid on the thread that created them,
 and therefore the programmer has to be careful to not exchange
 them with other threads.
-We endeavor next to find a way to have the compiler do this
+We endeavor next to find a way to have the compiler do these
 checks.
 
 ## Garbage Collector Finalizers
