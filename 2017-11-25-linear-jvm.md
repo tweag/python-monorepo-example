@@ -11,7 +11,7 @@ In this post we will survey the situation for writing Haskell
 bindings to Java, and we will show how linear types enable a new
 solution to the problem.
 
-# Unsafe bindings to Java
+## Unsafe bindings to Java
 
 The Java Virtual Machine (JVM) offers a foreign interface to manipulate
 Java objects, known as the Java Native Interface (JNI). This interface
@@ -95,7 +95,7 @@ them with other threads.
 We endeavor next to find a way to have the compiler do this
 checks.
 
-# Garbage Collector Finalizers
+## Garbage Collector Finalizers
 
 The solution that the `jni` package adopts for global references is
 to attach finalizers to Java references, and make the Garbage Collector
@@ -131,7 +131,7 @@ time to delete the unused references, which lets the Java's GC clean
 the Java heap. Unfortunately, sometimes, the Haskell's GC won't run and
 the JVM will fail with an `OutOfMemory` exception.
 
-# Dynamic scopes
+## Dynamic scopes
 
 Another solution is to define dynamic scopes where references are valid.
 A dynamic scope is a piece of the program traversed by the control flow
@@ -174,7 +174,7 @@ sumIterator it =
     capacity = ...
 ```
 
-# Linear Types
+## Linear Types
 
 What if we used the GHC proposal for
 [linear types](https://github.com/ghc-proposals/ghc-proposals/pull/91)
@@ -248,7 +248,7 @@ doesn't need to worry about inserting too little or too many scopes.
 Scopes here are a device to clean up in exceptional cases without any
 concerns on when to clean up if exceptions do not occur.
 
-# Summary
+## Summary
 
 Mention the story to deal better with the iterator reference and stream finalizers.
 Discuss that Kiselyov regions can help protecting of use-after-free and use in other
