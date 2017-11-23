@@ -166,9 +166,9 @@ sumIterator it =
     go !acc s =
       -- We create a new nested scope on every recursive call.
       bracket_ (JNI.pushLocalFrame capacity) (JNI.popLocalFrame JNI.jnull) $ do
-        e <- next s
+        e <- Streaming.next s
         case e of
-          Left () -> return ()
+          Left () -> return acc
           Right (i, s) -> go (acc + i) s
 
     capacity = ...
