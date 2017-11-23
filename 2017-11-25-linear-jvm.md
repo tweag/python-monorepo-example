@@ -3,44 +3,57 @@ title: Binding to Java with linear types
 author: Facundo Domínguez and Mathieu Boespflug
 ---
 
-When two garbaged-collected languages share references to the same
-values, the garbage collectors need to be careful to not collect
-these values while the other language has references to it.
-
-We have discussed binding to Java in earlier
-[posts](http://www.tweag.io/posts/2017-09-15-inline-java-tutorial.html),
-and now we head straight into the problem of managing our
-references to Java objects, where linear types enable a new
-solution.
+Foreign function interfaces (FFI) allow fast interop between
+languages. Unlike other approaches, like performing RPC calls between
+parts of a program in each language, using the FFI allows for all
+manner of data to be shared between each language runtime, hence
+reducing memory consumption and obviating marshalling costs. But when
+two garbaged-collected languages share references to the same values,
+each garbage collector needs to be careful to not collect these values
+while the other language has references to them. This is a problem we
+ran into both when building [HaskellR][haskellr]
+and [inline-java][inline-java]. In this post, we'll survey this very
+generic problem in all fast language interop. Bonus: we'll show you
+how linear types can help solve the problem safely.
 
 ## Unsafe bindings to Java
 
-The Java Virtual Machine (JVM) offers a foreign interface to manipulate
-Java objects, known as the Java Native Interface (JNI). This interface
-is available in C and is feasible to bind from Haskell as done in the
-[jni](https://www.stackage.org/package/jni) package.
+The Java Virtual Machine (JVM) offers a foreign interface to
+manipulate Java objects, known as the Java Native Interface (JNI).
+This is a C interface, which we can readily bind in Haskell
+using [inline-c][inline-c] or similar. This is what the
+ [jni](https://www.stackage.org/package/jni) package does.
 
-Because JNI makes possible to write a few mistakes that can be avoided
-with proper use of the type checker, a higher level wrapper interface
-is offered in the [jvm](https://www.stackage.org/package/jvm) package
-and even higher in
-[inline-java](https://www.stackage.org/package/inline-java).
+The JNI is a low-level interface that is painful to use. No programmer
+wants to invoke Java methods through the JNI using stringly typed
+class names, method names and argument types. Doing so is very
+error-prone and verbose. So we built higher-level abstractions on
+top, [jvm][jvm] and [inline-java][inlin-java], that run every method
+invocation through the Java type checker as well as the Haskell type
+checker. Think of `inline-java` as a pretty good typo detector.
 
-With `inline-java` many of the interfacing errors that could cause the
-program to crash or fail are caught at build time, but a few remain.
-Notably, it is possible to use references to Java objects after they
-have been collected, and it is possible to accidentally retain large
-amounts of memory in the Java heap with references that live in the
-memory managed by Haskell.
+[jvm]: https://www.stackage.org/package/jvm
+[inline-java]: https://www.stackage.org/package/inline-java
 
-As a case of study, we offer the conversion of Java iterators to
-Haskell streams from the
-[streaming](https://www.stackage.org/package/streaming) package.
+In fact, `inline-java` does even more than that. It checks that
+Haskell types and Java types line up. It catches at compile time many
+interfacing bugs that could cause the program to crash or fail, but
+a few remain. Notably,
+
+* it is possible to use references to Java objects after they have
+been collected, and
+* it is possible to accidentally retain large amounts of memory in the
+Java heap with references that live in the memory managed by Haskell.
+
+Here's a case study: the conversion of Java `Iterator`s to Haskell
+`Stream`s (as defined in the [streaming][streaming] package).
+
+[streaming]: https://www.stackage.org/package/streaming
 
 ``` haskell
 import Foreign.JNI
 import Language.Java as Java
-import Language.Java.Inline as Inline.
+import Language.Java.Inline
 import Streaming
 
 iteratorToStream
@@ -59,7 +72,7 @@ iteratorToStream itLocal = do
 ```
 
 The input to this function is a reference to a Java iterator that
-produces object of some Java type described by `Interp a`. The output
+produces an object of some Java type described by `Interp a`. The output
 is a `Stream` yielding values of some type `a`. The Java objects are
 pulled from the iterator as the stream is consumed. The constraint
 `Reify a` states that we know how to convert Java objects of type
@@ -76,7 +89,7 @@ an ongoing native call (i.e. a call from Java to C or Haskell).
 If Java called into Haskell, and then Haskell invoked
 `iteratorToStream`, being local implies that the references will be
 deleted as soon as the control returns back to Java. If this doesn't
-happen for a while, then the local references can accumulate causing
+happen for a while, then the local references can accumulate, causing
 the live data on the heap to grow. Adding to the problem, the JVM
 can't deal very well with large and unknown amounts of local
 references. The JNI expects native calls to use only a few local
@@ -90,22 +103,25 @@ after the Haskell value has been obtained.
 ``` haskell
     ...
     bracket [Inline.java| $it.next() |]
-            JNI.deleteLocalRef
-            (fmap Left . Java.reify)
+	        JNI.deleteLocalRef
+            (\next -> Left <$> Java.reify next)
 ```
 
-This puts the burden on the programmer to remember to delete the
-reference and to take care of not using it afterwards. Moreover,
-local references are only valid on the thread that created them,
-and therefore the programmer has to be careful to not exchange
-them with other threads.
-We endeavor next to find a way to have the compiler do these
-checks.
+There are two problems with this approach:
+
+* this puts the burden on the programmer to remember to delete the
+  reference and to be careful not to use it afterwards (or risk
+  a segfault). Moreover,
+* local references are only valid on the thread that created them, so
+  the programmer has to be careful to not exchange them with other
+  threads.
+
+Could we possibly ask the compiler to perform these checks?
 
 ## Garbage Collector Finalizers
 
 The solution that the `jni` package adopts for global references is
-to attach finalizers to Java references, and make the Garbage Collector
+to attach finalizers to Java references, and make the GC
 in Haskell-land responsible for deleting them.
 Unlike local references, a global reference can be used in any thread
 and it is not destroyed when control returns to Java. In
@@ -117,11 +133,11 @@ boundaries before the stream is fully consumed in the calling context.
 Again, using a global reference is a practical way to ensure our
 reference remains valid throughout.
 
-Could we not deal with local references in the same way?
-This doesn't protect against the perils of using the local reference
-in a different thread, or using it in the same thread after they become
-invalid. But at least the programmer wouldn't have to remember to delete
-the references anymore.
+Could we not deal with local references in the same way? We could. But
+this doesn't protect against the perils of using the local reference
+in a different thread, or using it in the same thread after they
+become invalid. It looks like progress though, because at least the
+programmer wouldn't have to remember to delete the references anymore.
 
 A major problem of using finalizers so profusely, is that they introduce
 non-deterministic failures in the presence of two garbage collectors.
@@ -163,14 +179,15 @@ issues or errors to exceed the given capacity. `popLocalFrame j` copies
 the reference `j` to the parent frame and deletes the current frame,
 which causes all references of the frame to be deleted.
 
-We are still exposed to use local references after deleted, and
-to use them in threads where they are invalid, but the programmer no
+We are still running the risk of accidentally using a local references after deletion, and
+to use them in threads where they are invalid. But the programmer no
 longer needs to remember to delete *individual* local references.  She
-does need to be careful of other things, though. Firstly, she has to
-remember to introduce enough scopes to always keep bounded the retained
-portion of the Java heap. And secondly, she has to make sure to not blow
-up the stack with too many nested scopes, as the following code could
-do.
+does need to be careful of other things, though:
+
+* she has to remember to introduce enough scopes to always keep
+  bounded the retained portion of the Java heap. And
+* she has to make sure to not blow up the stack with too many nested
+  scopes, as the following code could do.
 
 ``` haskell
 sumIterator
@@ -195,8 +212,7 @@ sumIterator it =
 
 What if we used the GHC proposal for
 [linear types](https://github.com/ghc-proposals/ghc-proposals/pull/91)
-to treat our local references linearly? We restate our example with this
-approach.
+to treat our local references linearly? It would look something like this:
 
 ``` haskell
 import Foreign.JNI
@@ -223,8 +239,8 @@ Java.reify :: J (Interp a) ->. IO (J (Interp a), Unrestricted a)
 JNI.newGlobalRef :: J ty ->. IOL (Unrestricted (J ty))
 ```
 
-We are assuming that we have available a restricted form of monad
-`IOL` with the following operations.
+We are assuming that we have available a restricted form of the `IO`
+monad, called `IOL`, with the following operations.
 
 ```
 return :: a ->. IOL a
@@ -285,9 +301,9 @@ unrestrictInt32 :: Int32 ->. Unrestricted Int32
 
 These dynamic scopes are simpler because the programmer
 doesn't need to worry about inserting too little or too many scopes.
-Usually, clean ups are written to deal with both normal exit and
-exceptions. We are departing from that by using dynamic scopes to
-clean up on exceptions only. Moreover, when an exception is thrown,
+Usually, cleanups are written to deal with both normal exit and
+exceptions. We are departing from that by *using dynamic scopes to
+cleanup on exceptions only*. Moreover, when an exception is thrown,
 cleaning up local references is needed only if the exception is ever
 caught. If the exception ends up killing the thread, the local
 references will be deleted anyway by the JVM.
@@ -320,27 +336,15 @@ It is unsafe as the reference could be leaked in the returned value of
 type `a`, but we would be willing to tolerate this unsafety as long as
 `jcatch` is only used sparingly in an application.
 
-Another restriction of `jcatch` is that the scope can only produce
-unrestricted values. If we allowed linear local references to be returned,
-they would be deleted by the call to `popLocalFrame` before the caller has
-a chance to use them. If we really needed to return a local reference,
-we could generalize a bit the type of `jcatch` to make use of the argument
-of `popLocalFrame`.
-
-``` haskell
-jcatch
-  :: Exception e
-  => IOL (Maybe (J ty), Unrestricted a)
-  -> (e -> IOL (Maybe (J ty), Unrestricted a))
-  -> IOL (Maybe (J ty), Unrestricted a)
-```
-
 ## Summary
 
-In this post we've compared some of the approaches to manage references
-to Java objects. We have reviewed the problems of relying on GC
-finalizers and dynamic scopes, and we have shown how linear types are
-an interesting alternative.
+Each the local and global references we create via the JNI is
+effectively a GC root for the Java GC. The JNI was designed with the
+assumption that programmers ensure that very few such roots are in
+flight at any one time. In this post, we discussed the tension that
+arises between releasing early and frequently, and doing so safely
+without increasing the risk of use-after-free bugs. With linear types,
+we can get both.
 
 A competing approach that we haven't discussed is the lightweight
 monadic regions of
@@ -348,14 +352,10 @@ monadic regions of
 This is an incarnation of dynamic scopes that, like linear types, have
 the type checker guarantee that resources aren't used after released
 and that they aren't used in other threads. However, they still demand
-from the programmer to not insert too much or too little scopes.
+from the programmer to not insert too many or too few little scopes.
 In our setting, monadic regions could still be interesting to use for
 implementing functions like `borrowJ`.
 
-In our discussion of linear types, we brought streams to a linear monad
-without giving much consideration to whether it is possible and how it
-would work. This is a topic for a future post, but we speculate that it
-is possible to work with linear streams, and to attach finalizers that
-run promptly when the streams are no longer used. In this scenario, it
-would make sense to have a stream finalizer delete the global reference
-to the iterator in `iteratorToStream`.
+In our discussion of linear types, we brought streams to a linear
+monad without delving into the details of how it is possible and how
+it would work. This is a topic for a future post.
