@@ -326,6 +326,25 @@ jcatch
 
 ## Summary
 
-Mention the story to deal better with the iterator reference and stream finalizers.
-Discuss that Kiselyov regions can help protecting of use-after-free and use in other
-threads.
+In this post we've compared some of the approaches to manage references
+to Java objects. We have reviewed the problems of relying on GC
+finalizers and dynamic scopes, and we have shown how linear types are
+an interesting alternative.
+
+A competing approach that we haven't discussed is the lightweight
+monadic regions of
+[Kiselyov and Shan](http://okmij.org/ftp/Haskell/regions.html#light-weight).
+This is an incarnation of dynamic scopes that, like linear types, have
+the type checker guarantee that resources aren't used after released
+and that they aren't used in other threads. However, they still demand
+from the programmer to not insert too much or too little scopes.
+In our setting, monadic regions could still be interesting to use for
+implementing functions like `borrowJ`.
+
+In our discussion of linear types, we brought streams to a linear monad
+without giving much consideration to whether it is possible and how it
+would work. This is topic for a future post, but we speculate that it is
+possible to work with linear streams, and to attach finalizers that run
+promptly when the streams are no longer used. In this scenario, it would
+make sense to have a stream finalizer delete the global reference to the
+iterator in `iteratorToStream`.
