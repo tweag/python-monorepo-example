@@ -7,9 +7,11 @@ When two garbaged-collected languages share references to the same
 values, the garbage collectors need to be careful to not collect
 these values while the other language has references to it.
 
-In this post we will survey the situation for writing Haskell
-bindings to Java, and we will show how linear types enable a new
-solution to the problem.
+We have discussed binding to Java in earlier
+[posts](http://www.tweag.io/posts/2017-09-15-inline-java-tutorial.html),
+and now we head straight into the problem of managing our
+references to Java objects, where linear types enable a new
+solution.
 
 ## Unsafe bindings to Java
 
@@ -117,7 +119,7 @@ invalid. But at least the programmer wouldn't have to remember to delete
 the references anymore.
 
 A major problem of using finalizers so profusely, is that they introduce
-undefined behavior in the presence of two garbage collectors.
+non-deterministic failures in the presence of two garbage collectors.
 Suppose that the Java heap is crowded, the Garbage Collector of the JVM
 is desperate to kick some objects out of existence, and yet there is a
 good chunk of references from Haskell-land to the Java Heap. The Haskell
@@ -145,7 +147,11 @@ be nested.
 
 The package [resourcet](https://www.stackage.org/package/resourcet)
 provides facilities for defining scopes, and JNI offers a couple of
-functions `pushLocalFrame` and `popLocalFrame` to implement this idea
+functions
+[pushLocalFrame](https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html#push_local_frame)
+and
+[popLocalFrame](https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html#pop_local_frame)
+to implement this idea
 as well. `pushLocalFrame (n :: Int)` creates a new scope in which
 at least `n` local references can be created. It may produce performance
 issues or errors to exceed the given capacity. `popLocalFrame j` copies
