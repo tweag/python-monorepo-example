@@ -250,11 +250,14 @@ jcatch io handler = do
       a <- catch
         (runIOL $ do
            ua <- io
-           () <- JNI.popLocalFrame JNI.jnull
+           -- We dispose of the result of popLocalFrame or the
+           -- compiler would complain. In this case it will return
+           -- jnull which is safe to pass to deleteLocalRef.
+           JNI.popLocalFrame JNI.jnull >>= JNI.deleteLocalRef
            return ua
         )
         (\e -> runIOL $ do
-          () <- JNI.popLocalFrame JNI.jnull
+          JNI.popLocalFrame JNI.jnull >>= JNI.deleteLocalRef
           handler e
         )
       return $ Unrestricted a
@@ -299,6 +302,21 @@ The function `borrowJ` defines a scope where the reference is unrestricted.
 It is unsafe as the reference could be leaked in the returned value of
 type `a`, but we would be willing to tolerate this unsafety as long as
 `jcatch` is only used sparingly in an application.
+
+Another restriction of `jcatch` is that the scope can only produce
+unrestricted values. If we allowed linear local references to be returned,
+they would be deleted by the call to `popLocalFrame` before the caller has
+a chance to use them. If we really needed to return a local reference,
+we could generalize a bit the type of `jcatch` to make use of the argument
+of `popLocalFrame`.
+
+``` haskell
+jcatch
+  :: Exception e
+  => IOL (Maybe (J ty), Unrestricted a)
+  -> (e -> IOL (Maybe (J ty), Unrestricted a))
+  -> IOL (Maybe (J ty), Unrestricted a)
+```
 
 ## Summary
 
