@@ -1,5 +1,5 @@
 ---
-title: Linear bridges to Java
+title: Binding to Java with linear types
 author: Facundo Domínguez and Mathieu Boespflug
 ---
 
