@@ -212,6 +212,9 @@ We are assuming that we have available a restricted form of monad
 ```
 return :: a ->. IOL a
 (>>=) :: IOL a ->. (a ->. IOL b) ->. IOL b
+
+runIOL :: IOL (Unrestricted a) -> IO a
+liftIO :: IO a -> IOL a
 ```
 
 Provided that there are no exceptions, we get the compiler to check that
@@ -220,11 +223,11 @@ deleted. Given that `obj1` must be used exactly once, it is not possible
 to forget deleting it. Using the reference after it has been deleted is
 equally forbidden by the type checker. And using a linear local
 reference in another thread is not possible either, while the operations
-on local references do not provide any means to send them to other
-threads.
+on IOL do not provide a way to fork threads or send linear local
+references to other threads.
 
 When there are exceptions involved, we complement the linear approach
-with a simpler form of dynamic scopes. We use a `javaCatch` primitive to
+with a simpler form of dynamic scopes. We use a `jcatch` primitive to
 define a scope.
 
 ``` haskell
@@ -232,21 +235,52 @@ sumIterator2
   :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
   ->. IOL Int
 sumIterator2 it = do
-   javaCatch (iteratorToStream it >>= Streaming.fold_ (+) 0 id)
-             someHandler
+   jcatch (iteratorToStream it >>= Streaming.fold_ (+) 0 id)
+          someHandler
 
-javaCatch :: IOL a ->. (e -> IO ()) -> IOL a
-javaCatch io handler = do
+jcatch :: Exception e => IOL a -> (e -> IOL ()) -> IOL a
+jcatch io handler = do
     JNI.pushLocalFrame capacity
-    catch io (\e -> JNI.popLocalFrame JNI.jnull >> handler e)
-
-catch :: Exception e => IOL a ->. (e -> IO ()) -> IOL a
+    lcatch (io >> JNI.popLocalFrame JNI.jnull)
+           (\e -> JNI.popLocalFrame JNI.jnull >> handler e)
 ```
 
-This is a simpler approach with dynamic scopes because the programmer
+These dynamic scopes are simpler because the programmer
 doesn't need to worry about inserting too little or too many scopes.
-Scopes here are a device to clean up in exceptional cases without any
-concerns on when to clean up if exceptions do not occur.
+Usually, clean ups are written to deal with both normal exit and
+exceptions. We are departing from that by using dynamic scopes to
+clean up on exceptions only. Moreover, when an exception is thrown,
+cleaning up local references is needed only if the exception is ever
+caught. If the exception ends up killing the thread, the local
+references will be deleted anyway by the JVM.
+
+Some restrictions apply when using `jcatch`, though. Because the
+multiplicities of the arguments are not linear, only non-linear values
+can be used from outside the scope. If we need to bring a linear
+resource from outside the scope, this code wouldn't typecheck.
+
+``` haskell
+f :: J ty ->. IOL a
+f j = jcatch (... j ...) (\e -> ... j ...)
+```
+
+We either make the argument of `f` non-linear, perhaps making it also a
+global reference, or we implement some form of borrowing.
+
+``` haskell
+f :: J ty ->. IOL a
+f j0 = do
+    (j1, a) <- borrowJ j0 $ \j -> jcatch (... j ...) (\e -> ... j ...)
+    JNI.deleteLocalRef j1
+    return a
+
+borrowJ :: J ty ->. (J ty -> IOL a) -> IOL (J ty, a)
+```
+
+The function `borrowJ` defines a scope where the reference is unrestricted.
+It is unsafe as the reference could be leaked in the returned value of
+type `a`, but we would be willing to tolerate this unsafety as long as
+`jcatch` is only used sparingly in an application.
 
 ## Summary
 
