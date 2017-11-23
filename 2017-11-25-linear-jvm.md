@@ -143,10 +143,16 @@ we inject some code to delete all the associated local references.
 In general, scopes are not allowed to overlap arbitrarily, but they can
 be nested.
 
-JNI offers a couple of functions `pushLocalFrame` and `popLocalFrame` to
-implement this idea. The package
-[resourcet](https://www.stackage.org/package/resourcet) is another
-option. We are still exposed to use local references after deleted, and
+The package [resourcet](https://www.stackage.org/package/resourcet)
+provides facilities for defining scopes, and JNI offers a couple of
+functions `pushLocalFrame` and `popLocalFrame` to implement this idea
+as well. `pushLocalFrame (n :: Int)` creates a new scope in which
+at least `n` local references can be created. It may produce performance
+issues or errors to exceed the given capacity. `popLocalFrame j` copies
+the reference `j` to the parent frame and deletes the current frame,
+which causes all references of the frame to be deleted.
+
+We are still exposed to use local references after deleted, and
 to use them in threads where they are invalid, but the programmer no
 longer needs to remember to delete *individual* local references.  She
 does need to be careful of other things, though. Firstly, she has to
