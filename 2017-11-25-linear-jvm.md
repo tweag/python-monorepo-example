@@ -343,8 +343,8 @@ implementing functions like `borrowJ`.
 
 In our discussion of linear types, we brought streams to a linear monad
 without giving much consideration to whether it is possible and how it
-would work. This is topic for a future post, but we speculate that it is
-possible to work with linear streams, and to attach finalizers that run
-promptly when the streams are no longer used. In this scenario, it would
-make sense to have a stream finalizer delete the global reference to the
-iterator in `iteratorToStream`.
+would work. This is a topic for a future post, but we speculate that it
+is possible to work with linear streams, and to attach finalizers that
+run promptly when the streams are no longer used. In this scenario, it
+would make sense to have a stream finalizer delete the global reference
+to the iterator in `iteratorToStream`.
