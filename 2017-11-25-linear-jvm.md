@@ -304,7 +304,7 @@ monadic regions of
 This is an incarnation of dynamic scopes that, like linear types, have
 the type checker guarantee that resources aren't used after released
 and that they aren't used in other threads. However, they still demand
-from the programmer to not insert too many or too few little scopes.
+from the programmer to not insert too many or too few scopes.
 In our setting, monadic regions could still be interesting to use for
 implementing functions like `borrowJ`.
 
