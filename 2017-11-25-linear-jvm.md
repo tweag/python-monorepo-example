@@ -246,22 +246,50 @@ monad, called `IOL`, with the following operations.
 return :: a ->. IOL a
 (>>=) :: IOL a ->. (a ->. IOL b) ->. IOL b
 
-runIOL :: IOL (Unrestricted a) -> IO a
 liftIO :: IO a -> IOL a
+
+data IOL a where
+  IOL :: IO a -> IOL a
+
+runIOL :: IOL (Unrestricted a) -> IO a
+runIOL (IOL io) =
+    Unrestricted a <-
+      bracket_ (JNI.pushLocalFrame capacity)
+               (JNI.popLocalFrame JNI.jnull)
+               io
+    return a
+  where
+    capacity = ...
 ```
 
-Provided that there are no exceptions, we get the compiler to check that
-the references to objects returned by the iterator are eventually
-deleted. Given that `obj1` must be used exactly once, it is not possible
-to forget deleting it. Using the reference after it has been deleted is
-equally forbidden by the type checker. And using a linear local
-reference in another thread is not possible either, while the operations
-on IOL do not provide a way to fork threads or send linear local
-references to other threads.
+The major feature of `IOL` when compared to the dynamic scopes is that
+it releases local references promptly when they are no longer needed,
+and it does this by introducing a single scope. This is important
+because it means the programmer no longer has to be concerned with
+introducing too many or responsible
 
-When there are exceptions involved, we complement the linear approach
-with a simpler form of dynamic scopes. We use a `jcatch` primitive to
-define a scope.
+
+Let us analyze this
+closer. `IOL` introduces local references as linear values. Operations
+that do not delete the value, like `reify`, now have to return a copy of
+it, and the operations which delete the value, like `deleteLocalRef`,
+produce no copy. This means both that references cannot be used after
+deleted (they can't be used more than once), and that the compiler will
+require them to be deleted eventually (they must be used at least once)
+when exceptions do not occur. When exceptions occur, `IOL` offers no
+means to catch them, which causes the exception to propagate to `runIO`
+and above, which runs the cleanup in `runIOL`. Finally, local
+references cannot be allowed to escape the scope of `runIOL`, as they
+become invalid before `runIOL` returns. This is achieved by
+constraining its argument to yield an unrestricted value
+`Unrestricted a`. If needed, it could be possible to come up with a
+version of `runIOL` that uses the argument of `popLocalFrame` to have
+a selected reference survive.
+
+H
+
+Admittedly, having no
+way to catch exceptions does have an impact affect the 
 
 ``` haskell
 sumIterator2
@@ -271,29 +299,6 @@ sumIterator2 it =
    jcatch
      (unrestrictIn32 <$> iteratorToStream it >>= Streaming.fold_ (+) 0 id)
      someHandler
-
-jcatch
-  :: Exception e
-  => IOL (Unrestricted a)
-  -> (e -> IOL (Unrestricted a))
-  -> IOL (Unrestricted a)
-jcatch io handler = do
-    JNI.pushLocalFrame capacity
-    liftIO $ do
-      a <- catch
-        (runIOL $ do
-           ua <- io
-           -- We dispose of the result of popLocalFrame or the
-           -- compiler would complain. In this case it will return
-           -- jnull which is safe to pass to deleteLocalRef.
-           JNI.popLocalFrame JNI.jnull >>= JNI.deleteLocalRef
-           return ua
-        )
-        (\e -> runIOL $ do
-          JNI.popLocalFrame JNI.jnull >>= JNI.deleteLocalRef
-          handler e
-        )
-      return $ Unrestricted a
 
 -- | A primitive possibly coming from a base library
 unrestrictInt32 :: Int32 ->. Unrestricted Int32
