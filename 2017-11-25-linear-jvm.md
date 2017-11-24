@@ -284,8 +284,9 @@ come up with a version of `runIOL` that uses the argument of
 `popLocalFrame` to have a selected reference survive.
 
 Admittedly, if exceptions need to be caught, it has to be done by the
-caller of `runIOL`, outside the safety of `IOL`. But provided that the
-application catches exceptions at a few places only, this is a modest
+caller of `runIOL`, outside the safety of `IOL`. In our experience,
+many applications need to catch exceptions at a few places only, and
+this becomes a modest
 price to pay.
 
 ## Summary
