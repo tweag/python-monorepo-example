@@ -305,9 +305,7 @@ This is an incarnation of dynamic scopes that, like linear types, have
 the type checker guarantee that resources aren't used after released
 and that they aren't used in other threads. However, they still demand
 from the programmer to not insert too many or too few scopes.
-In our setting, monadic regions could still be interesting to use for
-implementing functions like `borrowJ`.
 
 In our discussion of linear types, we brought streams to a linear
-monad without delving into the details of how it is possible and how
-it would work. This is a topic for a future post.
+monad without delving into the details of whether it is possible and how
+it would work. This will be the topic for a future post.
