@@ -264,82 +264,29 @@ runIOL (IOL io) =
 
 The major feature of `IOL` when compared to the dynamic scopes is that
 it releases local references promptly when they are no longer needed,
-and it does this by introducing a single scope. This is important
-because it means the programmer no longer has to be concerned with
-introducing too many or responsible
+and it does this by introducing a single scope. The programmer no
+longer has to be concerned with introducing too many or too few scopes.
 
+Let us analyze this claims from closer. `IOL` introduces local
+references as linear values. Operations that do not delete the value,
+like `reify`, now have to return a copy of it, and the operations which
+delete the value, like `deleteLocalRef`, produce no copy. This means
+both that references cannot be used after deleted (they can't be used
+more than once), and that the compiler will require them to be deleted
+eventually (they must be used at least once) when exceptions do not
+occur. When exceptions occur, `IOL` offers no means to catch them, which
+causes the exception to propagate to `runIO` and above, which runs the
+cleanup in `runIOL`. Finally, local references cannot be allowed to
+escape the scope of `runIOL`, as they become invalid before `runIOL`
+returns. This is achieved by constraining its argument to yield an
+unrestricted value `Unrestricted a`. If needed, it could be possible to
+come up with a version of `runIOL` that uses the argument of
+`popLocalFrame` to have a selected reference survive.
 
-Let us analyze this
-closer. `IOL` introduces local references as linear values. Operations
-that do not delete the value, like `reify`, now have to return a copy of
-it, and the operations which delete the value, like `deleteLocalRef`,
-produce no copy. This means both that references cannot be used after
-deleted (they can't be used more than once), and that the compiler will
-require them to be deleted eventually (they must be used at least once)
-when exceptions do not occur. When exceptions occur, `IOL` offers no
-means to catch them, which causes the exception to propagate to `runIO`
-and above, which runs the cleanup in `runIOL`. Finally, local
-references cannot be allowed to escape the scope of `runIOL`, as they
-become invalid before `runIOL` returns. This is achieved by
-constraining its argument to yield an unrestricted value
-`Unrestricted a`. If needed, it could be possible to come up with a
-version of `runIOL` that uses the argument of `popLocalFrame` to have
-a selected reference survive.
-
-H
-
-Admittedly, having no
-way to catch exceptions does have an impact affect the 
-
-``` haskell
-sumIterator2
-  :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
-  ->. IOL Int32
-sumIterator2 it =
-   jcatch
-     (unrestrictIn32 <$> iteratorToStream it >>= Streaming.fold_ (+) 0 id)
-     someHandler
-
--- | A primitive possibly coming from a base library
-unrestrictInt32 :: Int32 ->. Unrestricted Int32
-```
-
-These dynamic scopes are simpler because the programmer
-doesn't need to worry about inserting too little or too many scopes.
-Usually, cleanups are written to deal with both normal exit and
-exceptions. We are departing from that by *using dynamic scopes to
-cleanup on exceptions only*. Moreover, when an exception is thrown,
-cleaning up local references is needed only if the exception is ever
-caught. If the exception ends up killing the thread, the local
-references will be deleted anyway by the JVM.
-
-Some restrictions apply when using `jcatch`, though. Because the
-multiplicities of the arguments are not linear, only non-linear values
-can be used from outside the scope. If we need to bring a linear
-resource from outside the scope, this code wouldn't typecheck.
-
-``` haskell
-f :: J ty ->. IOL a
-f j = jcatch (... j ...) (\e -> ... j ...)
-```
-
-We either make the argument of `f` non-linear, perhaps making it also a
-global reference, or we implement some form of borrowing.
-
-``` haskell
-f :: J ty ->. IOL a
-f j0 = do
-    (j1, a) <- borrowJ j0 $ \j -> jcatch (... j ...) (\e -> ... j ...)
-    JNI.deleteLocalRef j1
-    return a
-
-borrowJ :: J ty ->. (J ty -> IOL a) -> IOL (J ty, a)
-```
-
-The function `borrowJ` defines a scope where the reference is unrestricted.
-It is unsafe as the reference could be leaked in the returned value of
-type `a`, but we would be willing to tolerate this unsafety as long as
-`jcatch` is only used sparingly in an application.
+Admittedly, if exceptions need to be caught, it has to be done by the
+caller of `runIOL`, outside the safety of `IOL`. But provided that the
+application catches exceptions at a few places only, this is a modest
+price to pay.
 
 ## Summary
 
