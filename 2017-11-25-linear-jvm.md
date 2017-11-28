@@ -207,6 +207,15 @@ sumIterator it =
     capacity = ...
 ```
 
+Is it so difficult to guess the right hierarchy of nested scopes to
+keep the counts of local references low? It is a problem which worsens
+with the size of the application. When building a server application
+which made many invocations to Java, we started with a scope per client
+request, and then a scope per test, and then we added scopes within the
+scopes when we were creating more local references than anticipated.
+Eventually, it did get difficult for a programmer to be sure that
+references stayed bounded for all possible code paths and inputs.
+
 ## Linear Types
 
 We would really prefer to delete a reference exactly
