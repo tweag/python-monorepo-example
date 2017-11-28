@@ -9,7 +9,7 @@ parts of a program in each language, using the FFI allows for all
 manner of data to be shared between each language runtime, hence
 reducing memory consumption and obviating marshalling costs. But when
 two garbaged-collected languages share references to the same values,
-each garbage collector needs to be careful to not collect these values
+each garbage collector (GC) needs to be careful to not collect these values
 while the other language has references to them. This is a problem we
 ran into both when building [HaskellR][haskellr]
 and [inline-java][inline-java]. In this post, we'll survey this very
@@ -28,7 +28,7 @@ The JNI is a low-level interface that is painful to use. No programmer
 wants to invoke Java methods through the JNI using stringly typed
 class names, method names and argument types. Doing so is very
 error-prone and verbose. So we built higher-level abstractions on
-top, [jvm][jvm] and [inline-java][inlin-java], that run every method
+top, [jvm][jvm] and [inline-java][inline-java], that run every method
 invocation through the Java type checker as well as the Haskell type
 checker. Think of `inline-java` as a pretty good typo detector.
 
@@ -97,7 +97,7 @@ Java. If this doesn't happen for a while, then the local references
 can accumulate, causing the live data on the heap to grow. Adding to
 the problem, the JVM can't deal very well with large and unknown
 amounts of local references. The JNI expects native calls to use only
-a few local references and expect the programmer to say in advance how
+a few local references and expects the programmer to say in advance how
 many references will be needed. Failing to do so affects performance
 and can lead to failures.
 
@@ -108,7 +108,7 @@ after the Haskell value has been obtained.
     ...
     bracket [Inline.java| $it.next() |]
 	        JNI.deleteLocalRef
-            (\next -> Left <$> Java.reify next)
+            (\jNext -> Left <$> Java.reify jNext)
 ```
 
 There are two problems with this approach:
@@ -126,7 +126,10 @@ Could we possibly ask the compiler to perform these checks?
 
 One way to avoid needing these checks in the first place is to just
 let the Haskell GC delete Java references automatically when they
-become unreachable. Global references work this way. Unlike local
+become unreachable. We attach to each reference a finalizer that
+deletes it, which is going to be called by the Haskell GC. This is
+the strategy to deal with global references in the `jni` package.
+Unlike local
 references, a global reference can be used in any thread and it is not
 destroyed when control returns to Java. Since the JNI provides
 `newGlobalRef`, a facility to promote any local reference to a global
@@ -146,9 +149,9 @@ of space in the Haskell heap, and the Haskell's Garbage Collector is
 basking in the sun with no pressure to run the finalizers that would
 delete the unused references.
 
-Sometimes, the application is lucky and the Haskell's GC runs just in
-time to delete the unused references, which lets the Java's GC clean
-the Java heap. Unfortunately, sometimes, the Haskell's GC won't run and
+Sometimes, the application is lucky and the Haskell GC runs the
+finalizers just in time, which lets the Java GC clean
+the Java heap. Unfortunately, sometimes, the Haskell GC won't run and
 the JVM will fail with an `OutOfMemory` exception.
 
 ## Dynamic scopes
@@ -173,8 +176,8 @@ errors to exceed the given capacity. `popLocalFrame j` copies the
 reference `j` to the parent frame and deletes the current frame, which
 causes all references of the frame to be deleted.
 
-We are still running the risk of accidentally using a local references
-after deletion, and to use them in threads where they are invalid. But
+We are still running the risk of accidentally using a local reference
+after deletion, and to use it in threads where it is invalid. But
 programmers no longer need to remember to delete *individual* local
 references. Still, in practice we found ourselves walking a tight
 rope:
@@ -193,7 +196,8 @@ sumIterator it =
   where
     go :: Int32 -> Stream (Of Int32) IO () -> IO Int32
     go !acc s =
-      -- We create a new nested scope on every recursive call.
+      -- We create a new nested scope on every recursive call
+      -- to delete the local references created by next.
       bracket_ (JNI.pushLocalFrame capacity) (JNI.popLocalFrame JNI.jnull) $ do
         e <- Streaming.next s
         case e of
@@ -205,8 +209,8 @@ sumIterator it =
 
 ## Linear Types
 
-What we'd really prefer to be doing is to delete a reference exactly
-when we know it to no longer be useful. In this way, memory becomes
+We would really prefer to delete a reference exactly
+when we know it to be no longer useful. In this way, memory becomes
 reclaimable by Java's GC immediately. The problem is: it's easy to
 forget doing so at all. The key invariant we want checked by the
 compiler is that once we have a reference, it should be deleted
@@ -237,7 +241,7 @@ iteratorToStream itLocal = do
           JNI.deleteLocalRef obj1
           return a
 
-Java.reify :: J (Interp a) ->. IO (J (Interp a), Unrestricted a)
+Java.reify :: J (Interp a) ->. IOL (J (Interp a), Unrestricted a)
 ```
 
 We are assuming that we have available a restricted form of the `IO`
@@ -269,22 +273,23 @@ longer needed, inside a single global scope. The programmer no longer
 has to be concerned with introducing too many or too few scopes.
 
 `IOL` introduces local
-references as linear values. Operations that do not delete the value,
+references as linear values. Operations that do not delete the reference,
 like `reify`, now have to return a copy of it, and the operations which
-delete the value, like `deleteLocalRef`, produce no copy. This means
+delete the value, like `deleteLocalRef`, produce no copy. When
+exceptions do not occur, this means
 both that references cannot be used after they are deleted (they can't be used
 more than once), and that the compiler will require them to be deleted
-eventually (they must be used at least once) when exceptions do not
-occur. When exceptions occur, `IOL` offers no means to catch them, which
+eventually (they must be used at least once).
+When exceptions occur, `IOL` offers no means to catch them, which
 causes the exception to propagate to `runIO` and above, which runs the
 cleanup in `runIOL`. Finally, local references cannot be allowed to
 escape the scope of `runIOL`, as they become invalid before `runIOL`
 returns. This is achieved by constraining its argument to yield an
 unrestricted value `Unrestricted a`.
 
-Admittedly, if exceptions need to be caught, it has to be done by the
-caller of `runIOL`, not from within `IOL` (since we didn't provide any
-`catchIOL` primitive above). In our experience, many applications need
+Admittedly, if exceptions need to be caught, since there is no way to
+do it in `IOL`, it has to be done by the caller of `runIOL`.
+In our experience, many applications need
 to catch exceptions in a few places only, so this is a modest price to
 pay.
 
