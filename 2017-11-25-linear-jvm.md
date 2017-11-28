@@ -186,7 +186,7 @@ rope:
 
 ``` haskell
 sumIterator
-  :: J ('Iface "java.util.Iterator" <> [ 'Class "java.lang.Integer" ])
+  :: J ('Iface "java.util.Iterator")
   -> IO Int
 sumIterator it =
     iteratorToStream it >>= go 0
