@@ -60,11 +60,9 @@ import Streaming
 
 iteratorToStream
   :: Reify a
-  => J ('Iface "java.util.Iterator" <> [Interp a])
+  => J ('Iface "java.util.Iterator")
   -> IO (Stream (Of a) IO ())
-iteratorToStream itLocal = do
-    -- We make sure the iterator remains valid while we reference it.
-    it <- JNI.newGlobalRef itLocal
+iteratorToStream it = do
     return $ Streaming.untilRight $ do
       [Inline.java| $it.hasNext() |] >>= \case
         False -> return (Right ())
@@ -73,31 +71,35 @@ iteratorToStream itLocal = do
           Left <$> Java.reify obj
 ```
 
-The input to this function is a reference to a Java iterator that
-produces an object of some Java type described by `Interp a`. The output
-is a `Stream` yielding values of some type `a`. The Java objects are
-pulled from the iterator as the stream is consumed. The constraint
-`Reify a` states that we know how to convert Java objects of type
-`Interp a` to Haskell values of type `a`, and it enables our function
-to use the `reify` method to do the conversion.
+The input to this function is any Java object that conforms to the
+`java.util.Iterator` interface. The output is a `Stream` yielding
+values of some type `a`. The Java objects are pulled from the iterator
+as the stream is consumed. The constraint `Reify a` states that we
+know how to convert Java objects to Haskell values of type `a`. We do
+this on the last line by calling `reify`.
+
+Like in Java, `it` and `obj` above are actually *references* to
+objects. But it's a special type of reference provided by the JNI,
+which can be used by foreign code (such as C or Haskell). These JNI
+references need to be deleted explicitly once they are no longer
+needed, otherwise JVM objects cannot be reclaimed by the JVM GC.
 
 The above implementation of `iteratorToStream` is not deleting the
-references to Java objects that it obtains from the iterator. Does
-this constitute a leak? It depends. References in JNI can be local
-or global, and in this case the references we get from the iterator are
-local. A local reference is only valid in the thread in which it is
-created, and only for as long as the thread does not return from
-an ongoing native call (i.e. a call from Java to C or Haskell).
-If Java called into Haskell, and then Haskell invoked
-`iteratorToStream`, being local implies that the references will be
-deleted as soon as the control returns back to Java. If this doesn't
-happen for a while, then the local references can accumulate, causing
-the live data on the heap to grow. Adding to the problem, the JVM
-can't deal very well with large and unknown amounts of local
-references. The JNI expects native calls to use only a few local
-references and expect the programmer to say in advance how many
-references will be needed. Failing to do so affects performance and
-can lead to failures.
+references to Java objects. Does this constitute a leak? It depends.
+References in JNI can be local or global, and in this case the
+references we get from the iterator are local. A local reference is
+only valid in the thread in which it is created, and only for as long
+as the thread does not return from an ongoing native call (i.e. a call
+from Java to C or Haskell). If Java called into Haskell, and then
+Haskell invoked `iteratorToStream`, being local implies that the
+references will be deleted as soon as the control returns back to
+Java. If this doesn't happen for a while, then the local references
+can accumulate, causing the live data on the heap to grow. Adding to
+the problem, the JVM can't deal very well with large and unknown
+amounts of local references. The JNI expects native calls to use only
+a few local references and expect the programmer to say in advance how
+many references will be needed. Failing to do so affects performance
+and can lead to failures.
 
 A straightforward fix to this situation is to delete the reference
 after the Haskell value has been obtained.
@@ -152,11 +154,11 @@ the JVM will fail with an `OutOfMemory` exception.
 ## Dynamic scopes
 
 Another solution is to define dynamic scopes. When a program's control
-flow enters a scope, we open a new buffer. We keep track of all
-resources in the buffer, until the control flow leaves the scope, at
-which point we discard all recorded references all at once. In
-general, scopes are not allowed to overlap arbitrarily, but they can
-be nested.
+flow enters a scope, we open a new buffer. We keep track of all newly
+created references in the buffer, until the control flow leaves the
+scope, at which point we discard all recorded references all at once.
+In general, scopes are not allowed to overlap arbitrarily, but they
+can be nested.
 
 In Haskell,
 the [resourcet](https://www.stackage.org/package/resourcet) package
@@ -179,8 +181,8 @@ rope:
 
 * too few scopes and objects live on the Java heap longer than they
   need to, potentially blowing up resident memory usage;
-* too many scopes and the stack space runs out, as in the following
-  snippet.
+* too many scopes and the stack space runs out, with too many buffers
+  amounting to excess capacity, as in the following snippet.
 
 ``` haskell
 sumIterator
@@ -226,7 +228,6 @@ iteratorToStream
   => J ('Iface "java.util.Iterator" <> [Interp a])
   ->. IOL (Stream (Of a) IOL ())
 iteratorToStream itLocal = do
-    Unrestricted it <- JNI.newGlobalRef itLocal
     return $ Streaming.untilRight $ do
       [Inline.java| $it.hasNext() |] >>= \case
         False -> return (Right ())
@@ -237,7 +238,6 @@ iteratorToStream itLocal = do
           return a
 
 Java.reify :: J (Interp a) ->. IO (J (Interp a), Unrestricted a)
-JNI.newGlobalRef :: J ty ->. IOL (Unrestricted (J ty))
 ```
 
 We are assuming that we have available a restricted form of the `IO`
@@ -283,19 +283,21 @@ returns. This is achieved by constraining its argument to yield an
 unrestricted value `Unrestricted a`.
 
 Admittedly, if exceptions need to be caught, it has to be done by the
-caller of `runIOL`, not from within `IOL`. In our experience, many
-applications need to catch exceptions in a few places only, and this
-becomes a modest price to pay.
+caller of `runIOL`, not from within `IOL` (since we didn't provide any
+`catchIOL` primitive above). In our experience, many applications need
+to catch exceptions in a few places only, so this is a modest price to
+pay.
 
 ## Summary
 
 Each the local and global references we create via the JNI is
 effectively a GC root for the Java GC. The JNI was designed with the
 assumption that programmers ensure that very few such roots are in
-flight at any one time. In this post, we discussed the tension that
-arises between releasing early and frequently, and doing so safely
-without increasing the risk of use-after-free bugs. With linear types,
-we can get both.
+flight at any one time. The R native interface and others make similar
+assumptions. In this post, we discussed the tension that arises
+between releasing early and frequently, and doing so safely without
+increasing the risk of use-after-free bugs. With linear types, we can
+get both.
 
 A competing approach that we haven't discussed is the lightweight
 monadic regions of
