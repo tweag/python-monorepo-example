@@ -292,7 +292,7 @@ used at least once). Finally, local references cannot be allowed to
 escape the scope of `runIOL`, as they become invalid before `runIOL`
 returns. This is achieved by constraining its argument to yield an
 unrestricted value `Unrestricted a`. It works even if an exception
-arises, thanks to the `bracket` inside `IOL`.
+arises, thanks to the `bracket` inside `runIOL`.
 
 Admittedly, if exceptions need to be caught, since there is no way to
 do it in `IOL`, it has to be done by the caller of `runIOL`.
