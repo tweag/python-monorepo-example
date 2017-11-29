@@ -323,6 +323,14 @@ the type checker guarantee that resources aren't used after released
 and that they aren't used in other threads. However, they still demand
 from the programmer to not insert too many or too few scopes.
 
+Some have suggested introducing affine types instead of linear types
+in Haskell. But for the particular use case discussed in this post,
+affine types would do no better than these monadic regions. That's
+because affine types provide a weaker guarantee to the caller: we can
+return to the caller having used the argument at most once, but also
+never at all. We'd need nested scopes all over again to ensure that
+references *do* get disposed of in a timely fashion.
+
 In our discussion of linear types, we brought streams to a linear
 monad without delving into the details of whether it is possible and how
 it would work. This will be the topic for a future post.
