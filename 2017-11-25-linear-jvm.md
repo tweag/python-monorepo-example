@@ -67,8 +67,8 @@ iteratorToStream it = do
       [Inline.java| $it.hasNext() |] >>= \case
         False -> return (Right ())
         True -> do
-          obj <- [Inline.java| $it.next() |] :: IO JObject
-          Left <$> Java.reify (unsafeCast obj)
+          obj <- [Inline.java| $it.next() |]
+          Left <$> Java.reify obj
 ```
 
 The input to this function is any Java object that conforms to the
@@ -245,8 +245,8 @@ iteratorToStream itLocal = do
       [Inline.java| $it.hasNext() |] >>= \case
         False -> return (Right ())
         True -> do
-          obj0 <- [Inline.java| $it.next() |] :: IOL JObject
-          (obj1, Unrestricted a) <- Java.reify (unsafeCast obj0)
+          obj0 <- [Inline.java| $it.next() |]
+          (obj1, Unrestricted a) <- Java.reify obj0
           JNI.deleteLocalRef obj1
           return a
 
