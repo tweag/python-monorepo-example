@@ -251,6 +251,11 @@ iteratorToStream itLocal = do
           return a
 
 Java.reify :: J (Interp a) ->. IOL (J (Interp a), Unrestricted a)
+
+-- | A linear value of type `Unrestricted a` holds a value of
+-- type `a` which can be used non-linearly or unrestrictly.
+data Unrestricted a where
+  Unrestricted :: a -> Unrestricted a
 ```
 
 We are assuming that we have a restricted form of the `IO` monad,
