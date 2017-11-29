@@ -12,7 +12,7 @@ and obviates marshalling costs. But when two garbaged-collected
 languages share references to the same values, each garbage collector
 (GC) needs to be careful to not collect these values while the other
 language has references to them. This is a problem we ran into when
-building both [HaskellR][haskellr] and [inline-java][inline-java]. In
+building both [inline-r][inline-r] and [inline-java][inline-java]. In
 this post, we'll survey this very generic problem in all fast language
 interop, using Java interop as a case study.
 
@@ -39,6 +39,7 @@ checker. Think of `inline-java` as a pretty good typo detector.
 [jvm]: https://www.stackage.org/package/jvm
 [inline-c]: https://www.stackage.org/package/inline-c
 [inline-java]: https://www.stackage.org/package/inline-java
+[inline-r]: https://www.stackage.org/package/inline-r
 
 In fact, `inline-java` does even more than that. It checks that
 Haskell types and Java types line up. It catches at compile time many
