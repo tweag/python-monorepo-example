@@ -222,7 +222,8 @@ for all possible code paths and inputs.
 We would really prefer to delete a reference exactly
 when we know it to be no longer useful. In this way, memory becomes
 reclaimable by Java GC immediately. The problem is: it's easy to
-forget doing so at all. The key invariant we want checked by the
+forget doing so at all, leading to multiple leaks in an application.
+The key invariant we want checked by the
 compiler is that once we have a reference, it should be deleted
 *exactly once*, and never referred to after that. That is, we want to
 use references *linearly*.
