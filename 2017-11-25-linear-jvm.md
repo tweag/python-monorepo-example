@@ -212,7 +212,7 @@ a complex server application that made many invocations to Java, we
 started with a scope per client request, and then a scope per test,
 and then we added scopes within the scopes when we were creating more
 local references than anticipated. Eventually, it did get very
-difficult for teams with many programmers of varying experience levels
+difficult for teams with programmers of varying experience levels
 to be sure that the number of extant references stayed bounded for all
 possible code paths and inputs.
 
@@ -292,11 +292,11 @@ used at least once). Finally, local references cannot be allowed to
 escape the scope of `runIOL`, as they become invalid before `runIOL`
 returns. This is achieved by constraining its argument to yield an
 unrestricted value `Unrestricted a`. It works even if an exception
-arises, thanks to the `bracket` inside `runIOL`.
+arises, thanks to the `bracket` inside `runIOL` and the fact that
+there is no way to catch exceptions in `IOL`.
 
-Admittedly, if exceptions need to be caught, since there is no way to
-do it in `IOL`, it has to be done by the caller of `runIOL`.
-In our experience, many applications need
+Admittedly, if exceptions need to be caught, it has to be done by the
+caller of `runIOL`. In our experience, many applications need
 to catch exceptions in a few places only, so this is a modest price to
 pay.
 
