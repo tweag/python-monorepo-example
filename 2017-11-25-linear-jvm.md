@@ -178,36 +178,9 @@ causes all references of the frame to be deleted.
 We are still running the risk of accidentally using a local reference
 after deletion, and to use it in threads where it is invalid. But
 programmers no longer need to remember to delete *individual* local
-references. Still, in practice we found ourselves walking a tight
-rope:
-
-* too few scopes and objects live on the Java heap longer than they
-  need to, potentially blowing up resident memory usage;
-* too many scopes and the stack space runs out, with too many buffers
-  amounting to excess capacity, as in the following snippet.
-
-``` haskell
-sumIterator
-  :: J ('Iface "java.util.Iterator")
-  -> IO Int
-sumIterator it =
-    iteratorToStream it >>= go 0
-  where
-    go :: Int32 -> Stream (Of Int32) IO () -> IO Int32
-    go !acc s =
-      -- We create a new nested scope on every recursive call
-      -- to delete the local references created by next.
-      bracket_ (JNI.pushLocalFrame capacity) (JNI.popLocalFrame JNI.jnull) $ do
-        e <- Streaming.next s
-        case e of
-          Left () -> return acc
-          Right (i, s) -> go (acc + i) s
-
-    capacity = ...
-```
-
-Is it so difficult to guess the right hierarchy of nested scopes to
-keep the counts of local references low? We have found that it is
+references. Still, in practice we found difficult finding a hierarchy
+of nested scopes that keeps the counts of local references low.
+It is
 a problem that worsens with the size of the application. When building
 a complex server application that made many invocations to Java, we
 started with a scope per client request, and then a scope per test,
