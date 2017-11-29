@@ -283,9 +283,8 @@ runIOL (IOL io) =
 
 Compared to dynamic scopes, the major feature of `IOL` is that
 programmers can delete local references promptly, inside a single
-global scope, when they are no longer needed. The programmer no
-longer has to be concerned with introducing too many or too few
-scopes.
+global scope, when they are no longer needed. The programmer doesn't
+have to be concerned with guessing a scope hierarchy anymore.
 
 `IOL` introduces local references as linear values. Operations that do
 not delete the reference, like `reify`, now have to return a copy of
@@ -296,9 +295,9 @@ the compiler will require them to be deleted eventually (they must be
 used at least once). Finally, local references cannot be allowed to
 escape the scope of `runIOL`, as they become invalid before `runIOL`
 returns. This is achieved by constraining its argument to yield an
-unrestricted value `Unrestricted a`. It works even if an exception
-arises, thanks to the `bracket` inside `runIOL` and the fact that
-there is no way to catch exceptions in `IOL`.
+unrestricted value `Unrestricted a`. Local references are released
+promptly even if an exception arises, thanks to the `bracket` inside
+`runIOL` and the fact that there is no way to catch exceptions in `IOL`.
 
 Admittedly, if exceptions need to be caught, it has to be done by the
 caller of `runIOL`. In our experience, many applications need
