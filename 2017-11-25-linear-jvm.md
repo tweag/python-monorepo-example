@@ -212,9 +212,9 @@ a complex server application that made many invocations to Java, we
 started with a scope per client request, and then a scope per test,
 and then we added scopes within the scopes when we were creating more
 local references than anticipated. Eventually, it did get very
-difficult for teams with programmers of varying experience levels
-to be sure that the number of extant references stayed bounded for all
-possible code paths and inputs.
+difficult for multiple teams of programmers of varying experience
+levels to be sure that the number of extant references stayed bounded
+for all possible code paths and inputs.
 
 ## Linear Types
 
