@@ -83,11 +83,40 @@ Could the compiler help ensuring this?
 
 # Linear types
 
-TODO: Introduce liner types
+With linear types we introduce _multiplicity_ of values; not only do
+the type system track what sort of values we have, but also to which
+extent they are used. An argument of a linear type has to be used — or
+_consumed_ — exactly once in a function, or the program will not
+compile. Both forgetting to use a linear value or using it
+more than once will lead to a compile time error. This simple concept 
+help us move a new category of programming errors from the
+responsibility of the programmer to the compiler, making it easier
+to write correct code with stronger guarantees about the implementation.
+
+The following two simple functions take linear arguments, as indicated
+by the special function arrows. However, the implementation treats them
+in an unrestricted fashion. This mistake is caught by the compiler, and
+the program is refused with a linearity error.
+
+```haskell
+frugal :: a ->. (a, a)
+frugal x = (x, x)
+
+wasteful :: a ->. ()
+wasteful _ = ()
+```
+
+Linearity is a contract with the implementer of a function — never the
+caller. This means that even if a function has linearity constraints it
+can always be called without knowledge of this, with linear or
+unconstrained types of arguments. The converse is of course not true:
+if a function type does not guarantee linearity in an argument, it is
+an error to pass it a linear value as such because it might be duplicated
+or discarded in the function.
 
 There are two aspects where linear types can help managing streams.
 Firstly, ensuring that the effects of a stream are performed at most
-once. And secondly, ensuring that resources associated to the stream,
+once. Secondly, ensuring that resources associated to the stream,
 such as file handles, are promptly released when the stream is no longer
 needed.
 
