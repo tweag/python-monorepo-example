@@ -124,8 +124,8 @@ needed.
 
 The type of streams is kept as `Stream f m r` were the type parameters
 have almost the same meaning as for unrestricted streams. Most functions
-in the new interface expect `m` to be an instance of [LMonad]() and `f`
-to be an instance of [LFunctor](). With an `LMonad` we can introduce new
+in the new interface expect `m` to be an instance of [LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
+to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs). With an `LMonad` we can introduce new
 streams as linear values in our programs.
 
 TODO: Discuss LMonad and how the example with fromHandle becomes
