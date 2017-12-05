@@ -193,3 +193,14 @@ streaming programs.
 
 TODO: Mention safe-streaming and the ghc prototype for the people
       who wants to try it.
+      
+This summer Tweag sponsored a Summer of Haskell project where Edvard
+Hübinette worked with the [streaming library](https://github.com/m0ar/safe-streaming).
+Here, linear types was leveraged to eliminate issues arising from
+repeated monadic effects when accessing old stream references.
+Linearity helped since it allowed the stream references to be used
+only once. There were several interesting findings which are documented
+in the [tech blog](https://m0ar.github.io/safe-streaming/). Compilation
+of this project requires the [GHC prototype](https://github.com/tweag/ghc/tree/linear-types)
+with linear types; installation instructions can be found in the
+repository README.
