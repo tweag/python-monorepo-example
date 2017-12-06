@@ -191,9 +191,6 @@ has a long way ahead before becoming a reality. But we hope that this
 post gives a perspective on how a future with linear types could be for
 streaming programs.
 
-TODO: Mention safe-streaming and the ghc prototype for the people
-      who wants to try it.
-      
 This summer Tweag sponsored a Summer of Haskell project where Edvard
 Hübinette worked with the [streaming library](https://github.com/m0ar/safe-streaming).
 Here, linear types was leveraged to eliminate issues arising from
