@@ -124,12 +124,27 @@ needed.
 
 The type of streams is kept as `Stream f m r` were the type parameters
 have almost the same meaning as for unrestricted streams. Most functions
-in the new interface expect `m` to be an instance of [LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
-to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs). With an `LMonad` we can introduce new
-streams as linear values in our programs.
+in the new interface expect `m` to be an instance of[LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
+to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs).
+With an `LMonad` we can introduce new streams as linear values in our 
+programs.
 
-TODO: Discuss LMonad and how the example with fromHandle becomes
-impossible.
+`LMonad` is exactly what the name hints suggests, a _linear_ monad. The
+type signatures of return and bind are familiar, but with the linear
+arrow in place of the usual one:
+
+```haskell
+class LApplicative m => LMonad m where
+  return :: a ->. m a
+  (>>=) :: m a ->. (a ->. m b) ->. m b
+```
+
+For streams, this means the type of `>>=` enforces that a stream reference
+has to be used linearly in the continuation. The consequence is that when 
+we use a stream reference more than once, like we use `s` in the `fromHandle`
+example above, this breaks the linearity constraints from bind, and the
+error is caught at compile time! 
+
 
 # Prompt finalization
 
