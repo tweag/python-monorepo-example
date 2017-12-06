@@ -60,9 +60,15 @@ Suppose we used
 fromHandle :: MonadIO m => Handle -> Stream (Of String) m ()
 ```
 
-In the following code we could regard `s` as a `Stream` which produces
-the strings `"a"`, `"b"` and `"c"`. But this depends on the context. The
-second use of `s` produces an empty list actually.
+In the following code, `s` is a `Stream` producing the strings `"a"`,
+`"b"` and `"c"`. We want to accumulate the stream elements in two lists
+and compare them. However, accessing stream references after they have
+already been used yields confusing results; here the second call to
+`toList_` actually just returns the empty list. This is perhaps
+surprising, from referential transparency we are used to functions
+returning the same things independently of the surrounding context.
+Here, simply having used the binding before changes the result of
+subsequent calls.
 
 ``` haskell
 writeFile "stream.txt" "a\nb\nc\n"
