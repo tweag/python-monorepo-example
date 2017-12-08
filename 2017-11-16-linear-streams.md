@@ -124,7 +124,7 @@ The type of streams is kept as
 [Stream f m r](https://www.stackage.org/haddock/lts-9.17/streaming-0.1.4.5/Streaming-Internal.html#t:Stream)
 were the type parameters
 have almost the same meaning as for unrestricted streams. Most functions
-in the new interface expect `m` to be an instance of[LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
+in the new interface expect `m` to be an instance of [LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
 to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs).
 With an `LMonad` we can introduce new streams as linear values in our 
 programs.
