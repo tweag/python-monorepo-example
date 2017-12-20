@@ -4,35 +4,57 @@ author: James Haydon
 featured: yes
 ---
 
+In this post I'll talk about free monads and how they can help structure a
+codebase. One of the projects we are working on is an AI, and part of the
+strategy that is uses for responding to user input is quite simple: it generates
+many possible responses, and then evaluates them. Most of the computations it
+generates will be malformed, and so will fail; we just want to skip over these
+as quickly as possible and move onto the next possibility. In summary:
+
+- A system generates many possible *effectful* computations only one of which
+  will ultimately be used to form a response.
+- The computations have to be executed in order to even be considered.
+- Most of the computations will fail. Sometimes because of IO, but mostly
+  because the computation is malformed.
+- We only want the effects of the chosen query to actually execute.
+
+A lot of the IO is very slow (involving expensive requests to other APIs), and a
+computation may make plenty of these requests only to fail later for a
+completely unrelated and trivial reason. The system will usually go through a
+large number of failing computation before hitting on one that succeeds, so we
+want failing computation to fail as quickly as possible. To do this we write
+different interpreters which mock certain APIs, providing realistic values for
+the rest of the computation. These interpreters will filter out dud computations
+in stages.
+
+Free monads are a nice way to structure this problem because interpretations of
+free-monads can be defined, composed and combined very flexibly, allowing us to
+build up a library of interpreters for solving our problem.
+
 ## What is a free monad?
 
-In this post we'll talk about free monads and how they can help structure a
-codebase. The problem I came across in a particular project was the following:
+*Interpreting* means giving meaning to some piece of data, and the meaning is
+often provided by stuff that gets done, which in Haskell corresponds to monads.
+Free monads are very easy to interpret (in other monads) because they are
+*free*, and the definition of a free object (in a category) says that they are
+easy to map *from*. So that's the basic idea behind free-monads: easy to
+interpret.
 
-- We have a system which produces many possible *effectful* computations, many
-  of which will fail.
-- You want to run only one of these (or none at all if they all fail).
-
-So now we need to be able to run things without running them. Free monads help
-here because if you target a free monad, you know it'll be easy to interpret
-it in many target environments. This is because they are *free*, and the
-definition of a free object (in a category) says that they are easy to map
-*from*.
-
-Specifically, a free object is *generated* by something less powerful, and then
-the idea is that to map to something we now only need to provide a definition
-over the generating object (which is easier).
+Specifically, a free object is *generated* by something less complex, and then
+to map to something we now only need to provide a definition over the generating
+object (which is easier, since it's got less structure).
 
 To give an example, in high-school you may have been asked to manipulate lots of
-maps `f :: R^n -> R^m`. Now `R^n` happens to be a free object over any set of
+maps `f :: ℝ^n -> ℝ^m`. Now `ℝ^n` happens to be a free object over any set of
 vectors that form a *basis*. So instead of defining the function `f` over *all*
-the points of `R^n`, which would be tedious, we just define it over the `n`
-points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. These get mapped to vectors in `R^m`,
+the points of `ℝ^n`, which would be tedious, we just define it over the `n`
+points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. These get mapped to vectors in `ℝ^m`,
 which we stick together to form a grid of numbers: now you have a matrix. The
 matrices are much more economical and much easier to manipulate.
 
 This is the essence of the advantage of free monads: *morphisms between free
-monads are economical and easy to manipulate.*
+monads are economical and easy to manipulate.* In fact the manipulations can be
+very similar to those on matrices.
 
 Let's dive in. We will generate monads with functors (because functors are
 easier than monads). Given a functor `f`, `Free f` is the monad it generates:
@@ -92,9 +114,11 @@ freeM phi (Pure x) = Pure x
 freeM phi (Free fx) = Free $ phi (freeM phi <$> fx)
 ```
 
-This makes `Free` a *functor*, not a haskell-functor, but a functor of categories: from the category of functors and natural transformations to itself.
+This makes `Free` a *functor*, not a haskell-functor, but a functor of
+categories: from the category of functors and natural transformations to itself.
 
-So now the first important remark is that `Free` doesn't do anything if we apply it to something that is already a monad, and this is neatly expressed by the natural transformation:
+If `m` is already a monad, then there is a special interpretation of `Free m`
+into itself, which we'll have more to say about later:
 
 ```haskell
 monad :: Monad m => Free m ~> m
@@ -104,9 +128,10 @@ monad (Free mfx) = do
   monad fx
 ```
 
-If you have two monads, `m` and `n`, then the proper notion of morphism between them is a
-_monad morphism_. This is a natural transformation `phi :: m ~> n` with a bunch of extra
-properties that make sure you aren't doing something insane.
+If you have two monads, `m` and `n`, then the proper notion of morphism between
+them is a _monad morphism_. This is a natural transformation `phi :: m ~> n`
+with a bunch of extra properties that make sure you aren't doing something
+insane.
 
 First of all: `phi . pure = pure`. That is, it should take pure values to pure
 values. Second, if we have something of type `m (m a)` there are now several
@@ -116,8 +141,8 @@ ways we can get and `n a`:
 (fmap phi) . phi`. If you want to translate between monads in a sensible way,
 these should obviously produce the same thing!
 
-Monad morphisms are often called _interpretations_ because they interpret,
-sensibly, computations into other computations.
+Monad morphisms are a more precise term for what we've loosely been calling
+"interpretations" up till now.
 
 The neat thing about free monads is that interpretations are _cheap_;
 interpreting them in other monads is easy. The idea is that all we need is a
@@ -131,30 +156,29 @@ interp phi = monad . freeM phi
 ```
 
 Great! So lets recap: `Free` is actually a functor mapping haskell-functors to
-haskell-monads. What's more, this functor is left-adjoint to the "forgetful
-functor", the one that takes a monad `m` and considers it as just a plain old
-haskell-functor.
+haskell-monads and morphisms of monads `Free f ~> m` are the same as natural
+transformations of functors `f ~> m` (via `interp`). Furthermore, **ALL**
+interpretations of `Free f` can be obtained by using the `interp` function. So
+you don't need to ever worry about some complicated interpretation not being
+definable with `interp`.
 
-What does that mouthful of abstract nonsense mean? It means that morphisms of
-monads `Free f ~> m` are the same as natural transformations of functors `f ~>
-m`. And that means that that **ALL** interpretations of `Free f` can be obtained
-by using the `interp` function. So you don't need to ever worry about some
-complicated interpretation not being definable with `interp`.
-
-The functor `Free` (being the left side of an adjunction) itself defines a monad
-(of the categorical sort) on the category of haskell-functors. And the algebras
-of this monad are.. _monads_! (the haskell ones).
+The functor `Free` itself defines a monad (of the categorical sort) on the
+category of haskell-functors. And the algebras of this monad are.. _monads_!
+(the haskell ones.)
 
 So in fact `Free` is so essential to the concept of monad that it contains the
 definition of what a monad is within itself, and so, we could redefine haskell's
-monad typeclass (we'll call our new class `Monad'`) as just being algebras for `Free`:
+monad typeclass (we'll call our new class `Monad'`) as just being algebras for
+`Free`:
 
 ```haskell
 class Functor m => Monad' m where
   monad :: Free m ~> m
 ```
 
-And we can see that it's just as powerful as `Monad`:
+An amusing exercise is to write the `Monad' m => Monad m` instance. Try on your
+own but here's the answer if you can't be bothered:
+
 ```haskell
 pure' :: Monad' m => a -> m a
 pure' = monad . Pure
@@ -165,7 +189,7 @@ join' = monad . Free . fmap (Free . fmap Pure)
 
 ## Free monads in the real world
 
-Okay, so how do we use free monads in your codebase?
+Okay, so how do we use free monads in a codebase?
 
 The idea is to create languages defined by functors for each piece of
 functionality in our system. These can be thought of as APIs.
@@ -208,8 +232,8 @@ getLine = liftF (GetLine id)
 ```
 
 At the top-most level, you want to create a functor representing your business
-logic. In this case, we are making some software for people who want to organise
-social clubs.
+logic. In this case, we can imagine making software for people who want to
+organise social clubs.
 
 ```haskell
 data ClubF a
@@ -249,24 +273,27 @@ spliced together to make new matrices. The same is true of natural
 transformations; they can be composed (this is just `.`) and "co-paired":
 
 ```haskell
-sumNat :: NatTrans f t -> NatTrans g t -> NatTrans (Sum f g) t
+sumNat :: (f ~> t) -> (g ~> t) -> (Sum f g) ~> t
 sumNat phi _   (InL x) = phi x
 sumNat _   psi (InR x) = psi x
 ```
 because `Sum` is the coproduct in the category of functors.
 
 Using some helper functions:
+
 ```haskell
-left :: (Functor f, Functor g) => Free f a -> Free (Sum f g) a
+left :: (Functor f, Functor g) => Free f ~> Free (Sum f g)
 left = interp (Free . InL . fmap pure)
 
-right :: (Functor f, Functor g) => Free g a -> Free (Sum f g) a
+right :: (Functor f, Functor g) => Free g ~> Free (Sum f g)
 right = interp (Free . InR . fmap pure)
 ```
+
 We can (finally!) start writing some interpretations:
+
 ```haskell
 -- Console in IO:
-consoleIO :: NatTrans ConsoleF IO
+consoleIO :: ConsoleF ~> IO
 consoleIO (PutStrLn s v) = do
   Prelude.putStrLn s
   pure v
@@ -275,7 +302,7 @@ consoleIO (GetLine cb) = do
   pure (cb s)
 
 -- KeyValue in IO via Redis.
-keyValIO :: NatTrans KeyValF IO
+keyValIO :: KeyValF ~> IO
 keyValIO (GetKey k cb) = do
   r <- Redis.lookupKey k
   pure (cb r)
@@ -287,21 +314,29 @@ keyValIO (PutKey k v n) = do
 If we wanted to use a different key-value store one day, all we'd have to do is
 swap out this interpretation.
 
-We have a mock one too:
+And for each component of our language we also write some mock interpreters:
 ```haskell
--- This one could read from serialised data on disk, or
--- some other clever thing.
-mockKeyValIO :: NatTrans KeyValF IO
+-- Mocked reads and writes
+mockKeyValIO :: KeyValF ~> IO
 mockKeyValIO = ...
+
+-- Real reads but mock writes
+mockWritesKeyValValIO :: KeyValF ~> IO
+mockWritesKeyValValIO = ...
+
+mockConsoleIO :: ConsoleF ~> IO
+mockConsoleIO = ...
 ```
 
 Finally, we interpret our business logic into a free monad representing all the
 functionality we need: `Console` and `KeyVal`. This takes care of translating
-our high-level API into the nitty gritty of which keys are used in our Redis
-system.
+our high-level API into the nitty-gritty of which keys are used in our Redis
+system. Structuring the system in this way guarantees that such details are
+banished from the rest of the code, and there is a single function where these
+conventions may be changed.
 
 ```haskell
-clubI :: NatTrans ClubF (Free (Sum ConsoleF KeyValF))
+clubI :: ClubF ~> (Free (Sum ConsoleF KeyValF))
 clubI (GetClubMembers clubId next) = do
   r <- right $ getKey ("clubs." ++ clubId ++ ".members")
   pure $ next (words <$> r)
@@ -316,31 +351,47 @@ clubI (Display o next) = do
   pure next
 ```
 
-Now combining interpreters is easy:
-```haskell
-real, mock :: Free ClubF a -> IO a
-real = interp $ interp (sumNat consoleIO keyValIO)     . clubI
-mock = interp $ interp (sumNat consoleIO mockKeyValIO) . clubI
-```
-And switching between a real computation and a mock one is as easy as calling
-`real` or `mock`:
+## Solving our initial probelm
+
+Now combining interpreters is easy, we can just use `(.)` and `sumNat`. What's
+more, we can mock certain aspects of our system selectively, and in varying
+degrees, with great flexibility. It's this flexibility which gives us the
+ability to create a spectrum of mock interpreters which we use to filter the
+large set of computations we need to test.
+
+Our computations are expressed by the `CompF` functor, and we could capture all
+the data-requirements of our domain in a `DataF` functor, which interprets into
+various database models:
 
 ```haskell
-main :: IO ()
-main =
-  real showClubSiblings
-  -- mock showClubSiblings
+data :: CompF ~> DataF
+
+keyVal :: DataF ~> KevValF
+relational :: DataF ~> RelationalF
+graph :: DataF ~> GraphF
 ```
 
+And each of `KeyValF`, `RelationalF` and `GraphF` might point to several
+specific implementations, each with their own mocking strategies.
 
-TODO:
+We create several sorts of mocking interpreters: `DataF ~> IO` with varying
+accuracy and speed:
 
-Talk about how I actually used free monads more.
+- `mockDataCached`: uses the lower level mocks, reading data from files which
+  have cached the responses.
+- `mockDataGen`: a cheaper direct interpretation into `IO` which randomly
+  generates plausible looking data of the right shape (à la `QuickCheck`).
 
-i.e. the problem is:
-- We have a collection of possibly failing computations which also use IO.
-- The reasons for failure might be IO, but in a lot of cases it is completely
-  independent of IO.
-- The IO operations are very slow.
-- We want to get process the collection of computations as quickly as possible,
-  and so, we want failing computations to fail as quickly as possible.
+Using this sort of composability of interpreters, we can create our final set of
+interpreters:
+
+```haskell
+fastButCrude :: CompF ~> IO
+mediumPlausible :: CompF ~> IO
+slowButAccurate :: CompF ~> IO
+```
+
+and use them in succession on the large list of possible computations we need to
+check, filtering out the dud ones in stages. In this way we filter out the
+easily detectable duds using `fastButCrude`, so that `slowButAccurate` is only
+used for those remaining harder-to-detect duds.
