@@ -1,14 +1,15 @@
 ---
-title: "Type-class reflection: a tutorial"
+title: All about reflection: a tutorial
 author: Arnaud Spiwack
 featured: yes
 ---
 
-Among our tools, at Tweag I/O, is [type-class
-reflection](https://www.stackage.org/haddock/lts-9.0/reflection-2.1.2/Data-Reflection.html).
-We don't reach for it often, but it can be very useful. Reflection is
-rather little known, and when it is, it is often spoken of with a hint
-of fear.
+An important device in the tool belt I carry around everyday
+is
+[type class reflection](https://www.stackage.org/haddock/lts-9.0/reflection-2.1.2/Data-Reflection.html).
+I don't reach for it often, but it can be very useful. Reflection is
+a little known device. And for some reason it is often spoken of with
+a hint of fear.
 
 In this post, I want to convince you that reflection is not hard and
 that you ought to know about it. To that end, let me invite you to join
@@ -18,17 +19,15 @@ me on a journey to sort a list:
 sortBy :: (a->a->Ordering) -> [a] -> [a]
 ```
 
-But first:
-
 What is reflection?
 ===================
 
-Type-class reflection is an extension of Haskell which makes it
-possible to use a value as a type-class instance. There is a [package
+type class reflection is an extension of Haskell which makes it
+possible to use a value as a type class instance. There is a [package
 on
 Hackage](https://www.stackage.org/haddock/lts-9.0/reflection-2.1.2/Data-Reflection.html),
-implementing type-class reflection for GHC, which I will use for this
-tutorial. Type-class reflection being an extension of Haskell (that
+implementing type class reflection for GHC, which I will use for this
+tutorial. type class reflection being an extension of Haskell (that
 is, it can't be defined from other Haskell features), this
 implementation is GHC-specific and will probably not work with another
 compiler.
@@ -52,19 +51,17 @@ import Data.Proxy
 import Data.Reflection
 ```
 
-Yes, I know:
-[`UndecidableInstances`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html?highlight=rebindablesyntax#ghc-flag--XUndecidableInstances).
-It is unfortunately required. It means that we could technically send
-the type checker in an infinite loop. It is innocuous (it cannot accept
-bad programs), but unpleasant. Of course, we will be careful not to
-introduce such loops.
+[`UndecidableInstances`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html?highlight=rebindablesyntax#ghc-flag--XUndecidableInstances)...
+scary, I know. It is unfortunately required. It means that we could
+technically send the type checker into an infinite loop. Of course, we
+will be careful not to introduce such loops.
 
 Sorted lists
 ============
 
-As I said at the beginning: my goal, today is to sort a list. In order
-to make the exercise a tiny bit interesting, I will use types to enforce
-invariants. Let me start by introducing a type of *sorted* lists.
+My goal, today, is to sort a list. In order to make the exercise
+a tiny bit interesting, I will use types to enforce invariants. I'll
+start by introducing a type of *sorted* lists.
 
 ```haskell
 newtype SortedList a = Sorted [a]
@@ -145,7 +142,7 @@ sort :: Ord a => [a] -> [a]
 sort l = forget (fromList l)
 ```
 
-Though that's not quite what we had set up to write. We wanted
+Though that's not quite what we had set out to write. We wanted
 
 ```haskell
 sortBy :: (a->a->Ordering) -> [a] -> [a]
@@ -153,14 +150,14 @@ sortBy :: (a->a->Ordering) -> [a] -> [a]
 
 It is easy to define `sort` from `sortBy` (`sort = sortBy compare`). But
 we needed the typeclass for type safety of the `SortedList` interface.
-What to do? We would need to use a value as a type-class instance. Ooh!
+What to do? We would need to use a value as a type class instance. Ooh!
 What may have sounded excentric when I first brought it up is now
 exactly what we need!
 
 As I said when I discussed the type of `merge`: one property of type
 classes is that they are globally attached to a type. It may seem
 impossible to implement `sortBy` in terms of `sort`: if I use
-`sortBy myOrd :: [a]->[a]` and `sortBy myOtherOrd :: [a]->[a]` on the
+`sortBy myOrd :: [a] -> [a]` and `sortBy myOtherOrd :: [a] -> [a]` on the
 same type, then I am creating two different instances of `Ord a`. This
 is forbidden.
 
@@ -225,7 +222,7 @@ class Reifies s d | s -> d where
 
 The `| s -> d` part is called a [functional
 dependency](https://wiki.haskell.org/Functional_dependencies). It is
-used by GHC to figure out which type-class instance to use; we won't
+used by GHC to figure out which type class instance to use; we won't
 have to think about it.
 
 Sorting with reflection
@@ -243,8 +240,8 @@ data ReifiedOrd a = ReifiedOrd {
 ```
 
 Given a dictionary of type `ReifiedOrd`, we can define instances for
-`Eq` and `Ord` of `ReflectedOrd`. But since type-class instances only
-take type-class instances as an argument, we need to provide the
+`Eq` and `Ord` of `ReflectedOrd`. But since type class instances only
+take type class instances as an argument, we need to provide the
 dictionary as a type class. That is, using `Reifies`.
 
 ```haskell
@@ -259,15 +256,15 @@ instance Reifies s (ReifiedOrd a) => Ord (ReflectedOrd s a) where
 
 Notice that because of the `Reifies` on the left of the instances GHC
 does not know that it will for sure terminate during typeclass
-resolution (hence the use of `UndecidableInstances`). However these are
+resolution (hence the use of `UndecidableInstances`). However, these are
 indeed global instances: by definition, they are the only way to have an
 `Ord` instances on the `ReflectedOrd` type! Otherwise GHC would
-complain!
+complain.
 
-We are about done: if we `reify` a `ReifiedOrd a`, we have a scoped
-instance of `Ord (ReflectedOrd s a)` (for some locally generated `s`).
-To sort our list, we simply need to convert between `[a]` and
-`ReflectedOrd s a`.
+We are just about done: if we `reify` a `ReifiedOrd a`, we have
+a scoped instance of `Ord (ReflectedOrd s a)` (for some locally
+generated `s`). To sort our list, we simply need to convert between
+`[a]` and `ReflectedOrd s a`.
 
 ```haskell
 sortBy :: (a->a->Ordering) -> [a] -> [a]
@@ -290,11 +287,11 @@ We've reached the end of our journey. And we've seen along the way that
 we can enjoy the safety of type classes, which makes it safe to write
 function like `merge` in Haskell, while still having the flexibility to
 instantiate the type class from a function argument, such as options
-from the command line. Since type-class instances are global, such local
+from the command line. Since type class instances are global, such local
 instances are defined globally for locally generated types. This is what
 type class reflection is all about.
 
-If you want to delve deeper into the subject of type-class reflection,
+If you want to delve deeper into the subject of type class reflection,
 let me, as I'm wrapping up this tutorial, leave you with a few pointers
 to further material:
 
