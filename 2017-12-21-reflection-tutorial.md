@@ -1,5 +1,6 @@
 ---
 title: "All about reflection:<br/> a tutorial"
+shortTitle: "All about reflection"
 author: Arnaud Spiwack
 featured: yes
 ---
