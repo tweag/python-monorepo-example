@@ -1,5 +1,5 @@
 ---
-title: All about reflection: a tutorial
+title: "All about reflection: a tutorial"
 author: Arnaud Spiwack
 featured: yes
 ---
