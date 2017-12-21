@@ -187,7 +187,7 @@ Now, we only have to create a new parameter `s` locally at each `sortBy`
 call. This is done like this:
 
 ```haskell
-reifyOrd :: (forall s. Ord (Reflected Ord s a) => …) -> …
+reifyOrd :: (forall s. Ord (ReflectedOrd s a) => …) -> …
 ```
 
 What is happening here? The `reifyOrd` function takes an argument which
