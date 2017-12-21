@@ -304,9 +304,10 @@ to further material:
     Seipp](https://www.schoolofhaskell.com/user/thoughtpolice/using-reflection)
     goes over the *very unsafe*, internal compiler representation
     dependent, implementation of the library
--   John Wiegley \[discusses an application of
-    reflection\]\[reflection-wiegly-use-case\] in relation with
-    QuickCheck.
+-   John
+    Wiegley
+    [discusses an application of reflection][reflection-wiegly] in
+    relation with QuickCheck.
 -   You may have noticed, in the definition of `sortBy`, that we `map`
     the `reflectOrd` and `unreflectOrd` in order to convert between `a`
     and `ReflectedOrd s a`. However, while, `reflectOrd` and
@@ -318,3 +319,4 @@ to further material:
     Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell).
 
 [lhs-sources]: https://gist.github.com/aspiwack/6d6d69463abe95817453eed1198e6f1b
+[reflection-wiegly]: http://newartisans.com/2017/02/a-case-of-reflection/
