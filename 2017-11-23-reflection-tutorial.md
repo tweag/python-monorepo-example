@@ -22,12 +22,12 @@ sortBy :: (a->a->Ordering) -> [a] -> [a]
 What is reflection?
 ===================
 
-type class reflection is an extension of Haskell which makes it
+Type class reflection is an extension of Haskell which makes it
 possible to use a value as a type class instance. There is a [package
 on
 Hackage](https://www.stackage.org/haddock/lts-9.0/reflection-2.1.2/Data-Reflection.html),
 implementing type class reflection for GHC, which I will use for this
-tutorial. type class reflection being an extension of Haskell (that
+tutorial. Type class reflection being an extension of Haskell (that
 is, it can't be defined from other Haskell features), this
 implementation is GHC-specific and will probably not work with another
 compiler.
@@ -149,7 +149,7 @@ sortBy :: (a->a->Ordering) -> [a] -> [a]
 ```
 
 It is easy to define `sort` from `sortBy` (`sort = sortBy compare`). But
-we needed the typeclass for type safety of the `SortedList` interface.
+we needed the type class for type safety of the `SortedList` interface.
 What to do? We would need to use a value as a type class instance. Ooh!
 What may have sounded excentric when I first brought it up is now
 exactly what we need!
@@ -255,7 +255,7 @@ instance Reifies s (ReifiedOrd a) => Ord (ReflectedOrd s a) where
 ```
 
 Notice that because of the `Reifies` on the left of the instances GHC
-does not know that it will for sure terminate during typeclass
+does not know that it will for sure terminate during type class
 resolution (hence the use of `UndecidableInstances`). However, these are
 indeed global instances: by definition, they are the only way to have an
 `Ord` instances on the `ReflectedOrd` type! Otherwise GHC would
