@@ -35,8 +35,8 @@ compiler.
 Literate Haskell
 ================
 
-This blog post was generated from literate Haskell source, which you can find
-[here][lhs-sources].
+This blog post was generated from literate Haskell sources. You can
+find an extracted Haskell source file [here][lhs-sources].
 
 There is a bit of boilerplate to get out of the way before we start.
 
@@ -317,4 +317,4 @@ to further material:
     type class. I would start with this [video from Simon Peyton
     Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell).
 
-[lhs-sources]: https://gist.github.com/aspiwack/4f1e0cd9847c97aa46e822bc286b5382
+[lhs-sources]: https://gist.github.com/aspiwack/6d6d69463abe95817453eed1198e6f1b
