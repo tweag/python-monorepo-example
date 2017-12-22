@@ -5,20 +5,20 @@ featured: yes
 ---
 
 In this post I'll talk about free monads and how they can help structure a
-codebase. One of the projects we are working on is an AI, and part of the
-strategy that is uses for responding to user input is quite simple: it generates
-many possible responses, and then evaluates them. Most of the computations it
+codebase. One of the projects I'm working on is an AI, and part of the strategy
+that is uses for responding to user input is quite simple: it generates many
+possible responses, and then evaluates them. Most of the computations it
 generates will be malformed, and so will fail; we just want to skip over these
 as quickly as possible and move onto the next possibility. In summary:
 
 - A system generates many possible *effectful* computations only one of which
   will ultimately be used to form a response.
 - The computations have to be executed in order to even be considered.
-- Most of the computations will fail. Sometimes because of IO, but mostly
+- Most of the computations will fail. Sometimes because of I/O, but mostly
   because the computation is malformed.
 - We only want the effects of the chosen query to actually execute.
 
-A lot of the IO is very slow (involving expensive requests to other APIs), and a
+A lot of the I/O is very slow (involving expensive requests to other APIs), and a
 computation may make plenty of these requests only to fail later for a
 completely unrelated and trivial reason. The system will usually go through a
 large number of failing computation before hitting on one that succeeds, so we
@@ -36,21 +36,22 @@ build up a library of interpreters for solving our problem.
 *Interpreting* means giving meaning to some piece of data, and the meaning is
 often provided by stuff that gets done, which in Haskell corresponds to monads.
 Free monads are very easy to interpret (in other monads) because they are
-*free*, and the definition of a free object (in a category) says that they are
-easy to map *from*. So that's the basic idea behind free-monads: easy to
-interpret.
+*free*, and the definition of a free object (e.g. in category theory) says that
+they are easy to map *from*. So that's the basic idea behind free-monads: easy
+to interpret.
 
 Specifically, a free object is *generated* by something less complex, and then
 to map to something we now only need to provide a definition over the generating
 object (which is easier, since it's got less structure).
 
 To give an example, in high-school you may have been asked to manipulate lots of
-maps `f :: ℝ^n -> ℝ^m`. Now `ℝ^n` happens to be a free object over any set of
-vectors that form a *basis*. So instead of defining the function `f` over *all*
-the points of `ℝ^n`, which would be tedious, we just define it over the `n`
-points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. These get mapped to vectors in `ℝ^m`,
-which we stick together to form a grid of numbers: now you have a matrix. The
-matrices are much more economical and much easier to manipulate.
+maps `f :: ℝ<sup>n</sup> -> ℝ<sup>m</sup>`. Instead of defining the function `f`
+over *all* the points of `ℝ<sup>n</sup>`, which would be tedious, we just define
+it over the `n` points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. This is enough because
+`ℝ<sup>n</sup>` happens to be a free object over any set of vectors that form a
+*basis*. These `n` points get mapped to `n` vectors in `ℝ<sup>m</sup>`, which we
+stick together to form a grid of numbers: now you have a matrix. The matrices
+are much more economical and much easier to manipulate.
 
 This is the essence of the advantage of free monads: *morphisms between free
 monads are economical and easy to manipulate.* In fact the manipulations can be
@@ -114,7 +115,7 @@ freeM phi (Pure x) = Pure x
 freeM phi (Free fx) = Free $ phi (freeM phi <$> fx)
 ```
 
-This makes `Free` a *functor*, not a haskell-functor, but a functor of
+This makes `Free` a *functor*, not a Haskell-functor, but a functor of
 categories: from the category of functors and natural transformations to itself.
 
 If `m` is already a monad, then there is a special interpretation of `Free m`
@@ -138,8 +139,10 @@ values. Second, if we have something of type `m (m a)` there are now several
 ways we can get and `n a`:
 - Sequence in `m`, and then translate: `phi . join`.
 - Or, translate the two parts independently, and then sequence in `n`: `join .
-(fmap phi) . phi`. If you want to translate between monads in a sensible way,
-these should obviously produce the same thing!
+(fmap phi) . phi`.
+
+If you want to translate between monads in a sensible way,
+these should produce the same thing!
 
 Monad morphisms are a more precise term for what we've loosely been calling
 "interpretations" up till now.
@@ -155,8 +158,8 @@ interp :: (Functor f, Monad m) => f ~> m -> Free f ~> m
 interp phi = monad . freeM phi
 ```
 
-Great! So lets recap: `Free` is actually a functor mapping haskell-functors to
-haskell-monads and morphisms of monads `Free f ~> m` are the same as natural
+Great! So let's recap: `Free` is actually a functor mapping Haskell-functors to
+Haskell-monads and morphisms of monads `Free f ~> m` are the same as natural
 transformations of functors `f ~> m` (via `interp`). Furthermore, **ALL**
 interpretations of `Free f` can be obtained by using the `interp` function. So
 you don't need to ever worry about some complicated interpretation not being
