@@ -1,29 +1,44 @@
 ---
 title: Implementing safer sort with linear-types
 shortTitle: some subtitle
-author: Alexander Vershilov and 
+author: Alexander Vershilov and Arnaud Spiwak
 ---
 
-In [ALL ABOUT REFLECTION](https://www.tweag.io/posts/2017-12-21-reflection-tutorial.html)
-post we introduced `SortedList` structure. But even if we used this special structure sorting
-is not guaranteed to be safe as theoretically implementation can lose elements or duplicate them.
+In [all about reflection](https://www.tweag.io/posts/2017-12-21-reflection-tutorial.html)
+post we introduced `SortedList` data type. But having sorted list as a result of the sort
+function is not strong enough for says that it's actual sort function. For example there
+is a space for differrent kind of bugs, like loosing or duplicating elements from the
+input list. We need an additional guarantee that returned list is a permutation of the
+elements of incomming list. In this post we want to show a way how such a guarantee
+could be introduced in linear types framework.
 
-Ideally we want an implementation that is guaranteed to be a permutation
-of the incoming elements. There are a few ways how to do that:
+By looking at type of any paramterically polymorphic function we can derive properties
+that holds for this function due to parametricity. A property that function must work
+for any type that was passed to the function. One interesting example for us is function
+with type:
 
-  * just trust the code
-  * use liquid haskell and prove the code
-  * use linear types and parametricity
+```haskell
+[a] -> [a]
+```
 
-By writing the definition of the polymorphic function we can find the
-theorems that function satisfies. This technique is called theorems
-for free and can be found in [theorems for free](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875)
-paper by Philip Wadler. In case of lists, crusially, functions of type `[a] ->. [a]`
-they are nessesarily permutations. So if we provide a functions that typechecks we will need
-to prove that elements in the result have right order.
+Parametricity of this function entails  that the elements of the result of this function
+is a subset of the argument (up to the possible with duplications of the elements). And
+this property is guaranteed by the type of the function. Intuitively this happens because
+function can neither inspect values nor produce new one because their type is unknown to
+the function. This technique is called theorems for free and can be found in
+[theorems for free](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875)
+paper by Philip Wadler.
 
-This is literate haskell file and can be compiled by ghci with
-[linear-types](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/03/haskell-linear-submitted.pdf)
+While there is no nice theoretical framework, linear types offer stronger parametricity
+guarantees. In our case function with the type `[a] ->. [a]` is necessarily a permutations.
+Intuitively this happens because function can neither forget nor duplicate any value
+in it's argument due to linearity. In order to get more guarantees we need to use more
+sophisticated tools, and we would need better support for dependent types or use Liquid
+Haskell. But parametricity is a lighterweight tool that you can leverage to get a lot of
+mileage.
+
+With this knowledge we can actually implement sorting function.
+This is literate haskell file and can be compiled by ghci with [linear-types](https://arxiv.org/abs/1710.09756)
 extension enabled.
 
 ```haskell
@@ -73,14 +88,8 @@ class OrdL a where
  -- | Compares the elements and their 'Ordering' and values
  -- that are by convention in the sorted order.
  compareL :: a ->. a ->. (Ordering, a, a)
-```
-
-I'm not sure that this is an ideal type (thus it's not in linear-base)
-but at least it will fit our needs.
-
-```haskell
-  default compareL :: (Ord a, Movable a) => a ->. a ->. (Ordering, a, a)
-  compareL a b = go (move a) (move b) where
+ default compareL :: (Ord a, Movable a) => a ->. a ->. (Ordering, a, a)
+ ompareL a b = go (move a) (move b) where
     go :: Unrestricted a ->. Unrestricted a ->. (Ordering, a, a)
     go (Unrestricted x) (Unrestricted y) = (compare x y, x, y)
 ```
@@ -98,7 +107,7 @@ class Movable a where -- simplified
   move :: a ->. Unrestricted a
 ```
 
-Any first-order Haskell value of should have this class. For values that are
+Any first-order Haskell type of should have this class. For values that are
 movable we may have a simple default implementation, for values that are
 not user will have to write his own definition.
 
@@ -123,13 +132,6 @@ sublist and ones with odd into the other. This way we need not count the size
 of the list and can do split in streaming fasion. Almost no magic and discussions
 here, but split is linear and type itself makes sure that elements are neither
 lost nor duplicated.
-
-Now lets introduce small helper:
-
-```haskell
-view1 :: SortedList a ->. (a, SortedList a)
-view1 (Sorted (a:as)) = (a, Sorted as)
-```
 
 And actually our merge function:
 
@@ -158,7 +160,7 @@ Recall what we had in non-linear case:
      else b: mergeList left r
 ```
 
-modulo minor changes it's exactly the same code.
+up to minor changes it's exactly the same code.
 
 ```haskell
 fromList :: forall a. OrdL a => [a] ->. SortedList a
@@ -169,6 +171,15 @@ fromList xs = go1 (split xs) where
  go1 (left, right) = merge (fromList left) (fromList right)
 ```
 
-Some conclusion, possibly reference to priority queue
+Just by changing arrow types in our functions to linear we are able to get
+additional guarantees that are enough to proove that return result is
+permutation of the input. In addition, we were able to preserve proof that
+returned list is ascending without any changes in existing data types. And this
+is a good properly of the linear types that we are able to provide additional
+guarantees without large changes in existing codebase.
 
+This is not full proof of the sorting, we may still want to proove that our
+sort function has required complexity or other interesting properties. But
+using linear types as a lightweight framework was enough to make function
+safer to we need much less to trust to the codebase.
 
