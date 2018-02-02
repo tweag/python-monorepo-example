@@ -4,12 +4,13 @@ author: James Haydon
 featured: yes
 ---
 
-In this post I'll talk about free monads and how they can help structure a
-codebase. One of the projects I'm working on is an AI, and part of the strategy
-that is uses for responding to user input is quite simple: it generates many
-possible responses, and then evaluates them. Most of the computations it
-generates will be malformed, and so will fail; we just want to skip over these
-as quickly as possible and move onto the next possibility. In summary:
+The utility of free monads can show up in surprising places. One of
+the projects I'm working on is an AI, and part of the strategy that is
+uses for responding to user input is quite simple: it generates many
+possible responses, and then evaluates them. Most of the computations
+it generates will be malformed, and so will fail; we just want to skip
+over these as quickly as possible and move onto the next possibility.
+In summary:
 
 - A system generates many possible *effectful* computations only one of which
   will ultimately be used to form a response.
@@ -28,7 +29,7 @@ the rest of the computation. These interpreters will filter out dud computations
 in stages.
 
 Free monads are a nice way to structure this problem because interpretations of
-free-monads can be defined, composed and combined very flexibly, allowing us to
+free monads can be defined, composed and combined very flexibly, allowing us to
 build up a library of interpreters for solving our problem.
 
 ## What is a free monad?
@@ -37,7 +38,7 @@ build up a library of interpreters for solving our problem.
 often provided by stuff that gets done, which in Haskell corresponds to monads.
 Free monads are very easy to interpret (in other monads) because they are
 *free*, and the definition of a free object (e.g. in category theory) says that
-they are easy to map *from*. So that's the basic idea behind free-monads: easy
+they are easy to map *from*. So that's the basic idea behind free monads: easy
 to interpret.
 
 Specifically, a free object is *generated* by something less complex, and then
@@ -167,10 +168,10 @@ definable with `interp`.
 
 The functor `Free` itself defines a monad (of the categorical sort) on the
 category of haskell-functors. And the algebras of this monad are.. _monads_!
-(the haskell ones.)
+(the Haskell ones.)
 
 So in fact `Free` is so essential to the concept of monad that it contains the
-definition of what a monad is within itself, and so, we could redefine haskell's
+definition of what a monad is within itself, and so, we could redefine Haskell's
 monad typeclass (we'll call our new class `Monad'`) as just being algebras for
 `Free`:
 
@@ -318,6 +319,7 @@ If we wanted to use a different key-value store one day, all we'd have to do is
 swap out this interpretation.
 
 And for each component of our language we also write some mock interpreters:
+
 ```haskell
 -- Mocked reads and writes
 mockKeyValIO :: KeyValF ~> IO
@@ -334,9 +336,9 @@ mockConsoleIO = ...
 Finally, we interpret our business logic into a free monad representing all the
 functionality we need: `Console` and `KeyVal`. This takes care of translating
 our high-level API into the nitty-gritty of which keys are used in our Redis
-system. Structuring the system in this way guarantees that such details are
+system. Structuring the system in this way guarantees that *such details are
 banished from the rest of the code, and there is a single function where these
-conventions may be changed.
+conventions may be changed*.
 
 ```haskell
 clubI :: ClubF ~> (Free (Sum ConsoleF KeyValF))
