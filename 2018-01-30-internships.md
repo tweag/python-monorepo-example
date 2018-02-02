@@ -4,18 +4,31 @@ shortTitle: "Internships at Tweag"
 author: "Nicholas Clarke"
 ---
 
-Tweag I/O is inviting applications from students for our internship programme
-this summer. If you're a student excited about working with Haskell, nix and
-similar things, then get in touch!
+Tweag I/O is inviting applications from students for our paid internship
+programme this summer. If you're a student excited about working with Haskell,
+nix and similar things, then get in touch!
 
-The internship would be based at our office in Paris (or remote?) for a period
-of up to three months. Timescales are obviously adjustable to suit your needs.
-You would need to be eligible to work in the European Union.
+In previous years, our interns have worked on a variety of projects across
+research and engineering:
 
-Payment/benefits?
+- Adding a [type system](https://www.tweag.io/posts/2017-05-23-typing-nix.html)
+  to the `nix` language.
+- Creating a new low-level [network backend](https://github.com/tweag/swarm) for
+  Haskell.
+- Creating a library for distributed FRP (functional reactive programming).
+- Creating a library for linearly typed streaming.
 
-Here are some ideas of projects you might like to work on, although you are of
-course welcome to suggest others:
+We have a few ideas for projects which you might want to work on (see the bottom
+of this post for details), or feel free to propose one of your own. We're happy
+to consider projects which might form part of a dissertation, either as a summer
+project or over a longer term.
+
+Internships would most likely be on a remote basis, though if you're local to
+Paris then we could also host you at our Paris office. If you're in one of the
+countries where we have a strong presence then we would also try to arrange
+reguar meetings with advisors at a mutually convenient location.
+
+Here are some potential project ideas:
 
 - Writing a type system for directory trees for use in
   [funflow](https://github.com/tweag/funflow).
@@ -26,11 +39,6 @@ course welcome to suggest others:
 - Contribute to fixing bugs in GHC related to inline-java.
 - Writing a webapp which allows graphical composition of Funflow workflows.
 
-Here are some previous project which interns have worked on:
-
-- Adding a [type system](https://www.tweag.io/posts/2017-05-23-typing-nix.html)
-  to the `nix` language.
-- Creating Swarm - one liner to describe it?
-
-If this is something you think would be interested, send us a quick resumé to
+To apply, or to ask for more information or to discuss an idea for a project
+you'd like to consider working on, drop us an email with a brief résume at
 jobs@tweag.io.
