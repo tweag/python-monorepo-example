@@ -356,7 +356,7 @@ clubI (Display o next) = do
   pure next
 ```
 
-## Solving our initial probelm
+## Solving our initial problem
 
 Now combining interpreters is easy, we can just use `(.)` and `sumNat`. What's
 more, we can mock certain aspects of our system selectively, and in varying
