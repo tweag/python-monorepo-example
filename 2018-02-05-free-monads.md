@@ -46,7 +46,7 @@ to map to something we now only need to provide a definition over the generating
 object (which is easier, since it's got less structure).
 
 To give an example, in high-school you may have been asked to manipulate lots of
-maps <code>f :: ℝ<sup>n</sup> -> ℝ<sup>m</sup></code>. Instead of defining the function `f`
+maps <code>f :: ℝ<sup>n</sup> -&gt; ℝ<sup>m</sup></code>. Instead of defining the function `f`
 over *all* the points of <code>ℝ<sup>n</sup></code>, which would be tedious, we just define
 it over the `n` points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. This is enough because
 <code>ℝ<sup>n</sup></code> happens to be a free object over any set of vectors that form a
