@@ -287,10 +287,10 @@ Using some helper functions:
 
 ```haskell
 left :: (Functor f, Functor g) => Free f ~> Free (Sum f g)
-left = interp (Free . InL . fmap pure)
+left = freeM InL
 
 right :: (Functor f, Functor g) => Free g ~> Free (Sum f g)
-right = interp (Free . InR . fmap pure)
+right = freeM InR
 ```
 
 We can (finally!) start writing some interpretations:
