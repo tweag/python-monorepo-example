@@ -5,7 +5,7 @@ featured: yes
 ---
 
 The utility of free monads can show up in surprising places. One of
-the projects I'm working on is an AI, and part of the strategy that is
+the projects I'm working on is an AI, and part of the strategy that it
 uses for responding to user input is quite simple: it generates many
 possible responses, and then evaluates them. Most of the computations
 it generates will be malformed, and so will fail; we just want to skip
