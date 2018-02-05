@@ -46,11 +46,11 @@ to map to something we now only need to provide a definition over the generating
 object (which is easier, since it's got less structure).
 
 To give an example, in high-school you may have been asked to manipulate lots of
-maps `f :: ℝ<sup>n</sup> -> ℝ<sup>m</sup>`. Instead of defining the function `f`
-over *all* the points of `ℝ<sup>n</sup>`, which would be tedious, we just define
+maps <code>f :: ℝ<sup>n</sup> -> ℝ<sup>m</sup></code>. Instead of defining the function `f`
+over *all* the points of <code>ℝ<sup>n</sup></code>, which would be tedious, we just define
 it over the `n` points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. This is enough because
-`ℝ<sup>n</sup>` happens to be a free object over any set of vectors that form a
-*basis*. These `n` points get mapped to `n` vectors in `ℝ<sup>m</sup>`, which we
+<code>ℝ<sup>n</sup></code> happens to be a free object over any set of vectors that form a
+  *basis*. These `n` points get mapped to `n` vectors in <code>ℝ<sup>m</sup></code>, which we
 stick together to form a grid of numbers: now you have a matrix. The matrices
 are much more economical and much easier to manipulate.
 
