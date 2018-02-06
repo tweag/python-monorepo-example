@@ -183,6 +183,7 @@ to have the parameter `m` be a linear monad.
 instance LMonad IOL where
   ...
 
+-- JIterator stands for a reference to an iterator on the Java side.
 mapIterator :: (JObject ->. JObject) -> JIterator ->. IOL JIterator
 mapIterator f jiterator =
     iteratorToStream jiterator >>= streamToIterator . linearMap f
