@@ -10,7 +10,7 @@ help writing composable programs without lazy I/O. We showed, for
 a simple program, how using a streaming library helps reducing the
 amount of unaided bookkeeping that the programmer needs to conduct
 to make it correct. In this post we delve further in that direction
-by introducing
+by considering
 [linear types](http://www.tweag.io/posts/2017-03-13-linear-types.html)
 and uncover their potential to have the compiler do more checks.
 
@@ -116,9 +116,8 @@ or discarded in the function.
 
 There are two aspects where linear types can help managing streams.
 Firstly, ensuring that the effects of a stream are performed at most
-once. Secondly, ensuring that resources associated to the stream,
-such as file handles, are promptly released when the stream is no longer
-needed.
+once. Secondly, ensuring that linear values contained in the stream are
+eventually used.
 
 The type of streams is kept as
 [Stream f m r](https://www.stackage.org/haddock/lts-9.17/streaming-0.1.4.5/Streaming-Internal.html#t:Stream)
@@ -129,12 +128,12 @@ to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/mast
 With an `LMonad` we can introduce new streams as linear values in our 
 programs.
 
-`LMonad` is class offering methods `return` and `>>=` similar to those of
+`LMonad` is a class offering methods `return` and `>>=` similar to those of
 the `Monad` class, but where arguments have been changed to have a
 linear multiplicity.
 
 ```haskell
-class LApplicative m => LMonad m where
+class LMonad m where
   return :: a ->. m a
   (>>=) :: m a ->. (a ->. m b) ->. m b
 ```
@@ -145,113 +144,59 @@ we use a stream reference more than once, like we use `s` in the `fromHandle`
 example above, this breaks the linearity constraints from `>>=`, and the
 error is caught at compile time!
 
-# Prompt finalization
+# Linear vs affine streams
 
-To release resources associated to streams, the `streaming` package
-relies on the
-[MonadResource](https://www.stackage.org/haddock/lts-9.4/resourcet-1.1.9/Control-Monad-Trans-Resource.html#t:MonadResource)
-class of the
-[resourcet](https://www.stackage.org/lts-9.4/package/resourcet) package.
-The resources are usually released when the end of the respective stream
-is reached, but if the streams are not completely consumed, they are
-released at the end of
-[runResourceT](https://www.stackage.org/haddock/lts-9.4/resourcet-1.1.9/Control-Monad-Trans-Resource.html#v:runResourceT).
+Instead of using linear types, we could have used affine types. That is,
+an argument of an affine type can be used or consumed at most once in the
+body of a function. Unlike linear types, arguments of affine types can be
+ignored without the compiler flagging an error.
 
-The [conduit](https://www.stackage.org/lts-9.4/package/conduit) package
-goes a step beyond to have resources released immediately after a
-`conduit` is used even if it has not been fully consumed. For this sake,
-`conduit`s have finalizers which are executed immediately after a
-`conduit` is used. In the absence of linear types, it is still the
-responsibility of the programmer to make sure that a conduit is ever
-used. Otherwise, its finalizers won't be executed until leaving the
-scope of `runResourceT`.
-If an application handles many files or connections using streams,
-closing them soon after they are last used is essential to keep it
-within the limits for open files and connections.
+After all, in the previous discussion, we are only concerned with our
+stream references not being used more than once. A consequence of using
+linear types is that we cannot implement
 
-In a similar way to `conduit`s, it is possible to attach finalizers to a
-stream and have them called when the stream is last used. If the streams
-are linear values, then the type checker can signal when a stream is not
-being disposed of.
-Here is a modification of the `Stream` data type from the
-[streaming](http://www.stackage.org/package/streaming)
-package.
+```haskell
+take :: LMonad m => Stream (Of a) m r -> Stream (Of a) m ()
+```
 
-``` haskell
-data Stream f m r where
-  Step :: m () -> !(f (Stream f m r)) ->. Stream f m r
-  Effect :: m () -> m (Stream f m r) ->. Stream f m r
-  Return :: r ->. Stream f m r
+If we had a stream `s` which produces a sequence of linear values, the
+expression `take 0 s` would cause all the values to be dropped, which the
+compiler would not stand. This is a compelling reason to use affine streams
+instead of linear streams. However, then we can not store or produce linear
+values in our affine streams. And we have at least one case where we would
+like to do this: marshaling Java iterators from/to Haskell streams.
 
-instance (LFunctor f, LMonad m) => LMonad (Stream f m r) where
+Suppose we are writting a program which is written both in Java and
+Haskell. Let us suppose further that, on the Java side, we have an iterator
+of type `java.util.Iterator<Object>`. To use it on the Haskell side, we
+would like to marshal it to Haskell as a stream of type
+`Stream (Of JObject) m ()`, where `m` is a linear monad and `JObject` is
+the Haskell type of references to Java objects.
+As we explain in
+[an earlier post](https://www.tweag.io/posts/2017-11-29-linear-jvm.html),
+we want to treat Java references linearly to make sure that they are
+promptly deleted when they are no longer used, hence the requirement
+to have the parameter `m` be a linear monad.
+
+```Haskell
+-- IOL is a linear version of the IO monad.
+instance LMonad IOL where
   ...
+
+mapIterator :: (JObject ->. JObject) -> JIterator ->. IOL JIterator
+mapIterator f jiterator =
+    iteratorToStream jiterator >>= streamToIterator . linearMap f
+  where
+    iteratorToStream :: JIterator ->. Stream (Of JObject) IOL ()
+    streamToIterator :: Stream (Of JObject) IOL () ->. IOL JIterator
+
+linearMap :: LMonad m => (a ->. b) -> Stream (Of a) m r ->. Stream (Of b) m r
 ```
 
-`Step` gives data from the stream in a structure of type
-`f (Stream f m r)` and a finalizer of type `m ()`.
-`Effect` gives a monadic computation that produces more of the stream
-and also a finalizer of type `m ()`.
-`Return` terminates a stream and yields a final value of type `r`.
-When a stream reads values from a file handle, all the `Step` and `Effect`
-constructors have finalizers which close the handle.
-
-``` haskell
-import Streaming (Of(:>))
-import System.IO (Handle, hClose, hGetLine, hIsEOF)
-
-fromHandle :: MonadIO m => Handle -> Stream (Of String) m ()
-fromHandle h = Effect (hClose h) $ do
-    eof <- hIsEOF h
-    if eof then do
-      hClose h
-      return (Return ())
-    else do
-      s <- hGetLine h
-      return $ Step (hClose h) (s :> fromHandle h)
-```
-
-We provide a function to finalize a stream, which purpose is to
-be able to close the handle without being forced to read all of the file
-contents.
-
-``` haskell
-dropStream :: LMonad m => Monad Stream f m r ->. m ()
-dropStream (Return _) = return ()
-dropStream (Step fin fs) = fin >> return (unsafeDrop fs)
-dropStream (Effect fin fs) = fin >> return (unsafeDrop fs)
-
-unsafeDrop :: a ->. ()
-unsafeDrop = unsafeCoerce (const ())
-```
-
-There is a price to have `dropStream`, though. We no longer guarantee
-that linear values placed in a linear stream will be used exactly once.
-This guarantee is lost when resorting to `unsafeDrop`. Thus, we can
-write the following function which doesn't use its argument despite of
-having multiplicity 1.
-
-``` haskell
-dropLinear :: a ->. m ()
-dropLinear a = dropStream (Step (return ()) (a :> Return ()))
-```
-
-TODO: Can we somehow avoid `dropLinear` from being accepted by the compiler?
-      (so the programmer is forced to use an unrestricted a)
-
-We can still ensure, though, that all finalizers will run promptly and
-that no value in a linear stream will be consumed more than once. We
-illustrate the first point with the implementation of `takes`.
-We use `splitAt` to get a stream with the first `n` elements` of the
-input. Then we drop the reminder with dropStream. Note that we can't
-forget to drop the reminder as we are in a linear monad.
-
-``` haskell
-takes :: (LMonad m, LFunctor f) => Int -> Stream f m r ->. Stream f m ()
-takes n s = splitsAt n s >>= \rem -> effect (fmap Return $ dropStream rem)
-
-splitsAt :: forall f m r. (LMonad m, LFunctor f)
-         => Int -> Stream f m r ->. Stream f m (Stream f m r)
-```
+Thanks to linear types, the compiler could check that the `jiterator`
+reference is deleted (inside `iteratorToStream`), and it can check
+that the references that the intermediate stream produces are
+eventually deleted too.
 
 # Summary
 
@@ -259,9 +204,17 @@ We have shown how linear types can prevent some forms of
 mistakes when writing streaming programs. This translates in simpler
 side conditions for the programmer to check. In our example of the
 `headLineStream` function, conditions (3) and (4) are discharged by
-the type checker. And condition (2) is further approached by having
-a finalizer of the input stream close the source right after the end
-of the output stream is reached.
+the type checker. Moreover, linear streams allow to produce linear
+values from the stream which allows using them in combination with
+other resources that need to be treated linearly.
+
+A few questions remain open. For instance, it has to be seen if it
+is practical to have a single implementation of streams that can be
+used as linear, affine or unrestricted depending on the context.
+Otherwise we might end up with three similar implementations where
+we would prefer to avoid the code duplication.
+Another question is in which use cases affine streams would be a
+good fit, whereas linear streams would be not.
 
 At this time, the GHC proposal for linear types is still under
 discussion and a strong implementation of linear streams has a long way
