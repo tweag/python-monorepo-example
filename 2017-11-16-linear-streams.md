@@ -197,7 +197,7 @@ linearMap :: LMonad m => (a ->. b) -> Stream (Of a) m r ->. Stream (Of b) m r
 Thanks to linear types, the compiler could check that the `jiterator`
 reference is deleted (inside `iteratorToStream`), and it can check
 that the references that the intermediate stream produces are
-eventually deleted too.
+deleted as the result is consumed in the Java side.
 
 # Summary
 
