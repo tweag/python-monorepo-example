@@ -39,14 +39,14 @@ evaluation.
 
 There are some side conditions to ensure that the resulting program is
 streaming and correct.
- 1. The output `ByteString` is not fed to any function that loads all of
+ * The output `ByteString` is not fed to any function that loads all of
    the output into memory like
    [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
- 2. the source of the input `ByteString` needs to be closed *soon enough* to
+ * the source of the input `ByteString` needs to be closed *soon enough* to
    prevent open handles from accumulating,
- 3. the output `ByteString` shall not be used after the source of the
+ * the output `ByteString` shall not be used after the source of the
    input `ByteString` is closed, and
- 4. the input bytestring shall not be given to any other function.
+ * the input bytestring shall not be given to any other function.
  
 We neglected to include the last condition in our earlier post,
 but it is necessary because otherwise the effects producing the
@@ -98,7 +98,7 @@ invalid stream references?
 
 With linear types we introduce _multiplicity_ of values; not only does
 the type system track what sort of values we have, but also to which
-extent they are used. An argument of a linear type has to be used — or
+extent they are used. A linear argument has to be used — or
 _consumed_ — exactly once in a function, or the program will not
 compile. Both forgetting to use a linear value or using it
 more than once will lead to a compile time error. This simple concept 
@@ -127,7 +127,6 @@ in the new interface expect `m` to be an instance of [LMonad](https://github.com
 to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs).
 With an `LMonad` we can introduce new streams as linear values in our 
 programs.
-
 `LMonad` is a class offering methods `return` and `>>=` similar to those of
 the `Monad` class, but where arguments have been changed to have a
 linear multiplicity.
@@ -146,25 +145,13 @@ error is caught at compile time!
 
 # Linear vs affine streams
 
-Instead of using linear types, we could have used affine types. That is,
-an argument of an affine type can be used or consumed at most once in the
-body of a function. Unlike linear types, arguments of affine types can be
-ignored without the compiler flagging an error.
-
+Linear types ensure both that the effects are not duplicated and the
+resources are properly freed, do we really need the latter?
 After all, in the previous discussion, we are only concerned with our
-stream references not being used more than once. A consequence of using
-linear types is that we cannot implement
-
-```haskell
-take :: LMonad m => Stream (Of a) m r -> Stream (Of a) m ()
-```
-
-If we had a stream `s` which produces a sequence of linear values, the
-expression `take 0 s` would cause all the values to be dropped, which the
-compiler would not stand. This is a compelling reason to use affine streams
-instead of linear streams. However, then we can not store or produce linear
-values in our affine streams. And we have at least one case where we would
-like to do this: marshaling Java iterators from/to Haskell streams.
+stream references not being used more than once.
+It turns out, that sometimes we want to store or get linear arguments
+in streams, and we can only achieve this if the stream references are
+linear.
 
 Suppose we are writting a program which is written both in Java and
 Haskell. Let us suppose further that, on the Java side, we have an iterator
@@ -177,6 +164,12 @@ As we explain in
 we want to treat Java references linearly to make sure that they are
 promptly deleted when they are no longer used, hence the requirement
 to have the parameter `m` be a linear monad.
+
+For a concrete example, let us consider a function that modifies
+the values produced by a Java iterator. The Java iterator is first
+marshaled to a Haskell stream, then we apply a function to each
+element in the stream, and finally we marshal the stream back to
+another Java iterator.
 
 ```Haskell
 -- IOL is a linear version of the IO monad.
@@ -196,15 +189,30 @@ linearMap :: LMonad m => (a ->. b) -> Stream (Of a) m r ->. Stream (Of b) m r
 
 Thanks to linear types, the compiler could check that the `jiterator`
 reference is deleted (inside `iteratorToStream`), and it can check
-that the references that the intermediate stream produces are
-deleted as the result is consumed in the Java side.
+that the references that the intermediate streams produce are
+deleted as the resulting iterator is consumed in the Java side.
+
+There is a price to pay because of requiring stream references
+to be linear. Some operations which are trivial to offer in an
+unrestricted setting are not possible to implement anymore.
+Conside the function `take`, for instance.
+
+```haskell
+take :: LMonad m => Stream (Of a) m r -> Stream (Of a) m ()
+```
+
+If we had a stream `s` which produces a sequence of linear values, the
+expression `take 0 s` would cause all of the values to be dropped, which
+the compiler would not stand. We haven't come across a good use case yet
+where we need `take` in a restricted context (either linear or affine).
 
 # Summary
 
 We have shown how linear types can prevent some forms of
 mistakes when writing streaming programs. This translates in simpler
 side conditions for the programmer to check. In our example of the
-`headLineStream` function, conditions (3) and (4) are discharged by
+`headLineStream` function, we had four conditions of which the last
+two are discharged by
 the type checker. Moreover, linear streams allow to produce linear
 values from the stream which allows using them in combination with
 other resources that need to be treated linearly.
