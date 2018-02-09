@@ -195,7 +195,7 @@ deleted as the resulting iterator is consumed in the Java side.
 There is a price to pay because of requiring stream references
 to be linear. Some operations which are trivial to offer in an
 unrestricted setting are not possible to implement anymore.
-Conside the function `take`, for instance.
+Consider the function `take`, for instance.
 
 ```haskell
 take :: LMonad m => Stream (Of a) m r -> Stream (Of a) m ()
