@@ -5,14 +5,15 @@ author: Alexander Vershilov and Arnaud Spiwak
 ---
 
 In [all about reflection](https://www.tweag.io/posts/2017-12-21-reflection-tutorial.html)
-post we introduced `SortedList` data type. But having sorted list as a result of the sort
-function is not strong enough for says that it's actual sort function. For example there
-is a space for differrent kind of bugs, like loosing or duplicating elements from the
-input list. We need an additional guarantee that returned list is a permutation of the
+post we introduced `SortedList` data type. So, a sorting function f will have type
+`[a] -> SortedList a`. However, this doesn't actually guarantee that `f` is indeed
+a sorting function: it only says that `f l` is sorted, but not that it is a sort `l`.
+For example `f _ = [1,2,3]` is a perfect solution on `Int`s, as result list is sorted,
+indeed. We need an additional guarantee that returned list is a permutation of the
 elements of incomming list. In this post we want to show a way how such a guarantee
 could be introduced in linear types framework.
 
-By looking at type of any paramterically polymorphic function we can derive properties
+By looking at type of any parametrically polymorphic function we can derive properties
 that holds for this function due to parametricity. A property that function must work
 for any type that was passed to the function. One interesting example for us is function
 with type:
@@ -25,13 +26,13 @@ Parametricity of this function entails  that the elements of the result of this 
 is a subset of the argument (up to the possible with duplications of the elements). And
 this property is guaranteed by the type of the function. Intuitively this happens because
 function can neither inspect values nor produce new one because their type is unknown to
-the function. This technique is called theorems for free and can be found in
-[theorems for free](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875)
-paper by Philip Wadler.
+the function.  This technique is usually called parametricity. However, it is sometimes
+referred to as « theorems for free » after Wadler's [paper](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
 
-While there is no nice theoretical framework, linear types offer stronger parametricity
-guarantees. In our case function with the type `[a] ->. [a]` is necessarily a permutations.
-Intuitively this happens because function can neither forget nor duplicate any value
+I am not aware of a theory of parametricity with linear types, however, in practice,
+linear function offer stronger parametricity guaranteesIn our case function with the 
+type `[a] ->. [a]` is necessarily a permutations. Intuitively this happens because function
+can neither forget nor duplicate any value
 in it's argument due to linearity. In order to get more guarantees we need to use more
 sophisticated tools, and we would need better support for dependent types or use Liquid
 Haskell. But parametricity is a lighterweight tool that you can leverage to get a lot of
@@ -171,15 +172,15 @@ fromList xs = go1 (split xs) where
  go1 (left, right) = merge (fromList left) (fromList right)
 ```
 
-Just by changing arrow types in our functions to linear we are able to get
-additional guarantees that are enough to proove that return result is
+Just by changing the arrow types in our functions to linear we are able to get
+additional guarantees that are enough to prove that the returned result is a
 permutation of the input. In addition, we were able to preserve proof that
 returned list is ascending without any changes in existing data types. And this
 is a good properly of the linear types that we are able to provide additional
 guarantees without large changes in existing codebase.
 
-This is not full proof of the sorting, we may still want to proove that our
+This is not full prove of the sorting, we may still want to prove that our
 sort function has required complexity or other interesting properties. But
-using linear types as a lightweight framework was enough to make function
-safer to we need much less to trust to the codebase.
+using linear types as a lightweight framework was enough to make our sorting functions
+safer, so that we need to trust less of the codebase.
 
