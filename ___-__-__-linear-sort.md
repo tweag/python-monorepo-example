@@ -177,10 +177,9 @@ additional guarantees that are enough to prove that the returned result is a
 permutation of the input. In addition, we were able to preserve proof that
 returned list is ascending without any changes in existing data types. And this
 is a good properly of the linear types that we are able to provide additional
-guarantees without large changes in existing codebase.
-
-This is not full prove of the sorting, we may still want to prove that our
-sort function has required complexity or other interesting properties. But
-using linear types as a lightweight framework was enough to make our sorting functions
-safer, so that we need to trust less of the codebase.
+guarantees without large changes in existing codebase. Sometimes we want to prove
+more facts about the sort, for example to proove that sorting function has
+desired complexity; such facts could not be proven a linear type framework.
+Still linear types provide a lightweight framework, that is enough to make our
+sorting functions safer, so that we need to trust less of the codebase.
 
