@@ -8,7 +8,7 @@ In
 we have discussed how streaming libraries
 help writing composable programs without lazy I/O. We showed, for
 a simple program, how using a streaming library helps reducing the
-amount of unaided bookkeeping that the programmer needs to conduct
+amount of unaided bookkeeping that the programmer needs to do in order
 to make it correct. In this post we delve further in that direction
 by considering
 [linear types](http://www.tweag.io/posts/2017-03-13-linear-types.html)
@@ -16,43 +16,30 @@ and uncover their potential to have the compiler do more checks.
 
 # Streaming today
 
-Let us recap our simple streaming example. We implemented a
-function that yields the first line of input. Both the input and
-the output are effectful bytestrings as defined in the
-[streaming-bytestring](http://www.stackage.org/package/streaming-bytestring)
-package.
+Streaming libraries provide some sort of abstraction to manipulate
+sequences of values which may not reside fully in memory, but which
+may be produced progressively as they are consumed. This ability is
+essential to write programs which run in bounded space despite of
+handling inputs of any size (so-called streaming programs).
 
-```Haskell
-import qualified Data.ByteString.Streaming (ByteString)
-import qualified Data.ByteString.Streaming.Char8 as SB
-import qualified Streaming
+Streaming libraries don't ensure that programs are streaming or correct.
+There are side conditions that are required for proper use. For instance,
+for the [streaming](http://www.stackage.org/package/streaming) package we
+have:
 
-headLineStream :: Monad m => ByteString m r -> ByteString m ()
-headLineStream = SB.unlines . Streaming.takes 1 . SB.lines
-```
-
-This function transforms an effectful bytestring. It might not reside
-fully in memory, but it may be produced in chunks as the bytestring is
-consumed. In contrast to lazy `ByteString`s, the effectful bytestring
-produces the chunks in the monad `m` rather than through lazy
-evaluation. 
-
-There are some side conditions to ensure that the resulting program is
-streaming and correct.
- * The output `ByteString` is not fed to any function that loads all of
-   the output into memory like
+ * no length-unbounded stream must be fed to any function that loads it
+   completely into memory like
    [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
- * the source of the input `ByteString` needs to be closed *soon enough* to
-   prevent open handles from accumulating,
- * the output `ByteString` shall not be used after the source of the
-   input `ByteString` is closed, and
- * the input bytestring shall not be given to any other function.
- 
-We neglected to include the last condition in our earlier post,
-but it is necessary because otherwise the effects producing the
-contents of the input would be replayed yielding an undefined outcome.
+ * the resources from where streams are read or written to need to
+   be closed *soon enough* to prevent open handles from accumulating,
+ * no stream shall be used after the resources it depends upon have
+   been released,
+ * and no stream shall be used a second time.
+
+The last condition is necessary because otherwise the effects producing
+the contents of the stream would be replayed yielding an undefined outcome.
 This is left implicit in the documentation of most streaming libraries.
-Suppose we used
+Let us consider an example to clarify this point. Suppose we use
 [fromHandle](https://www.stackage.org/haddock/lts-9.4/streaming-0.1.4.5/Streaming-Prelude.html#v:fromHandle).
 
 ``` haskell
@@ -60,11 +47,12 @@ Suppose we used
 fromHandle :: MonadIO m => Handle -> Stream (Of String) m ()
 ```
 
-In the following code, `s` is a `Stream` producing the strings `"a"`,
-`"b"` and `"c"`. We want to accumulate the stream elements in two lists
+In the following code, `s` is regarded as a `Stream` producing the strings `"a"`,
+`"b"` and `"c"` as they are read from the file `stream.txt`.
+We want to accumulate the stream elements in two lists
 and compare them, expecting them to be the same. However, the two
 evaluations of `toList_ s` yield different results actually, because
-the meaning of `s` depends on whether it has been evaluated before.
+the meaning we have given to `s` is reasonable only while `s` hasn't been evaluated before.
 In this case, extracting elements from `s` causes the source handle
 to read a file. The first evaluation of `toList_ s` reads the whole
 file. When we reach the second evaluation of `toList_ s`, the
@@ -85,7 +73,7 @@ This is not a problem of streaming libraries exclusively. If using lazy
 function would mean that its contents might be retained until all
 functions are evaluated, making the program non-streaming.
 
-Argueably, we could refine the meaning of `s` so we say instead that
+Arguably, we could refine the meaning of `s` so we say instead that
 it is some sort of state machine that reads lines from a file. And
 then the functions we write on streams need to document in which state
 the streams are left when they return. But in practice, the norm is to
@@ -114,10 +102,11 @@ if a function type does not guarantee linearity in an argument, it is
 an error to pass it a linear value as such because it might be duplicated
 or discarded in the function.
 
-There are two aspects where linear types can help managing streams.
+There are a few aspects where linear types can help managing streams.
 Firstly, ensuring that the effects of a stream are performed at most
 once. Secondly, ensuring that linear values contained in the stream are
-eventually used.
+eventually used. And finally, they can help ensuring that no stream is
+used after the resources it depends upon have been released.
 
 The type of streams is kept as
 [Stream f m r](https://www.stackage.org/haddock/lts-9.17/streaming-0.1.4.5/Streaming-Internal.html#t:Stream)
@@ -137,20 +126,23 @@ class LMonad m where
   (>>=) :: m a ->. (a ->. m b) ->. m b
 ```
 
+`a ->. b` stands for a [linear function](https://github.com/ghc-proposals/ghc-proposals/pull/111).
 For streams, the type of `>>=` enforces that a stream reference is
 used linearly in the continuation. The consequence is that when
 we use a stream reference more than once, like we use `s` in the `fromHandle`
 example above, this breaks the linearity constraints from `>>=`, and the
 error is caught at compile time!
+Moreover, the handle `h` can't be closed before invoking `fromHandle` or the
+typechecker would notice that the handle is used more than once.
 
 # Linear vs affine streams
 
 Linear types ensure both that the effects are not duplicated and the
-resources are properly freed, do we really need the latter?
+resources are properly freed. Do we really need the latter?
 After all, in the previous discussion, we are only concerned with our
 stream references not being used more than once.
-It turns out, that sometimes we want to store or get linear arguments
-in streams, and we can only achieve this if the stream references are
+It turns out that sometimes we want to carry linear values inside
+streams, and we can only achieve this if the stream references are
 linear.
 
 Suppose we are writting a program which is written both in Java and
@@ -203,19 +195,17 @@ take :: LMonad m => Stream (Of a) m r -> Stream (Of a) m ()
 
 If we had a stream `s` which produces a sequence of linear values, the
 expression `take 0 s` would cause all of the values to be dropped, which
-the compiler would not stand. We haven't come across a good use case yet
-where we need `take` in a restricted context (either linear or affine).
+the compiler would not stand.
 
 # Summary
 
 We have shown how linear types can prevent some forms of
-mistakes when writing streaming programs. This translates in simpler
-side conditions for the programmer to check. In our example of the
-`headLineStream` function, we had four conditions of which the last
-two are discharged by
-the type checker. Moreover, linear streams allow to produce linear
-values from the stream which allows using them in combination with
-other resources that need to be treated linearly.
+mistakes when writing streaming programs. This translates in less
+side conditions for the programmer to check, since the others can
+be discharged by the type checker.
+Moreover, linear streams can carry linear values which allows using
+them in combination with other resources that need to be treated
+linearly.
 
 A few questions remain open. For instance, it has to be seen if it
 is practical to have a single implementation of streams that can be
@@ -225,12 +215,10 @@ we would prefer to avoid the code duplication.
 Another question is in which use cases affine streams would be a
 good fit, whereas linear streams would be not.
 
-At this time, the GHC proposal for linear types is still under
+At this time, the [GHC proposal](https://github.com/ghc-proposals/ghc-proposals/pull/111)
+for linear types is still under
 discussion and a strong implementation of linear streams has a long way
-to go before becoming a reality. But we hope that this
-post gives a perspective on how a future with linear types could be for
-streaming programs.
-
+to go before becoming a reality.
 For those interested, there is a
 [prototype of GHC](https://github.com/tweag/ghc/tree/linear-types)
 which implements linear types. Related to linear streams, this summer
