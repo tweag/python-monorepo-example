@@ -1,5 +1,5 @@
 ---
-title: Build big polyglot projects with Bazel... now with Haskell support
+title: Build large polyglot projects with Bazel... now with Haskell support
 author: Mathieu Boespflug, Mark Karpov, Mateusz Kowalczyk
 ---
 
@@ -97,8 +97,9 @@ dependency graph. This situation has a number of drawbacks:
   rebuilds are sometimes lost, leading to **slow rebuilds**. This
   happens when dependencies are accurately declared, but not
   *precisely declared*. For instance, it's a shame to rebuild all of
-  dependent package B after a change to package A that did not cause
-  any of the interface files for modules in A to change.
+  dependent package B, along with anything that depends on it, after
+  a simple change to package A that did not cause any of the interface
+  files for modules in A to change.
 * The resulting system is brittle, complex and therefore **hard to
   maintain**, because it's an accumulation of multiple build
   subsystems configured in ways custom to each language. You have
@@ -131,7 +132,7 @@ Luu [says][dan-luu-monorepo] it this way:
 > the filesystem idiom that’s used inside projects, and then
 > a meta-level for navigating between projects.
 
-All code for the entire company universe is readily accessible with
+All code in your entire company universe is readily accessible with
 a simple `cd some/code/somewhere`. It then becomes natural to make
 each code directory map to one code component buildable independently
 and uniformly. All we need is a build system that can scale to
@@ -179,12 +180,13 @@ Better still, Bazel has good support for local and distributed
 caching, optimized dependency analysis and parallel execution, so you
 get fast and incremental builds provided dependencies are declared
 precisely. Bazel is clever. Rules can have multiple outputs produced
-by sequences of cations, but Bazel will only rerun precisely those
+by sequences of actions, but Bazel will only rerun precisely those
 actions that produce the smallest subset of outputs strictly necessary
-to build the given top-level target given on the command-line. Bazel
-is very serious about recompilation avoidance. Because it knows the
-entirety of the dependency graph, it can detect precisely which parts
-of the build graph are invariant under a rebuild of some of the
+to build the given top-level target given on the command-line.
+
+Bazel is very serious about recompilation avoidance. Because it knows
+the entirety of the dependency graph, it can detect precisely which
+parts of the build graph are invariant under a rebuild of some of the
 depndencies. For example, it will relink your Haskell app but won't
 rebuild any Haskell code if only a C file changed without altering any
 C header files, even if this was a C file of a package deep in the
@@ -259,14 +261,15 @@ graph analysis and parallel execution.
 
 At this point, [rules_haskell][rules_haskell-home] the set of Bazel
 rules for Haskell, is in Beta. We've been internally dog fooding it on
-a few projects, and today Adjoint.io and a few others have already
-deployed it for their CI. We have not implemented special support for
-building packages from Hackage, instead relying on existing tools (in
-particular Nix) to provide those. We use Bazel to build our own code
-only, not upstream dependencies. But there are experiments underway to
-use Bazel for upstream dependencies as well. We encourage you to
-experiment with rules_haskell
+a few projects, and today [Adjoint.io][adjoint-io] and a few others
+have already deployed it for their CI. We have not implemented special
+support for building packages from Hackage, instead relying on
+existing tools (in particular Nix) to provide those. We use Bazel to
+build our own code only, not upstream dependencies. But there are
+experiments underway to use Bazel for upstream dependencies as well.
+We encourage you to experiment with rules_haskell
 and [report any issues][rules_haskell-issues] you find. We'd love your
 feedback. Just don't use this in production just yet!
 
+[adjoint-io]: https://www.adjoint.io/
 [rules_haskell-issues]: https://github.com/tweag/rules_haskell/issues
