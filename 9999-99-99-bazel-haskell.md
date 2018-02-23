@@ -6,14 +6,14 @@ author: Mathieu Boespflug, Mark Karpov, Mateusz Kowalczyk
 Publishing code to the world is easy these days: take your code, tack
 on some extra metadata onto it, call that a package and upload it
 to [npmjs.com][npmjs] / [crates.io][crates-io] / [Hackage][hackage] /
-etc. It's easy for other developers to include your code as part of
-their project: build tools are available to pull your package from
-where you published it, along with any packages your's in turn depends
-on, and build everything in the right order. Haskellers have the good
-fortune of having at least two great options to choose from when it
-comes to build tools: Stack and cabal-install. Both tools support
-building Haskell code, but what they also have in common is they are
-very much Haskell-centric.
+etc. It's also easy for other developers to include your code as part
+of their project: build tools are available to pull your package from
+where you published it, along with any packages that yours in turn
+depends on, and build everything in the right order. Haskellers have
+the good fortune of having at least two great options to choose from
+when it comes to build tools: Stack and cabal-install. Both tools
+support building Haskell code, but what they also have in common is
+they are very much Haskell-centric.
 
 In short, these tools work great for projects that are a) meant to be
 open source or easily open sourceable, b) small and c) mostly or
@@ -39,9 +39,9 @@ solutions. We chose Google's [Bazel][bazel-home].
 ## Polyglot monorepos
 
 Beyond a certain size, it's unrealistic to expect that the most cost
-effective way to implement a project is to do so using a single
-language only. On many of our customer projects, in practice we end up
-with a mix of Haskell, Java, Scala, C/C++, R, Python and even FORTRAN.
+effective way to implement a project is to do so using only one
+language. On many of our customer projects, in practice we end up with
+a mix of Haskell, Java, Scala, C/C++, R, Python and even FORTRAN.
 Quite simply because it's much cheaper to reuse existing code, or to
 play on the particular strengths of a programming language, than to
 reimplement everything using a uniform stack.
@@ -146,7 +146,8 @@ component is packaged in a single directory with a single, succinct,
 declarative `BUILD` file describing how to build everything inside
 using always the same build configuration syntax. No brittle
 multi-language build scripts that require specialist knowledge to hack
-and creates a terrible bus factor in development.
+and induce a terrible bus factor on project maintenance and
+development.
 
 That's how development can scale to large sizes. In fact these
 monorepos can grow [very large indeed][google-monorepo].
@@ -201,14 +202,14 @@ dependency graph.
 
 By using Bazel, you get to piggyback on years of performance tuning,
 improving scalability, and tooling development (static analysis,
-documentation generators, debuggers, profilers, ...) by Google
-engineers over a period of nearly 10 years. And since open sourcing,
-that of a community of engineers at users of Bazel, such as Stripe,
-Uber, Asana, Dropbox etc.
+documentation generators, debuggers, profilers, etc) by Google
+engineers over a period of nearly 10 years. And since its open
+sourcing, that of a community of engineers at companies using Bazel,
+such as Stripe, Uber, Asana, Dropbox etc.
 
 Better still, Bazel already has support for building a variety of
-languages, including C/C++, Rust, Scala, Java, Objective C... By using
-Bazel, we get to reuse best practices for building each of these
+languages, including C/C++, Rust, Scala, Java, Objective C, etc. By
+using Bazel, we get to reuse best practices for building each of these
 languages. And focus entirely on Haskell support.
 
 ## How we added Haskell support
