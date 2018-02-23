@@ -28,6 +28,9 @@ many others, respectively. So all we needed to do
 was [add Haskell support][rules_haskell-home] to one of these existing
 solutions. We chose Google's [Bazel][bazel-home].
 
+[npmjs]: https://www.npmjs.com/
+[crates-io]: https://crates.io/
+[hackage]: https://hackage.haskell.org/
 [bazel-home]: https://bazel.build/
 [buck-home]: https://buckbuild.com/
 [pants-home]: https://www.pantsbuild.org/
@@ -148,7 +151,10 @@ and creates a terrible bus factor in development.
 That's how development can scale to large sizes. In fact these
 monorepos can grow [very large indeed][google-monorepo].
 
-[dan-luu]: https://danluu.com/monorepo/
+[inline-java]: https://github.com/tweag/inline-java
+[spark]: https://spark.apache.org/
+[sparkle]: https://github.com/tweag/sparkle
+[dan-luu-monorepo]: https://danluu.com/monorepo/
 [google-monorepo]: https://cacm.acm.org/magazines/2016/7/204032-why-google-stores-billions-of-lines-of-code-in-a-single-repository/fulltext
 [twitter-monorepo]: http://www.gigamonkeys.com/flowers/
 [jar-format]: https://en.wikipedia.org/wiki/JAR_(file_format)
@@ -157,11 +163,12 @@ monorepos can grow [very large indeed][google-monorepo].
 
 One large monorepo facilitates writing tooling that will work with the
 entire thing. Google did just that with their Blaze build system, open
-sourced in 2015 as [Bazel][bazel] (the two systems are technically
-distinct but share most of the code). As we touched upon above,
-a crucial property of building code at scale is that partial rebuilds
-should be *correct* and *fast*. This implies that dependencies should
-be declared accurately and precisely (respectively).
+sourced in 2015 as [Bazel][bazel-home] (the two systems are
+technically distinct but share most of the code). As we touched upon
+above, a crucial property of building code at scale is that partial
+rebuilds should be *correct* and *fast*. This implies that
+dependencies should be declared accurately and precisely
+(respectively).
 
 Bazel tries hard to offer guarantees that dependencies are at least
 complete (this property is called *build hermiticity*). It does so by
@@ -207,9 +214,9 @@ languages. And focus entirely on Haskell support.
 ## How we added Haskell support
 
 Bazel uses a subset of Python syntax for `BUILD` files. Each
-"component" in your project typically gets one such files. Here is an
-example build description for inline-java, involving the creation of
-one C library and one Haskell library:
+"component" in your project typically gets one such files. Here is
+an [example build description][inline-java-build] for inline-java,
+involving the creation of one C library and one Haskell library:
 
 ```python
 cc_library(
@@ -253,6 +260,7 @@ lifting is done by Bazel itself, which implements once and for all, in
 a way common to all languages, `BUILD` file evaluation, dependency
 graph analysis and parallel execution.
 
+[inline-java-build]: https://github.com/tweag/inline-java/blob/master/BUILD
 [haskell-build]: http://haskell.build/
 [rules_haskell-code]: https://github.com/tweag/rules_haskell/tree/master/haskell
 [skylark-doc]: https://docs.bazel.build/versions/master/skylark/language.html
