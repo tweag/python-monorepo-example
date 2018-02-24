@@ -16,7 +16,7 @@ support building Haskell code, but what they also have in common is
 they are very much Haskell-centric.
 
 In short, these tools work great for projects that are a) meant to be
-open source or easily open sourceable, b) small and c) mostly or
+open source or easily open-sourceable, b) small and c) mostly or
 exclusively Haskell. Over the past couple of months, we have been
 focused on building a solution for the opposite use case: corporate
 monorepos, which are a) closed source b) large and c) almost always
@@ -46,7 +46,7 @@ Quite simply because it's much cheaper to reuse existing code, or to
 play on the particular strengths of a programming language, than to
 reimplement everything using a uniform stack.
 
-Case in point: we have multiple projects involving compute intensive
+Case in point: we have multiple projects involving compute-intensive
 models of (bio)physical phenomena. These models are typically
 implemented in Haskell, with some basic numerical routines offloaded
 to C and FORTRAN. For faster response times, we transparently
