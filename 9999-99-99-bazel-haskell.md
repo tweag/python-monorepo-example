@@ -278,7 +278,16 @@ build our own code only, not upstream dependencies. But there are
 experiments underway to use Bazel for upstream dependencies as well.
 We encourage you to experiment with rules_haskell
 and [report any issues][rules_haskell-issues] you find. We'd love your
-feedback. Just don't use this in production just yet!
+feedback!
+
+In future posts, we'll explore:
+
+* using Bazel's remote cache to very aggressively yet safely cache
+  everything that can be to further speed up CI builds,
+* playing on the respective strengths of both [Bazel][bazel-home]
+  and [Nix][nix-home] for truly reproducible builds,
+* Packaging deployable binaries and containers.
 
 [adjoint-io]: https://www.adjoint.io/
 [rules_haskell-issues]: https://github.com/tweag/rules_haskell/issues
+[nix-home]: https://nixos.org/nix/
