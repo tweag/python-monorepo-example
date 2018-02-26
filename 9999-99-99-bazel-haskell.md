@@ -4,7 +4,7 @@ author: Mathieu Boespflug, Mark Karpov, Mateusz Kowalczyk
 ---
 
 Publishing code to the world is easy these days: take your code, tack
-on some extra metadata onto it, call that a package and upload it
+some extra metadata onto it, call that a package and upload it
 to [npmjs.com][npmjs] / [crates.io][crates-io] / [Hackage][hackage] /
 etc. It's also easy for other developers to include your code as part
 of their project: build tools are available to pull your package from
@@ -114,8 +114,8 @@ dependency graph. This situation has a number of drawbacks:
 Wouldn't it be great if instead of this inefficient mishmash of build
 system stuff, we could have a *single build system* dealing with
 everything, using a *single configuration* drawn from files in
-a *uniform and easy-to-read* syntax? Wouldn't be great if these build
-system configuration files were all very short instantiations of
+a *uniform and easy-to-read* syntax? Wouldn't it be great if these
+build system configuration files were all very short instantiations of
 standard rules succinctly encapsulating best practices for how to
 build C/C++ libraries, Java or Scala packages, Haskell apps, etc?
 
@@ -139,7 +139,7 @@ All code in your entire company universe is readily accessible with
 a simple `cd some/code/somewhere`. It then becomes natural to make
 each code directory map to one code component buildable independently
 and uniformly. All we need is a build system that can scale to
-building all the code everywhere as fast possible, or indeed any
+building all the code everywhere as fast as possible, or indeed any
 component of it, where code components simply map to directories on
 the filesystem. We expect build configuration to be modular: each code
 component is packaged in a single directory with a single, succinct,
@@ -208,14 +208,14 @@ sourcing, that of a community of engineers at companies using Bazel,
 such as Stripe, Uber, Asana, Dropbox etc.
 
 Better still, Bazel already has support for building a variety of
-languages, including C/C++, Rust, Scala, Java, Objective C, etc. By
+languages, including C/C++, Rust, Scala, Java, Objective-C, etc. By
 using Bazel, we get to reuse best practices for building each of these
 languages. And focus entirely on Haskell support.
 
 ## How we added Haskell support
 
 Bazel uses a subset of Python syntax for `BUILD` files. Each
-"component" in your project typically gets one such files. Here is
+"component" in your project typically gets one such file. Here is
 an [example build description][inline-java-build] for inline-java,
 involving the creation of one C library and one Haskell library:
 
@@ -268,7 +268,7 @@ graph analysis and parallel execution.
 
 ## Next steps
 
-At this point, [rules_haskell][rules_haskell-home] the set of Bazel
+At this point, [rules_haskell][rules_haskell-home], the set of Bazel
 rules for Haskell, is in Beta. We've been internally dog fooding it on
 a few projects, and today [Adjoint.io][adjoint-io] and a few others
 have already deployed it for their CI. We have not implemented special
