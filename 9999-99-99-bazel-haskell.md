@@ -90,7 +90,9 @@ dependency graph. This situation has a number of drawbacks:
   mostly one long chain, packages will be built one after the other on
   a single core. It's tempting to parallelize *both* at the
   Stack/Cabal level and the GHC level, but that can lead to
-  oversubscribing memory and CPU cores and ultimately, thrashing.
+  oversubscribing memory and CPU cores and ultimately, thrashing (not
+  to mention [enduring scaling bugs][ghc-make-slowdown] killing
+  throughput).
 * Partial rebuilds are often **wrong**, because it's hard to verify
   that all dependencies across build systems were *accurately
   declared*. For example, if Cabal doesn't know that Java files are
@@ -159,6 +161,7 @@ monorepos can grow [very large indeed][google-monorepo].
 [google-monorepo]: https://cacm.acm.org/magazines/2016/7/204032-why-google-stores-billions-of-lines-of-code-in-a-single-repository/fulltext
 [twitter-monorepo]: http://www.gigamonkeys.com/flowers/
 [jar-format]: https://en.wikipedia.org/wiki/JAR_(file_format)
+[ghc-make-slowdown]: https://ghc.haskell.org/trac/ghc/ticket/9221
 
 ## Google Bazel
 
