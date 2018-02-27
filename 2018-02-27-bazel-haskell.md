@@ -204,12 +204,12 @@ rebuild any Haskell code if only a C file changed without altering any
 C header files, even if this was a C file of a package deep in the
 dependency graph.
 
-By using Bazel, you get to piggyback on years of performance tuning,
-improving scalability, and tooling development (static analysis,
-documentation generators, debuggers, profilers, etc) by Google
-engineers over a period of nearly 10 years. And since its open
-sourcing, that of a community of engineers at companies using Bazel,
-such as Stripe, Uber, Asana, Dropbox etc.
+By using Bazel, you get to piggyback on all the work towards
+performance tuning, improving scalability, and tooling development
+(static analysis, documentation generators, debuggers, profilers, etc)
+by Google engineers over a period of nearly 10 years. And since its
+open sourcing, that of a community of engineers at companies using
+Bazel, such as Stripe, Uber, Asana, Dropbox etc.
 
 Better still, Bazel already has support for building a variety of
 languages, including C/C++, Rust, Scala, Java, Objective-C, etc. By
