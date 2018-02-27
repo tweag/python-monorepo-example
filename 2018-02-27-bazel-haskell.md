@@ -1,5 +1,6 @@
 ---
-title: Build large polyglot projects with Bazel... now with Haskell support
+title: Build large polyglot projects with Bazel... <br/>now with Haskell support
+shortTitle: Bazel now supports building Haskell
 author: Mathieu Boespflug, Mark Karpov, Mateusz Kowalczyk
 ---
 
