@@ -275,14 +275,15 @@ graph analysis and parallel execution.
 At this point, [rules_haskell][rules_haskell-home], the set of Bazel
 rules for Haskell, is in Beta. We've been internally dog fooding it on
 a few projects, and today [Adjoint.io][adjoint-io] and a few others
-have already deployed it for their CI. We have not implemented special
-support for building packages from Hackage, instead relying on
-existing tools (in particular Nix) to provide those. We use Bazel to
-build our own code only, not upstream dependencies. But there are
-experiments underway to use Bazel for upstream dependencies as well.
-We encourage you to experiment with rules_haskell
-and [report any issues][rules_haskell-issues] you find. We'd love your
-feedback!
+have already deployed it for their CI. [TokTok][toktok] is building
+much of their [entire software stack][toktok-code] using Bazel. We
+have not implemented special support for building packages from
+Hackage, instead relying on existing tools (in particular Nix) to
+provide those. We use Bazel to build our own code only, not upstream
+dependencies. But there are experiments underway to use Bazel for
+upstream dependencies as well. We encourage you to experiment with
+rules_haskell and [report any issues][rules_haskell-issues] you find.
+We'd love your feedback!
 
 In future posts, we'll explore:
 
@@ -293,5 +294,7 @@ In future posts, we'll explore:
 * Packaging deployable binaries and containers.
 
 [adjoint-io]: https://www.adjoint.io/
+[toktok]: https://toktok.ltd/
+[toktok-code]: https://github.com/TokTok/toktok-stack
 [rules_haskell-issues]: https://github.com/tweag/rules_haskell/issues
 [nix-home]: https://nixos.org/nix/
