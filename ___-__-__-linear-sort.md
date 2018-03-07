@@ -7,39 +7,42 @@ author: Alexander Vershilov and Arnaud Spiwak
 In [all about reflection](https://www.tweag.io/posts/2017-12-21-reflection-tutorial.html)
 post we introduced `SortedList` data type. So, a sorting function f will have type
 `[a] -> SortedList a`. However, this doesn't actually guarantee that `f` is indeed
-a sorting function: it only says that `f l` is sorted, but not that it is a sort `l`.
+a sorting function: it only says that `f l` is a sorted list, but not that it
+is actually a sort of `l`.
 For example `f _ = [1,2,3]` is a perfect solution on `Int`s, as result list is sorted,
-indeed. We need an additional guarantee that returned list is a permutation of the
-elements of incomming list. In this post we want to show a way how such a guarantee
-could be introduced in linear types framework.
+indeed. We need an additional guarantee that the returned list is a permutation of the
+elements of the incoming list. In this post we want to show a way how such a guarantee
+could be introduced using [linear types](https://www.tweag.io/posts/2017-03-13-linear-types.html).
 
-By looking at type of any parametrically polymorphic function we can derive properties
-that holds for this function due to parametricity. A property that function must work
-for any type that was passed to the function. One interesting example for us is function
+By looking at the type of any polymorphic function we can derive properties
+that holds for this function due to parametricity: the fact that the
+function must work the same
+for any type that was passed to the function. One interesting example for us is functions
 with type:
 
 ```haskell
 [a] -> [a]
 ```
 
-Parametricity of this function entails  that the elements of the result of this function
-is a subset of the argument (up to the possible with duplications of the elements). And
-this property is guaranteed by the type of the function. Intuitively this happens because
+Parametricity, for such a function, entails  that the elements of the
+result are a subset of the elements of the argument (up to possible duplications of elements).
+This property is guaranteed by the type of the function. Intuitively this happens because
 function can neither inspect values nor produce new one because their type is unknown to
 the function.  This technique is usually called parametricity. However, it is sometimes
-referred to as « theorems for free » after Wadler's [paper](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
+referred to as « theorems for free » after Wadler's [paper](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
 
 I am not aware of a theory of parametricity with linear types, however, in practice,
-linear function offer stronger parametricity guaranteesIn our case function with the 
-type `[a] ->. [a]` is necessarily a permutations. Intuitively this happens because function
+linear function offer stronger parametricity guarantees. In our case, a function with the 
+type `[a] ->. [a]` is necessarily a permutations. Intuitively this
+happens because the function
 can neither forget nor duplicate any value
-in it's argument due to linearity. In order to get more guarantees we need to use more
+in its argument due to linearity. In order to get more guarantees we need to use more
 sophisticated tools, and we would need better support for dependent types or use Liquid
-Haskell. But parametricity is a lighterweight tool that you can leverage to get a lot of
+Haskell. But parametricity is a lighter-weight tool that you can leverage to get a lot of
 mileage.
 
-With this knowledge we can actually implement sorting function.
-This is literate haskell file and can be compiled by ghci with [linear-types](https://arxiv.org/abs/1710.09756)
+With this knowledge we can actually make a type of sorting function.
+This is literate Haskell file and can be compiled by ghci with [linear-types](https://arxiv.org/abs/1710.09756)
 extension enabled.
 
 ```haskell
@@ -70,19 +73,19 @@ singleton :: a ->. SortedList a
 singleton a = Sorted [a]
 ```
 
-The first quesion is how can we actually compare the elements.
-Recall the types of the usual `compare` function, it is:
+The first question is: how can we actually compare the elements?
+Recall the types of the usual `compare` function:
 
 ```haskell
 compare :: Ord a => a -> a -> Ordering
 ```
 
-We can't just lift this method to a linear types, because it
-will consume values and we can't use them in further code.
-We can solve that problem if we either return values in sorted
-order, or return `Ordering` alongside with values. So now we need
-to introduce new type class that will be a linear variant of the
-ordinary `Ord` class.
+We can't simply lift this method to a linearly typed context, because it
+would consume its argument and we can't use them further to build the
+output list.
+We can solve that problem if we can return the original arguments
+alongside the `Ordering`. To that effect, let me
+introduce a new linearized `Ord` type class:
 
 ```haskell
 class OrdL a where
@@ -90,27 +93,27 @@ class OrdL a where
  -- that are by convention in the sorted order.
  compareL :: a ->. a ->. (Ordering, a, a)
  default compareL :: (Ord a, Movable a) => a ->. a ->. (Ordering, a, a)
- ompareL a b = go (move a) (move b) where
+ compareL a b = go (move a) (move b) where
     go :: Unrestricted a ->. Unrestricted a ->. (Ordering, a, a)
     go (Unrestricted x) (Unrestricted y) = (compare x y, x, y)
 ```
 
-This is a first piece of the code that actually uses linear types.
-It looks more complex than it needs to be but it happens because
-at current stage compiler can't work with linear `case`. So we need
-to introduce helper functions and keep linear arrows explicitly there.
+This is the first piece of the code that actually uses linear types.
+It looks more complex than it needs to be because
+at current stage, the linear-type compiler can't work with linear `case`. Which is why we need
+to introduce a helper function `go`.
 
-Here we meed one new type class from the linear-base - `Movable`.
-It is a type class  that allows to convert linear values to unrestricted ones.
+Here we use the `Movable` type class from the [linear-base library](https://github.com/tweag/linear-base/).
+It makes it possible to convert linear values to unrestricted ones.
 
 ```haskell
 class Movable a where -- simplified
   move :: a ->. Unrestricted a
 ```
 
-Any first-order Haskell type of should have this class. For values that are
-movable we may have a simple default implementation, for values that are
-not user will have to write his own definition.
+Any first-order Haskell type should is an instance this class. For types that are
+movable we may have a simple default implementation for `compareL`, for types that are
+not, users will have to write their own definitions.
 
 Now we are ready to implement merge sort. Merge sort has two steps:
 
@@ -128,10 +131,9 @@ split (x:y:z) = go (x,y) (split z) where
   go (a,b) (c,d) = (a:c, b:d)
 ```
 
-We split list into 2 parts by moving all elements with even position in one
-sublist and ones with odd into the other. This way we need not count the size
-of the list and can do split in streaming fasion. Almost no magic and discussions
-here, but split is linear and type itself makes sure that elements are neither
+We split list into 2 parts by moving all elements with even positions in one
+sublist and those with odd positions into the other. Almost no magic and discussions
+here; but, `split` being linear, the type itself makes sure that elements are neither
 lost nor duplicated.
 
 And actually our merge function:
@@ -147,7 +149,7 @@ merge (Sorted (a:as)) (Sorted (b:bs)) = go (compareL a b) as bs where
   go (GT,l,k) ks ls = Sorted (l: forget (merge (Sorted (k: forget ks)) ls))
 ```
 
-Recall what we had in non-linear case:
+Recall what we had in the non-linear case:
 
 ```Haskell
  merge :: Ord a => SortedList a -> SortedList a -> SortedList a
@@ -172,14 +174,14 @@ fromList xs = go1 (split xs) where
  go1 (left, right) = merge (fromList left) (fromList right)
 ```
 
-Just by changing the arrow types in our functions to linear we are able to get
+Just by changing the arrow types in our functions to linear arrows, we are able to get
 additional guarantees that are enough to prove that the returned result is a
-permutation of the input. In addition, we were able to preserve proof that
-returned list is ascending without any changes in existing data types. And this
-is a good properly of the linear types that we are able to provide additional
+permutation of the input. In addition, we were able to preserve the proof that
+the returned list is ascending without any changes in existing data types. And this
+is a good property of the linear types that we are able to provide additional
 guarantees without large changes in existing codebase. Sometimes we want to prove
-more facts about the sort, for example to proove that sorting function has
-desired complexity; such facts could not be proven a linear type framework.
+more facts about the sorting function, for example to prove that it has
+the desired complexity; such facts could not be proven a linear type framework.
 Still linear types provide a lightweight framework, that is enough to make our
 sorting functions safer, so that we need to trust less of the codebase.
 
