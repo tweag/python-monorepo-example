@@ -29,7 +29,7 @@ type:
 [a] -> [a]
 ```
 
-Parametricity, for such a function, entails that the elements of the
+Parametricity, for such a function, *if we are to assume that the function is total*, entails that the elements of the
 result are a subset of the elements of the argument (up to possible
 duplications of elements). This property is guaranteed by the type of
 the function. Intuitively, this is true because the function can
