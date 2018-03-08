@@ -41,7 +41,7 @@ Wadler's
 [paper](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
 
 We are not aware of a theory of parametricity with linear types.
-However, in practice, linear function offer stronger parametricity
+However, in practice, linear functions offer stronger parametricity
 guarantees. In our case, a function with the type `[a] ->. [a]` is
 necessarily a permutation. Intuitively, this is true because the
 function can neither forget nor duplicate any value in its argument
