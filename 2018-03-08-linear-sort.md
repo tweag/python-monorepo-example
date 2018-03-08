@@ -19,8 +19,8 @@ be achieved, using [linear types][blog-linear-types].
 
 ## Parametricity
 
-By looking at the type of any polymorphic function we can derive
-properties that holds for this function due to parametricity, such as
+By looking at the type of any polymorphic function, we can derive
+properties that hold for this function due to parametricity, such as
 the fact that the function must behave in the same way no matter the
 type of the argument. One interesting example for us is functions with
 type:
@@ -34,7 +34,7 @@ result are a subset of the elements of the argument (up to possible
 duplications of elements). This property is guaranteed by the type of
 the function. Intuitively, this is true because the function can
 neither inspect values nor produce new one because their concrete type
-is unknown function definition time. This class of properties is
+is unknown at function definition time. This class of properties is
 usually called parametricity. However, it is sometimes referred to as
 "theorems for free" after
 Wadler's
@@ -50,7 +50,7 @@ sophisticated tools, and we would need better support for dependent
 types or use Liquid Haskell. But parametricity is a lighter-weight
 tool that you can leverage to get a lot of mileage.
 
-With this knowledge we can actually make a type of sorting function.
+With this knowledge we can actually construct a type of sorting function.
 This post is a literate Haskell file and can be compiled by GHCi with
 the [linear-types](https://arxiv.org/abs/1710.09756) extension
 enabled.
@@ -144,7 +144,7 @@ split (x:y:z) = go (x,y) (split z) where
   go (a,b) (c,d) = (a:c, b:d)
 ```
 
-We split list into 2 parts by moving all elements with even positions in one
+We split the list into two parts by moving all elements with even positions into one
 sublist and those with odd positions into the other. Almost no magic and discussions
 here; but, `split` being linear, the type itself makes sure that elements are neither
 lost nor duplicated.
@@ -193,11 +193,11 @@ the returned result is a permutation of the input. In addition, *we
 were able to preserve the proof that the returned list is ascending
 without any changes to existing data types*. This is a central
 property that the authors of the linear types extension worked very
-hard to achive: that we are able to introduce additional guarantees
+hard to achieve: that we are able to introduce additional guarantees
 *post facto* without having to refactor all the callers across the
 entire codebase. Sometimes we want to prove more facts about the
 sorting function, for example to prove that it has the desired
 complexity. Such facts cannot be proven in a linear type framework.
-Still, linear types provide a lightweight framework that is enough to
-make our sorting functions safer, so that we need to trust less of the
+Still, linear types provide a lightweight framework that is sufficient to
+make our sorting functions safer, so that we need to put less faith into the
 codebase.
