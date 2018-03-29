@@ -40,6 +40,9 @@ professional, personal or academic) in any of the above cited
 technologies that shares our values taking the long term view towards
 pragmatic goals, then please consider applying!
 
+Send us an email with a CV and a statement about what you want from
+your next job, at **jobs at tweag.io**.
+
 [funflow]: https://github.com/tweag/funflow
 [haskellr]: https://github.com/tweag/haskellr
 [inline-java]: https://github.com/tweag/inline-java
@@ -77,6 +80,9 @@ We have new projects starting all the time. Here is a sampling of
   polyglot projects to [Bazel][bazel];
 * establishing a reproducible workflow for genetic analyses;
 * [retargeting][asterius] Haskell to [WebAssembly][webassembly].
+
+Send us an email with a CV and a statement about what you want from
+your next job, at **jobs at tweag.io**.
 
 [bazel]: https://github.com/bazelbuild/bazel
 [asterius]: https://github.com/tweag/asterius
