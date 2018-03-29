@@ -53,14 +53,15 @@ pragmatic goals, then please consider applying!
 ## Where?
 
 We are a distributed team scattered across every single continent
-except Africa (working on it!). We have "hubs", with offices in each
-hub, in Paris, London and Zürich.
+except Africa (working on it!). We have offices in three hubs: Paris,
+London and Zürich.
 
 In service of our mission, we gear pretty much our entire strategy
 towards bringing together the strongest possible team of engineers.
 This means that wherever you are, we want to work with you. But we
-believe you'll want to consider relocating to either Paris, London or
-Zürich, to accelerate your experience learning from your peers.
+believe you'll want to consider relocating to either one of our hubs
+(Paris, London or Zürich) to accelerate your experience learning from
+your peers.
 
 ## What?
 
