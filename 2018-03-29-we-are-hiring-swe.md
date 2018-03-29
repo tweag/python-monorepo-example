@@ -12,7 +12,10 @@ clients: breaking through the [exascale barrier in HPC][sage],
 modeling a large variety of physiological processes in the human body,
 designing pipelines for [storing and analyzing][pfizer] biophysical
 data, video search with natural language, building complex SaaS
-products with thousands of concurrent users...
+products with thousands of concurrent users and many others.
+
+[sage]: http://www.sagestorage.eu/
+[pfizer]: http://cufp.org/2017/using-functional-programming-to-accelerate-translational-research-at-pfizer.html
 
 ## Who?
 
