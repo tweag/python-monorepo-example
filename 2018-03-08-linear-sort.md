@@ -1,5 +1,5 @@
 ---
-title: Implementing a safer sort with linear types
+title: Implementing a safer sort<br/> with linear types
 author: Alexander Vershilov, Arnaud Spiwack
 ---
 
