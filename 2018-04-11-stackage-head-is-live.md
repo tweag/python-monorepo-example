@@ -4,7 +4,7 @@ author: Mark Karpov
 ---
 
 I am happy to announce that Stackage HEAD is now functional. For those who
-had missed [the original blog post](original-post), or already forgot it,
+had missed [the original blog post][original-post], or already forgot it,
 let's refresh the idea behind Stackage HEAD.
 
 Stackage nightly plans include a large set of real-world packages that are
@@ -218,7 +218,7 @@ Reasons to stick to running Stackage HEAD as a separate CircleCI script:
    development version of GHC and more packages are added to Stackage.
 
 4. Right now: with separate setup we can configure email sending on failures
-   whereas GHC CI is currently always red due to failing tests.
+   whereas GHC CI is currently still always red due to failing tests.
 
 ## Conclusion
 
