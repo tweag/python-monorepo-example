@@ -3,15 +3,15 @@ title: Stackage HEAD is live!
 author: Mark Karpov
 ---
 
-We are happy to announce that Stackage HEAD is now functional. For those who
+I am happy to announce that Stackage HEAD is now functional. For those who
 had missed [the original blog post](original-post), or already forgot it,
 let's refresh the idea behind Stackage HEAD.
 
 Stackage nightly plans include a large set of real-world packages that are
-known to build and play nicely together. By picking and fixing a nightly
-plan and building it using development versions of GHC at different commits,
-we can detect changes in build status of various packages in the plan, and
-so detect regressions and/or other suspicious changes.
+known to build and play nicely together. By picking a nightly plan and
+building it using development versions of GHC at different commits, we can
+detect changes in build status of packages in the plan caused by the changes
+in GHC, and so potentially detect regressions in the compiler.
 
 ## Current workflow
 
@@ -19,12 +19,12 @@ The current workflow (which is slightly different from what was described in
 the original blog post) is the following:
 
 1. We run the script on Circle CI by using the
-   [`snoyberg/stackage:nightly`](docker-container) docker container which is
+   [`snoyberg/stackage:nightly`][docker-container] docker container which is
    already prepared for running Stackage nightly build plans.
 
 2. To avoid re-compiling GHC (which takes some time) we fetch bindists and
    some associated metadata (such as commit, branch, tag, etc.) from S3.
-   [`ghc-artifact-collector`](ghc-artifact-collector) now uploads the
+   [`ghc-artifact-collector`][ghc-artifact-collector] currently uploads the
    bindists and metadata from GHC's CI processes run on CircleCI and
    AppVeyor. This tool was created to work around some limitations of
    AppVeyor and make artifact collection mechanism used on CircleCI and
@@ -38,7 +38,7 @@ the original blog post) is the following:
    curl https://ghc-artifacts.s3.amazonaws.com/nightly/validate-x86_64-linux/latest/bindist.tar.xz --output latest-bindist.tar.xz
    ```
 
-   You could also fetch metadata about this bindist:
+   You could also fetch metadata of this bindist:
 
    ```
    curl https://ghc-artifacts.s3.amazonaws.com/nightly/validate-x86_64-linux/latest/metadata.json --output latest-metadata.json
@@ -46,25 +46,25 @@ the original blog post) is the following:
 
    Which is literally what we do in our script.
 
-3. Next we download [`stackage-curator`](stackage-curator), which is a tool
+3. Next we download [`stackage-curator`][stackage-curator], which is a tool
    that can execute a Stackage build plan.
 
-4. We pick a plan from the [`stackage-nightly`](stackage-nightly) repo. This
-   plan should not change between tests, because we're interested in
-   catching changes introduced by GHC, not by packages themselves or their
-   dependencies.
+4. We pick a plan from the [`stackage-nightly`][stackage-nightly]
+   repository. This plan should not change between tests, because we're
+   interested in catching changes introduced by GHC, not by packages
+   themselves or their dependencies.
 
 5. We execute the build plan using `stackage-curator` and save the log.
 
 6. The build log is parsed by a helper app called `stackage-head` and
-   transformed into a simple CSV file that we refer to as “build report”.
-   I'll get to its contents a bit later. Build reports are persisted in
-   CircleCI caches at the moment. We accumulate more of them as more builds
-   are attempted.
+   transformed into a simple CSV file that we refer to as *build report*.
+   I'll get to its contents in the next section. Build reports are persisted
+   in CircleCI caches at the moment. We accumulate more of them as more
+   builds are attempted.
 
 7. `stackage-head` also maintains a history of build results. It has a
    command called `diff` that picks two latest build reports and detects any
-   changes, such as if a package stopped building or its test suite started
+   changes, such as if a package stopped building or its test suites started
    to fail.
 
 8. If the changes are considered “suspicious” `stackage-head diff` fails
@@ -102,8 +102,8 @@ data BuildStatus
   deriving (Show, Eq)
 ```
 
-This is serialized like so (the `s` tag means success, there are also `f`
-(failure), and `u` (unreachable)):
+This is serialized in CSV files (the `s` tag means success, there are also
+`f` for build failures, and `u` for unreachable packages):
 
 ```csv
 semigroupoids,s,1,0
@@ -116,7 +116,7 @@ structs,s,2,0
 etc.
 ```
 
-Using `nightly-2018-04-05` we got the following distribution:
+Using `nightly-2018-04-05` I got the following distribution:
 
 * Failing packages: 5
 * Unreachable packages: 794
@@ -125,7 +125,7 @@ Using `nightly-2018-04-05` we got the following distribution:
 The full build takes about 1 hour. So if all packages start to build we can
 expect total time to be something about 2 hours with this plan.
 
-Another interesting topic is what to consider “suspicious” change. Quite
+Another interesting topic is what to consider a “suspicious” change. Quite
 conservatively, most changes are suspicious:
 
 ```haskell
@@ -164,14 +164,14 @@ isChangeSuspicious (Just old) (Just new) =
 
 The `Maybe`s are used to represent the possibility that a package has
 appeared/disappeared between in two build results which should not normally
-happen, but theoretically possible if we diff arbitrary build reports (which
-we should be able to do).
+happen when we use the same build plan, but theoretically possible if we
+diff arbitrary build reports (which we should be able to do).
 
 ## In action
 
 Build diff is split in two sections: suspicious and innocent. Suspicious
 changes are those for which `isChangeSuspicious` returns `True`. A bit
-unexpectedly, we detected such a change even before we quite finished
+unexpectedly, the tool detected such a change even before I quite finished
 working on Stackage HEAD:
 
 ```
@@ -191,12 +191,13 @@ to catch these changes instead of discovering them when a release candidate
 is out, or new version of GHC is published.
 
 CircleCI logs are publicly available here:
-https://circleci.com/gh/tweag/stackage-head. The `stackage-head` project can
-be found here: https://github.com/tweag/stackage-head.
+<https://circleci.com/gh/tweag/stackage-head>. The `stackage-head` project
+can be found here: <https://github.com/tweag/stackage-head>.
 
 ## Running as a job in GHC's CircleCI script
 
-Some advantages to this approach:
+The script is currently run independently of GHC's CI processes. There are
+some advantages to running Stackage HEAD as a job in GHC's CircleCI script:
 
 1. We can test on per-commit basis and detect which commit introduces a
    change precisely.
@@ -221,7 +222,7 @@ Reasons to stick to running Stackage HEAD as a separate CircleCI script:
 
 ## Conclusion
 
-Only time can tell how useful Stackage HEAD is. But it looks like the
+Only time can tell how useful Stackage HEAD really is. But it looks like the
 experiment is worth it and may allow us to improve QA of GHC development
 process.
 
