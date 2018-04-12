@@ -186,9 +186,11 @@ stm-delay:
 There are changes that need attention of GHC team.
 ```
 
-Does it indicate a regression? Not necessarily. Still it's good to be able
-to catch these changes instead of discovering them when a release candidate
-is out, or new version of GHC is published.
+Since the sum of succeeding and failing test suites descreased, this means
+that some test suites stopped to build. Does it indicate a regression? Not
+necessarily. Still it's good to be able to catch these changes instead of
+discovering them when a release candidate is out, or new version of GHC is
+published.
 
 CircleCI logs are publicly available here:
 <https://circleci.com/gh/tweag/stackage-head>. The `stackage-head` project
