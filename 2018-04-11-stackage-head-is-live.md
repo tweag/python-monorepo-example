@@ -18,9 +18,19 @@ in GHC, and so potentially detect regressions in the compiler.
 The current workflow (which is slightly different from what was described in
 the original blog post) is the following:
 
-1. We run the script on Circle CI by using the
-   [`snoyberg/stackage:nightly`][docker-container] docker container which is
-   already prepared for running Stackage nightly build plans.
+1. We run the script on Circle CI by using [a docker image](our-container)
+   based on [`snoyberg/stackage:nightly`][snoyberg-container] which is
+   already prepared for running Stackage nightly build plans. There are
+   several reasons to use a separate image but all of them have to do with
+   the same thing: hermeticity. We want our results to be determined only by
+   GHC, not by other factors, and so we have to make sure that nothing else
+   can affect the our builds.
+
+   In practice this means that we cannot use `snoyberg/stackage:nightly`
+   because it's changing relatively often. Also, it makes sense to install
+   `stack` and `stackage-curator` during creation of the Docker image
+   instead of downloading them on every run. We also should be careful with
+   running `stack update` only when we create the image.
 
 2. To avoid re-compiling GHC (which takes some time) we fetch bindists and
    some associated metadata (such as commit, branch, tag, etc.) from S3.
@@ -46,32 +56,32 @@ the original blog post) is the following:
 
    Which is literally what we do in our script.
 
-3. Next we download [`stackage-curator`][stackage-curator], which is a tool
-   that can execute a Stackage build plan.
-
-4. We pick a plan from the [`stackage-nightly`][stackage-nightly]
+3. We pick a plan from the [`stackage-nightly`][stackage-nightly]
    repository. This plan should not change between tests, because we're
    interested in catching changes introduced by GHC, not by packages
    themselves or their dependencies.
 
-5. We execute the build plan using `stackage-curator` and save the log.
+4. We execute the build plan using `stackage-curator` and save the log.
 
-6. The build log is parsed by a helper app called `stackage-head` and
+5. The build log is parsed by a helper app called `stackage-head` and
    transformed into a simple CSV file that we refer to as *build report*.
    I'll get to its contents in the next section. Build reports are persisted
    in CircleCI caches at the moment. We accumulate more of them as more
    builds are attempted.
 
-7. `stackage-head` also maintains a history of build results. It has a
+6. `stackage-head` also maintains a history of build results. It has a
    command called `diff` that picks two latest build reports and detects any
    changes, such as if a package stopped building or its test suites started
    to fail.
 
-8. If the changes are considered “suspicious” `stackage-head diff` fails
+7. If the changes are considered “suspicious” `stackage-head diff` fails
    with non-zero exit code and thus the whole CircleCI job fails and email
-   notification is sent.
+   notification is sent to me. The `stackage-head` tool also automatically
+   generates a Trac ticket with instructions how to reproduce the issue and
+   stores it as a build artifact on CircleCI. If I then decide that the
+   failure is worth attention of GHC team, I just copy and paste the ticket.
 
-9. The CircleCI script is configured to run 4 times per day for a start.
+8. The CircleCI script is configured to run 4 times per day for a start.
 
 ## Build results
 
@@ -116,11 +126,22 @@ structs,s,2,0
 etc.
 ```
 
-Using `nightly-2018-04-05` I got the following distribution:
+Using `nightly-2018-04-13` I got the following distribution:
 
-* Failing packages: 5
-* Unreachable packages: 794
-* Packages that build: 897
+* Failing packages: 28
+* Unreachable packages: 826
+* Packages that build: 928
+
+Some failing packages:
+
+* `exceptions`, blocking 118 packages
+* `doctest`, blocking 52 packages
+* `cabal-doctest`, blocking 36 packages
+* `tagged`, blocking 32 packages
+* `generic-deriving`, blocking 10 packages
+
+Perhaps in future we could open issues and ask maintainers of these packages
+to make them compile with development version of GHC.
 
 The full build takes about 1 hour. So if all packages start to build we can
 expect total time to be something about 2 hours with this plan.
@@ -187,8 +208,12 @@ There are changes that need attention of GHC team.
 ```
 
 Since the sum of succeeding and failing test suites descreased, this means
-that some test suites stopped to build. Does it indicate a regression? Not
-necessarily. Still it's good to be able to catch these changes instead of
+that some test suites stopped to build. On further inspection I determined
+that this change was not caused by GHC, and that forced me to improve
+hermeticity of the setup to prevent this from happening in the future.
+
+Even if the change were caused by GHC, it'd not necesserily indicate a
+regression. Still it's good to be able to catch these changes instead of
 discovering them when a release candidate is out, or new version of GHC is
 published.
 
@@ -229,7 +254,8 @@ experiment is worth it and may allow us to improve QA of GHC development
 process.
 
 [original-post]: https://www.tweag.io/posts/2017-10-27-stackage-head.html
-[docker-container]: https://hub.docker.com/r/snoyberg/stackage/tags/
+[our-container]: https://hub.docker.com/r/mrkkrp/stackage-head/
+[snoyberg-container]: https://hub.docker.com/r/snoyberg/stackage/tags/
 [ghc-artifact-collector]: https://github.com/tweag/ghc-artifact-collector
 [stackage-curator]: https://github.com/fpco/stackage-curator
 [stackage-nightly]: https://github.com/fpco/stackage-nightly
