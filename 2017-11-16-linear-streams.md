@@ -200,7 +200,7 @@ the compiler would not stand.
 # Summary
 
 We have shown how linear types can prevent some forms of
-mistakes when writing streaming programs. This translates in less
+mistakes when writing streaming programs. This translates in fewer
 side conditions for the programmer to check, since the others can
 be discharged by the type checker.
 Moreover, linear streams can carry linear values which allows using
