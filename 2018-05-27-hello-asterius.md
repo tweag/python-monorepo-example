@@ -78,9 +78,23 @@ Function calls are trickier. There is no explicit tail call operator in WebAssem
 
 The current approach for handling function call is compiling each Cmm function to a single WebAssembly function. Upon a Cmm call, the WebAssembly function returns a function pointer to the destination, and the `StgRun` mini-interpreter function uses the WebAssembly function table to perform an indirect call. This will introduce some overhead for each Cmm call, since the spec of WebAssembly MVP states that indirect calls are accompanied with runtime type checks, but it scales to a large number of Cmm functions.
 
+Cmm assumes existence of a 64-bit address space (because our host ghc is 64-bit) and various local/global Cmm registers. Since we only have 32-bit address space in WebAssembly, we still assume all addresses are 64-bit, and only wrap them with an `i64.wrap` when marshalling a load/store instruction. As for registers, we simply implement local registers with local variables of WebAssembly functions, and use global variables for global registers.
+
 As mentioned above, we use `binaryen` to handle WebAssembly generation. When compiling each Haskell module, we obtain the in-memory representation of Cmm, generate a Haskellish IR which closely maps to `binaryen` IR and serialize that IR. The booting process is simply compiling `base` and its dependent packages into that IR.
 
 ## The linker and runtime of `asterius`
+
+The WebAssembly MVP does not yet have an official standard about the format of a linkable WebAssembly object file. There exist various "linker"s out there, like `lld` or `wasm-merge`, non of which have a stable C API or strip dead code as aggressively as we expect, so we also implement our own linker.
+
+There are two notions of a "module" in asterius. One is `AsteriusModule`, which is generated from a vanilla Haskell/Cmm module. An `AsteriusModule` is simply a collection of static data segments and functions. All `AsteriusModule`s are collected into a single immutable store and serialized during booting. When invoking `ahc-link`, the store is deserialized and all `AsteriusModule`s are available in memory. Implementing the store as a single immutable data structure makes it quite easy to implement the linker's logic.
+
+When we need to produce a standalone WebAssembly module, we start from `Main_main_closure` (which corresponds to the `main` top-level binding of `Main`) and recursively fetch all static data or function which is depended by that root symbol. If the linking succeeds, we end up with a single `AsteriusModule` which is self-contained except imported external JavaScript functions. We can then perform symbol resolution: confirm the absolute address of all static data/function, rewrite the module and replace the unresolved symbols with the addresses. The resolved module can be fed to `binaryen` for final code generation.
+
+The Cmm code emitted by ghc or written in `rts` already assumes the existence of some C interfaces of `rts`, e.g. `CurrentNursery`, `CurrentTSO` and such. Those interfaces are defined in C headers of `rts`, but since we aren't doing any C-to-WebAssembly code generation, we need to hand write some WebAssembly code to set up the interfaces. This has proved to be the hardest part of writing `asterius`, since the ghc runtime is quite complex, and WebAssembly doesn't have a good debugging story.
+
+Currently, we implemented a simplified storage manager and scheduler. The storage manager respects the block allocator interface, and is capable of allocating fresh blocks at runtime using WebAssembly's `grow_memory` operator. Garbage collection isn't implemented yet, and when a stack/heap check fails, the program simply crashes with a "memory overflow" error code. The scheduler does not handle interrupting/resuming a Haskell thread and only runs to completion once the closure of `Main.main` is entered.
+
+## What's there and what's missing
 
 TODO
 
