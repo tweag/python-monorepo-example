@@ -27,7 +27,7 @@ main :: IO ()
 main = print_int $ fib 10
 ```
 
-Before compiling `fib.hs`, we need to build `asterius` with a custom ghc (see the [Building Guide](https://tweag.github.io/asterius/building/) for details). Then we can run `ahc-boot`, which compiles `base` and its dependent packages to WebAssembly.
+Before compiling `fib.hs`, we need to build `asterius` with a custom GHC (see the [Building Guide](https://tweag.github.io/asterius/building/) for details). Then we can run `ahc-boot`, which compiles `base` and its dependent packages to WebAssembly.
 
 After that, we can simply invoke `ahc-link` like this:
 
@@ -56,21 +56,21 @@ WebGHC was a Summer of Haskell 2017 project, and its primary approach is using t
 dhc takes a radically different route. It does not compile Haskell via ghc; it implements a minimal Haskell-like functional language, and emits WebAssembly code from that language. The basic examples run fine, and they are gradually implementing more language features at the frontend.
 
 On the spectrum of Haskell to WebAssembly compilers, `asterius` is somewhere between WebGHC and dhc.
-It uses ghc as the frontend and aims to support most of ghc language features and the standard library. However, we don't use the LLVM toolchain to cross-compile to WebAssembly; we implement the cmm-to-wasm code generator just like yet another native backend, and any non-Haskell logic of the runtime is hand-written WebAssembly code, which means we're simulating various `rts` interfaces to the degree that a significant portion of vanilla Haskell code become runnable.
+It uses GHC as the frontend and aims to support most of GHC language features and the standard library. However, we don't use the LLVM toolchain to cross-compile to WebAssembly; we implement the cmm-to-wasm code generator just like yet another native backend, and any non-Haskell logic of the runtime is hand-written WebAssembly code, which means we're simulating various `rts` interfaces to the degree that a significant portion of vanilla Haskell code become runnable.
 
 There are several reasons behind the approach of `asterius`:
 
 * We'd like to support Haskell-as-in-GHC.
 * There exist different ways of mapping Haskell to WebAssembly. We'd like to hand-write the codegen and have tight control over generated code, so it becomes possible to evaluate them and even pick the most suitable one under different scenarios.
-* We dislike introducing unused code into compiler output. This requires very aggressive link-time optimization, generating different runtime code for each output, or even altering normal ghc codegen.
+* We dislike introducing unused code into compiler output. This requires very aggressive link-time optimization, generating different runtime code for each output, or even altering normal GHC codegen.
 
 ## The code generator of `asterius`
 
-`asterius` starts code generation from Cmm. Cmm is a mostly platform-independent IR of ghc, abstracting away from details like register allocation and such. Although being sufficiently low level, compiling Cmm to WebAssembly still faces a few challenges.
+`asterius` starts code generation from Cmm. Cmm is a mostly platform-independent IR of ghc, abstracting away from details like register allocation and such. Currently GHC only supports dumping Cmm to a pretty-printed text form and doesn't expose in-memory Cmm, so we implemented `ghc-toolkit` which uses the GHC frontend plugin mechanism to redirect `ghc` invocations to our own handlers, then uses the GHC hooks mechanism to replace the normal pipeline with our own, then we can lay our hands on in-memory representations of various GHC IRs like Core, STG and Cmm. Users of `ghc-toolkit` need not to worry about all the dirty job involving GHC API and can focus on manipulating IRs.
 
-The main challenge is implementing control-flow. There are two kinds of control-flow transfer in Cmm: in-function and cross-function. A Cmm function is a collection of basic blocks, and each basic block transfers to either a block in the same function, or the entry block of another function. The problem is: WebAssembly has no notion of "basic block"; it enforces structured control flow, which means one must use scoped blocks/loops to achieve branching.
+Although being sufficiently low level, compiling Cmm to WebAssembly still faces a few challenges. The most notable challenge is implementing control-flow. There are two kinds of control-flow transfer in Cmm: in-function and cross-function. A Cmm function is a collection of basic blocks, and each basic block transfers to either a block in the same function, or the entry block of another function. The problem is: WebAssembly has no notion of "basic block"; it enforces structured control flow, which means one must use scoped blocks/loops to achieve branching.
 
-The most straightforward method to implement control-flow is to use a top-level loop combined with a "label pointer" to implement the state machine for branching, and each branching instruction simply becomes an assignment to the label pointer. Since ghc is good at using worker/wrapper transformation to generate fast code with tight in-function loops, this approach introduces considerable overhead for even in-function branching and will surely worsen the performance.
+The most straightforward method to implement control-flow is to use a top-level loop combined with a "label pointer" to implement the state machine for branching, and each branching instruction simply becomes an assignment to the label pointer. Since GHC is good at using worker/wrapper transformation to generate fast code with tight in-function loops, this approach introduces considerable overhead for even in-function branching and will surely worsen the performance.
 
 In the case of in-function branching, where the destination labels are known labels, one can instead use a "Relooper" algorithm which inputs a control-flow graph and outputs a program which uses high-level loops to efficiently implement branching. The Relooper algorithm is pioneered by the Emscripten compiler and implemented in `binaryen`, and we use `binaryen`'s relooper to handle in-function branching.
 
@@ -78,7 +78,7 @@ Function calls are trickier. There is no explicit tail call operator in WebAssem
 
 The current approach for handling function call is compiling each Cmm function to a single WebAssembly function. Upon a Cmm call, the WebAssembly function returns a function pointer to the destination, and the `StgRun` mini-interpreter function uses the WebAssembly function table to perform an indirect call. This will introduce some overhead for each Cmm call, since the spec of WebAssembly MVP states that indirect calls are accompanied with runtime type checks, but it scales to a large number of Cmm functions.
 
-Cmm assumes existence of a 64-bit address space (because our host ghc is 64-bit) and various local/global Cmm registers. Since we only have 32-bit address space in WebAssembly, we still assume all addresses are 64-bit, and only wrap them with an `i64.wrap` when marshalling a load/store instruction. As for registers, we simply implement local registers with local variables of WebAssembly functions, and use global variables for global registers.
+Cmm assumes existence of a 64-bit address space (because our host GHC is 64-bit) and various local/global Cmm registers. Since we only have 32-bit address space in WebAssembly, we still assume all addresses are 64-bit, and only wrap them with an `i64.wrap` when marshalling a load/store instruction. As for registers, we simply implement local registers with local variables of WebAssembly functions, and use global variables for global registers.
 
 As mentioned above, we use `binaryen` to handle WebAssembly generation. When compiling each Haskell module, we obtain the in-memory representation of Cmm, generate a Haskellish IR which closely maps to `binaryen` IR and serialize that IR. The booting process is simply compiling `base` and its dependent packages into that IR.
 
@@ -90,14 +90,16 @@ There are two notions of a "module" in asterius. One is `AsteriusModule`, which 
 
 When we need to produce a standalone WebAssembly module, we start from `Main_main_closure` (which corresponds to the `main` top-level binding of `Main`) and recursively fetch all static data or function which is depended by that root symbol. If the linking succeeds, we end up with a single `AsteriusModule` which is self-contained except imported external JavaScript functions. We can then perform symbol resolution: confirm the absolute address of all static data/function, rewrite the module and replace the unresolved symbols with the addresses. The resolved module can be fed to `binaryen` for final code generation.
 
-The Cmm code emitted by ghc or written in `rts` already assumes the existence of some C interfaces of `rts`, e.g. `CurrentNursery`, `CurrentTSO` and such. Those interfaces are defined in C headers of `rts`, but since we aren't doing any C-to-WebAssembly code generation, we need to hand write some WebAssembly code to set up the interfaces. This has proved to be the hardest part of writing `asterius`, since the ghc runtime is quite complex, and WebAssembly doesn't have a good debugging story.
+When performing linking, it is possible to encounter symbols for unknown or unsupported functions. If it's in a C file and we didn't hand-write its implementation, we won't find it in the store; when marshalling a normal Cmm function, we may also encounter unsupported instructions, in which case we save the error message in `AsteriusModule`. The linker can output a detailed report for each linking request, and the report contains the symbol set of unknown/unsupported entities, and the dependency graph between symbols of supported entities (it can even render the graph in GraphViz format so you can use a 3rd-party visualizer to view it!). The linker reports are quite useful when developing `asterius`, since we can constantly check what's missing in order to support compiling desired examples.
+
+The Cmm code emitted by GHC or written in `rts` already assumes the existence of some C interfaces of `rts`, e.g. `CurrentNursery`, `CurrentTSO` and such. Those interfaces are defined in C headers of `rts`, but since we aren't doing any C-to-WebAssembly code generation, we need to hand write some WebAssembly code to set up the interfaces. This has proved to be the hardest part of writing `asterius`, since the GHC runtime is quite complex, and WebAssembly doesn't have a good debugging story.
 
 Currently, we implemented a simplified storage manager and scheduler. The storage manager respects the block allocator interface, and is capable of allocating fresh blocks at runtime using WebAssembly's `grow_memory` operator. Garbage collection isn't implemented yet, and when a stack/heap check fails, the program simply crashes with a "memory overflow" error code. The scheduler does not handle interrupting/resuming a Haskell thread and only runs to completion once the closure of `Main.main` is entered.
 
 ## What's there and what's missing
 
-TODO
+Now that we've summarized the inner workings of `asterius`, let's review what `asterius` is capable of and what it isn't. Pure functions involving only "simple" types like integers and floats are known to work. As for I/O, there is a simple `print_int`, but it shall be easy to add something like `print_char` which sends a Haskell `Char#` to a TTY-style terminal.
 
-## TODO
+Currently, `asterius` reports linker error when more advanced datatypes are involved. This is related to the `Typeable`-related bindings generated by `ghc`, they are quite complicated and can be introduced even if the program isn't actually using any `Typeable`-related feature. For example, you may accidently get a transitive dependency on `__hsbase_MD5Init`, which is related to calculating MD5 digests, but your program is simply using a `scanl` over a `[Int]` to calculate a factorial. We are trying to find a workaround for this critical issue.
 
-Explanation of project architecture, codegen and runtime; what will be there in the future; possibly some more explanation of what do we have in wasm for now; etc
+The next intermediate project goal of `asterius` is to implement a garbage collector. After `asterius` is capable of producing a long-running WebAssembly program, it becomes possible to actually integrate it into a web frontend workflow. After that we'll gradually make more Haskell programs work out the box, improve JavaScript interoperability, or attempt more radical experiments like switching away from current Cmm-based codegen and utilize WebAssembly's native GC mechanism when it's present.
