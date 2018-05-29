@@ -1,5 +1,5 @@
 ---
-title: "Fibonacci compiles end-to-end — Haskell to WebAssembly via GHC"
+title: "Fibonacci compiles end-to-end <br/>— Haskell to WebAssembly via GHC"
 shortTitle: Compiling Haskell to WebAssembly
 author: Shao Cheng
 ---
