@@ -90,7 +90,7 @@ As mentioned above, we use `binaryen` to handle WebAssembly generation. When com
 
 ## The linker and runtime of Asterius
 
-The WebAssembly MVP does not yet include an official standard concerning the format of a linkable WebAssembly object file. There exist various "linkers" out there, like `lld` or `wasm-merge`, non of which have a stable C API or strip dead code as aggressively as we expect, so we also implement our own linker, at least for the time being.
+The WebAssembly MVP does not yet include an official standard concerning the format of a linkable WebAssembly object file. There exist various "linkers" out there, like `lld` or `wasm-merge`, none of which have a stable C API or strip dead code as aggressively as we expect, so we also implement our own linker, at least for the time being.
 
 There are two notions of a "module" in asterius. One is `AsteriusModule`, which is generated from a vanilla Haskell/Cmm module. An `AsteriusModule` is simply a collection of static data segments and functions. All `AsteriusModule`s are collected into a single immutable store and serialized during booting. When invoking `ahc-link`, the store is deserialized and all `AsteriusModule`s are available in memory. Implementing the store as a single immutable data structure makes it quite easy to implement the linker's logic.
 
@@ -125,7 +125,7 @@ We'll need to modify our codegen to suit LLVM's calling convention, and standard
 As mentioned earlier, there are times we want to expose GHC's inner workings, retrieve its in-memory data or alter its behavior. Although GHC has mechanisms like plugins and hooks, ideally we'd like to have a stage 1 GHC available as a Cabal package. The advantages are:
 
 * Decoupling the stage 0 / stage 1 GHC build time configurations. For example, currently Asterius requires GHC to disable `TABLES_NEXT_TO_CODE` when performing codegen, but we don't care if the host GHC used to compile Asterius shares the same config. Also, we can use a stage 1 GHC which targets 32-bit platform, then we don't need to coerce from 64-bit addresses here and there.
-* Easing the maintainance of custom GHC patches. Currently we maintain a `ghc-toolkit` package which works by pasting and patching code from the GHC tree. Integrating upstream changes is troublesome, because these patches might break non WebAssembly targets.
+* Easing the maintainance of custom GHC patches. Currently we maintain a `ghc-toolkit` package which works by pasting and patching code from the GHC tree. Integrating upstream changes is troublesome, because these patches might break non-WebAssembly targets.
 
 ### Enhancing the debugging experience
 
