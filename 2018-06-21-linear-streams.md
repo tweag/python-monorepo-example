@@ -1,5 +1,5 @@
 ---
-title: Streaming with linear types
+title: Streaming <br/>with linear types
 author: Edvard Hübinette and Facundo Domínguez
 ---
 
