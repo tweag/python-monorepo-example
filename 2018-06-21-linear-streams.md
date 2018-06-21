@@ -223,8 +223,8 @@ discussion and a complete implementation of linear streams still
 has a little way to go before becoming a reality.
 For those interested, there is a
 [prototype of GHC](https://github.com/tweag/ghc/tree/linear-types)
-which implements linear types. Related to linear streams, this summer
-Tweag sponsored a Summer of Haskell project where Edvard
+which implements linear types. Related to linear streams,
+there was a Summer of Haskell project where Edvard
 Hübinette worked with this prototype and the
 [streaming package](https://github.com/m0ar/safe-streaming).
 Several interesting findings are documented
