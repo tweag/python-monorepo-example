@@ -4,34 +4,36 @@ author: Edvard Hübinette and Facundo Domínguez
 ---
 
 In
-[an earlier blog post](http://www.tweag.io/posts/2017-07-27-streaming-programs.html)
-we have discussed how streaming libraries
+[an earlier blog post](http://www.tweag.io/posts/2017-07-27-streaming-programs.html),
+we discussed how streaming libraries
 help writing composable programs without lazy I/O. We showed, for
 a simple program, how using a streaming library helps reducing the
 amount of unaided bookkeeping that the programmer needs to do in order
 to make it correct. In this post we delve further in that direction
 by considering
 [linear types](http://www.tweag.io/posts/2017-03-13-linear-types.html)
-and uncover their potential to have the compiler do more checks.
+and uncover their potential to have the compiler enforce more
+properties statically.
 
 # Streaming today
 
-Streaming libraries provide some sort of abstraction to manipulate
+Streaming libraries provide abstractions to manipulate
 sequences of values which may not reside fully in memory, but which
 may be produced progressively as they are consumed. This ability is
 essential to write programs which run in bounded space despite of
 handling inputs of any size (so-called streaming programs).
 
-Streaming libraries don't ensure that programs are streaming or correct.
+Streaming libraries fall short of giving you an airtight *guarantee*
+that programs are streaming or correct.
 There are side conditions that are required for proper use. For instance,
 for the [streaming](http://www.stackage.org/package/streaming) package we
 have:
 
  * no length-unbounded stream must be fed to any function that loads it
    completely into memory like
-   [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
+   [SB.toStrict](https://www.stackage.org/haddock/lts/streaming-bytestring/Data-ByteString-Streaming-Char8.html#v:toStrict),
  * the resources from where streams are read or written to need to
-   be closed *soon enough* to prevent open handles from accumulating,
+   be closed "soon enough" to prevent open handles from accumulating,
  * no stream shall be used after the resources it depends upon have
    been released,
  * and no stream shall be used a second time.
@@ -39,8 +41,8 @@ have:
 The last condition is necessary because otherwise the effects producing
 the contents of the stream would be replayed yielding an undefined outcome.
 This is left implicit in the documentation of most streaming libraries.
-Let us consider an example to clarify this point. Suppose we use
-[fromHandle](https://www.stackage.org/haddock/lts-9.4/streaming-0.1.4.5/Streaming-Prelude.html#v:fromHandle).
+Suppose we use
+[fromHandle](https://www.stackage.org/haddock/lts-9.4/streaming-0.1.4.5/Streaming-Prelude.html#v:fromHandle):
 
 ``` haskell
 -- | Read Strings from a Handle using hGetLine. Terminates on end of input.
@@ -90,7 +92,7 @@ extent they are used. A linear argument has to be used — or
 _consumed_ — exactly once in a function, or the program will not
 compile. Both forgetting to use a linear value or using it
 more than once will lead to a compile time error. This simple concept 
-help us move a new category of programming errors from the
+helps us move a new category of programming errors from the
 responsibility of the programmer to the compiler, making it easier
 to write correct code with stronger guarantees about the implementation.
 
@@ -157,7 +159,7 @@ we want to treat Java references linearly to make sure that they are
 promptly deleted when they are no longer used, hence the requirement
 to have the parameter `m` be a linear monad.
 
-For a concrete example, let us consider a function that modifies
+For a concrete example, consider a function that modifies
 the values produced by a Java iterator. The Java iterator is first
 marshaled to a Haskell stream, then we apply a function to each
 element in the stream, and finally we marshal the stream back to
@@ -179,12 +181,12 @@ mapIterator f jiterator =
 linearMap :: LMonad m => (a ->. b) -> Stream (Of a) m r ->. Stream (Of b) m r
 ```
 
-Thanks to linear types, the compiler could check that the `jiterator`
-reference is deleted (inside `iteratorToStream`), and it can check
-that the references that the intermediate streams produce are
+Thanks to linear types, the compiler can check that the `jiterator`
+reference is deleted (inside `iteratorToStream`). It can furthermore check
+that the references produced by the intermediate streams are
 deleted as the resulting iterator is consumed in the Java side.
 
-There is a price to pay because of requiring stream references
+There is a price to pay for requiring stream references
 to be linear. Some operations which are trivial to offer in an
 unrestricted setting are not possible to implement anymore.
 Consider the function `take`, for instance.
@@ -201,7 +203,7 @@ the compiler would not stand.
 
 We have shown how linear types can prevent some forms of
 mistakes when writing streaming programs. This translates in fewer
-side conditions for the programmer to check, since the others can
+side conditions for the programmer to check, since these can
 be discharged by the type checker.
 Moreover, linear streams can carry linear values which allows using
 them in combination with other resources that need to be treated
@@ -212,13 +214,13 @@ is practical to have a single implementation of streams that can be
 used as linear, affine or unrestricted depending on the context.
 Otherwise we might end up with three similar implementations where
 we would prefer to avoid the code duplication.
-Another question is in which use cases affine streams would be a
-good fit, whereas linear streams would be not.
+Another question is identifying good use cases for which affine
+streams would be a good fit but not linear streams.
 
 At this time, the [GHC proposal](https://github.com/ghc-proposals/ghc-proposals/pull/111)
 for linear types is still under
-discussion and a strong implementation of linear streams has a long way
-to go before becoming a reality.
+discussion and a complete implementation of linear streams still
+has a little way to go before becoming a reality.
 For those interested, there is a
 [prototype of GHC](https://github.com/tweag/ghc/tree/linear-types)
 which implements linear types. Related to linear streams, this summer
