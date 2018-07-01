@@ -15,9 +15,9 @@ can be found [here](https://github.com/tweag/funflow/tree/master/funflow-example
 
 
 ## What did we build?
-Our example is a simplistic version of GNU's Make
-restricted to building C files. It takes a makefile that look like 
-this
+Our example is a simple version of GNU's Make
+restricted to building C files (though it could be generalized).
+It takes a makefile that look like this
 
 ```makefile
 source-files: main.cpp factorial.cpp hello.cpp functions.h
@@ -49,7 +49,8 @@ Hello World!
 The factorial of 5 is 120
 ```
 
-Because we used funflow, our tool has several desireable properties:
+Because we used funflow, our tool has several desireable properties,
+_both of the tool and of the code itself_:
 
  * **No repeated builds:** If we've built something before, we don't build it again. Period. 
    With `make`, if you make a tiny change and find out it isn't what you want, when you revert
@@ -59,20 +60,21 @@ Because we used funflow, our tool has several desireable properties:
    for hidden dependencies or hidden requirements on the environment. Further, 
    such 'hidden' preconditions are caught early and flagged making it easy to fix
    the `Makefile`.
- * **Integration:** Making a `Flow` for a specific target 
-   requires sequencing file processing with recursively made `Flow`s for 
-   dependent targets and executing commands in docker containers.
-   Funflow allows us to inject these varied forms of operations into flows
-   and sequence them seamlessly.
- * **Concise Code:** Because of the abstractions funflow provides, we can focus on 
+ * **Clean Sequencing Code:** The function that makes a target file sequences
+   file processing, recusive calls for making the dependent target files,
+   and running docker containers. Usually, this sequencing is messy
+   and difficult to follow.
+   With funflow, however, we can inject these various forms of
+   computation into `Flow`s and sequence them seamlessly with arrow notation.
+ * **Concise Code:** Because of the abstractions funflow provides, we can focus on
    the essential algorithm and get some efficiency \& safety for free.
 
 
 ## No Repeat Builds: CAS Gives Us Free Dynamic Programming
 
 The essential function is `buildTarget` which, given a `Makefile`
-and a specific rule in that `Makefile` creates a flow to build the 
-target specified by that rule. A rule specifies a target file by 
+and a specific rule in that `Makefile`, creates a flow to build the
+target specified by that rule. A rule specifies a target file by
 a list of file dependencies and a command to build that target file.
 Each dependency is either a source file or itself a target file.
 
@@ -108,7 +110,7 @@ buildTarget mkfile target@(MakeRule targetNm deps cmd) =
 returnA -< compiledFile
 ```
 
-The algorithm for building the flow is straightforward.
+The code for building the flow is straightforward.
 
 First, we do some file processing to get the dependent _source files_
 (in steps 1 & 2).
@@ -118,29 +120,33 @@ dependent targets (in step 3). Finally, we put these dependencies
 in a docker container in which we run the gcc command and extract the
 produced target file (provided the compilation succeeded).
 
-While this algorithm is correct it would be greatly inefficient without funflow.
-Without funflow's caching, step 3 could repeat a massive amount of work.
+On the surface, this code appears inefficient.
+Step 3, the recursive building of dependent target files, looks like it repeats
+a lot of work since many of the recursive calls are identical.
 For example, if the rule for `main.o` in our sample `Makefile`
-listed `factorial.o` as a dependency, this algorithm would build
-`factorial.o` twice -once as a dependency of `hello` and once as
-a dependency of `main.o`.
-If `factorial.o` took a long time to build, this would be
-disastrous. More generally, the problem is there are overlapping recursive calls to build 
-targets.
+listed `factorial.o` as a dependency, it looks like this code
+would build `factorial.o` twice -once as a dependency of `hello` and once as
+a dependency of `main.o`. If `factorial.o` took a long time to build,
+this would be disastrous.
 
-**This problem of 'overlapping' recursive calls could be solved by _dynamic programming_, 
+Yet, this code isn't inefficient? Why?
+**This problem of 'overlapping' recursive calls is solved by _dynamic programming_,
 the algorithmic design pattern of saving the values of function calls in a dictionary and
 checking this dictionary to avoid repeated recursive calls.
-Funflow's caching gives this to us for free.** Each time a file is compiled with 
-`compileFile`, a hash of the inputs and output is cached. So, on a repeated 
-recursive call building say `target4.o`, the use of `compiledFile` 
-is constant time. Hence, we don't re-build targets and can efficiently 
-use this simple algorithm.
+Funflow's caching gives this to us for free.** Hence, we can write
+DP-algorithms without dealing with the added complexity
+of keeping track of the dictionary ourselves. This is precisely what happens in
+`buildTarget`.
 
+Each time a file is compiled with `compileFile`,
+a hash of the inputs and output is cached. So, on a repeated
+recursive call building say, `target4.o`, the use of `compiledFile`
+is constant time.
 
-However, unlike GNU's `make`, we don't re-build
+However, this goes a step further.
+Because of funflow's caching our tool, unlike GNU's `make`, doesn't re-build
 targets _even after reverting back changes_.
-Say `factorial.cpp` took a long time to build and was part of 
+Say `factorial.cpp` took a long time to build and was part of
 a larger project. Suppose further that to fix a bug in this large project,
 we tried something out in `factorial.cpp` and found out it didn't work.
 When we revert back, our tool would build `factorial.cpp` in constant time
@@ -151,29 +157,36 @@ whereas plain ol' `make` would not.
 ## Enforced Dependencies
 
 The `makefile-tool` also showcases funflow's docker capabilities.
-We compile each target in its own docker container with exactly it's
-list of dependencies. 
+We compile each target in its own docker container with exactly its
+list of dependencies.
 
-**This prevents hidden preconditions.** If some rule fails to mention a source file 
-it needs, the docker container in which the rule's target file is being compiled won't 
-have that missing source file. Hence, if a file dependency is missing from the dependency 
+**This prevents hidden preconditions.** If some rule fails to mention a source file
+it needs, the docker container in which the rule's target file is being compiled won't
+have that missing source file. Hence, if a file dependency is missing from the dependency
 list of a certain target, that target won't build. In the same vein, if there was a hidden
-requirement on the environment, like a custom `gcc` executable, the build would fail 
+requirement on the environment, like a custom `gcc` executable, the build would fail
 inside the docker container.
 
 **Further, this approach doesn't merely prevent hidden preconditions;
 it flags them.** For example, if our `Makefile` above had
 the line `factorial.o : factorial.cpp` 
-instead of `factorial.o : factorial.cpp functions.h`, we would get 
-an error from `gcc` indicating that it couldn't find `functions.h`. With 
-ordinary `make`, the build would succeed and this hidden precondition would last. 
+instead of `factorial.o : factorial.cpp functions.h`, we would get
+an error from `gcc` indicating that it couldn't find `functions.h`. With
+ordinary `make`, the build would succeed and this hidden precondition would last.
 Within the scope of a large project, this could be maddening.
 
+This dependency enforcement could work for more than just C projects,
+As suggested earlier, the `makefile-tool` can be generalized. We could
+extend this tool by having the user provide a docker container for the build command
+and a way of directing the naming of the target file. (For C projects,
+this would be the `gcc` container with the `-o` command line argument.)
 
-## Integration: Diverse Injection \& Fancy Sequencing
+
+## Clean Sequencing: Diverse Injection \& Arrow Notation
 
 This example also demonstrates funflow's ability to inject various forms of
-computation into `Flow`s and sequence them in fancy ways.
+computation into `Flow`s and sequence them in fancy ways. This
+makes the code readable and maintainable.
 
 ### Injecting IO and External Steps
 
@@ -216,8 +229,8 @@ data Config = Config
 
 **Then by using [arrow notation](https://en.wikibooks.org/wiki/Haskell/Arrow_tutorial), 
 a generalization of 'do notation', we were able to elegantly and easily 
-sequence these `Flow`s.** Without going into the details, we can see the 
-sequencing is as readable and intuitive as 'do notation':
+sequence these `Flow`s. Without going into the details, we can see the 
+sequencing is as readable and intuitive as 'do notation'**:
 
 
 ```haskell
@@ -226,7 +239,8 @@ relpathCompiledFile <- flowStringToRelFile -< tf
 returnA -< (compiledFile :</> relpathCompiledFile)
 ```
 
-However, we could also pull off fancier forms of sequencing.
+Further, these properties persist when we need more
+sophisticated forms of sequencing.
 
 ### Recursive Calls & Linearly Sequencing Similar Flows
 
@@ -247,9 +261,9 @@ depRules :: [MakeRule]
 Now, to actually use these we need to linearly sequence these `Flow`s.
 (We can't sequence them in parallel because then repeated recursive calls
 would repeat work if flows were distributed.) 
-**In other words, we need the power to combine an arbitrary amount of
+In other words, we need the power to combine an arbitrary amount of
 similar flows into one flow. Because funflow is embedded in haskell,
-we can easily do this by making the function `flowJoin`:**
+we can write the function `flowJoin`:
 
 
 ```haskell
@@ -271,17 +285,18 @@ Indeed, the _right_ approach is to use length indexed vectors and have
 safeFlowJoin :: forall (n :: Nat) a b. Flow a b -> Flow (Vec n a) (Vec n b)
 ```
 
-but even without this, `flowJoin` is a simple but powerful way of sequencing 
-`Flow`s.
+but even without this, **`flowJoin` is a clean, simple, and powerful way of sequencing
+`Flow`s.**
 
 ## Summary
 
-The `makefile-tool` is only 266 lines long -of which 180 pertain to 
-following a Makefile- and yet,
+The `makefile-tool` is only 266 lines long _of which 180 pertain to
+following a Makefile_ and yet,
 
-- the CAS gives us free dynamic programming in an intuitive recursive algorithm,
-- we never re-build targets even when reverting changes 
+- the CAS gives us free dynamic programming,
+- we never re-build targets even when reverting changes
   (which is an improvement over `make`), and,
-- the dependencies are checked and made explicit which lends to a crisp functional model.
+- the dependencies are checked and made explicit which
+  lends to a crisp functional model.
 
 
