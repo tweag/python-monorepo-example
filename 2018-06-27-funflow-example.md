@@ -175,7 +175,7 @@ an error from `gcc` indicating that it couldn't find `functions.h`. With
 ordinary `make`, the build would succeed and this hidden precondition would last.
 Within the scope of a large project, this could be maddening.
 
-This dependency enforcement could work for more than just C projects,
+This dependency enforcement could work for more than just C projects.
 As suggested earlier, the `makefile-tool` can be generalized. We could
 extend this tool by having the user provide a docker container for the build command
 and a way of directing the naming of the target file. (For C projects,
