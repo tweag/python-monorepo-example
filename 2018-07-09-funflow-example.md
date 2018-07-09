@@ -17,7 +17,7 @@ can be found [here](https://github.com/tweag/funflow/tree/master/funflow-example
 ## What did we build?
 Our example is a simple version of GNU's Make
 restricted to building C files (though it could be generalized).
-It takes a makefile that look like this
+It takes a makefile that looks like this
 
 ```makefile
 source-files: main.cpp factorial.cpp hello.cpp functions.h
@@ -41,9 +41,6 @@ and can build the `hello` executable:
 $ ls
 factorial.cpp  functions.h  hello.cpp  main.cpp  makefile
 $ stack exec makefile-tool
-$ ls
-factorial.cpp  hello      main.cpp  makefiletest
-functions.h    hello.cpp  makefile
 $ ./hello
 Hello World!
 The factorial of 5 is 120
@@ -61,7 +58,7 @@ _both of the tool and of the code itself_:
    such 'hidden' preconditions are caught early and flagged making it easy to fix
    the `Makefile`.
  * **Clean Sequencing Code:** The function that makes a target file sequences
-   file processing, recusive calls for making the dependent target files,
+   file processing, recusive calls for making the dependencies of the given target,
    and running docker containers. Usually, this sequencing is messy
    and difficult to follow.
    With funflow, however, we can inject these various forms of
@@ -83,6 +80,9 @@ that function:
 
 
 ```haskell
+-- For readability, we introduce a type alias for Flow
+type a ==> b = Flow a b
+
 buildTarget :: MakeFile -> MakeRule -> (() ==> (Content File))
 buildTarget mkfile target@(MakeRule targetNm deps cmd) = 
   let
@@ -92,7 +92,7 @@ buildTarget mkfile target@(MakeRule targetNm deps cmd) =
     depRules = (findRules mkfile neededTargets :: [MakeRule])
     depTargetFlows = map (buildTarget mkfile) depRules
     countDepFlows = length depTargetFlows
-    grabSources srcs = sequence $ map (readFile . ("./" ++)) srcs
+    grabSources srcs = traverse (readFile . ("./" ++)) srcs
     grabSrcsFlow = stepIO grabSources   
    in proc _ -> do
      -- 1) Get source file contents
