@@ -282,7 +282,7 @@ A careful programmer might note that the base case is ill defined.
 Indeed, the _right_ approach is to use length indexed vectors and have
 
 ```haskell
-safeFlowJoin :: forall (n :: Nat) a b. Flow a b -> Flow (Vec n a) (Vec n b)
+safeFlowJoin :: forall (n :: Nat) a b. Vec n (Flow a b) -> Flow (Vec n a) (Vec n b)
 ```
 
 but even without this, **`flowJoin` is a clean, simple, and powerful way of sequencing
