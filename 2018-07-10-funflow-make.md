@@ -1,6 +1,5 @@
 ---
 title: "Funflow Example:<br/>emulating Make"
-shortTitle: Funflow Example
 author: Divesh Otwani, Nicholas Clarke
 ---
 
