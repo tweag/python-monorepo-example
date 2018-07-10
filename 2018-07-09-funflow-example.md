@@ -4,11 +4,11 @@ shortTitle: Funflow Example
 author: Divesh Otwani, Nicholas Clarke
 ---
 
-Since [funflow](https://github.com/tweag/funflow) is a bit abstract, 
-in this post we look at a neat little example to illustrate some of funflow's 
+Since [Funflow](https://github.com/tweag/funflow) is a bit abstract, 
+in this post we look at a neat little example to illustrate some of Funflow's 
 features. This post builds off of our 
 [earlier post](https://www.tweag.io/posts/2018-04-25-funflow.html)
-in which we introduced funflow and what it had to offer.
+in which we introduced Funflow and what it had to offer.
 All the code for this example as well as some documentation
 can be found [here](https://github.com/tweag/funflow/tree/master/funflow-examples/makefile-tool).
 
@@ -46,7 +46,7 @@ Hello World!
 The factorial of 5 is 120
 ```
 
-Because we used funflow, our tool has several desireable properties,
+Because we used Funflow, our tool has several desireable properties,
 _both of the tool and of the code itself_:
 
  * **No repeated builds:** If we've built something before, we don't build it again. Period. 
@@ -61,9 +61,9 @@ _both of the tool and of the code itself_:
    file processing, recusive calls for making the dependencies of the given target,
    and running docker containers. Usually, this sequencing is messy
    and difficult to follow.
-   With funflow, however, we can inject these various forms of
+   With Funflow, however, we can inject these various forms of
    computation into `Flow`s and sequence them seamlessly with arrow notation.
- * **Concise Code:** Because of the abstractions funflow provides, we can focus on
+ * **Concise Code:** Because of the abstractions Funflow provides, we can focus on
    the essential algorithm and get some efficiency \& safety for free.
 
 
@@ -144,7 +144,7 @@ recursive call building say, `target4.o`, the use of `compiledFile`
 is constant time.
 
 However, this goes a step further.
-Because of funflow's caching our tool, unlike GNU's `make`, doesn't re-build
+Because of Funflow's caching our tool, unlike GNU's `make`, doesn't re-build
 targets _even after reverting back changes_.
 Say `factorial.cpp` took a long time to build and was part of
 a larger project. Suppose further that to fix a bug in this large project,
@@ -156,7 +156,7 @@ whereas plain ol' `make` would not.
 
 ## Enforced Dependencies
 
-The `makefile-tool` also showcases funflow's docker capabilities.
+The `makefile-tool` also showcases Funflow's docker capabilities.
 We compile each target in its own docker container with exactly its
 list of dependencies.
 
@@ -184,7 +184,7 @@ this would be the `gcc` container with the `-o` command line argument.)
 
 ## Clean Sequencing: Diverse Injection \& Arrow Notation
 
-This example also demonstrates funflow's ability to inject various forms of
+This example also demonstrates Funflow's ability to inject various forms of
 computation into `Flow`s and sequence them in fancy ways. This
 makes the code readable and maintainable.
 
@@ -202,7 +202,7 @@ flowStringToRelFile = stepIO parseRelFile
 
 Then, inside the `compileFile` flow, we were able to sequence this
 with `dockerFlow`, a flow that was made from an external step.
-That is, `dockerFlow` was made from the funflow library function `docker`:
+That is, `dockerFlow` was made from the Funflow library function `docker`:
 
 ```haskell
 import qualified Control.Funflow.External.Docker as Docker
@@ -262,7 +262,7 @@ Now, to actually use these we need to linearly sequence these `Flow`s.
 (We can't sequence them in parallel because then repeated recursive calls
 would repeat work if flows were distributed.) 
 In other words, we need the power to combine an arbitrary amount of
-similar flows into one flow. Because funflow is embedded in haskell,
+similar flows into one flow. Because Funflow is embedded in haskell,
 we can write the function `flowJoin`:
 
 
