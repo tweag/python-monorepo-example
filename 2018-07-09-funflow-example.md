@@ -1,20 +1,23 @@
 ---
-title: "Funflow Example:<br/>Our `makefile-tool`"
+title: "Funflow Example:<br/>emulating Make"
 shortTitle: Funflow Example
 author: Divesh Otwani, Nicholas Clarke
 ---
 
-Since [Funflow](https://github.com/tweag/funflow) is a bit abstract, 
-in this post we look at a neat little example to illustrate some of Funflow's 
-features. This post builds off of our 
-[earlier post](https://www.tweag.io/posts/2018-04-25-funflow.html)
-in which we introduced Funflow and what it had to offer.
-All the code for this example as well as some documentation
-can be found [here](https://github.com/tweag/funflow/tree/master/funflow-examples/makefile-tool).
+[Funflow](https://github.com/tweag/funflow) is a workflow management
+tool. It turns out that workflow management tools and build tools are
+closely related. So if you're more familiar with the latter, this post
+might be of interest to you. We'll be illustrating some of Funflow's
+features by
+implementing [Make](https://en.wikipedia.org/wiki/Make_(software)) on
+top.
 
+All the code for this example as well as some documentation can be
+found
+[here](https://github.com/tweag/funflow/tree/master/funflow-examples/makefile-tool).
 
+## Today's example: Make
 
-## What did we build?
 Our example is a simple version of GNU's Make
 restricted to building C files (though it could be generalized).
 It takes a makefile that looks like this
@@ -46,15 +49,15 @@ Hello World!
 The factorial of 5 is 120
 ```
 
-Because we used Funflow, our tool has several desireable properties,
+Because we used Funflow, our tool has several desirable properties,
 _both of the tool and of the code itself_:
 
- * **No repeated builds:** If we've built something before, we don't build it again. Period. 
+ * **No repeated builds:** If we've built something before, we don't build it again. Period.
    With `make`, if you make a tiny change and find out it isn't what you want, when you revert
    back `make` will rebuild something it had built before. Our tool won't.
  * **Enforced target dependencies:** We build each target file in a docker container
-   with exactly the dependencies listed in the `Makefile`. There's no opportunity 
-   for hidden dependencies or hidden requirements on the environment. Further, 
+   with exactly the dependencies listed in the `Makefile`. There's no opportunity
+   for hidden dependencies or hidden requirements on the environment. Further,
    such 'hidden' preconditions are caught early and flagged making it easy to fix
    the `Makefile`.
  * **Clean Sequencing Code:** The function that makes a target file sequences
@@ -65,7 +68,6 @@ _both of the tool and of the code itself_:
    computation into `Flow`s and sequence them seamlessly with arrow notation.
  * **Concise Code:** Because of the abstractions Funflow provides, we can focus on
    the essential algorithm and get some efficiency \& safety for free.
-
 
 ## No Repeat Builds: CAS Gives Us Free Dynamic Programming
 
@@ -78,23 +80,12 @@ Each dependency is either a source file or itself a target file.
 Here is a slightly simplified version of
 that function:
 
-
 ```haskell
 -- For readability, we introduce a type alias for Flow
 type a ==> b = Flow a b
 
 buildTarget :: MakeFile -> MakeRule -> (() ==> (Content File))
-buildTarget mkfile target@(MakeRule targetNm deps cmd) = 
-  let
-    srcfiles = sourceFiles mkfile
-    neededTargets = Set.toList $ deps `Set.difference` srcfiles
-    neededSources  = Set.toList $ deps `Set.intersection` srcfiles
-    depRules = (findRules mkfile neededTargets :: [MakeRule])
-    depTargetFlows = map (buildTarget mkfile) depRules
-    countDepFlows = length depTargetFlows
-    grabSources srcs = traverse (readFile . ("./" ++)) srcs
-    grabSrcsFlow = stepIO grabSources   
-   in proc _ -> do
+buildTarget mkfile target@(MakeRule targetNm deps cmd) = proc _ -> do
      -- 1) Get source file contents
      contentSrcFiles <- grabSrcsFlow -< neededSources
      -- 2) Zip these with the names of each source file
@@ -103,11 +94,20 @@ buildTarget mkfile target@(MakeRule targetNm deps cmd) =
      depFiles <- flowJoin depTargetFlows -< (replicate countDepFlows ())
      -- 4) Compile this file given
        -- a) the name of the target
-       -- b) the dependencies that are source files 
+       -- b) the dependencies that are source files
        -- c) the dependencies that were targets
        -- d) the gcc command to execute
-     compiledFile <- compileFile -< (targetNm, fullSrcFiles, depFiles,cmd)
-returnA -< compiledFile
+    compiledFile <- compileFile -< (targetNm, fullSrcFiles, depFiles,cmd)
+    returnA -< compiledFile
+  where
+    srcfiles = sourceFiles mkfile
+    neededTargets = Set.toList $ deps `Set.difference` srcfiles
+    neededSources  = Set.toList $ deps `Set.intersection` srcfiles
+    depRules = (findRules mkfile neededTargets :: [MakeRule])
+    depTargetFlows = map (buildTarget mkfile) depRules
+    countDepFlows = length depTargetFlows
+    grabSources srcs = traverse (readFile . ("./" ++)) srcs
+    grabSrcsFlow = stepIO grabSources
 ```
 
 The code for building the flow is straightforward.
@@ -156,7 +156,7 @@ whereas plain ol' `make` would not.
 
 ## Enforced Dependencies
 
-The `makefile-tool` also showcases Funflow's docker capabilities.
+`makefile-tool` also showcases Funflow's docker capabilities.
 We compile each target in its own docker container with exactly its
 list of dependencies.
 
@@ -169,7 +169,7 @@ inside the docker container.
 
 **Further, this approach doesn't merely prevent hidden preconditions;
 it flags them.** For example, if our `Makefile` above had
-the line `factorial.o : factorial.cpp` 
+the line `factorial.o : factorial.cpp`
 instead of `factorial.o : factorial.cpp functions.h`, we would get
 an error from `gcc` indicating that it couldn't find `functions.h`. With
 ordinary `make`, the build would succeed and this hidden precondition would last.
@@ -181,7 +181,6 @@ extend this tool by having the user provide a docker container for the build com
 and a way of directing the naming of the target file. (For C projects,
 this would be the `gcc` container with the `-o` command line argument.)
 
-
 ## Clean Sequencing: Diverse Injection \& Arrow Notation
 
 This example also demonstrates Funflow's ability to inject various forms of
@@ -190,7 +189,7 @@ makes the code readable and maintainable.
 
 ### Injecting IO and External Steps
 
-At one point, we needed to inject the `IO` action 
+At one point, we needed to inject the `IO` action
 ```haskell
 parseRelFile :: String -> IO (Path Rel File)
 ```
@@ -227,9 +226,9 @@ data Config = Config
 
 ```
 
-**Then by using [arrow notation](https://en.wikibooks.org/wiki/Haskell/Arrow_tutorial), 
-a generalization of 'do notation', we were able to elegantly and easily 
-sequence these `Flow`s. Without going into the details, we can see the 
+**Then by using [arrow notation](https://en.wikibooks.org/wiki/Haskell/Arrow_tutorial),
+a generalization of 'do notation', we were able to elegantly and easily
+sequence these `Flow`s. Without going into the details, we can see the
 sequencing is as readable and intuitive as 'do notation'**:
 
 
@@ -260,7 +259,7 @@ depRules :: [MakeRule]
 
 Now, to actually use these we need to linearly sequence these `Flow`s.
 (We can't sequence them in parallel because then repeated recursive calls
-would repeat work if flows were distributed.) 
+would repeat work if flows were distributed.)
 In other words, we need the power to combine an arbitrary amount of
 similar flows into one flow. Because Funflow is embedded in haskell,
 we can write the function `flowJoin`:
@@ -290,13 +289,11 @@ but even without this, **`flowJoin` is a clean, simple, and powerful way of sequ
 
 ## Summary
 
-The `makefile-tool` is only 266 lines long _of which 180 pertain to
+`makefile-tool` is only 266 lines long _of which 180 pertain to
 following a Makefile_ and yet,
 
 - the CAS gives us free dynamic programming,
-- we never re-build targets even when reverting changes
+- we never rebuild targets even when reverting changes
   (which is an improvement over `make`), and,
-- the dependencies are checked and made explicit which
+- the dependencies are checked and made explicit, which
   lends to a crisp functional model.
-
-
