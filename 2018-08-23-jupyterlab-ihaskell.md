@@ -58,43 +58,43 @@ take 10 $ (^2) <$> [1..]
 ```
 
 
-    [1,4,9,16,25,36,49,64,81,100]
+`[1,4,9,16,25,36,49,64,81,100]`
 
 
 In Jupyter parlance, we send an `execute_request`:
 
 ```
-        >> shell.execute_request (8be63d5c-1170-495d-82da-e56272052faf) <<
+>> shell.execute_request (8be63d5c-1170-495d-82da-e56272052faf) <<
 
-        header: {username: "", version: "5.2", session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
-                 msg_id: "8be63d5c-1170-495d-82da-e56272052faf", msg_type: "execute_request"}
-        parent_header: Object
-        channel: "shell"
-        content: {silent: false, store_history: true, user_expressions: Object, allow_stdin: true,
-                  stop_on_error: true, code: "take 10 $ (^2) <$> [1..]"}   <<<<<<<<<<< LOOK HERE
-        metadata: Object
-        buffers: Array[0]
+header: {username: "", version: "5.2", session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
+         msg_id: "8be63d5c-1170-495d-82da-e56272052faf", msg_type: "execute_request"}
+parent_header: Object
+channel: "shell"
+content: {silent: false, store_history: true, user_expressions: Object, allow_stdin: true,
+          stop_on_error: true, code: "take 10 $ (^2) <$> [1..]"}   <<<<<<<<<<< LOOK HERE
+metadata: Object
+buffers: Array[0]
 ```
 
 and receive a `display_data` message as a response:
 
 ```
-        << iopub.display_data (68cce1e7-4d60-4a20-a707-4bf352c4d8d2) >>
+<< iopub.display_data (68cce1e7-4d60-4a20-a707-4bf352c4d8d2) >>
 
-        header: {username: "", msg_type: "display_data", version: "5.0"
-                 msg_id: "68cce1e7-4d60-4a20-a707-4bf352c4d8d2",
-                 session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
-                 date: "2018-08-02T08:14:10.245877Z"}
-        msg_id: "68cce1e7-4d60-4a20-a707-4bf352c4d8d2"
-        msg_type: "display_data"
-        parent_header: {username: "", msg_type: "execute_request", version: "5.0",
-                        msg_id: "8be63d5c-1170-495d-82da-e56272052faf",
-                        session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9"}
-        metadata: Object
-        content: {data: {text/plain: "[1,4,9,16,25,36,49,64,81,100]"},  <<<<<<<<<<< LOOK HERE
-                  metadata: {output_type: "display_data"}}
-        buffers: Array[0]
-        channel: "iopub"
+header: {username: "", msg_type: "display_data", version: "5.0"
+         msg_id: "68cce1e7-4d60-4a20-a707-4bf352c4d8d2",
+         session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
+         date: "2018-08-02T08:14:10.245877Z"}
+msg_id: "68cce1e7-4d60-4a20-a707-4bf352c4d8d2"
+msg_type: "display_data"
+parent_header: {username: "", msg_type: "execute_request", version: "5.0",
+                msg_id: "8be63d5c-1170-495d-82da-e56272052faf",
+                session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9"}
+metadata: Object
+content: {data: {text/plain: "[1,4,9,16,25,36,49,64,81,100]"},  <<<<<<<<<<< LOOK HERE
+          metadata: {output_type: "display_data"}}
+buffers: Array[0]
+channel: "iopub"
 ```
 
 `ihaskell` can import other haskell libraries dynamically and has some special
