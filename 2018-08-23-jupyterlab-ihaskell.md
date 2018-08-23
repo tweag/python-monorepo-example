@@ -6,23 +6,24 @@ author: Matthias Meschede
 ## Introduction ##
 
 Haskell and Data science - on first sight a perfect match: native function
-composition, lazy execution, execution times that can reach c, lots of static
-code checks provide the potential to build highly scalable, production quality
-data transformation pipelines. What is missing then? Why is Haskell not widely
-used in data analytics?
+composition, lazy execution, fast execution times, and lots of code checks.
+sounds like ingredients for highly scalable, production ready data
+transformation pipelines. What is missing then? Why is Haskell not widely used
+in data science?
 
-One of the reasons is that Haskell misses a standardized data science
-environment, comparable to Python that has the defacto standard library set
-`numpy`, `pandas`, `scikit-learn` and many other well-supported wrapped
-libraries such as `keras` and `tensorflow`. The libraries are distributed
-with easy-to-use package managers and explained in a plethora of tutorials,
-stackoverflow questions and example jupyter notebooks that provide starting
-points for most problems.
+One of the reasons is that Haskell misses a standardized data environment,
+comparable to Python with its defacto standard library set: `numpy`, `pandas`,
+`scikit-learn` form the backbone and many other well-supported wrapped
+libraries such as `keras` and `tensorflow` are easily accessible. The libraries
+are distributed with easy-to-use package managers and explained in a plethora
+of tutorials, stackoverflow questions and example jupyter notebooks. Most
+problems from beginner to advanced level can be solved by adapting and
+combining these existing solutions.
 
 For those who don't know it: Project Jupyter revolves around a messaging
 protocol that standardizes interactions with little programs called 'kernels'.
 A 'kernel' can be thought of as a REPL (Read–Eval–Print-Loop) that receives
-code messages from the user and responds with rich media messages.  A frontend
+code messages from the user and responds with rich media messages. A frontend
 can immediately render the rich media response as text, images, videos or small
 applications.
 
