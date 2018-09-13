@@ -1,8 +1,77 @@
 ---
 title: "capabilities-via: ReaderT pattern without boilerplate"
 shortTitle: Announcing capabilities-via
-author: Andreas Hermann
+author: Andreas Hermann & Arnaud Spiwack
 ---
+
+Let's talk about the [ReaderT pattern][readert]. Ostensibly, this is a
+blog post about preferring to encode state as `IORef`-s when you
+can. But that's now how _we_ read it. Instead, we see a story about
+using extensional type classes describing specifically the effects
+that functions use (the `MonadBalance` story, in the [ReaderT pattern
+blog post][readert]). We call such dedicated type classes
+capabilities. Here is an excellent [blog post][three-layer-cake] from
+Matt Parsons which takes this aspect to heart.
+
+Capabilities-via is a library about these capabilities.
+
+[readert]: https://www.fpcomplete.com/blog/2017/06/readert-design-pattern
+[three-layer-cake]: http://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html
+
+## The difference with the Mtl
+
+How is using dedicated capabilities, like in Snoyman's and Parsons's
+blog posts any different from using the well-trodden mtl? Very! You
+see, the mtl's classes `MonadReader`, `MonadState`, and all that, are
+_intensional_: they reflect how the monad has been constructed. A
+monad `M` is a `MonadState` because it is a stack of monad
+transformers, one of which is a `StateT`.
+
+This is because of what Haskell instances mean: if I have an instance
+
+```haskell
+instance MonadState s m => MonadState s (ReaderT r m)
+```
+
+while it may look like we're saying that it _suffices_ to have
+`MonadState s m` for `ReaderT r m` to be `MonadState r`, what we are
+really saying is that `MonadState s (ReaderT r m)` _means_ that
+`MonadState s m`. It defines a computation, rather than a
+deduction. In particular, we are not permitted to add an instance
+
+```haskell
+instance MonadState S (ReaderT (IORef S) IO)
+```
+
+You may want to work around this issue using `{-# OVERLAPPING #-}`
+instances. However, in doing so, you are acting against the semantics
+of instances, and heading for troubles. For an example of issues with
+overlapping instances, see the warning at the end of the [Overlapping
+instances
+section](https://downloads.haskell.org/~ghc/8.4.3/docs/html/users_guide/glasgow_exts.html#overlapping-instances)
+of the GHC manual.
+
+In contrast, what the ReaderT pattern is advertising, is extensional
+classes, indicating what an individual function _can_ do (hence the
+name "capability"), regardless of how the monad is implemen
+
+- intensionality
+- shortcomings of mtl:
+  - composability (several state of the same type, see Andreas below)
+
+## The problem
+
+- a lot of boilerplate
+- a lot of boilerplate
+- a lot of repetition
+
+## DerivingVia
+
+See Andreas below
+
+## Enter capabilities-via
+
+# Andreas's writeup
 
 [capabilities-via][capabilities-via] leaverages the newly added
 [`DerivingVia`][deriving-via] language extension to allow you to generate
@@ -161,3 +230,6 @@ newtype MyM a = MyM (ReaderT Ctx (StateT A (State B)) a)
   deriving (HasState "b" B) via
     Lift (ReaderT Ctx (Lift (StateT A (MonadState (State B)))))
 ```
+
+<!--  LocalWords:  intensional
+ -->
