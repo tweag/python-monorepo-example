@@ -14,7 +14,7 @@ For any compiler which targets WebAssembly, a natural question arises: how to in
 2. User code focuses on implementing state updates, so it is pure in nature. The language runtime takes care of getting info from the "real world" and applying updates to it. This requires the whole project to be organized in a manner similar to the Elm architecture.
 3. Allow user code to directly embed and call JavaScript code.
 
-For maximum flexibility, asterius takes the third approach, and allow Haskell code to call JavaScript code directly via the `foreign import javascript`. Here's a simple example:
+For maximum flexibility, asterius takes the third approach, and allow Haskell code to call JavaScript code directly via the `foreign import javascript` syntax. Here's a simple example:
 
 ```Haskell
 import Control.Monad
@@ -120,4 +120,47 @@ i => {
 
 `i.wasmInstance` is the instantiated `WebAssembly.Instance`. We must call `i.wasmInstance.exports.hs_init()` to initialize the runtime first before any Haskell computation occurs. After that, we can call any exported function or `main` as many times as we want.
 
-# Using Haskell continuations as JavaScript callbacks
+# Using Haskell closures as JavaScript callbacks
+
+The `foreign export javascript` syntax is sufficient when the Haskell functions we'd like to export are all "static". However, we often want to produce closures at runtime (e.g. by partially applying curried functions), and export such "dynamic" closures for use in JavaScript. For instance, when providing a Haskell closure as a JavaScript event handler, the handler often captures some contextual info as free variables, which are unknown at compile time.
+
+One simple workaround would be adding the runtime "context" as a separate argument for exported functions. The JavaScript code is in charge of initiating a context and threading it along through the Haskell functions. However, this denies the benifits of first-class functions and requires a lot of boilerplate code. So let's move on and see what we can do about this.
+
+The first step is representing arbitrary Haskell closure in JavaScript. Remember how we represent JavaScript references in Haskell via `JSRef` and a table? The same method works the other way around, we use `StablePtr` to represent a Haskell closure in JavaScript. The `StablePtr` mechanism exists in GHC long before asterius, and it serves as a handle to a Haskell object on the heap which can be passed between Haskell/C. We can't pass raw addresses, since the storage manager may move objects around, so we need to maintain an index of objects, and modify the indexed address if needed during garbage collection.
+
+The asterius JavaScript FFI supports `StablePtr a` as a basic type, and we can call `Foreign.StablePtr.newStablePtr` to turn any Haskell closure to a `StablePtr`. But we can't directly pass a `StablePtr` to a JavaScript function which expects a callback; we need to convert a `StablePtr` to a `JSRef` pointing to a valid JavaScript function which re-enters the asterius runtime and trigger Haskell evaluation when called.
+
+The asterius runtime provides special interfaces for this purpose: `makeHaskellCallback`/`makeHaskellCallback1`. They convert arguments of type `StablePtr (IO ())`/`StablePtr (JSRef -> IO ())` to `JSRef`s of real JavaScript functions which can be used as event handlers, etc. This interface can be imported into Haskell like this:
+
+```Haskell
+foreign import javascript "__asterius_jsffi.makeHaskellCallback(${1})" js_make_hs_callback
+  :: StablePtr (IO ()) -> IO JSRef
+
+foreign import javascript "__asterius_jsffi.makeHaskellCallback1(${1})" js_make_hs_callback1
+  :: StablePtr (JSRef -> IO ()) -> IO JSRef
+```
+
+Now, let's put together a complete example which uses a Haskell closure as a JavaScript event handler:
+
+```Haskell
+import Foreign.StablePtr
+
+foreign import javascript "console.log(${1})" js_print :: JSRef -> IO ()
+
+foreign import javascript "__asterius_jsffi.makeHaskellCallback1(${1})" js_make_hs_callback1
+  :: StablePtr (JSRef -> IO ()) -> IO JSRef
+
+foreign import javascript "process.on(\"beforeExit\",${1})" js_process_beforeexit
+  :: JSRef -> IO ()
+
+main :: IO ()
+main = newStablePtr js_print >>= js_make_hs_callback1 >>= js_process_beforeexit
+```
+
+When this example is run, `Main.main` first converts `js_print` to a `StablePtr`, then to a `JSRef`, finally sets it as a handler of the `beforeExit` event of `node` process, then gracefully exits. Before `node` shuts down, it invokes the handler, which re-enters the asterius runtime and invokes `js_print` to print whatever passed to this handler (in this case, it's the expected process exit code `0`)
+
+# Invoking RTS API directly in JavaScript
+
+This section is for the brave souls who aren't satisfied with syntactic sugars and prefer to play with raw pointers instead :)
+
+# Future improvements to the JavaScript FFI
