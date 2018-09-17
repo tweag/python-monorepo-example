@@ -4,7 +4,7 @@ shortTitle: Asterius gets a JavaScript FFI
 author: Shao Cheng
 ---
 
-[Previously][hello-asterius], we announced the [asterius](https://github.com/tweag/asterius) compiler which compiles Haskell to WebAssembly. The project has evolved a lot since then, and in this post, we'll talk about a critical new feature of asterius: the JavaScript FFI mechanism.
+[Previously][hello-asterius], we announced the [asterius](https://github.com/tweag/asterius) compiler which compiles Haskell to WebAssembly. The project has evolved a lot since then, and in this post, we'll talk about a critical new feature of asterius: the JavaScript FFI mechanism. It grants us the ability to call into JavaScript code in Haskell and vice versa, by writing simple Haskell import/export declarations, without the need to go through a binding generator first. To the best of our knowledge, among WebAssembly-targetting compilers for high-level FP languages, asterius is the first one to support it :)
 
 # Calling into JavaScript in Haskell
 
@@ -62,7 +62,7 @@ In order to call into JavaScript, we can use the `foreign import javascript` syn
 
 Besides simple value types, asterius can import JavaScript references into Haskell as `JSRef` and passing them back to JavaScript. So what is a `JSRef`? The WebAssembly MVP only supports moving integers and floating point values anyway.
 
-Under the hood, `JSRef`s are really just `Int`s. The asterius runtime maintains a table which maps `JSRef`s to real JavaScript objects. The table indices are passed across JavaScript/WebAssembly boundary just like an ordinary integer. When the runtime invokes computation in a `foreign import javascript` declaration, it decides whether to pass an argument/result in its raw form, or load/store in the `JSRef` table first and only pass the index.
+Under the hood, `JSRef`s are really just `Int`s. The asterius runtime maintains a table which maps `JSRef`s to real JavaScript objects. The table indices are passed across JavaScript/WebAssembly boundary just like an ordinary integer. When the runtime invokes JavaScript computation in a `foreign import javascript` declaration, it decides whether to pass an argument/result in its raw form, or load in the `JSRef` table based on the passed index first.
 
 # Marshaling more advanced types
 
@@ -91,7 +91,7 @@ foreign import javascript "${1}.codePointAt(${2})" js_string_tochar
   :: JSRef -> Int -> Char
 ```
 
-In the code above, we implement utility functions for converting between a Haskell `String` and a JavaScript string. Since `Char` is a JavaScript FFI basic type and can be moved between JavaScript/WebAssembly, we can scan a string from left to right, move the individual `Char`s and re-assemble it to a string at the other end. Similarly, we can convert between a Haskell list and a JavaScript array, a Haskell record and a JavaScript objects, etc.
+In the code above, we implement utility functions for converting between a Haskell `String` and a JavaScript string. Since `Char` is a JavaScript FFI basic type and can be moved between JavaScript/WebAssembly, we can scan a string from left to right, move the individual `Char`s across the border, and re-assemble them to a string at the other end. Similarly, we can convert between a Haskell list and a JavaScript array, a Haskell record and a JavaScript objects, etc.
 
 # Calling into Haskell in JavaScript
 
@@ -105,7 +105,7 @@ foreign export javascript "mult_hs" (*) :: Int -> Int -> Int
 
 We have exported the integer multiplier in Haskell as a WebAssembly export named `mult_hs`. Now we just need a way to call it as a JavaScript function.
 
-All our previous examples assume the input Haskell module has `Main.main`, and the `.js` file the linker outputs initiates the runtime, run `Main.main` then exits. When calling into Haskell from JavaScript, this assumption doesn't always hold. Then we need to customize the behavior of that script after WebAssembly code is successfully compiled and instantiated.
+All our previous examples assume the input Haskell module has `Main.main`, and the `.js` file the linker outputs initiates the runtime, run `Main.main` then exits. When calling into Haskell from JavaScript, this assumption doesn't always hold. We need to customize the behavior of that script after WebAssembly code is successfully compiled and instantiated.
 
 `ahc-link` provides a `--asterius-instance-callback=` flag, which allows us to provide a JavaScript callback function which will be called with an asterius instance is successfully initiated. An "asterius instance" contains the instantiated WebAssembly module, and mappings from Cmm symbols to addresses, so JavaScript code can use symbols and call exported functions. In this example, in order to call `mult_hs` in JavaScript, the callback we supply would be:
 
@@ -117,6 +117,8 @@ i => {
 ```
 
 `i.wasmInstance` is the instantiated `WebAssembly.Instance`. We must call `i.wasmInstance.exports.hs_init()` to initialize the runtime first before any Haskell computation occurs. After that, we can call any exported function or `main` as many times as we want.
+
+The `--asterius-instance-callback=` flag is suitable for the scenario when we expect all logic is contained in the JavaScript file `ahc-link` outputs. However, in a lot of real-world use cases, for smoother interaction with other JavaScript libraries, we may wish to encapsulate the "asterius instance" in our own way and invoke `hs_init` in advance, so it's hard to contain all logic in one JavaScript callback. We are aware of this limitation, and as we polish JavaScript FFI and increase understanding on the rest of JavaScript ecosystem, we will surely improve generation of stub JavaScript code that allows more flexibility here.
 
 # Using Haskell closures as JavaScript callbacks
 
@@ -143,76 +145,33 @@ Now, let's put together a complete example which uses a Haskell closure as a Jav
 ```Haskell
 import Foreign.StablePtr
 
-foreign import javascript "console.log(${1})" js_print :: JSRef -> IO ()
+foreign import javascript "Math.random()" js_random :: IO Double
 
-foreign import javascript "__asterius_jsffi.makeHaskellCallback1(${1})" js_make_hs_callback1
-  :: StablePtr (JSRef -> IO ()) -> IO JSRef
+foreign import javascript "console.log(${1})" js_print_double :: Double -> IO ()
+
+foreign import javascript "__asterius_jsffi.makeHaskellCallback(${1})" js_make_hs_callback
+  :: StablePtr (IO ()) -> IO JSRef
 
 foreign import javascript "process.on(\"beforeExit\",${1})" js_process_beforeexit
   :: JSRef -> IO ()
 
 main :: IO ()
-main = newStablePtr js_print >>= js_make_hs_callback1 >>= js_process_beforeexit
+main = do
+  x <- js_random
+  newStablePtr (js_print_double x) >>= js_make_hs_callback >>=
+    js_process_beforeexit
 ```
 
-When this example is run, `Main.main` first converts `js_print` to a `StablePtr`, then to a `JSRef`, finally sets it as a handler of the `beforeExit` event of `node` process, then gracefully exits. Before `node` shuts down, it invokes the handler, which re-enters the asterius runtime and invokes `js_print` to print whatever passed to this handler (in this case, it's the expected process exit code `0`)
-
-# Invoking RTS API directly in JavaScript
-
-For the brave souls who prefer to play with raw pointers instead of syntactic sugar, it's possible to invoke RTS API directly in JavaScript. This grants us the ability to:
-
-* Allocate memory, create and inspect Haskell closures on the heap.
-* Trigger Haskell evaluation, then retrieve the results back into JavaScript.
-* Use raw Cmm symbols to summon any function, not limited to the "foreign exported" ones.
-
-Here is a simple example. Suppose we have a `Main.fact` function:
-
-```Haskell
-fact :: Int -> Int
-fact 0 = 1
-fact n = n * fact (n - 1)
-```
-
-The first step is ensuring `fact` is actually contained in the final WebAssembly binary produced by `ahc-link`. `ahc-link` performs aggressive dead-code elimination (or more precisely, live-code discovery) by starting from a set of "root symbols" (usually `Main_main_closure` which corresponds to `Main.main`), repeatedly traversing ASTs and including any discovered symbols. So if `Main.main` does not have a transitive dependency on `fact`, `fact` won't be included into the binary. In order to include `fact`, either use it in some way in `main`, or supply `--extra-root-symbol=Main_fact_closure` flag to `ahc-link` when compiling.
-
-The next step is locating the pointer of `fact`. The "asterius instance" type we mentioned before contains two "symbol map" fields: `staticsSymbolMap` maps static data symbols to linear memory absolute addresses, and `functionSymbolMap` maps function symbols to WebAssembly function table indices. In this case, we can use `i.staticsSymbolMap.Main_fact_closure` as the pointer value of `Main_fact_closure`. For a Haskell top-level function, there're also pointers to the info table/entry function, but we don't need those two in this example.
-
-Since we'd like to call `fact`, we need to apply it to an argument, build a thunk representing the result, then evaluate the thunk to WHNF and retrieve the result. Assuming we're passing `--asterius-instance-callback=i=>{ ... }` to `ahc-link`, in the callback body, we can use RTS API like this:
-
-```JavaScript
-i.wasmInstance.exports.hs_init();
-const cap = i.staticsSymbolMap.MainCapability;
-const argument = i.wasmInstance.exports.rts_mkInt(cap, 5);
-const thunk = i.wasmInstance.exports.rts_apply(cap, i.staticsSymbolMap.Main_fact_closure, argument);
-const ret = i.wasmInstance.exports.allocate(cap, 1);
-i.wasmInstance.exports.rts_eval(cap, thunk, ret);
-console.log(i.wasmInstance.exports.rts_getInt(i.wasmInstance.exports.loadI64(ret)));
-```
-
-A line-by-line explanation follows:
-
-* As usual, the first step is calling `hs_init` to initialize the runtime.
-* Most RTS API functions requires passing a `Capability` as the first argument, which can be thought as a single processor core for the virtual machine executing Haskell code. Since asterius only has a non-threaded runtime at the moment, we can simply use `MainCapability` as the pointer to the unique global `Capability`.
-* Assuming we'd like to calculate `fact 5`, we need to build an `Int` object which value is `5`. We can't directly pass the JavaScript `5`, instead we should call `rts_mkInt`, which properly allocates a heap object and sets up the info pointer of an `Int` value. When we need to pass a value of basic type (e.g. `Int`, `StablePtr`, etc), we should always call `rts_mk*` and use the returned pointers to the allocated heap object.
-* Then we can apply `fact` to `5` by using `rts_apply`. It builds a thunk without triggering evaluation. If we are dealing with a curried multiple-arguments function, we should chain `rts_apply` repeatedly until we get a thunk representing the final result.
-* Before triggering evaluation, we need to allocate one single word, which serves as the "result pointer". All the `rts_eval*` functions expect a "result pointer", and upon successful evaluation, the result (which is yet another heap object)'s pointer will be written to the place pointed by the "result pointer". If we don't care about the result (e.g. `IO ()`), it's okay to pass `0` there.
-* Finally, we call `rts_eval`, which enters the runtime and perform all the evaluation for us. There are different types of evaluation functions:
-  * `rts_eval` evaluates a thunk of type `a` to WHNF.
-  * `rts_evalIO` evaluates the result of `IO a` to WHNF.
-  * `rts_evalLazyIO` evaluates `IO a`, without forcing the result to WHNF. It is also the default evaluator used by the runtime to run `Main.main`.
-  * `rts_evalStableIO` evaluates the result of `StablePtr (IO a)` to WHNF, then return the result as `StablePtr a`.
-* If we need to retrieve the result back to JavaScript, we must pick an evaluator function which forces the result to WHNF. The `rts_get*` functions assume the objects are evaluated and won't trigger evaluation.
-* Finally, we use `loadI64` to retrieve the `Int` object stored in the space pointed by `ret`, then use `rts_getInt` to retrieve the content of that `Int`. The result is the integer value we expect.
-
-Most users probably don't need to use RTS API manually, since the `foreign import`/`export` syntactic sugar and the `makeHaskellCallback` interface should be sufficient for typical use cases of Haskell/JavaScript interaction. Though it won't hurt to know what is hidden beneath the syntactic sugar, `foreign import`/`export` is implemented by automatically generating stub WebAssembly functions which calls RTS API for you.
+When this example is run, `Main.main` first obtains a random number `x`, then converts `js_print_double x` to a `StablePtr (IO ())`, then to a `JSRef`, finally sets it as a handler of the `beforeExit` event of `node` process, then gracefully exits. Before the `node` process shuts down, it invokes the handler, which re-enters the asterius runtime and invokes `js_print_double` to print the random number we obtained earlier. This is an over-simplified example, but it does demonstrates the ability to use Haskell closures computed at runtime as JavaScript callbacks.
 
 # Future improvements to the JavaScript FFI
 
 In this post, we demonstrated current capabilities of asterius JavaScript FFI. It's still in early stages, and there is surely a lot of room for improvement:
 
-* Marshaling complex objects like strings and arrays is costly and requires calling into JavaScript a lot of times. This is easily fixed if we move the marshal functions from user code to the runtime, and this can be done for a lot of "common" types, ranging from `ByteString`s/`Text`s to even `Value`s in `aeson`!
-* We haven't considered a simple reference leaking problem: in a long running application, we must not forget to properly free `JSRef`s or `StablePtr`s! Besides manual freeing, it shall be possible to:
-  * Make use of `Weak#`s and attach finalizers to `JSRef`s, which will be run automatically when it is garbage collected, similar to `ByteString` handlers.
-  * Use a `ResourceT`-like mechanism that upon exiting a scope, automatically frees a bunch of `JSRef`s. Or even better, use linear types.
-* We haven't demonstrated exception handling of either Haskell or JavaScript. Ideally, the programmer don't need to manually check scheduler status codes, and automatically gets a JavaScript exception when a Haskell one is raised, or vice versa!
-* Our examples only makes use of the JavaScript standard library. What if we want to use third-party `npm` packages? Or if we want to package a Haskell library as an `npm` package?
+* Marshaling complex objects like strings and arrays is costly, since it requires calling into JavaScript a lot of times. This is easily fixed if we move the marshal functions from user code to the runtime, and this can be done for a lot of "common" types, ranging from `ByteString`s/`Text`s to even `Value`s in `aeson`!
+* Due to the way `foreign import`/`export` is implemented, we can't define `newtype`s to JavaScript FFI basic types and use them in the type signatures currently. In the future, this limitation will be raised.
+* We haven't considered a simple reference leaking problem here: in a long running application, we must not forget to properly free `JSRef`s or `StablePtr`s. Besides manual freeing, it shall be possible to:
+  * Make use of `Weak#`s and attach finalizers to `JSRef`s, which will be run automatically when it is garbage collected. This is similar to `ByteString` finalizers.
+  * Use a `ResourceT`-like mechanism that upon exiting a scope, automatically frees all `JSRef`s allocated in the corresponding scope. Or even better, use linear types.
+* We haven't demonstrated exception handling of either Haskell or JavaScript. Ideally, the programmer don't need to manually check scheduler status codes, and automatically gets a JavaScript exception when a Haskell one is raised, or vice versa.
+* Our examples only makes use of the JavaScript standard library. What if we want to use third-party `npm` packages? Or if we want to distribute a Haskell library as an `npm` package?
