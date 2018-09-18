@@ -52,40 +52,57 @@ section](https://downloads.haskell.org/~ghc/8.4.3/docs/html/users_guide/glasgow_
 of the GHC manual.
 
 In contrast, what the ReaderT pattern is advertising, is extensional
-classes, indicating what an individual function _can_ do (hence the
-name "capability"), regardless of how the monad is implemen
+classes, indicating what an individual function _is allowed_ to do
+(hence the name "capability"), regardless of how the monad is
+implemented.
 
-- intensionality
-- shortcomings of mtl:
-  - composability (several state of the same type, see Andreas below)
 
 ## The problem
 
-- a lot of boilerplate
-- a lot of boilerplate
-- a lot of repetition
+Irrespective of whether you are willing to twist the arm of the Mtl
+with `{-# OVERLAPPING #-}` instances, when programming with
+capabilities you will run into two kind of issues. The first is
+probably the lesser of the two, but has been a known pain point with
+the Mtl for a while, is that the Mtl uses the type of (say) state to
+discriminate layers. In other words: you can't have two states of the
+same type in your capabilities.
+
+This, of course, is not a problem if you are writing your own type
+classes: you can simply use a different class for each state. This
+leads us to the second, more serious issue: lack of inference. With
+all its faults, the Mtl gives a very comfortable environment: it
+defines plenty of generic instances, so that when we give a concrete
+monad stack, then all the instances are automatically computed for
+us. In contrast, with capabilities and the ReaderT pattern, we collect
+all the capabilities, and assemble a bespoke type to handle all of
+these instances. Haskell's instance resolution is simply not equipped
+for this.
+
+The bottom line is: an insane lot of boilerplate. Custom type class
+definitions. A slew of instances at each main entry point (where a
+concrete type is defined for the monad).
 
 ## DerivingVia
 
-See Andreas below
+What we would really like is a way to use type-class instances the
+other way around, compared to instance resolution. Instead of reading
 
-## Enter capabilities-via
+```haskell
+instance MonadState s m => MonadState s (ReaderT r m)
+```
 
-# Andreas's writeup
+as saying that `MonadState`, on `ReaderT` means that `Monad s m`, and
+fixing the implementation, we would like to read it as: if I have an
+implementation of `Monad s m`, then this is a _possible_
+implementation of `MonadState` on a `ReaderT`.
 
-[capabilities-via][capabilities-via] leaverages the newly added
-[`DerivingVia`][deriving-via] language extension to allow you to generate
-instances for tagged capability type-classes, such as `HasState`, for newtype wrappers
-choosing the strategy that best fits your application.
+This is made possible by a new language extension available in the
+freshly released GHC 8.6: `DerivingVia`.
 
-
-## What is DerivingVia
-
-First of all, what is this new language extension?
-
-In short, `DerivingVia` is similar to `GeneralizedNewtypeDeriving`,
-but allows you to choose a different combination of `newtype` wrappers
-for each instance that you're deriving. For example:
+In short, `DerivingVia` is a generalisation of
+`GeneralizedNewtypeDeriving` which allows you, not only to derive an
+instance _for_ a newtype, but also _from_ a newtype, or, and this is
+most relevant for us, from a combination of newtypes. For example:
 
 ``` haskell
 {-# LANGUAGE DerivingVia #-}
@@ -103,90 +120,17 @@ Note the `via` keyword in the deriving clauses.
 (In this example we could also have derived the `Num` instance
 using `GeneralizedNewtypeDeriving`.)
 
-The [proposal][proposal] and the [paper][paper] give a more detailed account.
+You will find a more complete introduction in [Baldur Blondal's
+talk][stolen-instances] on the subject. If you want all the details,
+head to the [proposal][proposal] or the [paper][paper].
 
+[stolen-instances]: https://skillsmatter.com/skillscasts/10934-lightning-talk-stolen-instances-taste-just-fine
 [proposal]: https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0023-deriving-via.rst
 [paper]: https://www.kosmikus.org/DerivingVia/deriving-via-paper.pdf
 
-
-## Capabilities
-
-What do we mean when we say capabilities?
-We mean a collection of effectful operations in a monad `m` capture by a type-class.
-The well known `mtl` type-classes, e.g. `MonadReader r`, `MonadState s`,
-are a good example of this.
-However, less generic application defined collections of operations also fit the bill.
-Contrary to the `mtl` type-classes the capabilities provided by this library
-are also tagged, to allow composition of programs using similar capabilities.
-We will see what this means in the next section
-
-
-## Why not just use mtl?
-
-The monad transformer library has been the go to library for common effects
-such as reader, writer, state for a long time. There are two parts to it.
-
-On the one hand mtl re-exports the monad transformers of the `tranformers` library,
-such as `ReaderT`, or `StateT`. These can be combined to construct a monad transformer
-that covers multiple effects in one. E.g.
-
-```
--- Provides Reader in Ctx and State in A and B.
-type MyM a = ReaderT Ctx (StateT A (State B)) a
-```
-
-However,
-these transformers alone do not offer a compelling API,
-as we have to manually apply `lift` the right number of times
-to reach a particular layer in the stack.
-
-```
-askCtx = ask :: MyM Ctx
-getA = lift get :: MyM A
-getB = lift (lift get) :: MyM B
-```
-
-This is where mtl offers type-classes that hide the `lift`-ing from us.
-
-```
-askCtx :: MonadReader Ctx m => m Ctx
-askCtx = ask
-getA :: MonadState A m => m A
-getA = get
-getB :: MonadState B m => m B
-getB = get
-```
-
-However, if we try to combine `getA` and `getB` as follows:
-
-``` haskell
-ouch :: MyM B
-ouch = getA >> getB
-```
-
-Then we get a compiler error complaining that `A` and `B` don't match.
-(If `A` and `B` were the same type,
-then `getA` and `getB` would just operate on the same layer,
-while the other layer would be silently ignored.)
-
-With mtl we can mix state with reader with writer, no problem.
-But, we cannot mix two states, or two readers, etc.
-
-Furthermore, large transformer stacks can hinder GHC's optimizations
-(XXX: link?),
-and there is an implementation cost to the mtl approach,
-which is known as the n^2 instances problem.
-Each transformer comes with its own type class, e.g. `ReaderT` and `MonadReader`,
-and for each transformer we have to write an instance for every class.
-
-If the transformer stack is based on `IO`,
-then the [`ReaderT` pattern][reader-t-pattern] gives a few more arguments
-against using monad transformer stacks.
-
-[reader-t-pattern]: https://www.fpcomplete.com/blog/2017/06/readert-design-pattern
-
-
 ## Enter capabilities-via
+
+<!-- TODO: rework the transition -->
 
 The capabilities that this library provides are tagged.
 This allows to combine multiple state computations as in the example above.
@@ -230,6 +174,9 @@ newtype MyM a = MyM (ReaderT Ctx (StateT A (State B)) a)
   deriving (HasState "b" B) via
     Lift (ReaderT Ctx (Lift (StateT A (MonadState (State B)))))
 ```
+
+## A word on free monads
+
 
 <!--  LocalWords:  intensional
  -->
