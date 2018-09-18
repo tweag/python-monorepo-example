@@ -45,7 +45,7 @@ instance MonadState S (ReaderT (IORef S) IO)
 
 You may want to work around this issue using `{-# OVERLAPPING #-}`
 instances. However, in doing so, you are acting against the semantics
-of instances, and heading for troubles. For an example of issues with
+of instances, and heading for trouble. For an example of issues with
 overlapping instances, see the warning at the end of the [Overlapping
 instances
 section](https://downloads.haskell.org/~ghc/8.4.3/docs/html/users_guide/glasgow_exts.html#overlapping-instances)
@@ -78,7 +78,7 @@ all the capabilities, and assemble a bespoke type to handle all of
 these instances. Haskell's instance resolution is simply not equipped
 for this.
 
-The bottom line is: an insane lot of boilerplate. Custom type class
+The bottom line is: an insane amount of boilerplate. Custom type class
 definitions. A slew of instances at each main entry point (where a
 concrete type is defined for the monad).
 
