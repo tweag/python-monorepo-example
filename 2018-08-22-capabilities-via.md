@@ -143,7 +143,7 @@ getAB = get @"a" >> get @"b"
 
 And instead of providing monad transformers to be stacked
 the library provides composable `newtype` wrappers that allow you to express
-stategies by which GHC should derive instances for different capabilities
+strategies by which GHC should derive instances for different capabilities
 for your application monad.
 
 For example you can derive `HasReader` from an mtl `MonadReader`
@@ -177,6 +177,32 @@ newtype MyM a = MyM (ReaderT Ctx (StateT A (State B)) a)
 
 ## A word on free monads
 
+Another solution to much the same problems has been known for a while:
+[free monads and extensible effects][extensible-effects]. As it
+happens, capabilities-via and free monads can be formally compared. In
+[a paper][vlfm], Mauro Jaskelioff and Russell O'Connor, prove that
+free monads are a special case of capabilities (it's not phrased in
+these terms, of course, but that's what the paper amounts to).
 
-<!--  LocalWords:  intensional
+So another way of looking at capabilities-via is that it is a library
+of extensible effects. It makes it possible to write effects which are
+not available to free monads: free monads can only model algebraic
+effects, capabilities do not have such a restriction. For instance the
+`HasCatch` capability, giving a function the ability to catch errors,
+is not algebraic, hence not available to free monads.
+
+However, the most important reason for us to develop capabilities-via
+is that we find this style of programming quite manageable and
+idiomatic, whereas free-monad programming quickly becomes
+unwieldy. This is an entirely subjective judgement of course, but we
+believe that it has slowed the adoption of extensible effects.
+Absolutely wonderful though they are! As a bonus, capabilities should
+be more efficient than free-monad-style programming because it doesn't
+rely on a tagged encoding.
+
+[extensible-effects]: https://hackage.haskell.org/package/extensible-effects
+[vlfm]: http://r6.ca/blog/20140210T181244Z.html
+<!--  LocalWords:  intensional monads monad mtl GHC composable
+ -->
+<!--  LocalWords:  newtypes
  -->
