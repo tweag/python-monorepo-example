@@ -6,7 +6,7 @@ author: Andreas Hermann & Arnaud Spiwack
 
 Let's talk about the [ReaderT pattern][readert]. Ostensibly, this is a
 blog post about preferring to encode state as `IORef`-s when you
-can. But that's now how _we_ read it. Instead, we see a story about
+can. But that's not how _we_ read it. Instead, we see a story about
 using extensional type classes describing specifically the effects
 that functions use (the `MonadBalance` story, in the [ReaderT pattern
 blog post][readert]). We call such dedicated type classes
