@@ -120,6 +120,8 @@ i => {
 
 The `--asterius-instance-callback=` flag is suitable for the scenario where we expect that all logic is contained in the JavaScript file output by `ahc-link`. However, this is not always the case. Instead, for a more seamless interaction with other JavaScript libraries, we may wish to encapsulate the Asterius instance and invoke `hs_init` in advance. In that case, it is hard to contain all logic in one JavaScript callback. For now, this remains a limitation and as we continue to improve the JavaScript FFI, we will surely look at the generation of stub JavaScript code that provides more flexibility in this more general case.
 
+Additionally, we need to supply `--export-function=mult_hs` to `ahc-link` in this example, since `Main.main` does not have a transitive dependency on `mult_hs`, without this flag, the function will be stripped from the output WebAssembly binary.
+
 # Using Haskell closures as JavaScript callbacks
 
 The discussed `foreign export javascript` declarations are sufficient when all Haskell functions to be called from JavaScript are statically known. However, we often want to produce closures at runtime (e.g., by partially applying curried functions), and then, export such dynamic runtime-generated closures for use in JavaScript. For instance, when providing a Haskell closure as a JavaScript event handler, the handler often captures some contextual info as free variables, which are unknown at compile time.
