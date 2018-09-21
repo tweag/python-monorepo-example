@@ -182,6 +182,211 @@ Note, that the `MonadReader` newtype can provide an instance for any tag.
 The `Field` combinator uses generic-lens under the hood,
 which is why `AppData` needs to have a `Generic` instance.
 
+## A worked example
+
+Let's consider a complete example to demonstrate how you could use capabilities-via
+in your own projects.
+The code is available in the capabilities-via repository if you want to follow along.
+Refer to the README for further instructions.
+
+In this example we will receive a text as input
+and want to count occurrences of words and letters in the text, ignoring white space.
+To that end we will use a writer monad.
+Recall, that writer has the method `tell :: w -> m ()`,
+which will `mappend` the given `w` to the current tally, starting from `mempty`.
+This requires a `Monoid` instance on `w`.
+
+We start with counting single letters and words.
+
+``` haskell
+-- | Count the occurrence of a single letter.
+countLetter ::
+  HasWriter "letterCount" (Occurrences Char) m
+  => Char -> m ()
+countLetter letter = tell @"letterCount" (oneOccurrence letter)
+
+-- | Count the occurrence of a single word.
+countWord ::
+  HasWriter "wordCount" (Occurrences Text) m
+  => Text -> m ()
+countWord word = tell @"wordCount" (oneOccurrence word)
+```
+
+The type `Occurrences k` is a newtype around a `Map` from values `k` to their count.
+Its `Monoid` instance will add occurrences in the expected fashion.
+
+``` haskell
+newtype Occurrences k = Occurrences (Map k Int)
+
+-- | A single occurrence of the given value.
+oneOccurrence :: Ord k => k -> Occurrences k
+oneOccurrence k = Occurrences $ Map.singleton k 1
+```
+
+Next, we combine `countLetter` and `countWord` to handle one word in the input text.
+ 
+``` haskell
+-- | Count the occurrence of a single word and all the letters in it.
+countWordAndLetters ::
+  ( HasWriter "letterCount" (Occurrences Char) m
+  , HasWriter "wordCount" (Occurrences Text) m )
+  => Text -> m ()
+countWordAndLetters word = do
+  countWord word
+  mapM_ countLetter (Text.unpack word)
+```
+
+Finally, we can handle the full input text by first splitting it into its words
+and then applying the above function to each word.
+
+``` haskell
+-- | Count the occurrences of words and letters in a text,
+-- excluding white space.
+countWordsAndLettersInText ::
+  ( HasWriter "letterCount" (Occurrences Char) m
+  , HasWriter "wordCount" (Occurrences Text) m )
+  => Text -> m ()
+countWordsAndLettersInText text =
+  mapM_ countWordAndLetters (Text.words text)
+```
+
+In a production setting we might prefer to stream the input,
+instead of holding he whole text in memory.
+For simplicity's sake we will omit this here.
+
+With that we have written a program against abstract capabilities.
+Before we can execute this program we need to provide a concrete implementation
+that fulfills these capabilities.
+This is where we make use of the deriving-via strategies that the library provides.
+
+It is well known, that the writer monad provided by Mtl has a space-leak.
+In capabilities-via we can derive a writer capability from a state capability instead,
+to avoid this issue.
+Following the ReaderT pattern we derive the state capabilities
+from reader capabilities on `IORef`s.
+
+First, we define the application context.
+A record holding two `IORef`s - one for each counter.
+
+``` haskell
+-- | Counter application context.
+data CounterCtx = CounterCtx
+  { letterCount :: IORef (Map Char Int)
+    -- ^ Counting letter occurrences.
+  , wordCount :: IORef (Map Text Int)
+    -- ^ Counting word occurrences.
+  } deriving Generic
+```
+
+Next, we define our application monad.
+
+``` haskell
+-- | Counter application monad.
+newtype Counter a = Counter { runCounter :: CounterCtx -> IO a }
+  deriving (Functor, Applicative, Monad) via (ReaderT CounterCtx IO)
+```
+
+Note, that we use `ReaderT` in the deriving via clause as a strategy
+to derive the basic `Functor`, `Applicative`, and `Monad` instances.
+
+Deriving the writer capabilities makes use of a large set of newtypes
+provided by the capabilities-via library.
+Each line after the `via` keyword corresponds to one newtype.
+Comments explain the purpose of the respective newtype.
+Read these from bottom to top.
+
+``` haskell
+  deriving (HasWriter "letterCount" (Occurrences Char)) via
+    (WriterLog  -- Generate HasWriter using HasState of Monoid
+    (Coerce (Occurrences Char)  -- Coerce Map to Occurrences
+    (ReaderIORef  -- Generate HasState from HasReader of IORef
+    (Field "letterCount" "ctx"  -- Focus on the field letterCount
+    (MonadReader  -- Generate HasReader using Mtl MonadReader
+    (ReaderT CounterCtx IO))))))  -- Use Mtl ReaderT newtype
+```
+
+As before, we use the `MonadReader` newtype to derive the `HasReader` capability
+from an Mtl `MonadReader` instance.
+Then, we focus on the `letterCount` field using the `Field` newtype.
+The `ReaderIORef` newtype converts a `HasReader` instance on `IORef s`
+to a `HasState` instance on `s`.
+Note, that the `CounterCtx` record contains `Map Char Int`,
+while `countLetter` expects `Occurrences Char`.
+The `Occurrences` type is just a newtype around `Map`,
+such that we can safely coerce between `Map Char Int` and `Occurrences Char`.
+The `Coerce` strategy does just that.
+Finally, we use the `WriterLog` newtype,
+which converts a `HasState` on `w` to a `HasWriter` on `w`.
+
+The `"wordCount"` writer is derived in the same way.
+
+``` haskell
+  deriving (HasWriter "wordCount" (Occurrences Text)) via
+    (WriterLog (Coerce (Occurrences Text) (ReaderIORef
+    (Field "wordCount" "ctx" (MonadReader (ReaderT CounterCtx IO))))))
+```
+
+The only thing left is to combine all these pieces into an executable program.
+We will take the text as an argument, and return an `IO` action
+that executes `countWordsAndLettersInText` using our `Counter` monad,
+and prints the resulting word and letter counts to standard output.
+
+``` haskell
+-- | Given a text count the occurrences of all words and letters in it,
+-- excluding white space, and print the outcome to standard output.
+wordAndLetterCount :: Text -> IO ()
+wordAndLetterCount text = do
+```
+
+First, we setup the required `IORef`s and the counter context.
+
+``` haskell
+  lettersRef <- newIORef Map.empty
+  wordsRef <- newIORef Map.empty
+  let ctx = CounterCtx
+        { letterCount = lettersRef
+        , wordCount = wordsRef
+        }
+```
+
+Then, we call `countWordsAndLettersInText` on the input text,
+and instantiate it using our `Counter` application monad.
+
+``` haskell 
+  let counter :: Counter ()
+      counter = countWordsAndLettersInText text
+```
+
+Finally, we run `counter` and print the results.
+
+``` haskell
+  runCounter counter ctx
+  let printOccurrencesOf name ref = do
+        putStrLn name
+        occurrences <- readIORef ref
+        ifor_ occurrences $ \item num ->
+          putStrLn $ show item ++ ": " ++ show num
+  printOccurrencesOf "Letters" lettersRef
+  printOccurrencesOf "Words" wordsRef
+```
+
+Executing this program in GHCi should produce the following output.
+
+``` haskell
+>>> wordAndLetterCount "ab ba"
+Letters
+'a': 2
+'b': 2
+Words
+"ab": 1
+"ba": 1
+```
+
+This concludes the example.
+We invite you to experiment with this library.
+Please note, that it is still in an early stage and that the API is subject to change.
+However, your feedback will help to evolve it a better direction.
+
 ## A word on free monads
 
 Another solution to much the same problems has been known for a while:
