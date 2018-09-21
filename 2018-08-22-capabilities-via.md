@@ -224,7 +224,7 @@ newtype Occurrences k = Occurrences (Map k Int)
 instance Ord k => Monoid (Occurrences k)
 
 -- | A single occurrence of the given value.
-oneOccurrence :: Ord k => k -> Occurrences k
+oneOccurrence :: k -> Occurrences k
 oneOccurrence k = Occurrences $ Map.singleton k 1
 ```
 
