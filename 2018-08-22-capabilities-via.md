@@ -130,50 +130,57 @@ head to the [proposal][proposal] or the [paper][paper].
 
 ## Enter capabilities-via
 
-<!-- TODO: rework the transition -->
+The capabilities-via library, which we announce with this blog post,
+provides strategies that can be composed to derive capabilities
+using the `DerivingVia` language extension.
 
-The capabilities that this library provides are tagged.
-This allows to combine multiple state computations as in the example above.
-E.g.
+The library defines a new set of capability type classes,
+such as `HasReader`, or `HasState`.
+Contrary to the Mtl type classes these carry a tag,
+which allows to e.g. refer to multiple different states of the same type
+in the same computation.
 
 ``` haskell
-getAB :: (HasState "a" A m, HasState "b" B m) => m B
-getAB = get @"a" >> get @"b"
+getAB :: (HasState "a" A m, HasState "b" B m) => m (A, B)
+getAB = do
+  a <- get @"a"  -- get state under tag "a"
+  b <- get @"b"  -- get state under tag "b"
+  pure (a, b)
 ```
 
-And instead of providing monad transformers to be stacked
-the library provides composable `newtype` wrappers that allow you to express
-strategies by which GHC should derive instances for different capabilities
-for your application monad.
+The library then provides newtypes
+to derive instances of these capability type-classes
+in deriving via clauses, similar to `Sum` in the `MyInt` example above.
 
-For example you can derive `HasReader` from an mtl `MonadReader`
-using the `newtype` wrapper of the same name.
-
-XXX: Should we rename the `MonadReader`, `MonadState` strategies to `MTL`?
+For example, given an Mtl `MonadReader` we can derive a `HasReader` capability
+as follows.
 
 ``` haskell
-import Control.Monad.Reader (ReaderT (..))
-import HasReader
-
 data AppData = ...
 newtype AppM a = AppM (ReaderT AppData IO a)
-  deriving (HasReader "app-data" AppData) via
+  deriving (HasReader "appData" AppData) via
     MonadReader (ReaderT AppData IO)
 ```
 
+We can also combine multiple newtypes to derive capability instances.
+Building on the above example,
+we can pick a field within `AppData` as follows.
+
 ``` haskell
-newtype MyM a = MyM (ReaderT Ctx (StateT A (State B)) a)
-  deriving (Functor, Applicative, Monad)
-  -- Using the MonadReader instance of ReaderT
-  deriving (HasReader "ctx" Ctx) via
-    MonadReader (ReaderT Ctx (StateT A (State B)))
-  -- Using the MonadState instance of ReaderT StateT
-  deriving (HasState "a" A) via
-    MonadState (ReaderT Ctx (StateT A (State B)))
-  -- Lifting the MonadState instance from the inner StateT
-  deriving (HasState "b" B) via
-    Lift (ReaderT Ctx (Lift (StateT A (MonadState (State B)))))
+data AppData = AppData { intRef :: IORef Int, ... }
+  deriving Generic
+newtype AppM a = AppM (ReaderT AppData IO a)
+  deriving (HasReader "intRef" (IORef Int)) via
+    Field "intRef" "appData" (MonadReader (ReaderT AppData IO))
 ```
+
+The `Field` combinator takes two tags as arguments.
+The first specifies the field name, and also the new tag.
+The second specifies the old tag,
+which provides the record with the requested field.
+Note, that the `MonadReader` newtype can provide an instance for any tag.
+The `Field` combinator uses generic-lens under the hood,
+which is why `AppData` needs to have a `Generic` instance.
 
 ## A word on free monads
 
