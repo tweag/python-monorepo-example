@@ -91,9 +91,9 @@ other way around, compared to instance resolution. Instead of reading
 instance MonadState s m => MonadState s (ReaderT r m)
 ```
 
-as saying that `MonadState`, on `ReaderT` means that `Monad s m`, and
+as saying that `MonadState`, on `ReaderT` means that `MonadState s m`, and
 fixing the implementation, we would like to read it as: if I have an
-implementation of `Monad s m`, then this is a _possible_
+implementation of `MonadState s m`, then this is a _possible_
 implementation of `MonadState` on a `ReaderT`.
 
 This is made possible by a new language extension available in the
