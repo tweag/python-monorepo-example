@@ -130,18 +130,19 @@ head to the [proposal][proposal] or the [paper][paper].
 
 ## Enter capabilities-via
 
-The capabilities-via library, which we announce with this blog post,
+Let us introduce the capabilities-via library, which
 provides strategies that can be composed to derive capabilities
 using the `DerivingVia` language extension.
 
-The library defines a new set of capability type classes,
+The library defines a set of standard, reusable capability type classes,
 such as `HasReader`, or `HasState`.
-Contrary to the Mtl type classes these carry a tag,
-which allows to e.g. refer to multiple different states of the same type
-in the same computation.
+Contrary to the Mtl type classes these are parameterized by a name (aka tag),
+which makes it possible to refer to, say,
+multiple different states in the same computation,
+even if they correspond to the same type.
 
 ``` haskell
-getAB :: (HasState "a" A m, HasState "b" B m) => m (A, B)
+getAB :: (HasState "a" Int m, HasState "b" Int m) => m (Int, Int)
 getAB = do
   a <- get @"a"  -- get state under tag "a"
   b <- get @"b"  -- get state under tag "b"
@@ -179,8 +180,10 @@ The first specifies the field name, and also the new tag.
 The second specifies the old tag,
 which provides the record with the requested field.
 Note, that the `MonadReader` newtype can provide an instance for any tag.
-The `Field` combinator uses generic-lens under the hood,
+The `Field` combinator uses [generic-lens][generic-lens] under the hood,
 which is why `AppData` needs to have a `Generic` instance.
+
+[generic-lens]: http://hackage.haskell.org/package/generic-lens
 
 ## A worked example
 
@@ -217,6 +220,8 @@ Its `Monoid` instance will add occurrences in the expected fashion.
 
 ``` haskell
 newtype Occurrences k = Occurrences (Map k Int)
+
+instance Ord k => Monoid (Occurrences k)
 
 -- | A single occurrence of the given value.
 oneOccurrence :: Ord k => k -> Occurrences k
@@ -259,9 +264,10 @@ Before we can execute this program we need to provide a concrete implementation
 that fulfills these capabilities.
 This is where we make use of the deriving-via strategies that the library provides.
 
-It is well known, that the writer monad provided by Mtl has a space-leak.
+It is well known, that the writer monad provided by Mtl has a space leak.
 In capabilities-via we can derive a writer capability from a state capability instead,
 to avoid this issue.
+In fact, we don't even provide a way to derive a writer capability from a writer monad.
 Following the ReaderT pattern we derive the state capabilities
 from reader capabilities on `IORef`s.
 
@@ -271,9 +277,9 @@ A record holding two `IORef`s - one for each counter.
 ``` haskell
 -- | Counter application context.
 data CounterCtx = CounterCtx
-  { letterCount :: IORef (Map Char Int)
+  { letterCount :: IORef (Occurrences Char)
     -- ^ Counting letter occurrences.
-  , wordCount :: IORef (Map Text Int)
+  , wordCount :: IORef (Occurrences Text)
     -- ^ Counting word occurrences.
   } deriving Generic
 ```
@@ -298,32 +304,18 @@ Read these from bottom to top.
 ``` haskell
   deriving (HasWriter "letterCount" (Occurrences Char)) via
     (WriterLog  -- Generate HasWriter using HasState of Monoid
-    (Coerce (Occurrences Char)  -- Coerce Map to Occurrences
     (ReaderIORef  -- Generate HasState from HasReader of IORef
     (Field "letterCount" "ctx"  -- Focus on the field letterCount
-    (MonadReader  -- Generate HasReader using Mtl MonadReader
-    (ReaderT CounterCtx IO))))))  -- Use Mtl ReaderT newtype
+    (MonadReader  -- Generate HasReader using mtl MonadReader
+    (ReaderT CounterCtx IO)))))  -- Use mtl ReaderT newtype
 ```
-
-As before, we use the `MonadReader` newtype to derive the `HasReader` capability
-from an Mtl `MonadReader` instance.
-Then, we focus on the `letterCount` field using the `Field` newtype.
-The `ReaderIORef` newtype converts a `HasReader` instance on `IORef s`
-to a `HasState` instance on `s`.
-Note, that the `CounterCtx` record contains `Map Char Int`,
-while `countLetter` expects `Occurrences Char`.
-The `Occurrences` type is just a newtype around `Map`,
-such that we can safely coerce between `Map Char Int` and `Occurrences Char`.
-The `Coerce` strategy does just that.
-Finally, we use the `WriterLog` newtype,
-which converts a `HasState` on `w` to a `HasWriter` on `w`.
 
 The `"wordCount"` writer is derived in the same way.
 
 ``` haskell
   deriving (HasWriter "wordCount" (Occurrences Text)) via
-    (WriterLog (Coerce (Occurrences Text) (ReaderIORef
-    (Field "wordCount" "ctx" (MonadReader (ReaderT CounterCtx IO))))))
+    WriterLog (ReaderIORef
+    (Field "wordCount" "ctx" (MonadReader (ReaderT CounterCtx IO))))
 ```
 
 The only thing left is to combine all these pieces into an executable program.
@@ -384,7 +376,7 @@ Words
 
 This concludes the example.
 We invite you to experiment with this library.
-Please note, that it is still in an early stage and that the API is subject to change.
+It is still in an early stage and the API is subject to change.
 However, your feedback will help to evolve it a better direction.
 
 ## A word on free monads
