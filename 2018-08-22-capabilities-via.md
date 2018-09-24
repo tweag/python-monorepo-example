@@ -189,7 +189,11 @@ which is why `AppData` needs to have a `Generic` instance.
 
 Let's consider a complete example to demonstrate how you could use capabilities-via
 in your own projects.
-The code is available in the capabilities-via repository if you want to follow along.
+The code is available in the [capabilities-via repository][capabilities-via]
+if you want to follow along.
+The library is not available on Hackage, as many of its dependencies
+have not been updated to GHC 8.6, yet.
+However, we provide a Nix shell which includes the required patches.
 Refer to the README for further instructions.
 
 In this example we will receive a text as input
@@ -378,6 +382,8 @@ This concludes the example.
 We invite you to experiment with this library.
 It is still in an early stage and the API is subject to change.
 However, your feedback will help to evolve it a better direction.
+
+[capabilities-via]: https://github.com/tweag/capabilities-via
 
 ## A word on free monads
 
