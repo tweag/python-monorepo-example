@@ -226,6 +226,7 @@ Its `Monoid` instance will add occurrences in the expected fashion.
 newtype Occurrences k = Occurrences (Map k Int)
 
 instance Ord k => Monoid (Occurrences k)
+  -- See repository for instance implementation.
 
 -- | A single occurrence of the given value.
 oneOccurrence :: k -> Occurrences k
