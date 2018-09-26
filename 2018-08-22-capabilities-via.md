@@ -13,10 +13,11 @@ blog post][readert]). We call such dedicated type classes
 capabilities. Here is an excellent [blog post][three-layer-cake] from
 Matt Parsons which takes this aspect to heart.
 
-Capability is a library about these capabilities.
+[Capability][capability] is a library about these capabilities.
 
 [readert]: https://www.fpcomplete.com/blog/2017/06/readert-design-pattern
 [three-layer-cake]: http://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html
+[capability]: https://github.com/tweag/capability
 
 ## The difference with the Mtl
 
@@ -130,7 +131,7 @@ head to the [proposal][proposal] or the [paper][paper].
 
 ## Enter capability
 
-Let us introduce the capability library, which
+Let us introduce the [capability library][capability], which
 provides strategies that can be composed to derive capabilities
 using the `DerivingVia` language extension.
 
@@ -383,8 +384,6 @@ This concludes the example.
 We invite you to experiment with this library.
 It is still in an early stage and the API is subject to change.
 However, your feedback will help to evolve it a better direction.
-
-[capability]: https://github.com/tweag/capability
 
 ## A word on free monads
 
