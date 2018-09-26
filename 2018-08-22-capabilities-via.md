@@ -1,6 +1,6 @@
 ---
-title: "capabilities-via: ReaderT pattern without boilerplate"
-shortTitle: Announcing capabilities-via
+title: "capability: ReaderT pattern without boilerplate"
+shortTitle: Announcing capability
 author: Andreas Hermann & Arnaud Spiwack
 ---
 
@@ -13,7 +13,7 @@ blog post][readert]). We call such dedicated type classes
 capabilities. Here is an excellent [blog post][three-layer-cake] from
 Matt Parsons which takes this aspect to heart.
 
-Capabilities-via is a library about these capabilities.
+Capability is a library about these capabilities.
 
 [readert]: https://www.fpcomplete.com/blog/2017/06/readert-design-pattern
 [three-layer-cake]: http://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html
@@ -128,9 +128,9 @@ head to the [proposal][proposal] or the [paper][paper].
 [proposal]: https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0023-deriving-via.rst
 [paper]: https://www.kosmikus.org/DerivingVia/deriving-via-paper.pdf
 
-## Enter capabilities-via
+## Enter capability
 
-Let us introduce the capabilities-via library, which
+Let us introduce the capability library, which
 provides strategies that can be composed to derive capabilities
 using the `DerivingVia` language extension.
 
@@ -187,9 +187,9 @@ which is why `AppData` needs to have a `Generic` instance.
 
 ## A worked example
 
-Let's consider a complete example to demonstrate how you could use capabilities-via
+Let's consider a complete example to demonstrate how you could use capability
 in your own projects.
-The code is available in the [capabilities-via repository][capabilities-via]
+The code is available in the [capability repository][capability]
 if you want to follow along.
 The library is not available on Hackage, as many of its dependencies
 have not been updated to GHC 8.6, yet.
@@ -270,7 +270,7 @@ that fulfills these capabilities.
 This is where we make use of the deriving-via strategies that the library provides.
 
 It is well known, that the writer monad provided by Mtl has a space leak.
-In capabilities-via we can derive a writer capability from a state capability instead,
+In capability we can derive a writer capability from a state capability instead,
 to avoid this issue.
 In fact, we don't even provide a way to derive a writer capability from a writer monad.
 Following the ReaderT pattern we derive the state capabilities
@@ -301,7 +301,7 @@ Note, that we use `ReaderT` in the deriving via clause as a strategy
 to derive the basic `Functor`, `Applicative`, and `Monad` instances.
 
 Deriving the writer capabilities makes use of a large set of newtypes
-provided by the capabilities-via library.
+provided by the capability library.
 Each line after the `via` keyword corresponds to one newtype.
 Comments explain the purpose of the respective newtype.
 Read these from bottom to top.
@@ -384,25 +384,25 @@ We invite you to experiment with this library.
 It is still in an early stage and the API is subject to change.
 However, your feedback will help to evolve it a better direction.
 
-[capabilities-via]: https://github.com/tweag/capabilities-via
+[capability]: https://github.com/tweag/capability
 
 ## A word on free monads
 
 Another solution to much the same problems has been known for a while:
 [free monads and extensible effects][extensible-effects]. As it
-happens, capabilities-via and free monads can be formally compared. In
+happens, capability and free monads can be formally compared. In
 [a paper][vlfm], Mauro Jaskelioff and Russell O'Connor, prove that
 free monads are a special case of capabilities (it's not phrased in
 these terms, of course, but that's what the paper amounts to).
 
-So another way of looking at capabilities-via is that it is a library
+So another way of looking at capability is that it is a library
 of extensible effects. It makes it possible to write effects which are
 not available to free monads: free monads can only model algebraic
 effects, capabilities do not have such a restriction. For instance the
 `HasCatch` capability, giving a function the ability to catch errors,
 is not algebraic, hence not available to free monads.
 
-However, the most important reason for us to develop capabilities-via
+However, the most important reason for us to develop capability
 is that we find this style of programming quite manageable and
 idiomatic, whereas free-monad programming quickly becomes
 unwieldy. This is an entirely subjective judgement of course, but we
