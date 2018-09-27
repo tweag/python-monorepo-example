@@ -193,7 +193,7 @@ Let's consider a complete example to demonstrate how you could use capability
 in your own projects.
 The code is available in the [capability repository][capability]
 if you want to follow along.
-The library is not available on Hackage, as many of its dependencies
+The library is not available on Hackage, as some of its dependencies
 have not been updated to GHC 8.6, yet.
 However, we provide a Nix shell which includes the required patches.
 Refer to the README for further instructions.
