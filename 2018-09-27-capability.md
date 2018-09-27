@@ -384,7 +384,7 @@ Words
 This concludes the example.
 We invite you to experiment with this library.
 It is still in an early stage and the API is subject to change.
-However, your feedback will help to evolve it a better direction.
+However, your feedback will help to evolve it in a better direction.
 
 ## A word on free monads
 
