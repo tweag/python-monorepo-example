@@ -1,7 +1,7 @@
 ---
 title: "capability: ReaderT pattern without boilerplate"
 shortTitle: Announcing capability
-author: Andreas Hermann & Arnaud Spiwack
+author: Andreas Herrmann & Arnaud Spiwack
 ---
 
 Let's talk about the [ReaderT pattern][readert]. Ostensibly, this is a
