@@ -98,7 +98,7 @@ implementation of `MonadState s m`, then this is a _possible_
 implementation of `MonadState` on a `ReaderT`.
 
 This is made possible by a new language extension available in the
-freshly released GHC 8.6: `DerivingVia`.
+freshly released GHC 8.6: [`DerivingVia`][user-guide].
 
 In short, `DerivingVia` is a generalisation of
 `GeneralizedNewtypeDeriving` which allows you, not only to derive an
@@ -128,6 +128,7 @@ head to the [proposal][proposal] or the [paper][paper].
 [stolen-instances]: https://skillsmatter.com/skillscasts/10934-lightning-talk-stolen-instances-taste-just-fine
 [proposal]: https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0023-deriving-via.rst
 [paper]: https://www.kosmikus.org/DerivingVia/deriving-via-paper.pdf
+[user-guide]: https://downloads.haskell.org/~ghc/8.6.1/docs/html/users_guide/glasgow_exts.html#deriving-via
 
 ## Enter capability
 
