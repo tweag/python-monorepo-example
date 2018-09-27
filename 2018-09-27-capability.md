@@ -83,7 +83,7 @@ The bottom line is: an insane amount of boilerplate. Custom type class
 definitions. A slew of instances at each main entry point (where a
 concrete type is defined for the monad).
 
-## DerivingVia
+## Deriving Via
 
 What we would really like is a way to use type-class instances the
 other way around, compared to instance resolution. Instead of reading
