@@ -266,10 +266,10 @@ In a production setting we might prefer to stream the input,
 instead of holding he whole text in memory.
 For simplicity's sake we will omit this here.
 
-With that we have written a program against abstract capabilities.
-Before we can execute this program we need to provide a concrete implementation
-that fulfills these capabilities.
-This is where we make use of the deriving-via strategies that the library provides.
+With that we have written a program that demands two `HasWriter` capabilities.
+Before we can execute this program we need to define a concrete implementation
+that provides these capabilities.
+This is where we make use of the deriving-via strategies that the library offers.
 
 It is well known, that the writer monad provided by Mtl has a space leak.
 In capability we can derive a writer capability from a state capability instead,
