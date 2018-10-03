@@ -1,47 +1,56 @@
 ---
-title: "capability: ReaderT pattern without boilerplate"
+title: "capability: the ReaderT pattern without boilerplate"
 shortTitle: Announcing capability
-author: Andreas Herrmann & Arnaud Spiwack
+author: Andreas Herrmann, Arnaud Spiwack
 ---
 
-Let's talk about the [ReaderT pattern][readert]. Ostensibly, this is a
-blog post about preferring to encode state as `IORef`-s when you
-can. But that's not how _we_ read it. Instead, we see a story about
+About a year ago, Michael Snoyman made a blog post about
+the [ReaderT pattern][readert]. Ostensibly, it's a blog post about
+preferring to encode state as `IORef`-s when you can. But that's not
+how _we_ read it. What we saw first and foremost is a story about
 using extensional type classes describing specifically the effects
-that functions use (the `MonadBalance` story, in the [ReaderT pattern
-blog post][readert]). We call such dedicated type classes
-capabilities. Here is an excellent [blog post][three-layer-cake] from
-Matt Parsons which takes this aspect to heart.
+that functions use, but not how the effects are implemented (see the
+`MonadBalance` story in [Michael's blog post][readert]). We call these
+extensional type classes *capabilities*. Here is an
+excellent [blog post][three-layer-cake] from Matt Parsons which takes
+this aspect to heart.
 
-[Capability][capability] is a library about these capabilities.
+[Capability][capability] is a library to replace [the MTL][mtl] with
+capabilities. In this post, we'll argue why capabalities are
+important, why you should use them, and tell you about what it took to
+design a library of capabilities with good ergonomics. It turns out
+that a brand new language extension that shipped with GHC 8.6,
+`-XDerivingVia`, has a crucial role in this story.
 
 [readert]: https://www.fpcomplete.com/blog/2017/06/readert-design-pattern
 [three-layer-cake]: http://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html
 [capability]: https://github.com/tweag/capability
+[mtl]: http://hackage.haskell.org/package/mtl
 
-## The difference with the Mtl
+## The difference with the MTL
 
-How is using dedicated capabilities, like in Snoyman's and Parsons's
-blog posts any different from using the well-trodden mtl? Very! You
-see, the mtl's classes `MonadReader`, `MonadState`, and all that, are
-_intensional_: they reflect how the monad has been constructed. A
-monad `M` is a `MonadState` because it is a stack of monad
+How is using capabilities, like in Snoyman's and Parsons's blog posts
+any different from using the well-trodden MTL? Quite a bit! The MTL's
+classes, like `MonadReader`, `MonadState` and their close relatives,
+are _intensional_: they reflect *how* the monad has been constructed.
+A monad `MyM` is a `MonadState` because it is a stack of monad
 transformers, one of which is a `StateT`.
 
-This is because of what Haskell instances mean: if I have an instance
+This is because of what Haskell instances mean: if I have an instance,
 
 ```haskell
 instance MonadState s m => MonadState s (ReaderT r m)
 ```
 
 while it may look like we're saying that it _suffices_ to have
-`MonadState s m` for `ReaderT r m` to be `MonadState r`, what we are
+`MonadState s m` for `ReaderT r m` to be `MonadState s`, what we are
 really saying is that `MonadState s (ReaderT r m)` _means_ that
-`MonadState s m`. It defines a computation, rather than a
-deduction. In particular, we are not permitted to add an instance
+`MonadState s m`. It defines a computation, rather than a deduction.
+In particular, we are not permitted to add the following instance:
 
 ```haskell
-instance MonadState S (ReaderT (IORef S) IO)
+data St = ...
+instance MonadState St (ReaderT (IORef St) IO)
 ```
 
 You may want to work around this issue using `{-# OVERLAPPING #-}`
@@ -52,32 +61,31 @@ instances
 section](https://downloads.haskell.org/~ghc/8.4.3/docs/html/users_guide/glasgow_exts.html#overlapping-instances)
 of the GHC manual.
 
-In contrast, what the ReaderT pattern is advertising, is extensional
-classes, indicating what an individual function _is allowed_ to do
-(hence the name "capability"), regardless of how the monad is
+In contrast, what the ReaderT pattern is advertising is extensional
+classes, indicating *what* an individual function is allowed to do
+(hence the name "capability"), regardless of *how* the monad is
 implemented.
-
 
 ## The problem
 
-Irrespective of whether you are willing to twist the arm of the Mtl
+Irrespective of whether you are willing to twist the arm of the MTL
 with `{-# OVERLAPPING #-}` instances, when programming with
 capabilities you will run into two kind of issues. The first is
 probably the lesser of the two, but has been a known pain point with
-the Mtl for a while, is that the Mtl uses the type of (say) state to
-discriminate layers. In other words: you can't have two states of the
-same type in your capabilities.
+the MTL for a while: it's that the MTL uses types (e.g. the state
+type) to discriminate layers. In other words: **with the MTL, you
+can't have two states of the same type in your capabilities**.
 
 This, of course, is not a problem if you are writing your own type
-classes: you can simply use a different class for each state. This
-leads us to the second, more serious issue: lack of inference. With
-all its faults, the Mtl gives a very comfortable environment: it
-defines plenty of generic instances, so that when we give a concrete
-monad stack, then all the instances are automatically computed for
-us. In contrast, with capabilities and the ReaderT pattern, we collect
-all the capabilities, and assemble a bespoke type to handle all of
-these instances. Haskell's instance resolution is simply not equipped
-for this.
+classes: you can simply use a different class for each piece of state
+(e.g. `MonadBalance`). This leads us to the second, more serious
+issue: lack of inference. With all its faults, the MTL gives a very
+comfortable environment: it defines plenty of generic instances, so
+that when we give a concrete monad stack, then all the instances are
+automatically computed for us. In contrast, with capabilities and the
+ReaderT pattern, we collect all the capabilities, and assemble
+a bespoke type to handle all of these instances. Haskell's instance
+resolution is simply not equipped for this.
 
 The bottom line is: an insane amount of boilerplate. Custom type class
 definitions. A slew of instances at each main entry point (where a
@@ -85,7 +93,7 @@ concrete type is defined for the monad).
 
 ## Deriving Via
 
-What we would really like is a way to use type-class instances the
+What we would really like is a way to use type class instances the
 other way around, compared to instance resolution. Instead of reading
 
 ```haskell
@@ -98,28 +106,28 @@ implementation of `MonadState s m`, then this is a _possible_
 implementation of `MonadState` on a `ReaderT`.
 
 This is made possible by a new language extension available in the
-freshly released GHC 8.6: [`DerivingVia`][user-guide].
+freshly released GHC 8.6: [`-XDerivingVia`][user-guide].
 
-In short, `DerivingVia` is a generalisation of
-`GeneralizedNewtypeDeriving` which allows you, not only to derive an
+In short, `-XDerivingVia` is a generalisation of
+`-XGeneralizedNewtypeDeriving` that allows you not only to derive an
 instance _for_ a newtype, but also _from_ a newtype, or, and this is
 most relevant for us, from a combination of newtypes. For example:
 
 ``` haskell
 {-# LANGUAGE DerivingVia #-}
+
 import Data.Monoid (Sum (..))
+
 newtype MyInt = MyInt Int
   deriving (Monoid, Semigroup) via Sum Int
   deriving Num via Int
 ```
 
-In the above snippet we define `MyInt` which wraps an `Int`,
-and derive two instances for it.
-The `Monoid` instance is taken from `Sum Int`,
-and the `Num` instance is taken directly from `Int`.
-Note the `via` keyword in the deriving clauses.
-(In this example we could also have derived the `Num` instance
-using `GeneralizedNewtypeDeriving`.)
+In the above snippet we define `MyInt` which wraps an `Int`, and
+derive two instances for it. The `Monoid` instance is taken from `Sum
+Int`, and the `Num` instance is taken directly from `Int`. Note the
+`via` keyword in the deriving clauses. (In this example we could also
+have derived the `Num` instance using `-XGeneralizedNewtypeDeriving`.)
 
 You will find a more complete introduction in [Baldur Blondal's
 talk][stolen-instances] on the subject. If you want all the details,
@@ -132,16 +140,16 @@ head to the [proposal][proposal] or the [paper][paper].
 
 ## Enter capability
 
-Let us introduce the [capability library][capability], which
-provides strategies that can be composed to derive capabilities
-using the `DerivingVia` language extension.
+With the above piece of kit in hand, we can write
+the [`capability` library][capability]. This library provides
+strategies that can be composed to derive capabilities using the
+`-XDerivingVia` language extension.
 
-The library defines a set of standard, reusable capability type classes,
-such as `HasReader`, or `HasState`.
-Contrary to the Mtl type classes these are parameterized by a name (aka tag),
-which makes it possible to refer to, say,
-multiple different states in the same computation,
-even if they correspond to the same type.
+`capability` defines a set of standard, reusable capability type
+classes, such as `HasReader`, or `HasState`. Contrary to the MTL type
+classes these are parameterized by a name (aka *tag*), which makes it
+possible to refer to, say, multiple different states in the same
+computation, even if they correspond to the same type.
 
 ``` haskell
 getAB :: (HasState "a" Int m, HasState "b" Int m) => m (Int, Int)
@@ -155,11 +163,12 @@ The library then provides newtypes
 to derive instances of these capability type-classes
 in deriving via clauses, similar to `Sum` in the `MyInt` example above.
 
-For example, given an Mtl `MonadReader` we can derive a `HasReader` capability
-as follows.
+For example, given an MTL `MonadReader` instance, we can derive
+a `HasReader` capability as follows:
 
 ``` haskell
 data AppData = ...
+
 newtype AppM a = AppM (ReaderT AppData IO a)
   deriving (HasReader "appData" AppData) via
     MonadReader (ReaderT AppData IO)
@@ -167,11 +176,12 @@ newtype AppM a = AppM (ReaderT AppData IO a)
 
 We can also combine multiple newtypes to derive capability instances.
 Building on the above example,
-we can pick a field within `AppData` as follows.
+we can pick a field within `AppData` as follows:
 
 ``` haskell
 data AppData = AppData { intRef :: IORef Int, ... }
   deriving Generic
+
 newtype AppM a = AppM (ReaderT AppData IO a)
   deriving (HasReader "intRef" (IORef Int)) via
     Field "intRef" "appData" (MonadReader (ReaderT AppData IO))
@@ -187,16 +197,12 @@ which is why `AppData` needs to have a `Generic` instance.
 
 [generic-lens]: http://hackage.haskell.org/package/generic-lens
 
-## A worked example
+## A worked example: combining writers without guilt
 
-Let's consider a complete example to demonstrate how you could use capability
+Let's consider a complete example to demonstrate how you could use `capability`
 in your own projects.
 The code is available in the [capability repository][capability]
 if you want to follow along.
-The library is not available on Hackage yet, as some of its dependencies
-have not been updated to GHC 8.6, yet.
-However, we provide a Nix shell which includes the required patches.
-Refer to the README for further instructions.
 
 In this example we will receive a text as input
 and want to count occurrences of words and letters in the text, ignoring white space.
@@ -267,12 +273,13 @@ instead of holding he whole text in memory.
 For simplicity's sake we will omit this here.
 
 With that we have written a program that demands two `HasWriter` capabilities.
+
 Before we can execute this program we need to define a concrete implementation
 that provides these capabilities.
 This is where we make use of the deriving-via strategies that the library offers.
 
-It is well known, that the writer monad provided by Mtl has a space leak.
-In capability we can derive a writer capability from a state capability instead,
+It is well-known that the writer monad provided by MTL [has a space leak][writert-space-leak].
+In `capability`, **we can derive a writer capability from a state capability instead**,
 to avoid this issue.
 In fact, we don't even provide a way to derive a writer capability from a writer monad.
 Following the ReaderT pattern we derive the state capabilities
@@ -299,7 +306,7 @@ newtype Counter a = Counter { runCounter :: CounterCtx -> IO a }
   deriving (Functor, Applicative, Monad) via (ReaderT CounterCtx IO)
 ```
 
-Note, that we use `ReaderT` in the deriving via clause as a strategy
+Note that we use `ReaderT` in the deriving via clause as a strategy
 to derive the basic `Functor`, `Applicative`, and `Monad` instances.
 
 Deriving the writer capabilities makes use of a large set of newtypes
@@ -317,7 +324,7 @@ Read these from bottom to top.
     (ReaderT CounterCtx IO)))))  -- Use mtl ReaderT newtype
 ```
 
-The `"wordCount"` writer is derived in the same way.
+The `"wordCount"` writer is derived in the same way:
 
 ``` haskell
   deriving (HasWriter "wordCount" (Occurrences Text)) via
@@ -337,7 +344,7 @@ wordAndLetterCount :: Text -> IO ()
 wordAndLetterCount text = do
 ```
 
-First, we setup the required `IORef`s and the counter context.
+First, we setup the required `IORef`s and the counter context:
 
 ``` haskell
   lettersRef <- newIORef Map.empty
@@ -349,14 +356,14 @@ First, we setup the required `IORef`s and the counter context.
 ```
 
 Then, we call `countWordsAndLettersInText` on the input text,
-and instantiate it using our `Counter` application monad.
+and instantiate it using our `Counter` application monad:
 
 ``` haskell 
   let counter :: Counter ()
       counter = countWordsAndLettersInText text
 ```
 
-Finally, we run `counter` and print the results.
+Finally, we run `counter` and print the results:
 
 ``` haskell
   runCounter counter ctx
@@ -369,7 +376,7 @@ Finally, we run `counter` and print the results.
   printOccurrencesOf "Words" wordsRef
 ```
 
-Executing this program in GHCi should produce the following output.
+Executing this program in GHCi should produce the following output:
 
 ``` haskell
 >>> wordAndLetterCount "ab ba"
@@ -386,19 +393,21 @@ We invite you to experiment with this library.
 It is still in an early stage and the API is subject to change.
 However, your feedback will help to evolve it in a better direction.
 
+[writert-space-leak]: https://blog.infinitenegativeutility.com/2016/7/writer-monads-and-space-leaks
+
 ## A word on free monads
 
-Another solution to much the same problems has been known for a while:
+Another solution to many of the same problems has been known for a while:
 [free monads and extensible effects][extensible-effects]. As it
 happens, capability and free monads can be formally compared. In
-[a paper][vlfm], Mauro Jaskelioff and Russell O'Connor, prove that
+[this paper][vlfm], Mauro Jaskelioff and Russell O'Connor, prove that
 free monads are a special case of capabilities (it's not phrased in
 these terms, of course, but that's what the paper amounts to).
 
 So another way of looking at capability is that it is a library
 of extensible effects. It makes it possible to write effects which are
 not available to free monads: free monads can only model algebraic
-effects, capabilities do not have such a restriction. For instance the
+effects, while capabilities do not have such a restriction. For instance the
 `HasCatch` capability, giving a function the ability to catch errors,
 is not algebraic, hence not available to free monads.
 
@@ -413,6 +422,7 @@ rely on a tagged encoding.
 
 [extensible-effects]: https://hackage.haskell.org/package/extensible-effects
 [vlfm]: http://r6.ca/blog/20140210T181244Z.html
+
 <!--  LocalWords:  intensional monads monad mtl GHC composable
  -->
 <!--  LocalWords:  newtypes
