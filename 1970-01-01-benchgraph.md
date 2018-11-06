@@ -185,3 +185,23 @@ docker run \
   -v $PWD/benchmarks:/benchmarks novadiscovery/benchmarks \
   /bin/benchgraph /benchmarks
 ```
+
+The resulting graph is now available at <http://localhost:8123>
+
+## Going further: multi-language benchmarks
+
+It appears (or at least so I heard) that the entire world isn't writing haskell
+and that there are other languages out there, and different benchmark
+frameworks. Does that mean reinventing all that for each language and each
+framework? Of course not, although this has been developped in the context of
+criterion, the only haskell-specific bit is the three-line long `jq` script
+which converts criterion's output to a simple stream of json records.
+
+So any benchmarking framework which provides a machine-readable output (which
+hopefully means any benchmarking framework) can be easily adapted to this −
+which also means that if you have a multi-language project, you can have all
+your benchmarks integrated in a single interface for free.
+
+Needless to say: PRs are welcome on [the github repo][benchgraph_github]
+
+[benchgraph_github]: https://github.com/novadiscovery/benchgraph
