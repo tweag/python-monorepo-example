@@ -71,6 +71,10 @@ Note also that this won't get all the benefits that `hyperion` brings over
 `criterion`, in particular we don't get the possibility to show the duration of
 an operation as a function of its input size.
 
+The two tools are available as [benchgraph][benchgraph].
+
+[benchgraph]: https://github.com/novadiscovery/benchgraph
+
 ### Simplifying Criterion's output
 
 `Criterion` is able to export the results of the benchmarks in a `json` file,
