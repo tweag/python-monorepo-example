@@ -186,10 +186,10 @@ demonstration):
 ```sh
 mkdir benchmarks
 aws s3 cp --recursive s3://my-benchmarks-output-bucket/ benchmarks/
-docker pull novadiscovery/benchgraph
+docker pull benchgraph/benchgraph
 docker run \
   -p 8123:8123
-  -v $PWD/benchmarks:/benchmarks novadiscovery/benchmarks \
+  -v $PWD/benchmarks:/benchmarks benchgraph/benchmarks \
   /bin/benchgraph /benchmarks
 ```
 
