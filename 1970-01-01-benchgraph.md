@@ -5,27 +5,27 @@ author: "Théophane Hufschmitt"
 
 If you're a conscientious developer like ~~I am~~ my boss is, you probably have
 a benchmark suite for the programs and libraries you develop. This allows you
-to see the impact of your changes on the performances of your application.
+to see the impact of your changes on the performances of your applications.
 However, the temporal aspect of these benchmark suites is not always easy to
-analyze.
 
-That was the case recently in one of our projects.
+That was the case recently in one of our projects with
+[Novadiscovery](www.novadiscovery.com)..
 We had many carefully crafted benchmarks for all the performance-sensitive
 parts of our code, which we ran daily on our CI and were exported as a nice html
 page such as [this one][criterion-html-sample].
 But to be honest, hardly anyone looked at them, for the simple reason that
 looking at a given benchmark result was most of the time absolutely meaningless.
-The only sensible thing to do was to compare the results, but err… that
+The only sensible thing to do was to compare the results through time, but err…  that
 basically meant putting the two web pages side to side on one's screen and
 manually comparing them value by value to see what changed, which was
-incredibly painful and error-prone (and I speak from experience, having to do it
+incredibly painful and error-prone (and I speak from experience, having had to do it
 more than once).
 
 [criterion-html-sample]: http://www.serpentine.com/criterion/report.html
 
 Obviously, unless we had a *really* compelling reason to do so (like the users
-calling out for help because their program was suddently running twice slower
-than before), we just didn't look at them. And obviously this means that we've
+calling out for help because their program was suddenly running twice slower
+than before), we just didn't look at them. And obviously this meant that we had
 accidentally introduced several annoying performance regressions without even
 noticing it.
 
@@ -39,13 +39,13 @@ performances of our library through time, which meant:
 
 [hyperion-post]: https://www.tweag.io/posts/2017-09-06-hyperion.html
 
-It happens that someone has already written [on that topic][hyperion-post] here,
-but the procedure presented there had two drawbacks:
+It happens that someone already wrote here [on that topic][hyperion-post],
+but the procedure presented had two drawbacks:
 
 - It required the use of a particular and experimental benchmark framework
   (`hyperion`), while we were using the much more mainstream `criterion`.
 - The results were stored and analyzed using `elasticsearch` and `kibana`,
-  which, while extremely powerful and flexible, are known to be a huge pain
+  which, while extremely powerful and flexible, are also known to be a hassle
   to maintain.
   Each benchmark run produces slightly less than 20K of data, so even
   with a few hundred of benchmarks we're still in a range that even the smallest
@@ -53,11 +53,11 @@ but the procedure presented there had two drawbacks:
   Given the low volume of data we were going to manipulate, there was no need
   for such beasts.
 
-So while retaining the same basic idea, we've decided to adapt this approach
+So while retaining the same basic idea, we decided to adapt this approach
 for something simpler to set up, i.e.
 
-- An [r-shiny][r-shiny]-based visualisation tool taking as input a stream of
-  JSON records containing all our benchmarks results.
+- An [r-shiny][r-shiny]-based visualization tool taking as input a stream of
+  json records containing all our benchmarks results.
 - A simple script using [jq][jq] to format the output of `criterion` to the format
   expected by the R script.
 
@@ -86,12 +86,12 @@ We need however to trim the output to make it easy to import on the web
 application: `criterion` dumps its big internal state on it, including all
 the runs it does for each benchmark (because each bench is run a few hundred
 times to limit the inevitable noise) and a lot of analyzes that we don't need.
-It also doesn't include some useful information for us, such as the rev
+It also does not include some useful information for us, such as the rev
 and the date of the commit this benchmark ran on, which allows to
 identify it later.
 
 Thanks to the wonders of `jq`, it is only a matter of a few lines of code to
-transform [this](/criterion-output.json) into:
+transform [this](/criterion-output.json) [WARNING, this link does not work in preview] into:
 
 ```json
 {
@@ -108,13 +108,13 @@ transform [this](/criterion-output.json) into:
 }
 ```
 
-### Visualisation interface
+### Visualization interface
 
-*Disclaimer: I'm definitely not an R expert, so if anything here makes cry the
-R programmer in you, don't worry, that's totally normal and expected*
+*Disclaimer: I'm definitely not an R expert, so if anything here makes the
+R programmer in you cry, don't worry, that's totally normal and expected.*
 
 We now want to build a nice graph UI for our benchmarks.
-Let's first try to make our goals a bit more clear. We want:
+Let's first try to make our goals a bit clearer. We want:
 
 - A chart displaying the metrics for the benchmarks through time
 - A way to select which benchmarks to display
@@ -133,14 +133,14 @@ quickly build a nice interactive graph to compare all our commits.
 
 ## Deploying the service
 
-For this to be useful, there are two things we should do:
+For this to be useful, there are two things we need to do:
 
 1. Running the benchmarks on a regular basis.
 2. Uploading the results to a well-known place.
 
 The CI is the natural place for that. Note however that if you're using a
-hosted CI you're condamned to inevitable noise, since you'll have to run your
-benchmarks on shared machines with unpredictible performances.
+hosted CI you're condemned to an inevitable noise since you'll have to run your
+benchmarks on shared machines with unpredictable performances.
 This can be partially mitigated by using a proper VM instead of a
 docker container.
 
@@ -155,7 +155,7 @@ version: 2
 
 jobs:
   build:
-    # Use a VM instead of a docker container for more predictible performances
+    # Use a VM instead of a docker container for more predictable performances
     machine: true
     steps:
       - checkout
@@ -201,14 +201,14 @@ The resulting graph is now available at <http://localhost:8123>.
 ## Going further: multi-language benchmarks
 
 It appears (or at least, so I heard) that the entire world isn't writing Haskell
-and that there are other languages out there, and different benchmark
+and that there are other languages out there, and so, different benchmark
 frameworks. Does that mean reinventing all that for each language and each
-framework? Of course not! Although this has been developped in the context of
-`criterion`, the only haskell-specific bit is the three-line long `jq` script
-which converts criterion's output to a simple stream of JSON records.
+framework? Of course not, although this has been developed in the context of
+`criterion`, the only Haskell-specific bit is the three-line long `jq` script
+which converts criterion's output to a simple stream of json records.
 
-So any benchmarking framework providing a machine-readable output (which
-hopefully means any benchmarking framework) can be easily adapted to this −
+So any benchmarking framework which provides a machine-readable output (which
+hopefully means any benchmarking framework) can be easily adapted to this,
 which also means that if you have a multi-language project, you can have all
 your benchmarks integrated in a single interface for free.
 
