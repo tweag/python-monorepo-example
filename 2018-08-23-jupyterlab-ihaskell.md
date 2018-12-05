@@ -1,55 +1,55 @@
 ---
-title: "Towards Interactive Datascience in Haskell<br/>Harnessing the Power of Jupyterlab"
-author: Matthias Meschede 
+title: "Towards Interactive Datascience in Haskell:<br/>Harnessing the Power of Jupyterlab"
+author: Matthias Meschede
 ---
 
 ## Introduction ##
 
-Haskell and Data science - on first sight a perfect match: native function
+Haskell and data science - on first sight a perfect match: native function
 composition, lazy execution, fast execution times, and lots of code checks.
-sounds like ingredients for highly scalable, production ready data
+These sound like ingredients for highly scalable, production-ready data
 transformation pipelines. What is missing then? Why is Haskell not widely used
 in data science?
 
-One of the reasons is that Haskell misses a standardized data environment,
-comparable to Python with its defacto standard library set: `numpy`, `pandas`,
-`scikit-learn` form the backbone and many other well-supported wrapped
-libraries such as `keras` and `tensorflow` are easily accessible. The libraries
+One of the reasons is that Haskell lacks a standardized data processing environment.
+For example, Python has a *de facto* standard library set, with `numpy`, `pandas` and
+`scikit-learn` forming the backbone, and many other well-supported specialized
+libraries such as `keras` and `tensorflow` being easily accessible. These libraries
 are distributed with easy-to-use package managers and explained in a plethora
-of tutorials, stackoverflow questions and example jupyter notebooks. Most
-problems from beginner to advanced level can be solved by adapting and
+of tutorials, Stack Overflow questions and example Jupyter notebooks. Most
+problems from beginner to advanced levels can be solved by adapting and
 combining these existing solutions.
+In this post we talk about Jupyter and its Haskell kernel.
 
-For those who don't know it: Project Jupyter revolves around a messaging
-protocol that standardizes interactions with little programs called 'kernels'.
-A 'kernel' can be thought of as a REPL (Read–Eval–Print-Loop) that receives
+## Jupyter and exploratory data analysis ##
+
+For those who don't know it, Project Jupyter revolves around a messaging
+protocol that standardizes interactions between *kernels* and *frontends*.
+A kernel can be thought of as a REPL (Read–Eval–Print-Loop) that receives
 code messages from the user and responds with rich media messages. A frontend
-can immediately render the rich media response as text, images, videos or small
+can render responses from a kernel as text, images, videos or small
 applications.
+Kernels for many different languages exist, like Python, Haskell, R, C++, Julia, etc,
+and since the protocol is language agnostic, server applications can
+start any language kernel, and frontends can send messages to and render
+the answers from any kernel.
 
-Explorative data analysis, largely turns around such a rich media dialogue:
-test different algorithms (expressed as short code snippets) and visualize the
-result with images or other comprehensive visualization techniques. A longer
-dialogue with the kernel can be assembled into a notebook. A notebook
-interlaces text, code and media elements and can be used as a human readable
-report (such as this blogpost). Notebooks and the associated workflow have
-become one of the most popular ways for exploration and communication of data.
-
-A large software ecosystem has evolved around the Jupyter messaging protocol.
-Kernels in many different languages exist (Python, Haskell, R, C++, Julia,
-...). Server applications can launch kernels via web-browsers locally or for
-thousands of users on cloud-services. Frontends such as REPL consoles,
-notebooks, or desktop applications allow users to interact with the kernels.
-These Jupyter applications are language agnostic, i.e. a server application can
-start any language kernel in the same way, and a frontend can send messages to
-any language kernel in the same way and render their rich media messages.
+These characteristics are important for exploratory data analysis since it
+largely turns around a dialogue between code and rich media.  One tests
+different algorithms (expressed as short code snippets) and visualizes the
+results with images or other comprehensive visualization techniques. Longer
+dialogues with the kernel, with multiple steps, can be assembled into a
+notebook. Since notebooks interlace explanatory text, code and media elements,
+they can also be used as human-readable reports (such as this blogpost). Given
+these characteristics, notebooks and their associated workflows became one of
+the most popular ways for the exploration and communication of data.
 
 ## Conversations with a Jupyter kernel ##
 
-IHaskell is the name of the Jupyter Haskell-kernel. It contains a little
+IHaskell is the name of the Jupyter kernel for Haskell. It contains a little
 executable `ihaskell` that can receive messages in the Jupyter protocoll (via
 ZeroMQ for those who know it), and responds with messages once executed. Here
-is a little dialogue with `ihaskell`: We send the following code snippet to
+is a little dialogue with `ihaskell`: we send the following code snippet to
 `ihaskell` and display the result below.
 
 
@@ -66,12 +66,15 @@ In Jupyter parlance, we send an `execute_request`:
 ```
 >> shell.execute_request (8be63d5c-1170-495d-82da-e56272052faf) <<
 
-header: {username: "", version: "5.2", session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
-         msg_id: "8be63d5c-1170-495d-82da-e56272052faf", msg_type: "execute_request"}
+header: {username: "", version: "5.2",
+         session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9",
+         msg_id: "8be63d5c-1170-495d-82da-e56272052faf",
+         msg_type: "execute_request"}
 parent_header: Object
 channel: "shell"
-content: {silent: false, store_history: true, user_expressions: Object, allow_stdin: true,
-          stop_on_error: true, code: "take 10 $ (^2) <$> [1..]"}   <<<<<<<<<<< LOOK HERE
+content: {silent: false, store_history: true, user_expressions: Object,
+          allow_stdin: true, stop_on_error: true,
+          code: "take 10 $ (^2) <$> [1..]"}   <<<<< LOOK HERE
 metadata: Object
 buffers: Array[0]
 ```
@@ -91,7 +94,7 @@ parent_header: {username: "", msg_type: "execute_request", version: "5.0",
                 msg_id: "8be63d5c-1170-495d-82da-e56272052faf",
                 session: "32fe9cd0-8c37-450e-93c0-6fbd45bfdcd9"}
 metadata: Object
-content: {data: {text/plain: "[1,4,9,16,25,36,49,64,81,100]"},  <<<<<<<<<<< LOOK HERE
+content: {data: {text/plain: "[1,4,9,16,25,36,49,64,81,100]"},  <<<<< LOOK HERE
           metadata: {output_type: "display_data"}}
 buffers: Array[0]
 channel: "iopub"
@@ -99,47 +102,46 @@ channel: "iopub"
 
 `ihaskell` can import other haskell libraries dynamically and has some special
 commands to enable language extensions, print type information or to use
-hoogle.
+Hoogle.
 
 ## Jupyterlab ##
 
-So what about Jupyterlab? Jupyterlab is the newest animal in the jupyter
-frontend zoo, and it is arguably one of the most powerful: Console, Notebook,
-Terminal, Text-Editor, or Image Viewer, Jupyterlab integrates these data
+Jupyterlab is the newest animal in the Jupyter
+frontend zoo, and it is arguably one of the most powerful: console, notebook,
+terminal, text-editor, or image viewer, Jupyterlab integrates these data
 science building blocks into a single web based user interface. Jupyterlab is
-setup as a modular system, every one of these building blocks is a separate
-module, and extension modules can be added that can change every functionality
+a a modular system, and new modules can be added, with the possibility to change every functionality
 of the main application. The building blocks can also be assembled in a variety
 of ways, resembling an IDE, a classical notebook or even a GUI where all
 interaction with the underlying execution kernels is hidden behind graphical
 elements.
 
-So naturally Haskell should be part of this! What are the potential gains?
-Well, first there are a ton of out-of-the-box renderers available that can be
+Naturally Haskell should be part of this! What are the potential gains?
+In first place, there are many out-of-the-box renderers available that can be
 used for free by Haskell. From the default renderers (`text/markdown,
 image/bmp, image/gif, image/jpeg, image/png, image/svg+xml, application/json,
 text/html, text/latex, application/pdf, application/vnd.vega.v2+json,
 application/vnd.vegalite.v1+json, application/vdom.v1+json`) the most
-interesting is probably Vega plotting (declarative `d3.js`), but also geojson,
-plotly or and others are available from the list of extensions that will
+interesting is probably Vega plotting (declarative `d3.js`). But also geojson,
+plotly or and many others are available from the list of extensions, that will
 certainly grow.
 
-The second point is, that Jupyterlab is easily extensible, extensions are first
+The second point is, that Jupyterlab is easily extensible. Extensions are first
 level packages and can literally use and modify everything that comes with the
 base packages. Building simple UI's that interact with an execution environment
 is therefore relatively simple.
 
 The third point is that Jupyter and associated workflows are known by a large
-community. Using Haskell through these familiar elements softens the barrier
-that many feel when starting to use Haskell for serious data science.
+community. Using Haskell through these familiar environments softens the barrier
+that many encounter when starting to use Haskell for serious data science.
 
 Enough reasons, let's get to the meat of it. Here is some VEGA rendering from
 Haskell in Jupyterlab.
 
 ## Wordclouds from Haskell with Vega and Jupyterlab ##
 
-As an example, we use here the word content of all blog posts of *Tweag.IO*
-(written in markdown). Here is a little code cell that reads all `.md` files
+We will use here the word content of all blog posts of `tweag.io`, which are
+written in markdown. Here is a little code cell that reads all `.md` files
 the `posts` folder and concatenates them in a single long string from which we
 remove some punctuation characters. The code cell is send to the `ihaskell`
 kernel, which responds to the last `take` function with a simple text response.
@@ -158,14 +160,15 @@ cleanedText = filter (not . (`elem` "\n,.?!-:;\"\'")) text
 take 50 cleanedText
 ```
 
-
-    "title Were hiring<br>(Software engineer / devops)p"
+```
+"title Were hiring<br>(Software engineer / devops)p"
+```
 
 
 Now let's define a Vega JSON as a string and fill it up with our text. A
 convenient way to write longer multiline strings in Haskell are QuasiQuotes. We
-use fString QuasiQuotes from the PyF package (note that {} fills in template
-data and {{ corresponds to an escaped {).
+use `fString` QuasiQuotes from the `PyF` package. Note that `{}` fills in template
+data and `{{` corresponds to an escaped `{`.
 
 
 ```haskell
@@ -250,7 +253,7 @@ let vegaString = [fString|{{
 ```
 
 We display this JSON string with the native Jupyterlab JSON renderer here for
-convenience. The Display function explicitly tells `ihaskell` to send a display
+convenience. The `Display` function explicitly tells `ihaskell` to send a display
 message to the frontend. The json function tells `ihaskell` to annotate the
 content of the display message as `application/json`.
 
@@ -263,7 +266,7 @@ D.Display [D.json vegaString]
 ![Vega Wordcloud](../img/posts/jupyterlab-json.png)
 
 
-Let's proceed and plot this JSON as a Vega plot:
+Finally, we can plot this JSON with Vega:
 
 
 ```haskell
