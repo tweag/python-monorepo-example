@@ -138,7 +138,39 @@ that many encounter when starting to use Haskell for serious data science.
 Enough reasons, let's get to the meat of it. Here is some VEGA rendering from
 Haskell in Jupyterlab.
 
-## Wordclouds from Haskell with Vega and Jupyterlab ##
+## Setting up IHaskell ##
+
+In first place, install [Anaconda](https://www.anaconda.com/download/#linux) following the instructions on the website.
+Afterwards, install Jupyter, IHaskell, and the Haskell dependencies.
+
+```bash
+# Install Jupyter with Anaconda
+conda install -c conda-forge jupyterlab
+
+# Clone the repository
+git clone https://github.com/gibiansky/IHaskell
+cd IHaskell
+pip install -r requirements.txt
+
+# Install stack and Haskell dependencies
+curl -sSL https://get.haskellstack.org/ | sh
+stack install gtk2hs-buildtools
+
+# Add the necessary dependencies to extra-deps on stack.yaml.
+# These are formatting, PyF and string-qq.
+
+# Install IHaskell
+stack install --fast
+stack exec ihaskell -- install --stack
+
+# Setup syntax highlighting for Haskell
+stack exec jupyter -- labextension install ihaskell_jupyterlab
+
+# Run Jupyter
+stack exec jupyter -- notebook
+```
+
+## Wordclouds using Haskell, Vega and Jupyterlab ##
 
 We will use here the word content of all blog posts of `tweag.io`, which are
 written in markdown. Here is a little code cell that reads all `.md` files
@@ -274,3 +306,65 @@ D.Display [D.vegalite vegaString]
 ```
 
 ![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
+
+## NixOS users
+
+If you are a NixOS user, using Anaconda can be complicated.
+But not everything is lost, you can enter a FHS environment using `nix-shell` using the following `shell.nix`, which has been adapted from [here](http://www.jaakkoluttinen.fi/blog/conda-on-nixos/).
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+
+let
+
+  installationPath = "~/.conda";
+
+  minicondaScript = pkgs.stdenv.mkDerivation rec {
+    name = "miniconda-${version}";
+    version = "4.3.11";
+    src = pkgs.fetchurl {
+      url = "https://repo.continuum.io/miniconda/Miniconda3-${version}-Linux-x86_64.sh";
+      sha256 = "1f2g8x1nh8xwcdh09xcra8vd15xqb5crjmpvmc2xza3ggg771zmr";
+    };
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out
+      cp $src $out/miniconda.sh
+    '';
+    fixupPhase = ''
+      chmod +x $out/miniconda.sh
+    '';
+  };
+
+  conda = pkgs.runCommand "conda-install"
+    { buildInputs = [ pkgs.makeWrapper minicondaScript ]; }
+    ''
+      mkdir -p $out/bin
+      makeWrapper                            \
+        ${minicondaScript}/miniconda.sh      \
+        $out/bin/conda-install               \
+        --add-flags "-p ${installationPath}" \
+        --add-flags "-b"
+    '';
+
+in
+(
+  pkgs.buildFHSUserEnv {
+    name = "conda";
+    targetPkgs = pkgs: (
+      with pkgs; [
+        stack ghc conda git gnumake gmp ncurses perl binutils curl iana-etc
+        xorg.libSM xorg.libICE xorg.libXrender libselinux gcc
+      ]
+    );
+    profile = ''
+      export PATH=${installationPath}/bin:$PATH
+      export NIX_CFLAGS_COMPILE="-I${installationPath}/include"
+      export NIX_CFLAGS_LINK="-L${installationPath}lib"
+      export FONTCONFIG_FILE=/etc/fonts/fonts.conf
+      export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
+    '';
+  }
+).env
+```
+
