@@ -15,18 +15,32 @@ parts of our code, which we ran daily on our CI and were exported as a nice html
 page such as [this one][criterion-html-sample].
 But to be honest, hardly anyone looked at them, for the simple reason that
 looking at a given benchmark result was most of the time absolutely meaningless.
-The only sensible thing to do was to compare the results through time, but err…
-that basically meant putting side by side two big list of numbers corresponding
-to the time results for each benchmark suite, and manually comparing them value
-by value to see what changed. Which was incredibly painful and error-prone.
+The only sensible thing to do was to compare the results through time.
+
+The best way we had to compare two runs of a benchmark suite was to take the
+html report that criterion generated for each run, put them side-by-side and
+find the differences.
+These reports consist of a big list with for each individual benchmark a bunch
+of numbers and graphs for each individual benchmark (like
+[this](http://www.serpentine.com/criterion/report.html#b2)).
+With around fifty benchmarks in the suite, comparing these by hand starts
+being… complicated.
+
+<img title="Spot the difference" alt="Spot the difference" src="https://i.ytimg.com/vi/SRyP2BPGUgg/maxresdefault.jpg" style="max-width: 100%; max-height: 100%"></img>
+
+In addition, these report files don't carry any information about **when** they
+have been generated or on which commit. Which in particular means that it's
+really easy to mix the windows up and invert them. Which when you realize it
+can be really frustrating (although some of my colleagues found it rather funny
+when they learned that it actually happened to me… don't know why).
 
 [criterion-html-sample]: http://www.serpentine.com/criterion/report.html
 
-Obviously, unless we had a *really* compelling reason to do so (like the users
-calling out for help because their program was suddenly running twice slower
-than before), we just didn't look at them. And obviously this meant that we had
-accidentally introduced several annoying performance regressions without even
-noticing them.
+The consequence of this was that unless we had a *really* compelling reason to
+do so (like the users calling out for help because their program was suddenly
+running twice slower than before), we just didn't look at them. And obviously
+this meant that we had accidentally introduced several annoying performance
+regressions without even noticing them.
 
 So we decided to give ourselves a way to quickly view the evolution of the
 performance of our library through time, which meant:
