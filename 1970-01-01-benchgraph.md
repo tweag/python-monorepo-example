@@ -90,7 +90,8 @@ and the date of the commit this benchmark ran on, which we need to
 identify it later.
 
 Thanks to the wonders of `jq`, it is only a matter of a few lines of code to
-transform [this](/criterion-output.json) [WARNING, this link does not work in preview] into:
+transform
+[this](https://gist.github.com/regnat/a0d8996b9660bd10b483f93e7a45abd4) into:
 
 ```json
 {
