@@ -26,7 +26,7 @@ of numbers and graphs for each individual benchmark (like
 With around fifty benchmarks in the suite, comparing these by hand starts
 being… complicated.
 
-<img title="Spot the difference" alt="Spot the difference" src="https://i.ytimg.com/vi/SRyP2BPGUgg/maxresdefault.jpg" style="max-width: 100%; max-height: 100%"></img>
+<img title="Spot the difference" alt="Spot the difference" src="https://www.activityshelter.com/wp-content/uploads/2016/06/spot-the-difference-worksheets-panda.png" style="max-width: 50%; max-height: 100%"></img>
 
 In addition, these report files don't carry any information about **when** they
 have been generated or on which commit. Which in particular means that it's
