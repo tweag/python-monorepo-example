@@ -16,9 +16,9 @@ page such as [this one][criterion-html-sample].
 But to be honest, hardly anyone looked at them, for the simple reason that
 looking at a given benchmark result was most of the time absolutely meaningless.
 The only sensible thing to do was to compare the results through time, but err…
-that basically meant putting the two web pages side to side on one's screen and
-manually comparing them value by value to see what changed, which was
-incredibly painful and error-prone.
+that basically meant putting side by side two big list of numbers corresponding
+to the time results for each benchmark suite, and manually comparing them value
+by value to see what changed. Which was incredibly painful and error-prone.
 
 [criterion-html-sample]: http://www.serpentine.com/criterion/report.html
 
