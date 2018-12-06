@@ -5,7 +5,7 @@ author: "Théophane Hufschmitt"
 
 If you're a conscientious developer like ~~I am~~ my boss is, you probably have
 a benchmark suite for the programs and libraries you develop. This allows you
-to see the impact of your changes on the performances of your applications.
+to see the impact of your changes on the performance of your applications.
 However, the temporal aspect of these benchmark suites is not always easy to
 
 That was the case recently in one of our projects with
@@ -29,7 +29,7 @@ accidentally introduced several annoying performance regressions without even
 noticing them.
 
 So we decided to give ourselves a way to quickly view the evolution of the
-performances of our library through time, which meant:
+performance of our library through time, which meant:
 
 - Keeping a record of our benchmark results.
 - Providing a way to display and analyze them.
@@ -140,7 +140,7 @@ For this to be useful, there are two things we need to do:
 
 The CI is the natural place for that. Note however that if you're using a
 hosted CI you're condemned to an inevitable noise since you'll have to run your
-benchmarks on shared machines with unpredictable performances.
+benchmarks on shared machines with unpredictable performance.
 This can be partially mitigated by using a proper VM instead of a
 docker container.
 
@@ -155,7 +155,7 @@ version: 2
 
 jobs:
   build:
-    # Use a VM instead of a docker container for more predictable performances
+    # Use a VM instead of a docker container for more predictable performance
     machine: true
     steps:
       - checkout
