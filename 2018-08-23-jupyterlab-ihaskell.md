@@ -1,67 +1,70 @@
 ---
 title: "Towards Interactive Datascience in Haskell:<br/>Harnessing the Power of Jupyterlab"
+shortTitle: "Harnessing the Power of Jupyterlab"
 author: Matthias Meschede
 ---
 
 ## Introduction ##
 
-Haskell and data science - on first sight a perfect match: native function
+Haskell and data science - on first sight a great match: native function
 composition, lazy execution, fast execution times, and lots of code checks.
-These sound like ingredients for highly scalable, production-ready data
-transformation pipelines. What is missing then? Why is Haskell not widely used
-in data science?
+These sound like ingredients for scalable, production-ready data transformation
+pipelines. What is missing then? Why is Haskell not widely used in data
+science?
 
-One of the reasons is that Haskell lacks a standardized data processing environment.
-For example, Python has a *de facto* standard library set, with `numpy`, `pandas` and
-`scikit-learn` forming the backbone, and many other well-supported specialized
-libraries such as `keras` and `tensorflow` being easily accessible. These libraries
-are distributed with easy-to-use package managers and explained in a plethora
-of tutorials, Stack Overflow questions and example Jupyter notebooks. Most
-problems from beginner to advanced levels can be solved by adapting and
-combining these existing solutions.
-In this post we talk about Jupyter and its Haskell kernel.
+One of the reasons is that Haskell lacks a standardized data analysis
+environment.  For example, Python has a *de facto* standard library set with
+`numpy`, `pandas` and `scikit-learn` that form the backbone, and many other
+well-supported specialized libraries such as `keras` and `tensorflow` that are
+easily accessible. These libraries are distributed with user friendly package
+managers and explained in a plethora of tutorials, Stack Overflow questions and
+millions of Jupyter notebooks. Most problems from beginner to advanced level
+can be solved by adapting and combining these existing solutions.
+
+This post shows how Jupyter, in particular with the Jupyterlab frontend, can
+be used for interactive data analysis from Haskell as well.
+
 
 ## Jupyter and exploratory data analysis ##
 
 For those who don't know it, Project Jupyter revolves around a messaging
-protocol that standardizes interactions between *kernels* and *frontends*.
-A kernel can be thought of as a REPL (Read–Eval–Print-Loop) that receives
-code messages from the user and responds with rich media messages. A frontend
-can render responses from a kernel as text, images, videos or small
-applications.
-Kernels for many different languages exist, like Python, Haskell, R, C++, Julia, etc,
-and since the protocol is language agnostic, server applications can
-start any language kernel, and frontends can send messages to and render
-the answers from any kernel.
+protocol that standardizes interactions between Jupyter *frontends* and Jupyter
+*kernels*. In a common use case, the kernel receives a code message from the
+frontend, executes some computation, and responds with a rich media message.
+The frontend can render such responses as text, images, videos or small
+applications. Kernels for many different languages exist, like Python,
+Haskell, R, C++, Julia, etc, and since the standardized message protocol is
+language agnostic, frontends can communicate with any kernel.
 
-These characteristics are important for exploratory data analysis since it
-largely turns around a dialogue between code and rich media.  One tests
-different algorithms (expressed as short code snippets) and visualizes the
-results with images or other comprehensive visualization techniques. Longer
-dialogues with the kernel, with multiple steps, can be assembled into a
-notebook. Since notebooks interlace explanatory text, code and media elements,
-they can also be used as human-readable reports (such as this blogpost). Given
-these characteristics, notebooks and their associated workflows became one of
-the most popular ways for the exploration and communication of data.
+The quick REPL-like interaction with a compute kernel is very useful for
+exploratory data analysis that largely turns around a dialogue between the user
+and the data. This dialogue is expressed as little code snippets and rich media
+answers. Different algorithms (expressed as short code snippets) can rapidly be
+tested and visualized. Longer dialogues with the kernel, with multiple steps,
+can be assembled into a notebook. Since notebooks interlace explanatory text,
+code and media elements, they can also be used as human-readable reports (such
+as this blogpost). Given these characteristics, notebooks and their associated
+workflows became one of the most popular ways to exploration data and
+communicate comprehensive insights.
 
 ## Conversations with a Jupyter kernel ##
 
 IHaskell is the name of the Jupyter kernel for Haskell. It contains a little
 executable `ihaskell` that can receive messages in the Jupyter protocoll (via
 ZeroMQ for those who know it), and responds with messages once executed. Here
-is a little dialogue with `ihaskell`: we send the following code snippet to
-`ihaskell` and display the result below.
+is a little dialogue with `ihaskell`. Let's send the following code snippet
+from the notebook frontend to `ihaskell`:
 
 
 ```haskell
 take 10 $ (^2) <$> [1..]
 ```
 
+And here is the answer that the frontend received from the kernel:
 
 `[1,4,9,16,25,36,49,64,81,100]`
 
-
-In Jupyter parlance, we send an `execute_request`:
+In Jupyter parlance, the above dialogue corresponds to an `execute_request`:
 
 ```
 >> shell.execute_request (8be63d5c-1170-495d-82da-e56272052faf) <<
@@ -79,7 +82,7 @@ metadata: Object
 buffers: Array[0]
 ```
 
-and receive a `display_data` message as a response:
+A `display_data` message is received as a response:
 
 ```
 << iopub.display_data (68cce1e7-4d60-4a20-a707-4bf352c4d8d2) >>
@@ -100,75 +103,43 @@ buffers: Array[0]
 channel: "iopub"
 ```
 
-`ihaskell` can import other haskell libraries dynamically and has some special
+`ihaskell` can import other Haskell libraries dynamically and has some special
 commands to enable language extensions, print type information or to use
 Hoogle.
 
 ## Jupyterlab ##
 
-Jupyterlab is the newest animal in the Jupyter
-frontend zoo, and it is arguably one of the most powerful: console, notebook,
-terminal, text-editor, or image viewer, Jupyterlab integrates these data
-science building blocks into a single web based user interface. Jupyterlab is
-a a modular system, and new modules can be added, with the possibility to change every functionality
-of the main application. The building blocks can also be assembled in a variety
-of ways, resembling an IDE, a classical notebook or even a GUI where all
-interaction with the underlying execution kernels is hidden behind graphical
-elements.
+Jupyterlab is the newest animal in the Jupyter frontend zoo, and it is arguably
+the most powerful: console, notebook, terminal, text-editor, or image viewer,
+Jupyterlab integrates these data science building blocks into a single web
+based user interface. Jupyterlab is a a modular system. New modules can be
+added that change every functionality of the main application. The base modules
+can be assembled in a variety of ways, resembling an IDE, a classical notebook
+or even a GUI where all interactions with the underlying execution kernels are
+hidden behind graphical elements.
 
-Naturally Haskell should be part of this! What are the potential gains?
-In first place, there are many out-of-the-box renderers available that can be
-used for free by Haskell. From the default renderers (`text/markdown,
-image/bmp, image/gif, image/jpeg, image/png, image/svg+xml, application/json,
-text/html, text/latex, application/pdf, application/vnd.vega.v2+json,
-application/vnd.vegalite.v1+json, application/vdom.v1+json`) the most
-interesting is probably Vega plotting (declarative `d3.js`). But also geojson,
-plotly or and many others are available from the list of extensions, that will
-certainly grow.
+How can Haskell can take advantage of these capacities of jupyterlab? What are
+the potential gains? To begin with, jupyterlab provides plenty of
+out-of-the-box renderers that could be used for free by Haskell. From the
+default renderers (`text/markdown, image/bmp, image/gif, image/jpeg, image/png,
+image/svg+xml, application/json, text/html, text/latex, application/pdf,
+application/vnd.vega.v2+json, application/vnd.vegalite.v1+json,
+application/vdom.v1+json`) the most interesting is probably Vega plotting
+(declarative `d3.js`). But also geojson, plotly or and many others are
+available from the list of extensions, that will certainly grow.
 
-The second point is, that Jupyterlab is easily extensible. Extensions are first
-level packages and can literally use and modify everything that comes with the
-base packages. Building simple UI's that interact with an execution environment
-is therefore relatively simple.
+The second point is, that Jupyterlab is easily extensible. Extensions can use
+and modify everything that comes with the base packages. Building simple UI's
+that interact with an execution environment is therefore relatively easy.
 
 The third point is that Jupyter and associated workflows are known by a large
-community. Using Haskell through these familiar environments softens the barrier
-that many encounter when starting to use Haskell for serious data science.
+community. Using Haskell through these familiar environments softens the
+barrier that many encounter when starting to explore Haskell for serious data
+science.
 
-Enough reasons, let's get to the meat of it. Here is some VEGA rendering from
+Let's get into a small example that shows how to use VEGA rendering from
 Haskell in Jupyterlab.
 
-## Setting up IHaskell ##
-
-In first place, install [Anaconda](https://www.anaconda.com/download/#linux) following the instructions on the website.
-Afterwards, install Jupyter, IHaskell, and the Haskell dependencies.
-
-```bash
-# Install Jupyter with Anaconda
-conda install -c conda-forge jupyterlab
-
-# Clone the repository
-git clone https://github.com/gibiansky/IHaskell
-cd IHaskell
-pip install -r requirements.txt
-
-# Install stack and Haskell dependencies
-curl -sSL https://get.haskellstack.org/ | sh
-stack install gtk2hs-buildtools
-
-# Add the necessary dependencies to extra-deps on stack.yaml.
-# These are formatting, PyF and string-qq.
-
-# Install IHaskell
-stack install --fast
-stack exec ihaskell -- install --stack
-
-# Setup syntax highlighting for Haskell
-stack exec jupyter -- labextension install ihaskell_jupyterlab
-
-# Run Jupyter
-stack exec jupyter -- notebook
-```
 
 ## Wordclouds using Haskell, Vega and Jupyterlab ##
 
@@ -307,7 +278,38 @@ D.Display [D.vegalite vegaString]
 
 ![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
 
-## NixOS users
+
+## Setting up IHaskell ##
+
+### Without Nix
+Afterwards, install Jupyter, IHaskell, and the Haskell dependencies.
+
+```bash
+# Clone the repository
+git clone https://github.com/gibiansky/IHaskell
+cd IHaskell
+pip install -r requirements.txt
+pip install jupyterlab
+
+# Install stack and Haskell dependencies
+curl -sSL https://get.haskellstack.org/ | sh
+stack install gtk2hs-buildtools
+
+# Add the necessary dependencies to extra-deps on stack.yaml.
+# These are formatting, PyF and string-qq.
+
+# Install IHaskell
+stack install --fast
+stack exec ihaskell -- install --stack
+
+# Setup syntax highlighting for Haskell
+stack exec jupyter -- labextension install ihaskell_jupyterlab
+
+# Run Jupyter
+stack exec jupyter -- notebook
+```
+
+## with NixOS
 
 If you are a NixOS user, using Anaconda can be complicated.
 But not everything is lost, you can enter a FHS environment using `nix-shell` using the following `shell.nix`, which has been adapted from [here](http://www.jaakkoluttinen.fi/blog/conda-on-nixos/).
