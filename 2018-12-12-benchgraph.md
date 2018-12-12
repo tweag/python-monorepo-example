@@ -159,7 +159,7 @@ The CI is the natural place for that. Note however that if you're using a
 hosted CI you're condemned to an inevitable noise since you'll have to run your
 benchmarks on shared machines with unpredictable performance.
 This can be partially mitigated by using a proper VM instead of a
-docker container.
+docker container, or using your [CPU's instruction count][perf-stat].
 
 Let's see how this would look like on [Circle CI][circleci]:
 
@@ -232,3 +232,4 @@ have all your benchmarks integrated in a single interface for free.
 Needless to say: PRs are welcome on [the GitHub repo][benchgraph_github].
 
 [benchgraph_github]: https://github.com/novadiscovery/benchgraph
+[perf-stat]: https://perf.wiki.kernel.org/index.php/Tutorial#Counting_with_perf_stat
