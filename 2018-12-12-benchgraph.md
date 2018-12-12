@@ -1,6 +1,6 @@
 ---
 title: "DIY benchmark history with Criterion and Shiny"
-shortTitle: "Poor man's benchmark history"
+shortTitle: "DIY benchmark history"
 author: "Théophane Hufschmitt"
 ---
 
