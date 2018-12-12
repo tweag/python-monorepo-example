@@ -1,5 +1,5 @@
 ---
-title: "DIY benchmark history with Criterion and Shiny"
+title: "DIY benchmark history <br/>with Criterion and Shiny"
 shortTitle: "DIY benchmark history"
 author: "Théophane Hufschmitt"
 ---
