@@ -13,7 +13,7 @@ pipelines. What is missing then? Why is Haskell not widely used in data
 science?
 
 One of the reasons is that Haskell lacks a standardized data analysis
-environment.  For example, Python has a *de facto* standard library set with
+environment. For example, Python has a *de facto* standard library set with
 `numpy`, `pandas` and `scikit-learn` that form the backbone, and many other
 well-supported specialized libraries such as `keras` and `tensorflow` that are
 easily accessible. These libraries are distributed with user friendly package
@@ -21,13 +21,12 @@ managers and explained in a plethora of tutorials, Stack Overflow questions and
 millions of Jupyter notebooks. Most problems from beginner to advanced level
 can be solved by adapting and combining these existing solutions.
 
-This post shows how Jupyter, in particular with the Jupyterlab frontend, can
-be used for interactive data analysis from Haskell as well.
-
+This post presents Jupyter and JupyterLab, and shows how we can take advantage of
+them to expand the toolbox for interactive data analysis in Haskell.
 
 ## Jupyter and exploratory data analysis ##
 
-For those who don't know it, Project Jupyter revolves around a messaging
+For those who don't know it, [Project Jupyter](https://jupyter.org/) revolves around a messaging
 protocol that standardizes interactions between Jupyter *frontends* and Jupyter
 *kernels*. In a common use case, the kernel receives a code message from the
 frontend, executes some computation, and responds with a rich media message.
@@ -37,7 +36,7 @@ Haskell, R, C++, Julia, etc, and since the standardized message protocol is
 language agnostic, frontends can communicate with any kernel.
 
 The quick REPL-like interaction with a compute kernel is very useful for
-exploratory data analysis that largely turns around a dialogue between the user
+exploratory data analysis, that largely turns around a dialogue between the user
 and the data. This dialogue is expressed as little code snippets and rich media
 answers. Different algorithms (expressed as short code snippets) can rapidly be
 tested and visualized. Longer dialogues with the kernel, with multiple steps,
@@ -49,7 +48,7 @@ communicate comprehensive insights.
 
 ## Conversations with a Jupyter kernel ##
 
-IHaskell is the name of the Jupyter kernel for Haskell. It contains a little
+[IHaskell](https://github.com/gibiansky/IHaskell) is the name of the Jupyter kernel for Haskell. It contains a little
 executable `ihaskell` that can receive messages in the Jupyter protocoll (via
 ZeroMQ for those who know it), and responds with messages once executed. Here
 is a little dialogue with `ihaskell`. Let's send the following code snippet
@@ -107,26 +106,26 @@ channel: "iopub"
 commands to enable language extensions, print type information or to use
 Hoogle.
 
-## Jupyterlab ##
+## JupyterLab ##
 
-Jupyterlab is the newest animal in the Jupyter frontend zoo, and it is arguably
+JupyterLab is the newest animal in the Jupyter frontend zoo, and it is arguably
 the most powerful: console, notebook, terminal, text-editor, or image viewer,
 Jupyterlab integrates these data science building blocks into a single web
-based user interface. Jupyterlab is a a modular system. New modules can be
-added that change every functionality of the main application. The base modules
+based user interface. Jupyterlab is a modular system, and new modules can be
+added, possibly changing every functionality of the main application. The base modules
 can be assembled in a variety of ways, resembling an IDE, a classical notebook
 or even a GUI where all interactions with the underlying execution kernels are
 hidden behind graphical elements.
 
-How can Haskell can take advantage of these capacities of jupyterlab? What are
-the potential gains? To begin with, jupyterlab provides plenty of
+How can Haskell can take advantage of these capacities of JupyterLab? What are
+the potential gains? To begin with, JupyterLab provides plenty of
 out-of-the-box renderers that could be used for free by Haskell. From the
 [default renderers](https://jupyterlab.readthedocs.io/en/stable/user/file_formats.html),
 the most interesting is probably Vega plotting (declarative `d3.js`). But also
-geojson, plotly or and many others are available from the list of extensions,
+`geojson`, `plotly` or and many other formats are available from the list of extensions,
 that will certainly grow.
 
-The second point is, that Jupyterlab is easily extensible. Extensions can use
+The second point is, that JupyterLab is easily extensible. Extensions can use
 and modify everything that comes with the base packages. Building simple UI's
 that interact with an execution environment is therefore relatively easy.
 
@@ -272,9 +271,7 @@ D.Display [D.json vegaString]
 
 ![Vega Wordcloud](../img/posts/jupyterlab-json.png)
 
-
 Finally, we can plot this JSON with Vega:
-
 
 ```haskell
 D.Display [D.vegalite vegaString]
