@@ -7,6 +7,7 @@ If you're a conscientious developer like ~~I am~~ my boss is, you probably have
 a benchmark suite for the programs and libraries you develop. This allows you
 to see the impact of your changes on the performance of your applications.
 However, the temporal aspect of these benchmark suites is not always easy to
+analyze.
 
 That was the case recently in one of our projects with
 [Novadiscovery](www.novadiscovery.com)..
