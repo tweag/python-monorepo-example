@@ -10,7 +10,7 @@ However, the temporal aspect of these benchmark suites is not always easy to
 analyze.
 
 That was the case recently in one of our projects with
-[Novadiscovery](www.novadiscovery.com)..
+[Novadiscovery](www.novadiscovery.com).
 We had many carefully crafted benchmarks for all the performance-sensitive
 parts of our code, which we ran daily on our CI and were exported as a nice html
 page such as [this one][criterion-html-sample].
