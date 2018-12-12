@@ -97,11 +97,12 @@ The two tools are available as [benchgraph][benchgraph].
 
 `Criterion` is able to export the results of the benchmarks in a JSON file,
 which allows us to analyze them further.
-We need however to trim the output to make it easy to import on the web
+However, we need to trim the output to make it easy to import on the web
 application: `criterion` dumps its big internal state on it, including all
 the runs it does for each benchmark (because each bench is run a few hundred
-times to limit the inevitable noise) and a lot of analyzes that we don't need.
-It also does not include some useful information for us, such as the rev
+times to limit the inevitable noise) and a lot of analyses that we don't need.
+It also does not include some useful information for us, such as the
+revision id
 and the date of the commit this benchmark ran on, which we need to
 identify it later.
 
