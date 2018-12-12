@@ -1,5 +1,6 @@
 ---
-title: "Benchmarks History With Rshiny and jq"
+title: "Poor man's benchmark history with Criterion and Shiny"
+shortTitle: "Poor man's benchmark history"
 author: "Théophane Hufschmitt"
 ---
 
