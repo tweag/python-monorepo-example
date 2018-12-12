@@ -1,6 +1,6 @@
 ---
 title: "Towards Interactive Datascience in Haskell:<br/>Harnessing the Power of Jupyterlab"
-shortTitle: "Harnessing the Power of Jupyterlab"
+shortTitle: "Harnessing the Power of Haskell and Jupyterlab"
 author: Matthias Meschede
 ---
 
@@ -121,12 +121,10 @@ hidden behind graphical elements.
 How can Haskell can take advantage of these capacities of jupyterlab? What are
 the potential gains? To begin with, jupyterlab provides plenty of
 out-of-the-box renderers that could be used for free by Haskell. From the
-default renderers (`text/markdown, image/bmp, image/gif, image/jpeg, image/png,
-image/svg+xml, application/json, text/html, text/latex, application/pdf,
-application/vnd.vega.v2+json, application/vnd.vegalite.v1+json,
-application/vdom.v1+json`) the most interesting is probably Vega plotting
-(declarative `d3.js`). But also geojson, plotly or and many others are
-available from the list of extensions, that will certainly grow.
+[default renderers](https://jupyterlab.readthedocs.io/en/stable/user/file_formats.html),
+the most interesting is probably Vega plotting (declarative `d3.js`). But also
+geojson, plotly or and many others are available from the list of extensions,
+that will certainly grow.
 
 The second point is, that Jupyterlab is easily extensible. Extensions can use
 and modify everything that comes with the base packages. Building simple UI's
@@ -140,6 +138,12 @@ science.
 Let's get into a small example that shows how to use VEGA rendering from
 Haskell in Jupyterlab.
 
+## Setting up IHaskell ##
+
+Unfortunately, setting up `IHaskell` correctly is not easy yet.
+In order to make things easier, we created a repository [`ihaskell-setup`](https://github.com/tweag/ihaskell-setup) with instructions for its installation in regular Linux distributions, as well as NixOS.
+
+The following steps suppose that the setup described on the repository is done.
 
 ## Wordclouds using Haskell, Vega and Jupyterlab ##
 
@@ -277,96 +281,3 @@ D.Display [D.vegalite vegaString]
 ```
 
 ![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
-
-
-## Setting up IHaskell ##
-
-### Without Nix
-Afterwards, install Jupyter, IHaskell, and the Haskell dependencies.
-
-```bash
-# Clone the repository
-git clone https://github.com/gibiansky/IHaskell
-cd IHaskell
-pip install -r requirements.txt
-pip install jupyterlab
-
-# Install stack and Haskell dependencies
-curl -sSL https://get.haskellstack.org/ | sh
-stack install gtk2hs-buildtools
-
-# Add the necessary dependencies to extra-deps on stack.yaml.
-# These are formatting, PyF and string-qq.
-
-# Install IHaskell
-stack install --fast
-stack exec ihaskell -- install --stack
-
-# Setup syntax highlighting for Haskell
-stack exec jupyter -- labextension install ihaskell_jupyterlab
-
-# Run Jupyter
-stack exec jupyter -- notebook
-```
-
-## with NixOS
-
-If you are a NixOS user, using Anaconda can be complicated.
-But not everything is lost, you can enter a FHS environment using `nix-shell` using the following `shell.nix`, which has been adapted from [here](http://www.jaakkoluttinen.fi/blog/conda-on-nixos/).
-
-```nix
-{ pkgs ? import <nixpkgs> {} }:
-
-let
-
-  installationPath = "~/.conda";
-
-  minicondaScript = pkgs.stdenv.mkDerivation rec {
-    name = "miniconda-${version}";
-    version = "4.3.11";
-    src = pkgs.fetchurl {
-      url = "https://repo.continuum.io/miniconda/Miniconda3-${version}-Linux-x86_64.sh";
-      sha256 = "1f2g8x1nh8xwcdh09xcra8vd15xqb5crjmpvmc2xza3ggg771zmr";
-    };
-    unpackPhase = "true";
-    installPhase = ''
-      mkdir -p $out
-      cp $src $out/miniconda.sh
-    '';
-    fixupPhase = ''
-      chmod +x $out/miniconda.sh
-    '';
-  };
-
-  conda = pkgs.runCommand "conda-install"
-    { buildInputs = [ pkgs.makeWrapper minicondaScript ]; }
-    ''
-      mkdir -p $out/bin
-      makeWrapper                            \
-        ${minicondaScript}/miniconda.sh      \
-        $out/bin/conda-install               \
-        --add-flags "-p ${installationPath}" \
-        --add-flags "-b"
-    '';
-
-in
-(
-  pkgs.buildFHSUserEnv {
-    name = "conda";
-    targetPkgs = pkgs: (
-      with pkgs; [
-        stack ghc conda git gnumake gmp ncurses perl binutils curl iana-etc
-        xorg.libSM xorg.libICE xorg.libXrender libselinux gcc
-      ]
-    );
-    profile = ''
-      export PATH=${installationPath}/bin:$PATH
-      export NIX_CFLAGS_COMPILE="-I${installationPath}/include"
-      export NIX_CFLAGS_LINK="-L${installationPath}lib"
-      export FONTCONFIG_FILE=/etc/fonts/fonts.conf
-      export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
-    '';
-  }
-).env
-```
-
