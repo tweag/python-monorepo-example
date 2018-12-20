@@ -1,6 +1,6 @@
 ---
-title: "GHC WebAssembly backend<br/>reaches TodoMVC"
-shortTitle: Asterius gets a TodoMVC example
+title: "Asterius GHC WebAssembly backend<br/>reaches TodoMVC"
+shortTitle: TodoMVC in Haskell via WebAssembly
 author: Shao Cheng
 ---
 
