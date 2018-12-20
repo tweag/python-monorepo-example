@@ -195,7 +195,7 @@ various difficulties, asterius grew from nothing to printing Cmm, to
 compiling `fib`, to handle JavaScript interop, and eventually, to
 a functioning TodoMVC. We're on the edge of graduating from just
 research prototype. That means it's now time to start communicating
-updates more regularly, with weekly reports updated weekly and
+updates more regularly, with reports updated weekly and
 roadmaps reviewed quarterly, both included in the docs and available
 to the public.
 
