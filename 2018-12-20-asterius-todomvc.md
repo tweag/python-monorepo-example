@@ -12,7 +12,9 @@ Haskell can call JavaScript and vice versa using a foreign function
 interface. Today we demonstrate that writing web apps in Haskell
 compiled to WebAssembly works well enough that TodoMVC, the more
 intricate "Hello World!" of web apps, works in your
-browser. [Try it out!][tweag-todomvc].
+browser. [Try it out!][tweag-todomvc]. (Since our emitted code uses the
+`BigInt` feature, currently you need a recent version of Chromium to
+run it.)
 
 [asterius-ffi]: https://www.tweag.io/posts/2018-09-12-asterius-ffi.html
 [tweag-todomvc]: https://tweag.io/wasm-todomvc
