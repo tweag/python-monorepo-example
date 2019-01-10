@@ -1,7 +1,7 @@
 ---
-title: "Towards Interactive Datascience in Haskell:<br/>Haskell in Jupyterlab"
-shortTitle: "Harnessing the Power of Haskell in Jupyterlab"
-author: Matthias Meschede, Juan Simoes
+title: "Towards Interactive Data Science in Haskell:<br/>Haskell in JupyterLab"
+shortTitle: "Harnessing the Power of Haskell in JupyterLab"
+author: Matthias Meschede, Juan Simões
 ---
 
 ## Introduction ##
@@ -57,7 +57,7 @@ of the most popular ways for exploratory data analysis.
 [IHaskell](https://github.com/gibiansky/IHaskell) is the name of the Jupyter
 kernel for Haskell. It contains a little executable `ihaskell` that can receive
 and respond to messages in the Jupyter protocoll (via
-[ZeroMQ](http://zeromq.org/). Here is a little dialogue with `ihaskell` that is
+[ZeroMQ](http://zeromq.org/). Here is a little dialogue that is
 initiated by sending the following code snippet from the notebook frontend to
 `ihaskell`:
 
@@ -117,28 +117,28 @@ Hoogle.
 
 JupyterLab is the newest animal in the Jupyter frontend zoo, and it is arguably
 the most powerful: console, notebook, terminal, text-editor, or image viewer,
-Jupyterlab integrates these data science building blocks into a single web
-based user interface. Jupyterlab is setup as a modular system that can be
+JupyterLab integrates these data science building blocks into a single web
+based user interface. JupyterLab is setup as a modular system that can be
 extended. A module assembles the base elements, changes or add new features to
 build an IDE, a classical notebook or even a GUI where all interactions with
 the underlying execution kernels are hidden behind graphical elements.
 
-How can Haskell take advantage of Jupyterlab's capacities? To begin with,
+How can Haskell take advantage of JupyterLab's capacities? To begin with,
 JupyterLab provides plenty of out-of-the-box renderers that can be used for
 free by Haskell. From the [default
 renderers](https://jupyterlab.readthedocs.io/en/stable/user/file_formats.html),
 the most interesting is probably Vega plotting. But also `geojson`, `plotly` or
 and many other formats are available from the list of extensions, that will
-certainly grow. Another use case might be to using the jupyterlab extension
+certainly grow. Another use case might be to using the JupyterLab extension
 system makes it easy to build a simple UI that interact with an execution
 environment. Finally, Jupyter and associated workflows are known by a large
 community. Using Haskell through these familiar environments softens the
 barrier that many encounter when exploring Haskell for serious data science.
 
-Let's get into a small example that shows how to use the Jupyterlab VEGA
-renderer with IHaskell in Jupyterlab.
+Let's get into a small example that shows how to use the JupyterLab VEGA
+renderer with IHaskell.
 
-## Wordclouds using Haskell, Vega and Jupyterlab ##
+## Wordclouds using Haskell, Vega and JupyterLab ##
 
 We will use here the word content of all blog posts of `tweag.io`, which are
 written in markdown. Here is a little code cell that reads all `.md` files in
@@ -252,7 +252,7 @@ let vegaString = [fString|{{
 }}|]
 ```
 
-We display this JSON string with the native Jupyterlab JSON renderer here for
+We display this JSON string with the native JupyterLab JSON renderer here for
 convenience. The `Display` function explicitly tells `ihaskell` to send a
 display message to the frontend. The JSON function tells `ihaskell` to annotate
 the content of the display message as `application/json`.
@@ -274,16 +274,20 @@ D.Display [D.vegalite vegaString]
 ![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
 
 
-## Conclusion 
+## Conclusion ##
 
-Jupyterlab provides a REPL that is useful for quick exploratory data analysis
-and reporting. This blog post has introduced IHaskell and Jupyterlab. If you
-want to try it yourself, you can use a docker image that we provide with:
+JupyterLab provides a REPL-like experience that is very convenient
+for quick exploratory data analysis and reporting. This blog post
+has introduced IHaskell and JupyterLab, which shortens the bridge
+between the world of Haskell and that of data analysis. If you
+want to try it yourself, this blog post has also been written as
+a notebook, accessible [here][here]. It also contains a docker image,
+containing all the necessary dependencies. The image can be run with:
 
 ```bash
 docker run -v $(pwd)/example:/data -p 8888:8888 jupyterlab:latest
 ```
 
-If you are a nix user, you can try our
-[declarative jupyterlab nix setup](https://github.com/tweag/jupyterWith) that
-we are going to introduce in a follow-up post.
+If you are a Nix user, you can try our
+[declarative JupyterLab-on-Nix setup](https://github.com/tweag/jupyterWith) that
+is going to be the subject of our next post.
