@@ -65,7 +65,7 @@ initiated by sending the following code snippet from the notebook frontend to
 take 10 $ (^2) <$> [1..]
 ```
 
-And here is the rendered answer that the frontend received from the kernel:
+And here is the rendered answer that the frontend received from the kernel
 
 `[1,4,9,16,25,36,49,64,81,100]`
 
@@ -88,7 +88,7 @@ metadata: Object
 buffers: Array[0]
 ```
 
-, and to the following `display_data` message that is received as a response:
+and to the following `display_data` message that is received as a response
 
 ```
 << iopub.display_data (68cce1e7-4d60-4a20-a707-4bf352c4d8d2) >>
@@ -141,10 +141,11 @@ renderer with IHaskell.
 ## Wordclouds using Haskell, Vega and JupyterLab ##
 
 We will use here the word content of all blog posts of `tweag.io`, which are
-written in markdown. Here is a little code cell that reads all `.md` files in
-the `posts` folder and concatenates them in a single long string from which we
-remove some punctuation characters. The code cell is sent to the `ihaskell`
-kernel, which responds to the last `take` function with a simple text response.
+written in markdown text files. The following little code cell that reads all
+`.md` files in the `posts` folder and concatenates them into a single long
+string from which we remove some punctuation characters. This code cell is then
+sent to the `ihaskell` kernel, which responds to the last `take` function with
+a simple text response.
 
 
 ```haskell
@@ -165,10 +166,11 @@ take 50 cleanedText
 ```
 
 
-Now let's define a Vega JSON as a string and fill it up with our text. A
-convenient way to write longer multiline strings in Haskell are `QuasiQuotes`.
-We use `fString` QuasiQuotes from the `PyF` package. Note that `{}` fills in
-template data and `{{` corresponds to an escaped `{`.
+The VEGA visualization specification for a wordcloud can be defined as a JSON
+string that is filled with our text data. A convenient way to write longer
+multiline strings in Haskell are `QuasiQuotes`.  We use `fString` QuasiQuotes
+from the `PyF` package. Note that `{}` fills in template data and `{{`
+corresponds to an escaped `{`.
 
 
 ```haskell
@@ -252,10 +254,11 @@ let vegaString = [fString|{{
 }}|]
 ```
 
-We display this JSON string with the native JupyterLab JSON renderer here for
-convenience. The `Display` function explicitly tells `ihaskell` to send a
-display message to the frontend. The JSON function tells `ihaskell` to annotate
-the content of the display message as `application/json`.
+We display this JSON string with the native Jupyterlab JSON renderer here for
+convenience. The Display.json function from IHaskell tells `ihaskell` to
+annotate the content of the display message as `application/json`. In
+consequence, Jupyterlab knows that it should use its internal
+`application/json` renderer to display the message in the frontend.
 
 
 ```haskell
@@ -265,7 +268,10 @@ D.Display [D.json vegaString]
 
 ![Vega Wordcloud](../img/posts/jupyterlab-json.png)
 
-Finally, we can plot this JSON with Vega:
+In a similar way, we can annotate the display message with the
+`application/vnd.vegalite.v2+json` MIME renderer type. The VEGA string that we
+have generated earlier is then rendered with the internal jupyterlab javascript
+VEGA code:
 
 ```haskell
 D.Display [D.vegalite vegaString]
@@ -276,18 +282,18 @@ D.Display [D.vegalite vegaString]
 
 ## Conclusion ##
 
-JupyterLab provides a REPL-like experience that is very convenient
-for quick exploratory data analysis and reporting. This blog post
-has introduced IHaskell and JupyterLab, which shortens the bridge
-between the world of Haskell and that of data analysis. If you
-want to try it yourself, this blog post has also been written as
-a notebook, accessible [here][here]. It also contains a docker image,
-containing all the necessary dependencies. The image can be run with:
+JupyterLab provides a REPL-like workflow that is convenient for quick
+exploratory data analysis and reporting. Haskell can benefit in particular from
+JupyterLab's rendering capacities, its pleasant user interface and its
+familiarity in the data science community. If you want to try it yourself, this
+blog post has been written directly as a notebook that is stored in [this
+folder](https://github.com/tweag/jupyterWith/tree/master/example) (with a
+different dataset). The IHaskell setup that is required to run this notebook is
+available as a docker image that you can run with:
 
 ```bash
-docker run -v $(pwd)/example:/data -p 8888:8888 jupyterlab:latest
+docker run -v ${path-to-notebook-folder}:/data -p 8888:8888 tweag/jupyterWith:latest
 ```
 
-If you are a Nix user, you can try our
-[declarative JupyterLab-on-Nix setup](https://github.com/tweag/jupyterWith) that
-is going to be the subject of our next post.
+If you are a Nix user, you can try our [declarative JupyterLab-on-Nix setup](https://github.com/tweag/jupyterWith)
+that is going to be the subject of our next post.
