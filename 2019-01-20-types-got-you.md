@@ -52,9 +52,9 @@ of your code?
 Developing in Haskell is hard because it's easy to take a wrong turn that
 may be fatal. When writing this I rely on experience as a consultant, but
 experience of single person may be not convincing. Yet, I hear similar
-complaints from other engineers at [Tweag][tweag], which has become the
-largest consulting company in the Haskell world. It looks like the issue is
-real and very common.
+complaints from other engineers at [Tweag][tweag], which has become one of
+the larger consulting companies in the Haskell world. It looks like the
+issue is real and very common.
 
 Unfortunately, the problem is not limited to code in the language itself.
 There seems to be a trend for disregarding common engineering practices,
@@ -62,7 +62,7 @@ re-inventing solutions, preferring solutions written in Haskell, or
 solutions which just seem to be “nicer” without doing unbiased comparison
 and analysis.
 
-In the essay [“The bipolar Lisp programmer”][bipolar] Mark Tarver made the
+In the essay [_The bipolar Lisp programmer_][bipolar] Mark Tarver made the
 point that the Lisp programming language attracts a certain kind of
 personality. I think it is generally true that there is a connection between
 personalities and the tools that people choose. Perhaps this is most
@@ -73,7 +73,7 @@ Haskell does attract a certain kind of personality. Who in his/her sane mind
 would start using monads and all these other funny things? Probably someone
 who is either very convinced in the benefits of typed FP or just someone who
 has, let's admit it, a bit adventurous and curious mind. It appears that
-many people who prefer the tools like Haskell tend to be not entirely
+some people who prefer the tools like Haskell tend to be not entirely
 pragmatic as engineers, perhaps even without understanding it.
 
 In many areas, there is a difference in perception between people who create
@@ -84,10 +84,10 @@ consumers. Others don't, their attention is occupied elsewhere.
 
 Good music producers *listen*, they judge everything by how it sounds,
 because when the result is rendered and saved, people won't know how many
-effects, plugins, advanced techniques from some magazine were used. Nope,
-they don't give a shit about that. They only care about the sound. For a
-beginner though, it is tempting to throw in a lot of processing and clever
-tricks, and in doing so they often overdo and produce a track that sucks.
+effects, plugins, advanced techniques from some magazine were used. No, they
+don't give a shit about that. They only care about the sound. For a beginner
+though, it is tempting to throw in a lot of processing and clever tricks,
+and in doing so they often overdo and produce a track that sucks.
 
 The amateur producer from our example tried to make a record better, but he
 has not yet understood that his focus is misplaced. I think the situation is
