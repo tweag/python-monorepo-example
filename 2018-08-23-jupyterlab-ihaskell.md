@@ -271,7 +271,7 @@ D.Display [D.json vegaString]
 
 In a similar way, we can annotate the display message with the
 `application/vnd.vegalite.v2+json` MIME renderer type. The VEGA string that we
-have generated earlier is then rendered with the internal jupyterlab javascript
+have generated earlier is then rendered with the internal JupyterLab javascript
 VEGA code:
 
 ```haskell
