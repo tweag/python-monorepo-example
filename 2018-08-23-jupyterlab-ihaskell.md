@@ -288,12 +288,13 @@ JupyterLab's rendering capacities, its pleasant user interface and its
 familiarity in the data science community. If you want to try it yourself, this
 blog post has been written directly as a notebook that is stored in [this
 folder](https://github.com/tweag/jupyterWith/tree/master/example) (with a
-different dataset). The IHaskell setup that is required to run this notebook is
+dataset from Wikipedia). The IHaskell setup with this example notebook is
 available as a docker image that you can run with:
 
 ```bash
-docker run -v ${path-to-notebook-folder}:/data -p 8888:8888 tweag/jupyterWith:latest
+docker run -p 8888:8888 tweag/jupyterwith:latest
 ```
 
-If you are a Nix user, you can try our [declarative JupyterLab-on-Nix setup](https://github.com/tweag/jupyterWith)
-that is going to be the subject of our next post.
+Alternatively, if you are a Nix user, you can try our
+[declarative JupyterLab-on-Nix setup](https://github.com/tweag/jupyterWith)
+that is the subject of our next post.
