@@ -47,10 +47,10 @@ is very useful for exploratory data analysis. The user interrogates and
 transforms the data with little code snippets and receives immediate feedback
 through rich media responses. Different algorithms (expressed as short code
 snippets) can rapidly be prototyped and visualized. Long multistep dialogues
-with the kernel can be assembled into a sequential notebook. Notebooks
-interlace explanatory text, code and media elements and can therefore be used
-as human-readable reports (such as this blogpost). This workflow has become one
-of the most popular ways for exploratory data analysis.
+with the kernel can be assembled into a sequential notebook. Notebooks mix
+explanatory text, code and media elements and can therefore be used as
+human-readable reports (such as this blogpost). This REPL workflow has become
+one of the most popular ways for exploratory data analysis.
 
 ## Conversations with a Jupyter kernel ##
 
