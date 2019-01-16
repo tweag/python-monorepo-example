@@ -255,10 +255,11 @@ let vegaString = [fString|{{
 ```
 
 We display this JSON string with the native Jupyterlab JSON renderer here for
-convenience. The Display.json function from IHaskell tells `ihaskell` to
-annotate the content of the display message as `application/json`. In
-consequence, Jupyterlab knows that it should use its internal
-`application/json` renderer to display the message in the frontend.
+convenience. The Display.json function from IHaskell annotates the content of
+the display message as `application/json` and `ihaskell` sends the annotated
+display message to Jupyterlab. In consequence, Jupyterlab knows that it should
+use its internal `application/json` renderer to display the message in the
+frontend.
 
 
 ```haskell
