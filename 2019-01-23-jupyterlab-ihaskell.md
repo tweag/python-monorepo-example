@@ -128,7 +128,7 @@ JupyterLab provides plenty of out-of-the-box renderers that can be used for
 free by Haskell. From the [default
 renderers](https://jupyterlab.readthedocs.io/en/stable/user/file_formats.html),
 the most interesting is probably Vega plotting. But also `geojson`, `plotly` or
-and many other formats are available from the list of extensions, that will
+and many other formats are available from the list of extensions, which will
 certainly grow. Another use case might be to using the JupyterLab extension
 system makes it easy to build a simple UI that interact with an execution
 environment. Finally, Jupyter and associated workflows are known by a large
