@@ -169,8 +169,8 @@ take 50 cleanedText
 The VEGA visualization specification for a wordcloud can be defined as a JSON
 string that is filled with our text data. A convenient way to write longer
 multiline strings in Haskell are `QuasiQuotes`.  We use `fString` QuasiQuotes
-from the `PyF` package. Note that `{}` fills in template data and `{{`
-corresponds to an escaped `{`.
+from the [`PyF`](http://hackage.haskell.org/package/PyF) package.
+Note that `{}` fills in template data and `{{` corresponds to an escaped `{`.
 
 
 ```haskell
