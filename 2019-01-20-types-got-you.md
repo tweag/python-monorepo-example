@@ -72,9 +72,8 @@ people, not just people who have to pay the bill.
 Haskell does attract a certain kind of personality. Who in his/her sane mind
 would start using monads and all these other funny things? Probably someone
 who is either very convinced in the benefits of typed FP or just someone who
-has, let's admit it, a bit adventurous and curious mind. It appears that
-some people who prefer the tools like Haskell tend to be not entirely
-pragmatic as engineers, perhaps even without understanding it.
+has, let's admit it, a bit adventurous and curious mind. These qualities can
+lead some Haskellers astray, deviating them from more pragmatic solutions.
 
 In many areas, there is a difference in perception between people who create
 things and people who consume (in the most general sense) their creations.
@@ -95,11 +94,9 @@ often the same with development in Haskell.
 
 At the most basic level, development is about efficiently turning money into
 software that does something while remaining modifiable and maintainable.
-Haskell98 with some “benign” extensions gives its users almost everything
-that is necessary to produce high-quality production software. As boring as
-it may sound, it is already a great tool for making robust software. With
-conventional Haskell, developers effortlessly can stay in the [pit of
-success][pit].
+Haskell98 with some “benign” extensions is often the optimal solution in the
+trade-off between safety and simplicity. With conventional Haskell,
+developers effortlessly can stay in the [pit of success][pit].
 
 Even though Haskell is a wonderful language by default, there are ways to
 get out of the pit. Ironically, these ways are exceptionally attractive to
