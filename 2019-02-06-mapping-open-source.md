@@ -1,5 +1,5 @@
 ---
-title: "Mapping a Universe of Open Source Software"
+title: "Mapping a Universe<br/>of Open Source Software"
 shortTitle: "Mapping a Universe of Open Source Software"
 author: Matthias Meschede
 ---
