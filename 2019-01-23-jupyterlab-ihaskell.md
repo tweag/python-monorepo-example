@@ -1,5 +1,5 @@
 ---
-title: "Towards Interactive Data Science in Haskell:<br/>Haskell in JupyterLab"
+title: "Towards Interactive Data Science in Haskell:<br/> Haskell in JupyterLab"
 shortTitle: "Harnessing the Power of Haskell in JupyterLab"
 author: Matthias Meschede, Juan Simões
 ---

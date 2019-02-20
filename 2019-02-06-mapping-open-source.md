@@ -1,17 +1,10 @@
 ---
-title: "Mapping a Universe<br/>of Open Source Software"
+title: "Mapping a Universe<br/> of Open Source Software"
 shortTitle: "Mapping a Universe of Open Source Software"
 author: Matthias Meschede
+image: "posts/nixverse_without_labels.png"
+description: "The repositories of distributions such as Debian and Nixpkgs are among the largest collections of open source (and some unfree) software. They are complex systems that connect and organize many interdependent packages.  In this blog post I'll try to shed some light on them from the perspective of Nixpkgs, mostly with visualizations of its complete dependency graph."
 ---
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@tweagio" />
-<meta name="twitter:creator" content="@tweagio" />
-<meta name="twitter:image" content="https://www.tweag.io/img/posts/nixverse_without_labels.png">
-<meta property="og:url" content="https://www.tweag.io/posts/2019-02-06-mapping-open-source.html" />
-<meta property="og:title" content="Mapping a Universe of Open Source Software" />
-<meta property="og:description" content="The repositories of distributions such as Debian and Nixpkgs are among the largest collections of open source (and some unfree) software. They are complex systems that connect and organize many interdependent packages.  In this blog post I'll try to shed some light on them from the perspective of Nixpkgs, mostly with visualizations of its complete dependency graph." />
-<meta property="og:image" content="https://www.tweag.io/img/posts/nixverse_without_labels.png" />
 
 [nixpkgs]: https://nixos.org/nixpkgs/
 [largest]: https://repology.org/repositories/statistics/newest

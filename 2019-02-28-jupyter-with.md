@@ -2,16 +2,9 @@
 title: "JupyterWith: <br>Declarative, Reproducible Notebook Environments"
 shortTitle: "Declarative, Reproducible Jupyter Environments"
 author: Juan Simões, Matthias Meschede
+description: "Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem."
+image: "posts/jupyter-kernels-box.png"
 ---
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@tweagio" />
-<meta name="twitter:creator" content="@tweagio" />
-<meta name="twitter:image" content="https://www.tweag.io/img/posts/jupyter-kernels-box.png">
-<meta property="og:url" content="https://www.tweag.io/posts/2019-02-28-jupyter-with.html" />
-<meta property="og:title" content="JupyterWith: Declarative, Reproducible Notebook Environments" />
-<meta property="og:description" content="Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem." />
-<meta property="og:image" content="https://www.tweag.io/img/posts/jupyter-kernels-box.png" />
 
 [jupyter-ihaskell]: ./2019-01-23-jupyterlab-ihaskell.html
 [mapping-nixpkgs]: ./2019-02-06-mapping-open-source.html
