@@ -72,16 +72,16 @@ Then, write a `shell.nix` file with the following contents:
 let
   jupyter = import (builtins.fetchGit {
     url = https://github.com/tweag/jupyterWith;
-    rev = "";
-  });
+    rev = "10d64ee254050de69d0dc51c9c39fdadf1398c38";
+  }) {};
 
   ihaskell = jupyter.kernels.iHaskellWith {
-    name = "haskell kernel name";
+    name = "haskell";
     packages = p: with p; [ hvega formatting ];
   };
 
   ipython = jupyter.kernels.iPythonWith {
-    name = "python kernell name";
+    name = "python";
     packages = p: with p; [ numpy ];
   };
 
