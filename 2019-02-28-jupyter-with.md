@@ -9,7 +9,7 @@ author: Juan Simões, Matthias Meschede
 <meta name="twitter:creator" content="@tweagio" />
 <meta name="twitter:image" content="https://www.tweag.io/img/posts/jupyter-kernels-box.png">
 <meta property="og:url" content="https://www.tweag.io/posts/2019-02-28-jupyter-with.html" />
-<meta property="og:title" content="JupyterWith: Declarative, Reproducible Notebooks" />
+<meta property="og:title" content="JupyterWith: Declarative, Reproducible Notebook Environments" />
 <meta property="og:description" content="Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem." />
 <meta property="og:image" content="https://www.tweag.io/img/posts/jupyter-kernels-box.png" />
 
@@ -17,7 +17,7 @@ author: Juan Simões, Matthias Meschede
 [mapping-nixpkgs]: ./2019-02-06-mapping-open-source.html
 [ihaskell]: https://github.com/gibiansky/IHaskell
 [jupyterWith]: https://github.com/tweag/jupyterWith
-[nix]: https://nixos.org/nix/
+[nix]: https://nixos.org/nix
 [nixpkgs]: https://github.com/NixOS/nixpkgs
 [JupyterHub]: https://github.com/jupyterhub/jupyterhub
 [jupyter-kernel]: https://jupyter-client.readthedocs.io/en/stable/kernels.html#kernel-specs
@@ -41,7 +41,7 @@ We will show how to setup configurable and reproducible Jupyter environments tha
 These environments are declarative, which means that their content - not the steps required to install them - is defined in a few lines of code.
 A single command installs and runs the compute environment from the configuration file.
 
-Under the hood, we use the [Nix](nix) package manager, that allows to build up such composable environments with simplicity.
+Under the hood, we use the [Nix][nix] package manager, that allows to build up such composable environments with simplicity.
 The Jupyter environments can also be containerized with a single Nix command as a Docker image.
 Such Docker images can then be served with [JupyterHub][JupyterHub] to give multiple users access to a well-defined reproducible environment.
 With this setup, installation of a Jupyterlab environment with multiple kernels such as in the following image is easy and robust:
@@ -102,7 +102,7 @@ More examples of `JupyterWith`, including Jupyterlab extensions, Docker images, 
 Packaging Jupyter with kernels from many different language ecosystems is complicated.
 Language specific package managers can only handle their own subsystems and often rely on libraries that are provided by the underlying operating system.
 If one manages to set all of these up together, the outcome will be conflict-prone and difficult to change.
-This is where the [Nix](nix) package manager enters the scene.
+This is where the [Nix][nix] package manager enters the scene.
 
 Nix is a package manager whose packages are written in the Nix language, which can be thought of as a simple configuration language but with _functions_.
 It is used to describe _derivations_, build recipes that describe every step necessary to build a binary or library from source.
