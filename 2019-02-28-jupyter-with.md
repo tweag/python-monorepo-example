@@ -174,8 +174,16 @@ This folder is the starting point of the Nix derivation and can be referred to f
 
 ## Conclusions
 
-Jupyter is a showcase example for the power of a configuration language like nix that is linked to a general purpose software repository like nixpkgs.
-With a few lines of Nix code, we can pull together dependencies from various language ecosystems in a robust way and build configurable compute environments and applications on top of them.
-These compute environments can then be used and distributed in various ways, including Docker containers.
+Jupyter is a showcase example for the power of a configuration
+language like Nix combined with the Nixpkgs collaborative project to
+describe all open source packages out there. With a few lines of Nix
+code, we can pull together dependencies from various language
+ecosystems in a robust way and build configurable compute environments
+and applications on top of them. Such configurable compute
+environments can be used and distributed in various ways, including
+Docker containers. This is a boon for reproducible science:
+declaratively specify your dependencies and compose your dependency
+descriptions to incrementally build larger and more complex notebooks
+that you know will run now and forever in the future.
 
 Suggestions and PRs on JupyterWith are welcome!
