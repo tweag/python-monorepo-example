@@ -63,7 +63,9 @@ Reproducible compute environments are therefore only a necessary first step on t
 
 How does such a reproducible compute environment look like?
 Here is a simple example.
-First, make sure that [Nix][nix] is installed on your computer.
+First, make sure that [Nix][nix] is installed on your computer. This
+works on any Linux and macOS, and won't modify any files except create
+one single directory in your filesystem.
 Then, write a `shell.nix` file with the following contents:
 
 ```nix
