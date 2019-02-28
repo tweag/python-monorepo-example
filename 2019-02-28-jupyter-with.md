@@ -41,7 +41,7 @@ We will show how to setup configurable and reproducible Jupyter environments tha
 These environments are declarative, which means that their content - not the steps required to install them - is defined in a few lines of code.
 A single command installs and runs the compute environment from the configuration file.
 
-Under the hood, we use the [Nix][nix] package manager, that allows to build up such composable environments with simplicity.
+Under the hood, we use the [Nix][nix] package manager, which enables us to build up such composable environments with simplicity.
 The Jupyter environments can also be containerized with a single Nix command as a Docker image.
 Such Docker images can then be served with [JupyterHub][JupyterHub] to give multiple users access to a well-defined reproducible environment.
 With this setup, installation of a Jupyterlab environment with multiple kernels such as in the following image is easy and robust:
