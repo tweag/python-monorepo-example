@@ -17,7 +17,7 @@ In a project I was working on recently I was tasked with implementing local test
 - Using kind to easily boot up a k8s cluster
 - Describing k8s deployments with kubenix
 
-Note that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to take this approach to production.
+Note that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
 
 ### A service to deploy: hello
 
@@ -39,7 +39,7 @@ Granted we could just deploy some random public docker image but hey, where woul
 
 #### Can we nixify this please? Yes we can!
 
-In order to nixify our little [hello-app](./hello-app/index.js) we are going to use
+In order to nixify our little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) we are going to use
 [yarn2nix](https://github.com/moretea/yarn2nix) which makes everything really for us:
 
 ```nix
@@ -97,7 +97,7 @@ All it takes is `kind create cluster` and setting the correct KUBECONFIG environ
 
 The [kubenix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger specification of the designated kubernetes version. Apart from getting a compile-time validation for free, writing kubernetes configurations in Nix allows for much better abstraction and less redundancy which otherwise creeps in all to easy.
 
-For the most part the [configuration.nix](./configuration.nix) is analogous to what would otherwise be written in YAML or JSON. Yet `configuration.nix` actually defines a function and introduces a small let binding:
+For the most part the [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix) is analogous to what would otherwise be written in YAML or JSON. Yet `configuration.nix` actually defines a function and introduces a small let binding:
 
 ```nix
 { type ? "dev" }:
@@ -133,8 +133,8 @@ kubenix gives us a validated k8s configuration (try to add some nonesense and yo
 
 One thing to worth mentioning about this: The docerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes is asked to apply a `hello-app:latest` image it will try to fetch it from somewhere. To avoid that from happening we have to do two things:
 
-1. Tell kubernetes to never pull the image: [configuration.nix](./configuration.nix#L27)
-2. Make the image available using `kind load image-archive`: [nix/deploy-to-kind.nix](nix/deploy-to-kind.nix#13)
+1. Tell kubernetes to never pull the image: [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix#L27)
+2. Make the image available using `kind load image-archive`: [nix/deploy-to-kind.nix](https://github.com/gilligan/kind-kubenix/blob/master/nix/deploy-to-kind.nix#L13)
 
 With that in place the deployment will work just fine.
 
