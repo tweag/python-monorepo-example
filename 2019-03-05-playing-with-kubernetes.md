@@ -73,7 +73,7 @@ all by its own.
 
 #### Creating a docker image
 
-Kubernetes runs docker images so the little express service has to be dockerized. Time to start writing a Dockerfile? No, I prefer using  
+Kubernetes runs docker images, so the little express service has to be dockerized. Time to start writing a Dockerfile? No, I prefer using  
 [`dockerTools.buildLayeredImage`](https://nixos.org/nixpkgs/manual/#ssec-pkgs-dockerTools-buildLayeredImage):
 
 ```nix
