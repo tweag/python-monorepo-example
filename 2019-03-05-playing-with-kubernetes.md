@@ -30,7 +30,7 @@ Instead I discovered [kind](https://github.com/kubernetes-sigs/kind), that:
 
 In the following I will describe how to use kind in combination with [kubenix](https://github.com/xtruder/kubenix) to create a validated
 kubernetes configuration, deploy it to a kind cluster and finally execute a simple smoke test. A simple "hello world" node service will
-run on the cluster and I will also demonstrate how to nixify and dockerize it. Simply to showcase how easy and convenient this is with Nix.
+run on the cluster. I will also demonstrate how to nixify and dockerize it, simply to showcase how easy and convenient this is with Nix.
 
 **Note** that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to
 take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
