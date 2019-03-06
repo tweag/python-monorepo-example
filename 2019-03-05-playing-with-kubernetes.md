@@ -64,7 +64,7 @@ pkgs.yarn2nix.mkYarnPackage {
 ```
 
 We just have to make sure that we add `"bin": "index.js"` to our `package.json` and `mkYarnPackage` will put
-`index.js` in the `bin` path of our output. Since we added `#!/usr/bin/env node` to `index.js`, node will also be
+`index.js` in the `bin` path of our output. Since `#!/usr/bin/env node` was added to `index.js`, node will also be
 added to closure of our app derivation.
 
 #### Creating a docker image of our app
