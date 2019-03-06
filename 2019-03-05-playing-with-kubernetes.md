@@ -181,11 +181,15 @@ buildConfig = t: kubenix.buildResources { configuration = import ./configuration
 
 ```
 
-### Applying our configuration
+### Applying a configuration
 
 kubenix gives us a validated k8s configuration (try to add some nonsense and you will see that it will actually yell at you) and with
-kind we can pull up a k8s cluster without any effort. Time to actually apply the configuration. [deploy-to-kind](./nix/deploy-to-kind.nix)
-does just that.
+kind we can pull up a k8s cluster without any effort. Time to actually apply the configuration:
+
+```
+$ nix-shell
+$ deploy-to-kind
+```
 
 One thing to worth mentioning about this: The dockerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes 
 is asked to apply a `hello-app:latest` image it will try to fetch it from somewhere. To avoid that from happening we have to do two things:
