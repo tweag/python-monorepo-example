@@ -84,7 +84,7 @@ Kubernetes runs docker images, so the little express service has to be dockerize
   }
 ```
 `${helloApp}` is the derivation that was created above using `mkYarnPackage`. Notice how there is no explicit configuration for the contents
-of the image and no sequence of commands to populate the image either. Instead the contents can be automatically dervied from `config.Cmd`:
+of the image and no sequence of commands to populate the image either. Instead the contents can be automatically derived from `config.Cmd`:
 The image will include everything that is required to execute `helloApp` - i.e the closure of the helloApp derivation.
 
 ### Cluster in a box: kind
