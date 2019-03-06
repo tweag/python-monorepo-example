@@ -181,7 +181,7 @@ buildConfig = t: kubenix.buildResources { configuration = import ./configuration
 
 ### Applying our configuration
 
-kubenix gives us a validated k8s configuration (try to add some nonesense and you will see that it will actually yell at you) and with
+kubenix gives us a validated k8s configuration (try to add some nonsense and you will see that it will actually yell at you) and with
 kind we can pull up a k8s cluster without any effort. Time to actually apply the configuration. [deploy-to-kind](./nix/deploy-to-kind.nix)
 does just that.
 
