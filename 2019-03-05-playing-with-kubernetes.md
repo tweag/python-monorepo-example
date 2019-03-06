@@ -111,10 +111,11 @@ via `kubectl`.
 ### kubenix: validation for free and no yaml in sight either
 
 The [kubenix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger
-specification of the designated kubernetes version. But the free compile-time validation isn't the only benefit: With deployments configured 
-in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of reuse, composition or abstraction
-in general. This leads to a lot of redundancy and often big files that are error-prone to work with.
+specification of the designated kubernetes version. Furthermore it changes the way in which you can work with, and organize your 
+deployment configuration:
 
+With deployments configured in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of 
+reuse, composition or abstraction in general. This leads to a lot of redundancy and often big files that are error-prone to work with.
 I don't like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this 
 or at the very least turn runtime errors into compile-time errors:
 
