@@ -200,7 +200,7 @@ The `default.nix` of the project exposes the following attributes:
 - `app`: The nodejs service. It can be build via `nix-build -A app`.
 - `deploy-to-kind`: A script that starts a kind cluster and deploys `configuration.nix`.
 - `test-deployment`: A script that implements some very simplistic smoke test to check if our app is up and working.
-- `deploy-and-test`: Running this shell via `nix-shell -a deploy-and-test default.nix` will deploy, wait for the deployment and finally test it.
+- `deploy-and-test`: Running this shell via `nix-shell -A deploy-and-test default.nix` will deploy, wait for the deployment and finally test it.
 - `shell`: Started via `nix-shell` this shell provides all required inputs for manually deploying and testing.
 
 **Notes**:
