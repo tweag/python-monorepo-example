@@ -10,14 +10,26 @@ author: Tobias Pflug
 <meta property="og:url" content="https://www.tweag.io/posts/2019-03-05-playing-with-kubernetes.html" />
 <meta property="og:title" content="Playing With Kubernetes: Nix, Kind And Kubenix" />
 
-In a project I was working on recently I was tasked with implementing local testing of a kubernetes setup the client was working on. I ended up using [kind](https://github.com/kubernetes-sigs/kind) for this and it worked out nicely. Another tool that I have been meaning to try is [kubenix](https://github.com/xtruder/kubenix). In this post I will give a short overview on a couple of topics:
+In a recent project I was tasked with creating a local testing environment for a kubernetes cluster the client was actively working on. The main requirements were:
 
-- Nixifying a small nodejs service
-- Creating a docker image the nix way
-- Using kind to easily boot up a k8s cluster
-- Describing k8s deployments with kubenix
+- **Cross platform**: It should work on Linux and macOS.
+- **Ease of use**: The setup should be easy to use.
+- **Suitable for CI integration**: It should be possible to use the setup as part of a CI pipeline.
 
-Note that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
+Two options come to mind, both of which have to be dismissed:
+
+- **minikube**: minikube is well established as a tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
+- **nixos/qemu**: NixOS makes it easy to build and start arbitrary configurations via qemu but this obviously is not cross platform and thus not an option.
+
+Instead I discovered [kind](https://github.com/kubernetes-sigs/kind):
+
+- Depends on docker only
+- Works on Linux, macOS and even Windows
+- Supports multi-node (including HA) clusters
+
+In the following I will describe how to use kind in combination with [kubenix](https://github.com/xtruder/kubenix) to create a validated kubernetes configuration, deploy it to a kind cluster and finally execute a simple smoke test. A simple "hello world" node service will run on the cluster and I will also demonstrate how to nixify and dockerize it. Simply to showcase how easy and convenient this is with Nix.
+
+**Note** that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
 
 ### A service to deploy: hello
 
