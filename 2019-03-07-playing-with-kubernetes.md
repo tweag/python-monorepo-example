@@ -1,5 +1,5 @@
 ---
-title: "Playing With Kubernetes: Nix, Kind And Kubenix"
+title: "Playing With Kubernetes:<br/> Nix, Kind And Kubenix"
 shortTitle: "Nix, Kind And Kubenix"
 author: Tobias Pflug
 ---
@@ -13,12 +13,12 @@ The main requirements were:
 
 Two options came to mind, both of which had to be dismissed:
 
-- **minikube**: minikube is a well established tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
-- **nixos/qemu**: NixOS makes it easy to build and start arbitrary configurations via QEMU but this is obviously not cross-platform and thus not an option.
+- **Minikube**: Minikube is a well established tool for local Kubernetes clusters but its reliance on a hypervisor rules it out.
+- **NixOS/QEMU**: NixOS makes it easy to build and start arbitrary configurations via QEMU but this is obviously not cross-platform and thus not an option.
 
 Instead I discovered [kind](https://github.com/kubernetes-sigs/kind), that:
 
-- Depends on docker only
+- Depends on Docker only
 - Works on Linux, macOS and even Windows
 - Supports multi-node (including HA) clusters
 
@@ -42,12 +42,11 @@ const express = require('express');
 const app = express();
 const port = process.env.APP_PORT ? process.env.APP_PORT : 3000;
 
-
 app.get('/', (req, res) => res.send('Hello World'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 ```
 
-### Can I get a nix package please?
+### Can I get a Nix package please?
 
 In order to nixify the little [`hello-app`](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) I am going to
 use [yarn2nix](https://github.com/moretea/yarn2nix):
@@ -110,7 +109,7 @@ via `kubectl`.
 
 ## kubenix: validation for free and no yaml in sight either
 
-[kubenix](https://github.com/xtruder/kubenix) parses a Kubernetes configuration in Nix and validates it against the official swagger
+[KubeNix](https://github.com/xtruder/kubenix) parses a Kubernetes configuration in Nix and validates it against the official swagger
 specification of the designated Kubernetes version. Furthermore it changes the way in which you can work with, and organize your
 deployment configuration.
 
@@ -198,7 +197,7 @@ With that in place the deployment will work just fine.
 
 The `default.nix` of the project exposes the following attributes:
 
-- `app`: The nodejs service. It can be build via `nix-build -A app`.
+- `app`: The NodeJS service. It can be build via `nix-build -A app`.
 - `deploy-to-kind`: A script that starts a kind cluster and deploys `configuration.nix`.
 - `test-deployment`: A script that implements a very simplistic smoke test to check if our app is up and working.
 - `deploy-and-test`: Running this shell via `nix-shell -A deploy-and-test default.nix` will deploy, wait for the deployment and finally test it.
