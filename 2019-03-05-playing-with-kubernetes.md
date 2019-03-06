@@ -52,7 +52,7 @@ Granted we could just deploy some random public docker image but hey, where woul
 #### Can we nixify this please? Yes we can!
 
 In order to nixify our little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) we are going to use
-[yarn2nix](https://github.com/moretea/yarn2nix) which makes everything really for us:
+[yarn2nix](https://github.com/moretea/yarn2nix) which makes everything really easy for us:
 
 ```nix
 pkgs.yarn2nix.mkYarnPackage {
