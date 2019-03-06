@@ -19,7 +19,7 @@ The main requirements were:
 
 Two options come to mind, both of which have to be dismissed:
 
-- **minikube**: minikube is well established as a tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
+- **minikube**: minikube is a well established tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
 - **nixos/qemu**: NixOS makes it easy to build and start arbitrary configurations via qemu but this obviously is not cross platform and thus not an option.
 
 Instead I discovered [kind](https://github.com/kubernetes-sigs/kind):
