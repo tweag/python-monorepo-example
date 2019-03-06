@@ -1,5 +1,5 @@
 ---
-title: "Configuring And Testing Kubernetes Clusters With Kubenix And Kind"
+title: "Configuring And Testing Kubernetes Clusters With KubeNix And Kind"
 author: Tobias Pflug
 ---
 
@@ -12,24 +12,24 @@ The main requirements were:
 
 Two options come to mind, both of which have to be dismissed:
 
-- **minikube**: minikube is a well established tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
-- **nixos/qemu**: NixOS makes it easy to build and start arbitrary configurations via qemu but this obviously is not cross platform and thus not an option.
+- **Minikube**: minikube is a well established tool for local kubernetes clusters but its reliance on a hypervisor rules it out.
+- **NixOs/QEMU**: NixOS makes it easy to build and start arbitrary configurations via qemu but this obviously is not cross platform and thus not an option.
 
 Instead I discovered [kind](https://github.com/kubernetes-sigs/kind), which:
 
-- Depends on docker only
+- Depends on Docker only
 - Works on Linux, macOS and even Windows
 - Supports multi-node (including HA) clusters
 
 In the following I will guide you through an [example project](https://github.com/gilligan/kind-kubenix) which will illustrate how kind can
-be combined with [kubenix](https://github.com/xtruder/kubenix) and Nix in general to develop correct, easy to maintain, and easy to test 
+be combined with [KubeNix](https://github.com/xtruder/kubenix) and Nix in general to develop correct, easy to maintain, and easy to test 
 kubernetes deployments. This will include:
 
-- Implementing and nixifying a simple nodejs service
+- Implementing and nixifying a simple NodeJs service
 - Using Nix tooling to build minimal docker images
 - Using kind to boot up a kubernetes cluster with minimal effort
-- Using kubenix to create validated and composable deployment configurations
-- Deploying the configuation created by kubenix to the kind cluster
+- Using KubeNix to create validated and composable deployment configurations
+- Deploying the configuation created by KubeNix to the kind cluster
 
 **Note** that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to
 take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
@@ -70,7 +70,7 @@ I made sure to add `"bin": "index.js"` to `package.json` so `mkYarnPackage` will
 Thanks to the shebang (`#!/usr/bin/env node`) in `index.js` Nix is able to figure out that node is a runtime dependency of "hello-app"
 all by its own. 
 
-#### Using Nix to build docker images
+#### Using Nix to build Docker images
 
 Kubernetes runs docker images, so the little express service has to be dockerized. The traditional way to achieve this would be to write
 a `Dockerfile`. Nix however provides a convenient and declarative tooling for building docker images which doesn't require Dockerfiles.
@@ -127,9 +127,9 @@ ability to preload docker images using `kind load` but this isn't yet relevant.
 What _is_ important is the fact that creating, deleting and interacting with kubernetes clusters via kind is trivial, has no dependencies
 beyond docker and (thus) works on Linux, macOS and Windows.
 
-### kubenix: validation for free and no yaml in sight either
+### KubeNix: validation for free and no yaml in sight either
 
-The [kubenix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger
+The [KubeNix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger
 specification of the designated kubernetes version. Furthermore it changes the way in which you can work with, and organize your 
 deployment configuration:
 
@@ -228,6 +228,6 @@ The `default.nix` of the project exposes the following attributes:
 
 **Notes**:
 - The version of `kind` used in this project is built from the master revision at the time of writing. The latest release doesn't include the `kind load` functionality.
-- kubenix currently doesn't have any documentation but a major overhaul with great features is in the works. Follow [kubenix refactoring](https://github.com/xtruder/kubenix/issues/9) for details.
+- KubeNix currently doesn't have any documentation but a major overhaul with great features is in the works. Follow [KubeNix refactoring](https://github.com/xtruder/kubenix/issues/9) for details.
 - I used [wait-for-deployment](https://github.com/timoreimann/kubernetes-scripts) - a nice little bash script - to wait for the completion of the deployment.
 - yarn2nix might actually be [removed from nixpkgs soon](https://github.com/NixOS/nixpkgs/issues/20637#issuecomment-466901820). Once that happens there are still various ways to continue using it, but the code presented here is not going to work as-is anymore.
