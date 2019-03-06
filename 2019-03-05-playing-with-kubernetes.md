@@ -78,7 +78,7 @@ Next we want to create a docker image of our app using [`dockerTools.buildLayere
     config.Cmd = [ "${helloApp}/bin/hello-app" ];
   }
 ```
-`${helloApp}` is of course the derivation we created above using `mkYarnPackage`. Easy as pie.
+`${helloApp}` is the derivation we created above using `mkYarnPackage`. Easy as pie.
 
 ### Cluster in a box: kind
 
