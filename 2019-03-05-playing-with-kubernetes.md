@@ -121,9 +121,8 @@ specification of the designated kubernetes version. But the free compile-time va
 in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of reuse, composition or abstraction
 in general. This leads to a lot of redundancy and often big files that are error-prone to work with.
 
-In my [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix) i am making some use of this. I don't 
-like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this or at 
-the very least turn runtime errors into compile-time errors:
+I don't like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this 
+or at the very least turn runtime errors into compile-time errors:
 
 ```nix
 { type ? "dev" }:
@@ -172,7 +171,10 @@ in
 the deployment. This is just a motivating example, but it would also be possible to split bigger configurations into 
 `production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best 
 for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted 
-to a bunch of YAML files. Creating a json output which can be fed into `kubectl` can be created using `kubenix.buildResources`:
+to a bunch of YAML files. 
+
+Of course `kubectl` still expects JSON or YAML as input. `kubenix.buildResources` translates the nix based configuration to JSON,
+ready to be consumed by `kubectl`:
 
 ```nix
 buildConfig = t: kubenix.buildResources { configuration = import ./configuration.nix { type = t; }; };
