@@ -93,6 +93,7 @@ kind is a portable (linux, osx and windows) solution to running kubernetes clust
 is still young but it is getting a lot of support and works very well already:
 
 ```
+$ kind create cluster
 Creating cluster "kind" ...
  ✓ Ensuring node image (kindest/node:v1.13.3) 🖼
  ✓ [control-plane] Creating node container 📦 
