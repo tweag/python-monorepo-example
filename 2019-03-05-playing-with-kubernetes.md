@@ -37,8 +37,8 @@ take this approach to production. The full source code of this project is availa
 
 ### A service to deploy: hello
 
-In order to deploy something to kubernetes we first need some service. The service itself is mostly irrelevant for our purposes so we
-just write a little express based JavaScript app that returns "Hello World" on a port that can be configured via the environment
+The first thing we need is a service to actually deploy to Kubernetes. The service itself is mostly irrelevant for our purposes so 
+it will just be an Express based JavaScript app that returns "Hello World" on a port that can be configured via the environment
 variable `APP_PORT`:
 
 ```js
@@ -83,7 +83,9 @@ Kubernetes runs docker images so the little express service has to be dockerized
     config.Cmd = [ "${helloApp}/bin/hello-app" ];
   }
 ```
-`${helloApp}` is the derivation that was created above using `mkYarnPackage`.
+`${helloApp}` is the derivation that was created above using `mkYarnPackage`. Notice how there is no explicit configuration for the contents
+of the image and no sequence of commands to populate the image either. Instead the contents can be automatically dervied from `config.Cmd`:
+The image will include everything that is required to execute `helloApp` - i.e the closure of the helloApp derivation.
 
 ### Cluster in a box: kind
 
@@ -204,3 +206,4 @@ The `default.nix` of the project exposes the following attributes:
 - The version of `kind` used in this project is built from the master revision at the time of writing. The latest release doesn't include the `kind load` functionality.
 - kubenix currently doesn't have any documentation but a major overhaul with great features is in the works. Follow [kubenix refactoring](https://github.com/xtruder/kubenix/issues/9) for details.
 - I used [wait-for-deployment](https://github.com/timoreimann/kubernetes-scripts) - a nice little bash script - to wait for the completion of the deployment.
+- yarn2nix might actually be [removed from nixpkgs soon](https://github.com/NixOS/nixpkgs/issues/20637#issuecomment-466901820). Once that happens there are still various ways to continue using it, but the code presented here is not going to work as-is anymore.
