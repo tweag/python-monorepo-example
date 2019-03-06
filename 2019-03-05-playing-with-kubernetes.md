@@ -4,12 +4,6 @@ shortTitle: "Nix, Kind And Kubenix"
 author: Tobias Pflug
 ---
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@tweagio" />
-<meta name="twitter:creator" content="@tweagio" />
-<meta property="og:url" content="https://www.tweag.io/posts/2019-03-05-playing-with-kubernetes.html" />
-<meta property="og:title" content="Playing With Kubernetes: Nix, Kind And Kubenix" />
-
 In a recent project I was tasked with creating a local testing environment for a kubernetes cluster the client was actively working on.
 The main requirements were:
 
