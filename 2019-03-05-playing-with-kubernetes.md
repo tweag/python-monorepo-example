@@ -10,7 +10,8 @@ author: Tobias Pflug
 <meta property="og:url" content="https://www.tweag.io/posts/2019-03-05-playing-with-kubernetes.html" />
 <meta property="og:title" content="Playing With Kubernetes: Nix, Kind And Kubenix" />
 
-In a recent project I was tasked with creating a local testing environment for a kubernetes cluster the client was actively working on. The main requirements were:
+In a recent project I was tasked with creating a local testing environment for a kubernetes cluster the client was actively working on.
+The main requirements were:
 
 - **Cross platform**: It should work on Linux and macOS.
 - **Ease of use**: The setup should be easy to use.
@@ -27,13 +28,18 @@ Instead I discovered [kind](https://github.com/kubernetes-sigs/kind):
 - Works on Linux, macOS and even Windows
 - Supports multi-node (including HA) clusters
 
-In the following I will describe how to use kind in combination with [kubenix](https://github.com/xtruder/kubenix) to create a validated kubernetes configuration, deploy it to a kind cluster and finally execute a simple smoke test. A simple "hello world" node service will run on the cluster and I will also demonstrate how to nixify and dockerize it. Simply to showcase how easy and convenient this is with Nix.
+In the following I will describe how to use kind in combination with [kubenix](https://github.com/xtruder/kubenix) to create a validated
+kubernetes configuration, deploy it to a kind cluster and finally execute a simple smoke test. A simple "hello world" node service will
+run on the cluster and I will also demonstrate how to nixify and dockerize it. Simply to showcase how easy and convenient this is with Nix.
 
-**Note** that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
+**Note** that what I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to
+take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
 
 ### A service to deploy: hello
 
-In order to deploy something to kubernetes we first need some service. The service itself is mostly irrelevant for our purposes so we just write a little express based JavaScript app that returns "Hello World" on a port that can be configured via the environment variable `APP_PORT`:
+In order to deploy something to kubernetes we first need some service. The service itself is mostly irrelevant for our purposes so we
+just write a little express based JavaScript app that returns "Hello World" on a port that can be configured via the environment
+variable `APP_PORT`:
 
 ```js
 #!/usr/bin/env node
@@ -47,12 +53,10 @@ app.get('/', (req, res) => res.send('Hello World'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 ```
 
-Granted we could just deploy some random public docker image but hey, where would be the fun in that :)
+#### Can I get a nix package please?
 
-#### Can we nixify this please? Yes we can!
-
-In order to nixify our little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) we are going to use
-[yarn2nix](https://github.com/moretea/yarn2nix) which makes everything really easy for us:
+In order to nixify the little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) I am going to 
+use [yarn2nix](https://github.com/moretea/yarn2nix):
 
 ```nix
 pkgs.yarn2nix.mkYarnPackage {
@@ -63,13 +67,14 @@ pkgs.yarn2nix.mkYarnPackage {
 }
 ```
 
-We just have to make sure that we add `"bin": "index.js"` to our `package.json` and `mkYarnPackage` will put
-`index.js` in the `bin` path of our output. Since `#!/usr/bin/env node` was added to `index.js`, node will also be
-added to closure of our app derivation.
+I made sure to add `"bin": "index.js"` to `package.json` so `mkYarnPackage` will put `index.js` in the `bin` path of the resulting output.
+Thanks to the shebang (`#!/usr/bin/env node`) in `index.js` Nix is able to figure out that node is a runtime dependency of "hello-app"
+all by its own. 
 
-#### Creating a docker image of our app
+#### Creating a docker image
 
-Next we want to create a docker image of our app using [`dockerTools.buildLayeredImage`](https://nixos.org/nixpkgs/manual/#ssec-pkgs-dockerTools-buildLayeredImage):
+Kubernetes runs docker images so the little express service has to be dockerized. Time to start writing a Dockerfile? No, I prefer using  
+[`dockerTools.buildLayeredImage`](https://nixos.org/nixpkgs/manual/#ssec-pkgs-dockerTools-buildLayeredImage):
 
 ```nix
   pkgs.dockerTools.buildLayeredImage {
@@ -78,7 +83,7 @@ Next we want to create a docker image of our app using [`dockerTools.buildLayere
     config.Cmd = [ "${helloApp}/bin/hello-app" ];
   }
 ```
-`${helloApp}` is the derivation we created above using `mkYarnPackage`. Easy as pie.
+`${helloApp}` is the derivation that was created above using `mkYarnPackage`.
 
 ### Cluster in a box: kind
 
@@ -102,14 +107,20 @@ export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
 kubectl cluster-info
 ```
 
-All it takes is `kind create cluster` and setting the correct KUBECONFIG environment variable and we can interact with the cluster via `kubectl`.
+All it takes is `kind create cluster` and setting the correct KUBECONFIG environment variable and we can interact with the cluster 
+via `kubectl`.
 
 
 ### kubenix: validation for free and no yaml in sight either
 
-The [kubenix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger specification of the designated kubernetes version. Apart from getting a compile-time validation for free, writing kubernetes configurations in Nix allows for much better abstraction and less redundancy which otherwise creeps in all to easy.
+The [kubenix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger
+specification of the designated kubernetes version. But the free compile-time validation isn't the only benefit: With deployments configured 
+in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of reuse, composition or abstraction
+in general. This leads to a lot of redundancy and often big files that are error-prone to work with.
 
-For the most part the [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix) is analogous to what would otherwise be written in YAML or JSON. Yet `configuration.nix` actually defines a function and introduces a small let binding:
+In my [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix) i am making some use of this. I don't 
+like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this or at 
+the very least turn runtime errors into compile-time errors:
 
 ```nix
 { type ? "dev" }:
@@ -127,12 +138,38 @@ let
 in
 {
   kubernetes.version = kubeVersion;
-  # ...
-}
 
+  kubernetes.resources.deployments."${helloApp.label}" = {
+    metadata.labels.app = helloApp.label;
+    spec = {
+      replicas = 1;
+      selector.matchLabels.app = helloApp.label;
+      template = {
+        metadata.labels.app = helloApp.label;
+        spec.containers."${helloApp.label}" = {
+          name = "${helloApp.label}";
+          image = "hello-app:latest";
+          imagePullPolicy = helloApp.imagePolicy;
+          env = helloApp.env;
+          resources.requests.cpu = helloApp.cpu;
+          ports."${toString helloApp.port}" = {};
+        };
+      };
+    };
+  };
+
+  kubernetes.resources.services."${helloApp.label}" = {
+    spec.selector.app = "${helloApp.label}";
+    spec.ports."${toString helloApp.port}".targetPort = helloApp.port;
+  };
+}
 ```
 
-Function takes a `type` argument which is used for augmenting the requested resources of the deployment. Obviously this is just a motivating example. It would also be possible to split bigger configurations into `production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted to a bunch of YAML files. Creating a json output which can be fed into `kubectl` can be created using `kubenix.buildResources`:
+`configuration.nix` actually contains a function that takes a `type` argument which is used for augmenting the requested resources of 
+the deployment. Obviously this is just a motivating example. It would also be possible to split bigger configurations into 
+`production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best 
+for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted 
+to a bunch of YAML files. Creating a json output which can be fed into `kubectl` can be created using `kubenix.buildResources`:
 
 ```nix
 buildConfig = t: kubenix.buildResources { configuration = import ./configuration.nix { type = t; }; };
@@ -141,9 +178,12 @@ buildConfig = t: kubenix.buildResources { configuration = import ./configuration
 
 ### Applying our configuration
 
-kubenix gives us a validated k8s configuration (try to add some nonesense and you will see that it will actually yell at you) and with kind we can pull up a k8s cluster without any effort. Time to actually apply the configuration. [deploy-to-kind](./nix/deploy-to-kind.nix) does just that.
+kubenix gives us a validated k8s configuration (try to add some nonesense and you will see that it will actually yell at you) and with
+kind we can pull up a k8s cluster without any effort. Time to actually apply the configuration. [deploy-to-kind](./nix/deploy-to-kind.nix)
+does just that.
 
-One thing to worth mentioning about this: The dockerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes is asked to apply a `hello-app:latest` image it will try to fetch it from somewhere. To avoid that from happening we have to do two things:
+One thing to worth mentioning about this: The dockerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes 
+is asked to apply a `hello-app:latest` image it will try to fetch it from somewhere. To avoid that from happening we have to do two things:
 
 1. Tell kubernetes to never pull the image: [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix#L27)
 2. Make the image available using `kind load image-archive`: [nix/deploy-to-kind.nix](https://github.com/gilligan/kind-kubenix/blob/master/nix/deploy-to-kind.nix#L13)
