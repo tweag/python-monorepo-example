@@ -169,7 +169,7 @@ in
 ```
 
 `configuration.nix` actually contains a function that takes a `type` argument which is used for augmenting the requested resources of 
-the deployment. Obviously this is just a motivating example. It would also be possible to split bigger configurations into 
+the deployment. This is just a motivating example, but it would also be possible to split bigger configurations into 
 `production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best 
 for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted 
 to a bunch of YAML files. Creating a json output which can be fed into `kubectl` can be created using `kubenix.buildResources`:
