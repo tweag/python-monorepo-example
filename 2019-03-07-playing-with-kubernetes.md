@@ -22,7 +22,7 @@ Instead I discovered [kind](https://github.com/kubernetes-sigs/kind), which:
 - Supports multi-node (including HA) clusters
 
 In the following I will guide you through an [example project](https://github.com/gilligan/kind-kubenix) which will illustrate how kind can
-be combined with [KubeNix](https://github.com/xtruder/kubenix) and Nix in general to develop correct, easy to maintain, and easy to test 
+be combined with [KubeNix](https://github.com/xtruder/kubenix) and Nix in general to develop correct, easy to maintain, and easy to test
 kubernetes deployments. This will include:
 
 - Implementing and nixifying a simple NodeJs service
@@ -36,7 +36,7 @@ take this approach to production. The full source code of this project is availa
 
 ### Implementing a simple nodejs service
 
-The first thing we need is a service to actually deploy to Kubernetes. The service itself is mostly irrelevant for our purposes so 
+The first thing we need is a service to actually deploy to Kubernetes. The service itself is mostly irrelevant for our purposes so
 it will just be an Express based JavaScript app that returns "Hello World" on a port that can be configured via the environment
 variable `APP_PORT`:
 
@@ -54,7 +54,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 #### Nixifying a nodejs service
 
-In order to nixify the little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) I am going to 
+In order to nixify the little [hello-app](https://github.com/gilligan/kind-kubenix/blob/master/hello-app/index.js) I am going to
 use [yarn2nix](https://github.com/moretea/yarn2nix):
 
 ```nix
@@ -68,7 +68,7 @@ pkgs.yarn2nix.mkYarnPackage {
 
 I made sure to add `"bin": "index.js"` to `package.json` so `mkYarnPackage` will put `index.js` in the `bin` path of the resulting output.
 Thanks to the shebang (`#!/usr/bin/env node`) in `index.js` Nix is able to figure out that node is a runtime dependency of "hello-app"
-all by its own. 
+all by its own.
 
 #### Using Nix to build Docker images
 
@@ -87,7 +87,7 @@ to build a minimal docker image containing our app and nodejs:
 
 The snippet above generates a docker archive - a .tar.gz file which could be loaded into the docker daemon using `docker load`. Notice
 how the only arguments given are the image name, the image tag and command to be executed in the container. There is no need to
-provide a sequence of commands to populate the container and no explicit contents configuration either. Instead, the contents can 
+provide a sequence of commands to populate the container and no explicit contents configuration either. Instead, the contents can
 be automatically derived from `config.Cmd`: The image will include everything that is required to execute `helloApp` - i.e the
 closure of the `helloApp` derivation. This also explains why there is no need to specify a base image (`FROM node:10` in a Dockerfile):
 The `helloApp` derivation brings along nodejs as runtime dependency.
@@ -105,14 +105,14 @@ is still young but it is getting a lot of support and works very well already:
 $ kind create cluster
 Creating cluster "kind" ...
  ✓ Ensuring node image (kindest/node:v1.13.3) 🖼
- ✓ [control-plane] Creating node container 📦 
- ✓ [control-plane] Fixing mounts 🗻 
+ ✓ [control-plane] Creating node container 📦
+ ✓ [control-plane] Fixing mounts 🗻
  ✓ [control-plane] Configuring proxy 🐋
- ✓ [control-plane] Starting systemd 🖥 
- ✓ [control-plane] Waiting for docker to be ready 🐋 
- ✓ [control-plane] Pre-loading images 🐋 
- ✓ [control-plane] Creating the kubeadm config file ⛵ 
- ✓ [control-plane] Starting Kubernetes (this may take a minute) ☸ 
+ ✓ [control-plane] Starting systemd 🖥
+ ✓ [control-plane] Waiting for docker to be ready 🐋
+ ✓ [control-plane] Pre-loading images 🐋
+ ✓ [control-plane] Creating the kubeadm config file ⛵
+ ✓ [control-plane] Starting Kubernetes (this may take a minute) ☸
 Cluster creation complete. You can now use the cluster with:
 
 export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
@@ -120,7 +120,7 @@ kubectl cluster-info
 ```
 
 The above command takes roughly 35sec on my dell xps laptop. After that the cluster is up and running and you can interact with it
-via `kubectl` once you set the `KUBECONFIG` as described in the output above. Clusters can of course also be deleted again using 
+via `kubectl` once you set the `KUBECONFIG` as described in the output above. Clusters can of course also be deleted again using
 `kind delete cluster`. This is almost everything that needs to be said about kind at this point - Later on I will also mention the
 ability to preload docker images using `kind load` but this isn't yet relevant.
 
@@ -130,12 +130,12 @@ beyond docker and (thus) works on Linux, macOS and Windows.
 ### KubeNix: validation for free and no yaml in sight either
 
 The [KubeNix](https://github.com/xtruder/kubenix) parses a kubernetes configuration in Nix and validates it against the official swagger
-specification of the designated kubernetes version. Furthermore it changes the way in which you can work with, and organize your 
+specification of the designated kubernetes version. Furthermore it changes the way in which you can work with, and organize your
 deployment configuration:
 
-With deployments configured in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of 
+With deployments configured in JSON or YAML we have a file as smallest unit to work with. There is little that can be done in terms of
 reuse, composition or abstraction in general. This leads to a lot of redundancy and often big files that are error-prone to work with.
-I don't like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this 
+I don't like repeating myself and I also hate typos in labels breaking references between services and pods. Using Nix I can avoid this
 or at the very least turn runtime errors into compile-time errors:
 
 ```nix
@@ -181,11 +181,11 @@ in
 }
 ```
 
-`configuration.nix` actually contains a function that takes a `type` argument which is used for augmenting the requested resources of 
-the deployment. This is just a motivating example, but it would also be possible to split bigger configurations into 
-`production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best 
-for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted 
-to a bunch of YAML files. 
+`configuration.nix` actually contains a function that takes a `type` argument which is used for augmenting the requested resources of
+the deployment. This is just a motivating example, but it would also be possible to split bigger configurations into
+`production.nix` and `development.nix` which both import settings from `generic.nix`. The best solution is the one that works best
+for your setup and requirements. The very fact that there are now different options to pick from is an advantage over being restricted
+to a bunch of YAML files.
 
 ### Applying a configuration
 
@@ -208,7 +208,7 @@ $ nix-shell
 $ deploy-to-kind
 ```
 
-One thing to worth mentioning about this: The dockerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes 
+One thing to worth mentioning about this: The dockerized `hello` service is a docker archive, a local .tar.gz archive. When kubernetes
 is asked to apply a `hello-app:latest` image it will try to fetch it from somewhere. To avoid that from happening we have to do two things:
 
 1. Tell kubernetes to never pull the image: [configuration.nix](https://github.com/gilligan/kind-kubenix/blob/master/configuration.nix#L27)
