@@ -1,5 +1,5 @@
 ---
-title: "Configuring And Testing Kubernetes Clusters With KubeNix And Kind"
+title: "Configuring and testing Kubernetes clusters <br/> with KubeNix and Kind"
 author: Tobias Pflug
 ---
 
@@ -13,23 +13,24 @@ The main requirements were:
 Two options came to mind, both of which had to be dismissed:
 
 - **Minikube**: Minikube is a well established tool for local Kubernetes clusters but its reliance on a hypervisor rules it out.
-- **NixOs/QEMU**: NixOS makes it easy to build and start arbitrary configurations via QEMU but this obviously is not cross-platform and thus not an option.
+- **NixOS/QEMU**: NixOS makes it easy to build and start arbitrary configurations via QEMU but this obviously is not cross-platform and thus not an option.
 
-Instead I discovered [kind](https://github.com/kubernetes-sigs/kind), which:
+Instead we'll use [kind](https://github.com/kubernetes-sigs/kind), which:
 
 - Depends on Docker only
 - Works on Linux, macOS and even Windows
 - Supports multi-node (including HA) clusters
 
 In the following I will guide you through an [example project](https://github.com/gilligan/kind-kubenix) which will illustrate how kind can
-be combined with [KubeNix](https://github.com/xtruder/kubenix) and Nix in general to develop correct, easy to maintain, and easy to test
-kubernetes deployments. This will include:
+be combined with [KubeNix](https://github.com/xtruder/kubenix) to develop correct, easy to maintain, and easy to test
+Kubernetes deployments. This will include:
 
-- Implementing and nixifying a simple NodeJs service
-- Using Nix tooling to build minimal docker images
-- Using kind to boot up a kubernetes cluster with minimal effort
-- Using KubeNix to create validated and composable deployment configurations
-- Deploying the configuation created by KubeNix to the kind cluster
+- implementing and nixifying a simple NodeJS service,
+- using Nix tooling to build minimal Docker images,
+- using kind to boot up a Kubernetes cluster with minimal effort,
+- using KubeNix to catch common configuration errors early, eschew
+  copypasta and make configurations composable,
+- deploying the configuation created by KubeNix to the kind cluster.
 
 **Note**: What I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to
 take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).
@@ -46,7 +47,6 @@ variable `APP_PORT`:
 const express = require('express');
 const app = express();
 const port = process.env.APP_PORT ? process.env.APP_PORT : 3000;
-
 
 app.get('/', (req, res) => res.send('Hello World'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -67,13 +67,13 @@ pkgs.yarn2nix.mkYarnPackage {
 ```
 
 I made sure to add `"bin": "index.js"` to `package.json` so that `mkYarnPackage` will put `index.js` in the `bin` path of the resulting output.
-Thanks to the shebang `#!/usr/bin/env node` in `index.js` Nix is able to figure out that node is a runtime dependency of `hello-app`
+Thanks to the shebang `#!/usr/bin/env node` in `index.js` Nix is able to figure out that Node is a runtime dependency of `hello-app`
 all by its own.
 
 ### Using Nix to build Docker images
 
-Kubernetes runs Docker images, so the little express service has to be dockerized. The traditional way to achieve this would be to write
-a `Dockerfile`. Nix however provides a convenient and declarative tooling for building Docker images which doesn't require Dockerfiles.
+Kubernetes runs Docker images, so the little Express service has to be dockerized. The traditional way to achieve this would be to write
+a `Dockerfile`. Nix, however, provides more convenient and declarative tooling for building Docker images.
 The snippet below shows how to use [`dockerTools.buildLayeredImage`](https://nixos.org/nixpkgs/manual/#ssec-pkgs-dockerTools-buildLayeredImage)
 to build a minimal docker image containing our app and nodejs:
 
@@ -85,15 +85,15 @@ to build a minimal docker image containing our app and nodejs:
   }
 ```
 
-The snippet above generates a Docker archive - a .tar.gz file which could be loaded into the Docker daemon using `docker load`. Notice
+The snippet above generates a Docker archive - a `.tar.gz` file which could be loaded into the Docker daemon using `docker load`. Notice
 how the only arguments given are the image name, the image tag and command to be executed in the container. There is no need to
 provide a sequence of commands to populate the container and no explicit contents configuration either. Instead, the contents can
 be automatically derived from `config.Cmd`: The image will include everything that is required to execute `hello-app` - i.e the
 closure of the `helloApp` derivation. This also explains why there is no need to specify a base image (`FROM node:10` in a Dockerfile):
 The `helloApp` derivation brings along nodejs as runtime dependency.
 
-Much more could be said about the benefits of this way to build docker images but it would go beyond the scope of this blog post.
-Suffice to say that with 4 lines of code, no additional tooling and no reliance on external base images I'm able to create a docker image
+Much more could be said about the benefits of this way to build Docker images but it would go beyond the scope of this blog post.
+Suffice to say that with 4 lines of code, no additional tooling and no reliance on external base images I'm able to create a Docker image
 that contains only exactly what is needed.
 
 ## kind: Kubernetes clusters in Docker
@@ -119,18 +119,18 @@ export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
 kubectl cluster-info
 ```
 
-The above command takes roughly 35sec on my Dell XPS laptop. After that the cluster is up and running and you can interact with it
+The above command takes roughly 35sec on my Dell XPS laptop. After that, the cluster is up and running and you can interact with it
 via `kubectl` once you set the `KUBECONFIG` as described in the output above. Clusters can of course also be deleted again using
 `kind delete cluster`. This is almost everything that needs to be said about kind at this point - Later on I will also mention the
-ability to preload docker images using `kind load` but this isn't yet relevant.
+ability to preload Docker images using `kind load` but this isn't yet relevant.
 
 What _is_ important is the fact that creating, deleting and interacting with Kubernetes clusters via kind is trivial, has no dependencies
-beyond docker and thus works on Linux, macOS and Windows.
+beyond Docker and thus works on Linux, macOS and Windows.
 
-## KubeNix: Validation for free and no yaml in sight either
+## KubeNix: Validation for free and no YAML in sight either
 
-The [KubeNix](https://github.com/xtruder/kubenix) parses a Kubernetes configuration in Nix and validates it against the official swagger
-specification of the designated kubernetes version. Furthermore it changes the way in which you can work with, and organize your
+The [KubeNix](https://github.com/xtruder/kubenix) parses a Kubernetes configuration in Nix and validates it against the official Swagger
+specification of the designated Kubernetes version. Furthermore it changes the way in which you can work with, and organize your
 deployment configuration.
 
 With deployments configured in JSON or YAML, files are the smallest unit to work with. There is little that can be done in terms of
@@ -229,7 +229,8 @@ The `default.nix` of the project exposes the following attributes:
 ### Conclusions
 
 - kind is an easy to use, cross-platform solution for running local Kubernetes clusters with minimal runtime dependencies.
-- KubeNix makes working with Kubernetes configuration files more convenient and safer at the same time.
+- KubeNix makes working with Kubernetes configuration files more
+  convenient and safer at the same time (more errors are caught early).
 - Nix is a powerful framework with which all the moving parts of a project can be orchestrated. From the provisoning of all required run and build-time dependencies to the streamliend creation of Docker images, Nix is the underlying concept making KubeNix possible in the first place.
 
 **Notes**:
