@@ -1,5 +1,6 @@
 ---
-title: "Configuring and testing Kubernetes clusters <br/> with KubeNix and Kind"
+title: "Configuring and testing Kubernetes clusters <br/> with KubeNix and kind"
+shortTitle: "Kubernetes, KubeNix and kind"
 author: Tobias Pflug
 ---
 
