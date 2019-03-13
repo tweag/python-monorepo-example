@@ -15,7 +15,7 @@ newtype Freer f a = Freer (forall m. Monad m => (forall t. f t -> m t) -> m a)
 ```
 
 As far as I know, the subject of impredicative encoding of free monads
-was first tackle, as many good things, [by Russell
+was first tackled, as many good things, [by Russell
 O'Connor][oconnor-vl-free-monad], who calls them van Laarhoven
 free monads. This is a fairly mathy read. But the key bit is this:
 
@@ -33,7 +33,7 @@ The comment, in Russell O'Connor's snippet, is crucial. Without it you
 can't establish the isomorphism between `VLMonad` and the traditional
 `Freer` monad.
 
-That's because not all effect can be represented in free monads. The
+That's because not all effects can be represented in free monads. The
 prime example is exception handlers. You can make a function
 
 ```haskell
@@ -98,7 +98,7 @@ blog post][capability-announcement]).
 # Closing thoughts
 
 Free monads, capabilities-as-records and capabilities-as-type-classes,
-are, essentially, three different flavour of the same thing (with free
+are, essentially, three different flavours of the same thing (with free
 monads technically being the more restrictive of the three).
 
 Choosing between the three is, ultimately, a matter of taste. I really
