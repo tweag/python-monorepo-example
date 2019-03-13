@@ -75,6 +75,15 @@ Functions in our newfangled `MyFreeMonad` will look, as functions in a monad do,
 somefunction :: A -> MyFreeMonad Ops B
 ```
 
+Where `Ops` represent the possible effects. For instance, if you need
+a state effect, you would define `Ops` as
+
+```haskell
+data Ops m = Ops
+  { put :: Int -> m ()
+  ; get :: m Int }
+```
+
 But, after all, `MyFreeMonad` is simply a newtype: we could very well
 inline its definition.
 
@@ -106,6 +115,14 @@ to pass the arguments around.
 
 ```haskell
 somefunction :: (Monad m, Ops m) => A -> m B
+```
+
+The definition of `Ops` for a state effect would, then, become
+
+```haskell
+class Ops m where
+  put :: Int -> m ()
+  get :: m Int
 ```
 
 This is precisely the style of programming supported by the
