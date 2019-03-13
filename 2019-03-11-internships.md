@@ -34,7 +34,7 @@ We'd also be very keen to hear about your ideas for things to work on. These can
 be existing projects which could benefit from some concerted effort, or novel
 ideas which you would like assistance in implementing. They should contribute in
 some way to the Haskell/Nix/data science communities, and should be achievable
-in a 1-3 month internship.
+in a 2-3 month internship.
 
 Here's the basic facts for anyone interested in applying:
 - *Time*: we're expecting that most people would be looking at a summer internship
