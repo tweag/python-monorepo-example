@@ -64,7 +64,7 @@ constrained free monad type which supports more effects. Let's call it
 `MyFreeMonad`
 
 ```haskell
-newtype MyFreeMonad ops a = MkFree { runFree :: forall m. Monad m => ops m -> m a}
+newtype MyFreeMonad ops a = MkFree { runFree :: forall m. Monad m => ops m -> m a }
 ```
 
 # Towards capability
@@ -141,7 +141,7 @@ like capabilities-as-type-classes because it pushes the boilerplate
 outside of the program logic.
 
 At the end, what really matters is [the core
-idea][mcguire-free-monads] [shared by][capability-annoucement] [these
+idea][mcguire-free-monads] [shared by][capability-announcement] [these
 three approaches][torreborre-capabilities-as-records]: capabilities
 should be expressed in terms of the program logic, not in terms of
 implementation details.
