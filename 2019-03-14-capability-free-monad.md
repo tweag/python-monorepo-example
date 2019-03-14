@@ -50,8 +50,8 @@ prime example is exception handlers. You can make a function
 handle :: Free MyEffect a -> Free MyEffect a -> Free MyEffect a
 ```
 
-But it would have the property that `(handle s f) >>= k = handle (s
->>= k) (f >>= k)`. That is: exceptions raised after exiting the handler
+But it would have the property that `(handle s f) >>= k = handle (s >>= k) (f >>= k)`.
+That is: exceptions raised after exiting the handler
 would still be caught by the handler. It is not a useless function,
 but it is not an exception handler. This phenomenon is a property of
 the free monad construction. In the impredicative encoding, it can be
