@@ -2,6 +2,10 @@
 title: Capability is about free monads<br/>It's a bird… It's a plane… It's a free monad!
 shortTitle: Capability is about free monads
 author: Arnaud Spiwack
+description: "There has been recent online discussions about
+  impredicative encoding (aka final encoding) of free
+  monads. Capabilities-as-type-classes, as advertised by the
+  capability library, are essentially the same thing."
 ---
 
 The subject of free monads is [resurfacing of
