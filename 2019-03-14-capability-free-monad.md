@@ -66,7 +66,7 @@ So, while being isomorphic to `Free` is a nice theoretical property,
 Russell O'Connor's phrasing presents us with an opportunity: if we
 simply drop the comment restricting the form of `ops`, we get a less
 constrained free monad type which supports more effects. Therefore, we
-won't be pay much attention to it at all in the rest of the post.
+won't pay much attention to it at all in the rest of the post.
 
 # Towards capability
 
@@ -102,7 +102,7 @@ somefunction :: Monad m => Ops m -> A -> m B
 This may look like a familiar style of structuring effect, it is, for
 instance the style [advertised by Éric Torreborre in a recent blog
 post][torreborre-capabilities-as-records]. It's not really so much an
-alternative to free monads as a (slightly more liberal) alternate
+alternative to free monads as a (slightly more liberal)
 presentation of free monads (remember: we have dropped a restriction
 along the way, so that we can have exception-handler effects).
 
