@@ -65,19 +65,15 @@ a`, `f` cannot refer to `m`.
 So, while being isomorphic to `Free` is a nice theoretical property,
 Russell O'Connor's phrasing presents us with an opportunity: if we
 simply drop the comment restricting the form of `ops`, we get a less
-constrained free monad type which supports more effects. Let's call it
-`MyFreeMonad`
-
-```haskell
-newtype MyFreeMonad ops a = MkFree { runFree :: forall m. Monad m => ops m -> m a }
-```
+constrained free monad type which supports more effects. Therefore, we
+won't be pay much attention to it at all in the rest of the post.
 
 # Towards capability
 
-Functions in our newfangled `MyFreeMonad` will look, as functions in a monad do, like
+Functions in `VLMonad` will look, as functions in a monad do, like
  
 ```haskell
-somefunction :: A -> MyFreeMonad Ops B
+somefunction :: A -> VLMonad Ops B
 ```
 
 Where `Ops` represent the possible effects. For instance, if you need
@@ -89,14 +85,14 @@ data Ops m = Ops
   ; get :: m Int }
 ```
 
-But, after all, `MyFreeMonad` is simply a newtype: we could very well
+But, after all, `VLMonad` is simply a newtype: we could very well
 inline its definition.
 
 ```haskell
 somefunction :: A -> forall m. Monad m => Ops m -> m B
 ```
 
-The ordering of types and argument is not too idiomatic. So let's
+The ordering of types and argument is not too idiomatic, though. So let's
 rearrange them a little:
 
 ```haskell
@@ -106,9 +102,9 @@ somefunction :: Monad m => Ops m -> A -> m B
 This may look like a familiar style of structuring effect, it is, for
 instance the style [advertised by Éric Torreborre in a recent blog
 post][torreborre-capabilities-as-records]. It's not really so much an
-alternative to free monads as a slightly more liberal version of free
-monads (remember: we have dropped a restriction along the way, so that
-we can have exception-handler effects).
+alternative to free monads as a (slightly more liberal) alternate
+presentation of free monads (remember: we have dropped a restriction
+along the way, so that we can have exception-handler effects).
 
 Personally, I find it rather tiresome to explicitly carry around the
 capabilities (the `Ops` thing) at every function call. I'd rather keep
@@ -143,12 +139,12 @@ can't have exception handling effects).
 
 Choosing between the three is, ultimately, a matter of taste. I really
 like capabilities-as-type-classes because it pushes the boilerplate
-outside of the program logic.
+outside of the domain logic.
 
 At the end, what really matters is [the core
 idea][mcguire-free-monads] [shared by][capability-announcement] [these
 three approaches][torreborre-capabilities-as-records]: capabilities
-should be expressed in terms of the program logic, not in terms of
+should be expressed in terms of the domain logic, not in terms of
 implementation details.
 
 [mcguire-free-monads]: https://reasonablypolymorphic.com/blog/freer-monads/
