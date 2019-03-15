@@ -102,9 +102,9 @@ somefunction :: Monad m => Ops m -> A -> m B
 This may look like a familiar style of structuring effect, it is, for
 instance the style [advertised by Éric Torreborre in a recent blog
 post][torreborre-capabilities-as-records]. It's not really so much an
-alternative to free monads as a (slightly more liberal)
-presentation of free monads (remember: we have dropped a restriction
-along the way, so that we can have exception-handler effects).
+alternative to free monads as a different presentation of free monads
+(albeit slightly more liberal, if, as per previous section, we ignore
+the restriction from O'Connor's comment).
 
 Personally, I find it rather tiresome to explicitly carry around the
 capabilities (the `Ops` thing) at every function call. I'd rather keep
