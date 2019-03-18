@@ -24,7 +24,7 @@ This is where the [terraform-provider-secret][] plugin comes in. The idea is to 
 
 * No secrets stored in code. It means that we can share the infrastructure code with all the employees. Which is nicely in line with the self-help principle of devops.
 * No secrets stored on the developer's laptop. It they get stolen, it's just a matter of resetting their GCS or S3 bucket access.
-* Secrets encrypted at rest in the remote stat (if configure properly)
+* Secrets encrypted at rest in the remote state (if configure properly)
 * Auditable access. Each access to the GCS or S3 bucket can be logged for out-of-band breach correlation
 * No need to send screts over Slack.
 * Easy secret rotation.
