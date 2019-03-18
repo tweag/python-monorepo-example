@@ -99,7 +99,7 @@ Before using this plugin, make sure to properly secure the remote state. More in
 
 Terraform is not designed as a security tool, unlike for example HashiCorp Vault, but depending on your security requirements, is already a step up from having secrets recorded into code. All the secrets are now stored in a single place which makes it easier to handle and audit.
 
-I hope that this little plugin will provide useful in your toolbox.
+I hope that this little plugin will prove to be useful in your toolbox.
 
 ## Sponsorship
 
