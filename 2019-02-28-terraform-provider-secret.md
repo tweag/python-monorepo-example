@@ -37,7 +37,7 @@ Or if you are fortunate enough to be using [Nix][], the `terraform-full` package
 
 ## Usage example
 
-To add a new secret, first add the resource into the code. The resource has no configuration option. In this example we want to store the DataDog API key:
+To add a new secret, first declare the resource in the code. The resource has no configuration option. In this example we want to store the DataDog API key:
 
 ```tf
 resource "secret_resource" "datadog_api_key" {}
