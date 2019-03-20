@@ -45,7 +45,7 @@ free monads.
 data Free f a = Return a | Free (f (Free f a))
 ```
 
-# Less is more
+## Less is more
 
 The comment, in Russell O'Connor's snippet, is crucial in the
 proof. Without it you can't establish the isomorphism between
@@ -72,7 +72,7 @@ simply drop the comment restricting the form of `ops`, we get a less
 constrained free monad type which supports more effects. Therefore, we
 won't pay much attention to it at all in the rest of the post.
 
-# Towards capability
+## Towards capability
 
 Functions in `VLMonad` will look, as functions in a monad do, like
  
@@ -136,7 +136,7 @@ This is precisely the style of programming supported by the
 [capability][hackage-capability] library (see also our [announcement
 blog post][capability-announcement]).
 
-# Closing thoughts
+## Closing thoughts
 
 Free monads, capabilities-as-records and capabilities-as-type-classes,
 are, essentially, three different flavours of the same thing (with
