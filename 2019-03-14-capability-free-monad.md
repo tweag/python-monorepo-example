@@ -20,9 +20,10 @@ newtype Freer f a = Freer (forall m. Monad m => (forall t. f t -> m t) -> m a)
 
 That is: given a monad `m`, and an interpretation of my operations
 (`f`) in that monad, I can build an `m a`.
-Capabilities-as-type-classes, as embodied by the [capability][hackage-capability] library,
-are essentially the same thing. That's the point I will make later in
-this post.
+
+As it happens, capabilities-as-type-classes, as embodied by the
+[capability][hackage-capability] library, are essentially the same
+thing. Let me explain.
 
 As far as I know, the subject of impredicative encoding of free monads
 was first tackled, as many good things, [by Russell
