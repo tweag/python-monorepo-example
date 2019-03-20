@@ -1,5 +1,5 @@
 ---
-title: Capability is about free monads<br/> It's a bird… It's a plane… It's a free monad!
+title: Capability is about free monads.<br/> It's a bird… It's a plane… It's a free monad!
 shortTitle: Capability is about free monads
 author: Arnaud Spiwack
 description: "There has been recent online discussions about
