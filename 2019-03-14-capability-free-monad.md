@@ -82,7 +82,8 @@ a state effect, you would define `Ops` as
 ```haskell
 data Ops m = Ops
   { put :: Int -> m ()
-  ; get :: m Int }
+  , get :: m Int
+  }
 ```
 
 But, after all, `VLMonad` is simply a newtype: we could very well
@@ -99,7 +100,8 @@ rearrange them a little:
 somefunction :: Monad m => Ops m -> A -> m B
 ```
 
-This may look like a familiar style of structuring effect, it is, for
+If this may look like a familiar style of structuring effect, it is.
+See for
 instance the style [advertised by Éric Torreborre in a recent blog
 post][torreborre-capabilities-as-records]. It's not really so much an
 alternative to free monads as a different presentation of free monads
@@ -141,11 +143,11 @@ Choosing between the three is, ultimately, a matter of taste. I really
 like capabilities-as-type-classes because it pushes the boilerplate
 outside of the domain logic.
 
-At the end, what really matters is [the core
+At the end of the day, what really matters is [the core
 idea][mcguire-free-monads] [shared by][capability-announcement] [these
-three approaches][torreborre-capabilities-as-records]: capabilities
+three approaches][torreborre-capabilities-as-records]: *capabilities
 should be expressed in terms of the domain logic, not in terms of
-implementation details.
+implementation details*.
 
 [mcguire-free-monads]: https://reasonablypolymorphic.com/blog/freer-monads/
 [mcguire-impredicative-free-monads]: https://reasonablypolymorphic.com/blog/too-fast-too-free/index.html
