@@ -9,9 +9,9 @@ description: "There has been recent online discussions about
 ---
 
 The subject of free monads is [resurfacing of
-late][mcguire-free-monads], as it does from time to time. What
-prompted this write-up is that Sandy McGuire [followed
-up][mcguire-impredicative-free-monads] his post with a discussion about
+late][maguire-free-monads], as it does from time to time. What
+prompted this write-up is that Sandy Maguire [followed
+up][maguire-impredicative-free-monads] his post with a discussion about
 an impredicative encoding (aka final encoding) of free monads:
 
 ```haskell
@@ -148,13 +148,13 @@ like capabilities-as-type-classes because it pushes the boilerplate
 outside of the domain logic.
 
 At the end of the day, what really matters is [the core
-idea][mcguire-free-monads] [shared by][capability-announcement] [these
+idea][maguire-free-monads] [shared by][capability-announcement] [these
 three approaches][torreborre-capabilities-as-records]: *capabilities
 should be expressed in terms of the domain logic, not in terms of
 implementation details*.
 
-[mcguire-free-monads]: https://reasonablypolymorphic.com/blog/freer-monads/
-[mcguire-impredicative-free-monads]: https://reasonablypolymorphic.com/blog/too-fast-too-free/index.html
+[maguire-free-monads]: https://reasonablypolymorphic.com/blog/freer-monads/
+[maguire-impredicative-free-monads]: https://reasonablypolymorphic.com/blog/too-fast-too-free/index.html
 [oconnor-vl-free-monad]: http://r6.ca/blog/20140210T181244Z.html
 [torreborre-capabilities-as-records]: https://medium.com/barely-functional/freer-doesnt-come-for-free-c9fade793501
 [hackage-capability]: http://hackage.haskell.org/package/capability
