@@ -88,7 +88,7 @@ A typical workflow for us is to spawn a terminal running
 shell. If I'm not editing dependencies, sometimes I'll sometimes even
 skip the `lorri watch` and just use the cached evaluation.
 
-lorri was built by Tweag for Target, and we are so excited to introduce
+lorri was built by Tweag for [Target][target], and we are so excited to introduce
 it to the public. lorri is beta, open source (Apache-2.0) and
 [a tutorial is available at Target/lorri][tutorial]. Give it a try!
 
@@ -96,5 +96,6 @@ it to the public. lorri is beta, open source (Apache-2.0) and
 
 [direnv]: https://direnv.net/
 [tutorial]: https://github.com/target/lorri#tutorial
+[target]: https://target.com
 
 <script src="../asciinema/asciinema-player.js"></script>
