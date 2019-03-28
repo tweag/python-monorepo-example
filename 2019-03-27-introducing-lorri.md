@@ -1,11 +1,8 @@
 ---
-title: "Introducing lorri, your project's nix-env"
-shortTitle:
-author: Graham Christensen
+title: "Introducing lorri, <br/>your project's nix-env"
+author: Graham Christensen, Philip Patsch
 ---
 
-<link rel="stylesheet" type="text/css" href="/web-stuff/asci-cust.css" />
+<asciinema-player src="../anims/2019-03-27-lorri-demo.cast" cols="70" rows="30"></asciinema-player>
 
-<asciinema-player src="/resources/2019-03-27-lorri-demo.cast" cols="70" rows="30"></asciinema-player>
-
-<script src="/web-stuff/asciinema.js"></script>
+<script src="../asciinema/asciinema-player.js"></script>
