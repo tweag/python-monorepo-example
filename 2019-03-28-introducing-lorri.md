@@ -3,7 +3,7 @@ title: "Introducing lorri, <br/>your project's nix-env"
 author: Graham Christensen, Philip Patsch
 ---
 
-Today we're excited to announce lorri, a new tool for NixOS, Linux,
+Today we're excited to announce [lorri](https://github.com/target/lorri), a new tool for NixOS, Linux,
 and macOS that makes developing with Nix even nicer:
 
 <asciinema-player src="../anims/2019-04-01-lorri-demo.cast" cols="70" rows="30"></asciinema-player>
