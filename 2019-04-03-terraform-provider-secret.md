@@ -108,7 +108,7 @@ terraform import secret_resource.gce_service_account_key "$(base64 service_accou
 
 and use the `base64decode()` interpolation function in the Terraform code to get back the binary value:
 
-```tf
+```sh
 locals {
   gce_service_account_key = "${base64decode(secret_resource.gce_service_account_key.value)}"
 }
