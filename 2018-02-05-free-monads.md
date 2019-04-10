@@ -2,6 +2,7 @@
 title: Free monads for cheap interpreters
 author: James Haydon
 featured: yes
+tags: haskell
 ---
 
 The utility of free monads can show up in surprising places. One of

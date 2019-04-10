@@ -2,6 +2,7 @@
 title: R and Haskell:<br>best of both worlds with HaskellR
 author: Sigrid Keydana
 featured: yes
+tags: haskell
 ---
 
 *A guest post by [Sigrid Keydana][sigrid-keydana] telling us the

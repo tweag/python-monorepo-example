@@ -2,6 +2,7 @@
 title: We're hiring!<br>(Software engineer / devops)
 preview_image: /images/2015-08-20-were-hiring/preview_image.jpg
 featured: no
+tags: hiring
 ---
 
 Tweag I/O is looking for distributed systems engineers and a devops engineer to join a brand new team starting on a new, fully funded 3 year project in Haskell and in C to develop the next wave of storage solutions, targeted at the Exascale.

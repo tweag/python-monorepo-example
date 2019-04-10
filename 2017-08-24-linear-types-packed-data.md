@@ -3,6 +3,7 @@ title: Compact normal forms + linear types <br>= efficient network communication
 shortTitle: Compact normal forms + linear types
 author: Arnaud Spiwack
 featured: yes
+tags: haskell
 ---
 
 We saw [last time][blog-post-sockets] that with linear types, we could

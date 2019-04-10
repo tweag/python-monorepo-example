@@ -1,6 +1,7 @@
 ---
 title: Implementing a safer sort<br/> with linear types
 author: Alexander Vershilov, Arnaud Spiwack
+tags: haskell
 ---
 
 In the ["all about reflection"][blog-reflection] post, we introduced

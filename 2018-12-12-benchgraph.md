@@ -2,6 +2,7 @@
 title: "DIY benchmark history <br/>with Criterion and Shiny"
 shortTitle: "DIY benchmark history"
 author: "Théophane Hufschmitt"
+tags: devops
 ---
 
 If you're a conscientious developer like ~~I am~~ my boss is, you probably have

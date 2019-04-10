@@ -2,6 +2,7 @@
 title: Immutability and unboxing in array programming
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell
 ---
 
 *This is the third post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html) and [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), too.*

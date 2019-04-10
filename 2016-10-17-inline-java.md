@@ -2,6 +2,7 @@
 title: "A new ecosystem for Haskell:<br> the JVM"
 author: Mathieu Boespflug, Alp Mestanogullari
 featured: yes
+tags: haskell
 ---
 
 By now, Haskell has first class support for seamlessly embedding

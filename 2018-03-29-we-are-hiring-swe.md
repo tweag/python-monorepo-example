@@ -1,6 +1,7 @@
 ---
 title: "We're hiring! <br/> Software engineers"
 author: "Mathieu Boespflug"
+tags: hiring
 ---
 
 We're hiring multiple software engineers to join our team.

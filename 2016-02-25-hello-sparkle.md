@@ -3,6 +3,7 @@ title: Haskell meets large scale<br>distributed analytics
 author: Alp Mestanogullari, Mathieu Boespflug
 preview_image: /images/2016-02-25-hello-sparkle/preview_image.png
 featured: yes
+tags: haskell, data-science
 ---
 
 Large scale distributed applications are complex: there are effects at scale that matter far more than when your application is basked in the warmth of a single machine. Messages between any two processes may or may not make it to their final destination. If reading from a memory bank yields corrupted bytes about once a year, with 10,000 nodes this is likely to happen within the hour. In a million components system some hardware somewhere will be in a failed state, continuously. And it takes cunning to maximize throughput when network latencies are vastly superior to processing units' crunch power. The key idea behind distributed computing middlewares such as [Hadoop](http://hadoop.apache.org/) is to capture common application patterns, and solve coping with these effects once and for all for each such pattern, so that applications writers don't have to do so themselves from scratch every time. Today we're introducing a tech preview of [sparkle](https://github.com/tweag/sparkle). The motto: implement a robust and scalable distributed computing middleware for Haskell, by reusing [Apache Spark](http://spark.apache.org/) (itself built on top of parts of Hadoop). <!--more-->

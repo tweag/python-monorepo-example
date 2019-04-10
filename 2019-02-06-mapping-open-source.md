@@ -4,6 +4,7 @@ shortTitle: "Mapping a Universe of Open Source Software"
 author: Matthias Meschede
 image: "posts/nixverse_without_labels.png"
 description: "The repositories of distributions such as Debian and Nixpkgs are among the largest collections of open source (and some unfree) software. They are complex systems that connect and organize many interdependent packages.  In this blog post I'll try to shed some light on them from the perspective of Nixpkgs, mostly with visualizations of its complete dependency graph."
+tags: nix, data-science
 ---
 
 [nixpkgs]: https://nixos.org/nixpkgs/

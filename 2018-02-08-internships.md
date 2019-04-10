@@ -2,6 +2,7 @@
 title: "Tweag Internship Programme"
 shortTitle: "Internships at Tweag"
 author: "Nicholas Clarke"
+tags: hiring
 ---
 
 Tweag I/O is inviting applications from students for our paid internship

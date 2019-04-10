@@ -2,6 +2,7 @@
 title: "Asterius GHC WebAssembly backend<br/>reaches TodoMVC"
 shortTitle: TodoMVC in Haskell via WebAssembly
 author: Shao Cheng
+tags: haskell
 ---
 
 Getting your browser to print "Hello World!" is fun, and a milestone

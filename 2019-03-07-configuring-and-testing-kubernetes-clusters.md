@@ -2,6 +2,7 @@
 title: "Configuring and testing Kubernetes clusters <br/> with KubeNix and kind"
 shortTitle: "Kubernetes, KubeNix and kind"
 author: Tobias Pflug
+tags: nix, devops
 ---
 
 In a recent project I was tasked with creating a local testing environment for a Kubernetes cluster the client was actively working on.

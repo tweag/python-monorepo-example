@@ -2,6 +2,7 @@
 title: The Exodus to Streamgard,<br/> an epic poem
 author: Yves Parès
 featured: yes
+tags: haskell
 ---
 
 *<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span>

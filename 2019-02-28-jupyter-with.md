@@ -4,6 +4,7 @@ shortTitle: "Declarative, Reproducible Jupyter Environments"
 author: Juan Simões, Matthias Meschede
 description: "Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem."
 image: "posts/jupyter-kernels-box.png"
+tags: nix, data-science
 ---
 
 [jupyter-ihaskell]: ./2019-01-23-jupyterlab-ihaskell.html

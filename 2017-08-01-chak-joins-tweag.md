@@ -2,6 +2,7 @@
 title: I am a <br>functional programming evangelist
 author: Manuel M T Chakravarty
 featured: yes
+tags: hiring
 ---
 
 I have had a passion for programming ever since I wrote my first piece of code as a kid. I am not sure why. Maybe it is the absolute, god-like control over the behaviour of the machine, or losing myself in the details of the code. In any case, it is intriguing. When teenage play turned into a more serious academic endeavour and finally into professional work, I couldn’t help but wonder whether programming isn’t unnecessarily complicated; whether we are missing the bigger picture. 

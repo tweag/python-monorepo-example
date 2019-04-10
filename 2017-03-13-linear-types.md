@@ -2,6 +2,7 @@
 title: Linear types<br>make performance more predictable
 author: Jean-Philippe Bernardy and Arnaud Spiwack
 featured: yes
+tags: haskell
 ---
 
 We're extending GHC with linear types.

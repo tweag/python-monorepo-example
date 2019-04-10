@@ -2,6 +2,7 @@
 title: Streaming programs without laziness:<br> a short primer
 shortTitle: Streaming programs without laziness
 author: Facundo Domínguez and Mathieu Boespflug
+tags: haskell
 ---
 
 In school, we're taught that I/O is a simple affair: read data in,

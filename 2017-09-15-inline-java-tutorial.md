@@ -2,6 +2,7 @@
 title: "Java from Haskell:<br/> a tutorial"
 author: Facundo Domínguez
 featured: yes
+tags: haskell
 ---
 
 Our
