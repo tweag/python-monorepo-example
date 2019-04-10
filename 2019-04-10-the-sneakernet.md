@@ -95,9 +95,9 @@ compares to more traditional technology:
 />
 </a>
 
-What about loading and unloading time the data from the disks? And the food
-that the pigeons need to fly such large distances? What is the best sneaker
-brand of for transferring data by hand?
+What about the time needed for loading and unloading data from the disks? And
+the food that the pigeons need to fly such large distances? What is the best
+sneaker brand for transferring data by hand?
 
 We are sure that these questions can be answered and that the Sneakernet is the
 future. Besides the packet loss problem, that can become... problematic. And
