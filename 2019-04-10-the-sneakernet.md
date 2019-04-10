@@ -38,7 +38,7 @@ For instance, a human can carry about 30kg and walk around 5km/h. 30kg
 corresponds to 7500 of those 4TB hard disks. This means that a human can carry
 around 30,000 TB of data!
 
-In case that this number doesn't speak to you: it corresponds to 30,000,000 kb.
+In case that this number doesn't speak to you: it corresponds to 30,000,000 GB.
 Doesn't speak to you either? Well, it's 30 PB. Still not happy? Let's go back
 to old-school technology then: 30 PB corresponds to the entire internet traffic of
 one month [_in the year 1999_](https://en.wikipedia.org/wiki/Internet_traffic#Global_Internet_traffic).
