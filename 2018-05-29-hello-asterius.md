@@ -2,6 +2,7 @@
 title: "Fibonacci compiles end-to-end —<br/> Haskell to WebAssembly via GHC"
 shortTitle: Compiling Haskell to WebAssembly
 author: Shao Cheng
+tags: haskell
 ---
 
 [Asterius](https://github.com/tweag/asterius) is an experimental WebAssembly backend for GHC. We aim to support most GHC features while making the emitted WebAssembly code as small and fast as possible. The project recently reached an exciting milestone: for the first time, simple Haskell functions can be compiled all the way down to WebAssembly from Haskell and executed with a real JavaScript runtime! While this is an important milestone, it is merely the beginning of the road. Nevertheless, it is a good time to publicly announce our endeavour to provide Haskell with a high-performance target that you can run in your browser.

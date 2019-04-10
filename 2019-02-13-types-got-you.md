@@ -2,6 +2,7 @@
 title: The types got you
 shorttitle: The types got you
 author: Mark Karpov
+tags: haskell
 ---
 
 Haskell is in a way a unique language. It is, to be clear, a language people

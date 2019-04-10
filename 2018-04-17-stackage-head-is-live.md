@@ -1,6 +1,7 @@
 ---
 title: Stackage HEAD<br/>is now live!
 author: Mark Karpov, Manuel Chakravarty
+tags: haskell
 ---
 
 We are happy to announce that Stackage HEAD is now functional. For those who

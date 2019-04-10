@@ -2,6 +2,7 @@
 title: "Diversity through inline code"
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell
 ---
 
 Haskell is an awesome language, but we need to remember that it is not very useful in isolation. In almost any realistic application, Haskell has to coexist with other languages, even if only to call existing C libraries or to make use of operating system services. In actual practice, the more easily we can fit Haskell into existing ecosystems, the more application domains we can unlock.

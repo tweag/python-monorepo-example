@@ -2,6 +2,7 @@
 title: "Haskell WebAssembly calling JavaScript and back again"
 shortTitle: Asterius gets a JavaScript FFI
 author: Shao Cheng
+tags: haskell
 ---
 
 [Previously][hello-asterius], we announced the [Asterius](https://github.com/tweag/asterius) compiler, a new GHC-backend that translates Haskell to WebAssembly. Since then, we made a lot of progress; not just by supporting more of Haskell's language features, but also by improving interoperability. Today, we are proud to introduce a critical new feature: Haskell-JavaScript interop via a dedicated foreign function interface (FFI). Why is this important? It means we can finally interact with browser's DOM to in the future create full webapps.

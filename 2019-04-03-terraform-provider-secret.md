@@ -1,8 +1,8 @@
 ---
-tags: terraform, secrets
 title: Securely storing secrets in Terraform<br/> with terraform-provider-secret
 shortTitle: Storing secrets in Terraform
 author: Jonas Chevalier
+tags: devops
 ---
 
 [digital-asset]: https://www.digitalasset.com

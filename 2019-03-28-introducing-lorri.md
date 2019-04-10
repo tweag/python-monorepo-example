@@ -1,6 +1,7 @@
 ---
 title: "Introducing lorri, <br/>your project's nix-env"
 author: Graham Christensen, Philip Patsch
+tags: nix, devops
 ---
 
 Today we're excited to announce [lorri](https://github.com/target/lorri), a new tool for NixOS, Linux,

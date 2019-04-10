@@ -2,6 +2,7 @@
 title: Using Stackage for GHC regression testing
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell
 ---
 
 A recent development in Haskell land is the formation of

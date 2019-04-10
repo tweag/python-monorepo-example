@@ -3,6 +3,7 @@ title: "All about reflection:<br/> a tutorial"
 shortTitle: "All about reflection"
 author: Arnaud Spiwack
 featured: yes
+tags: haskell
 ---
 
 An important device in the tool belt I carry around everyday

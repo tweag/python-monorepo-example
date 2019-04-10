@@ -2,6 +2,7 @@
 title: "GHC compiler plugins in the wild:<br/> typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
+tags: haskell
 ---
 
 [Previously][inline-java-tutorial], we discussed how to

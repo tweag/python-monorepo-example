@@ -2,6 +2,7 @@
 title: "capability: the ReaderT pattern without boilerplate"
 shortTitle: Announcing capability
 author: Andreas Herrmann, Arnaud Spiwack
+tags: haskell
 ---
 
 About a year ago, Michael Snoyman made a blog post about

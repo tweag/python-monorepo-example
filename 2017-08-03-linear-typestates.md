@@ -2,6 +2,7 @@
 title: Encode state transitions in types <br>using linear types
 author: Arnaud Spiwack
 featured: yes
+tags: haskell
 ---
 
 At the time of [our first post on linear types][blog-post-one], we

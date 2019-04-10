@@ -2,6 +2,7 @@
 title: Array programming in Haskell
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell
 ---
 
 Array programming in Haskell is attractive, but it is also somewhat confusing. Haskell’s functional syntax is close to the mathematical notation that is often used to develop and explain the algorithms on which array programs are based, which leads to great clarity of expression. At the same time, we can execute Haskell array code with performance that is competitive with more low-level, tedious to write and debug code. That is the good news, and it is why array programming in Haskell is increasingly gaining traction.

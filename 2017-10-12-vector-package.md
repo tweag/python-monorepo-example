@@ -2,6 +2,7 @@
 title: Array fusion with vector
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell
 ---
 
 *This is the fourth post in a series about array programming in Haskell — you might be interested in the [first](http://www.tweag.io/posts/2017-08-09-array-programming-in-haskell.html), [second](http://www.tweag.io/posts/2017-08-31-hmatrix.html), and [third](http://www.tweag.io/posts/2017-09-27-array-package.html), too.*

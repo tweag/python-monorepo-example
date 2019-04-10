@@ -2,6 +2,7 @@
 title: Haskell compute PaaS<br>with sparkle
 author: Alp Mestanogullari, Mathieu Boespflug
 featured: yes
+tags: haskell, data-science
 ---
 
 Maintaining a compute cluster for batch or stream data processing is

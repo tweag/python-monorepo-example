@@ -1,6 +1,7 @@
 ---
 title: "Funflow Example:<br/>emulating Make"
 author: Divesh Otwani, Nicholas Clarke
+tags: haskell
 ---
 
 [Funflow](https://github.com/tweag/funflow) is a workflow management

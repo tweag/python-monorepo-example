@@ -1,6 +1,7 @@
 ---
 title: Typing Nix
 author: Théophane Hufschmitt
+tags: nix
 ---
 
 *Théophane is a summer intern here at Tweag I/O. Thanks also in part

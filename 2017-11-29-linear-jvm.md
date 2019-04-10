@@ -2,6 +2,7 @@
 title: Making two garbage collectors be good neighbours <br/> (using linear types)
 shortTitle: Making two garbage collectors be good neighbours
 author: Facundo Domínguez and Mathieu Boespflug
+tags: haskell
 ---
 
 Foreign function interfaces (FFI) allow fast interop between

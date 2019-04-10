@@ -2,6 +2,7 @@
 title: "We're hiring!<br> Technical evangelist"
 author: Tweag I/O engineering team
 featured: yes
+tags: hiring
 ---
 
 Our mission: deliver correct high-performance software faster. To do

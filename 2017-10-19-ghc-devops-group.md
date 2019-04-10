@@ -2,6 +2,7 @@
 title: Announcing the <br>GHC DevOps Group
 author: Manuel M T Chakravarty
 featured: yes
+tags: haskell, devops
 ---
 As Haskell is increasingly used in production environments, the Haskell toolchain is of critical importance to a growing number of people and organisations. At the heart of this toolchain is [GHC (The Glasgow Haskell Compiler)](https://www.haskell.org/ghc/). Conceived nearly
 thirty years ago as a research project by [Simon Peyton Jones](https://www.microsoft.com/en-us/research/people/simonpj/), GHC has long existed at the intersection of research and commercial use, due to the increasing popularity of Haskell. To provide stability and a basic level of support, the project was generously supported by Microsoft Research for many years. However, as more and more companies and others are using GHC in mission-critical ways, the bar is going up. We need a solid, reliable, well-engineered, predictable GHC toolchain; and we need to achieve that without compromising GHC innovation and vitality.
