@@ -25,7 +25,7 @@ pointed on tiny objects in a cave - the physicists.
 As a new-school enterprise, Tweag immediately realized the potential of
 shipping hard disks and did a quick explorative study about future possibilities
 of this technology called the [Sneakernet](https://en.wikipedia.org/wiki/Sneakernet):
-Could we give a new life to the [homing pigeon](https://tools.ietf.org/html/rfc114)
+Could we give a new life to the [homing pigeon](https://tools.ietf.org/html/rfc1149)
 industry? How about transportation means that are optimized to carry incredible
 amounts of weight? How about transportation means that are designed to be fast
 as a bullet?
