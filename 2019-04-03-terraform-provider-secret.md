@@ -86,8 +86,8 @@ That's it!
 In case where the secret gets leaked or an employee leaves the company, rotating the secret is also quite simple.
 
 ```sh
-terraform state rm secret_resourc.datadog_api_key
-terraform import secret_resourc.datadog_api_key NEW_TOKEN
+terraform state rm secret_resource.datadog_api_key
+terraform import secret_resource.datadog_api_key NEW_TOKEN
 ```
 
 _Note_: This operation is unfortunately not atomic.
@@ -97,7 +97,7 @@ _Note_: This operation is unfortunately not atomic.
 To import multi-line secrets, make sure to escape them properly:
 
 ```sh
-terraform import secret_resourc.my_cert "$(cat my_cert.pem)"
+terraform import secret_resource.my_cert "$(cat my_cert.pem)"
 ```
 
 If the secret contains binary data, use `base64` to store the information:
