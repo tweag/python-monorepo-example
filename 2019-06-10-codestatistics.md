@@ -1,8 +1,8 @@
---
-title: Code Line Patterns: two-dimensional representations of Stackage and PyPi
-author: Simeon Carstens, Matthias Meschede
-date: 10/Jun/2019
---
+---
+title: "Code Line Patterns: two-dimensional representations of Stackage and PyPi"
+author: "Simeon Carstens, Matthias Meschede"
+date: "10/06/2019"
+---
 
 Code Line Patterns: two-dimensional representations of Stackage and PyPi
 ========================================================================
