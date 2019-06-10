@@ -1,21 +1,16 @@
 ---
-title: "Code Line Patterns: two-dimensional representations of Stackage and PyPi"
+title: "Code Line Patterns: <br/>Two-dimensional representations of Stackage and PyPi"
+shortTitle: "Code Line Patterns"
 author: "Simeon Carstens, Matthias Meschede"
-date: "10/06/2019"
+tags: data-science
 ---
 
-Code Line Patterns: two-dimensional representations of Stackage and PyPi
-========================================================================
-
-
-Motivation
-----------
 We all know that the code we write is not random, but follows patterns. Can we detect these patterns in a database of code? How do these patterns differ between programming languages? Can we somehow exploit these patterns? In this blog post, we try to explore these questions using databases of Haskell and Python source code.
 
-The data
---------
+## The data
+
 Our datasets come from Haskell's and Python's associated package repositories: In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
-Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this subsampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.  
+Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.  
 A subject related to our analysis, from which we will borrow techniques later on, is [natural language processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing). NLP is concerned with patterns in *natural* human languages. In contrast, we are analyzing *constructed* languages.
 
 Let's look at some characteristics of our data set and compared to a data set that is used for state-of-the-art NLP models, specifically the number of packages, total lines of code (LOC), per package lines of code, number of words, and the most common word:
@@ -51,7 +46,7 @@ It is straightforward to determine a package's LOC fraction that corresponds to 
 This fraction is just the LOC with import and language pragma keywords divided by the number of all LOC.
 The following histograms show the results:
 
-![Histograms of fractions of LOC with boilerplate code for both the Python and Haskell data set](../../assets/img/posts/codestatistics_histogram_importfractions_both.png)
+![Histograms of fractions of LOC with boilerplate code for both the Python and Haskell data set](../img/posts/codestatistics_histogram_importfractions_both.png)
 
 Haskell tends to have more `import` and `language` statements, our definition of boilerplate code, per package than Python, as indicated by the average percentage (dashed lines):
 for Python, it's about 6%, while for Haskell it's about 9.5%.
@@ -63,7 +58,9 @@ We can also ask which packages are imported most often.
 Given a LOC with an `import` statement, it is straightforward to extract the name of the imported package.
 For Python, we first look at basic `import [...]` statements:
 
-![Most frequent Python packages imported via basic import [...] statements](../../assets/img/posts/codestatistics_py_basic_imports.png)![Most frequent Python packages imported via from [...] import [...] statements](../../assets/img/posts/codestatistics_py_from_imports.png)
+![Most frequent Python packages imported via basic import [...] statements](../img/posts/codestatistics_py_basic_imports.png)
+
+![Most frequent Python packages imported via from [...] import [...] statements](../img/posts/codestatistics_py_from_imports.png)
 
 
 Few surprises for Python's basic `import`s - `os` and `sys` are the most frequently imported modules.
@@ -75,7 +72,7 @@ But things change dramatically when considering `from [...] import [...]` statem
 
 Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and `network` imports:
 
-![Most frequently imported Haskell modules](../../assets/img/posts/codestatistics_hask_boilerplate.png)!
+<img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
 Imports from the `data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequentlu used.
@@ -86,8 +83,7 @@ Perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field:
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma.
 
-Visualizing more advanced LOC patterns
---------------------------------------
+## Visualizing more advanced LOC patterns
 
 Let's dive into less obvious patterns in our data sets:
 how about extracting patterns from the data sets without specifying a priori what keywords they correspond to?
@@ -117,26 +113,30 @@ We choose to measure distance (or, equivalently, similarity) in feature space by
 A popular technique to reduce the number of dimensions while trying to maintain the structure of the data or, equivalently, the distances between similar data points, is UMAP.
 UMAP is a non-linear technique, which means it's well suited for data sets which can not easily be projected on flat manifolds. We first calculate the UMAP for both the Python and the Haskell data set and color points depending on whether the LOC they represent contain certain keywords:
 
-[![UMAP embedding of the Python code data set](../../assets/img/posts/codestatistics_py_umap_embedding_words_smaller.png)](../../assets/img/posts/codestatistics_py_umap_embedding_words_large.png)[![UMAP embedding of the Haskell code data set](../../assets/img/posts/codestatistics_hask_umap_embedding_words_smaller.png)](../../assets/img/posts/codestatistics_hask_umap_words_large.png)
-
+<a href="../img/posts/codestatistics_py_umap_embedding_words_large.png">
+<img title="UMAP embedding of the Python code data set" src="../img/posts/codestatistics_py_umap_embedding_words_smaller.png" style="max-width: 100%;max-height: 100%;"/>
+</a>
 
 We immediately notice the complex structure of the data set, which seems to consist of a large number of clusters comprising very similar LOC. We expect many LOCs containing the keywords we chose to be close together on the UMAP which is indeed what we observe, although they no not necessarily form connected clusters. Furthermore, one LOC could contain several of the keywords, which would not be visible in our representation.
 
 To find out what kind of code other clusters represent, we perform clustering on the UMAP embedding. Starting with the Python data set, we annotate the twenty most dense and reasonably large clusters with the two words which co-occur most frequently in a cluster:
 
-[![UMAP embedding of the Python code data set](../../assets/img/posts/codestatistics_py_umap_embedding_clusters_small.png)](../../assets/img/posts/codestatistics_py_umap_embedding_clusters_large.png)
+<a href="../img/posts/codestatistics_py_umap_embedding_clusters_large.png">
+<img title="UMAP embedding of the Python code data set" src="../img/posts/codestatistics_py_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
+</a>
 
 It is reassuring to find clusters with the most frequent words being `for` and `in`, which corresponds to Python `for`-loops, or `assertEqual` and `self`, which stems from the `unittest` framework. Some other clusters, though, do not remind us of common Python idioms. The most common words in cluster 17 are `xd` and `xc`. Looking up what kinds of LOC contain both of these words, we find that these occur very often in binary strings.
 
 Performing the same analysis for the Haskell data set, we find clusters such as a very well-defined one containing often both `text` and `maybe` and clusters corresponding to popular imports:
 
-[![UMAP embedding of the Haskell code data set](../../assets/img/posts/codestatistics_hask_umap_embedding_clusters_small.png)](../../assets/img/posts/codestatistics_hask_umap_embedding_clusters_large.png)
+<a href="../img/posts/codestatistics_hask_umap_embedding_clusters_large.png">
+<img title="UMAP embedding of the Haskell code data set" src="../img/posts/codestatistics_hask_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
+</a>
 
 Furthermore, the big blue cluster (#16) seems to contain mostly auto-generated code from the `amazonka` package, which implements communication with Amazon Web Service-compatible APIs.
 
+## Conclusion
 
-Conclusion
-----------
 We found several interesting patterns in both Python and Haskell code - clusters of common language idioms, but also unexpected clusters stemming from byte strings.
 With these results, we could now build a very basic code completion tool:
 while you type, that tool would continuously check to which cluster the line you're typing most likely belongs to and suggest you words from that cluster.
@@ -153,9 +153,8 @@ the analysis in this blog post was performed in a strictly reproducible pipeline
 This means you can [download a single file](http://www.tweag.io/linkgoeshere) and then rerun our analysis by typing just one single line.
 Reproducible pipelines for data science using Nix will be discussed in a forthcoming blog post - stay tuned!
 
+## Appendix: data preprocessing and technical details
 
-Appendix: data preprocessing and technical details
---------------------------------------------------
 After downloading the source code in the form of archives, we unpack them and all source files within a given package are concatenated and written to one single big corpus file.
 Some of the above analyses require us to know from which package a certain LOC originates.
 We thus also write a single file for each package containing a concatenation of all source files of that package.
