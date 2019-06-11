@@ -75,13 +75,13 @@ Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
-Imports from the `data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequentlu used.
-We finally take a look at language pragmas and ask what the most frequently used ones are:
-
-Perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field:
+Imports from the `data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma.
+We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
+The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
 
 ## Visualizing more advanced LOC patterns
 
@@ -108,7 +108,9 @@ To achieve that, we need a measure of "closeness", that is, a notion of distance
 On a map, this is easy; we simply take a ruler and measure the (Euclidean) distance between two points. 
 But we require a distance not only on the map, but also in feature space:
 after all, if two points close on the map represent similar LOC with similar features, they should also be similar (or "close") in feature space.
-We choose to measure distance (or, equivalently, similarity) in feature space by the Hamming distance (see Appendix).
+We choose to measure distance (or, equivalently, similarity) in feature space by counting the number of unequal entries of the two vectors.
+This is called the Hamming distance.
+In other words, we count how many of the 500 most frequent words appears in only one LOC, but not in the other.
 
 A popular technique to reduce the number of dimensions while trying to maintain the structure of the data or, equivalently, the distances between similar data points, is UMAP.
 UMAP is a non-linear technique, which means it's well suited for data sets which can not easily be projected on flat manifolds. We first calculate the UMAP for both the Python and the Haskell data set and color points depending on whether the LOC they represent contain certain keywords:
@@ -167,11 +169,7 @@ Furthermore, single-letter words are neglected.
 
 Having built these feature vectors, we apply a popular dimensionality reduction techniques, [UMAP](https://arxiv.org/pdf/1802.03426.pdf).
 UMAP is a manifold embedding technique, meaning that it tries to represent each data point in the high-dimensional feature space by a point on a lower-dimensional manifold in a way that similar points in the feature space lie close together on the lower-dimensional manifold.
-UMAP requires a measure of similarity in feature space. 
-There are many possibilities to construct such a similarity.
-We choose to count the number of unequal entries of the two vectors - called the Hamming distance.
-In other words, we count the number of times one of the 500 most frequent words appears in only one LOC, but not in the other.
-A smaller Hamming distance indicates less differences and therefore that the LOC are more similar.
+UMAP requires a measure of similarity in feature space, which we chose as the Hamming distance between two binary feature vectors.
 
 To assign points in the two-dimensional representations of our data sets to clusters, we use the [Python implementation](https://github.com/scikit-learn-contrib/hdbscan) of the recent clustering algorithm [HDBSCAN](https://link.springer.com/chapter/10.1007/978-3-642-37456-2_14) (paywalled).
 A big advantage of HDBSCAN over many other clustering algorithms is that it automatically determines the number of clusters and allows to classify data points as noise.
