@@ -10,10 +10,12 @@ We all know that the code we write is not random, but follows patterns. Can we d
 ## The data
 
 Our datasets come from Haskell's and Python's associated package repositories: In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
-Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.  
-A subject related to our analysis, from which we will borrow techniques later on, is [natural language processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing). NLP is concerned with patterns in *natural* human languages. In contrast, we are analyzing *constructed* languages.
+Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
 
-Let's look at some characteristics of our data set and compared to a data set that is used for state-of-the-art NLP models, specifically the number of packages, total lines of code (LOC), per package lines of code, number of words, and the most common word:
+Before we look at some characteristics of our data sets, we note an analogy of our endeavour with the field of [natural language processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing).
+NLP is concerned with patterns in *natural* human languages.
+In contrast, we are analyzing *constructed* languages.
+Let's now consider the number of packages, total lines of code (LOC), LOC per package, number of words, and the most common word in our data set and compare it to a data set used for state-of-the-art NLP models: 
 
 |                        | Python corpus | Haskell corpus | English Wikipedia    |
 | ---------------------- | ------------- | -------------- | -------------------- |
@@ -28,11 +30,12 @@ If you want to know why, try a quick [search on Github](https://github.com/searc
 turns out people love to hard-code byte strings...
 FYI: the next common Haskell word is "a".
 It is also interesting to see that the average number of LOC is very, very similar in the Haskell and the Python data sets!
-In state-of-the-art NLP, data sets are one to two orders of magnitude larger:
+With a total number of projects on PyPi of almost 181,000, the total number of LOC in PyPi is, based on our sample, approximately 314M.
+We find that in state-of-the-art NLP, data sets are one to two orders of magnitude larger:
 The model [BERT](https://arxiv.org/pdf/1810.04805.pdf), for example, is trained on the English Wikipedia (2,500M words) and the Google BooksCorpus (800M words), which is on the order of 3 billion words, whereas our datasets are on the order of 30 million words.
 Working with these amounts of data requires hardware significantly more powerful than what our feeble Dell XPS 13 offers, on which the following analyses were run within a few minutes.
-Based on our random sample of Python packages, we can estimate the number of words in all of PyPi to be about 1,800M - which is not too far from the size of the English Wikipedia.
-With a total number of projects on PyPi of almost 181,000, the total number of LOC in PyPi is, based on our sample, approximately 314M.
+Based on our random sample of Python packages, we can estimate the number of words in all of PyPi to be about 1,800M - which is not too far from the size of the English Wikipedia and we would thus expect an analysis of whole of PyPi to be computationally significantly more challenging.
+The difference in scale between our data sets and typical NLP data sets, though, does not prevent us from later borrowing an important NLP technique when searching for unknown code patterns.
 
 Let's take a closer look, and filter the LOC in our data sets for some specific keywords:
 
@@ -96,7 +99,10 @@ While similarity between two LOC might be very easy to assess for us humans, we 
 So obviously, we want to use a computer for that.
 Unfortunately, computers *a priori* don't know what similarity between two LOC means.
 A first step to teaching it is to represent each LOC as a vector, which is a quantitative representation of what we think are the most important characteristics ("features") of a LOC.
-In our case, we use a 500-dimensional feature vector, and each dimension encodes the occurence of one of the 500 most common data set words: it's either one (if the word is present in that LOC) or zero (if it is not).
+Here's where an important concept from NLP comes into play:
+we represent each LOC as a so-called *bag-of-words*, that is, we neglect grammar and word order, but keep a measure of presence of each word.
+In our case, we only take into account the 500 most frequent words in our data set and simply check which of these words is present in a LOC and which are not.
+That way, we end up with a 500-dimensional feature vector, in which each dimension encodes the occurence of a word: it's either one (if the word is present in that LOC) or zero (if it is not).
 
 We could now race off and look at the LOCs in the 500-dimensional feature space.
 But how would we visualize such a high-dimensional space?
