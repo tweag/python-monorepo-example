@@ -81,7 +81,11 @@ In fact, they make up 27% and 19% of all basic imports.
 But things change dramatically when considering `from [...] import [...]` statements:
 
 
- 40% of all `from [...] import [...]` statements import stuff from TensorFlow, a popular machine learning library. [TODO: so what's up with TensorFlow?]
+40% of all `from [...] import [...]` statements import stuff from TensorFlow, a popular machine learning library.
+We know that TensorFlow is popular, but *that* popular?
+It turns out that our random sample of Python packages happens to contain a complete version of TensorFlow and that "self-imports" within that package account for 83% of all TensorFlow imports.
+It is thus a single, big package which leads to this surprisingly high percentage of TensorFlow imports. 
+Disregarding that package, around 2.5% of all `import` statements are concerned with TensorFlow, which still cracks the top 10.
 
 Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and `network` imports:
 
