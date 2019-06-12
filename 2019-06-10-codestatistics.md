@@ -5,11 +5,21 @@ author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
 
-We all know that the code we write is not random, but follows patterns. Can we detect these patterns in a database of code? How do these patterns differ between programming languages? Can we somehow exploit these patterns? In this blog post, we try to explore these questions using databases of Haskell and Python source code.
+Given the fact that you stumbled on the blog of a software innovation lab, chances are that you spend a significant amount of your time writing code or with people doing exactly that.
+You're probably also trying not to write random code, but instead you follow certain patterns - you regularly import packages, use control structures such as loops and, hopefully less often, out of frustration slip a swear word in a comment.
+Now you might wonder:
+are my patterns special or do other programmers have similar habits?
+We set out to answer those questions using databases of Haskell and Python packages and ask:
+Can we detect common patterns in these code databases?
+How do these patterns differ between programming languages?
+Can we somehow exploit these patterns?
+As opposed to far more conthrived analyses of code which is involved in, e.g., code prediction tools, we will create two-dimensional "maps" of code, which allow for a nice visualization of code patterns and may make you appreciate the beauty and complex structure of the code you and your friends and colleagues write.     
+
 
 ## The data
 
-Our datasets come from Haskell's and Python's associated package repositories: In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
+Our data sets come from Haskell's and Python's associated package repositories: 
+In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
 Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
 
 Before we look at some characteristics of our data sets, we note an analogy of our endeavour with the field of [natural language processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing).
