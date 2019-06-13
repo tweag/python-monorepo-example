@@ -41,7 +41,7 @@ main = do
 
 This works fine with the latest GHC. But using GHC circa 2016, this
 won't compile, because `(<>)` is not part of the `Prelude`. At this
-point I have three choices:
+point I have four choices:
 
 1. Decide that I don't care about old GHC (or in general any old
    version of a package dependency) and move on.
@@ -70,11 +70,11 @@ Clearly Option 1 or Option 2 would work out better than this already
 unreadable mess, which might only get worse when other
 incompatibilities arise, requiring *nested* conditional compilation.
 Some might argue that Option 1 (dropping support) isn't used nearly
-often enough. I agree, all the more so given the existence of
-Stackage, but it's a debate for another day. Option 2 is about
-resisting the temptation to use new functions not previously
-available. But how do we deal with breaking changes in dependencies?
-In such a case only Option 3 and Option 4 are available.
+often enough. I agree, all the more so given the success and broad
+adoption of [Stackage][stackage], but it's a debate for another
+day. Option 2 is about resisting the temptation to use new functions
+not previously available. But how do we deal with breaking changes in
+dependencies? In such a case only Option 3 and Option 4 are available.
 
 In version 2.1, the [singletons][singletons] library exposed two
 datatype definitions:
@@ -95,7 +95,7 @@ In user code, `KProxy` now needs to be replaced everywhere with
 `Proxy`. Unlike in our previous example, Option 2 is not available:
 there is no way to change the code in such a way that it compiles with
 *both* singletons-2.1 and singletons-2.2. Option 4 doesn't look
-terribly appealing on first blush
+terribly appealing at first blush
 because [Don't Repeat Yourself (DRY)][dry].
 
 The temptation is high to introduce conditional compilation
@@ -161,14 +161,15 @@ We should challenge the idea that CPP is unavoidable. After all,
 multi-platform support and backwards compatibility are universal
 concerns for all programming languages. Unstructured conditional
 compilation is highly unusual in many of these, even for
-multi-platform code. Like our parents did with the `goto` of old, we
-overestimate the need for the power of non-structure, while forgetting
-about the benefits of structure. Foregoing CPP entirely should rid us
-of our illusions.
+multi-platform code. Like some of the pionneers of software did with
+the `goto` of old, we overestimate the need for the power of
+non-structure, while forgetting about the benefits of structure.
+Foregoing CPP entirely should rid us of our illusions.
 
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 [hlint]: https://hackage.haskell.org/package/hlint
 [network]: https://hackage.haskell.org/package/network
 [singletons]: http://hackage.haskell.org/package/singletons
 [socket]: https://hackage.haskell.org/package/socket
+[stackage]: https://www.stackage.org/
 [goto-considered-harmful]: https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf
