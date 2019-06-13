@@ -1,80 +1,68 @@
 ---
-title: "Code Line Patterns: <br/>Two-dimensional representations of Stackage and PyPi"
-shortTitle: "Code Line Patterns"
+title: "Source code headers: diverse repetition unveiled"
+shortTitle: "Source code headers"
 author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
 
 Given the fact that you stumbled on the blog of a software innovation lab, chances are that you spend a significant amount of your time writing code or with people doing exactly that.
-You're probably also trying not to write random code, but instead you follow certain patterns - you regularly import packages, use control structures such as loops and, hopefully less often, out of frustration slip a swear word in a comment.
-Now you might wonder:
-are my patterns special or do other programmers have similar habits?
-We set out to answer those questions using databases of Haskell and Python packages and ask:
-Can we detect common patterns in these code databases?
-How do these patterns differ between programming languages?
-Can we somehow exploit these patterns?
-As opposed to far more conthrived analyses of code which is involved in, e.g., code prediction tools, we will create two-dimensional "maps" of code, which allow for a nice visualization of code patterns and may make you appreciate the beauty and complex structure of the code you and your friends and colleagues write.     
-
+A part of this code is quite repetetive and usually found at the beginning of your source files:
+`import` statements (or your language's equivalent of them) which add additional functionality from standard or third-party libraries.
+If you're programming in Haskell, you probably also add several extensions to the Haskell language by using `LANGUAGE` pragmas.
+You are not alone - everyone else is doing it, but... how often, really?
+Which packages are imported most?
+And are there differences between programming languages?
+In this blog post, we explore these questions using data sets of Python and Haskell code.
+With the results, we can learn about community-wide habits, hope to whet your appetite for further analyses of our data sets and finally realize that after all, repetitive does not necessarily mean uninteresting!
 
 ## The data
 
 Our data sets come from Haskell's and Python's associated package repositories: 
 In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
-Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb, so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
+Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb,
+The quick runtime of a few minutes on a standard laptop and easy handling of the data are the reasons why we chose only a small sample from PyPi.
+so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
 
-Before we look at some characteristics of our data sets, we note an analogy of our endeavour with the field of [natural language processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing).
-NLP is concerned with patterns in *natural* human languages.
-In contrast, we are analyzing *constructed* languages.
-Let's now consider the number of packages, total lines of code (LOC), LOC per package, number of words, and the most common word in our data set and compare it to a data set used for state-of-the-art NLP models: 
+Let's first look at a few key characteristics of our data sets, namely the number of packages, total number of lines of code (LOC), LOC per package, number of words, and the most common word: 
 
-|                        | Python corpus | Haskell corpus | English Wikipedia    |
-| ---------------------- | ------------- | -------------- | -------------------- |
-| **# of packages**      | 3414          | 2312           | 5,800,000 (articles) |
-| **LOC**                | 6,048,755     | 3,862,107      | n/a                  |
-| **avg. LOC / package** | 1772          | 1760           | n/a                  |
-| **# of words**         | 36,577,867    | 23,174,821     | 2,500,000,000        |
-| **most common word**   | "x" (6,7%)    | "NUL" (4,5%)   | "the"                |
+|                        | Python corpus | Haskell corpus |
+| ---------------------- | ------------- | -------------- |
+| **# of packages**      | 3414          | 2312           |
+| **LOC**                | 6,048,755     | 3,862,107      |
+| **avg. LOC / package** | 1772          | 1760           |
+| **# of words**         | 36,577,867    | 23,174,821     |
+| **most common word**   | "x" (6,7%)    | "NUL" (4,5%)   |
 
-Hold on. "NUL" is the most common word in Haskell stackage packages? Sad, but true (we checked).
-If you want to know why, try a quick [search on Github](https://github.com/search?l=&p=2&q=NUL+extension%3Ahs+language%3AHaskell&ref=advsearch&type=Code&utf8=%E2%9C%93):
-turns out people love to hard-code byte strings...
-FYI: the next common Haskell word is "a".
-It is also interesting to see that the average number of LOC is very, very similar in the Haskell and the Python data sets!
-With a total number of projects on PyPi of almost 181,000, the total number of LOC in PyPi is, based on our sample, approximately 314M.
-We find that in state-of-the-art NLP, data sets are one to two orders of magnitude larger:
-The model [BERT](https://arxiv.org/pdf/1810.04805.pdf), for example, is trained on the English Wikipedia (2,500M words) and the Google BooksCorpus (800M words), which is on the order of 3 billion words, whereas our datasets are on the order of 30 million words.
-Working with these amounts of data requires hardware significantly more powerful than what our feeble Dell XPS 13 offers, on which the following analyses were run within a few minutes.
-Based on our random sample of Python packages, we can estimate the number of words in all of PyPi to be about 1,800M - which is not too far from the size of the English Wikipedia and we would thus expect an analysis of whole of PyPi to be computationally significantly more challenging.
-The difference in scale between our data sets and typical NLP data sets, though, does not prevent us from later borrowing an important NLP technique when searching for unknown code patterns.
+Hold on. "NUL" is the most common word in Haskell stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
+FYI: the next common Haskell word is "a", which is a common type and term variable.
+It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
+With a total number of projects on PyPi of almost 181,000, the total number of lines of code in PyPi is, based on our sample, approximately 314M.
 
-Let's take a closer look, and filter the LOC in our data sets for some specific keywords:
-
-If you write code with more than the most basic features, you usually need to import additional functionality from a standard library or 3rd-party code.
-This means that you need to type something like `import [...]` or `from [...]`.
+Now let's take a closer look and see what we can learn from this data.
+As you might know, Python and Haskell have in common that files start with a list of import statement. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
 We thus expect `import` statements to be a common pattern in the source code data sets.
-In Haskell, we imagine `language` pragmas to be another common pattern.
+In Haskell, we imagine `LANGUAGE` pragmas to be another common pattern.
 
-Let's consider import and language pragmas as 'boilerplate' code for a moment:
-It is straightforward to determine a package's LOC fraction that corresponds to boilerplate.
-This fraction is just the LOC with import and language pragma keywords divided by the number of all LOC.
+Let's find out whether there are any differences in the frequency of these patterns between Python and Haskell code.
+We can easily determine a package's LOC fraction that corresponds to `import` statements and `LANGUAGE` pragmas:
+This fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
 The following histograms show the results:
 
-![Histograms of fractions of LOC with boilerplate code for both the Python and Haskell data set](../img/posts/codestatistics_histogram_importfractions_both.png)
+<a href="../img/posts/codestatistics_swearwords.png">
+<img title="Histograms of fractions of lines of code with import statements or LANGUAGE pragmas" src="../img/posts/codestatistics_histogram_importfractions_both.png" style="max-width: 100%;max-height: 100%;"/>
+</a>
 
-Haskell tends to have more `import` and `language` statements, our definition of boilerplate code, per package than Python, as indicated by the average percentage (dashed lines):
+Haskell tends to have more `import` and `language` statements per package than Python, as indicated by the average percentage (dashed lines):
 for Python, it's about 6%, while for Haskell it's about 9.5%.
-Interestingly, in both languages, a few packages have a very high boilerplate fraction.
+Interestingly, in both languages, a few packages have a very high fraction of this specific kind of boilerplate code.
 Those can be found from the 50% mark on but they are not visible in the figure because of their low package count.
 In case of Python, such packages often are `setuptools` scripts, while for Haskell, they are module exports and setup files.
 
 We can also ask which packages are imported most often.
-Given a LOC with an `import` statement, it is straightforward to extract the name of the imported package.
+Given a line of code with an `import` statement, it is straightforward to extract the name of the imported package.
 For Python, we first look at basic `import [...]` statements:
 
-![Most frequent Python packages imported via basic import [...] statements](../img/posts/codestatistics_py_basic_imports.png)
-
-![Most frequent Python packages imported via from [...] import [...] statements](../img/posts/codestatistics_py_from_imports.png)
-
+![Most frequently imported Python packages](../img/posts/codestatistics_py_imports.png)
 
 Few surprises for Python's basic `import`s - `os` and `sys` are the most frequently imported modules.
 In fact, they make up 27% and 19% of all basic imports.
@@ -92,104 +80,23 @@ Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
-Imports from the `data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma.
 We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
-
-## Visualizing more advanced LOC patterns
-
-Let's dive into less obvious patterns in our data sets:
-how about extracting patterns from the data sets without specifying a priori what keywords they correspond to?
-
-Such code patterns provide insight into the coding habits of a community in a programming language ecosystem.
-Beyond the scope of this post, they can be exploited to help programmers via bug detection, refactoring, intelligent code completion, or even to synthesize complete programs.
-
-A pattern is characterized by a large number of similar LOCs.
-While similarity between two LOC might be very easy to assess for us humans, we don't have time to print out 100,000 LOC on little snips of paper and sort them on piles according to their similarity.
-So obviously, we want to use a computer for that.
-Unfortunately, computers *a priori* don't know what similarity between two LOC means.
-A first step to teaching it is to represent each LOC as a vector, which is a quantitative representation of what we think are the most important characteristics ("features") of a LOC.
-Here's where an important concept from NLP comes into play:
-we represent each LOC as a so-called *bag-of-words*, that is, we neglect grammar and word order, but keep a measure of presence of each word.
-In our case, we only take into account the 500 most frequent words in our data set and simply check which of these words is present in a LOC and which are not.
-That way, we end up with a 500-dimensional feature vector, in which each dimension encodes the occurence of a word: it's either one (if the word is present in that LOC) or zero (if it is not).
-
-We could now race off and look at the LOCs in the 500-dimensional feature space.
-But how would we visualize such a high-dimensional space?
-And do all of these dimensions really contain valuable information which sets apart one pattern from another?
-
-It seems like a smart move to reduce the number of dimensions significantly while keeping as much information about the structure of the data as possible.
-For the purpose of visualization, we would love to have a two-dimensional representation so that we can draw a map of points in which points with similar features are placed close to each other and form groups ("clusters").
-To achieve that, we need a measure of "closeness", that is, a notion of distance.
-On a map, this is easy; we simply take a ruler and measure the (Euclidean) distance between two points. 
-But we require a distance not only on the map, but also in feature space:
-after all, if two points close on the map represent similar LOC with similar features, they should also be similar (or "close") in feature space.
-We choose to measure distance (or, equivalently, similarity) in feature space by counting the number of unequal entries of the two vectors.
-This is called the Hamming distance.
-In other words, we count how many of the 500 most frequent words appears in only one LOC, but not in the other.
-
-A popular technique to reduce the number of dimensions while trying to maintain the structure of the data or, equivalently, the distances between similar data points, is UMAP.
-UMAP is a non-linear technique, which means it's well suited for data sets which can not easily be projected on flat manifolds. We first calculate the UMAP for both the Python and the Haskell data set and color points depending on whether the LOC they represent contain certain keywords:
-
-<a href="../img/posts/codestatistics_py_umap_embedding_words_large.png">
-<img title="UMAP embedding of the Python code data set" src="../img/posts/codestatistics_py_umap_embedding_words_smaller.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
-
-We immediately notice the complex structure of the data set, which seems to consist of a large number of clusters comprising very similar LOC. We expect many LOCs containing the keywords we chose to be close together on the UMAP which is indeed what we observe, although they no not necessarily form connected clusters. Furthermore, one LOC could contain several of the keywords, which would not be visible in our representation.
-
-To find out what kind of code other clusters represent, we perform clustering on the UMAP embedding. Starting with the Python data set, we annotate the twenty most dense and reasonably large clusters with the two words which co-occur most frequently in a cluster:
-
-<a href="../img/posts/codestatistics_py_umap_embedding_clusters_large.png">
-<img title="UMAP embedding of the Python code data set" src="../img/posts/codestatistics_py_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
-
-It is reassuring to find clusters with the most frequent words being `for` and `in`, which corresponds to Python `for`-loops, or `assertEqual` and `self`, which stems from the `unittest` framework. Some other clusters, though, do not remind us of common Python idioms. The most common words in cluster 17 are `xd` and `xc`. Looking up what kinds of LOC contain both of these words, we find that these occur very often in binary strings.
-
-Performing the same analysis for the Haskell data set, we find clusters such as a very well-defined one containing often both `text` and `maybe` and clusters corresponding to popular imports:
-
-<a href="../img/posts/codestatistics_hask_umap_embedding_clusters_large.png">
-<img title="UMAP embedding of the Haskell code data set" src="../img/posts/codestatistics_hask_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
-
-Furthermore, the big blue cluster (#16) seems to contain mostly auto-generated code from the `amazonka` package, which implements communication with Amazon Web Service-compatible APIs.
+The reason for that is not immediately clear - it might be that our Haskell data set simply is not representative of all Haskell code on Github; after all, at the time of writing, there are around 45,000 Haskell projects on Github, while our data set contains only 2,312 packages.
 
 ## Conclusion
 
-We found several interesting patterns in both Python and Haskell code - clusters of common language idioms, but also unexpected clusters stemming from byte strings.
-With these results, we could now build a very basic code completion tool:
-while you type, that tool would continuously check to which cluster the line you're typing most likely belongs to and suggest you words from that cluster.
-An obvious limitation, though, is the complete absence of context-sensitivity, meaning that proposed words neither depend on the order of previous words in the same line nor on adjacent LOCs.
-
-Other projects have taken the application of machine learning techniques far further, resulting in tools which can significantly facilitate programmers' lives.
-[Kite](https://kite.com/) performs context-sensitive code completion for Python and is available as a plug-in for several popular IDEs.
-The [Learning from Big Code website](http://http://learnbigcode.github.io/) lists several other interesting projects.
-For example, the [Software Reliability Lab](http://www.sri.inf.ethz.ch/) at ETH Zurich developed [JSNice](http://jsnice.org/), a tool to automatically rename and deobfuscate JavaScript code and to infer types.
-Finally, [Naturalize](http://groups.inf.ed.ac.uk/naturalize/) learns coding conventions from an existing codebase to improve consistency. 
-
-And if you're eager to explore yourself:
-the analysis in this blog post was performed in a strictly reproducible pipeline built using [Nix](https://nixos.org).
-This means you can [download a single file](http://www.tweag.io/linkgoeshere) and then rerun our analysis by typing just one single line.
-Reproducible pipelines for data science using Nix will be discussed in a forthcoming blog post - stay tuned!
-
-## Appendix: data preprocessing and technical details
-
-After downloading the source code in the form of archives, we unpack them and all source files within a given package are concatenated and written to one single big corpus file.
-Some of the above analyses require us to know from which package a certain LOC originates.
-We thus also write a single file for each package containing a concatenation of all source files of that package.
-As a final step in the data preprocessing pipeline, we tokenize all LOC, meaning we replace all types of whitespace by a single space, retain only letters and convert upper case letters to lower case ones.
-
-To perform a dimensionality reduction of our data sets, it is neccessary to create informative feature vectores from each line of code.
-We use count vectorization as implemented in `scikit-learn` to turn each LOC in a binary vector, whose dimensions correspond to the 500 most frequent words in our Python / Haskell code corpus.
-We don't care how often a word occurs in a LOC, only whether it's there (1) or not (0).
-Furthermore, single-letter words are neglected.
-
-Having built these feature vectors, we apply a popular dimensionality reduction techniques, [UMAP](https://arxiv.org/pdf/1802.03426.pdf).
-UMAP is a manifold embedding technique, meaning that it tries to represent each data point in the high-dimensional feature space by a point on a lower-dimensional manifold in a way that similar points in the feature space lie close together on the lower-dimensional manifold.
-UMAP requires a measure of similarity in feature space, which we chose as the Hamming distance between two binary feature vectors.
-
-To assign points in the two-dimensional representations of our data sets to clusters, we use the [Python implementation](https://github.com/scikit-learn-contrib/hdbscan) of the recent clustering algorithm [HDBSCAN](https://link.springer.com/chapter/10.1007/978-3-642-37456-2_14) (paywalled).
-A big advantage of HDBSCAN over many other clustering algorithms is that it automatically determines the number of clusters and allows to classify data points as noise.
+In this blog post, we took a first look at our data sets and investigated `import` statements and `LANUAGE` pragmas in Python and Haskell.
+While our data sets offer the potential for much deeper analysis (think: automatic code completion, refactoring, ...), already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.
+Thinking about this further, we might wonder what other patterns occur commonly in code.
+A pattern would be some set of very similar lines of code, so we could expect, e.g., control structures such as `for` loops to form a pattern.
+But are there maybe unknown patterns to be discovered we didn't think of?
+How do we discover them in our data sets?
+How do they differ between programming languages?
+And can we somehow exploit these patterns?
+We're thus excited to see what other insights these data have to offer - so stay tuned!
