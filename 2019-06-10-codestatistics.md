@@ -1,11 +1,11 @@
 ---
 title: "Source code headers: diverse repetition unveiled"
-shortTitle: "Source code headers"
+shortTitle: "Source code headers: diverse repetition unveiled"
 author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
 
-Given the fact that you stumbled on the blog of a software innovation lab, chances are that you spend a significant amount of your time writing code or with people doing exactly that.
+Given the fact that you stumbled on the blog of a software consulting company, chances are that you spend a significant amount of your time writing code or with people doing exactly that.
 A part of this code is quite repetetive and usually found at the beginning of your source files:
 `import` statements (or your language's equivalent of them) which add additional functionality from standard or third-party libraries.
 If you're programming in Haskell, you probably also add several extensions to the Haskell language by using `LANGUAGE` pragmas.
@@ -21,7 +21,7 @@ Our data sets come from Haskell's and Python's associated package repositories:
 In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
 Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb,
 The quick runtime of a few minutes on a standard laptop and easy handling of the data are the reasons why we chose only a small sample from PyPi.
-so this sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
+This sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
 
 Let's first look at a few key characteristics of our data sets, namely the number of packages, total number of lines of code (LOC), LOC per package, number of words, and the most common word: 
 
@@ -62,7 +62,7 @@ We can also ask which packages are imported most often.
 Given a line of code with an `import` statement, it is straightforward to extract the name of the imported package.
 For Python, we first look at basic `import [...]` statements:
 
-![Most frequently imported Python packages](../img/posts/codestatistics_py_imports.png)
+<img title="Most frequently imported Python packages" src="../img/posts/codestatistics_py_imports.png" style="max-width: 100%;max-height: 100%;"/>
 
 Few surprises for Python's basic `import`s - `os` and `sys` are the most frequently imported modules.
 In fact, they make up 27% and 19% of all basic imports.
@@ -81,10 +81,11 @@ Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and
 
 
 Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
-Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma.
+Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma, given that type families are a fairly advanced subject and one would thus expect them not to be that commonly used.
 We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
 The reason for that is not immediately clear - it might be that our Haskell data set simply is not representative of all Haskell code on Github; after all, at the time of writing, there are around 45,000 Haskell projects on Github, while our data set contains only 2,312 packages.
