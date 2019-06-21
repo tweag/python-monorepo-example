@@ -15,7 +15,7 @@ And are there differences between programming languages?
 In this blog post, we explore these questions using data sets of Python and Haskell code.
 With the results, we can learn about community-wide habits, hope to whet your appetite for further analyses of our data sets and finally realize that after all, repetitive does not necessarily mean uninteresting!
 
-## The data
+## A first look at the data
 
 Our data sets come from Haskell's and Python's associated package repositories: 
 In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
@@ -25,7 +25,7 @@ This sampling allows us to load all of our Python data set in memory and keeps t
 
 Let's first look at a few key characteristics of our data sets, namely the number of packages, total number of lines of code (LOC), LOC per package, number of words, and the most common word: 
 
-|                        | Python corpus | Haskell corpus |
+|                        | Python        | Haskell        |
 | ---------------------- | ------------- | -------------- |
 | **# of packages**      | 3414          | 2312           |
 | **LOC**                | 6,048,755     | 3,862,107      |
@@ -37,6 +37,8 @@ Hold on. "NUL" is the most common word in Haskell stackage packages? Surprising,
 FYI: the next common Haskell word is "a", which is a common type and term variable.
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
 With a total number of projects on PyPi of almost 181,000, the total number of lines of code in PyPi is, based on our sample, approximately 314M.
+
+## Import statements and language extensions - how many are there...
 
 Now let's take a closer look and see what we can learn from this data.
 As you might know, Python and Haskell have in common that files start with a list of import statement. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
@@ -58,8 +60,9 @@ Interestingly, in both languages, a few packages have a very high fraction of th
 Those can be found from the 50% mark on but they are not visible in the figure because of their low package count.
 In case of Python, such packages often are `setuptools` scripts, while for Haskell, they are module exports and setup files.
 
-We can also ask which packages are imported most often.
-Given a line of code with an `import` statement, it is straightforward to extract the name of the imported package.
+## ... and which are the most frequently used?
+
+Answering this questions amounts to extracting the name of the imported package / the used `LANGUAGE` pragma for each line of code.
 For Python, we first look at basic `import [...]` statements:
 
 <img title="Most frequently imported Python packages" src="../img/posts/codestatistics_py_imports.png" style="max-width: 100%;max-height: 100%;"/>
@@ -73,7 +76,7 @@ But things change dramatically when considering `from [...] import [...]` statem
 We know that TensorFlow is popular, but *that* popular?
 It turns out that our random sample of Python packages happens to contain a complete version of TensorFlow and that "self-imports" within that package account for 83% of all TensorFlow imports.
 It is thus a single, big package which leads to this surprisingly high percentage of TensorFlow imports. 
-Disregarding that package, around 2.5% of all `import` statements are concerned with TensorFlow, which still cracks the top 10.
+Disregarding that package, around 2.5% of all `import` statements are concerned with TensorFlow, which would still crack the top 10.
 
 Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and `network` imports:
 
