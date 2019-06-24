@@ -11,7 +11,7 @@ A part of this code is quite repetetive and usually found at the beginning of yo
 If you're programming in Haskell, you probably also add several extensions to the Haskell language by using `LANGUAGE` pragmas.
 You are not alone - everyone else is doing it, but... how often, really?
 Which packages are imported most?
-And are there differences between programming languages?
+And are there differences between programming languages?  
 In this blog post, we explore these questions using data sets of Python and Haskell code.
 With the results, we can learn about community-wide habits, hope to whet your appetite for further analyses of our data sets and finally realize that after all, repetitive does not necessarily mean uninteresting!
 
@@ -25,6 +25,8 @@ This sampling allows us to load all of our Python data set in memory and keeps t
 
 Let's first look at a few key characteristics of our data sets, namely the number of packages, total number of lines of code (LOC), LOC per package, number of words, and the most common word: 
 
+<center>
+
 |                        | Python        | Haskell        |
 | ---------------------- | ------------- | -------------- |
 | **# of packages**      | 3414          | 2312           |
@@ -33,10 +35,11 @@ Let's first look at a few key characteristics of our data sets, namely the numbe
 | **# of words**         | 36,577,867    | 23,174,821     |
 | **most common word**   | "x" (6,7%)    | "NUL" (4,5%)   |
 
+</center>
+
 Hold on. "NUL" is the most common word in Haskell stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
 FYI: the next common Haskell word is "a", which is a common type and term variable.
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
-With a total number of projects on PyPi of almost 181,000, the total number of lines of code in PyPi is, based on our sample, approximately 314M.
 
 ## Import statements and language extensions - how many are there...
 
@@ -46,8 +49,8 @@ We thus expect `import` statements to be a common pattern in the source code dat
 In Haskell, we imagine `LANGUAGE` pragmas to be another common pattern.
 
 Let's find out whether there are any differences in the frequency of these patterns between Python and Haskell code.
-We can easily determine a package's LOC fraction that corresponds to `import` statements and `LANGUAGE` pragmas:
-This fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
+We can easily determine a package's fraction of lines of ocdes that correspond to `import` statements and `LANGUAGE` pragmas:
+this fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
 The following histograms show the results:
 
 <a href="../img/posts/codestatistics_swearwords.png">
@@ -78,17 +81,17 @@ It turns out that our random sample of Python packages happens to contain a comp
 It is thus a single, big package which leads to this surprisingly high percentage of TensorFlow imports. 
 Disregarding that package, around 2.5% of all `import` statements are concerned with TensorFlow, which would still crack the top 10.
 
-Onwards to Haskell: here we find an unexpectedly high occurence of `prelude` and `network` imports:
+Onwards to Haskell:
 
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
-Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+Here we find an unexpectedly high occurence of explicit `prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
-Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma, given that type families are a fairly advanced subject and one would thus expect them not to be that commonly used.
+Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma, given that type families are a fairly advanced subject and one would thus expect them not to be that commonly used.  
 We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
 The reason for that is not immediately clear - it might be that our Haskell data set simply is not representative of all Haskell code on Github; after all, at the time of writing, there are around 45,000 Haskell projects on Github, while our data set contains only 2,312 packages.
@@ -96,11 +99,11 @@ The reason for that is not immediately clear - it might be that our Haskell data
 ## Conclusion
 
 In this blog post, we took a first look at our data sets and investigated `import` statements and `LANUAGE` pragmas in Python and Haskell.
-While our data sets offer the potential for much deeper analysis (think: automatic code completion, refactoring, ...), already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.
+While our data sets offer the potential for much deeper analysis (think: automatic code completion, refactoring, ...), already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.  
 Thinking about this further, we might wonder what other patterns occur commonly in code.
 A pattern would be some set of very similar lines of code, so we could expect, e.g., control structures such as `for` loops to form a pattern.
 But are there maybe unknown patterns to be discovered we didn't think of?
 How do we discover them in our data sets?
 How do they differ between programming languages?
-And can we somehow exploit these patterns?
-We're thus excited to see what other insights these data have to offer - so stay tuned!
+And can we somehow exploit these patterns?  
+We're excited to see what other insights these data have to offer - so stay tuned!
