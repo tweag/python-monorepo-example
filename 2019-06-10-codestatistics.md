@@ -38,7 +38,7 @@ Let's first look at a few key characteristics of our data sets, namely the numbe
 </center>
 
 Hold on. "NUL" is the most common word in Haskell stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
-FYI: the next common Haskell word is "a", which is a common type and term variable.
+FYI: the next common Haskell word is "a", which is a common type and term variable.  
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
 
 ## Import statements and language extensions - how many are there...
@@ -91,7 +91,7 @@ Here we find an unexpectedly high occurence of explicit `prelude` imports. Impor
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
-Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma, given that type families are a fairly advanced subject and one would thus expect them not to be that commonly used.  
+Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma. Type families are a fairly advanced subject and one would thus expect them not to be that commonly used.  
 We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
 The reason for that is not immediately clear - it might be that our Haskell data set simply is not representative of all Haskell code on Github; after all, at the time of writing, there are around 45,000 Haskell projects on Github, while our data set contains only 2,312 packages.
