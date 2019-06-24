@@ -53,9 +53,13 @@ We can easily determine a package's fraction of lines of ocdes that correspond t
 this fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
 The following histograms show the results:
 
+<center>
+
 <a href="../img/posts/codestatistics_swearwords.png">
 <img title="Histograms of fractions of lines of code with import statements or LANGUAGE pragmas" src="../img/posts/codestatistics_histogram_importfractions_both.png" style="max-width: 100%;max-height: 100%;"/>
 </a>
+
+</center>
 
 Haskell tends to have more `import` and `language` statements per package than Python, as indicated by the average percentage (dashed lines):
 for Python, it's about 6%, while for Haskell it's about 9.5%.
