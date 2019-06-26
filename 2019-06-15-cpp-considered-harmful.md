@@ -16,9 +16,9 @@ behaviour*, the unbridled use of the C preprocessor (CPP) to
 conditionally compile code is hampering our ability to analyse and
 manipulate *code*. In fact the commonality in the arguments made it
 difficult to resist the temptation to reuse the already overused title
-of Dijkstra's paper. In this post, I want to rehash the argument that
-CPP should be dispensed with because it makes bad code too tempting to
-write, like Dijkstra did for `goto`.
+of Dijkstra's paper. In this post, I want to [rehash][ifdef-harmful]
+the argument that CPP should be dispensed with because it makes bad
+code too tempting to write, like Dijkstra did for `goto`.
 
 The idea that *unrestricted* conditional compilation should be avoided
 is old news. While it is extremely common in programming languages of
@@ -173,3 +173,4 @@ Foregoing CPP entirely should rid us of our illusions.
 [socket]: https://hackage.haskell.org/package/socket
 [stackage]: https://www.stackage.org/
 [goto-considered-harmful]: https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf
+[ifdef-harmful]: http://www.literateprogramming.com/ifdefs.pdf
