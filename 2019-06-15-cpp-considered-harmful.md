@@ -21,7 +21,7 @@ CPP should be dispensed with because it makes bad code too tempting to
 write, like Dijkstra did for `goto`.
 
 The idea that *unrestricted* conditional compilation should be avoided
-is old news. Where it is extremely common in programming languages of
+is old news. While it is extremely common in programming languages of
 the 70's (like C), it is nonexistent in popular programming languages
 of the 00's (like Rust or Go). Haskell, a language born in the late
 80's, punted on difficult problems like multi-platform support and
@@ -94,7 +94,7 @@ data Proxy k (t :: k) :: * -> *
 In user code, `KProxy` now needs to be replaced everywhere with
 `Proxy`. Unlike in our previous example, Option 2 is not available:
 there is no way to change the code in such a way that it compiles with
-*both* singletons-2.1 and singletons-2.2. Option 4 doesn't look
+*both* singletons-2.1 and singletons-2.2. Option 3 doesn't look
 terribly appealing at first blush
 because [Don't Repeat Yourself (DRY)][dry].
 
@@ -146,7 +146,7 @@ strategies to achieve broader compatibility:
   a datatype of socket address domains. Since not all platforms
   support all domains, this forces conditional compilation in socket
   address primitives. By contrast, the [socket][socket] library has an
-  open type family of domains. Suport for each domain can be kept in
+  open type family of domains. Support for each domain can be kept in
   a dedicated source file, as above.
 * **Abstract away compatibility concerns:** if you really need to
   target multiple versions of a dependency, create a small module that
