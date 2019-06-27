@@ -37,7 +37,7 @@ Let's first look at a few key characteristics of our data sets, namely the numbe
 
 </center>
 
-Hold on. "NUL" is the most common word in Haskell stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
+Hold on. "NUL" is the most common word in Stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
 FYI: the next common Haskell word is "a", which is a common type and term variable.  
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
 
@@ -49,7 +49,7 @@ We thus expect `import` statements to be a common pattern in the source code dat
 In Haskell, we imagine `LANGUAGE` pragmas to be another common pattern.
 
 Let's find out whether there are any differences in the frequency of these patterns between Python and Haskell code.
-We can easily determine a package's fraction of lines of ocdes that correspond to `import` statements and `LANGUAGE` pragmas:
+We can easily determine a package's fraction of lines of code that correspond to `import` statements and `LANGUAGE` pragmas:
 this fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
 The following histograms show the results:
 
@@ -69,7 +69,7 @@ In case of Python, such packages often are `setuptools` scripts, while for Haske
 
 ## ... and which are the most frequently used?
 
-Answering this questions amounts to extracting the name of the imported package / the used `LANGUAGE` pragma for each line of code.
+Answering this question amounts to extracting the name of the imported package / the used `LANGUAGE` pragma for each line of code.
 For Python, we first look at basic `import [...]` statements:
 
 <img title="Most frequently imported Python packages" src="../img/posts/codestatistics_py_imports.png" style="max-width: 100%;max-height: 100%;"/>
@@ -92,22 +92,23 @@ Onwards to Haskell:
 
 Here we find an unexpectedly high occurence of explicit `prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 
-When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extensions leads the field: 
+When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extension leads the field: 
 40% of all Haskell packages in our data set use this extension.
 Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma. Type families are a fairly advanced subject and one would thus expect them not to be that commonly used.  
-We can also compare our results to a [previous analysis of Haskell source on Github](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
+We can also compare our results to a [previous analysis of Haskell source on GitHub](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
-The reason for that is not immediately clear - it might be that our Haskell data set simply is not representative of all Haskell code on Github; after all, at the time of writing, there are around 45,000 Haskell projects on Github, while our data set contains only 2,312 packages.
+The reason for that is not immediately clear - it might be that our Haskell data set is not representative of all Haskell code on GitHub; after all, at the time of writing, there are around 45,000 Haskell projects on GitHub, while our data set contains only 2,312 packages.
 
 ## Conclusion
 
-In this blog post, we took a first look at our data sets and investigated `import` statements and `LANUAGE` pragmas in Python and Haskell.
-While our data sets offer the potential for much deeper analysis (think: automatic code completion, refactoring, ...), already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.  
-Thinking about this further, we might wonder what other patterns occur commonly in code.
-A pattern would be some set of very similar lines of code, so we could expect, e.g., control structures such as `for` loops to form a pattern.
+In this blog post, we took a first look at our data sets and investigated `import` statements and `LANGUAGE` pragmas in Python and Haskell.
+Already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.
+Our data sets offer the potential for much deeper analysis, though - think automatic code completion, refactoring, ...   
+We thus might wonder what other patterns occur commonly in code.
+A pattern would be characterized by some set of very similar lines of code, so we could expect, e.g., control structures such as `for` loops to form a pattern.
 But are there maybe unknown patterns to be discovered we didn't think of?
 How do we discover them in our data sets?
 How do they differ between programming languages?
 And can we somehow exploit these patterns?  
-We're excited to see what other insights these data have to offer - so stay tuned!
+We're excited to see what other insights these data have to offer - stay tuned!
