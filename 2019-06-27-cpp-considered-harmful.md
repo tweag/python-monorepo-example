@@ -125,7 +125,7 @@ What if we taught these tools CPP syntax, to obviate having to
 evaluate each branch of the preprocessor? Like unrestricted `goto`
 allowing labels pretty much anywhere, CPP conditionals can appear
 anywhere at all: module headers, import declarations, in the middle of
-an expression, or indeed abitrary *different* combinations of these in
+an expression, or indeed arbitrary *different* combinations of these in
 each branch of a conditional. Each branch need not be syntactically
 correct, with balanced parentheses and well-scoped names. Parsing
 becomes a very complicated problem.
@@ -161,7 +161,7 @@ We should challenge the idea that CPP is unavoidable. After all,
 multi-platform support and backwards compatibility are universal
 concerns for all programming languages. Unstructured conditional
 compilation is highly unusual in many of these, even for
-multi-platform code. Like some of the pionneers of software did with
+multi-platform code. Like some of the pioneers of software did with
 the `goto` of old, we overestimate the need for the power of
 non-structure, while forgetting about the benefits of structure.
 Foregoing CPP entirely should rid us of our illusions.
