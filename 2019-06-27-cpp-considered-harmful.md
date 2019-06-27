@@ -131,7 +131,7 @@ correct, with balanced parentheses and well-scoped names. Parsing
 becomes a very complicated problem.
 
 The vexing issue is that we seldom need CPP for conditional
-compilation in the first placee, if at all. There is no silver bullet
+compilation in the first place, if at all. There is no silver bullet
 for avoiding CPP. Giving up `goto` means turning to structured control
 flow constructs (e.g. `while`-loops or `try`/`catch`), neither of
 which completely replacing `goto`, but together covering most use
