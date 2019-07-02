@@ -1,6 +1,6 @@
 ---
-title: "Source code headers: diverse repetition unveiled"
-shortTitle: "Source code headers: diverse repetition unveiled"
+title: "Source code headers: repetition unveiled"
+shortTitle: "Source code headers: repetition unveiled"
 author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
@@ -9,7 +9,7 @@ Given the fact that you stumbled on the blog of a software consulting company, c
 A part of this code is quite repetetive and usually found at the beginning of your source files:
 `import` statements (or your language's equivalent of them) which add additional functionality from standard or third-party libraries.
 If you're programming in Haskell, you probably also add several extensions to the Haskell language by using `LANGUAGE` pragmas.
-You are not alone - everyone else is doing it, but... how often, really?
+You are not alone - everyone else is doing it, but... how much, really?
 Which packages are imported most?
 And are there differences between programming languages?  
 In this blog post, we explore these questions using data sets of Python and Haskell code.
@@ -17,10 +17,10 @@ With the results, we can learn about community-wide habits, hope to whet your ap
 
 ## A first look at the data
 
-Our data sets come from Haskell's and Python's associated package repositories: 
-In the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
-Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb,
-The quick runtime of a few minutes on a standard laptop and easy handling of the data are the reasons why we chose only a small sample from PyPi.
+Our data sets come from Haskell's and Python's main package repositories: 
+in the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
+Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb.
+We chose to use only a small sample from PyPi so that we could perform analyses on our laptops.
 This sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
 
 Let's first look at a few key characteristics of our data sets, namely the number of packages, total number of lines of code (LOC), LOC per package, number of words, and the most common word: 
@@ -37,11 +37,11 @@ Let's first look at a few key characteristics of our data sets, namely the numbe
 
 </center>
 
-Hold on. "NUL" is the most common word in Stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
-FYI: the next common Haskell word is "a", which is a common type and term variable.  
+Hold on! "NUL" is the most common word in Stackage packages? Surprising, but true: `\NUL` is the quotation of the null character, and a small number of packages (2.7%) have inline bytestrings with many, many copies of `\NUL` in them.
+The next common Haskell word is "a", which is a common type and term variable name.  
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
 
-## Import statements and language extensions - how many are there...
+## Import statements and language extensions - how many are there?
 
 Now let's take a closer look and see what we can learn from this data.
 As you might know, Python and Haskell have in common that files start with a list of import statement. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
@@ -94,7 +94,7 @@ Here we find an unexpectedly high occurence of explicit `prelude` imports. Impor
 
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extension leads the field: 
 40% of all Haskell packages in our data set use this extension.
-Given the popularity of this extension, this makes a good case for it entering the Haskell standard.
+The popularity of this extension makes a good case for `OverloadedStrings` to enter the Haskell standard.
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma. Type families are a fairly advanced subject and one would thus expect them not to be that commonly used.  
 We can also compare our results to a [previous analysis of Haskell source on GitHub](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension. 
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
