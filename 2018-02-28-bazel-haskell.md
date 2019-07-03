@@ -299,3 +299,8 @@ In future posts, we'll explore:
 [toktok-code]: https://github.com/TokTok/toktok-stack
 [rules_haskell-issues]: https://github.com/tweag/rules_haskell/issues
 [nix-home]: https://nixos.org/nix/
+
+---
+Learn more about building polyglot projects using Bazel in our post *[Nix + Bazel =  fully reproducible, incremental builds][nix_bazel_post]*.
+
+[nix_bazel_post]: https://www.tweag.io/posts/2018-03-15-bazel-nix.html
