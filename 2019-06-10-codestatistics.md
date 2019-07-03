@@ -1,6 +1,6 @@
 ---
 title: "Revelations from repetition: <br/>Source code headers in Haskell and Python"
-shortTitle: "Source code headers in Haskell and Python"
+shortTitle: "Revelations from repetition"
 author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
