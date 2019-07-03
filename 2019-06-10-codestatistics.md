@@ -17,7 +17,8 @@ Besides satisfying our curiosity, we will learn about community-wide habits and 
 ## A first look at the data
 
 Our data sets come from Haskell's and Python's main package repositories: 
-in the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server. For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Package Index](http://www.pypi.org).
+in the case of Haskell, we use a current snapshot of all packages on the [Stackage](http://www.stackage.org) server.
+For Python, we downloaded a random subset of approximately 2% of all packages on the [Python Package Index](http://www.pypi.org).
 Based on our sample, we estimate the total size of all (compressed!) packages on PyPi to approximately 19 Gb.
 We chose to use only a small sample from PyPi so that we could perform analyses on our laptops.
 This sampling allows us to load all of our Python data set in memory and keeps the size of our data set more or less comparable to the amount of Haskell code on Stackage.
@@ -101,13 +102,12 @@ The reason for that is not immediately clear - it might be that our Haskell data
 
 ## Conclusion
 
-In this blog post, we took a first look at our data sets and investigated `import` statements and `LANGUAGE` pragmas in Python and Haskell.
-Already by just filtering the lines of codes for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.
-Our data sets offer the potential for much deeper analysis, though - think automatic code completion, refactoring, ...   
-We thus might wonder what other patterns occur commonly in code.
-A pattern would be characterized by some set of very similar lines of code, so we could expect, e.g., control structures such as `for` loops to form a pattern.
-But are there maybe unknown patterns to be discovered we didn't think of?
+We took a first look at our data sets and investigated `import` statements and `LANGUAGE` pragmas in Python and Haskell.
+By filtering code lines for certain keywords we were able to answer interesting questions about the frequency with which these basic coding patterns occur and how their frequency differs between Python and Haskell code.
+But our data sets have potential for much deeper analysis of less obvious patterns.
+A pattern can be characterized by a set of similar lines of code, and we expect to find, for example, control structure patterns such as `for` loops.
+But are there unknown patterns to be discovered that we didn't think of?
 How do we discover them in our data sets?
 How do they differ between programming languages?
-And can we somehow exploit these patterns?  
+And can we somehow exploit these patterns - think code completion or tools such as on presented (here)[https://github.com/src-d/awesome-machine-learning-on-source-code].
 We're excited to see what other insights these data have to offer - stay tuned!
