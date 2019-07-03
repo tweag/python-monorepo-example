@@ -89,7 +89,7 @@ Onwards to Haskell:
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
-Here we find an unexpectedly high occurence of explicit `prelude` imports. This is because Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+Here we find an unexpectedly high occurrence of explicit `Prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extension leads the field: 
 40% of all Haskell packages in our data set use this extension.
