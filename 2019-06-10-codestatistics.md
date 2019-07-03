@@ -1,19 +1,18 @@
 ---
-title: "Source code headers: repetition unveiled"
-shortTitle: "Source code headers: repetition unveiled"
+title: "Revelations from repetition: <br/>Source code headers in Haskell and Python"
+shortTitle: "Source code headers in Haskell and Python"
 author: "Simeon Carstens, Matthias Meschede"
 tags: data-science
 ---
 
-Given the fact that you stumbled on the blog of a software consulting company, chances are that you spend a significant amount of your time writing code or with people doing exactly that.
-A part of this code is quite repetetive and usually found at the beginning of your source files:
-`import` statements (or your language's equivalent of them) which add additional functionality from standard or third-party libraries.
-If you're programming in Haskell, you probably also add several extensions to the Haskell language by using `LANGUAGE` pragmas.
-You are not alone - everyone else is doing it, but... how much, really?
-Which packages are imported most?
-And are there differences between programming languages?  
-In this blog post, we explore these questions using data sets of Python and Haskell code.
-With the results, we can learn about community-wide habits, hope to whet your appetite for further analyses of our data sets and finally realize that after all, repetitive does not necessarily mean uninteresting!
+Every day we write repetitive code.
+A lot of it is boilerplate which you write to satisfy your compiler/interpreter only:
+it is not related to the main logic of the program and includes import and export lists, language extensions, file headers.
+But how do languages differ in their boilerplate content?
+Is it only the content of the boilerplate that changes, or also its quantity?
+We explore these questions using data sets of Python and Haskell code.
+Besides satisfying our curiosity, we will learn about community-wide habits and realize that after all, repetition is not necessarily uninteresting!
+
 
 ## A first look at the data
 
@@ -90,7 +89,7 @@ Onwards to Haskell:
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
 
 
-Here we find an unexpectedly high occurence of explicit `prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
+Here we find an unexpectedly high occurence of explicit `prelude` imports. This is because Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 
 When considering the most frequently used language pragmas, perhaps unsurprisingly, the `OverloadedStrings` extension leads the field: 
 40% of all Haskell packages in our data set use this extension.
