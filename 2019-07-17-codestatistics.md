@@ -42,7 +42,7 @@ Hold on! `NUL` is the most common word in Stackage packages? Surprising, but tru
 The next common Haskell word is "a", which is a common type and term variable name.
 It is also interesting to see that the average number of lines of code is very, very similar in the Haskell and the Python data sets!
 
-## Import statements and language extensions - how many are there?
+## Import statements and language extensions—how many are there?
 
 Now let's take a closer look and see what we can learn from this data.
 As you might know, in both Python and Haskell files start with a list of import statement. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
@@ -99,7 +99,7 @@ The popularity of this extension makes a good case for `OverloadedStrings` to en
 Furthermore, it's surprising that `TypeFamilies` is the third most common language pragma. Type families are a fairly advanced subject and one would thus expect them not to be that commonly used.
 We can also compare our results to a [previous analysis of Haskell source on GitHub](https://gist.github.com/atondwal/ee869b951b5cf9b6653f7deda0b7dbd8), which, too, finds that `OverloadedStrings` is the most popular extension.
 The ten most popular extensions listed in the figure above also feature in that analysis' list of the 20 most frequently used language extensions, although not necessarily in the same order.
-The reason for that is not immediately clear - it might be that our Haskell data set is not representative of all Haskell code on GitHub; after all, at the time of writing, there are around 45,000 Haskell projects on GitHub, while our data set contains only 2,312 packages.
+The reason for that is not immediately clear—it might be that our Haskell data set is not representative of all Haskell code on GitHub; after all, at the time of writing, there are around 45,000 Haskell projects on GitHub, while our data set contains only 2,312 packages.
 
 ## Conclusion
 
@@ -110,5 +110,5 @@ A pattern can be characterized by a set of similar lines of code, and we expect 
 But are there unknown patterns to be discovered that we didn't think of?
 How do we discover them in our data sets?
 How do they differ between programming languages?
-And can we somehow exploit these patterns - think code completion or tools such as on presented [here](https://github.com/src-d/awesome-machine-learning-on-source-code).
-We're excited to see what other insights these data have to offer - stay tuned!
+And can we somehow exploit these patterns—think code completion or tools such as presented [here](https://github.com/src-d/awesome-machine-learning-on-source-code).
+We're excited to see what other insights these data have to offer—stay tuned!
