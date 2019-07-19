@@ -110,5 +110,5 @@ A pattern can be characterized by a set of similar lines of code, and we expect 
 But are there unknown patterns to be discovered that we didn't think of?
 How do we discover them in our data sets?
 How do they differ between programming languages?
-And can we somehow exploit these patterns—think code completion or tools such as presented [here](https://github.com/src-d/awesome-machine-learning-on-source-code).
+And can we somehow exploit these patterns—think code completion or tools such as presented [here](https://github.com/src-d/awesome-machine-learning-on-source-code)?
 We're excited to see what other insights these data have to offer—stay tuned!
