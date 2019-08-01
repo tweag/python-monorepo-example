@@ -2,6 +2,13 @@
 title: "Code Line Patterns: <br/>Creating maps of Stackage and PyPi"
 shortTitle: "Code Line Patterns"
 author: "Simeon Carstens, Matthias Meschede"
+description: "We visualize large collections of Haskell and Python source codes
+    as 2D maps using methods from Natural Language Processing (NLP) and
+    dimensionality reduction and find a surprisingly rich structure for both languages.
+    Clustering on the 2D maps allows us to identify common patterns in source code which
+    give rise to these structures. Finally, we discuss this first analysis in the context of
+    advanced machine learning-based tools performing automatic code refactoring and
+    code completion."
 tags: data-science
 ---
 
