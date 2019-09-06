@@ -44,8 +44,8 @@ access to engineers with substantial experience in X.
 Still I must say that it's essential for us to continue writing Haskell.
 Why?
 
-Richard Eisenberg predicted, at ZuriHac 2019, that in 100 years we might not
-be using Haskell itself. Perhaps a different language—but it will be built
+Richard Eisenberg predicted, at ZuriHac 2019, that we might not
+be using Haskell itself in the distant future. Perhaps a different language—but it will be built
 on the valuable discoveries we made with Haskell. I'm confident that his
 prediction will come true because:
 
