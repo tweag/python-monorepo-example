@@ -1,5 +1,5 @@
 ---
-title: Why Haskell is important
+title: Why Haskell <br/>is important
 author: Mark Karpov
 tags: haskell
 ---
