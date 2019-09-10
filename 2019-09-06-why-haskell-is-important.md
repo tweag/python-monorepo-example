@@ -96,7 +96,7 @@ prediction will come true because:
   destined to continue. There are plenty of blog posts and articles praising
   strong static typing and its value for making programmers more productive
   nowadays. Haskell’s core principles, like purity and isolation of
-  side-effects, understood and appreciated by more today than ever before.
+  side-effects, are understood and appreciated by more today than ever before.
 
 Skeptical? That's fine. Just remember that the idea for neural networks is
 from the [1950s][perceptron]. It took quite some time for us to get the
