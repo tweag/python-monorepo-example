@@ -1,6 +1,6 @@
 ---
-title: "Probabilistic Programming with monad&#8209;bayes, Part 1: <br/>First Steps"
-shortTitle: "Probabilistic Programming with monad&#8209;bayes (1)"
+title: "Probabilistic Programming with monad‑bayes, Part 1: <br/>First Steps"
+shortTitle: "Probabilistic Programming with monad‑bayes (1)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede
 tags: data-science, haskell, statistics
 description: "In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the monad-bayes library. In the first part of the series, we introduce two fundamental concepts of `monad-bayes`: `sampling` and `scoring`."
