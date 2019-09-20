@@ -23,7 +23,7 @@ The model is parameterized by a boolean `b`, and in this simple case, `b` is als
 Without additional information, we assign equal probabilities `0.5` to each value that `b` can take (50% `True`, 50% `False`).
 In other words, we get the model parameter `b` from a discrete uniform [prior](https://en.wikipedia.org/wiki/Prior_probability) distribution.
 
-Let's see how the model looks like in the`monad-bayes`library:
+Let's see how the model looks like in the `monad-bayes` library:
 
 
 ```haskell
@@ -220,10 +220,9 @@ vlShow $ plot (600, 300)
 
 ## Conclusions
 
-We have seen how we can build models and examine related probability distributions by drawing samples and modifying their relative probabilities with the `score` function.
-The MCMC approach taken by`monad-bayes`and similar frameworks avoids computations with full distributions, and works with individual samples to enormously simplify life.
-`monad-bayes`can, therefore, be used to approximate large and complex distributions—something that quickly comes in handy.
-We can use`monad-bayes`to approximate the distribution of the return values of basically any Haskell function for a given input distribution.
+We learned how to build models and examine related probability distributions by drawing samples and modifying their relative probabilities with the `score` function.
+The MCMC approach taken by `monad-bayes` and similar frameworks avoids computations with full distributions, and works with individual samples to enormously simplify life. `monad-bayes` can, therefore, be used to approximate large and complex distributions—something that quickly comes in handy.
+We can use `monad-bayes` to approximate the distribution of the return values of basically any Haskell function for a given input distribution.
 This could even be the return values of entire programs.
 Even better—we can use `score` to infer the input distribution if we have a way of scoring samples based on observations.
 
@@ -231,7 +230,7 @@ We hope you enjoyed this first post in our _Probabilistic Programming with monad
 
 ## Notes
 
-We use [this GitHub version](https://github.com/adscib/monad-bayes/tree/647ba7cb5a98ae028600f3d828828616891b40fb) of`monad-bayes`in our posts and notebooks since it's neither on Hackage nor Stackage right now. Here are two original articles you may want to check out:
+We use [this GitHub version](https://github.com/adscib/monad-bayes/tree/647ba7cb5a98ae028600f3d828828616891b40fb) of `monad-bayes` in our posts and notebooks since it's neither on Hackage nor Stackage right now. Here are two original articles you may want to check out:
 
 * [Practical Probabilistic Programming with Monads](http://mlg.eng.cam.ac.uk/pub/pdf/SciGhaGor15.pdf)
 * [Functional Programming for Modular Bayesian Inference](http://denotational.co.uk/publications/scibior-kammar-ghahramani-funcitonal-programming-for-modular-bayesian-inference.pdf)
