@@ -146,9 +146,6 @@ Here's a summary of my contributions and some pointers to possible future direct
 
 2. [The initial worker repository][worker-repo]. Unlike its replica inside `rules_haskell`, which just holds static Protobuf descriptions in Haskell, the repository implements proper generation of those descriptions from a `.proto` file. Notably, the repository contains the [`reuse-ghc-session`][worker-repo-session-reuse] branch, which explores a warm startup of a GHC session. It is blocked because once all package databases are loaded into a session, they cannot be easily unloaded with just the utilities exported from GHC's `Packages.hs`.
 
-[worker-repo]: https://github.com/tweag/bazel-worker#readme
-[worker-repo-session-reuse]: https://github.com/tweag/bazel-worker/tree/reuse-ghc-session
-
 3. [GHC's `hDuplicate` issue][ghc-hdup-issue], which makes it harder to design protocols around `stdin`/`stdout` if you want to intercept certain writes to `stdout` (or reads from `stdin`).
 
 4. [My PR to `proto-lens`][proto-lens-pr] fixing [the issue][proto-lens-issue] with no support for streaming reads.
@@ -157,3 +154,5 @@ Here's a summary of my contributions and some pointers to possible future direct
 
 6. David Eichmann's [Extended Dependency Generation (EDG) GHC proposal][dep-gen-proposal] suggesting that no build system or IDE should ever call GHC in the `--make` mode. Instead, GHC should be able to dump all the necessary information about dependencies into a machine-readable format. Once you have that file, with dependencies recorded, you only need GHC to compile individual files, the "one-shot" mode, and never the normal `--make` mode. This approach would liberate us from certain shortcomings of the `--make` mode like timestamp-based recompilation checking.
 
+[worker-repo]: https://github.com/tweag/bazel-worker#readme
+[worker-repo-session-reuse]: https://github.com/tweag/bazel-worker/tree/reuse-ghc-session
