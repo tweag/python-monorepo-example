@@ -83,7 +83,7 @@ At the end of all of this, I had in total [59 PRs](https://github.com/tweag/aste
 The rest are either closed experimental branches, or open PRs waiting to be merged.
 
 
-Our failure rate on GHC testuite has changed as:
+Our failure rate on GHC test suite has changed as:
 
 - Then: `327/707` failures in total, `36/50` failures in `numerics` (collected from [commit `6290d24`](https://circleci.com/gh/tweag/asterius/5866#artifacts/containers/0))
 - Now: `168/707` failures in total, `3/50` failures in `numerics` (collected from [commit `222858b`](https://circleci.com/gh/tweag/asterius/5866#artifacts/containers/0))
