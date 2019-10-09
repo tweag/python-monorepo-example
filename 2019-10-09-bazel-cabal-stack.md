@@ -148,8 +148,7 @@ definitions get tiring to write, for two reasons:
 [Stack][stack] already knows how to resolve a snapshot name to
 a specific set of package versions. Stack also already knows where to
 find these packages, on Hackage or any of its mirrors. Finally, Stack
-already knows what the dependency graph looks like (helpfully, it can
-even generate [Graphviz][graphviz] output to visualize it). So the
+already knows what the dependency graph looks like. So the
 solution is to just call Stack. We added a workspace macro called
 `stack_snapshot`. An example:
 
