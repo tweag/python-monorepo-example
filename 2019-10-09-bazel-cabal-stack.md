@@ -105,8 +105,8 @@ haskell_toolchain_library(name = "base")
 
 haskell_binary(
     name = "myexe",
-	srcs = ["Main.hs"],
-	deps = [":base", ":mylib"],
+    srcs = ["Main.hs"],
+    deps = [":base", ":mylib"],
 )
 ```
 
