@@ -163,7 +163,7 @@ stack_snapshot(
 The above generates a `BUILD` file behind the scenes with one
 `haskell_cabal_library` per package listed in the `packages` attribute
 and any transitive dependencies thereof. The result is essentially the
-output of `stack dot`, which outputs a dependency graph in a form
+output of `stack dot`, which outputs a dependency graph munged into a form
 cromulent for Bazel. This means that Bazel sees the same dependency
 graph as Stack does, and can therefore parallelize the build on
 multiple cores in exactly the same way Stack does. But because this is
