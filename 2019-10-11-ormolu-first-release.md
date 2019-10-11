@@ -151,9 +151,9 @@ In the future, there will be more additions to the type system:
 
 * **[Linear types][linear-types]** will add a new type of arrow. It's clear that
   the new arrow `(#->)` will be at least three characters long and won't
-  align with `::` and other arrows. What's more, the linear arrow
-  characterizes use of the argument before it, so it makes sense to group
-  the argument and its arrow on the same line.
+  align with `::` and other arrows. What's more, `(#->)` is shorthand.
+  In general linear arrows can have multiplicity annotations, like `p` in `Int #p-> Bool`.
+  Multiplicities characterize use of the function argument, whose type is given immediately before the multiplicity, so it makes sense to group the argument type and the arrow on the same line.
 
 * **[Dependent Haskell][dependent-haskell]** is going to add new constructions
   on the type level as well. They may bring us problems similar to the
