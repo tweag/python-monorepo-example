@@ -96,7 +96,7 @@ later][tibell-trailing]:
 > a trailing comma. If we supported a trailing comma my style guide would
 > probably be different.
 
-There you have it: Ormolu supports a trailing comma now, so it's not unreasonable to
+There you have it: GHC supports a trailing comma now, so it's not unreasonable to
 start putting commas at the end of lines. This style is also more familiar
 to programmers who come to Haskell from other languages.
 
