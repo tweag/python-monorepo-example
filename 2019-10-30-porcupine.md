@@ -223,7 +223,7 @@ tasks and a remote cache. Porcupine has been developed as part of a project
 funded by [Novadiscovery](https://www.novadiscovery.com), which uses it
 internally to express systems biology simulation pipelines.
 
-`porcupine-core` is released at the same as two companion libraries:
+`porcupine-core` is released at the same time as two companion libraries:
 [`reader-soup`](http://hackage.haskell.org/package/reader-soup), which provides
 an automated [ReaderT
 pattern](https://www.fpcomplete.com/blog/2017/06/readert-design-pattern) and is
