@@ -21,7 +21,7 @@ appeared [here][original-post].*
 
 Earlier today, I presented at [UseR! 2017][user2017]
 about [HaskellR][haskellr]: a great piece of software, developed by
-Tweag I/O, that allows to seemlessly use R from Haskell.
+Tweag I/O, that allows to seamlessly use R from Haskell.
 
 [haskellr]: https://tweag.github.io/HaskellR/
 [user2017]: https://user2017.brussels/
@@ -64,7 +64,7 @@ guys’ work: They’ve not just created HaskellR, they’ve also made
 Haskell run on Spark, thus enabling Haskell applications to use
 Spark’s MLLib for large-scale machine learning.
 
-What, then, is HaskellR? It’s a way to seemlessly mix R code and
+What, then, is HaskellR? It’s a way to seamlessly mix R code and
 Haskell code, with full interoperability in both directions. You can
 do that in source files, of course, but you can also quickly play
 around in the interpreter, appropriately called H (no, I was not

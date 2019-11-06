@@ -71,10 +71,10 @@ still a bunch of pointers. So our remote call would look like this:
 
 - I `compact` my tree and send it across the network.
 - The service retrieves the tree and adds `1` to the leaves.
-- The service compacts the updated tree and sends it accross the
+- The service compacts the updated tree and sends it across the
   network.
 
-When I recieve the tree, it is already in a pointer representation
+When I receive the tree, it is already in a pointer representation
 (remember, `unCompact` is free), so we are down to 3 copies! We also
 get two additional benefits from compact normal forms:
 
@@ -147,7 +147,7 @@ We have a datatype `Packed` of trees represented as above. We define
 a one-step unfolding function, `caseTree`, which you can as well think
 of as an elaborate `case-of` (pattern matching) construct. There is
 a twist: `Packed` is indexed by a list of types. This is because of
-the right-subtree issue that I mentionned above: once I've read
+the right-subtree issue that I mentioned above: once I've read
 a `Branch` tag, I have a pointer to the left subtree, but not to the
 right subtree. So all I can say is that I have a pointer which is
 followed by the representation of two consecutive trees (in the

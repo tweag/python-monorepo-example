@@ -61,7 +61,7 @@ _both of the tool and of the code itself_:
    such 'hidden' preconditions are caught early and flagged making it easy to fix
    the `Makefile`.
  * **Clean Sequencing Code:** The function that makes a target file sequences
-   file processing, recusive calls for making the dependencies of the given target,
+   file processing, recursive calls for making the dependencies of the given target,
    and running docker containers. Usually, this sequencing is messy
    and difficult to follow.
    With Funflow, however, we can inject these various forms of

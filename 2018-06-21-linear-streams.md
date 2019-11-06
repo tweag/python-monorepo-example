@@ -148,7 +148,7 @@ It turns out that sometimes we want to carry linear values inside
 streams, and we can only achieve this if the stream references are
 linear.
 
-Suppose we are writting a program which is written both in Java and
+Suppose we are writing a program which is written both in Java and
 Haskell. Let us suppose further that, on the Java side, we have an iterator
 of type `java.util.Iterator<Object>`. To use it on the Haskell side, we
 would like to marshal it to Haskell as a stream of type

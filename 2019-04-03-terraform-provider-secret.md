@@ -120,7 +120,7 @@ However, the "sensitive" attribute doesn't propagate though references, therefor
 ## Conclusion
 
 Terraform is not designed as a security tool, unlike, for example, HashiCorp Vault.
-But depending on your security requirements, using it in conjuction with this plugin is strictly better than having secrets recorded into code.
+But depending on your security requirements, using it in conjunction with this plugin is strictly better than having secrets recorded into code.
 All the secrets are now stored in a single place which makes it easier to handle and audit.
 
 I hope that this little plugin will prove to be useful in your toolbox.

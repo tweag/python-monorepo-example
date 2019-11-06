@@ -12,7 +12,7 @@ detail of our whereabouts. Haskell would sit on the Throne of Purity and look
 upon the world with <span class="tooltip" title="Yes, of course Haskell would be one-eyed. And he'd have a list of like 200 awe-inspiring nicknames, like 'The Monadbringer' or 'The Father of all things pure', but that's another story.">an eye</span> full of wisdom. And in his hand, the mighty Haskell would
 wield the Spear of Lazy Lists, which is said to have the power to tackle each
 and every problem the world might have to face. And to honour him, we would
-code and abstract everything with lazy lists. For millenia would lists be used
+code and abstract everything with lazy lists. For millennia would lists be used
 to map, filter, separate, merge, group, <span class="tooltip" title="Full cosmogony in the religion of Haskell is left as an exercise to the reader.">and
 so forth</span>.*
 
@@ -255,7 +255,7 @@ runAll = runResourceT $ do
   ...
 ```
 
-So in the end, we splitted the input file in two substreams, we computed various
+So in the end, we split the input file in two substreams, we computed various
 statistics twice, and despite all this `streaming` and `foldl` guarantee that
 the input will be read _only once_ in bounded memory.
 

@@ -32,7 +32,7 @@ Kubernetes deployments. This will include:
 - using kind to boot up a Kubernetes cluster with minimal effort,
 - using KubeNix to catch common configuration errors early, eschew
   copypasta and make configurations composable,
-- deploying the configuation created by KubeNix to the kind cluster.
+- deploying the configuration created by KubeNix to the kind cluster.
 
 **Note**: What I am presenting is for motivational purposes and you should certainly put more thought into your setup if you want to
 take this approach to production. The full source code of this project is available on [GitHub](https://github.com/gilligan/kind-kubenix/tree/master).

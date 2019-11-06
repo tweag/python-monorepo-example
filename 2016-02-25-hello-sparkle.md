@@ -10,7 +10,7 @@ Large scale distributed applications are complex: there are effects at scale tha
 
 Why Spark? We could as well have built a complete platform starting from the likes of [Cloud Haskell](http://haskell-distributed.github.io/), which we maintain. And distributed computing engines is increasingly becoming a crowded space. But we started by asking a simple question: if I'm a data scientist seeking to train a model with state-of-the-art machine learning techniques, what is my best option to get the job done? How can I do that without giving up Haskell's strong static guarantees and concise syntax?
 
-Spark is a popular piece of the puzzle that leverages the huge [Hadoop ecosystem](https://hadoopecosystemtable.github.io/) for storage and cluster resource management to make it easy to write robust and scalable distributed applications as the composition of basic but familiar combinators to us FP aficionados: (distributed!) map, filter, zip, reduce, concat and many of their friends. These patterns generalize the suprisingly effective MapReduce framework of old. And on top of those, Sparks builds an impressively large set of general machine learning techniques as a [library](https://spark.apache.org/docs/1.6.0/mllib-guide.html) (we'll see an example of using these in this post).
+Spark is a popular piece of the puzzle that leverages the huge [Hadoop ecosystem](https://hadoopecosystemtable.github.io/) for storage and cluster resource management to make it easy to write robust and scalable distributed applications as the composition of basic but familiar combinators to us FP aficionados: (distributed!) map, filter, zip, reduce, concat and many of their friends. These patterns generalize the surprisingly effective MapReduce framework of old. And on top of those, Sparks builds an impressively large set of general machine learning techniques as a [library](https://spark.apache.org/docs/1.6.0/mllib-guide.html) (we'll see an example of using these in this post).
 
 Today, Spark is already available to write scalable Scala, Java, R or Python applications. Haskell is a great language for writing clearly the kind of intricately complex algorithms common in analytics, **so we're throwing Haskell into the mix**. With Haskell, you get the benefit of a language and ecosystem ruthlessly focused on refactorability, backed by a state of the art optimizing native code compiler supporting SIMD intrinsics when you need them.
 
@@ -114,7 +114,7 @@ To process this big data frame of all documents, we'll want to build a pipeline 
   countVectors <- toTokenCounts cvModel filteredDF "docId" "features"
 ```
 
-At this stage, we have a distribution of "word usage" for each document. We can now initialize the algorithm and run it against the aforementionned distributions, with parameters that depend on the dataset you are running LDA against. Finally, let's print a summary of the topic model inferred by LDA:
+At this stage, we have a distribution of "word usage" for each document. We can now initialize the algorithm and run it against the aforementioned distributions, with parameters that depend on the dataset you are running LDA against. Finally, let's print a summary of the topic model inferred by LDA:
 
 ``` haskell
   lda <- newLDA batchFraction numTopics maxIterations

@@ -57,7 +57,7 @@ one of the most popular ways for exploratory data analysis.
 
 [IHaskell](https://github.com/gibiansky/IHaskell) is the name of the Jupyter
 kernel for Haskell. It contains a little executable `ihaskell` that can receive
-and respond to messages in the Jupyter protocoll (via
+and respond to messages in the Jupyter protocol (via
 [ZeroMQ](http://zeromq.org/). Here is a little dialogue that is
 initiated by sending the following code snippet from the notebook frontend to
 `ihaskell`:

@@ -93,7 +93,7 @@ this post for a detailed explanation, including the code and the data that are
 required to reproduce this image yourself.
 
 The following image of the dependency graph was laid out in the same way, but
-shows the package name of each node explicitely. As before, the package names
+shows the package name of each node explicitly. As before, the package names
 are scaled non-linearly with the in degree of the node. The names of the
 largest nodes - we'll call them hub nodes - are well readable but to read the
 labels of the smaller nodes you should click on the image and use your browsers
@@ -152,11 +152,11 @@ other packages. The ego network of _cmake_ is mixed into a similar region of
 the graph.
 
 Python2.7 and Python3.6 form neat clusters with three central hub nodes that
-correpond to the python interpreter, the package managment tool _pip_, and the
+correpond to the python interpreter, the package management tool _pip_, and the
 build and installation tool _setuptools_. Python2.7 is used more often by
 packages outside of its cluster than Python3.6. In contrast to Python, Perl has
 only a single hub node for each specific version but it forms similarly dense
-clusters. From the different Perl versions, _Perl-5.28.0_ is reused most ouside
+clusters. From the different Perl versions, _Perl-5.28.0_ is reused most outside
 of its own cluster by a lot of other packages in the _pkg-config_ zone. This
 indicates that the specific version of the Nixpkgs repository that I have
 evaluated uses this particular Perl version as the default for other packages.
@@ -300,6 +300,6 @@ incident on them. The nodes are therefore pushed to an equilibrium distance
 where the forces are balanced. The equilibrium distance is smaller for nodes
 with low degree and larger for nodes with high degrees.
 
-Getting a nice visualization is then a matter of fine-tuning the correponding
+Getting a nice visualization is then a matter of fine-tuning the corresponding
 parameters of the force simulation in gephi, together with the color scheme and
 the node sizes, until the structure of the graph becomes most evident.

@@ -42,7 +42,7 @@ with a strange beast he called _linear logic_.
 
 Linear logic had two of everything: two ways of building conjunctions
 and disjunctions, two notions of truth, falsehood and two ways to
-negate. It's a strange system, but perhaps not moreso than the zoo of
+negate. It's a strange system, but perhaps not more so than the zoo of
 cute names and symbols Girard conferred to every construct. For the
 purposes of this post, we'll only need one new symbol from this zoo:
 $⊸$, which reads _lollipop_ (also called _linear arrow_, or _lolly_
