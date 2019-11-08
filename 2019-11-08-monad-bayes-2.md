@@ -396,7 +396,7 @@ To sample, we used Metropolis-Hastings and rejection sampling but many other sam
 
 We hope you enjoyed this second post in our _Probabilistic Programming with monad‑bayes Series_ and learned lots! A central aspect of `monad-bayes` is to enable the modeller to use and compose different sampling techniques for their models. Now, you're ready to start getting into such questions in our next post. We hope you join us!
 
-## Appendix - Stability of the Monte Carlo chain
+## Appendix - Stability of the Markov chain
 
 The Markov chain, that we used to sample in this blog post, is a stochastic process that cycles through possible models.
 Models that are more likely are hit more often than models that are less likely, and over time we thus recover the model distribution that we are interested in.
