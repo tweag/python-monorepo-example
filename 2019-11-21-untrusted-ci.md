@@ -208,7 +208,8 @@ builders because:
 
 - Multi-User Nix requires multiple users, ruling out some of the hosted CI
   solutions which don't allow to provide self-hosted runners. However, by just using
-  post-build hooks in a single-user Nix setting, you still solve 2, 3 and 4.
+  post-build hooks in a single-user Nix setting, you still have
+  simpler and better caching.
 
 - Running Nix inside Docker currently requires a privileged container (because
   we want sandboxing to be enabled to ensure some of the isolation properties)
