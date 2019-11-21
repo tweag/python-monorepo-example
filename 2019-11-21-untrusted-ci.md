@@ -51,8 +51,10 @@ nix.binaryCaches = [ "https://s3.amazonaws.com/example-nix-cache/" ];
 We used Amazon S3 in our example above but Nix can also use other S3-based backends or simple
 HTTP/WebDAV-like (supporting GET and PUT) endpoints—there's even a
 [PR](https://github.com/NixOS/nix/pull/3021) for [Google Cloud Storage (GCS)](https://cloud.google.com/storage/) support. You can
-also use [Cachix](https://cachix.org/), which sets up all of the above
-for you.
+also use [Cachix](https://cachix.org/).
+
+The following assumes a public S3 Bucket called `example-nix-cache`.
+For other binary cache backends, instructions will slightly differ.
 
 ## Building and uploading
 
