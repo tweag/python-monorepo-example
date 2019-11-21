@@ -128,7 +128,7 @@ execute a script after building a derivation.
 In order to do so, add to your `/etc/nix/nix.conf`:
 
 ```
-post-build-hook = /etc/nix/
+post-build-hook = /etc/nix/upload-to-cache.sh
 ```
 
 where a trivial implementation of `upload-to-cache.sh` could be[^1]:
@@ -138,7 +138,7 @@ set -eu
 set -f # disable globbing
 export IFS=' '
 
-echo "Signing paths" $OUT_PATHS
+echo "Signing and uploading paths" $OUT_PATHS
 exec nix copy --to 's3://example-nix-cache?secret-key=/run/keys/nix-signing-key' $OUT_PATHS
 ```
 
