@@ -1,5 +1,5 @@
 ---
-title: "capability: the ReaderT pattern without boilerplate"
+title: "capability: <br/>the ReaderT pattern without the boilerplate"
 shortTitle: Announcing capability
 author: Andreas Herrmann, Arnaud Spiwack
 tags: haskell
