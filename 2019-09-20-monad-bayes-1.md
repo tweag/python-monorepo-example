@@ -8,7 +8,7 @@ description: "In this blog post series, we're going to lead you through Bayesian
 
 
 In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the [`monad-bayes`](https://github.com/adscib/monad-bayes) library.
-We start this series gradually with some simple binary models, move next to linear regression, and finish by building a simple neural network that we "train" with a Metropolis-Hastings sampler.
+We start this series gradually with some simple binary models, move next to [linear regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html), and finish by building a simple neural network that we "train" with a Metropolis-Hastings sampler.
 You don't need any prior knowledge of Bayesian modeling to understand and learn from these posts—and we keep the code simple and understandable for Haskell newcomers.
 
 Want to make this post interactive? Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series). It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling! 
@@ -113,7 +113,7 @@ This quickly becomes intractable because a model can basically be any Haskell fu
 The trick behind is to approximate the outcome distribution by drawing successive samples from it.
 It turns out that it is enough to know the _relative probability_ of two samples at a time to do this.
 The relative probability of the two samples is independent of the probability of other samples—computations on full distributions are thus reduced to computations on samples.
-With appropriate sampling algorithms ([MCMC](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo)) we can approximate the outcome distribution despite this limited knowledge.
+With appropriate sampling algorithms ([MCMC](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html)) we can approximate the outcome distribution despite this limited knowledge.
 It is difficult to overstate the implications:
 with MCMC we can address all kinds of sampling related problems in a probabilistic manner that would be completely inaccessible otherwise.
 
@@ -130,7 +130,7 @@ An appropriate sampler can trace and accumulate the score factor of a sample to 
 The accumulated score factors give us access to the relative probability of the two samples, and then we can use MCMC to start sampling.
 We won't go into detail here about how tracing and accumulating works or which two samples we are actually comparing.
 `monad-bayes` provides a few samplers that can go through this process in different ways.
-We include here the `prior` and the `mh` ([Metropolis-Hastings](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) sampler) functions before our well known `sampleIOfixed` function to use an MCMC sampler.
+We include here the `prior` and the `mh` ([Metropolis-Hastings](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html) sampler) functions before our well known `sampleIOfixed` function to use an MCMC sampler.
 Hopefully, the general idea became clear enough here. We'll provide more of the details later in this series.
 
 The final result looks like this:
@@ -226,7 +226,7 @@ We can use `monad-bayes` to approximate the distribution of the return values of
 This could even be the return values of entire programs.
 Even better—we can use `score` to infer the input distribution if we have a way of scoring samples based on observations.
 
-We hope you enjoyed this first post in our _Probabilistic Programming with monad&#8209;bayes Series_ and learned lots! Now, you're ready to build more general statistical models using these building blocks, and proceed to linear regression in our next post. We hope you join us!
+We hope you enjoyed this first post in our _Probabilistic Programming with monad&#8209;bayes Series_ and learned lots! Now, you're ready to build more general statistical models using these building blocks, and proceed to linear regression in our [next post](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html). We hope you join us!
 
 ## Notes
 
