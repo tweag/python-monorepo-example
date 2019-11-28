@@ -301,7 +301,7 @@ probably name this function as `isZero`.
 
 What I showed here is only the tip of the iceberg of what Makam is perfectly capable of handling.
 I suggest reading
-[this paper][makam-paper] by [Orginate's][makam-creatorworks] [Antonis Stampoulis](http://astampoulis.github.io/), the creator of Makam, for more complete _(and way more complex)_ examples. 
+[this paper][makam-paper] by [Originate's][makam-creatorworks] [Antonis Stampoulis](http://astampoulis.github.io/), the creator of Makam, for more complete _(and way more complex)_ examples. 
 Be sure to also check out [Makam's repo][makam-github]—especially the [`examples`][makam-ex] directory—to learn plenty more.
 
 Also, I only showed a tiny bit of what specifying a language means,
