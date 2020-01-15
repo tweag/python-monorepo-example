@@ -1,7 +1,7 @@
 ---
 title: Streaming <br/>with linear types
 author: Edvard Hübinette and Facundo Domínguez
-tags: haskell
+tags: haskell, linear-types
 ---
 
 In
