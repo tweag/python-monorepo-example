@@ -72,7 +72,7 @@ apply (Sub n) = sub n
 {-# SCC apply #-}
 
 applyMany :: [Op] -> Int -> Int
-applyMany ops k = foldl' (\n op -> apply op n) k op
+applyMany ops k = foldl' (\n op -> apply op n) k ops
 ```
 
 Notice that we marked the functions `apply`, `sub`, and `addSlow` with [SCCs][scc_described] (_Set Cost Center_). The
