@@ -2,6 +2,7 @@
 title: Why Haskell <br/>is important
 author: Mark Karpov
 tags: haskell
+description: "People keep asking me, “What's the point of Haskell, why do you folks even use it?”. How can you answer this?"
 ---
 
 People keep asking me, “What's the point of Haskell, why do you folks even
