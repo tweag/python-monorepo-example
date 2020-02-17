@@ -2,7 +2,7 @@
 title: "Safe memory management in inline-java </br>using linear types"
 shortTitle: "A safer inline-java"
 author: Facundo Dominguez
-tags: haskell
+tags: haskell, linear-types
 description: "In this post about inline-java I aim to walk you through the upcoming safe interface of the library, which allows detecting memory management mistakes at compile time using linear types."
 ---
 
