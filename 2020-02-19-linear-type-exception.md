@@ -14,7 +14,7 @@ exactly once, accommodate exceptions, which
 interrupt my computation?
 
 The mantra to remember, to dispel this feeling, is that “a function
-`f` is linear when _if_ its result is consumed exactly one, _then_ its
+`f` is linear when: _if_ its result is consumed exactly once, _then_ its
 argument is consumed exactly once”. If the result is consumed multiple
 times, then the argument is consumed multiple times, if the result is
 consumed only partially (_e.g._ because an exception was thrown), then
@@ -55,7 +55,7 @@ intuitionistic logic, is the `Maybe` monad.
 However, in linear logic, there are several refinements of the `Maybe`
 type. Which one models exceptions? Interestingly enough, not the one
 called `Maybe` in Linear Haskell (`_⊕1` in linear logic). In fact, if
-you previously read my [previous blog post][data-vs-control], you will
+you read my [previous blog post][data-vs-control], you will
 know already that it isn't the right kind of monad to apply here. Instead we
 need to use the `_⊕⊤` monad from linear logic, where `⊤` can be
 defined in Linear Haskell as
