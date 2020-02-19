@@ -93,8 +93,8 @@ computation. We will need an unrestricted computation instead:
 
 ```haskell
 catch :: Either Top a -> a -> a
-catch (Left x) _ = x
-catch (Right _) handler = handler
+catch (Left _) handler = handler
+catch (Right x) _ = x
 ```
 
 So the Curry-Howard correspondence, the bridge between logic and programming,
