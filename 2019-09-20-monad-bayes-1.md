@@ -8,7 +8,7 @@ description: "In this blog post series, we're going to lead you through Bayesian
 
 
 In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the [`monad-bayes`](https://github.com/adscib/monad-bayes) library.
-We start this series gradually with some simple binary models, move next to [linear regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html), and finish by building a simple neural network that we "train" with a Metropolis-Hastings sampler.
+We start this series gradually with some simple binary models, move next to [linear regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html), and finish by building a [simple neural network](https://www.tweag.io/posts/2020-02-26-monad-bayes-3.html) that we "train" with a Metropolis-Hastings sampler.
 You don't need any prior knowledge of Bayesian modeling to understand and learn from these posts—and we keep the code simple and understandable for Haskell newcomers.
 
 Want to make this post interactive? Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series). It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling! 

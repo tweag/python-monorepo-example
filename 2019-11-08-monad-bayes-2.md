@@ -7,8 +7,11 @@ description: "Here's Part 2 in Tweag's Series about Bayesian modeling in Haskell
 ---
 
 This post is a continuation of Tweag's _**Probabilistic Programming with monad‑bayes Series**_.
-You can find [Part 1 here](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html).
-Want to make this post interactive?
+You can find the other parts here:
+
+* [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
+* [Part 3: A Bayesian Neural Network](https://www.tweag.io/posts/2020-02-26-monad-bayes-3.html)
+
 Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series).
 It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling!
 
