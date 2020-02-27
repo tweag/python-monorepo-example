@@ -42,8 +42,8 @@ Therefore, our (very simple) neural network will be represented by:
 ```haskell
 data NN
   = NN
-      { biasVec :: Vector Double,
-        weightVec :: Vector Double,
+      { biass :: Vector Double,
+        weights :: Vector Double,
         sigma :: Double
       }
   deriving (Eq, Show)
@@ -100,8 +100,8 @@ We can, for example, pick a specific neural network:
 
 ```haskell
 nn = NN
-  { biasVec=vector [1, 5, 8])
-  , weightVec=vector [2, -5, 1]
+  { biass=vector [1, 5, 8]
+  , weights=vector [2, -5, 1]
   , sigma=2.0
   }
 ```
@@ -266,7 +266,7 @@ vlShow $ plot --
 
 ![png](../img/posts/bayes3_05.svg)
 
-The x-axis shows the step positions (`biasVec`) and the y-axis shows the step amplitudes (`weightVec`).
+The x-axis shows the step positions (`biass`) and the y-axis shows the step amplitudes (`weights`).
 We have trained a three-node (_i.e._ three-step) neural network, so we see three modes in the histogram:
 around `(0, 2)`, around `(3, -3)` and around `(6, 2)`.
 Indeed, these are the steps that are fitting the sinus.
