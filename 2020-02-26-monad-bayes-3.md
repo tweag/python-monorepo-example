@@ -116,7 +116,7 @@ points1 =
   , y <- [-10 .. 10]
   ]
 
-vlShow $ --
+vlShow $ -- checkout the notebook for the plotting code
 ```
 
 ![png](../../img/posts/bayes3_01.svg)
@@ -213,7 +213,7 @@ hist =
     ((\(_, d)-> (xValue d, yValue d)) <$> predicted)
 cents = Vec.toList $ DH.binsCenters $ DH.bins hist
 val = Vec.toList $ DH.histData hist
-vlShow $ plot --
+vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
 ![png](../img/posts/bayes3_02.svg)
@@ -243,7 +243,7 @@ hist =
     ((\(nn, d) -> (xValue d, yValue d)) <$> predicted)
 cents = Vec.toList $ DH.binsCenters $ DH.bins hist
 val = Vec.toList $ DH.histData hist
-vlShow $ plot --
+vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
 ![png](../img/posts/bayes3_03.svg)
@@ -261,7 +261,7 @@ bs = mconcat $ toList . biass . fst <$> predicted
 hist = histo2D (-5, 20, 10) (-5, 20, 5) (zip bs ws)
 cents = Vec.toList $ DH.binsCenters $ DH.bins hist
 val = Vec.toList $ DH.histData hist
-vlShow $ plot --
+vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
 ![png](../img/posts/bayes3_05.svg)
