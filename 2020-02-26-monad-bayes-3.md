@@ -11,7 +11,7 @@ This post is the third instalment of Tweag's _**Probabilistic Programming with m
 You can find the previous parts here:
 
 * [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
-* [Part 2: Linear Regression here](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html)
+* [Part 2: Linear Regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html)
 
 Want to make this post interactive?
 Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series).
