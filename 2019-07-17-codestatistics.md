@@ -45,7 +45,7 @@ It is also interesting to see that the average number of lines of code is very, 
 ## Import statements and language extensions—how many are there?
 
 Now let's take a closer look and see what we can learn from this data.
-As you might know, in both Python and Haskell files start with a list of import statement. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
+As you might know, in both Python and Haskell files start with a list of import statements. In Haskell, file headers also contain a list of `LANGUAGE` pragmas, which add extensions to the language.
 We thus expect `import` statements to be a common pattern in the source code data sets.
 In Haskell, we imagine `LANGUAGE` pragmas to be another common pattern.
 
