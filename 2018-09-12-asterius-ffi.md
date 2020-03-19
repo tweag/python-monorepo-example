@@ -7,7 +7,7 @@ tags: haskell, asterius
 
 _Note: since Mar 19, 2020, we've changed the JavaScript import syntax: the
 `i`-th argument is now `$i` instead of `${i}`. The code snippets in this post
-has been adjusted accordingly._
+have been adjusted accordingly._
 
 [Previously][hello-asterius], we announced the [Asterius](https://github.com/tweag/asterius) compiler, a new GHC-backend that translates Haskell to WebAssembly. Since then, we made a lot of progress; not just by supporting more of Haskell's language features, but also by improving interoperability. Today, we are proud to introduce a critical new feature: Haskell-JavaScript interop via a dedicated foreign function interface (FFI). Why is this important? It means we can finally interact with browser's DOM to in the future create full webapps.
 
@@ -143,7 +143,7 @@ Again, we follow the approach of the standard Haskell FFI, and much as we repres
 
 The Asterius JavaScript FFI supports `StablePtr a` as a primitive type, and as usual, we can use `Foreign.StablePtr.newStablePtr` to turn any Haskell closure into a `StablePtr`. However, we cannot directly pass a `StablePtr` to a JavaScript function that expects a callback. Instead, we first need to convert a `StablePtr` into a `JSRef` pointing to a valid JavaScript function which re-enters the Asterius runtime and triggers Haskell evaluation when called.
 
-The asterius runtime provides special interfaces for this purpose: `makeHaskellCallback` and `makeHaskellCallback1`. They convert arguments of type `StablePtr (IO ())`and `StablePtr (JSRef -> IO ())` into `JSRef`s referring to proper JavaScript functions, which can directly be used as event handlers, etc. This interface can be imported into Haskell like this:
+The Asterius runtime provides special interfaces for this purpose: `makeHaskellCallback` and `makeHaskellCallback1`. They convert arguments of type `StablePtr (IO ())`and `StablePtr (JSRef -> IO ())` into `JSRef`s referring to proper JavaScript functions, which can directly be used as event handlers, etc. This interface can be imported into Haskell like this:
 
 ```Haskell
 foreign import javascript "__asterius_jsffi.makeHaskellCallback($1)" js_make_hs_callback

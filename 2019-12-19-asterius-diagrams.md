@@ -8,7 +8,7 @@ description: "Asterius compiles Haskell code into WebAssembly code to be execute
 
 _Note: since Mar 19, 2020, we've changed the JavaScript import syntax: the
 `i`-th argument is now `$i` instead of `${i}`. The code snippets in this post
-has been adjusted accordingly._
+have been adjusted accordingly._
 
 [Asterius][asterius] is an experimental GHC backend targeting WebAssembly, which
 makes it possible to run Haskell code in your browser or in a Node.js web
