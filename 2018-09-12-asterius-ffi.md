@@ -5,6 +5,10 @@ author: Shao Cheng
 tags: haskell, asterius
 ---
 
+_Note: since Mar 19, 2020, we've changed the JavaScript import syntax: the
+`i`-th argument is now `$i` instead of `${i}`. The code snippets in this post
+has been adjusted accordingly._
+
 [Previously][hello-asterius], we announced the [Asterius](https://github.com/tweag/asterius) compiler, a new GHC-backend that translates Haskell to WebAssembly. Since then, we made a lot of progress; not just by supporting more of Haskell's language features, but also by improving interoperability. Today, we are proud to introduce a critical new feature: Haskell-JavaScript interop via a dedicated foreign function interface (FFI). Why is this important? It means we can finally interact with browser's DOM to in the future create full webapps.
 
 In the style of Haskell's standard FFI, all you need to provide are simple Haskell import & export declarations. To the best of our knowledge, Asterius is the first compiler for a high-level FP language targeting WebAssembly that has reached this critical milestone.
@@ -24,9 +28,9 @@ Here is what Asterius let's you do today:
 import Control.Monad
 
 foreign import javascript "Math.random()" js_random :: IO Double
-foreign import javascript "console.log(${1})" js_print_double :: Double -> IO ()
+foreign import javascript "console.log($1)" js_print_double :: Double -> IO ()
 foreign import javascript "new Date()" js_current_time :: IO JSRef
-foreign import javascript "console.log(${1})" js_print :: JSRef -> IO ()
+foreign import javascript "console.log($1)" js_print :: JSRef -> IO ()
 
 main :: IO ()
 main = do
@@ -63,7 +67,7 @@ root@6be395fd9d1e:~# ahc-link --input /mirror/jsffi.hs --run
 2018-09-12T09:34:43.088Z
 ```
 
-We can use the `foreign import javascript` syntax directly, without enabling any additional GHC extensions. The string after the keyword `javascript` needs to be a JavaScript expression, where we use positional arguments `${1}`, `${2}`, and so forth to refer to the imported function's arguments. The result type of an imported function may be `IO` wrapped, depending on whether the underlying computation is pure and can be safely cached. Our current implementation supports a variety of *primitive types*, such as, `Bool`, `Char`, and `Int` as argument and result types of imported functions. See the [reference documentation](https://tweag.github.io/asterius/jsffi/) for a full list.
+We can use the `foreign import javascript` syntax directly, without enabling any additional GHC extensions. The string after the keyword `javascript` needs to be a JavaScript expression, where we use positional arguments `$1`, `$2`, and so forth to refer to the imported function's arguments. The result type of an imported function may be `IO` wrapped, depending on whether the underlying computation is pure and can be safely cached. Our current implementation supports a variety of *primitive types*, such as, `Bool`, `Char`, and `Int` as argument and result types of imported functions. See the [reference documentation](https://tweag.github.io/asterius/jsffi/) for a full list.
 
 Besides primitive types, Asterius supports importing JavaScript references represented by values of type `JSRef` in Haskell land. What is a `JSRef`? After all, the [WebAssembly MVP spec](https://github.com/WebAssembly/design/blob/master/MVP.md) only supports marshalling integers and floating point values.
 
@@ -85,16 +89,16 @@ fromJSString s = [js_string_tochar s i | i <- [0 .. js_length s - 1]]
 foreign import javascript "\"\"" js_string_empty
   :: JSRef
 
-foreign import javascript "${1}.concat(${2})" js_concat
+foreign import javascript "$1.concat($2)" js_concat
   :: JSRef -> JSRef -> JSRef
 
-foreign import javascript "${1}.length" js_length
+foreign import javascript "$1.length" js_length
   :: JSRef -> Int
 
-foreign import javascript "String.fromCodePoint(${1})" js_string_fromchar
+foreign import javascript "String.fromCodePoint($1)" js_string_fromchar
   :: Char -> JSRef
 
-foreign import javascript "${1}.codePointAt(${2})" js_string_tochar
+foreign import javascript "$1.codePointAt($2)" js_string_tochar
   :: JSRef -> Int -> Char
 ```
 
@@ -142,10 +146,10 @@ The Asterius JavaScript FFI supports `StablePtr a` as a primitive type, and as u
 The asterius runtime provides special interfaces for this purpose: `makeHaskellCallback` and `makeHaskellCallback1`. They convert arguments of type `StablePtr (IO ())`and `StablePtr (JSRef -> IO ())` into `JSRef`s referring to proper JavaScript functions, which can directly be used as event handlers, etc. This interface can be imported into Haskell like this:
 
 ```Haskell
-foreign import javascript "__asterius_jsffi.makeHaskellCallback(${1})" js_make_hs_callback
+foreign import javascript "__asterius_jsffi.makeHaskellCallback($1)" js_make_hs_callback
   :: StablePtr (IO ()) -> IO JSRef
 
-foreign import javascript "__asterius_jsffi.makeHaskellCallback1(${1})" js_make_hs_callback1
+foreign import javascript "__asterius_jsffi.makeHaskellCallback1($1)" js_make_hs_callback1
   :: StablePtr (JSRef -> IO ()) -> IO JSRef
 ```
 
@@ -156,12 +160,12 @@ import Foreign.StablePtr
 
 foreign import javascript "Math.random()" js_random :: IO Double
 
-foreign import javascript "console.log(${1})" js_print_double :: Double -> IO ()
+foreign import javascript "console.log($1)" js_print_double :: Double -> IO ()
 
-foreign import javascript "__asterius_jsffi.makeHaskellCallback(${1})" js_make_hs_callback
+foreign import javascript "__asterius_jsffi.makeHaskellCallback($1)" js_make_hs_callback
   :: StablePtr (IO ()) -> IO JSRef
 
-foreign import javascript "process.on(\"beforeExit\",${1})" js_process_beforeexit
+foreign import javascript "process.on(\"beforeExit\",$1)" js_process_beforeexit
   :: JSRef -> IO ()
 
 main :: IO ()

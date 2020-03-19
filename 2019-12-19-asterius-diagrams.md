@@ -6,6 +6,10 @@ tags: asterius, haskell
 description: "Asterius compiles Haskell code into WebAssembly code to be executed in a browser or in Node.js. It has reached a new milestone by being able to compile the diagrams library and its dependencies."
 ---
 
+_Note: since Mar 19, 2020, we've changed the JavaScript import syntax: the
+`i`-th argument is now `$i` instead of `${i}`. The code snippets in this post
+has been adjusted accordingly._
+
 [Asterius][asterius] is an experimental GHC backend targeting WebAssembly, which
 makes it possible to run Haskell code in your browser or in a Node.js web
 service. Asterius has reached a new milestone: it can now compile the popular
@@ -65,7 +69,7 @@ that appends a `div` element with the given contents to the page body.
 foreign import javascript
    "(() => {                                    \
    \   const d = document.createElement('div'); \
-   \   d.innerHTML = ${1};                      \
+   \   d.innerHTML = $1;                      \
    \   document.body.appendChild(d);            \
    \ })()"
    showSVG :: JSString -> IO ()
