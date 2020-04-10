@@ -47,7 +47,7 @@ root@16758a0232ba:~/asterius# ahc-link --input asterius/test/todomvc/todomvc.hs 
 ```
 
 After running the above commands, copy the `asterius/test/todomvc`
-directory to somewhere else, run `npm install` in it to fetch common
+directory somewhere else, run `npm install` in it to fetch common
 artifacts shared by all TodoMVC implementations, then you can fire up
 a local HTTP server and browse `index.html` to evaluate it.
 
@@ -107,7 +107,7 @@ emptyElement :: Element
 buildElement :: Element -> IO JSVal
 ```
 
-The `Element` type allows us to create a DOM tree node, specify it's
+The `Element` type allows us to create a DOM tree node, specify its
 class name and attributes, attach child nodes, and insert Haskell
 callbacks as event handlers. After using `buildElement` to convert it
 to a real JavaScript node, we can use interfaces like
@@ -169,7 +169,7 @@ We also need to create event handlers to process certain events: e.g.
 `"click"` events on buttons or `"keypress"` events on text input bars.
 To add handlers to DOM tree nodes created from our `Element` datatype,
 we just need to insert the Haskell callbacks into the `eventHandlers`
-field. A for the nodes that already exist as a part of the TodoMVC
+field. As for the nodes that already exist as a part of the TodoMVC
 project skeleton, we implement a `TodoView` module containing bindings
 to the widgets we're interested in, then we apply `addEventListener`
 on them in our main module. See the complete code
