@@ -22,7 +22,7 @@ bridging mechanism: `foreign import` and `foreign export`
 declarations. We just need to teach the compiler how to handle these
 declarations when they're about JavaScript code.
 
-Here is what Asterius let's you do today:
+Here is what Asterius lets you do today:
 
 ```Haskell
 import Control.Monad
@@ -71,7 +71,7 @@ We can use the `foreign import javascript` syntax directly, without enabling any
 
 Besides primitive types, Asterius supports importing JavaScript references represented by values of type `JSRef` in Haskell land. What is a `JSRef`? After all, the [WebAssembly MVP spec](https://github.com/WebAssembly/design/blob/master/MVP.md) only supports marshalling integers and floating point values.
 
-Under the hood, `JSRef`s are really just `Int`s. The Asterius runtime maintains a table mapping `JSRef`s to actual JavaScript objects. We use the table indices to represent those objects and pass them across JavaScript-WebAssembly boundary instead. When the runtime invokes the JavaScript computation in a `foreign import javascript` declaration, it decides, based on the type information, whether to pass arguments and the result in their raw form or whether to use an object in the `JSRef` table.
+Under the hood, `JSRef`s are really just `Int`s. The Asterius runtime maintains a table mapping `JSRef`s to actual JavaScript objects. We use the table indices to represent those objects and pass them across the JavaScript-WebAssembly boundary instead. When the runtime invokes the JavaScript computation in a `foreign import javascript` declaration, it decides, based on the type information, whether to pass arguments and the result in their raw form or whether to use an object in the `JSRef` table.
 
 ## Marshalling more advanced types
 
@@ -137,7 +137,7 @@ Additionally, we need to supply `--export-function=mult_hs` to `ahc-link` in thi
 
 The discussed `foreign export javascript` declarations are sufficient when all Haskell functions to be called from JavaScript are statically known. However, we often want to produce closures at runtime (e.g., by partially applying curried functions), and then, export such dynamic runtime-generated closures for use in JavaScript. For instance, when providing a Haskell closure as a JavaScript event handler, the handler often captures some contextual info as free variables, which are unknown at compile time.
 
-We might want to work around that by adding the runtime context as a separate argument to an exported function. Then, the JavaScript code would be in charge of providing the right context when invoking a Haskell function. However, this would be a step back from the convenience of a language with first-class functions and would require substantial boilerplate code. Instead, we want to pass closure directly.
+We might want to work around that by adding the runtime context as a separate argument to an exported function. Then, the JavaScript code would be in charge of providing the right context when invoking a Haskell function. However, this would be a step back from the convenience of a language with first-class functions and would require substantial boilerplate code. Instead, we want to pass closures directly.
 
 Again, we follow the approach of the standard Haskell FFI, and much as we represent JavaScript references in Haskell via `JSRef` values and a table, we use `StablePtr`s to refer to Haskell closures in JavaScript. GHC’s `StablePtr`s are also table indexes, which serve as a handle to a Haskell object on the heap, which can be passed between Haskell and C, or in our case, Haskell and JavaScript. We can't pass raw addresses, since the storage manager may move objects around. Hence, the `StablePtr` API also maintains a table of heap objects and we use table indexes to refer to them. This enables garbage collection to move objects around, as long as it takes care to also update the `StablePtr` table.
 
