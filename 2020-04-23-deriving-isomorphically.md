@@ -282,7 +282,7 @@ instance, consider the isomorphism:
 ```
 
 The `Monad` instance for `These a` is indeed the same as that of
-`WriterT (Mayber a) (Either a)`.  Therefore we can iso-derive `Monad
+`WriterT (Maybe a) (Either a)`.  Therefore we can iso-derive `Monad
 (These a)`.
 
 ```haskell
