@@ -69,22 +69,6 @@ their vision, from research to product delivery.
       },
     },
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-plugin-prettier-eslint`,
-    //   options: {
-    //     prettier: {
-    //       patterns: [
-    //         `**/*.{js,jsx,ts,tsx}`,
-    //         `**/*.{css,scss,less}`,
-    //         `**/*.{json,json5}`,
-    //         `**/*.{graphql}`,
-    //         `**/*.{md,mdx}`,
-    //         `**/*.{html}`,
-    //         `**/*.{yaml,yml}`,
-    //       ],
-    //     },
-    //   },
-    // },
     "gatsby-redirect-from",
     "gatsby-plugin-meta-redirect",
     "gatsby-plugin-sass",
