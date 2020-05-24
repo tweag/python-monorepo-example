@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 400"
+	 style="enable-background:new 0 0 300 400;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#4D22A8;}
+</style>
+<g id="Plan_x0020_1">
+	<path class="st0" d="M166.7,100h-33.3c-18.4,0-33.3,15-33.3,33.3V200h100v-66.7c0-18.4,15-33.3,33.3-33.3h33.3
+		c18.4,0,33.3,15,33.3,33.3V66.7V33.3C300,15,285,0,266.7,0h-33.3C215,0,200,15,200,33.3v33.3C200,85,185,100,166.7,100L166.7,100z"
+		/>
+	<path class="st1" d="M133.3,300H200h100v100H200h-66.7c-18.4,0-33.3-15-33.3-33.3v-33.3C100,315,85,300,66.7,300H33.3
+		C15,300,0,285,0,266.7V200h100v66.7C100,285,115,300,133.3,300L133.3,300z"/>
+</g>
+</svg>

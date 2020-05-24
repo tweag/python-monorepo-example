@@ -1,0 +1,97 @@
+.footer {
+  font-size: 18px;
+  line-height: 26px;
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: 80px 120px;
+  width: 100%;
+}
+
+.footer *::selection {
+  background: rgba(255, 255, 255, 0.99); /* WebKit/Blink Browsers */
+  color: #000;
+}
+
+.footer *::-moz-selection {
+  background: rgba(255, 255, 255, 0.99); /* Gecko Browsers */
+  color: #000;
+}
+
+.footer:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -9999px;
+  background: #000;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer .btn {
+  color: #fff;
+  border-color: #fff;
+  font-size: 16px;
+  padding: 5px 18px;
+  height: auto;
+}
+
+.footer .btn:after {
+  background: #fff;
+}
+
+.footer .btn:hover {
+  color: #000;
+}
+
+.footer-col-area {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.footer-col {
+  position: relative;
+  width: 15%;
+  margin: 0 0 22px;
+}
+
+.footer-col .title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 400;
+  display: block;
+  margin: 0 0 20px;
+}
+
+.footer-col address {
+  font-style: normal;
+  display: block;
+  margin: 0;
+}
+
+.footer-nav,
+.social-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+}
+
+.footer-nav li,
+.social-links li {
+  position: relative;
+}
