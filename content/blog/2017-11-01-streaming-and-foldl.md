@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-11-01-streaming-and-foldl.html]
 title: The Exodus to Streamgard,  an epic poem
 author: Yves Parès
 featured: yes

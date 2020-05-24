@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2015-08-20-were-hiring.html]
 title: We're hiring! (Software engineer / devops)
 preview_image: /images/2015-08-20-were-hiring/preview_image.jpg
 featured: no

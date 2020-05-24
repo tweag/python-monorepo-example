@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-03-08-linear-sort.html]
 title: Implementing a safer sort  with linear types
 author: Alexander Vershilov, Arnaud Spiwack
 tags: [haskell, linear-types]

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-02-26-monad-bayes-3.html]
 title: "Probabilistic Programming with monad‑bayes, Part 3:  A Bayesian Neural Network"
 shortTitle: "Probabilistic Programming with monad‑bayes (3)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede

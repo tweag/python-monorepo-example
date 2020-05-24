@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-04-10-the-sneakernet.html]
 title: "The Sneakernet:  Towards A Much Faster Internet"
 shortTitle: "The Sneakernet: Towards A Much Faster Internet"
 author: Matthias Meschede

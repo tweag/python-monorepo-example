@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-08-17-inline-code.html]
 title: "Diversity through inline code"
 author: Manuel M T Chakravarty
 featured: yes

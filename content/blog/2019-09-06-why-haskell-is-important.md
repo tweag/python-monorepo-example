@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-09-06-why-haskell-is-important.html]
 title: Why Haskell  is important
 author: Mark Karpov
 tags: [haskell]

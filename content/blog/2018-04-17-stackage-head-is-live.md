@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-04-17-stackage-head-is-live.html]
 title: Stackage HEAD is now live!
 author: Mark Karpov, Manuel Chakravarty
 tags: [haskell]

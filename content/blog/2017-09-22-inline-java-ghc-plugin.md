@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-09-22-inline-java-ghc-plugin.html]
 title: "GHC compiler plugins in the wild:  typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes

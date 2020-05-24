@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-05-06-convert-haskell-project-to-bazel.html]
 title: "A taste of Bazel: build a library, a service and hspec tests"
 shortTitle: A Bazel for Haskell tutorial
 author: Clément Hurlin

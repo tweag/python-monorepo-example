@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2016-06-20-haskell-compute-paas-with-sparkle.html]
 title: Haskell compute PaaS with sparkle
 author: Alp Mestanogullari, Mathieu Boespflug
 featured: yes

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-02-19-linear-type-exception.html]
 title: "On linear types and  exceptions"
 shortTitle: "On linear types and exceptions"
 author: Arnaud Spiwack

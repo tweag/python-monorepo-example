@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-05-23-typing-nix.html]
 title: Typing Nix
 author: Théophane Hufschmitt
 tags: [nix]

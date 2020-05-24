@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-10-30-porcupine.html]
 title: "Here You See the Small Porcupine Perched in Its Tree,  Preparing and Crunching Some Data with Me"
 shortTitle: "Porcupine: Announcing First Release"
 author: Yves Parès

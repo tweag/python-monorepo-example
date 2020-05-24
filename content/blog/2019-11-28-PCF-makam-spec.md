@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-11-28-PCF-makam-spec.html]
 title: "How to make your papers run:  Executable formal semantics for your language"
 shortTitle: "How to make your papers run"
 author: Teodoro Freund

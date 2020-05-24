@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-09-12-webassembly-internship.html]
 title: "War Stories of Asterius:  Numerics & Debugging"
 shortTitle: "War Stories of Asterius"
 author: "Siddharth Bhat"

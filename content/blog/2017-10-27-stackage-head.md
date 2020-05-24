@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-10-27-stackage-head.html]
 title: Using Stackage for GHC regression testing
 author: Manuel M T Chakravarty
 featured: yes

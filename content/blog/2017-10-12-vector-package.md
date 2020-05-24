@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-10-12-vector-package.html]
 title: Array fusion with vector
 author: Manuel M T Chakravarty
 featured: yes

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-08-24-linear-types-packed-data.html]
 title: Compact normal forms + linear types  = efficient network communication
 shortTitle: Compact normal forms + linear types
 author: Arnaud Spiwack

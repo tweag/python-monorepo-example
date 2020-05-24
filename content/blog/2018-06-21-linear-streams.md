@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-06-21-linear-streams.html]
 title: Streaming  with linear types
 author: Edvard Hübinette and Facundo Domínguez
 tags: [haskell, linear-types]

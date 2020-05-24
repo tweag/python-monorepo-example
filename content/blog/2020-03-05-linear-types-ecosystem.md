@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-03-05-linear-types-ecosystem.html]
 title: Linear types, backward and forward compatibility
 author: Mathieu Boespflug, Krzysztof Gogolewski
 tags: [haskell, linear-types]

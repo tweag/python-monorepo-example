@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-10-11-ormolu-first-release.html]
 title: "Ormolu:  Announcing First Release"
 shortTitle: "Ormolu: Announcing First Release"
 author: Mark Karpov, Utku Demir

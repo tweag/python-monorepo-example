@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-02-13-types-got-you.html]
 title: The types got you
 author: Mark Karpov
 tags: [haskell]

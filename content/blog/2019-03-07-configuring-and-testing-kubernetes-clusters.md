@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-03-07-configuring-and-testing-kubernetes-clusters.html]
 title: "Configuring and testing Kubernetes clusters   with KubeNix and kind"
 shortTitle: "Kubernetes, KubeNix and kind"
 author: Tobias Pflug

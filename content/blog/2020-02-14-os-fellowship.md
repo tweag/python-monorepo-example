@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-02-14-os-fellowship.html]
 title: "Tweag Fellowships:  Funding for Open Source Contributors"
 shortTitle: "Tweag's Open Source Fellowship"
 author: Richard Eisenberg and Matthias Meschede

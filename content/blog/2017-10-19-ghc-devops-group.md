@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-10-19-ghc-devops-group.html]
 title: Announcing the  GHC DevOps Group
 author: Manuel M T Chakravarty
 featured: yes

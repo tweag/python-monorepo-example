@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-02-06-safe-inline-java.html]
 title: "Safe memory management in inline-java  using linear types"
 shortTitle: "A safer inline-java"
 author: Facundo Dominguez

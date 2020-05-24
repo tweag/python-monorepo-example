@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-02-05-free-monads.html]
 title: Free monads for cheap interpreters
 author: James Haydon
 featured: yes

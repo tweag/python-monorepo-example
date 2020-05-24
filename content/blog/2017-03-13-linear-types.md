@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-03-13-linear-types.html]
 title: Linear types make performance more predictable
 author: Jean-Philippe Bernardy and Arnaud Spiwack
 featured: yes

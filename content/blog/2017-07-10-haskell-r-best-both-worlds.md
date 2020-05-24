@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-07-10-haskell-r-best-both-worlds.html]
 title: "R and Haskell: best of both worlds with HaskellR"
 author: Sigrid Keydana
 featured: yes

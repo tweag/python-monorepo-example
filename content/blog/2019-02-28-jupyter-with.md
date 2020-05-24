@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-02-28-jupyter-with.html]
 title: "JupyterWith:  Declarative, Reproducible Notebook Environments"
 shortTitle: "Declarative, Reproducible Jupyter Environments"
 author: Juan Simões, Matthias Meschede

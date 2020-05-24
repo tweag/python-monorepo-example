@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-01-16-data-vs-control.html]
 title: "A Tale of Two Functors  or: How I learned to Stop Worrying and Love Data and Control"
 shortTitle: A Tale of Two Functors
 author: Arnaud Spiwack

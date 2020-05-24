@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-07-27-streaming-programs.html]
 title: "Streaming programs without laziness: a short primer"
 shortTitle: Streaming programs without laziness
 author: Facundo Domínguez and Mathieu Boespflug

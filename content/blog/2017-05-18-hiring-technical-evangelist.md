@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-05-18-hiring-technical-evangelist.html]
 title: "We're hiring!  Technical evangelist"
 author: Tweag I/O engineering team
 featured: yes

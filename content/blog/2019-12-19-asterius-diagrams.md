@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-12-19-asterius-diagrams.html]
 title: "Haskell art in your browser  with Asterius"
 shortTitle: "Art in browser with Asterius"
 author: Sylvain Henry (IOHK), Shao Cheng

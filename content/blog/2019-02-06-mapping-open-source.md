@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-02-06-mapping-open-source.html]
 title: "Mapping a Universe  of Open Source Software"
 shortTitle: "Mapping a Universe of Open Source Software"
 author: Matthias Meschede

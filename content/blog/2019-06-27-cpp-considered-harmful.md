@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-06-27-cpp-considered-harmful.html]
 title: "CPP  considered harmful"
 author: Mathieu Boespflug
 tags: [haskell]

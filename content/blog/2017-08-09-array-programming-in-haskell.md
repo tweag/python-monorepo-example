@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-08-09-array-programming-in-haskell.html]
 title: Array programming in Haskell
 author: Manuel M T Chakravarty
 featured: yes

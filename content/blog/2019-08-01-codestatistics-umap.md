@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-08-01-codestatistics-umap.html]
 title: "Code Line Patterns:  Creating maps of Stackage and PyPi"
 shortTitle: "Code Line Patterns"
 author: "Simeon Carstens, Matthias Meschede"

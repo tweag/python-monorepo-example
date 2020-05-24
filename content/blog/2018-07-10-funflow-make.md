@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-07-10-funflow-make.html]
 title: "Funflow Example: emulating Make"
 author: Divesh Otwani, Nicholas Clarke
 tags: [haskell]

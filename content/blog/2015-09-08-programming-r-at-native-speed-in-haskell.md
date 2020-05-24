@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2015-09-08-programming-r-at-native-speed-in-haskell.html]
 title: Programming R at native speed using Haskell
 author: Mathieu Boespflug, Facundo Domínguez, Alexander Vershilov
 preview_image: /images/2015-09-08-programming-r-at-native-speed-in-haskell/preview_image.png

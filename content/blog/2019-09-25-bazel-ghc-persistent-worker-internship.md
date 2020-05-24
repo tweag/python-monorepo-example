@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-09-25-bazel-ghc-persistent-worker-internship.html]
 title: "Bazel's Persistent Worker Mode for GHC:  An Industrial Internship"
 shortTitle: "Bazel's Persistent Worker Mode for GHC"
 author: Artem Pelenitsyn

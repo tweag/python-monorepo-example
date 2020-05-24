@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-03-28-introducing-lorri.html]
 title: "Introducing lorri,  your project's nix-env"
 author: Graham Christensen, Philip Patsch
 tags: [nix, devops]

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-12-12-benchgraph.html]
 title: "DIY benchmark history  with Criterion and Shiny"
 shortTitle: "DIY benchmark history"
 author: "Théophane Hufschmitt"

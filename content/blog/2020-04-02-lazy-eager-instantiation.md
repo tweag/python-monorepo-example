@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-04-02-lazy-eager-instantiation.html]
 title: "Eager vs. Lazy Instantiation:  Making an Informed Decision"
 shortTitle: "Eager vs. Lazy Instantiation"
 author: Gert-Jan Bottu

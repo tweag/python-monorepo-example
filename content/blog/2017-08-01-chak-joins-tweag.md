@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-08-01-chak-joins-tweag.html]
 title: I am a  functional programming evangelist
 author: Manuel M T Chakravarty
 featured: yes

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-07-17-codestatistics.html]
 title: "Revelations from repetition:  Source code headers in Haskell and Python"
 shortTitle: "Revelations from repetition"
 author: "Simeon Carstens, Matthias Meschede"

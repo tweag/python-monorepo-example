@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-04-09-bazel-remote-cache.html]
 title: "Setting up a shared build cache  using Bazel"
 shortTitle: "Shared Bazel cache"
 author: Mark Karpov

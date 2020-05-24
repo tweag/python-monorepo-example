@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-09-27-array-package.html]
 title: Immutability and unboxing in array programming
 author: Manuel M T Chakravarty
 featured: yes

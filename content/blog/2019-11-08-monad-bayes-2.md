@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-11-08-monad-bayes-2.html]
 title: "Probabilistic Programming with monad‑bayes, Part 2:  Linear Regression"
 shortTitle: "Probabilistic Programming with monad‑bayes (2)"
 author: Siddharth Bhat, Matthias Meschede

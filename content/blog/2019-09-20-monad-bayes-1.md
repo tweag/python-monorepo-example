@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-09-20-monad-bayes-1.html]
 title: "Probabilistic Programming with monad‑bayes, Part 1:  First Steps"
 shortTitle: "Probabilistic Programming with monad‑bayes (1)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede

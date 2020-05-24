@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-08-03-linear-typestates.html]
 title: Encode state transitions in types  using linear types
 author: Arnaud Spiwack
 featured: yes

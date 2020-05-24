@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-04-03-terraform-provider-secret.html]
 title: Securely storing secrets in Terraform  with terraform-provider-secret
 shortTitle: Storing secrets in Terraform
 author: Jonas Chevalier

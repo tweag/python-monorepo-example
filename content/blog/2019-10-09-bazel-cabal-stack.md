@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-10-09-bazel-cabal-stack.html]
 title: "Bazel, Cabal, Stack:  Why choose when you can have them all?"
 shortTitle: "Third-party Haskell libraries in Bazel"
 author: Mathieu Boespflug, Andreas Herrmann

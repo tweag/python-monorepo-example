@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-09-12-asterius-ffi.html]
 title: "Haskell WebAssembly calling JavaScript and back again"
 shortTitle: Asterius gets a JavaScript FFI
 author: Shao Cheng

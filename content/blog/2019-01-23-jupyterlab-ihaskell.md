@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-01-23-jupyterlab-ihaskell.html]
 title: "Towards Interactive Data Science in Haskell:  Haskell in JupyterLab"
 shortTitle: "Harnessing the Power of Haskell in JupyterLab"
 author: Matthias Meschede, Juan Simões

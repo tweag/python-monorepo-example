@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-03-20-capability-free-monad.html]
 title: Capability is about free monads.  It's a bird… It's a plane… It's a free monad!
 shortTitle: Capability is about free monads
 author: Arnaud Spiwack

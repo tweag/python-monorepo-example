@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-03-29-we-are-hiring-swe.html]
 title: "We're hiring!   Software engineers"
 author: "Mathieu Boespflug"
 tags: [hiring]

@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2018-10-04-capability.html]
 title: "capability:  the ReaderT pattern without the boilerplate"
 shortTitle: Announcing capability
 author: Andreas Herrmann, Arnaud Spiwack

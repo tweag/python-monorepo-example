@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-11-21-untrusted-ci.html]
 title: "Untrusted CI:  Using Nix to get automatic trusted caching of untrusted builds"
 shortTitle: "Untrusted CI using Nix"
 author: "Florian Klink"

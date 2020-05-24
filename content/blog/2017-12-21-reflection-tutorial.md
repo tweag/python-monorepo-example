@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2017-12-21-reflection-tutorial.html]
 title: "All about reflection:  a tutorial"
 shortTitle: "All about reflection"
 author: Arnaud Spiwack

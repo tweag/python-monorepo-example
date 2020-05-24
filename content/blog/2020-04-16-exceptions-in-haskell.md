@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-04-16-exceptions-in-haskell.html]
 title: "The three kinds of Haskell exceptions  and how to use them"
 shortTitle: "The three kinds of Haskell exceptions"
 author: Arnaud Spiwack

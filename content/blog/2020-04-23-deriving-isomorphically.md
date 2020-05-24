@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2020-04-23-deriving-isomorphically.html]
 title: "Deriving Isomorphically"
 author: Hans Hoeglund
 description: "How to derive instances via arbitrary isomorphisms."

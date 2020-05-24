@@ -1,4 +1,5 @@
 ---
+redirect_from: [/posts/2019-03-11-internships.html]
 title: "Tweag Internship Programme 2019"
 shortTitle: "Internships at Tweag"
 author: "Nicholas Clarke"
