@@ -52,7 +52,7 @@ their vision, from research to product delivery.
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-47336061-2`,
       },
     },
     // `gatsby-plugin-feed`,
