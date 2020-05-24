@@ -2,7 +2,7 @@
 title: "Haskell WebAssembly calling JavaScript and back again"
 shortTitle: Asterius gets a JavaScript FFI
 author: Shao Cheng
-tags: haskell, asterius
+tags: [haskell, asterius]
 ---
 
 _Note: since Mar 19, 2020, we've changed the JavaScript import syntax: the
@@ -67,7 +67,7 @@ root@6be395fd9d1e:~# ahc-link --input /mirror/jsffi.hs --run
 2018-09-12T09:34:43.088Z
 ```
 
-We can use the `foreign import javascript` syntax directly, without enabling any additional GHC extensions. The string after the keyword `javascript` needs to be a JavaScript expression, where we use positional arguments `$1`, `$2`, and so forth to refer to the imported function's arguments. The result type of an imported function may be `IO` wrapped, depending on whether the underlying computation is pure and can be safely cached. Our current implementation supports a variety of *primitive types*, such as, `Bool`, `Char`, and `Int` as argument and result types of imported functions. See the [reference documentation](https://tweag.github.io/asterius/jsffi/) for a full list.
+We can use the `foreign import javascript` syntax directly, without enabling any additional GHC extensions. The string after the keyword `javascript` needs to be a JavaScript expression, where we use positional arguments `$1`, `$2`, and so forth to refer to the imported function's arguments. The result type of an imported function may be `IO` wrapped, depending on whether the underlying computation is pure and can be safely cached. Our current implementation supports a variety of _primitive types_, such as, `Bool`, `Char`, and `Int` as argument and result types of imported functions. See the [reference documentation](https://tweag.github.io/asterius/jsffi/) for a full list.
 
 Besides primitive types, Asterius supports importing JavaScript references represented by values of type `JSRef` in Haskell land. What is a `JSRef`? After all, the [WebAssembly MVP spec](https://github.com/WebAssembly/design/blob/master/MVP.md) only supports marshalling integers and floating point values.
 
@@ -118,7 +118,7 @@ This exposes Haskell's multiplication on plain `Int`s as a WebAssembly function 
 
 All our previous examples assumed the existence of a function `Main.main`. Then, the linker generates a `.js` file that (1) initialises the runtime, (2) runs `Main.main`, and (3) finally exits. When we invoke Haskell code from JavaScript, we cannot rely on this flow of control. In the worst case, JavaScript could try to invoke Haskell code before the Haskell runtime has been initialised. That would sure lead to undesirable behaviour. Hence, we need to inject some custom code at the point where the WebAssembly code has been successfully compiled and instantiated.
 
-The tool `ahc-link` provides a flag `--asterius-instance-callback=`, which takes a JavaScript callback function, which is to be called once an *Asterius instance* has been successfully initiated. An Asterius instance contains the instantiated WebAssembly module together with mappings from Cmm (GHC's C-like intermediate language) symbols to addresses. Hence, JavaScript code can call exported functions by way of accessing this symbol mapping. Continuing with the above example, in order to call `mult_hs` in JavaScript, the callback that we need to supply would be:
+The tool `ahc-link` provides a flag `--asterius-instance-callback=`, which takes a JavaScript callback function, which is to be called once an _Asterius instance_ has been successfully initiated. An Asterius instance contains the instantiated WebAssembly module together with mappings from Cmm (GHC's C-like intermediate language) symbols to addresses. Hence, JavaScript code can call exported functions by way of accessing this symbol mapping. Continuing with the above example, in order to call `mult_hs` in JavaScript, the callback that we need to supply would be:
 
 ```JavaScript
 i => {
@@ -181,11 +181,11 @@ When this example runs, `Main.main` first obtains a random number `x`, then conv
 
 There are limitations still to the current JavaScript FFI:
 
-* Currently, the marshalling of large objects, such as strings and arrays is fairly costly, as it requires many function calls between Haskell and JavaScript. Hence, we plan to provide custom marshalling for common bulk types (such as, `ByteString`, `Text`, and even `aeson` `Value`s) in the runtime.
-* The standard Haskell FFI allows directly marshalling primitive types wrapped in `newtype` declarations. Asterius currently lacks that capability, but we plan to add it in a later version. This would allow us to e.g. make `JSString` a newtype wrapper around `JSRef` above.
-* We did not discuss properly freeing `JSRef`s and `StablePtr`s. Besides manual freeing, we plan to look into the usual support for finalisers as well as a `ResourceT`-like mechanism that frees  `JSRef`s upon exiting a scope. Even better, we should be able to use GHC's experimental support for [linear types][linear-types].
-* We need to consider exception handling at language boundaries and ideally propagate them transparently.
-* Finally, we need to look into using other JavaScript packages from Haskell and wrapping Haskell libraries transparently as JavaScript packages?
+- Currently, the marshalling of large objects, such as strings and arrays is fairly costly, as it requires many function calls between Haskell and JavaScript. Hence, we plan to provide custom marshalling for common bulk types (such as, `ByteString`, `Text`, and even `aeson` `Value`s) in the runtime.
+- The standard Haskell FFI allows directly marshalling primitive types wrapped in `newtype` declarations. Asterius currently lacks that capability, but we plan to add it in a later version. This would allow us to e.g. make `JSString` a newtype wrapper around `JSRef` above.
+- We did not discuss properly freeing `JSRef`s and `StablePtr`s. Besides manual freeing, we plan to look into the usual support for finalisers as well as a `ResourceT`-like mechanism that frees `JSRef`s upon exiting a scope. Even better, we should be able to use GHC's experimental support for [linear types][linear-types].
+- We need to consider exception handling at language boundaries and ideally propagate them transparently.
+- Finally, we need to look into using other JavaScript packages from Haskell and wrapping Haskell libraries transparently as JavaScript packages?
 
 However, the JavaScript FFI as it stands is already sufficient to
 build fairly complete web apps. That will be the topic of our next installment in this series. Stay tuned!

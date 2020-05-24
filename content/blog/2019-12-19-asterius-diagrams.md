@@ -1,8 +1,8 @@
 ---
-title: "Haskell art in your browser <br/>with Asterius"
+title: "Haskell art in your browser  with Asterius"
 shortTitle: "Art in browser with Asterius"
 author: Sylvain Henry (IOHK), Shao Cheng
-tags: asterius, haskell
+tags: [asterius, haskell]
 description: "Asterius compiles Haskell code into WebAssembly code to be executed in a browser or in Node.js. It has reached a new milestone by being able to compile the diagrams library and its dependencies."
 ---
 
@@ -27,7 +27,7 @@ primitives. More on that later in the post.
 ## Hilbert in your browser
 
 Our example is about generating and displaying SVG directly in the browser using
-`diagrams`. We picked the [Hilbert curve][Hilbert] example from
+`diagrams`. We picked the [Hilbert curve][hilbert] example from
 [diagrams's gallery][gallery]. To use it with Asterius, we just have to adapt code provided
 in the gallery example as follows.
 
@@ -197,7 +197,7 @@ number of dimensions over the last few months, each of which we aim to cover in
 its own blog post in the near future:
 
 - **Template Haskell support:** We now have partial TH support, which is enough
-  to compile most packages. Splices are compiled to WebAssembly and executed  in
+  to compile most packages. Splices are compiled to WebAssembly and executed in
   `node`, using pipes to communicate with the host `ahc` process, similar to the
   `iserv` remote interpreter of standard GHCi. The lack of TH support has been a
   major roadblock for Asterius as well as some other Haskell-to-Web solutions
@@ -233,7 +233,7 @@ its own blog post in the near future:
 [diagrams]: https://diagrams.github.io
 [iohk]: https://iohk.io
 [gallery]: https://diagrams.github.io/gallery
-[Hilbert]: https://diagrams.github.io/gallery/Hilbert.html
+[hilbert]: https://diagrams.github.io/gallery/Hilbert.html
 [todomvc]: https://www.tweag.io/posts/2018-12-20-asterius-todomvc.html
 [wai-app-static]: https://github.com/yesodweb/wai/tree/master/wai-app-static
 [wasm-hilbert]: https://tweag.io/wasm-hilbert

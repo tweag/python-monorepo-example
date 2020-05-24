@@ -1,8 +1,8 @@
 ---
-title: "DIY benchmark history <br/>with Criterion and Shiny"
+title: "DIY benchmark history  with Criterion and Shiny"
 shortTitle: "DIY benchmark history"
 author: "Théophane Hufschmitt"
-tags: devops
+tags: [devops]
 ---
 
 If you're a conscientious developer like ~~I am~~ my boss is, you probably have
@@ -39,7 +39,7 @@ when they learned that it actually happened to me… don't know why).
 
 [criterion-html-sample]: http://www.serpentine.com/criterion/report.html
 
-The consequence of this was that unless we had a *really* compelling reason to
+The consequence of this was that unless we had a _really_ compelling reason to
 do so (like the users calling out for help because their program was suddenly
 running twice slower than before), we just didn't look at them. And obviously
 this meant that we had accidentally introduced several annoying performance
@@ -128,8 +128,8 @@ transform
 
 ### Visualization interface
 
-*Disclaimer: I'm definitely not an R expert, so if anything here makes the
-R programmer in you cry, don't worry, that's totally normal and expected.*
+_Disclaimer: I'm definitely not an R expert, so if anything here makes the
+R programmer in you cry, don't worry, that's totally normal and expected._
 
 We now want to build a nice graph UI for our benchmarks.
 Let's first try to make our goals a bit clearer. We want:
@@ -140,14 +140,14 @@ Let's first try to make our goals a bit clearer. We want:
 Thanks to the rich R ecosystem, this is easy to achieve. In addition to
 `r-shiny` for the server part, we leverage [ggplot][ggplot] and
 [plotly][plotly] for the graph, as well as the `pickerInput` from
-[shinyWidgets][shinyWidgets] for the benchmark selection. It lets us
+[shinyWidgets][shinywidgets] for the benchmark selection. It lets us
 quickly build a nice interactive graph to compare all our commits.
 
 <img title="Sample benchmark graph" alt="Sample benchmark graph" src="../img/posts/benchgraph_screenshot.png" style="max-width: 100%; max-height: 100%"></img>
 
 [ggplot]: https://ggplot2.tidyverse.org/
 [plotly]: https://plot.ly/r/
-[shinyWidgets]: https://rdrr.io/cran/shinyWidgets/
+[shinywidgets]: https://rdrr.io/cran/shinyWidgets/
 
 ## Deploying the service
 

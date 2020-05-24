@@ -1,19 +1,19 @@
 ---
-title: "Code Line Patterns: <br/>Creating maps of Stackage and PyPi"
+title: "Code Line Patterns:  Creating maps of Stackage and PyPi"
 shortTitle: "Code Line Patterns"
 author: "Simeon Carstens, Matthias Meschede"
 description: "We visualize large collections of Haskell and Python source codes
-    as 2D maps using methods from Natural Language Processing (NLP) and
-    dimensionality reduction and find a surprisingly rich structure for both languages.
-    Clustering on the 2D maps allows us to identify common patterns in source code which
-    give rise to these structures. Finally, we discuss this first analysis in the context of
-    advanced machine learning-based tools performing automatic code refactoring and
-    code completion."
-tags: data-science
+  as 2D maps using methods from Natural Language Processing (NLP) and
+  dimensionality reduction and find a surprisingly rich structure for both languages.
+  Clustering on the 2D maps allows us to identify common patterns in source code which
+  give rise to these structures. Finally, we discuss this first analysis in the context of
+  advanced machine learning-based tools performing automatic code refactoring and
+  code completion."
+tags: [data-science]
 ---
 
 In a [recent blog post](https://www.tweag.io/posts/2019-07-17-codestatistics.html), we analyzed the most obvious patterns in Haskell and Python source code, namely `import` statements and `LANGUAGE` pragmas.
-As promised in that blog post, let us now explore what unknown patterns are hidden in our data sets. 
+As promised in that blog post, let us now explore what unknown patterns are hidden in our data sets.
 To this end, we will create two-dimensional "maps" of code, which allow for a nice visualization of code patterns and may make you appreciate the beauty and complex structure of the code you and your friends and colleagues write.
 Such code patterns also provide insight into the coding habits of a community in a programming language ecosystem.
 We will conclude this blog post with an outlook on how these and similar patterns can be exploited.
@@ -23,12 +23,12 @@ We will conclude this blog post with an outlook on how these and similar pattern
 The sort of patterns that we are looking for is some kind of similarity between lines of codes.
 While the concept of similarity between two lines of code might be intuitively clear for us humans, we don't have time to print out a large number of lines of code on little snips of paper and sort them in piles according to their similarity.
 So obviously, we want to use a computer for that.
-Unfortunately, computers *a priori* don't know what similarity between two lines of code means.
+Unfortunately, computers _a priori_ don't know what similarity between two lines of code means.
 
 To enable computers to measure similarity, a first step is to represent each line of code as a vector, which is a quantitative representation of what we think are the most important characteristics ("features") of a line of code.
-This is a common task in [Natural Language Processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing), which is concerned with automatic analysis of large amounts of *natural* language data.
-While the languages we are considering are not natural, but *constructed*, we expect key concepts to be transferable.
-We thus borrow the idea of a *bag-of-words* from NLP: for a given line of code, we neglect grammar and word order, but keep a measure of presence of each word.
+This is a common task in [Natural Language Processing (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing), which is concerned with automatic analysis of large amounts of _natural_ language data.
+While the languages we are considering are not natural, but _constructed_, we expect key concepts to be transferable.
+We thus borrow the idea of a _bag-of-words_ from NLP: for a given line of code, we neglect grammar and word order, but keep a measure of presence of each word.
 In our case, we only take into account the 500 most frequent words in our data set and simply check which of these words is present in a line of code and which are not.
 That way, we end up with a 500-dimensional feature vector, in which each dimension encodes the occurrence of a word: it's either one (if the word is present in that line of code) or zero (if it is not).
 
@@ -90,7 +90,7 @@ We don't care how often a word occurs in a line of code, only whether it's there
 Furthermore, single-letter words are neglected.
 
 Having built these feature vectors, we applied a popular dimensionality reduction technique, [UMAP](https://arxiv.org/pdf/1802.03426.pdf).
-UMAP is a manifold embedding technique, meaning that it tries to represent each data point in the high-dimensional feature space by a point on a lower-dimensional manifold in a way that similar points in the feature space lie close together on the lower-dimensional manifold. It is a non-linear mapping, which means it's well suited for data sets which can not easily be projected on flat manifolds. 
+UMAP is a manifold embedding technique, meaning that it tries to represent each data point in the high-dimensional feature space by a point on a lower-dimensional manifold in a way that similar points in the feature space lie close together on the lower-dimensional manifold. It is a non-linear mapping, which means it's well suited for data sets which can not easily be projected on flat manifolds.
 UMAP requires a measure of similarity in feature space, which we chose as the Hamming distance between two binary feature vectors.
 
 To assign points in the two-dimensional representations of our data sets to clusters, we used the [Python implementation](https://github.com/scikit-learn-contrib/hdbscan) of the recent clustering algorithm [HDBSCAN](https://link.springer.com/chapter/10.1007/978-3-642-37456-2_14) (paywalled).

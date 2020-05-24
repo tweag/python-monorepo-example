@@ -1,19 +1,19 @@
 ---
-title: "JupyterWith: <br>Declarative, Reproducible Notebook Environments"
+title: "JupyterWith:  Declarative, Reproducible Notebook Environments"
 shortTitle: "Declarative, Reproducible Jupyter Environments"
 author: Juan Simões, Matthias Meschede
 description: "Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem."
 image: "posts/jupyter-kernels-box.png"
-tags: nix, data-science
+tags: [nix, data-science]
 ---
 
 [jupyter-ihaskell]: ./2019-01-23-jupyterlab-ihaskell.html
 [mapping-nixpkgs]: ./2019-02-06-mapping-open-source.html
 [ihaskell]: https://github.com/gibiansky/IHaskell
-[jupyterWith]: https://github.com/tweag/jupyterWith
+[jupyterwith]: https://github.com/tweag/jupyterWith
 [nix]: https://nixos.org/nix
 [nixpkgs]: https://github.com/NixOS/nixpkgs
-[JupyterHub]: https://github.com/jupyterhub/jupyterhub
+[jupyterhub]: https://github.com/jupyterhub/jupyterhub
 [jupyter-kernel]: https://jupyter-client.readthedocs.io/en/stable/kernels.html#kernel-specs
 [python-nix]: https://nixos.org/nixpkgs/manual/#python
 
@@ -37,7 +37,7 @@ A single command installs and runs the compute environment from the configuratio
 
 Under the hood, we use the [Nix][nix] package manager, which enables us to build up such composable environments with simplicity.
 The Jupyter environments can also be containerized with a single Nix command as a Docker image.
-Such Docker images can then be served with [JupyterHub][JupyterHub] to give multiple users access to a well-defined reproducible environment.
+Such Docker images can then be served with [JupyterHub][jupyterhub] to give multiple users access to a well-defined reproducible environment.
 With this setup, installation of a Jupyterlab environment with multiple kernels such as in the following image is easy and robust:
 
 <a href="../img/posts/jupyter-kernels.png">
@@ -91,7 +91,7 @@ and run `nix-shell --command "jupyter lab"`.
 After downloading and building of all dependencies, this should open a shell and launch JupyterLab.
 That's it, all the kernels are installed, and all libraries are accessible to them.
 Although the first run can take quite a while, subsequent runs are instant because all build steps are automatically cached.
-More examples of `JupyterWith`, including Jupyterlab extensions, Docker images, and many other kernels can be found in the [README][jupyterWith] of the project.
+More examples of `JupyterWith`, including Jupyterlab extensions, Docker images, and many other kernels can be found in the [README][jupyterwith] of the project.
 
 ## Behind the scenes: Nix
 
@@ -142,7 +142,7 @@ As is common in Nix, we wrap the kernel executable into a shell script that loca
 This wrapper script is then exposed to Jupyter with a [kernel spec][jupyter-kernel] file.
 For example, the file for the IHaskell kernel looks as follows:
 
-``` json
+```json
 {
   "display_name" = "Haskell";
   "language" = "haskell";
@@ -154,6 +154,7 @@ For example, the file for the IHaskell kernel looks as follows:
   "logo64" = "logo-64x64.svg";
 }
 ```
+
 Jupyter is made aware of the location of these files through the `JUPYTER_PATH` environment variable.
 For kernels, all we need to do is building packages and setting environment variables.
 Nix handles this wonderfully.

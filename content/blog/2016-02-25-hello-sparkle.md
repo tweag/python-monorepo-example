@@ -1,9 +1,9 @@
 ---
-title: Haskell meets large scale<br>distributed analytics
+title: Haskell meets large scale distributed analytics
 author: Alp Mestanogullari, Mathieu Boespflug
 preview_image: /images/2016-02-25-hello-sparkle/preview_image.png
 featured: yes
-tags: haskell, data-science
+tags: [haskell, data-science]
 ---
 
 Large scale distributed applications are complex: there are effects at scale that matter far more than when your application is basked in the warmth of a single machine. Messages between any two processes may or may not make it to their final destination. If reading from a memory bank yields corrupted bytes about once a year, with 10,000 nodes this is likely to happen within the hour. In a million components system some hardware somewhere will be in a failed state, continuously. And it takes cunning to maximize throughput when network latencies are vastly superior to processing units' crunch power. The key idea behind distributed computing middlewares such as [Hadoop](http://hadoop.apache.org/) is to capture common application patterns, and solve coping with these effects once and for all for each such pattern, so that applications writers don't have to do so themselves from scratch every time. Today we're introducing a tech preview of [sparkle](https://github.com/tweag/sparkle). The motto: implement a robust and scalable distributed computing middleware for Haskell, by reusing [Apache Spark](http://spark.apache.org/) (itself built on top of parts of Hadoop). <!--more-->
@@ -18,7 +18,7 @@ Today, Spark is already available to write scalable Scala, Java, R or Python app
 
 So what is it like in practice? sparkle's "Hello World" on a hosted Amazon EMR cluster:
 
-``` bash
+```bash
 # Build it
 $ stack build hello
 # Package it
@@ -29,7 +29,7 @@ $ spark-submit --master 'spark://IP:PORT' sparkle/target/sparkle-0.1.jar
 
 The code looks something like this:
 
-``` haskell
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE StaticPointers #-}
 
@@ -70,7 +70,7 @@ We'll try [this Scala application](https://gist.github.com/feynmanliang/3b655575
 
 We will go through this step by step. The first thing to do is to initialize a few (internal) Spark datastructures, collectively called a context (as in the first example). We'll be using Spark's recently introduced Data Frames, so we need the context to include that too:
 
-``` haskell
+```haskell
 main :: IO ()
 main = do
   conf <- newSparkConf "Spark Online LDA"
@@ -80,14 +80,14 @@ main = do
 
 Next, we load a collection of "stop words" (from S3) as an RDD and make a good old Haskell list of values out of that, which we can pass around conveniently. These are the words we want the algorithm to ignore when analyzing the documents, usually a list of the most common words that do not inform the topic discussed in a document (such as "and", "the" and so on).
 
-``` haskell
+```haskell
   stopwords <- textFile sc "s3://some-bucket/stopwords.txt"
            >>= collect
 ```
 
 We're now ready to load our collection of documents, using Spark's wholeTextFiles function, mapping a directory (local or distant) to an RDD of key-value pairs of the form (filename, content). For our purposes we'll drop the file names, keep the values and assign each one a numeric index.
 
-``` haskell
+```haskell
   docs <- wholeTextFiles sc "s3://some-bucket/documents/"
       >>= justValues
       >>= zipWithIndex
@@ -95,7 +95,7 @@ We're now ready to load our collection of documents, using Spark's wholeTextFile
 
 Before we hand the documents to the LDA algorithm, we need to tokenize their contents, remove the stopwords and do some other preprocessing. This is all provided by Spark but at the level of Data Frames, not on plain old RDDs. The conversion from RDD to data frame is not particularly interesting but here it is:
 
-``` haskell
+```haskell
   docsRows <- toRows docs
   docsDF <- toDF sqlc docsRows "docId" "text"
 ```
@@ -104,7 +104,7 @@ We end up with a dataframe where each row has 2 columns, the first named "docId"
 
 To process this big data frame of all documents, we'll want to build a pipeline consisting of a tokenizer, a stop words remover and a "count vectorizer", which despite its fancy name basically just counts the number of times each word is used in a given document. Each step of the pipeline takes as argument the name of the column it should consider as its input and the name of the column it will place the output in, in the resulting data frame.
 
-``` haskell
+```haskell
   tok <- newTokenizer "text" "words"
   tokenizedDF <- tokenize tok docsDF
   swr <- newStopWordsRemover stopwords "words" "filtered"
@@ -116,7 +116,7 @@ To process this big data frame of all documents, we'll want to build a pipeline 
 
 At this stage, we have a distribution of "word usage" for each document. We can now initialize the algorithm and run it against the aforementioned distributions, with parameters that depend on the dataset you are running LDA against. Finally, let's print a summary of the topic model inferred by LDA:
 
-``` haskell
+```haskell
   lda <- newLDA batchFraction numTopics maxIterations
   ldamodel <- runLDA lda countVectors
   describeResults ldamodel cvModel maxTermsPerTopic

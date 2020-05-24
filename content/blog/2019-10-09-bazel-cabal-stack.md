@@ -1,15 +1,15 @@
 ---
-title: "Bazel, Cabal, Stack: <br/>Why choose when you can have them all?"
+title: "Bazel, Cabal, Stack:  Why choose when you can have them all?"
 shortTitle: "Third-party Haskell libraries in Bazel"
 author: Mathieu Boespflug, Andreas Herrmann
-tags: bazel, haskell
+tags: [bazel, haskell]
 description: "Bazel gets native support for third-party Haskell libraries and building Cabal packages since the 0.10 release of rules_haskell."
 ---
 
 No new product created in Haskell ever starts from
 scratch. [Hackage][hackage] hosts millions of lines of third-party
 code, neatly and independently redistributable as [Cabal][cabal]
-packages. Now, [Bazel][bazel] has native support for building Cabal packages 
+packages. Now, [Bazel][bazel] has native support for building Cabal packages
 since the 0.10 release of [rules_haskell][haskell-build].
 
 Cabal packages themselves seldom start from scratch. That's why
@@ -31,19 +31,19 @@ rehearsing that in this post).
 Bazel is a build tool originally created by Google. The key
 attributes of Bazel are:
 
-* Bazel is a *polyglot* build tool, supporting many different
+- Bazel is a _polyglot_ build tool, supporting many different
   programming languages. This enables Bazel to be fast, because it can
   have a global and fine-grained view of the dependency graph, even
   across language boundaries.
-* Bazel tries hard to guarantee build *correctness*. This means that
+- Bazel tries hard to guarantee build _correctness_. This means that
   after making a few localized changes to your source code, you don't need
-  to start your build from scratch to be confident that others 
+  to start your build from scratch to be confident that others
   get the same result. Incremental builds are guaranteed to yield the
   same result as full builds (under mild conditions we won't discuss
   here). This also means that it's safe to distribute builds to
-  a large cluster of remote machines to make it finish *fast*. You
+  a large cluster of remote machines to make it finish _fast_. You
   still get the same result.
-* Bazel is *extensible*. You can teach Bazel to build code in new
+- Bazel is _extensible_. You can teach Bazel to build code in new
   programming languages that it didn't know about out-of-the-box.
   Doing so requires getting familiar with a simple Python-like
   language called [Starlark][starlark]. Unlike Make or [Shake][shake]
@@ -61,13 +61,13 @@ equivalent).
 
 The tool expects two types of files in your project:
 
-* One or more `BUILD` files. Each `BUILD` file declares a set of
-  targets. Each target is an instance of a *build rule*, like
+- One or more `BUILD` files. Each `BUILD` file declares a set of
+  targets. Each target is an instance of a _build rule_, like
   `haskell_library` for any reusable component in your project, or
   `haskell_binary` for the executables, or miscellaneous other build
   rules (like API documentation). See
   the [tutorial][rules_haskell-tutorial] for a longer introduction.
-* A `WORKSPACE` file that allows you to invoke macros that perform
+- A `WORKSPACE` file that allows you to invoke macros that perform
   some autodiscovery and automatically generate `BUILD` files from, say, third-party package metadata.
 
 Here's how our solution to build third-party code works:
@@ -121,7 +121,7 @@ a static library and a shared library (called `libHSmylib-0.1.a` and
 `libHSmylib-0.1.so`, respectively). You don't need to remember the
 names of any of the outputs, since you can simply pass a target as
 a dependency to another, using the target's label. The build rules
-tell Bazel which outputs from each one of a target's dependencies it needs to build 
+tell Bazel which outputs from each one of a target's dependencies it needs to build
 the target. In this case, we are building
 a binary with `:mylib` statically linked (the default), so the
 `libHSmylib-0.1.a` output from that target is needed to build the
@@ -144,7 +144,7 @@ definitions get tiring to write, for two reasons:
    can get very large, in the order of hundreds of nodes. Writing it
    out in full in the form of target definitions like above would be
    tiresome indeed.
-   
+
 [Stack][stack] already knows how to resolve a snapshot name to
 a specific set of package versions. Stack also already knows where to
 find these packages, on Hackage or any of its mirrors. Finally, Stack
@@ -188,16 +188,16 @@ It's an interesting story that to achieve correct, reproducible, and
 cacheable builds, we gainfully combined Haskell's three main build
 technologies:
 
-* Bazel to run build actions in parallel or distributed on many nodes
+- Bazel to run build actions in parallel or distributed on many nodes
   in a build cluster,
-* Cabal to interpret the metadata of existing third-party code and
+- Cabal to interpret the metadata of existing third-party code and
   correctly construct shared and static libraries, and
-* Stack to inform Bazel about where to find the source code for the
+- Stack to inform Bazel about where to find the source code for the
   third-party dependencies, what versions to use, and tell it what the
   dependency graph looks like.
 
 Another interesting observation is that emulating Cabal is
-*hard*. We previously collaborated with [Formation][formation] on [Hazel][hazel],
+_hard_. We previously collaborated with [Formation][formation] on [Hazel][hazel],
 an effort to reimplement Cabal as a Bazel ruleset. It turned out that
 getting the Cabal semantics exactly right for all packages on all
 platforms (especially Windows) was exceedingly difficult. With the
@@ -207,7 +207,7 @@ simpler solution overall.
 
 Have a look at Digital Asset's [DAML repository][daml_repository].
 DAML is an example of a large Haskell project powered by Bazel
-and rules_haskell. It's an open source smart contract language for building 
+and rules_haskell. It's an open source smart contract language for building
 distributed applications. You can build the project using this new Stack and
 Cabal support on Linux and macOS. Windows support is in progress. The
 repository has around 150 direct Hackage dependencies and makes use
@@ -234,4 +234,3 @@ Stack's dependency graph.
 [stackage]: https://stackage.org
 [stackage-snapshot]: https://docs.haskellstack.org/en/stable/pantry/#snapshots
 [starlark]: https://docs.bazel.build/versions/master/skylark/language.html
-

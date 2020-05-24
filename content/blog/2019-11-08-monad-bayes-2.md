@@ -1,16 +1,16 @@
 ---
-title: "Probabilistic Programming with monad‑bayes, Part 2: <br/>Linear Regression"
+title: "Probabilistic Programming with monad‑bayes, Part 2:  Linear Regression"
 shortTitle: "Probabilistic Programming with monad‑bayes (2)"
 author: Siddharth Bhat, Matthias Meschede
-tags: data-science, haskell, statistics 
+tags: [data-science, haskell, statistics]
 description: "Here's Part 2 in Tweag's Series about Bayesian modeling in Haskell with the monad-bayes library."
 ---
 
 This post is a continuation of Tweag's _**Probabilistic Programming with monad‑bayes Series**_.
 You can find the other parts here:
 
-* [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
-* [Part 3: A Bayesian Neural Network](https://www.tweag.io/posts/2020-02-26-monad-bayes-3.html)
+- [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
+- [Part 3: A Bayesian Neural Network](https://www.tweag.io/posts/2020-02-26-monad-bayes-3.html)
 
 Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series).
 It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling!
@@ -39,7 +39,7 @@ We can _compare_ them by assessing how likely it is that they generate the data.
 Bayesian inference and the laws of probability tell us _how_ to make this comparison rationally.
 
 Conceptually it is simple:
-Define a set of processes that we want to compare and prior beliefs in each of them (the _prior distribution_). 
+Define a set of processes that we want to compare and prior beliefs in each of them (the _prior distribution_).
 For each of these processes, describe and compute the probability that it generates the observed data (the _likelihood_).
 Score each process - that is multiply the prior belief in a process with the likelihood.
 Renormalize and examine the result, the posterior beliefs in each model (the _posterior distribution_).
@@ -55,7 +55,6 @@ The data that we consider are two-dimensional points (x, y).
 These points could be observations of time and velocity, location and temperature, velocity and acceleration, or any other two continuous variables that we observe.
 Here is how we can describe such data with Haskell:
 
-
 ```haskell
 data Data
   = Data
@@ -69,7 +68,6 @@ The model that we consider generates data along lines with some Gaussian noise a
 This means that the x and y values of our data points cannot take any value, but that `y` can be calculated from `x` with the equation `m*x + b + n`, with parameters `m,b` that are the same for all points and a random, normally-distributed deviation `n` that is independently drawn for each point.
 In Haskell, the model, i.e., the lines that it describes, can thus be characterized with:
 
-
 ```haskell
 data Params
   = Params
@@ -81,7 +79,6 @@ data Params
 ```
 
 The likelihood, the heart of our model, corresponds to this succinct Haskell function:
-
 
 ```haskell
 likelihood :: Params -> Data -> Log Double
@@ -99,13 +96,11 @@ In other words, it describes a probability distribution.
 We can pick data samples from such a _sampling distribution_—modeling a real-world data generating process.
 For instance, let's choose the following parameters:
 
-
 ```haskell
 params0 = Params {slope=2.3, intercept=(-1.2), noiseStd=2.0}
 ```
 
 The associated sampling distribution can then be obtained with:
-
 
 ```haskell
 samplingDistribution' :: Data -> Double
@@ -115,7 +110,6 @@ samplingDistribution' = exp . ln . likelihood params0
 The extra `exp . ln` snippet here is required to extract a `Double` from a `Log Double`, a data type that internally stores the logarithm of a number instead of the actual value.
 Here is a plot that shows how this 2D sampling distribution looks like:
 
-
 ```haskell
 points1 = [(x, y, samplingDistribution' (Data x y)) | x<-[-10..10], y<-[-10..10]]
 
@@ -123,9 +117,7 @@ vlShow $ plot -- [... x, y, prob ...]
 -- (the full hvega plotting code can be found in the associated notebook)
 ```
 
-
 ![png](../img/posts/bayes2_01.svg)
-
 
 You can think about it as a line with some noise around, or as a Gaussian distribution with fixed standard deviation in `y` direction and a mean that increases linearly with `x`, which is closer to the definition.
 
@@ -165,9 +157,7 @@ points2 =
 vlShow $ plot -- [... iparam, x, y, likelihood ...]
 ```
 
-
 ![png](../img/posts/bayes2_02.svg)
-
 
 Each distribution varies in terms of its slope, intercept and standard deviation.
 Note that the maximum of a distribution is lower if it has a higher standard deviation, which is due to the normalized `normalPdf` function we used.
@@ -183,7 +173,6 @@ This means, `likelihood :: Params -> Data -> Log Double` becomes `likelihoodDist
 Here, `m` implements the `MonadInfer` typeclass that represents a distribution from which we can sample.
 It thus somehow deals with the `Log Double` probability behind the scenes:
 
-
 ```haskell
 likelihoodDist :: MonadInfer m => Params -> m Data
 likelihoodDist params = do
@@ -195,17 +184,14 @@ likelihoodDist params = do
 
 As we did in our [previous blog post](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html), we can sample from this distribution with [MCMC](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo):
 
-
 ```haskell
 mkSampler = prior . mh 300
 pointsMCMC <- sampleIOfixed $ mkSampler $ likelihoodDist params0
 
-vlShow $ plot -- [... pointsMCMC ...] 
+vlShow $ plot -- [... pointsMCMC ...]
 ```
 
-
 ![png](../img/posts/bayes2_03.svg)
-
 
 Did this work?
 Well, we got some samples, and they are roughly distributed according to the desired distribution that we showed above.
@@ -229,7 +215,6 @@ Here we choose an inefficient but quite general approach called [rejection sampl
 It works like this:
 We first get a bunch of independent uniform 2D data points via `monad-bayes`.
 
-
 ```haskell
 uniform2D :: MonadSample m => m Data
 uniform2D = do
@@ -241,7 +226,7 @@ uniform2D = do
 We then draw a list of `2000` points from this distribution with the help of `replicateM` and `sampleIOfixed` :
 
 ```haskell
-mkSampler = replicateM 2000 
+mkSampler = replicateM 2000
 uniformSamples <- sampleIOfixed $ mkSampler uniform2D
 ```
 
@@ -255,29 +240,23 @@ Now we can reject unlikely samples and accept the likely ones to get what we wan
 To decide which ones to accept, we draw a uniform random number for each sample.
 A sample is only accepted if this number is higher than the desired probability:
 
-
 ```haskell
 uniform0max <- sampleIOfixed $ mkSampler $ uniform 0 (maximum desiredProb)
 points3 = [p | (p, u, l)<-zip3 uniformSamples uniform0max desiredProb, u<l]
 length points3
 ```
 
-
     190
-
 
 The rejection procedure removes ~90% of all uniformly distributed points and reduces the initial number of `2000` points to only `190`.
 But the probability to accept is proportional to the desired probability.
 The remaining points are therefore independent and distributed according to our desired sampling distribution, as this plot demonstrates:
 
-
 ```haskell
-vlShow $ plot -- [... points ...] 
+vlShow $ plot -- [... points ...]
 ```
 
-
 ![png](../img/posts/bayes2_04.svg)
-
 
 Rejection sampling is often not very efficient, but it is simple and straight forward.
 By design, most rejected samples are in low probability regions, and it is thus crucial to choose an initial distribution that is concentrated around high probability regions—if we know where they are.
@@ -292,7 +271,6 @@ With this likelihood, we can score the distributions from the prior distribution
 Now pay attention, here is the inference recipe, in English and in Haskell:
 
 _pull out a model parameter sample from the prior distribution and score it with the likelihood to observe all data points_:
-
 
 ```haskell
 postParams :: MonadInfer m => m Params -> [Data] -> m Params
@@ -310,30 +288,26 @@ We thus update the prior probabilities of model parameters and get a new posteri
 But now the question is again how we can sample from this posterior distribution.
 The sampler that we use to handle the `score` operation, that is updating relative probabilities of samples in a distribution, is [Metropolis-Hastings](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm):
 
-
 ```haskell
-mkSampler = prior . mh 1000 
+mkSampler = prior . mh 1000
 modelsamples <- sampleIOfixed $ mkSampler $ postParams priorParams points3
 ```
 
 Here is how the posterior distribution looks like:
-
 
 ```haskell
 stable = take 800 modelsamples
 vlShow $ plot -- [... stable ...]
 ```
 
-
 ![png](../img/posts/bayes2_05.svg)
-
 
 This posterior distribution over model parameters describes how likely each sampling distribution in the model generates the observed data.
 It peaks at an intercept of `-1.5` - `-1` (the actual value was `-1.2`) and a slope of `1.5`-`2.5` (the actual value was `2.3`).
 It seems to work, although we should have probably sampled a bit more to make this more accurate.
 
 You might have noticed that we only use 800/1000 samples here (`take 800` in the code snippet above).
-What is the reason? 
+What is the reason?
 If you remember, we saw some random initial samples of the Markov chain in the posterior model parameter distribution in our [last post](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html).
 This was because the chain starts at a random position and needs some steps to reach the stable equilibrium that describes the posterior distribution.
 We therefore skip the initial part of it.
@@ -349,7 +323,6 @@ What data would we generate from the sampling distributions defined by this post
 
 Let's write a new sampler for a _predictive distribution_:
 
-
 ```haskell
 predDist :: MonadInfer m => m Params -> m Data
 predDist paramDist = do
@@ -360,9 +333,8 @@ predDist paramDist = do
 
 We draw samples from it with Metropolis-Hastings:
 
-
 ```haskell
-mkSampler = prior . mh 40000 
+mkSampler = prior . mh 40000
 pts <- sampleIOfixed $ mkSampler $ predDist $ postParams priorParams points3
 predPoints = take (length pts - 100) pts
 ```
@@ -374,7 +346,6 @@ vlShow $ plot  -- [... predPoints, points ...]
 ```
 
 ![png](../img/posts/bayes2_06.svg)
-
 
 This looks quite OK; the simulated distribution (blue) looks similar to the original data (green).
 Although we have drawn 40000 samples with MCMC, you see that the distribution is still not as smooth and nice as we would expect.
@@ -406,7 +377,6 @@ Models that are more likely are hit more often than models that are less likely,
 However, typically it needs a while to reach the unique stationary distribution that is equal to the model distribution distribution.
 A simple way to assess when it becomes stationary is to look at the likelihood that it reaches:
 
-
 ```haskell
 likelihoods = [Numeric.Log.sum (map prob points3) | param <- modelsamples, let prob = likelihood param]
 nsamples = length likelihoods
@@ -414,9 +384,7 @@ nsamples = length likelihoods
 vlShow $ plot  -- [... likelihoods ...]
 ```
 
-
 ![png](../img/posts/bayes2_07.svg)
-
 
 Our MC chain is non-stationary in the beginning at `imodel` values up to 100, and then reaches stationary behaviour.
 

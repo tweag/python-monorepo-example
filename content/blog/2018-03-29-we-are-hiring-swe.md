@@ -1,7 +1,7 @@
 ---
-title: "We're hiring! <br/> Software engineers"
+title: "We're hiring!   Software engineers"
 author: "Mathieu Boespflug"
-tags: hiring
+tags: [hiring]
 ---
 
 We're hiring multiple software engineers to join our team.
@@ -20,7 +20,7 @@ products with thousands of concurrent users and many others.
 
 ## Who?
 
-We are *pragmatists*. We use technologies such as [Nix][nix], Haskell,
+We are _pragmatists_. We use technologies such as [Nix][nix], Haskell,
 C/++, R, Python in combination with each other to achieve maximum
 effect, building robust solutions within budget. You probably noticed
 this through much of our open source work. From [HaskellR][haskellr],
@@ -32,7 +32,7 @@ languages and across technologies.
 
 Pragmatism is also what has driven us to take some of Rust's DNA and
 splice it into Haskell's, to finally achieve readable, composable
-programming *that is resource-safe by construction*. This effort gave
+programming _that is resource-safe by construction_. This effort gave
 rise to a [paper][linear-types-paper] published last year and
 a [GHC proposal][linear-types-proposal]. This might be a long-term
 project, but nonetheless a long-term project with pragmatic impact,
@@ -73,17 +73,17 @@ your peers.
 ## What?
 
 We have new projects starting all the time. Here is a sampling of
-*fresh* projects from our current roadmap this year:
+_fresh_ projects from our current roadmap this year:
 
-* using constraint programming to find the optimal shapes and sizes to
+- using constraint programming to find the optimal shapes and sizes to
   tile the structure of houses with a revolutionary new ecofriendly
   material;
-* applying formal methods and property based testing to analyze
+- applying formal methods and property based testing to analyze
   software specifications of transactions;
-* working with experienced teams to assist transitioning large
+- working with experienced teams to assist transitioning large
   polyglot projects to [Bazel][bazel];
-* establishing a reproducible workflow for genetic analyses;
-* [retargeting][asterius] Haskell to [WebAssembly][webassembly].
+- establishing a reproducible workflow for genetic analyses;
+- [retargeting][asterius] Haskell to [WebAssembly][webassembly].
 
 Send us an email with a CV and a statement about what you want from
 your next job, at **jobs at tweag.io**.

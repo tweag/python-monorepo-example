@@ -1,9 +1,9 @@
 ---
-title: Compact normal forms + linear types <br>= efficient network communication
+title: Compact normal forms + linear types  = efficient network communication
 shortTitle: Compact normal forms + linear types
 author: Arnaud Spiwack
 featured: yes
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 We saw [last time][blog-post-sockets] that with linear types, we could
@@ -37,7 +37,7 @@ The process would look like this:
   network.
 - I deserialize this tree to retrieve the result.
 
-This process involves copying the tree structure *5 times*, converting
+This process involves copying the tree structure _5 times_, converting
 back and forth between a pointer representation, which Haskell can
 use, and a serialized representation, which can be sent over the
 network, for a single remote procedure call.
@@ -95,8 +95,7 @@ address that we could make an even more radical departure from the
 traditional model. While compact normal forms do away with the
 serialized representation and send the pointer representation instead,
 let's go in the opposite direction, and compute directly with the
-serialized representation! That is, `Branch (Branch (Leaf 1) (Leaf 2))
-(Leaf 3))` would be represented as a single contiguous buffer in memory:
+serialized representation! That is, `Branch (Branch (Leaf 1) (Leaf 2)) (Leaf 3))` would be represented as a single contiguous buffer in memory:
 
 ```haskell
 +--------+--------+--------+--------+--------+--------+--------+--------+
@@ -218,6 +217,7 @@ trees. The type of `finish`, makes sure that we never construct a
 partial tree. Mission accomplished!
 
 The main routine of our service can now be implemented as follows:
+
 ```haskell
 add1 :: Packed '[Tree] -> Packed '[Tree]
 add1 tree = getUnrestricted finished
@@ -260,10 +260,12 @@ types, into a rather comfortable situation. The key ingredient is
 linear types. I'll leave you with an exercise, if you like
 a challenge: implement `pack` and `unpack` analogs of compact region
 primitives:
+
 ```haskell
 unpack :: Packed [a] -> a
 pack :: a -> Packed [a]
 ```
+
 You may want to use a [type checker][prototype].
 
 [paper]: https://github.com/tweag/linear-types/releases/download/v2.0/hlt.pdf

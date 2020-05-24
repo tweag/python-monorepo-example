@@ -1,8 +1,8 @@
 ---
-title: "Fibonacci compiles end-to-end —<br/> Haskell to WebAssembly via GHC"
+title: "Fibonacci compiles end-to-end —  Haskell to WebAssembly via GHC"
 shortTitle: Compiling Haskell to WebAssembly
 author: Shao Cheng
-tags: haskell, asterius
+tags: [haskell, asterius]
 ---
 
 [Asterius](https://github.com/tweag/asterius) is an experimental WebAssembly backend for GHC. We aim to support most GHC features while making the emitted WebAssembly code as small and fast as possible. The project recently reached an exciting milestone: for the first time, simple Haskell functions can be compiled all the way down to WebAssembly from Haskell and executed with a real JavaScript runtime! While this is an important milestone, it is merely the beginning of the road. Nevertheless, it is a good time to publicly announce our endeavour to provide Haskell with a high-performance target that you can run in your browser.
@@ -63,11 +63,11 @@ Within this spectrum of Haskell-to-WebAssembly compilers, Asterius is somewhere 
 
 There are several reasons behind the approach of Asterius:
 
-* We'd like to support the exact same flavour of Haskell as GHC does.
-* There exist different ways of mapping Haskell to WebAssembly. We'd like to customize the code generator and have tight control over the generated code, so that we can evaluate different code generation strategies and maybe even dynamically pick the most suitable strategy for a given Haskell program.
-* We want to avoid introducing unused code into the compiler output. This requires very aggressive link-time optimization, generating different runtime code for each output, and even altering normal GHC code generation.
+- We'd like to support the exact same flavour of Haskell as GHC does.
+- There exist different ways of mapping Haskell to WebAssembly. We'd like to customize the code generator and have tight control over the generated code, so that we can evaluate different code generation strategies and maybe even dynamically pick the most suitable strategy for a given Haskell program.
+- We want to avoid introducing unused code into the compiler output. This requires very aggressive link-time optimization, generating different runtime code for each output, and even altering normal GHC code generation.
 
-Most importantly, we're keen to take a *gradual, incremental* approach to bringing Haskell to WebAssembly. The GHC runtime system is written with a traditional operating system environment in mind, making use of the C runtime, OS specific I/O multiplexing not available in WebGHC, POSIX threads and all the rest of it. While projects like [Emscripten](https://github.com/kripken/emscripten) try to emulate some if not all of the above, porting a complete runtime along with its dependent libraries is a non-trivial challenge. Yet, to get a simple example like Fibonacci to run to completion, the portion of `rts` required to port to WebAssembly is quite small.
+Most importantly, we're keen to take a _gradual, incremental_ approach to bringing Haskell to WebAssembly. The GHC runtime system is written with a traditional operating system environment in mind, making use of the C runtime, OS specific I/O multiplexing not available in WebGHC, POSIX threads and all the rest of it. While projects like [Emscripten](https://github.com/kripken/emscripten) try to emulate some if not all of the above, porting a complete runtime along with its dependent libraries is a non-trivial challenge. Yet, to get a simple example like Fibonacci to run to completion, the portion of `rts` required to port to WebAssembly is quite small.
 
 Once trivial examples like Fibonacci work, we gain confidence that we've set foot on a reasonable path. We can then iteratively write more complex examples, check what's missing and implement the missing bits. If some critical flaw arises, we get feedback early.
 
@@ -125,8 +125,8 @@ We'll need to modify our codegen to suit LLVM's calling convention, and standard
 
 As mentioned earlier, there are times we want to expose GHC's inner workings, retrieve its in-memory data or alter its behavior. Although GHC has mechanisms like plugins and hooks, ideally we'd like to have a stage 1 GHC available as a Cabal package. The advantages are:
 
-* Decoupling the stage 0 / stage 1 GHC build time configurations. For example, currently Asterius requires GHC to disable `TABLES_NEXT_TO_CODE` when performing codegen, but we don't care if the host GHC used to compile Asterius shares the same config. Also, we can use a stage 1 GHC which targets 32-bit platform, then we don't need to coerce from 64-bit addresses here and there.
-* Easing the maintenance of custom GHC patches. Currently we maintain a `ghc-toolkit` package which works by pasting and patching code from the GHC tree. Integrating upstream changes is troublesome, because these patches might break non-WebAssembly targets.
+- Decoupling the stage 0 / stage 1 GHC build time configurations. For example, currently Asterius requires GHC to disable `TABLES_NEXT_TO_CODE` when performing codegen, but we don't care if the host GHC used to compile Asterius shares the same config. Also, we can use a stage 1 GHC which targets 32-bit platform, then we don't need to coerce from 64-bit addresses here and there.
+- Easing the maintenance of custom GHC patches. Currently we maintain a `ghc-toolkit` package which works by pasting and patching code from the GHC tree. Integrating upstream changes is troublesome, because these patches might break non-WebAssembly targets.
 
 ### Enhancing the debugging experience
 

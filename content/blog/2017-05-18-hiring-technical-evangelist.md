@@ -1,8 +1,8 @@
 ---
-title: "We're hiring!<br> Technical evangelist"
+title: "We're hiring!  Technical evangelist"
 author: Tweag I/O engineering team
 featured: yes
-tags: hiring
+tags: [hiring]
 ---
 
 Our mission: deliver correct high-performance software faster. To do
@@ -40,7 +40,7 @@ about the challenges they're facing, talking to them about your
 experience using functional programming, sharing your success stories
 and coding a bunch sounds like your idea of a good day, we have just
 the role for you. We're looking to add a new member to our team in
-a pretty unique role: a *technical evangelist*.
+a pretty unique role: a _technical evangelist_.
 
 This is a senior developer role, but with a twist. You'll be getting
 your hands dirty and fighting from the trenches like the rest of us,
@@ -52,10 +52,10 @@ there.
 
 What we're looking for:
 
-* Excellent oral and written communication skills in English.
-* A passion for programming languages and a track record working with typed and untyped functional (Haskell, Scala, Clojure), system (Rust, C++, ...) or scientific (R, Python, Julia, ...) languages.
-* Experience writing technical content or explaining technical concepts in blog posts, forums, emails, or other channels.
-* A willingness to travel, engage with the community and speak at conferences.
+- Excellent oral and written communication skills in English.
+- A passion for programming languages and a track record working with typed and untyped functional (Haskell, Scala, Clojure), system (Rust, C++, ...) or scientific (R, Python, Julia, ...) languages.
+- Experience writing technical content or explaining technical concepts in blog posts, forums, emails, or other channels.
+- A willingness to travel, engage with the community and speak at conferences.
 
 We're a European company, with an international presence. This role is
 remote work compatible, but we'll be prioritizing candidates that are

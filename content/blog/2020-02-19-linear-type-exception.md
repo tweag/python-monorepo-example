@@ -1,8 +1,8 @@
 ---
-title: "On linear types and <br/>exceptions"
+title: "On linear types and  exceptions"
 shortTitle: "On linear types and exceptions"
 author: Arnaud Spiwack
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 description: "A primer on the interaction between linear types and exceptions in Haskell."
 ---
 
@@ -65,7 +65,7 @@ newtype Top = Top (forall b. Void #-> b)
 ```
 
 The difference between `Top` and `()` (aka `1` in the linear logic
-literature) is that there is a *linear* function `a #-> Top` for every
+literature) is that there is a _linear_ function `a #-> Top` for every
 type `a`:
 
 ```haskell
@@ -139,7 +139,7 @@ _yes_.
 I can make such an unabashed claim because, quite simply, [I wrote
 one][resource-io]. The high-level view is:
 
-- there is *the resource monad* `RIO` in which resources are managed,
+- there is _the resource monad_ `RIO` in which resources are managed,
 - each resource type has acquire and release functions,
 - resources are linear values,
 - the function `run :: RIO (Unrestricted a) -> IO a` (notice the

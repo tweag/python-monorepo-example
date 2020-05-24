@@ -1,8 +1,8 @@
 ---
-title: "Safe memory management in inline-java </br>using linear types"
+title: "Safe memory management in inline-java  using linear types"
 shortTitle: "A safer inline-java"
 author: Facundo Dominguez
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 description: "In this post about inline-java I aim to walk you through the upcoming safe interface of the library, which allows detecting memory management mistakes at compile time using linear types."
 ---
 
@@ -50,7 +50,6 @@ solve the problem. But alas, we have two garbage collectors instead.
 Therefore, we are reduced to request and destroy references
 explicitly from the JVM runtime.
 
-
 ## A language solution
 
 The appearance, on the horizon, of
@@ -71,7 +70,7 @@ f = do
   [java| $it.next() |]
 ```
 
-In a [linear setting][LinearIO], the monad in which these operations
+In a [linear setting][lineario], the monad in which these operations
 run declares
 that the bound variables are linear and therefore should be used
 exactly once. This is the case of the reference `it`, which we
@@ -101,7 +100,7 @@ time? The compiler would reject the following program.
 f :: Linear.IO Int32
 f = do
   it <- [java| java.util.Arrays.asList(0, 1, 2).iterator() |]
-  x0 <- [java| $it.next() |] 
+  x0 <- [java| $it.next() |]
   x1 <- [java| $it.next() |] -- compilation error: 'it' is used more than once
   return (x0 + x1)
 ```
@@ -114,7 +113,7 @@ f :: Linear.IO Int32
 f = do
   it1 <- [java| java.util.Arrays.asList(0, 1, 2).iterator() |]
   (it2, it3) <- newLocalRef it1
-  x0 <- [java| $it2.next() |] 
+  x0 <- [java| $it2.next() |]
   x1 <- [java| $it3.next() |]
   return (x0 + x1)
 ```
@@ -141,7 +140,7 @@ Haskell.
 f :: Linear.IO Int32
 f = do
   it1 <- [java| java.util.Arrays.asList(0, 1, 2).iterator() |]
-  x0 <- [java| $it1.next() |] 
+  x0 <- [java| $it1.next() |]
   return (x0 + x0) -- compilation error: 'x0' must be used only once
 ```
 
@@ -152,7 +151,7 @@ integer to escape the linear restriction.
 f :: Linear.IO Int32
 f = do
   it1 <- [java| java.util.Arrays.asList(0, 1, 2).iterator() |]
-  Unrestricted x0 <- [java| $it1.next() |] 
+  Unrestricted x0 <- [java| $it1.next() |]
   return (x0 + x0)
 ```
 
@@ -227,7 +226,7 @@ we still believe it is the most effective solution for integrating
 Haskell with the JVM currently.
 
 [inline-java]: https://github.com/tweag/inline-java
-[LinearIO]: https://github.com/tweag/linear-base/blob/dd65d1381de03fb567e52b8b8b6b7f9bf693544f/src/System/IO/Linear.hs
+[lineario]: https://github.com/tweag/linear-base/blob/dd65d1381de03fb567e52b8b8b6b7f9bf693544f/src/System/IO/Linear.hs
 [linear-types-tag]: https://www.tweag.io/tag/linear-types.html
 [linear-types-ghc]: https://github.com/tweag/ghc/tree/linear-types#ghc-branch-with-linear-types
 [linear-types-proposal]: https://github.com/tweag/ghc-proposals/blob/linear-types2/proposals/0000-linear-types.rst

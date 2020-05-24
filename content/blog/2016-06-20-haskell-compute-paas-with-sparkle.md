@@ -1,8 +1,8 @@
 ---
-title: Haskell compute PaaS<br>with sparkle
+title: Haskell compute PaaS with sparkle
 author: Alp Mestanogullari, Mathieu Boespflug
 featured: yes
-tags: haskell, data-science
+tags: [haskell, data-science]
 ---
 
 Maintaining a compute cluster for batch or stream data processing is
@@ -17,11 +17,12 @@ services for creating cookie-cutter clusters on-demand. These services
 make the common case easy: running a Java/Python/R distributed batch
 job, written using Hadoop API's, sourcing data from S3. In this post
 we'll show you how to turn these robust existing PaaS offerings into
-interactive distributed Java/Python/R/*Haskell* platforms.
+interactive distributed Java/Python/R/_Haskell_ platforms.
+
 <!--more-->
 
 To illustrate, we ran a topic analysis Haskell/Scala app applied to
-*all of English Wikipedia* on 16 nodes (64 cores and 480GB RAM in
+_all of English Wikipedia_ on 16 nodes (64 cores and 480GB RAM in
 total) simultaneously.
 
 # The application
@@ -30,7 +31,7 @@ We'll use topic modeling with [Latent Dirichlet Allocation (LDA)][lda]
 from our [last post][hello-sparkle] as a running example. The full
 code for this distributed application is available
 [here][sparkle-lda]. It's a short 35 line Haskell program, with
-a *bona fide* `main` entry point, leveraging the [Spark][spark] API
+a _bona fide_ `main` entry point, leveraging the [Spark][spark] API
 for transparently distributing data parallel operations over as many
 nodes in the cluster as are currently available. Much of the heavy
 lifting is performed by canned natural language processing code, also
@@ -63,8 +64,8 @@ As always, the [`--nix` flag][stack-nix] to all Stack commands means
 the build will use a locally provisioned, auto-downloaded JVM and
 Spark class files. This sequence of commands produces a file called
 `sparkle-example-lda.jar`, a self-contained archive containing our
-Haskell application as well as *all of the Haskell dependencies and
-system shared libraries*, plus some Java glue code to allow Haskell
+Haskell application as well as _all of the Haskell dependencies and
+system shared libraries_, plus some Java glue code to allow Haskell
 and the JVM to interoperate nicely. You can think of a `.jar` as
 a universal file format for running our application anywhere.
 
@@ -84,10 +85,10 @@ Amazon EMR too.
 
 Think of Databricks as an IDE for analytics. You get,
 
-* an online **file explorer** to easily manage and share your datasets,
-* interactive **notebooks** for conveniently combining data, code and
+- an online **file explorer** to easily manage and share your datasets,
+- interactive **notebooks** for conveniently combining data, code and
   visualizations,
-* **dashboards** for managing clusters to evaluate notebook cells on
+- **dashboards** for managing clusters to evaluate notebook cells on
   as quickly as possible and configuring new batch and streaming jobs.
 
 Databricks currently only supports Scala, Python and R in notebooks.
@@ -121,7 +122,7 @@ that job, which it tears down once the run is over. For the Wikipedia
 dataset, which we can represent (together with an integer index
 identifying each article) as a Haskell value using,
 
-``` haskell
+```haskell
 do docs <- textFile sc "dbfs:/databricks-datasets/wiki/part-*"
    return (zipWithIndex docs)
 ```
@@ -176,4 +177,4 @@ In the meantime, there's plenty to do to fully realize the vision of
 seamless, statically typed, purely functional data analytics in the
 cloud. In particular, while in this post we focused on standalone
 Haskell apps, it would be great if support for Haskell extended to
-interactive *notebooks* with mixed Java/R/Haskell as well.
+interactive _notebooks_ with mixed Java/R/Haskell as well.

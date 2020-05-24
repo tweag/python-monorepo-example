@@ -1,8 +1,8 @@
 ---
-title: "Java from Haskell:<br/> a tutorial"
+title: "Java from Haskell:  a tutorial"
 author: Facundo Domínguez
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 Our
@@ -55,9 +55,9 @@ Hello Java!
 Because part of inline-java is implemented in a GHC plugin, we tell GHC
 to use this plugin with the pragma `OPTIONS_GHC`. Every module using
 inline-java needs to ask for the plugin in the same way (this
-requirement [might be lifted][addCorePlugin] in a future version of GHC).
+requirement [might be lifted][addcoreplugin] in a future version of GHC).
 
-[addCorePlugin]: https://phabricator.haskell.org/D3821
+[addcoreplugin]: https://phabricator.haskell.org/D3821
 
 GHC doesn't parse any Java and neither does `inline-java`. So how can
 this program possibly work? The answer is that `inline-java` feeds the
@@ -123,13 +123,13 @@ main = withJVM [] $ do
 ```
 
 Here we have dropped the braces surrounding the Java code in order to
-hint to `inline-java` that we are giving an *expression* rather than a
+hint to `inline-java` that we are giving an _expression_ rather than a
 block of statements. Expressions, unlike statements, have values.
 We are coercing a Java value of type `int` into a Haskell
 value of type `Int32`. The quasiquoter arranges for the coercion to
 happen after the JVM finishes evaluating the Java expression.
 As it was the case for antiquoted variables, the
-return type of the quasiquotation needs to be an instance of 
+return type of the quasiquotation needs to be an instance of
 `Language.Java.Coercible a ty`.
 
 # Marshalling Java objects
@@ -244,7 +244,7 @@ Usually the programmer would get an exception called `NoSuchMethodError`
 and the name of the offending method. The error produced by
 `inline-java` improves this in two aspects. Firstly, we get the error at
 build time. Secondly, the error message points precisely at either the
-return type or the argument with the mismatched type. 
+return type or the argument with the mismatched type.
 
 Are there any type errors that cannot be caught at build time? There
 is, indeed. For instance, a quasiquotation can yield or use objects of

@@ -1,8 +1,8 @@
 ---
-title: "The three kinds of Haskell exceptions <br/>and how to use them"
+title: "The three kinds of Haskell exceptions  and how to use them"
 shortTitle: "The three kinds of Haskell exceptions"
 author: Arnaud Spiwack
-tags: haskell
+tags: [haskell]
 description: "Imprecise, synchronous, asynchronous exceptions: what do they mean, and what to do with them."
 ---
 
@@ -32,8 +32,7 @@ mean.
 
 Imprecise exceptions are exceptions like `error "foo"`, which can be
 used in pure code. They are so named because it is not determined
-which exception will be thrown by `(error "foo") + (error
-"bar")`. And, in fact, the compiler is very much allowed to change
+which exception will be thrown by `(error "foo") + (error "bar")`. And, in fact, the compiler is very much allowed to change
 which error will be thrown. You'll find plenty more details
 in the original paper: [_A semantics for imprecise
 exceptions_][imprecise-exceptions].
@@ -43,8 +42,9 @@ if Haskell is a pure language, how come there are exceptions, which
 are impure? The truth of the matter is that imprecise exceptions are
 both necessary and unavoidable.
 
-Consider integer division: what should ``42 `div` 0`` return? There are
+Consider integer division: what should `` 42 `div` 0 `` return? There are
 basically three choices:
+
 - An (imprecise) exception
 - `Nothing`
 - An arbitrary value. Say `0`.
@@ -58,8 +58,7 @@ answer. Throwing an exception is the sane thing to do.
 
 It's also useful to realise that imprecise exceptions don't add any
 expressiveness to the language: instead of throwing an exception, I
-could just return an infinite loop (such as `let bot =
-bot in bot`). An imprecise exception is just a more readable
+could just return an infinite loop (such as `let bot = bot in bot`). An imprecise exception is just a more readable
 infinite loop. The truth of the matter is that throwing
 exceptions was never a problem for purity: the problem was catching
 exceptions[^no-pure-catch]. Accordingly, Haskell doesn't provide a

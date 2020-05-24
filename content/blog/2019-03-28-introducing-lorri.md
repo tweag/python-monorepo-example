@@ -1,7 +1,7 @@
 ---
-title: "Introducing lorri, <br/>your project's nix-env"
+title: "Introducing lorri,  your project's nix-env"
 author: Graham Christensen, Philip Patsch
-tags: nix, devops
+tags: [nix, devops]
 ---
 
 Today we're excited to announce [lorri](https://github.com/target/lorri), a new tool for NixOS, Linux,
@@ -79,10 +79,10 @@ use.
 
 lorri is used in two parts:
 
- - direnv integration sets up your shell and editor integration with
-   project-specific dependencies
- - `lorri watch` monitors your project and automatically regenerates
-   your environment
+- direnv integration sets up your shell and editor integration with
+  project-specific dependencies
+- `lorri watch` monitors your project and automatically regenerates
+  your environment
 
 A typical workflow for us is to spawn a terminal running
 `lorri watch`, minimize it, and open a second terminal for my work

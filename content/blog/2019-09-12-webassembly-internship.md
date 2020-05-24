@@ -1,8 +1,8 @@
 ---
-title: "War Stories of Asterius: <br/>Numerics & Debugging"
+title: "War Stories of Asterius:  Numerics & Debugging"
 shortTitle: "War Stories of Asterius"
 author: "Siddharth Bhat"
-tags: internship, haskell, asterius
+tags: [internship, haskell, asterius]
 description: "I got the opportunity to work on Asterius, a new Haskell to WebAssembly compiler, during my internship at Tweag. My task was to get anything numerics-related stabilized in its compiled code."
 ---
 
@@ -18,7 +18,6 @@ more than I did when I went in. We also ended up making some modest contribution
 upstream, to [`binaryen`](https://github.com/WebAssembly/binaryen/pulls?utf8=%E2%9C%93&q=author%3Abollu),
 [`tasty`](https://github.com/feuerbach/tasty/pulls?utf8=%E2%9C%93&q=author%3Abollu),
 and [GHC](https://gitlab.haskell.org/ghc/ghc/merge_requests?scope=all&utf8=%E2%9C%93&state=all&author_username=bollu).
-
 
 ## First steps: getting up to speed &middot; [PR #114](https://github.com/tweag/asterius/pull/114)
 
@@ -46,7 +45,7 @@ were passing, which was about half of all tests. And if we were pessimists...
 
 We rolled up our sleeves and got to work: I decided that by the end of the three months, I
 wanted all tests in the `numerics/` subfolder stabilized. These tests mostly deal with
-everything related to numbers including conversions between `Float`, `Double`, `Rational`, `Int`, `Word`, 
+everything related to numbers including conversions between `Float`, `Double`, `Rational`, `Int`, `Word`,
 the various intrinsics in [`GHC.Prim` for numbers](http://hackage.haskell.org/package/ghc-prim-0.5.3/docs/GHC-Prim.html),
 and tests for `Integer` support (implemented in Asterius with JavaScript `BigInt`s).
 
@@ -75,13 +74,11 @@ about GHC's internals. For example, some of the ones I remember fondly are:
 - [GHC hangs on compiling large exponents](https://gitlab.haskell.org/ghc/ghc/issues/9059)
 - [The implementation of `mfix` for `IO` uses an `MVar`](http://hackage.haskell.org/package/base-4.12.0.0/docs/src/System.IO.html#fixIO)
 - [The implementation of `cartesianProduct` from `Data.Set` is derived from an implementation written by Edward Kmett](http://hackage.haskell.org/package/containers-0.6.2.1/docs/src/Data.Set.Internal.html#cartesianProduct),
-     with a statement about the optimality of the algorithm: "TODO: try to prove or refute it."
-
+  with a statement about the optimality of the algorithm: "TODO: try to prove or refute it."
 
 At the end of all of this, I had in total [59 PRs](https://github.com/tweag/asterius/pulls?utf8=%E2%9C%93&q=is%3Apr+author%3Abollu),
 [40 of which got merged](https://github.com/tweag/asterius/pulls?utf8=%E2%9C%93&q=is%3Amerged+author%3Abollu) into Asterius.
 The rest are either closed experimental branches, or open PRs waiting to be merged.
-
 
 Our failure rate on GHC test suite has changed as:
 
@@ -143,7 +140,7 @@ going on than view raw numbers or bit strings. For example:
 <img title="Heap structure during crash: Gray is dead memory, green is memory that should be live" src="../img/posts/2019-07-31-webassembly-internship-heap-render-fib.png" style="max-width: 100%;max-height: 100%;"/>
 </center>
 
-The fact that the gray region overlaps with the green region is a Bad Thing 
+The fact that the gray region overlaps with the green region is a Bad Thing
 since we were freeing up some memory that is actually still kept alive by the
 higher-level heap allocator. Without visualization, this sort of thing is tough to recognize when you're staring at nothing but pointers which look like:
 
@@ -176,5 +173,3 @@ Finally, Tweag's Paris office is a fun place to work! I picked up
 (very little) French, a bunch about sampling and Markov chain Monte Carlo (MCMC) techniques, tidbits
 of category theory and type theory, some differential geometry,
 and enjoyed lunch conversations about topics ranging from physics to history. It was a delightful, rewarding experience—both personally and professionally!
-
-

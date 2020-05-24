@@ -2,7 +2,7 @@
 title: "Tweag Internship Programme 2019"
 shortTitle: "Internships at Tweag"
 author: "Nicholas Clarke"
-tags: hiring, internship
+tags: [hiring, internship]
 ---
 
 The time has come again to invite applications for Tweag I/O's paid internship
@@ -23,6 +23,7 @@ implementing linear types in GHC, and building a new library for futures
 in Haskell.
 
 This year, we have some ideas for potential projects based on work we're doing:
+
 - Building an interactive exploration of the nix dependency graph based on
   [Mapping open source
   software](https://www.tweag.io/posts/2019-02-06-mapping-open-source.html).
@@ -38,15 +39,16 @@ some way to the Haskell/Nix/data science communities, and should be achievable
 in a 2-3 month internship.
 
 Here's the basic facts for anyone interested in applying:
-- *Time*: we're expecting that most people would be looking at a summer internship
+
+- _Time_: we're expecting that most people would be looking at a summer internship
   between June and August, but we're flexible on this - if some other time would
   work better for you, that's fine.
-- *Length*: Typically 3 months. We might make exceptions for longer,
+- _Length_: Typically 3 months. We might make exceptions for longer,
   research-driven internships if you have a good proposal.
-- *Location*: Either on site in Paris or remote.
-- *Payment*: We use the same payment scale as used by the [Google Summer of Code
+- _Location_: Either on site in Paris or remote.
+- _Payment_: We use the same payment scale as used by the [Google Summer of Code
   projects](https://developers.google.com/open-source/gsoc/help/student-stipends).
-- *Mentorship*: All students will be assigned a mentor who will support the
+- _Mentorship_: All students will be assigned a mentor who will support the
   project. Mentors will meet with students at least once per week.
 
 To be able to benefit most from these internships, you should already have some
@@ -56,6 +58,7 @@ so you don't need to already be an expert!
 
 If you're interested, please apply via
 https://boards.greenhouse.io/tweag/jobs/4188132002, which will ask you for:
+
 - An up-to-date CV
 - An idea of projects you might like to work on
 - Your location and availability (when you might like to carry out the internship)

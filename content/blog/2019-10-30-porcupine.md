@@ -1,24 +1,24 @@
 ---
-title: "Here You See the Small Porcupine Perched in Its Tree,<br/> Preparing and Crunching Some Data with Me"
+title: "Here You See the Small Porcupine Perched in Its Tree,  Preparing and Crunching Some Data with Me"
 shortTitle: "Porcupine: Announcing First Release"
 author: Yves Parès
-tags: haskell, data-science
+tags: [haskell, data-science]
 description: "We're happy to announce the first release of Porcupine, an open source framework to express portable and customizable data pipelines."
 ---
 
-*<span class="dropcap">P</span><span style="font-variant:
+_<span class="dropcap">P</span><span style="font-variant:
 small-caps;">orcupines</span> are large rodents with coats of sharp spines, or
 quills, that protect them against predators. The term covers two families of
 animals: the Old World porcupines of family Hystricidae, and the New World
-porcupines of family Erethizontidae.*
+porcupines of family Erethizontidae._
 
-*The New World porcupines [...] live in wooded areas and can climb trees, where
-some species spend their entire lives.*
+_The New World porcupines [...] live in wooded areas and can climb trees, where
+some species spend their entire lives._
 
-*Porcupines have a relatively high longevity and had held the record for
+_Porcupines have a relatively high longevity and had held the record for
 being the longest-living rodent, with one individual living to 27 years, until
 the record was broken in 2002 by a naked mole-rat living to 28
-years. [(source)](https://en.wikipedia.org/w/index.php?title=Porcupine&oldid=922581516)*
+years. [(source)](https://en.wikipedia.org/w/index.php?title=Porcupine&oldid=922581516)_
 
 So, long story short,
 [Porcupine](https://hackage.haskell.org/package/porcupine-core) is a framework
@@ -173,7 +173,7 @@ Once compiled, this pipeline can output its default configuration in the
 ```yaml
 locations:
   /: .
-  /myInput:  _.csv
+  /myInput: _.csv
   /myOutput: _.json
 ```
 
@@ -194,7 +194,7 @@ So what happens if we change the configuration? For instance, if we say:
 ```yaml
 locations:
   /: .
-  /myInput:  http://someapi.org/api/v1/input.csv
+  /myInput: http://someapi.org/api/v1/input.csv
   /myOutput: _.json
 ```
 

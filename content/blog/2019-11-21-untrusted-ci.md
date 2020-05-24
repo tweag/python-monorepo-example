@@ -1,16 +1,16 @@
 ---
-title: "Untrusted CI: <br/>Using Nix to get automatic trusted caching of untrusted builds"
+title: "Untrusted CI:  Using Nix to get automatic trusted caching of untrusted builds"
 shortTitle: "Untrusted CI using Nix"
 author: "Florian Klink"
 description: "Learn how Nix's new post-build hooks feature can automatically sign and upload artifacts to a binary cache in a trusted way."
-tags: nix, devops
-
+tags: [nix, devops]
 ---
 
 [rules_haskell]: https://github.com/tweag/rules_haskell/#readme
 [rules_nixpkgs]: https://github.com/tweag/rules_nixpkgs/#readme
 [post-build-hooks]: https://nixos.org/nix/manual/#chap-post-build-hook
 [multi-user-nix]: https://nixos.org/nix/manual/#ssec-multi-user
+
 [^1]: Please refer to the "Implementation Caveats" section in the Nix manual-depending on the circumstances, it might be desirable to handle uploads in an asynchronous fashion without blocking the build loop.
 [^2]: [https://github.com/NixOS/nix/issues/2636](https://github.com/NixOS/nix/issues/2636)
 
@@ -82,7 +82,7 @@ be signed, and used by all the developers' machines, or even
 production systems. This would be a serious security vulnerability.
 
 On the other hand, preventing untrusted contributors to upload—which creates a build artifact—means that many caching opportunities will be lost. That
- leads to increased load on CI that can seriously impact the
+leads to increased load on CI that can seriously impact the
 cache hit ratio and roundtrip time when iterating over a work in
 progress.
 
@@ -172,7 +172,7 @@ to upload. This approach has three unfortunate consequences:
   via Bazel rules ([rules_haskell][rules_haskell],
   [rules_nixpkgs][rules_nixpkgs], or calling `nix-build` themselves
   during build) to provide dependencies. Manually tracing these
-  dependencies in a `.nix` file (and keeping them in sync) is an arduous task, 
+  dependencies in a `.nix` file (and keeping them in sync) is an arduous task,
   it gets even harder if some of your packages rely on
   [IFD](https://nixos.wiki/wiki/Import_From_Derivation).
 - The logic for uploads has to be copied to each of your pipeline
@@ -215,7 +215,7 @@ builders because:
 
 - Running Nix inside Docker currently requires a privileged container (because
   we want sandboxing to be enabled to ensure some of the isolation properties)
-  [^2], making it unsuitable for some container platforms.  On top of that,
+  [^2], making it unsuitable for some container platforms. On top of that,
   the "official" `nixos/nix` docker image doesn't provide a multi-user Nix
   installation, it's a single-user installation based on Alpine (there's
   `lnl7/nix` though).

@@ -1,17 +1,16 @@
 ---
-title: "Probabilistic Programming with monad‑bayes, Part 1: <br/>First Steps"
+title: "Probabilistic Programming with monad‑bayes, Part 1:  First Steps"
 shortTitle: "Probabilistic Programming with monad‑bayes (1)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede
-tags: data-science, haskell, statistics
+tags: [data-science, haskell, statistics]
 description: "In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the monad-bayes library. In the first part of the series, we introduce two fundamental concepts of `monad-bayes`: `sampling` and `scoring`."
 ---
-
 
 In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the [`monad-bayes`](https://github.com/adscib/monad-bayes) library.
 We start this series gradually with some simple binary models, move next to [linear regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html), and finish by building a [simple neural network](https://www.tweag.io/posts/2020-02-26-monad-bayes-3.html) that we "train" with a Metropolis-Hastings sampler.
 You don't need any prior knowledge of Bayesian modeling to understand and learn from these posts—and we keep the code simple and understandable for Haskell newcomers.
 
-Want to make this post interactive? Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series). It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling! 
+Want to make this post interactive? Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series). It includes a Nix shell, the required imports, and some helper routines for plotting. Let's start modeling!
 
 ## Sampling
 
@@ -24,7 +23,6 @@ Without additional information, we assign equal probabilities `0.5` to each valu
 In other words, we get the model parameter `b` from a discrete uniform [prior](https://en.wikipedia.org/wiki/Prior_probability) distribution.
 
 Let's see how the model looks like in the `monad-bayes` library:
-
 
 ```haskell
 model1 :: MonadSample m => m Bool
@@ -45,7 +43,6 @@ draw `b` from a discrete uniform distribution (_uniformD_) and then return its v
 
 Sampling can be executed with:
 
-
 ```haskell
 sampleIOfixed model1
 ```
@@ -56,7 +53,6 @@ False
 
 We can get a list of samples with Haskell's `replicateM` function:
 
-
 ```haskell
 nsamples = 1000
 samples <- sampleIOfixed $ replicateM nsamples model1
@@ -65,11 +61,9 @@ samples <- sampleIOfixed $ replicateM nsamples model1
 Then plot the result afterwards with [Vega-Lite](https://vega.github.io/vega-lite/).
 You can find our custom plotting functions for Vega-Lite in the notebook.
 
-
 ```haskell
 vlShow $ plot (200, 100) [barPlot "b"] [("b", VL.Booleans samples)]
 ```
-
 
 ![png](../img/posts/bayes1_01.svg)
 
@@ -141,9 +135,7 @@ samples <- sampleIOfixed $ prior $ mh nsamples model2
 vlShow $ plot (200, 100) [barPlot "b"] [("b", VL.Booleans samples)]
 ```
 
-
 ![png](../img/posts/bayes1_02.svg)
-
 
 Voilà, we wrote down a model (answer to "Did it rain yesterday?") with an uninformed (uniform) prior, and updated it based on the observation "It rained yesterday!".
 The distribution of parameter `b` after scoring—its posterior distribution—has probability `1` for True and probability `0` for False.
@@ -158,7 +150,6 @@ Again, we want to score this model.
 This time, we use the function `condition` that is a short form for scoring with `1` or `0` based on a condition.
 The new model becomes:
 
-
 ```haskell
 model3 :: MonadInfer m => m (Double, Double)
 model3 = do
@@ -171,7 +162,6 @@ model3 = do
 The principal approach is the same: pick sample `b`, pick sample `m`, modify the joint sample probability based on a condition, and return the values of both samples in a tuple.
 If we run this through the Metropolis-Hastings sampler, we get:
 
-
 ```haskell
 nsamples = 5000
 modelsamples <- sampleIOfixed $ prior $ mh nsamples model3
@@ -181,9 +171,7 @@ vlShow $ plot (600, 300)
               [("b", VL.Numbers xValues), ("m", VL.Numbers yValues)]
 ```
 
-
 ![png](../img/posts/bayes1_03.svg)
-
 
 The resulting distribution in the plot above is `0` where `b<m`, and approximately uniform when `b>m`, as we'd expect.
 You might spot the initial state of the Markov chain as a faint rectangle in the `b<m` region.
@@ -191,7 +179,6 @@ You might spot the initial state of the Markov chain as a faint rectangle in the
 How about multiple conditions?
 Remember, we can freely bind operations together so it shouldn't be a problem.
 This model chains two sampling and two condition operations:
-
 
 ```haskell
 model4 :: MonadInfer m => m (Double, Double)
@@ -205,7 +192,6 @@ model4 = do
 
 And it produces the expected result:
 
-
 ```haskell
 nsamples = 5000
 modelsamples <- sampleIOfixed $ prior $ mh nsamples model4
@@ -214,7 +200,6 @@ vlShow $ plot (600, 300)
               [density2DPlot "b" "m" (-1.1,1.1) (-1.1,1.1)]
               [("b", VL.Numbers xValues), ("m", VL.Numbers yValues)]
 ```
-
 
 ![png](../img/posts/bayes1_04.svg)
 
@@ -232,6 +217,5 @@ We hope you enjoyed this first post in our _Probabilistic Programming with monad
 
 We use [this GitHub version](https://github.com/adscib/monad-bayes/tree/647ba7cb5a98ae028600f3d828828616891b40fb) of `monad-bayes` in our posts and notebooks since it's neither on Hackage nor Stackage right now. Here are two original articles you may want to check out:
 
-* [Practical Probabilistic Programming with Monads](http://mlg.eng.cam.ac.uk/pub/pdf/SciGhaGor15.pdf)
-* [Functional Programming for Modular Bayesian Inference](http://denotational.co.uk/publications/scibior-kammar-ghahramani-funcitonal-programming-for-modular-bayesian-inference.pdf)
-
+- [Practical Probabilistic Programming with Monads](http://mlg.eng.cam.ac.uk/pub/pdf/SciGhaGor15.pdf)
+- [Functional Programming for Modular Bayesian Inference](http://denotational.co.uk/publications/scibior-kammar-ghahramani-funcitonal-programming-for-modular-bayesian-inference.pdf)

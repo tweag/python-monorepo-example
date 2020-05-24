@@ -1,7 +1,7 @@
 ---
-title: Implementing a safer sort<br/> with linear types
+title: Implementing a safer sort  with linear types
 author: Alexander Vershilov, Arnaud Spiwack
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 In the ["all about reflection"][blog-reflection] post, we introduced
@@ -30,7 +30,7 @@ type:
 [a] -> [a]
 ```
 
-Parametricity, for such a function, *if we are to assume that the function is total*, entails that the elements of the
+Parametricity, for such a function, _if we are to assume that the function is total_, entails that the elements of the
 result are a subset of the elements of the argument (up to possible
 duplications of elements). This property is guaranteed by the type of
 the function. Intuitively, this is true because the function can
@@ -190,12 +190,12 @@ fromList xs = go1 (split xs) where
 
 Just by changing the arrow types in our functions to linear arrows, we
 are able to get additional guarantees that are enough to prove that
-the returned result is a permutation of the input. In addition, *we
+the returned result is a permutation of the input. In addition, _we
 were able to preserve the proof that the returned list is ascending
-without any changes to existing data types*. This is a central
+without any changes to existing data types_. This is a central
 property that the authors of the linear types extension worked very
 hard to achieve: that we are able to introduce additional guarantees
-*post facto* without having to refactor all the callers across the
+_post facto_ without having to refactor all the callers across the
 entire codebase. Sometimes we want to prove more facts about the
 sorting function, for example to prove that it has the desired
 complexity. Such facts cannot be proven in a linear type framework.

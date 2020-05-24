@@ -1,18 +1,18 @@
 ---
 title: Typing Nix
 author: Théophane Hufschmitt
-tags: nix
+tags: [nix]
 ---
 
-*Théophane is a summer intern here at Tweag I/O. Thanks also in part
+_Théophane is a summer intern here at Tweag I/O. Thanks also in part
 to [the financial help][gofundme] from the Nix community, he's
-spending six months on devising a type system for the Nix language.*
+spending six months on devising a type system for the Nix language._
 
 [gofundme]: https://www.gofundme.com/typing-nix
 
 # Nix, the purely functional package manager
 
-[Nix][nix] is a cross platform tool for managing the *configuration*
+[Nix][nix] is a cross platform tool for managing the _configuration_
 (set of packages installed, `/etc/` config files etc) of your system.
 It currently supports Linux and macOS and support for more platforms
 are in the works.
@@ -20,10 +20,10 @@ are in the works.
 Conventional package managers
 ([APT][apt], [Yum][yum], [pacman][pacman] and friends) treat the file
 system as one giant shared mutable data structure. The problem with
-this approach is that mutating global state is *hard*. Ever ended up
+this approach is that mutating global state is _hard_. Ever ended up
 with a hosed system because you lost power in the middle of a system
 upgrade? This is because package managers never figured out how to
-make mutation of the global state *atomic*. Wished you could easily
+make mutation of the global state _atomic_. Wished you could easily
 rollback your system to a previous state and know for sure that this
 state is identical to how your system really was at some point in the
 past? Traditional package managers can't cope with this because
@@ -32,12 +32,12 @@ problem when package update scripts are allowed to make arbitrary
 changes to arbitrary parts of such a huge piece of mutable state as
 your entire root filesystem.
 
-*Configuration management tools*
+_Configuration management tools_
 ([Chef][chef], [Puppet][puppet], [Salt][salt] and friends) were
 invented to ensure that the global state of your filesystem converges
 to some intended state that you can precisely and declaratively
 define. But in practice applying e.g. the same Salt configuration on
-two different machines with *a priori* divergent starting states
+two different machines with _a priori_ divergent starting states
 seldom leaves both machines in exactly the same state. This also means
 that rolling back the configuration after an unfortunate change won't
 always restore the system to its exact original state.

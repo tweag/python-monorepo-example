@@ -1,11 +1,11 @@
 ---
-title: The Exodus to Streamgard,<br/> an epic poem
+title: The Exodus to Streamgard,  an epic poem
 author: Yves Parès
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
-*<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span>
+_<span class="dropcap">I</span><span style="font-variant: small-caps;">f</span>
 Haskell was a god, often would he be depicted with the ravens Modularity and
 Abstraction flying above him, hovering the world and reporting to him every
 detail of our whereabouts. Haskell would sit on the Throne of Purity and look
@@ -14,19 +14,19 @@ wield the Spear of Lazy Lists, which is said to have the power to tackle each
 and every problem the world might have to face. And to honour him, we would
 code and abstract everything with lazy lists. For millennia would lists be used
 to map, filter, separate, merge, group, <span class="tooltip" title="Full cosmogony in the religion of Haskell is left as an exercise to the reader.">and
-so forth</span>.*
+so forth</span>._
 
-*<span class="dropcap">B</span><span style="font-variant:
+_<span class="dropcap">B</span><span style="font-variant:
 small-caps;">ut</span>, one day, the <span class="tooltip" title="Yes, all that buildup for a lousy pun">
 Real-[World Serpent](https://en.wikipedia.org/wiki/J%C3%B6rmungandr)</span>, son of the wicked <span class="tooltip" title="Also seen written as 'Folður'">Foldr</span>, would come. And the Real-World Serpent
 carries an eternal hatred towards lazy lists. Oh, that dreaded Serpent, that
 will throw everything it can muster to prevent us from staying within the warm
 comfort of abstraction and laziness. The Serpent will assemble its minions,
-[_Early-close_ and _Strictness of
-effects_](http://www.tweag.io/posts/2017-07-27-streaming-programs.html), and
+[*Early-close* and *Strictness of
+effects*](http://www.tweag.io/posts/2017-07-27-streaming-programs.html), and
 unleash its wrath upon our world. Foldl, son of Haskell and brother of Foldr,
 would lead humanity to its last bastion, Streamgard, and organize the final
-fight...*
+fight..._
 
 So, long story short,
 [`streaming`](http://hackage.haskell.org/package/streaming) is a library that
@@ -69,9 +69,7 @@ data Summary v a = Summary
 Nothing too fancy here, I just want to be able to compute the length, the `n`
 smallest elements, the `n'` biggest elements, the mean and the standard deviation
 of my distribution. We distinguish the types `a` and `v` here because our input
-distribution does not have to be numerical, as long as we have a projection `a
--> v` available. This way, we can compute a summary of a stream of `(Double,
-String)` tuples, for instance, if the projection is just `fst`.
+distribution does not have to be numerical, as long as we have a projection `a -> v` available. This way, we can compute a summary of a stream of `(Double, String)` tuples, for instance, if the projection is just `fst`.
 
 So let's have a little reminder of our conditions. We want to be able to read
 the input data only once. But, we still want modularity and reusability. We do
@@ -88,7 +86,7 @@ data Fold a b = forall acc. Fold (acc -> a -> acc) acc (acc -> b)
 You might recognize here the typical arguments of the classical `foldl` function
 of the `Prelude`: `a` is the type of each element of the input stream we
 consume, the first field `(acc -> a -> acc)` is an accumulation function and the
-second field `acc` is the initial value of the accumulator.  The new component
+second field `acc` is the initial value of the accumulator. The new component
 is the `b` type parameter and the last field `(acc -> b)`. This one is called
 _extract_. It is used to extract the final value out of the accumulator. This is
 necessary so that `Fold a` can be a `Functor` and therefore an

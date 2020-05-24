@@ -1,8 +1,8 @@
 ---
-title: Making two garbage collectors be good neighbours <br/> (using linear types)
+title: Making two garbage collectors be good neighbours   (using linear types)
 shortTitle: Making two garbage collectors be good neighbours
 author: Facundo Domínguez and Mathieu Boespflug
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 Foreign function interfaces (FFI) allow fast interop between
@@ -48,17 +48,17 @@ Haskell types and Java types line up. It catches at compile time many
 common bugs that could cause the program to crash or fail, but a few
 remain. Notably,
 
-* it is possible to use references to Java objects by mistake after
-they have been collected, and
-* it is possible to accidentally retain large amounts of memory in the
-Java heap with references that live in the memory managed by Haskell.
+- it is possible to use references to Java objects by mistake after
+  they have been collected, and
+- it is possible to accidentally retain large amounts of memory in the
+  Java heap with references that live in the memory managed by Haskell.
 
 Here's a case study: the conversion of Java `Iterator`s to Haskell
 `Stream`s (as defined in the [streaming][streaming] package).
 
 [streaming]: https://www.stackage.org/package/streaming
 
-``` haskell
+```haskell
 import Foreign.JNI
 import Language.Java as Java
 import Language.Java.Inline
@@ -88,7 +88,7 @@ to Haskell values of type `a`. We do this on the last line by calling
 
 [inline-java-blog-post]: http://www.tweag.io/posts/2017-09-15-inline-java-tutorial.html
 
-Like in Java, `it` and `obj` above are actually *references* to
+Like in Java, `it` and `obj` above are actually _references_ to
 objects. But it's a special type of reference provided by the JNI,
 which can be used by foreign code (such as C or Haskell). These JNI
 references need to be deleted explicitly once they are no longer
@@ -106,7 +106,7 @@ Failing to do so affects performance and can lead to failures.
 A straightforward fix to this situation is to delete the reference
 after the Haskell value has been obtained.
 
-``` haskell
+```haskell
     ...
     bracket [Inline.java| $it.next() |]
 	        JNI.deleteLocalRef
@@ -115,10 +115,10 @@ after the Haskell value has been obtained.
 
 There are two problems with this approach:
 
-* this puts the burden on the programmer to remember to delete the
+- this puts the burden on the programmer to remember to delete the
   reference and to be careful not to use it afterwards (or risk
   a segfault). Moreover,
-* JNI references are usually *local*, meaning that they are only valid
+- JNI references are usually _local_, meaning that they are only valid
   on the thread that created them. So the programmer has to be careful
   to not share them with other threads.
 
@@ -130,7 +130,7 @@ One way to avoid needing these checks in the first place is to just
 let the Haskell GC delete Java references automatically when they
 become unreachable. We attach to each reference a finalizer that
 deletes it, which is going to be called by the Haskell GC. Such
-references are no longer *local* references, but *global* references.
+references are no longer _local_ references, but _global_ references.
 Unlike local references, a global reference can be used in any thread
 and it is not destroyed when control returns to Java. Since the JNI
 provides a facility to promote any local reference to a global one,
@@ -179,7 +179,7 @@ causes all references of the frame to be deleted.
 
 We are still running the risk of accidentally using a local reference
 after deletion, and to use it in threads where it is invalid. But
-programmers no longer need to remember to delete *individual* local
+programmers no longer need to remember to delete _individual_ local
 references. Still, in practice we found difficult finding a hierarchy
 of nested scopes that keeps the counts of local references low.
 It is
@@ -200,14 +200,14 @@ reclaimable by Java GC immediately. The problem is: it's easy to
 forget doing so at all, leading to multiple leaks in an application.
 The key invariant we want checked by the
 compiler is that once we have a reference, it should be deleted
-*exactly once*, and never referred to after that. That is, we want to
-use references *linearly*.
+_exactly once_, and never referred to after that. That is, we want to
+use references _linearly_.
 
 What if we used the GHC proposal for
 [linear types](https://github.com/ghc-proposals/ghc-proposals/pull/91)
 to treat our local references linearly? It would look something like this:
 
-``` haskell
+```haskell
 import Foreign.JNI
 import Language.Java as Java
 import Language.Java.Inline as Inline.
@@ -306,7 +306,7 @@ affine types would do no better than these monadic regions. That's
 because affine types provide a weaker guarantee to the caller: we can
 return to the caller having used the argument at most once, but also
 never at all. We'd need nested scopes all over again to ensure that
-references *do* get disposed of in a timely fashion.
+references _do_ get disposed of in a timely fashion.
 
 In our discussion of linear types, we brought streams to a linear
 monad without delving into the details of whether it is possible and how

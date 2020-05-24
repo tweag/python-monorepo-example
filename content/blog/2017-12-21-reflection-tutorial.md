@@ -1,9 +1,9 @@
 ---
-title: "All about reflection:<br/> a tutorial"
+title: "All about reflection:  a tutorial"
 shortTitle: "All about reflection"
 author: Arnaud Spiwack
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 An important device in the tool belt I carry around everyday
@@ -21,8 +21,7 @@ me on a journey to sort a list:
 sortBy :: (a->a->Ordering) -> [a] -> [a]
 ```
 
-What is reflection?
-===================
+# What is reflection?
 
 Type class reflection is an extension of Haskell which makes it
 possible to use a value as a type class instance. There is a [package
@@ -34,8 +33,7 @@ is, it can't be defined from other Haskell features), this
 implementation is GHC-specific and will probably not work with another
 compiler.
 
-Literate Haskell
-================
+# Literate Haskell
 
 This blog post was generated from literate Haskell sources. You can
 find an extracted Haskell source file [here][lhs-sources].
@@ -58,12 +56,11 @@ scary, I know. It is unfortunately required. It means that we could
 technically send the type checker into an infinite loop. Of course, we
 will be careful not to introduce such loops.
 
-Sorted lists
-============
+# Sorted lists
 
 My goal, today, is to sort a list. In order to make the exercise
 a tiny bit interesting, I will use types to enforce invariants. I'll
-start by introducing a type of *sorted* lists.
+start by introducing a type of _sorted_ lists.
 
 ```haskell
 newtype SortedList a = Sorted [a]
@@ -107,19 +104,18 @@ merge (Sorted left0) (Sorted right0) = Sorted $ mergeList left0 right0
           b : (mergeList left r)
 ```
 
-We *need* `Ord a` to hold in order to define `merge`. Indeed, type
-classes are *global* and coherent: there is only one `Ord a` instance,
-and it is *guaranteed* that `merge` always uses the same comparison
+We _need_ `Ord a` to hold in order to define `merge`. Indeed, type
+classes are _global_ and coherent: there is only one `Ord a` instance,
+and it is _guaranteed_ that `merge` always uses the same comparison
 function for `a`. This enforces that if `Ord a` holds, then
 `SortedList a` represents lists of `a` sorted according to the order
 defined by the unique `Ord a` instance. In contrast, a function argument
-defining an order is *local* to this function call. So if `merge` were
+defining an order is _local_ to this function call. So if `merge` were
 to take the ordering as an extra argument, we could change the order for
 each call of `merge`; we couldn't even state that `SortedList a` are
 sorted.
 
-If it weren't for you meddling type classes
-===========================================
+# If it weren't for you meddling type classes
 
 That's it! we are done writing unsafe code. We can sort lists with the
 `SortedList` interface: we simply need to split the list in two parts,
@@ -163,7 +159,7 @@ impossible to implement `sortBy` in terms of `sort`: if I use
 same type, then I am creating two different instances of `Ord a`. This
 is forbidden.
 
-So what if, instead, we created an *entirely new* type each time we need
+So what if, instead, we created an _entirely new_ type each time we need
 an order for `a`. Something like
 
 ```haskell
@@ -192,7 +188,7 @@ reifyOrd :: (forall s. Ord (ReflectedOrd s a) => …) -> …
 ```
 
 What is happening here? The `reifyOrd` function takes an argument which
-works for *any* `s`. In particular, if every time we called `reifyOrd`
+works for _any_ `s`. In particular, if every time we called `reifyOrd`
 we were to actually use a different `s` then the program would be
 correctly typed. Of course, we're not actually creating types: but it is
 safe to reason just as if we were! For instance if you were to call
@@ -210,7 +206,7 @@ that you have:
 reify :: forall d r. d -> (forall s. Reifies s d => Proxy s -> r) -> r
 ```
 
-Think of `d` as a *dictionary* for `Ord`, and `Reifies s d` as a way to
+Think of `d` as a _dictionary_ for `Ord`, and `Reifies s d` as a way to
 retrieve that dictionary. The `Proxy s` is only there to satisfy the
 type-checker, which would otherwise complain that `s` does not appear
 anywhere. To reiterate: we can read `s` as a unique generated type which
@@ -227,8 +223,7 @@ dependency](https://wiki.haskell.org/Functional_dependencies). It is
 used by GHC to figure out which type class instance to use; we won't
 have to think about it.
 
-Sorting with reflection
-=======================
+# Sorting with reflection
 
 All that's left to do is to use reflection to give an `Ord` instance to
 `ReflectedOrd`. We need a dictionary for `Ord`: in order to build an
@@ -282,8 +277,7 @@ fromCompare ord = ReifiedOrd {
   reifiedCompare = ord }
 ```
 
-Wrap up & further reading
-=========================
+# Wrap up & further reading
 
 We've reached the end of our journey. And we've seen along the way that
 we can enjoy the safety of type classes, which makes it safe to write
@@ -297,28 +291,28 @@ If you want to delve deeper into the subject of type class reflection,
 let me, as I'm wrapping up this tutorial, leave you with a few pointers
 to further material:
 
--   A [talk by Edward
-    Kmett](https://www.youtube.com/watch?v=hIZxTQP1ifo), the author of
-    the reflection package, on the importance of the global coherence of
-    type classes and about reflection
--   There is no built-in support for reflection in GHC, this [tutorial
-    by Austin
-    Seipp](https://www.schoolofhaskell.com/user/thoughtpolice/using-reflection)
-    goes over the *very unsafe*, internal compiler representation
-    dependent, implementation of the library
--   John
-    Wiegley
-    [discusses an application of reflection][reflection-wiegly] in
-    relation with QuickCheck.
--   You may have noticed, in the definition of `sortBy`, that we `map`
-    the `reflectOrd` and `unreflectOrd` in order to convert between `a`
-    and `ReflectedOrd s a`. However, while, `reflectOrd` and
-    `unreflectOrd`, have no computational cost, using them in
-    combination with `map` will traverse the list. If you are
-    dissatified with this situation, you will have to learn about the
-    [Coercible](https://www.stackage.org/haddock/lts-9.0/base-4.9.1.0/Data-Coerce.html)
-    type class. I would start with this [video from Simon Peyton
-    Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell).
+- A [talk by Edward
+  Kmett](https://www.youtube.com/watch?v=hIZxTQP1ifo), the author of
+  the reflection package, on the importance of the global coherence of
+  type classes and about reflection
+- There is no built-in support for reflection in GHC, this [tutorial
+  by Austin
+  Seipp](https://www.schoolofhaskell.com/user/thoughtpolice/using-reflection)
+  goes over the _very unsafe_, internal compiler representation
+  dependent, implementation of the library
+- John
+  Wiegley
+  [discusses an application of reflection][reflection-wiegly] in
+  relation with QuickCheck.
+- You may have noticed, in the definition of `sortBy`, that we `map`
+  the `reflectOrd` and `unreflectOrd` in order to convert between `a`
+  and `ReflectedOrd s a`. However, while, `reflectOrd` and
+  `unreflectOrd`, have no computational cost, using them in
+  combination with `map` will traverse the list. If you are
+  dissatified with this situation, you will have to learn about the
+  [Coercible](https://www.stackage.org/haddock/lts-9.0/base-4.9.1.0/Data-Coerce.html)
+  type class. I would start with this [video from Simon Peyton
+  Jones](https://skillsmatter.com/skillscasts/5296-safe-zero-cost-coercions-in-haskell).
 
 [lhs-sources]: https://gist.github.com/aspiwack/6d6d69463abe95817453eed1198e6f1b
 [reflection-wiegly]: http://newartisans.com/2017/02/a-case-of-reflection/

@@ -1,8 +1,8 @@
 ---
-title: Securely storing secrets in Terraform<br/> with terraform-provider-secret
+title: Securely storing secrets in Terraform  with terraform-provider-secret
 shortTitle: Storing secrets in Terraform
 author: Jonas Chevalier
-tags: devops
+tags: [devops]
 ---
 
 [digital-asset]: https://www.digitalasset.com
@@ -35,12 +35,12 @@ The resource is declared in code, and the `terraform import` command is used to 
 
 This plugin brings many benefits:
 
-* No secrets stored in code. This means that we can share the infrastructure code with all the employees, which is nicely in line with the self-help principle of devops.
-* No secrets stored on the developer's laptop. If it gets stolen, it's just a matter of resetting their GCS or S3 bucket access.
-* Secrets are encrypted at rest in the remote state, if configured properly.
-* Auditable access. Each access to the GCS or S3 bucket can be logged for out-of-band breach correlation.
-* No need to send secrets over Slack.
-* Easy secret rotation.
+- No secrets stored in code. This means that we can share the infrastructure code with all the employees, which is nicely in line with the self-help principle of devops.
+- No secrets stored on the developer's laptop. If it gets stolen, it's just a matter of resetting their GCS or S3 bucket access.
+- Secrets are encrypted at rest in the remote state, if configured properly.
+- Auditable access. Each access to the GCS or S3 bucket can be logged for out-of-band breach correlation.
+- No need to send secrets over Slack.
+- Easy secret rotation.
 
 ## Installation
 

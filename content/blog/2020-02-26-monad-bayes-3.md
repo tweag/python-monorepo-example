@@ -1,8 +1,8 @@
 ---
-title: "Probabilistic Programming with monad‑bayes, Part 3: <br/>A Bayesian Neural Network"
+title: "Probabilistic Programming with monad‑bayes, Part 3:  A Bayesian Neural Network"
 shortTitle: "Probabilistic Programming with monad‑bayes (3)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede
-tags: data-science, haskell, statistics
+tags: [data-science, haskell, statistics]
 description: "In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the monad-bayes library. In the third part of the series, we setup a simple Bayesian neural network."
 image: "posts/bayes3_preview.png"
 ---
@@ -10,8 +10,8 @@ image: "posts/bayes3_preview.png"
 This post is the third instalment of Tweag's _**Probabilistic Programming with monad‑bayes Series**_.
 You can find the previous parts here:
 
-* [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
-* [Part 2: Linear Regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html)
+- [Part 1: Introduction](https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html)
+- [Part 2: Linear Regression](https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html)
 
 Want to make this post interactive?
 Try our [notebook version](https://github.com/tweag/blog-resources/tree/master/monad-bayes-series).
@@ -97,7 +97,6 @@ This function embodies our likelihood model:
 for given parameter values `NN`, it returns a data distribution, a function that assigns a log-probability to each data point.
 We can, for example, pick a specific neural network:
 
-
 ```haskell
 nn = NN
   { biass=vector [1, 5, 8]
@@ -107,7 +106,6 @@ nn = NN
 ```
 
 and then plot the corresponding distribution:
-
 
 ```haskell
 points1 =

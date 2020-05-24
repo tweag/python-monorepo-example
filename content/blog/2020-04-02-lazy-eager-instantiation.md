@@ -1,8 +1,8 @@
 ---
-title: "Eager vs. Lazy Instantiation: <br/>Making an Informed Decision"
+title: "Eager vs. Lazy Instantiation:  Making an Informed Decision"
 shortTitle: "Eager vs. Lazy Instantiation"
 author: Gert-Jan Bottu
-tags: haskell, internship
+tags: [haskell, internship]
 description: "This blog post describes the tradeoffs of the choice between eager and lazy instantiation of type variables in GHC."
 ---
 
@@ -38,25 +38,24 @@ Over the past few months, we encountered the following three issues:
 
 ### Synonyms
 
-Consider the following example, where we define ``myConst`` to be a synonym
-for ``const``, whose type is ``forall a b. a -> b -> a``:
+Consider the following example, where we define `myConst` to be a synonym
+for `const`, whose type is `forall a b. a -> b -> a`:
 
 ```hs
 myConst = const
 ```
 
-When inferring the type for ``myConst``, the compiler _instantiates_ the type of
-``const``, meaning that the type variables ``a`` and ``b`` get replaced by
+When inferring the type for `myConst`, the compiler _instantiates_ the type of
+`const`, meaning that the type variables `a` and `b` get replaced by
 (potentially yet unknown) types. Afterwards, the compiler _generalises_ this
-type, meaning that all remaining unknown types get bound using new ``forall``
+type, meaning that all remaining unknown types get bound using new `forall`
 binders.
 
-But should the resulting type for ``myConst`` be ``forall a b. a -> b -> a`` or
-``forall b a. a -> b -> a``? There is no way for the compiler to know the
+But should the resulting type for `myConst` be `forall a b. a -> b -> a` or
+`forall b a. a -> b -> a`? There is no way for the compiler to know the
 intended order of the generalised variables. While these types look equivalent,
 they are most certainly not in combination with type applications. Should the
-type of ``myConst @Int`` be ``forall b. Int -> b -> Int`` or ``forall a. a ->
-Int -> a``?
+type of `myConst @Int` be `forall b. Int -> b -> Int` or `forall a. a -> Int -> a`?
 
 For this reason GHC only allows type application for user defined type
 variables, called "specified" variables. Compiler generated variables, called
@@ -75,9 +74,9 @@ contradicts our intuition that they should behave identically.
 While discussing type inference for type abstraction in lambda binders, another
 issue popped up, this time related to type abstraction, as discussed in this
 accepted (but not yet implemented) [GHC proposal][proptyabs]. Just as you would
-write a lambda binder ``\ x -> e`` to introduce a term variable ``x`` and bring
-it into scope in ``e``, this proposal allows ``\ @a -> e`` to bind a type
-variable ``a`` and bring it into scope in ``e``.
+write a lambda binder `\ x -> e` to introduce a term variable `x` and bring
+it into scope in `e`, this proposal allows `\ @a -> e` to bind a type
+variable `a` and bring it into scope in `e`.
 
 At the moment, the proposal only discusses this feature under type-_checking_,
 meaning that a type signature needs to be present. However, in order to extend
@@ -88,17 +87,17 @@ following example:
 foo = \ @a (x :: a) -> x
 ```
 
-We would expect the inferred type for ``foo`` to
-be ``forall a. a -> a``, since we explicitly abstract over ``a``: `a`
+We would expect the inferred type for `foo` to
+be `forall a. a -> a`, since we explicitly abstract over `a`: `a`
 is, literally, specified.
-However, under eager type instantiation, the type for ``foo`` would actually be
-``forall {a}. a -> a``.
+However, under eager type instantiation, the type for `foo` would actually be
+`forall {a}. a -> a`.
 
 [proptyabs]: https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0155-type-lambda.rst
 
 ### Nested Foralls
 
-A third issue appears when instantiating types with nested ``forall`` binders.
+A third issue appears when instantiating types with nested `forall` binders.
 Consider the following example:
 
 ```hs
@@ -111,7 +110,7 @@ g = f
 ```
 
 We ask GHC to infer the type of `g` for us, and as you might expect from the
-``myConst`` example above, the types of ``f`` and ``g`` are not identical:
+`myConst` example above, the types of `f` and `g` are not identical:
 
 ```hs
 *Main> :set -fprint-explicit-foralls
@@ -121,31 +120,31 @@ f :: forall a. a -> forall b. b -> b
 g :: forall {a}. a -> forall b. b -> b
 ```
 
-While typing ``g``, GHC instantiates and generalises the binder for ``a``. As a
-consequence, the type of ``g`` now contains a mix of type variables which can
+While typing `g`, GHC instantiates and generalises the binder for `a`. As a
+consequence, the type of `g` now contains a mix of type variables which can
 and can not be manually instantiated. This hard-to-predict handling of type
 variables is quite confusing.
 
 This behaviour was introduced in a recent [GHC proposal][proposal] and is
 expected to be released in GHC 8.12. If you want to try this example
-for yourself, you can download our prebuilt GHC compiler using 
-``docker pull gertjanb/simplified-subsumption-ghc``, and run it using
-``docker run -it gertjanb/simplified-subsumption-ghc``.
+for yourself, you can download our prebuilt GHC compiler using
+`docker pull gertjanb/simplified-subsumption-ghc`, and run it using
+`docker run -it gertjanb/simplified-subsumption-ghc`.
 
 ## Eager vs. Lazy Instantiation
 
 All three issues explained above involve type variable instantiation, so let us
 explore this in a bit more detail. When type inference encounters the variable
-``f`` in the last example, a choice emerges when assigning it a type:
+`f` in the last example, a choice emerges when assigning it a type:
 
 - GHC 8.10 instantiates types eagerly, resulting in the following type:
-  ``alpha -> forall b. b -> b`` (note that we use greek letters to denote types
-  yet to be determined). Finally, generalisation produces for ``g`` the type
-  ``forall {a}. a -> forall b. b -> b``.
+  `alpha -> forall b. b -> b` (note that we use greek letters to denote types
+  yet to be determined). Finally, generalisation produces for `g` the type
+  `forall {a}. a -> forall b. b -> b`.
 
-- Another choice is to instantiate lazily, that is, returning the type of ``f``
-  as is, and only instantiating it when needed. The function ``g`` thus gets
-  assigned the type of ``f``: ``forall a. a -> forall b. b -> b``.
+- Another choice is to instantiate lazily, that is, returning the type of `f`
+  as is, and only instantiating it when needed. The function `g` thus gets
+  assigned the type of `f`: `forall a. a -> forall b. b -> b`.
 
 ## A Silver Bullet!
 
@@ -155,22 +154,22 @@ lazy instantiation might solve our issues above! Let's investigate:
 ### Synonyms
 
 When inferring a type for `myConst` under lazy instantiation, the type
-variables of ``const`` would not get instantiated, resulting in the inferred
-type ``forall a. a -> a``. This is the type we would expect, and
-indeed GHC no longer treats ``const`` and ``myConst`` differently.
+variables of `const` would not get instantiated, resulting in the inferred
+type `forall a. a -> a`. This is the type we would expect, and
+indeed GHC no longer treats `const` and `myConst` differently.
 
 ### Type Abstraction
 
-When inferring a type for ``foo`` under lazy instantiation, the user-specified
-type variable ``a`` does not get abstracted over, and the inferred type becomes
-``forall a. a -> a``. This is again the type we would expect for ``foo``, and
+When inferring a type for `foo` under lazy instantiation, the user-specified
+type variable `a` does not get abstracted over, and the inferred type becomes
+`forall a. a -> a`. This is again the type we would expect for `foo`, and
 using this type as a signature works like a charm.
 
 ### Simplified Subsumption
 
-A similar story holds for our ``g`` example above. Since type variables do not
+A similar story holds for our `g` example above. Since type variables do not
 get instantiated unless absolutely necessary, its type becomes identical to the
-type of ``f``: ``forall a. a -> forall b. b -> b`` with no inferred variables.
+type of `f`: `forall a. a -> forall b. b -> b` with no inferred variables.
 
 ## ... But Comes at a Cost.
 
@@ -182,7 +181,7 @@ of how this should work in practice, a number of new issues popped up:
 
 Type inference for case expressions requires the compiler to assign a
 monomorphic type to each of the branches. This means that the type can not
-contain top-level ``forall`` binders or binders on the right of function
+contain top-level `forall` binders or binders on the right of function
 arrows. In order to illustrate this restriction, consider the following
 example:
 
@@ -194,15 +193,15 @@ bar2 False = error "Impossible case for reasons"
 ```
 
 Under eager instantiation, the inferred types are as you would expect:
-when encountering ``id``, its forall type is instantiated eagerly.
+when encountering `id`, its forall type is instantiated eagerly.
 This results in the type
-``forall {a} {b}. Bool -> a -> b -> b`` for both ``bar1`` and ``bar2``.
+`forall {a} {b}. Bool -> a -> b -> b` for both `bar1` and `bar2`.
 
-The case of lazy instantiation is more interesting. The function ``bar1`` gets
-the type ``forall {a}. Bool -> a -> forall b. b -> b``. But by adding the
-catch-all sanity check in ``bar2``, we are actually introducing a case
+The case of lazy instantiation is more interesting. The function `bar1` gets
+the type `forall {a}. Bool -> a -> forall b. b -> b`. But by adding the
+catch-all sanity check in `bar2`, we are actually introducing a case
 expression, thus forcing the compiler to return a monomorphic type. The
-``forall``s get instantiated, resulting in the same type we get from eager
+`forall`s get instantiated, resulting in the same type we get from eager
 instantiation.
 
 ### Evaluation
@@ -217,15 +216,14 @@ evaluation of the program. Consider the following example:
 diverge = let !x = undefined in ()
 ```
 
-Note that the bang forces GHC to evaluate ``x`` eagerly. We would thus expect
+Note that the bang forces GHC to evaluate `x` eagerly. We would thus expect
 this function to throw an exception. However, while this is certainly the case
 under eager instantiation, this does not hold when variables are instantiated
-lazily. This happens because the type of ``undefined`` is ``forall a.
-HasCallStack => a``, and eager instantiation will instantiate the type ``a``
-and the ``HasCallStack`` argument.  Evaluating this instantiated ``undefined``
+lazily. This happens because the type of `undefined` is `forall a. HasCallStack => a`, and eager instantiation will instantiate the type `a`
+and the `HasCallStack` argument. Evaluating this instantiated `undefined`
 throws an exception, as we would expect. However, under lazy instantiation, the
-type of ``undefined`` remains effectively a function type (from
-``HasCallStack`` evidence to type ``a``), and functions do not diverge.
+type of `undefined` remains effectively a function type (from
+`HasCallStack` evidence to type `a`), and functions do not diverge.
 
 ### Implicit Arguments
 
@@ -249,12 +247,12 @@ z = let ?i = 6 in y
 
 Again, the choice of either eager or lazy instantiation determines the
 evaluation outcome. Similarly to before, under eager instantiation, while typing
-``y``, the type of ``x`` gets instantiated right away with ``?i = 5``. On the
+`y`, the type of `x` gets instantiated right away with `?i = 5`. On the
 other hand, under lazy instantiation, this is postponed as far as possible.
-Concretely, at the very end when typing ``z``, the implicit variable ``?i`` has
-to be instantiated, in this case with ``?i = 6``.
-This means that ``z`` evaluates to ``5`` under eager instantiation (as most
-people would expect), but evaluates to ``6`` under lazy instantiation.
+Concretely, at the very end when typing `z`, the implicit variable `?i` has
+to be instantiated, in this case with `?i = 6`.
+This means that `z` evaluates to `5` under eager instantiation (as most
+people would expect), but evaluates to `6` under lazy instantiation.
 
 ## Compromises Have to be Made
 

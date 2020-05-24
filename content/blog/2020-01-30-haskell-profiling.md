@@ -1,8 +1,8 @@
 ---
-title: "Locating Performance Bottlenecks in <br/>Large Haskell codebases"
+title: "Locating Performance Bottlenecks in  Large Haskell codebases"
 shortTitle: "Profiling Large Haskell Codebases"
 author: Juan Raphael Diaz Simões
-tags: haskell
+tags: [haskell]
 description: "This post describes a profiling technique for Haskell codebases that yields faithful results and is well adapted to large repositories."
 ---
 
@@ -21,7 +21,7 @@ fundamental units in profiling reports. During the runtime of a profiled executa
 
 Since these pieces of code marked as cost centers must be clearly
 identifiable at runtime,
-they have a significant restriction—they cannot be inlined.  Consequently, they cannot be optimized away.
+they have a significant restriction—they cannot be inlined. Consequently, they cannot be optimized away.
 
 Therefore, if we want to be sure we are profiling the same code we are running using a standard optimized binary, we must _not_ mark functions that
 should be inlined for optimizations as cost centers. Since GHC is not aware
@@ -163,7 +163,7 @@ which results in the following [flamegraph][flamegraph]:
 </center>
 
 Here we see that the function `addSlow` is slow as expected, however,
-most of the cost is in the `vector` library, in `(>>=)`. Why? 
+most of the cost is in the `vector` library, in `(>>=)`. Why?
 Because `replicate` failed to fuse with `foldl` in the code above, making
 the slow code even more anomalous.
 

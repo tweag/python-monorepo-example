@@ -1,8 +1,8 @@
 ---
-title: "capability: <br/>the ReaderT pattern without the boilerplate"
+title: "capability:  the ReaderT pattern without the boilerplate"
 shortTitle: Announcing capability
 author: Andreas Herrmann, Arnaud Spiwack
-tags: haskell
+tags: [haskell]
 ---
 
 About a year ago, Michael Snoyman made a blog post about
@@ -12,7 +12,7 @@ how _we_ read it. What we saw first and foremost is a story about
 using extensional type classes describing specifically the effects
 that functions use, but not how the effects are implemented (see the
 `MonadBalance` story in [Michael's blog post][readert]). We call these
-extensional type classes *capabilities*. Here is an
+extensional type classes _capabilities_. Here is an
 excellent [blog post][three-layer-cake] from Matt Parsons which takes
 this aspect to heart.
 
@@ -33,7 +33,7 @@ that a brand new language extension that shipped with GHC 8.6,
 How is using capabilities, like in Snoyman's and Parsons's blog posts
 any different from using the well-trodden MTL? Quite a bit! The MTL's
 classes, like `MonadReader`, `MonadState` and their close relatives,
-are _intensional_: they reflect *how* the monad has been constructed.
+are _intensional_: they reflect _how_ the monad has been constructed.
 A monad `MyM` is a `MonadState` because it is a stack of monad
 transformers, one of which is a `StateT`.
 
@@ -63,8 +63,8 @@ section](https://downloads.haskell.org/~ghc/8.4.3/docs/html/users_guide/glasgow_
 of the GHC manual.
 
 In contrast, what the ReaderT pattern is advertising is extensional
-classes, indicating *what* an individual function is allowed to do
-(hence the name "capability"), regardless of *how* the monad is
+classes, indicating _what_ an individual function is allowed to do
+(hence the name "capability"), regardless of _how_ the monad is
 implemented.
 
 ## The problem
@@ -114,7 +114,7 @@ In short, `-XDerivingVia` is a generalisation of
 instance _for_ a newtype, but also _from_ a newtype, or, and this is
 most relevant for us, from a combination of newtypes. For example:
 
-``` haskell
+```haskell
 {-# LANGUAGE DerivingVia #-}
 
 import Data.Monoid (Sum (..))
@@ -125,8 +125,7 @@ newtype MyInt = MyInt Int
 ```
 
 In the above snippet we define `MyInt` which wraps an `Int`, and
-derive two instances for it. The `Monoid` instance is taken from `Sum
-Int`, and the `Num` instance is taken directly from `Int`. Note the
+derive two instances for it. The `Monoid` instance is taken from `Sum Int`, and the `Num` instance is taken directly from `Int`. Note the
 `via` keyword in the deriving clauses. (In this example we could also
 have derived the `Num` instance using `-XGeneralizedNewtypeDeriving`.)
 
@@ -148,11 +147,11 @@ strategies that can be composed to derive capabilities using the
 
 `capability` defines a set of standard, reusable capability type
 classes, such as `HasReader`, or `HasState`. Contrary to the MTL type
-classes these are parameterized by a name (aka *tag*), which makes it
+classes these are parameterized by a name (aka _tag_), which makes it
 possible to refer to, say, multiple different states in the same
 computation, even if they correspond to the same type.
 
-``` haskell
+```haskell
 getAB :: (HasState "a" Int m, HasState "b" Int m) => m (Int, Int)
 getAB = do
   a <- get @"a"  -- get state under tag "a"
@@ -167,7 +166,7 @@ in deriving via clauses, similar to `Sum` in the `MyInt` example above.
 For example, given an MTL `MonadReader` instance, we can derive
 a `HasReader` capability as follows:
 
-``` haskell
+```haskell
 data AppData = ...
 
 newtype AppM a = AppM (ReaderT AppData IO a)
@@ -179,7 +178,7 @@ We can also combine multiple newtypes to derive capability instances.
 Building on the above example,
 we can pick a field within `AppData` as follows:
 
-``` haskell
+```haskell
 data AppData = AppData { intRef :: IORef Int, ... }
   deriving Generic
 
@@ -214,7 +213,7 @@ This requires a `Monoid` instance on `w`.
 
 We start with counting single letters and words.
 
-``` haskell
+```haskell
 -- | Count the occurrence of a single letter.
 countLetter ::
   HasWriter "letterCount" (Occurrences Char) m
@@ -231,7 +230,7 @@ countWord word = tell @"wordCount" (oneOccurrence word)
 The type `Occurrences k` is a newtype around a `Map` from values `k` to their count.
 Its `Monoid` instance will add occurrences in the expected fashion.
 
-``` haskell
+```haskell
 newtype Occurrences k = Occurrences (Map k Int)
 
 instance Ord k => Monoid (Occurrences k)
@@ -243,8 +242,8 @@ oneOccurrence k = Occurrences $ Map.singleton k 1
 ```
 
 Next, we combine `countLetter` and `countWord` to handle one word in the input text.
- 
-``` haskell
+
+```haskell
 -- | Count the occurrence of a single word and all the letters in it.
 countWordAndLetters ::
   ( HasWriter "letterCount" (Occurrences Char) m
@@ -258,7 +257,7 @@ countWordAndLetters word = do
 Finally, we can handle the full input text by first splitting it into its words
 and then applying the above function to each word.
 
-``` haskell
+```haskell
 -- | Count the occurrences of words and letters in a text,
 -- excluding white space.
 countWordsAndLettersInText ::
@@ -289,7 +288,7 @@ from reader capabilities on `IORef`s.
 First, we define the application context.
 A record holding two `IORef`s - one for each counter.
 
-``` haskell
+```haskell
 -- | Counter application context.
 data CounterCtx = CounterCtx
   { letterCount :: IORef (Occurrences Char)
@@ -301,7 +300,7 @@ data CounterCtx = CounterCtx
 
 Next, we define our application monad.
 
-``` haskell
+```haskell
 -- | Counter application monad.
 newtype Counter a = Counter { runCounter :: CounterCtx -> IO a }
   deriving (Functor, Applicative, Monad) via (ReaderT CounterCtx IO)
@@ -316,7 +315,7 @@ Each line after the `via` keyword corresponds to one newtype.
 Comments explain the purpose of the respective newtype.
 Read these from bottom to top.
 
-``` haskell
+```haskell
   deriving (HasWriter "letterCount" (Occurrences Char)) via
     (WriterLog  -- Generate HasWriter using HasState of Monoid
     (ReaderIORef  -- Generate HasState from HasReader of IORef
@@ -327,7 +326,7 @@ Read these from bottom to top.
 
 The `"wordCount"` writer is derived in the same way:
 
-``` haskell
+```haskell
   deriving (HasWriter "wordCount" (Occurrences Text)) via
     WriterLog (ReaderIORef
     (Field "wordCount" "ctx" (MonadReader (ReaderT CounterCtx IO))))
@@ -338,7 +337,7 @@ We will take the text as an argument, and return an `IO` action
 that executes `countWordsAndLettersInText` using our `Counter` monad,
 and prints the resulting word and letter counts to standard output.
 
-``` haskell
+```haskell
 -- | Given a text count the occurrences of all words and letters in it,
 -- excluding white space, and print the outcome to standard output.
 wordAndLetterCount :: Text -> IO ()
@@ -347,7 +346,7 @@ wordAndLetterCount text = do
 
 First, we setup the required `IORef`s and the counter context:
 
-``` haskell
+```haskell
   lettersRef <- newIORef Map.empty
   wordsRef <- newIORef Map.empty
   let ctx = CounterCtx
@@ -359,14 +358,14 @@ First, we setup the required `IORef`s and the counter context:
 Then, we call `countWordsAndLettersInText` on the input text,
 and instantiate it using our `Counter` application monad:
 
-``` haskell 
+```haskell
   let counter :: Counter ()
       counter = countWordsAndLettersInText text
 ```
 
 Finally, we run `counter` and print the results:
 
-``` haskell
+```haskell
   runCounter counter ctx
   let printOccurrencesOf name ref = do
         putStrLn name
@@ -379,7 +378,7 @@ Finally, we run `counter` and print the results:
 
 Executing this program in GHCi should produce the following output:
 
-``` haskell
+```haskell
 >>> wordAndLetterCount "ab ba"
 Letters
 'a': 2

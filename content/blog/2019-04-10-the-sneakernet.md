@@ -1,15 +1,15 @@
 ---
-title: "The Sneakernet: <br/>Towards A Much Faster Internet"
+title: "The Sneakernet:  Towards A Much Faster Internet"
 shortTitle: "The Sneakernet: Towards A Much Faster Internet"
 author: Matthias Meschede
 description: "Inspired by the Event Horizon Telescope images, we develop
-    a quick exploratory study about future possibilities of this technology
-    called the Sneakernet: Could massive data transfer give a new live to the
-    homing pigeon industry? How about using transportation means that are
-    optimized to carry incredible amounts of weight? Or transportation means
-    that are designed to be fast as a bullet?"
+  a quick exploratory study about future possibilities of this technology
+  called the Sneakernet: Could massive data transfer give a new live to the
+  homing pigeon industry? How about using transportation means that are
+  optimized to carry incredible amounts of weight? Or transportation means
+  that are designed to be fast as a bullet?"
 image: "posts/sneakernet.png"
-tags: data-science
+tags: [data-science]
 ---
 
 After an unprecedented effort of scientists all over the world, the [Event
@@ -80,7 +80,7 @@ Now brace yourself. There are ships called mammoth ultra large crude carriers
 of 9,166,666,666 hard disks, containing 36,666 EB in total. A single shipload
 can fit the entire internet traffic of 2018 25 times! As you know, the internet
 barely exists for this long and traffic rates were much lower for most of its
-history.  This brings us to the even bigger conclusion that _a single shipload
+history. This brings us to the even bigger conclusion that _a single shipload
 of SSD hard disks can store the entire traffic that has ever been exchanged in
 the history of the internet_.
 

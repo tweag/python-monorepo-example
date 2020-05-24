@@ -1,8 +1,8 @@
 ---
-title: "Asterius GHC WebAssembly backend<br/>reaches TodoMVC"
+title: "Asterius GHC WebAssembly backend reaches TodoMVC"
 shortTitle: TodoMVC in Haskell via WebAssembly
 author: Shao Cheng
-tags: haskell, asterius
+tags: [haskell, asterius]
 ---
 
 Getting your browser to print "Hello World!" is fun, and a milestone
@@ -204,19 +204,19 @@ to the public.
 
 And here is a list of improvements to wait for in the next quarter :)
 
-* Proper GC and exception handling. For garbage collection,
+- Proper GC and exception handling. For garbage collection,
   a reasonable starting point would be a single-generation copying GC,
   from which we can gradually improve. Keep in mind that eventually
   WebAssembly runtimes will be [exposing their own GC's][wasm-gc]. For
   exception handling, we'll enable users to handle Haskell and
   JavaScript exceptions in a uniform manner: a Haskell exception can
   be caught in JavaScript, and vice versa.
-* More comprehensive regression tests on CI, so we know with greater
+- More comprehensive regression tests on CI, so we know with greater
   confidence what primops/runtime interfaces/standard library
   functions are working and what aren't. We'll provide that
   information as a status page so people can set reasonable
   expectations on the status quo of this project, and see how it
   improves over time.
-* Support for even more packages, up to `aeson`.
+- Support for even more packages, up to `aeson`.
 
 [wasm-gc]: https://github.com/WebAssembly/gc/blob/master/proposals/gc/Overview.md

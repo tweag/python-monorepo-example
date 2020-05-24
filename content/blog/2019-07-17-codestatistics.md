@@ -1,8 +1,8 @@
 ---
-title: "Revelations from repetition: <br/>Source code headers in Haskell and Python"
+title: "Revelations from repetition:  Source code headers in Haskell and Python"
 shortTitle: "Revelations from repetition"
 author: "Simeon Carstens, Matthias Meschede"
-tags: data-science
+tags: [data-science]
 description: "Every day we write repetitive code. A lot of it is boilerplate that you write only to satisfy your compiler/interpreter. But how do languages differ in their boilerplate content? We explore these questions using data sets of Python and Haskell code."
 ---
 
@@ -13,7 +13,6 @@ But how do languages differ in their boilerplate content?
 Is it only the content of the boilerplate that changes, or also its quantity?
 We explore these questions using data sets of Python and Haskell code.
 Besides satisfying our curiosity, we will learn about community-wide habits and realize that after all, repetition is not necessarily uninteresting!
-
 
 ## A first look at the data
 
@@ -28,13 +27,13 @@ Let's first look at a few key characteristics of our data sets, namely the numbe
 
 <center>
 
-|                             | Python        | Haskell        |
-| --------------------------- | ------------- | -------------- |
-| **Number of packages**      | 3414          | 2312           |
-| **LOC**                     | 6,048,755     | 3,862,107      |
-| **Average LOC per package** | 1772          | 1760           |
-| **Number of words**         | 36,577,867    | 23,174,821     |
-| **Most common word**        | `x` (6,7%)    | `NUL` (4,5%)   |
+|                             | Python     | Haskell      |
+| --------------------------- | ---------- | ------------ |
+| **Number of packages**      | 3414       | 2312         |
+| **LOC**                     | 6,048,755  | 3,862,107    |
+| **Average LOC per package** | 1772       | 1760         |
+| **Number of words**         | 36,577,867 | 23,174,821   |
+| **Most common word**        | `x` (6,7%) | `NUL` (4,5%) |
 
 </center>
 
@@ -79,9 +78,8 @@ Few surprises for Python's basic `import`s - `os` and `sys` are the most frequen
 In fact, they make up 27% and 19% of all basic imports.
 But things change dramatically when considering `from [...] import [...]` statements:
 
-
 40% of all `from [...] import [...]` statements import things from TensorFlow, a popular machine learning library.
-We know that TensorFlow is popular, but *that* popular?
+We know that TensorFlow is popular, but _that_ popular?
 It turns out that our random sample of Python packages happens to contain a complete version of TensorFlow and that "self-imports" within that package account for 83% of all TensorFlow imports.
 It is thus a single, big package which leads to this surprisingly high percentage of TensorFlow imports.
 Disregarding that package, around 2.5% of all `import` statements are concerned with TensorFlow, which would still crack the top 10.
@@ -89,7 +87,6 @@ Disregarding that package, around 2.5% of all `import` statements are concerned 
 Onwards to Haskell:
 
 <img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
-
 
 Here we find an unexpectedly high occurrence of explicit `Prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 

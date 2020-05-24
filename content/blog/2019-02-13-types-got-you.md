@@ -1,8 +1,7 @@
 ---
 title: The types got you
-shorttitle: The types got you
 author: Mark Karpov
-tags: haskell
+tags: [haskell]
 ---
 
 Haskell is in a way a unique language. It is, to be clear, a language people
@@ -79,7 +78,7 @@ has, let's admit it, a bit adventurous and curious mind. It is easy to forget
 the timeless principles of robust engineering in this intellectual pursuit,
 perhaps even without noticing it.
 
-Good music producers *listen*. They judge everything by how it sounds, because
+Good music producers _listen_. They judge everything by how it sounds, because
 when the result is rendered and saved, people won't know how many effects,
 plugins, advanced techniques from some magazine were used. Nope, they really
 could not care less about that. They only care about the sound. For a beginner

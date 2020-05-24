@@ -1,7 +1,7 @@
 ---
-title: "CPP<br/> considered harmful"
+title: "CPP  considered harmful"
 author: Mathieu Boespflug
-tags: haskell
+tags: [haskell]
 ---
 
 Edsger Dijkstra [took issue][goto-considered-harmful] with the
@@ -11,16 +11,16 @@ of imperative programs was nigh impossible in the presence of
 `goto`-jumps to arbitrary labels. With `goto`, control flow is
 permitted to be entirely disconnected from the structure of the code
 as written, so it becomes very hard to guess at the value of variables
-without actually running the program. Just like `goto` for *dynamic
-behaviour*, the unbridled use of the C preprocessor (CPP) to
+without actually running the program. Just like `goto` for _dynamic
+behaviour_, the unbridled use of the C preprocessor (CPP) to
 conditionally compile code is hampering our ability to analyse and
-manipulate *code*. In fact the commonality in the arguments made it
+manipulate _code_. In fact the commonality in the arguments made it
 difficult to resist the temptation to reuse the already overused title
 of Dijkstra's paper. In this post, I want to [rehash][ifdef-harmful]
 the argument that CPP should be dispensed with because it makes bad
 code too tempting to write, like Dijkstra did for `goto`.
 
-The idea that *unrestricted* conditional compilation should be avoided
+The idea that _unrestricted_ conditional compilation should be avoided
 is old news. While it is extremely common in programming languages of
 the 70's (like C), it is nonexistent in popular programming languages
 of the 00's (like Rust or Go). Haskell, a language born in the late
@@ -68,7 +68,7 @@ main = do
 
 Clearly Option 1 or Option 2 would work out better than this already
 unreadable mess, which might only get worse when other
-incompatibilities arise, requiring *nested* conditional compilation.
+incompatibilities arise, requiring _nested_ conditional compilation.
 Some might argue that Option 1 (dropping support) isn't used nearly
 often enough. I agree, all the more so given the success and broad
 adoption of [Stackage][stackage], but it's a debate for another
@@ -78,7 +78,6 @@ dependencies? In such a case only Option 3 and Option 4 are available.
 
 In version 2.1, the [singletons][singletons] library exposed two
 datatype definitions:
-
 
 ```haskell
 data Proxy t :: * -> *
@@ -94,7 +93,7 @@ data Proxy k (t :: k) :: * -> *
 In user code, `KProxy` now needs to be replaced everywhere with
 `Proxy`. Unlike in our previous example, Option 2 is not available:
 there is no way to change the code in such a way that it compiles with
-*both* singletons-2.1 and singletons-2.2. Option 3 doesn't look
+_both_ singletons-2.1 and singletons-2.2. Option 3 doesn't look
 terribly appealing at first blush
 because [Don't Repeat Yourself (DRY)][dry].
 
@@ -125,7 +124,7 @@ What if we taught these tools CPP syntax, to obviate having to
 evaluate each branch of the preprocessor? Like unrestricted `goto`
 allowing labels pretty much anywhere, CPP conditionals can appear
 anywhere at all: module headers, import declarations, in the middle of
-an expression, or indeed arbitrary *different* combinations of these in
+an expression, or indeed arbitrary _different_ combinations of these in
 each branch of a conditional. Each branch need not be syntactically
 correct, with balanced parentheses and well-scoped names. Parsing
 becomes a very complicated problem.
@@ -138,22 +137,22 @@ which completely replacing `goto`, but together covering most use
 cases for `goto`. Giving up CPP means turning to any of the following
 strategies to achieve broader compatibility:
 
-* **Push all configuration to the build system:** if you're writing
+- **Push all configuration to the build system:** if you're writing
   a cross-platform network library, put all Win32 code in separate
   files from the Linux code. Let the build system choose what modules
   to build depending on the target platform. No CPP required.
-* **Designing for extensibility:** the [network][network] library has
+- **Designing for extensibility:** the [network][network] library has
   a datatype of socket address domains. Since not all platforms
   support all domains, this forces conditional compilation in socket
   address primitives. By contrast, the [socket][socket] library has an
   open type family of domains. Support for each domain can be kept in
   a dedicated source file, as above.
-* **Abstract away compatibility concerns:** if you really need to
+- **Abstract away compatibility concerns:** if you really need to
   target multiple versions of a dependency, create a small module that
   abstracts away the differences and depend on that.
-* **Use structured conditional compilation:** if you really have to
+- **Use structured conditional compilation:** if you really have to
   use conditional compilation within a source file, prefer
-  *structured* conditional compilation. Template Haskell can
+  _structured_ conditional compilation. Template Haskell can
   conditionally define a function. Unlike CPP, using Template Haskell
   is still syntactically correct Haskell.
 

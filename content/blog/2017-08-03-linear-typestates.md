@@ -1,8 +1,8 @@
 ---
-title: Encode state transitions in types <br>using linear types
+title: Encode state transitions in types  using linear types
 author: Arnaud Spiwack
 featured: yes
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 At the time of [our first post on linear types][blog-post-one], we
@@ -65,8 +65,7 @@ listen :: Socket Bound -> IO ()
 …
 ```
 
-Good! Now, what is the type of `s` in `bind s`? It must be `Socket
-Unbound` so that I can apply `bind`. Wait! When the `bind` call
+Good! Now, what is the type of `s` in `bind s`? It must be `Socket Unbound` so that I can apply `bind`. Wait! When the `bind` call
 returns, `s` must not be `Unbound` anymore. It must be `Bound`. So…
 the type of `s` seems to change over time. This is the idea
 of [_typestates_][typestate-wikipedia].

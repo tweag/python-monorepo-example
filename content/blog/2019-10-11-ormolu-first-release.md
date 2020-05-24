@@ -1,14 +1,14 @@
 ---
-title: "Ormolu: <br>Announcing First Release"
+title: "Ormolu:  Announcing First Release"
 shortTitle: "Ormolu: Announcing First Release"
 author: Mark Karpov, Utku Demir
-tags: haskell
+tags: [haskell]
 description: "We're happy to announce the first release of Ormolu, a formatter for Haskell source code."
 ---
 
 We're happy to announce the first release of [Ormolu][ormolu-hackage], a
 formatter for [Haskell][haskell_wiki_intro] source code. Some may remember our [first
-post][first-post] from a couple months ago where we disclosed our 
+post][first-post] from a couple months ago where we disclosed our
 work on the Ormolu project—but carefully called it “vaporware” then.
 Times have changed; it's not anymore.
 
@@ -17,17 +17,17 @@ Times have changed; it's not anymore.
 We've run Ormolu on large real-world projects, legacy codebases, and most
 popular packages. We consider Ormolu usable:
 
-* It formats all Haskell constructs and handles all language extensions.
-* It places comments correctly.
-* It performs some normalization of language pragmas, GHC/Haddock option
+- It formats all Haskell constructs and handles all language extensions.
+- It places comments correctly.
+- It performs some normalization of language pragmas, GHC/Haddock option
   pragmas, and import lists.
-* It's fast enough to format large real-world codebases in seconds.
-* Its output is almost always idempotent. _We'll get idempotence 100% right in the following releases._
+- It's fast enough to format large real-world codebases in seconds.
+- Its output is almost always idempotent. _We'll get idempotence 100% right in the following releases._
 
 ## Style
 
-Ormolu's original goal was to implement a formatting style close to 
-one people already use. We also wanted a style that minimizes diffs. 
+Ormolu's original goal was to implement a formatting style close to
+one people already use. We also wanted a style that minimizes diffs.
 We met both goals in the first release, but you may notice
 some unexpected stylistic decisions.
 
@@ -81,7 +81,7 @@ While this popular formatting choice
 works in expressions, it's a parse error if used in a pattern, because
 everything in a multiline pattern should be more indented than the opening
 parenthesis. That's why we make an exception in our rendering rules—we move
-the closing parenthesis one indentation level to the right on the rare occasions 
+the closing parenthesis one indentation level to the right on the rare occasions
 it's necessary. Re-arranging or shifting all commas would be too inconsistent in that
 case, so we went with commas at the end of lines.
 
@@ -149,13 +149,13 @@ perfect.
 
 In the future, there will be more additions to the type system:
 
-* **[Linear types][linear-types]** will add a new type of arrow. It's clear that
+- **[Linear types][linear-types]** will add a new type of arrow. It's clear that
   the new arrow `(#->)` will be at least three characters long and won't
   align with `::` and other arrows. What's more, `(#->)` is shorthand.
   In general linear arrows can have multiplicity annotations, like `p` in `Int #p-> Bool`.
   Multiplicities characterize use of the function argument, whose type is given immediately before the multiplicity, so it makes sense to group the argument type and the arrow on the same line.
 
-* **[Dependent Haskell][dependent-haskell]** is going to add new constructions
+- **[Dependent Haskell][dependent-haskell]** is going to add new constructions
   on the type level as well. They may bring us problems similar to the
   existing `forall`.
 

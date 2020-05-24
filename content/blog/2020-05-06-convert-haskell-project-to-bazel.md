@@ -1,8 +1,8 @@
 ---
-title: A taste of Bazel:<br/> build a library, a service and hspec tests
+title: "A taste of Bazel: build a library, a service and hspec tests"
 shortTitle: A Bazel for Haskell tutorial
 author: Clément Hurlin
-tags: bazel, haskell
+tags: [bazel, haskell]
 description: "How to build a complete Haskell project with Bazel."
 ---
 
@@ -33,11 +33,11 @@ a web service and an [Hspec][hspec] test suite.
 
 Bazel has two kinds of files, which both use Python syntax:
 
-* A unique `WORKSPACE` file, which identifies a Bazel workspace. The `WORKSPACE` file is the only
+- A unique `WORKSPACE` file, which identifies a Bazel workspace. The `WORKSPACE` file is the only
   place where additional code and data outside of the workspace can be pulled
   in.
-* `BUILD.bazel` files containing a specification of the build
-  dependency graph. Bazel is designed for *modularity* and to scale to
+- `BUILD.bazel` files containing a specification of the build
+  dependency graph. Bazel is designed for _modularity_ and to scale to
   very large repositories, so you can break up the dependency graph
   spec in many `BUILD.bazel` files scattered across your repository.
 
@@ -119,7 +119,7 @@ desired snapshot version, as in your `stack.yaml`.
 
 Calling `stack_snapshot` with `name = stackage` in the `WORKSPACE`
 file extends the Bazel workspace to include third-party code
-downloaded from Hackage, in an *external repository* called
+downloaded from Hackage, in an _external repository_ called
 `@stackage`. This repository includes a number of targets, like
 `@stackage//:aeson` or `@stackage//:filepath`, also defined by
 `stack_snapshot`, based on metadata downloaded from Stackage. Under
@@ -140,9 +140,9 @@ Haskell code:
     └── test
 ```
 
-* library code lives in `haskell/src`,
-* the executable's code lives in `haskell/exe`, and
-* test code lives in `haskell/test`.
+- library code lives in `haskell/src`,
+- the executable's code lives in `haskell/exe`, and
+- test code lives in `haskell/test`.
 
 Declaring how to build the library code is as simple as adding
 the following in `haskell/src/BUILD.bazel`:
@@ -232,11 +232,11 @@ but not `:mylib` or `:server`.
 
 Even small projects require important features from a build system:
 
-* mechanisms to specify exactly what compiler toolchain we want to
+- mechanisms to specify exactly what compiler toolchain we want to
   use, to make the build reproducible,
-* a way to resolve symbolic names to specific package versions on
+- a way to resolve symbolic names to specific package versions on
   Hackage, using package snapshots,
-* the ability to build preprocessors (like `hspec-discover`) and tell
+- the ability to build preprocessors (like `hspec-discover`) and tell
   build targets about their location,
 
 What we have shown is that Bazel today supports doing all of the
@@ -244,7 +244,7 @@ above. Alternatives like [cabal-install][cabal-install] and [Stack][stack]
 support this too, and
 for small to medium sized projects, they work just fine and are
 simpler to handle than the Bazel workhorse. But I hope I've given you
-here a glimpse of what the Bazel way looks like: make *all*
+here a glimpse of what the Bazel way looks like: make _all_
 dependencies explicit including binary dependencies, design for
 cacheability, and infinite extensibility using custom build rules
 `load`ed from your own Python-syntax `.bzl` files like we do in all the

@@ -1,11 +1,11 @@
 ---
-title: "Towards Interactive Data Science in Haskell:<br/> Haskell in JupyterLab"
+title: "Towards Interactive Data Science in Haskell:  Haskell in JupyterLab"
 shortTitle: "Harnessing the Power of Haskell in JupyterLab"
 author: Matthias Meschede, Juan Simões
-tags: haskell, data-science
+tags: [haskell, data-science]
 ---
 
-## Introduction ##
+## Introduction
 
 Haskell and data science - on first sight a great match: native function
 composition, lazy evaluation, fast execution times, and lots of code checks.
@@ -14,7 +14,7 @@ pipelines. What is missing then? Why is Haskell not widely used in data
 science?
 
 One of the reasons is that Haskell lacks a standardized data analysis
-environment. For example, Python has a *de facto* standard library set with
+environment. For example, Python has a _de facto_ standard library set with
 `numpy`, `pandas` and `scikit-learn` that form the backbone, and many other
 well-supported specialized libraries such as `keras` and `tensorflow` that are
 easily accessible. These libraries are distributed with user friendly package
@@ -26,8 +26,7 @@ This post presents Jupyter and JupyterLab - both important ingredients of the
 Python ecosystem - and shows how we can take advantage of these tools for
 interactive data analysis in Haskell.
 
-## Jupyter and exploratory data analysis ##
-
+## Jupyter and exploratory data analysis
 
 [Project Jupyter](https://jupyter.org/) became famous through the browser-based
 notebook app that allows to execute code in various compute environments and
@@ -35,7 +34,7 @@ interlace it with text and media elements
 ([example gallery](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks)).
 
 More generally, Project Jupyter standardizes the interactions between Jupyter
-*frontends* such as the notebook and Jupyter *kernels*, the compute
+_frontends_ such as the notebook and Jupyter _kernels_, the compute
 environments. Typically a kernel receives a message from a frontend, executes
 some code, and responds with a rich media message. The frontend can render the
 response message as text, images, videos or small applications. All exchanged
@@ -53,7 +52,7 @@ explanatory text, code and media elements and can therefore be used as
 human-readable reports (such as this blogpost). This REPL workflow has become
 one of the most popular ways for exploratory data analysis.
 
-## Conversations with a Jupyter kernel ##
+## Conversations with a Jupyter kernel
 
 [IHaskell](https://github.com/gibiansky/IHaskell) is the name of the Jupyter
 kernel for Haskell. It contains a little executable `ihaskell` that can receive
@@ -114,7 +113,7 @@ channel: "iopub"
 commands to enable language extensions, print type information or to use
 Hoogle.
 
-## JupyterLab ##
+## JupyterLab
 
 JupyterLab is the newest animal in the Jupyter frontend zoo, and it is arguably
 the most powerful: console, notebook, terminal, text-editor, or image viewer,
@@ -139,7 +138,7 @@ barrier that many encounter when exploring Haskell for serious data science.
 Let's get into a small example that shows how to use the JupyterLab VEGA
 renderer with IHaskell.
 
-## Wordclouds using Haskell, Vega and JupyterLab ##
+## Wordclouds using Haskell, Vega and JupyterLab
 
 We will use here the word content of all blog posts of `tweag.io`, which are
 written in markdown text files. The following little code cell that reads all
@@ -147,7 +146,6 @@ written in markdown text files. The following little code cell that reads all
 string from which we remove some punctuation characters. This code cell is then
 sent to the `ihaskell` kernel, which responds to the last `take` function with
 a simple text response.
-
 
 ```haskell
 :ext QuasiQuotes
@@ -166,13 +164,11 @@ take 50 cleanedText
 "title Were hiring<br>(Software engineer / devops)p"
 ```
 
-
 The VEGA visualization specification for a wordcloud can be defined as a JSON
 string that is filled with our text data. A convenient way to write longer
-multiline strings in Haskell are `QuasiQuotes`.  We use `fString` QuasiQuotes
+multiline strings in Haskell are `QuasiQuotes`. We use `fString` QuasiQuotes
 from the [`PyF`](http://hackage.haskell.org/package/PyF) package.
 Note that `{}` fills in template data and `{{` corresponds to an escaped `{`.
-
 
 ```haskell
 import Formatting
@@ -262,7 +258,6 @@ display message to Jupyterlab. In consequence, Jupyterlab knows that it should
 use its internal `application/json` renderer to display the message in the
 frontend.
 
-
 ```haskell
 import qualified IHaskell.Display as D
 D.Display [D.json vegaString]
@@ -281,8 +276,7 @@ D.Display [D.vegalite vegaString]
 
 ![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
 
-
-## Conclusion ##
+## Conclusion
 
 JupyterLab provides a REPL-like workflow that is convenient for quick
 exploratory data analysis and reporting. Haskell can benefit in particular from

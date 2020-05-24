@@ -1,15 +1,15 @@
 ---
-title: "GHC compiler plugins in the wild:<br/> typing Java"
+title: "GHC compiler plugins in the wild:  typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 [Previously][inline-java-tutorial], we discussed how to
-*use* [inline-java][inline-java-stackage] to call any Java function
+_use_ [inline-java][inline-java-stackage] to call any Java function
 from Haskell. The reverse is also possible, though that will be
 a topic for a future post. In this post, we'll peek underneath the
-hood to talk a little about *how* inline-java does its deed.
+hood to talk a little about _how_ inline-java does its deed.
 
 You might find it an interesting read for at least the following
 reason: since the latest v0.7 release of inline-java, it's an example
@@ -18,7 +18,7 @@ you to introspect and transform types and the abstract syntax tree
 before handing them off to later stages of the compiler pipeline. We
 use this to good effect in order to check that argument and return
 types on the Java side line up with those on the Haskell side (and
-*vice versa*).
+_vice versa_).
 
 [inline-java-tutorial]: ./2017-09-15-inline-java-tutorial.html
 [inline-java-stackage]: https://www.stackage.org/package/inline-java
@@ -88,12 +88,12 @@ The details of this process are not important at this point. What
 matters is that it enables us to translate types across languages. For
 instance,
 
-| Haskell type | Java type         |
-|:-------------|------------------:|
-| Double       |            double |
-| [Double]     |          double[] |
-| ByteString   |            byte[] |
-| Text         |  java.lang.String |
+| Haskell type |        Java type |
+| :----------- | ---------------: |
+| Double       |           double |
+| [Double]     |         double[] |
+| ByteString   |           byte[] |
+| Text         | java.lang.String |
 
 The translated types are passed to `javac` together with the rest of the
 quasiquoted Java code. In our running example this would be
@@ -118,12 +118,13 @@ quasiquotation.
 At first, it appears as if determining these types is trivial. There is
 a Template Haskell primitive called
 [reify](https://www.stackage.org/haddock/lts-9.0/template-haskell-2.11.1.0/Language-Haskell-TH.html#v:reify).
+
 ```Haskell
 reify :: Name -> Q Info
 
 data Info =
       ...
-    | VarI Name Type (Maybe Dec)	
+    | VarI Name Type (Maybe Dec)
       ...
 ```
 
@@ -217,7 +218,7 @@ Template Haskell learns
 # Summary
 
 By using a GHC plugin, we have simplified `inline-java` from a
-complicated spaghetti which sprung from attempting to use 
+complicated spaghetti which sprung from attempting to use
 Template Haskell's `reify` and didn't fully addressed the type lookup
 problem in a robust way. Now we have a straight forward story which
 starts by

@@ -1,7 +1,7 @@
 ---
-title: Why Haskell <br/>is important
+title: Why Haskell  is important
 author: Mark Karpov
-tags: haskell
+tags: [haskell]
 description: "People keep asking me, “What's the point of Haskell, why do you folks even use it?”. How can you answer this?"
 ---
 
@@ -50,16 +50,16 @@ be using Haskell itself in the distant future. Perhaps a different language—bu
 on the valuable discoveries we made with Haskell. I'm confident that his
 prediction will come true because:
 
-* Haskell is a unique vehicle for bringing modern programming language
+- Haskell is a unique vehicle for bringing modern programming language
   theory (PLT) to a production-quality programming language (†) where
   results of such research can be tried out very quickly by programmers
   tasked to solve real problems every day. For almost every other language,
   one of the following is true:
 
-    * it is an experimental language with a small developer base that sees
-      virtually no practical usage
-    * it is a practical language that's widely used but not advancing very
-      quickly, burdened by its huge user base and legacy code.
+  - it is an experimental language with a small developer base that sees
+    virtually no practical usage
+  - it is a practical language that's widely used but not advancing very
+    quickly, burdened by its huge user base and legacy code.
 
   I think there's lots of value in the linear and dependent types research
   happening now. Not because those features allow us to solve harder
@@ -68,19 +68,19 @@ prediction will come true because:
   in practice, which is the necessary condition if we want to build
   tomorrow's super language.
 
-* Haskell is not a proprietary language built, controlled, or subject to the
+- Haskell is not a proprietary language built, controlled, or subject to the
   whims of some commercial entity. It is instead open source software, a
   product of a collective effort by academics and enthusiastic users.
   Haskell's tight, active community and its spirit of experimentation are
   perfect for moving forward with more exploration.
 
-* Haskell evolves fast. I'm a relatively new user who started using it in
+- Haskell evolves fast. I'm a relatively new user who started using it in
   2014, but even over just 5 years, I can say that the language has changed
   quite a bit and a lot of new features appeared in GHC. Veteran Haskellers
   who have been using it for a decade or more can attest that many things
   have changed for the better.
 
-* Haskell thrives with ideas. Not only the compiler itself, but also its
+- Haskell thrives with ideas. Not only the compiler itself, but also its
   ecosystem of libraries—Haskellers are in a constant search for better
   solutions. Some of these solutions prove to be elegant and powerful, so
   they stick. Others are soon forgotten. Of course, the same thing happens
@@ -106,7 +106,7 @@ without a way to perform side effects but evolved to be adopted by
 cutting-edge players like Facebook and Google to do real work today. Time
 will only bring more great things—I don’t see an end to Haskell’s evolution.
 
-----
+---
 
 (†) If you do not believe that a lot of companies use Haskell, you may find
 that you are a victim of the same type of outdated world view as the one

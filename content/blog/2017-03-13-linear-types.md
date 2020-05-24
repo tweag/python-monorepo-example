@@ -1,17 +1,18 @@
 ---
-title: Linear types<br>make performance more predictable
+title: Linear types make performance more predictable
 author: Jean-Philippe Bernardy and Arnaud Spiwack
 featured: yes
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 We're extending GHC with linear types.
+
 <!--more-->
 
 Ever since Jean-Yves Girard discovered [linear logic][linear-logic] in
 1986, researchers around the world have been going "wow! resource
 tracking, this must be useful for programming languages". After all,
-any real computation on a real machine *takes* resources (memory
+any real computation on a real machine _takes_ resources (memory
 pages, disk blocks, interrupts, buffers etc) that then aren't
 available anymore unless restored somehow. But despite this match
 apparently made in heaven, research on this subject has remained
@@ -29,7 +30,7 @@ a smaller memory footprint in Haskell, and give you a preview of what
 you might expect in your favourite compiler in the not-so-distant
 future.
 
-# A bit of history #
+# A bit of history
 
 Once upon a time, Jean-Yves Girard was playing with ways to describe
 the semantics of a λ-calculus with types, when he realised that from
@@ -38,7 +39,7 @@ type (the type for functions): it could be described in terms of two
 simpler constructions. He followed this thread through and came up
 with a strange beast he called _linear logic_.
 
-## Two of everything ##
+## Two of everything
 
 Linear logic had two of everything: two ways of building conjunctions
 and disjunctions, two notions of truth, falsehood and two ways to
@@ -56,7 +57,7 @@ not zero times: just once. It turns out that this property, which has
 come to be known as _linearity_, is very useful for compilers of
 functional programs.
 
-## Typing resources ##
+## Typing resources
 
 Programming language researchers quickly took notice. It was not long
 before [Yves Lafont][lafont] proposed a language with safe memory
@@ -79,7 +80,7 @@ a system of ownership which is not unlike Clean's uniqueness types.
 Both are complex systems that permeate the entire language and
 ecosystem in ways that make the learning curve pretty steep.
 
-## Linear types as an extension ##
+## Linear types as an extension
 
 What if you could enjoy all your favourite goodies from your favourite
 programming language, and yet be able to leverage linear types for
@@ -95,7 +96,7 @@ be grafted to your favourite functional language at no cost for the
 programmer. We're working on GHC, but this would work just as well in
 your favourite ML flavour.
 
-# So why are we doing this? #
+# So why are we doing this?
 
 Among our many projects, we are working together
 with [Seagate][seagate] and a number of consortium partners on
@@ -124,8 +125,8 @@ the [paper][paper], but in summary linear types help in two ways:
   double-free bugs). Anything that we `malloc` explicitly doesn't end
   up on the GC heap, so doesn't participate in increasing GC pause
   times.
-- Linear types can make fusion *predictable* and *guaranteed*. Fusion
-  is crucial to writing programs that are *both* modular and
+- Linear types can make fusion _predictable_ and _guaranteed_. Fusion
+  is crucial to writing programs that are _both_ modular and
   high-performance. But a common criticism, one that we've seen born
   out in practice, is that it's often hard to know for sure whether
   the compiler seized the opportunity to fuse intermediate data
@@ -144,7 +145,7 @@ bugs where some component doesn't respect the protocol that was agreed
 upon with others. We don't talk about that much in the paper, but
 we'll touch on that here.
 
-# What it will look like #
+# What it will look like
 
 Let's start slow, with the `fst` function projecting the first
 component from a pair:
@@ -172,8 +173,8 @@ dup :: a ⊸ (a,a)
 dup x = (x,x)
 ```
 
-On the surface, this is almost the entire story: *the linear arrow
-allows you to reject more programs*, of which `fst` and `dup` are
+On the surface, this is almost the entire story: _the linear arrow
+allows you to reject more programs_, of which `fst` and `dup` are
 prototypical examples.
 
 With that in mind, there's a lot that linear types can be used for.
@@ -221,19 +222,17 @@ client sendToSrvr = newCaps $ \r s -> do
   receive r (\n -> print n)
 ```
 
-We can see how typing works: `client` must create a function `Int ⊸ IO
-()` for the server to send its result to. So it creates an `S`/`R`
+We can see how typing works: `client` must create a function `Int ⊸ IO ()` for the server to send its result to. So it creates an `S`/`R`
 pair, into which the server will be able to send exactly one result.
 The `r` capability must also be consumed exactly once. Therefore, the
 client must call `receive` and do something with the result (in this
 case, it boringly prints it on a console).
 
 Of course, one can replace all the linear arrows with regular arrows
-`->` and the program stays well-typed. But *the value of linear types
-lies in what they do not allow*: `client` cannot forget to call
+`->` and the program stays well-typed. But _the value of linear types
+lies in what they do not allow_: `client` cannot forget to call
 `receive`, resulting in the server blocking on `send`; similarly, the
-server is not allowed to return twice to `k` (_e.g._ `k (n+p) >>
-k (n*p)` is not well-typed). This prevents all sort of bad
+server is not allowed to return twice to `k` (_e.g._ `k (n+p) >> k (n*p)` is not well-typed). This prevents all sort of bad
 behaviours. It is not a novel idea; see the [paper][paper]'s "related work"
 section if you're interested in the references.
 
@@ -300,7 +299,7 @@ One thing that the article does not have, however, is a good
 description of how our prototype implementation (and type inference)
 works.
 
-# Did you say prototype? #
+# Did you say prototype?
 
 Yes! There is a [branch of GHC][prototype] where we are implementing
 the above proposal. At the time of writing the prototype is still

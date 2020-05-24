@@ -1,8 +1,8 @@
 ---
-title: "Setting up a shared build cache <br/>using Bazel"
+title: "Setting up a shared build cache  using Bazel"
 shortTitle: "Shared Bazel cache"
 author: Mark Karpov
-tags: bazel, devops
+tags: [bazel, devops]
 description: "How to set up a remote Bazel cache, and why it is a good idea."
 ---
 
@@ -12,7 +12,7 @@ when checking out a new branch, and wait yet more after returning to the
 original branch, can be outright demoralizing. If there was a silver bullet,
 few would talk much about build times. You'll want to bring to bear multiple
 strategies to solve this tough problem. I'll talk today about just one
-strategy: make it so that build artifacts only need to be built *once* by
+strategy: make it so that build artifacts only need to be built _once_ by
 anyone on your team and by the build bots. To achieve this, you'll need a
 shared build cache. In this post I'm going to show why Bazel may be a good
 solution if having a robust cache shared among all developers is important
@@ -47,9 +47,9 @@ outputs. Action outputs can be cached, so that running another build
 does not require executing all actions again. There are two levels of
 caching in Bazel:
 
-* a "local" cache for the currently checked out
+- a "local" cache for the currently checked out
   [workspace][bazel-workspace],
-* an optional "remote" cache, which can be reused across all
+- an optional "remote" cache, which can be reused across all
   workspaces and branches no matter where and how many times they are
   checked out. If this remote cache is stored on a server, it's
   possible to share this remote cache among all developers in your
@@ -60,20 +60,20 @@ The local cache can be sufficient for small projects. But you'll
 eventually want to setup a remote cache as well. Having a remote
 cache, and sharing it, has multiple advantages:
 
-* After completing a build of branch `mybranch1`, all subsequent
+- After completing a build of branch `mybranch1`, all subsequent
   builds are instantaneous, even if you checked out `mybranch2` in the
   meantime.
-* If CI and developers share the build cache, then builds of the
+- If CI and developers share the build cache, then builds of the
   master branch are always fully cached and therefore very fast, even
   after an initial checkout of the project by a new developer.
-* CI build drones can be stateless. They all pull from a shared cache
+- CI build drones can be stateless. They all pull from a shared cache
   to accelerate the build. If our cache is not stored on the file
   systems of individual nodes but instead is kept in a storage service
   that is re-used by everyone, we can switch to short-lived,
   preemptable CI nodes and cut the costs significantly. In other
   words, a remote cache allows us to separate computing resources from
   storage resources.
-* Initial build times after submitting a PR can be very low indeed. If
+- Initial build times after submitting a PR can be very low indeed. If
   you allow developers to write to the shared cache, then by the time
   the PR is submitted, the build will have been already cached if the
   developer ran a build on their laptop first.
@@ -83,7 +83,7 @@ a dangerous proposition. Shared caches have a knack for exacerbating
 the effects of any bugs in your build targets specification. For
 example, omitting to explicitly declare an input to a build action can
 lead to failed builds. But in the presence of a shared cache this can
-moreover lead to *cache poisoning*, which can lead to builds
+moreover lead to _cache poisoning_, which can lead to builds
 succeeding but producing corrupted build artifacts. Say a CI build
 drone executes a build action that needs `A` and `B` as inputs, but
 only `A` is declared. Then the output of the build action could go
@@ -112,18 +112,18 @@ found in the [Bazel docs][bazel-docs].
 The first method amounts to setting up a [GCP bucket][gcp-bucket] and granting CI nodes
 access to that bucket. Bazel can then get access to the bucket in two ways:
 
-* When Bazel is run inside of a Google Compute Engine instance the
+- When Bazel is run inside of a Google Compute Engine instance the
   `--google_default_credentials` flag can be used for authentication.
-* Otherwise `--google_credentials=/path/to/your/secret-key.json` can tell
+- Otherwise `--google_credentials=/path/to/your/secret-key.json` can tell
   Bazel which secret key to use. The `secret-key.json` file can be generated
   for a service account using the GCP console, in the IAM & Admin section.
 
 Then, the following configuration options should be used to tell Bazel to
 use the remote cache:
 
-* `--remote_http_cache=https://storage.googleapis.com/<bucket-name>` where
+- `--remote_http_cache=https://storage.googleapis.com/<bucket-name>` where
   `bucket-name` is the name of the cache Bucket.
-* `--remote_upload_local_results=true` makes Bazel upload the results of
+- `--remote_upload_local_results=true` makes Bazel upload the results of
   locally executed actions to the remote cache.
 
 These flags can both be set on the command line, or in your
@@ -134,9 +134,9 @@ These flags can both be set on the command line, or in your
 [Remote build execution (RBE) for GCP][rbe] is an experimental service
 in alpha mode. It provides:
 
-* A shared cache that eliminates duplication of effort across the entire
+- A shared cache that eliminates duplication of effort across the entire
   team.
-* A scalable worker pool that reduces latency by parallelizing the build execution
+- A scalable worker pool that reduces latency by parallelizing the build execution
   across thousands of nodes.
 
 The second feature is outside of the scope of this blog post and can be
@@ -149,11 +149,10 @@ in [the official documentation][rbe-docs]. Once it is done, the following
 options should be passed to Bazel. Again, these flags
 can be set on the command line, or in your [`user.bazelrc`][user-bazelrc].
 
-* `--remote_cache=grpcs://remotebuildexecution.googleapis.com`
-* `--host_platform_remote_properties_override='properties:{name:"cache-silo-key"
-  value:"<silo-key>"}'` where `silo-key` should be different for every
+- `--remote_cache=grpcs://remotebuildexecution.googleapis.com`
+- `--host_platform_remote_properties_override='properties:{name:"cache-silo-key" value:"<silo-key>"}'` where `silo-key` should be different for every
   unique configuration/machine.
-* `--remote_instance_name=projects/<project-id>/instances/<instance-id>`
+- `--remote_instance_name=projects/<project-id>/instances/<instance-id>`
   where `project-id` is the id of the project you created, and `instance-id`
   is the id of the instance.
 

@@ -1,7 +1,7 @@
 ---
-title: Stackage HEAD<br/>is now live!
+title: Stackage HEAD is now live!
 author: Mark Karpov, Manuel Chakravarty
-tags: haskell
+tags: [haskell]
 ---
 
 We are happy to announce that Stackage HEAD is now functional. For those who
@@ -34,7 +34,7 @@ the original blog post) is the following:
    The new tool [`ghc-artifact-collector`][ghc-artifact-collector] currently uploads the
    bindists and metadata from GHC's CI processes run on CircleCI and
    AppVeyor. This tool was created to work around some limitations of
-   AppVeyor and to provide a uniform interface to the  artifact collection mechanism used on CircleCI and
+   AppVeyor and to provide a uniform interface to the artifact collection mechanism used on CircleCI and
    AppVeyor, but it came in handy for saving us time with Stackage
    HEAD, too.
 
@@ -61,7 +61,7 @@ the original blog post) is the following:
 4. We execute the build plan using `stackage-curator` and save the log.
 
 5. The build log is parsed by a helper app called `stackage-head` and
-   transformed into a simple CSV file that we refer to as the *build report*.
+   transformed into a simple CSV file that we refer to as the _build report_.
    We'll discuss its contents in the next section. Build reports are persisted
    in CircleCI caches at the moment. We accumulate more of them as more
    builds are attempted.
@@ -125,17 +125,17 @@ etc.
 
 Using `nightly-2018-04-13`, we got the following distribution:
 
-* Failing packages: 28
-* Unreachable packages: 826
-* Packages that build: 928
+- Failing packages: 28
+- Unreachable packages: 826
+- Packages that build: 928
 
 Some failing packages:
 
-* `exceptions`, blocking 118 packages
-* `doctest`, blocking 52 packages
-* `cabal-doctest`, blocking 36 packages
-* `tagged`, blocking 32 packages
-* `generic-deriving`, blocking 10 packages
+- `exceptions`, blocking 118 packages
+- `doctest`, blocking 52 packages
+- `cabal-doctest`, blocking 36 packages
+- `tagged`, blocking 32 packages
+- `generic-deriving`, blocking 10 packages
 
 In the future, we could perhaps open issues and ask maintainers of these packages
 to make them compile with the development version of GHC.

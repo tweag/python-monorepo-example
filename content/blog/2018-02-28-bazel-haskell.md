@@ -1,8 +1,8 @@
 ---
-title: Build large polyglot projects with Bazel... <br/>now with Haskell support
+title: Build large polyglot projects with Bazel...  now with Haskell support
 shortTitle: Bazel now supports building Haskell
 author: Mathieu Boespflug, Mark Karpov, Mateusz Kowalczyk
-tags: haskell, bazel
+tags: [haskell, bazel]
 ---
 
 Publishing code to the world is easy these days: take your code, tack
@@ -83,31 +83,31 @@ situation the dependency graph of each build system is entirely opaque
 to every other system. No single system has an overall view of the
 dependency graph. This situation has a number of drawbacks:
 
-* Continuous integration builds are **slow**, due to lost
+- Continuous integration builds are **slow**, due to lost
   parallelization opportunities. If you have many cores available, the
   more a build system has detailed information about dependencies, the
   more it can parallelize execution of build tasks on all cores
   throughout. For example, Stack and cabal-install can build multiple
   packages in parallel, but when the package dependency graph is
   mostly one long chain, packages will be built one after the other on
-  a single core. It's tempting to parallelize *both* at the
+  a single core. It's tempting to parallelize _both_ at the
   Stack/Cabal level and the GHC level, but that can lead to
   oversubscribing memory and CPU cores and ultimately, thrashing (not
   to mention [enduring scaling bugs][ghc-make-slowdown] killing
   throughput).
-* Partial rebuilds are often **wrong**, because it's hard to verify
-  that all dependencies across build systems were *accurately
-  declared*. For example, if Cabal doesn't know that Java files are
+- Partial rebuilds are often **wrong**, because it's hard to verify
+  that all dependencies across build systems were _accurately
+  declared_. For example, if Cabal doesn't know that Java files are
   also dependencies and Gradle needs to be called again if they
   change, then partial rebuilds might lead to incorrect results.
-* Conversely opportunities for partial rebuilds instead of full
+- Conversely opportunities for partial rebuilds instead of full
   rebuilds are sometimes lost, leading to **slow rebuilds**. This
   happens when dependencies are accurately declared, but not
-  *precisely declared*. For instance, it's a shame to rebuild all of
+  _precisely declared_. For instance, it's a shame to rebuild all of
   dependent package B, along with anything that depends on it, after
   a simple change to package A that did not cause any of the interface
   files for modules in A to change.
-* The resulting system is brittle, complex and therefore **hard to
+- The resulting system is brittle, complex and therefore **hard to
   maintain**, because it's an accumulation of multiple build
   subsystems configured in ways custom to each language. You have
   a `stack.yaml` file in YAML syntax for Stack, a `package.cabal` file
@@ -116,9 +116,9 @@ dependency graph. This situation has a number of drawbacks:
   `Makefile`'s and autoconf-hell for C/C++ etc.
 
 Wouldn't it be great if instead of this inefficient mishmash of build
-system stuff, we could have a *single build system* dealing with
-everything, using a *single configuration* drawn from files in
-a *uniform and easy-to-read* syntax? Wouldn't it be great if these
+system stuff, we could have a _single build system_ dealing with
+everything, using a _single configuration_ drawn from files in
+a _uniform and easy-to-read_ syntax? Wouldn't it be great if these
 build system configuration files were all very short instantiations of
 standard rules succinctly encapsulating best practices for how to
 build C/C++ libraries, Java or Scala packages, Haskell apps, etc?
@@ -172,12 +172,12 @@ entire thing. Google did just that with their Blaze build system, open
 sourced in 2015 as [Bazel][bazel-home] (the two systems are
 technically distinct but share most of the code). As we touched upon
 above, a crucial property of building code at scale is that partial
-rebuilds should be *correct* and *fast*. This implies that
+rebuilds should be _correct_ and _fast_. This implies that
 dependencies should be declared accurately and precisely
 (respectively).
 
 Bazel tries hard to offer guarantees that dependencies are at least
-complete (this property is called *build hermiticity*). It does so by
+complete (this property is called _build hermiticity_). It does so by
 sandboxing builds, making only the declared inputs to a build action
 available. In this way, if the build action in reality depends on any
 undeclared inputs, the build action will consistently fail, because
@@ -185,8 +185,7 @@ anything outside of the sandbox is simply not available. This has an
 important consequence: even with huge amounts of code, developers can
 be very confident indeed that partial rebuilds will yield exactly the
 same result as full rebuilds, as should be the case if all
-dependencies are correctly specified. Developers never need to `make
-clean` just in case, so very seldom need to ever wait for a full
+dependencies are correctly specified. Developers never need to `make clean` just in case, so very seldom need to ever wait for a full
 rebuild.
 
 Better still, Bazel has good support for local and distributed
@@ -253,8 +252,8 @@ Python) called [Skylark][skylark-doc]. These rules are not meant to be
 highly configurable or particularly general: they are meant to capture
 best practices once and for all. This is why `BUILD` files are
 typically quite small. Unlike a `Makefile`, you won't find actual
-commands in a `BUILD` file. These focus purely on the *what*, not the
-*how*, which is fairly constrained, by design.
+commands in a `BUILD` file. These focus purely on the _what_, not the
+_how_, which is fairly constrained, by design.
 
 We have [rules for building Haskell][haskell-build] libraries
 (packages), binaries, tests and Haddock documentation. Libraries or
@@ -288,11 +287,11 @@ We'd love your feedback!
 
 In future posts, we'll explore:
 
-* using Bazel's remote cache to very aggressively yet safely cache
+- using Bazel's remote cache to very aggressively yet safely cache
   everything that can be to further speed up CI builds,
-* playing on the respective strengths of both [Bazel][bazel-home]
+- playing on the respective strengths of both [Bazel][bazel-home]
   and [Nix][nix-home] for truly reproducible builds,
-* Packaging deployable binaries and containers.
+- Packaging deployable binaries and containers.
 
 [adjoint-io]: https://www.adjoint.io/
 [toktok]: https://toktok.ltd/
@@ -301,6 +300,7 @@ In future posts, we'll explore:
 [nix-home]: https://nixos.org/nix/
 
 ---
-Learn more about building polyglot projects using Bazel in our post *[Nix + Bazel =  fully reproducible, incremental builds][nix_bazel_post]*.
+
+Learn more about building polyglot projects using Bazel in our post _[Nix + Bazel = fully reproducible, incremental builds][nix_bazel_post]_.
 
 [nix_bazel_post]: https://www.tweag.io/posts/2018-03-15-bazel-nix.html

@@ -1,8 +1,8 @@
 ---
-title: "Configuring and testing Kubernetes clusters <br/> with KubeNix and kind"
+title: "Configuring and testing Kubernetes clusters   with KubeNix and kind"
 shortTitle: "Kubernetes, KubeNix and kind"
 author: Tobias Pflug
-tags: nix, devops
+tags: [nix, devops]
 ---
 
 In a recent project I was tasked with creating a local testing environment for a Kubernetes cluster the client was actively working on.
@@ -46,12 +46,12 @@ variable `APP_PORT`:
 ```js
 #!/usr/bin/env node
 
-const express = require('express');
-const app = express();
-const port = process.env.APP_PORT ? process.env.APP_PORT : 3000;
+const express = require("express")
+const app = express()
+const port = process.env.APP_PORT ? process.env.APP_PORT : 3000
 
-app.get('/', (req, res) => res.send('Hello World'));
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.get("/", (req, res) => res.send("Hello World"))
+app.listen(port, () => console.log(`Listening on port ${port}`))
 ```
 
 ### Nixifying the service
@@ -236,6 +236,7 @@ The `default.nix` of the project exposes the following attributes:
 - Nix is a powerful framework with which all the moving parts of a project can be orchestrated. From the provisoning of all required run and build-time dependencies to the streamliend creation of Docker images, Nix is the underlying concept making KubeNix possible in the first place.
 
 **Notes**:
+
 - The version of `kind` used in this project is built from the master revision at the time of writing. The latest release doesn't include the `kind load` functionality.
 - KubeNix currently doesn't have any documentation but a major overhaul with great features is in the works. Follow [KubeNix refactoring](https://github.com/xtruder/kubenix/issues/9) for details.
 - I used [wait-for-deployment](https://github.com/timoreimann/kubernetes-scripts) - a nice little bash script - to wait for the completion of the deployment.

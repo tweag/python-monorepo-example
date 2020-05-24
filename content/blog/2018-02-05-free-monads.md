@@ -2,7 +2,7 @@
 title: Free monads for cheap interpreters
 author: James Haydon
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 The utility of free monads can show up in surprising places. One of
@@ -13,7 +13,7 @@ it generates will be malformed, and so will fail; we just want to skip
 over these as quickly as possible and move onto the next possibility.
 In summary:
 
-- A system generates many possible *effectful* computations only one of which
+- A system generates many possible _effectful_ computations only one of which
   will ultimately be used to form a response.
 - The computations have to be executed in order to even be considered.
 - Most of the computations will fail. Sometimes because of I/O, but mostly
@@ -35,28 +35,28 @@ build up a library of interpreters for solving our problem.
 
 ## What is a free monad?
 
-*Interpreting* means giving meaning to some piece of data, and the meaning is
+_Interpreting_ means giving meaning to some piece of data, and the meaning is
 often provided by stuff that gets done, which in Haskell corresponds to monads.
 Free monads are very easy to interpret (in other monads) because they are
-*free*, and the definition of a free object (e.g. in category theory) says that
-they are easy to map *from*. So that's the basic idea behind free monads: easy
+_free_, and the definition of a free object (e.g. in category theory) says that
+they are easy to map _from_. So that's the basic idea behind free monads: easy
 to interpret.
 
-Specifically, a free object is *generated* by something less complex, and then
+Specifically, a free object is _generated_ by something less complex, and then
 to map to something we now only need to provide a definition over the generating
 object (which is easier, since it's got less structure).
 
 To give an example, in high-school you may have been asked to manipulate lots of
 maps <code>f :: ℝ<sup>n</sup> -&gt; ℝ<sup>m</sup></code>. Instead of defining the function `f`
-over *all* the points of <code>ℝ<sup>n</sup></code>, which would be tedious, we just define
+over _all_ the points of <code>ℝ<sup>n</sup></code>, which would be tedious, we just define
 it over the `n` points `(1,0,..,0)`, `(0,1,0,..,0)`, etc. This is enough because
 <code>ℝ<sup>n</sup></code> happens to be a free object over any set of vectors that form a
-  *basis*. These `n` points get mapped to `n` vectors in <code>ℝ<sup>m</sup></code>, which we
+_basis_. These `n` points get mapped to `n` vectors in <code>ℝ<sup>m</sup></code>, which we
 stick together to form a grid of numbers: now you have a matrix. The matrices
 are much more economical and much easier to manipulate.
 
-This is the essence of the advantage of free monads: *morphisms between free
-monads are economical and easy to manipulate.* In fact the manipulations can be
+This is the essence of the advantage of free monads: _morphisms between free
+monads are economical and easy to manipulate._ In fact the manipulations can be
 very similar to those on matrices.
 
 Let's dive in. We will generate monads with functors (because functors are
@@ -87,6 +87,7 @@ instance Functor f => Functor (Free f) where
 ```
 
 But more is true, `Free f` is a monad:
+
 ```haskell
 instance Functor f => Monad (Free f) where
   return = Pure
@@ -94,8 +95,8 @@ instance Functor f => Monad (Free f) where
   Free fx >>= g  =  Free ((>>= g) <$> fx)
 ```
 
-To really understand the properties of this construction, we need *natural
-transformations*, which is what we use when we want to talk about mapping one
+To really understand the properties of this construction, we need _natural
+transformations_, which is what we use when we want to talk about mapping one
 functor into another.
 
 ```haskell
@@ -104,6 +105,7 @@ type f ~> g = forall x. f x -> g x
 ```
 
 An actual natural transformation `phi` should obey this law:
+
 ```haskell
 fmap t . phi = phi . fmap t
 ```
@@ -117,7 +119,7 @@ freeM phi (Pure x) = Pure x
 freeM phi (Free fx) = Free $ phi (freeM phi <$> fx)
 ```
 
-This makes `Free` a *functor*, not a Haskell-functor, but a functor of
+This makes `Free` a _functor_, not a Haskell-functor, but a functor of
 categories: from the category of functors and natural transformations to itself.
 
 If `m` is already a monad, then there is a special interpretation of `Free m`
@@ -139,9 +141,9 @@ insane.
 First of all: `phi . pure = pure`. That is, it should take pure values to pure
 values. Second, if we have something of type `m (m a)` there are now several
 ways we can get and `n a`:
+
 - Sequence in `m`, and then translate: `phi . join`.
-- Or, translate the two parts independently, and then sequence in `n`: `join .
-(fmap phi) . phi`.
+- Or, translate the two parts independently, and then sequence in `n`: `join . (fmap phi) . phi`.
 
 If you want to translate between monads in a sensible way,
 these should produce the same thing!
@@ -254,6 +256,7 @@ type Club = Free ClubF
 ```
 
 Now we can define our business logic in a clean, abstract way:
+
 ```haskell
 -- | Given a club id, shows the list of "sibling" clubs.
 showClubSiblings :: Club ()
@@ -282,6 +285,7 @@ sumNat :: (f ~> t) -> (g ~> t) -> (Sum f g) ~> t
 sumNat phi _   (InL x) = phi x
 sumNat _   psi (InR x) = psi x
 ```
+
 because `Sum` is the coproduct in the category of functors.
 
 Using some helper functions:
@@ -337,9 +341,9 @@ mockConsoleIO = ...
 Finally, we interpret our business logic into a free monad representing all the
 functionality we need: `Console` and `KeyVal`. This takes care of translating
 our high-level API into the nitty-gritty of which keys are used in our Redis
-system. Structuring the system in this way guarantees that *such details are
+system. Structuring the system in this way guarantees that _such details are
 banished from the rest of the code, and there is a single function where these
-conventions may be changed*.
+conventions may be changed_.
 
 ```haskell
 clubI :: ClubF ~> (Free (Sum ConsoleF KeyValF))

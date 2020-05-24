@@ -1,13 +1,13 @@
 ---
-title: "How to make your papers run: <br/>Executable formal semantics for your language"
+title: "How to make your papers run:  Executable formal semantics for your language"
 shortTitle: "How to make your papers run"
 author: Teodoro Freund
-tags: internship, formal-methods
+tags: [internship, formal-methods]
 description: "How to use the Makam metalanguage to implement an executable formal semantics for a simple language."
 ---
 
 This post will show a simple example of how to use [Makam][makam-ref],
-a very powerful, not yet widely-known, programming language 
+a very powerful, not yet widely-known, programming language
 to specify executable semantics of a simply typed lambda calculus
 with recursion and numbers ([PCF][pcf-ref]).
 
@@ -22,7 +22,7 @@ work as documentation for the language.
 ## The Problem
 
 > _Scene: EXTERIOR, BEACH, SUNNY_
-> 
+>
 > A woman is relaxing on a chair on the beach, clearly on vacation,
 > drinking an ice-cold drink.
 > Her phone beeps. The text message asks _'Can you come back to the office?
@@ -37,9 +37,9 @@ version `4.5.64`, and it stopped after an update to version `4.6.23`.
 Ideally, programming language designers and implementors would like to keep
 this kind of situation to a minimum. And, when it does happen,
 they'd like to have a definitive answer as to how the compiler should behave.
-A specification. A ground truth. 
+A specification. A ground truth.
 
-There are many ways to specify this kind of document; two are commonly used. 
+There are many ways to specify this kind of document; two are commonly used.
 A _reference implementation_ allows a skeptical programmer to check what the
 expected behavior of a program is. However, it does not give an explanation for the reference behavior.
 On the other hand, using _plain English_ can be pretty useful since it's understandable
@@ -62,7 +62,6 @@ just expect the _meta_-theory to take care of everything.
 
 [python-bitwise]: https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations
 [op-sem]: https://en.wikipedia.org/wiki/Operational_semantics
-
 
 ## A solution!
 
@@ -101,6 +100,7 @@ In what follows, I'll go through the main parts we'd like to specify
 research-paper-like specification, followed by the Makam implementation.
 
 ### Syntax
+
 We can think of PCF terms and types as:
 
 $$
@@ -113,12 +113,11 @@ representing numbers, or an arrow \\(→\\) from one type to another, representi
 On the other side, a term (noted \\(s\\), \\(t\\), ...) can be a variable (\\(x\\)),
 an application of two terms, a lambda abstraction (\\(λ\\)), a recursive term (\\(fix\\)),
 zero, the successor of a term or a case over a term to handle numbers.
- 
 
 Now, let's see how to write this in Makam:
 
 ```haskell
-tp, term : type. 
+tp, term : type.
 
 num : tp.
 arrow : tp -> tp -> tp.
@@ -189,20 +188,22 @@ typeof (case N Z P) Ty :-
      typeof x num ->
      typeof (P x) Ty).
 ```
+
 On the first line, we define a new relation called `typeof`, which defines a relation between
 `terms`s and `tp`s. Notice how `typeof` is a constructor of a proposition (`prop`),
 which is a primitive datatype on Makam representing relations,
 over which the Makam interpreter can look for a proof. Let's go over a few of them:
- * First, notice how the rule for `zero` doesn't have a `:-` part. This means that
-   we don't need any hypothesis to type the term `zero`.
- * Also, check the rule for `succ N`. There are two kinds of identifiers, lower and upper case.
-   The lower case are used for the constructors we've been declaring, but the upper case are unification
-   variables, which means they'll match with anything that makes the bit after `:-` true. In this
-   case, `N` must be a `term` with type `num`.
- * Now, look at `typeof (lam S) (arrow A B)`. Since we don't have variables anymore, we can't
-   have a context like \\(Γ\\); we need something else. Let's read it together: `x: term ->` introduces
-   a fresh `term`, called `x`. You can assume that `x` has type `A`
-   (`typeof x A ->`). And you need to show that `S x` has type `B`.
+
+- First, notice how the rule for `zero` doesn't have a `:-` part. This means that
+  we don't need any hypothesis to type the term `zero`.
+- Also, check the rule for `succ N`. There are two kinds of identifiers, lower and upper case.
+  The lower case are used for the constructors we've been declaring, but the upper case are unification
+  variables, which means they'll match with anything that makes the bit after `:-` true. In this
+  case, `N` must be a `term` with type `num`.
+- Now, look at `typeof (lam S) (arrow A B)`. Since we don't have variables anymore, we can't
+  have a context like \\(Γ\\); we need something else. Let's read it together: `x: term ->` introduces
+  a fresh `term`, called `x`. You can assume that `x` has type `A`
+  (`typeof x A ->`). And you need to show that `S x` has type `B`.
 
 You should be able to understand the remaining ones by yourself, but the important part
 is to compare how similar these definitions are to the judgment ones
@@ -232,6 +233,7 @@ which can either be a number of the form \\(succ(succ(...succ(zero)))\\)
 (with zero or more \\(succ\\)s) or a λ-abstraction.
 
 <!-- TODO: Reorder this figure once it's reviewed -->
+
 $$
 \frac{s ⇓ λx.s' \hskip 1em t ⇓ t' \hskip 1em s'[x/t'] ⇓ v}{s ~ t ⇓ v} \hskip 1em ε\text{-} app \\\\[15pt]
 \frac{}{λx.s ⇓ λx.s} \hskip 1em ε\text{-}lam \\\\[15pt]
@@ -243,7 +245,6 @@ $$
 \frac{n ⇓ succ(m) \hskip 1em t[x/m] ⇓ v}
 {\text{case} ~ n ~ \text{of} ~ \\{ 0 ⇒ s ~ ; ~ succ(x) ⇒ t \\} ⇓ v} \hskip 1em ε\text{-}csucc
 $$
-
 
 Again, this definition is quite standard, so let's go straight to the Makam implementation:
 
@@ -272,12 +273,13 @@ eval (case SN _ P) V :- eval SN (succ N), eval (P N) V.
 Similarly to `typeof`, `eval` will relate a `term` with the value it evaluates
 to. This value is itself a `term`, so we should try to do a special `value` type for values—but that's out of the scope of this post. This is actually much easier than the `typeof` proposition,
 but let's still go through some of the cases:
- * `eval (fix S) V` tells us that `fix S` evaluates to a value `V`,
- when `S`, substituting its abstracted variable with `fix S`, evaluates to `V`,
- very similarly to \\(ε\text{-}fix\\) above.
- * Notice how we have two cases for `case` expressions, one that only applies
- if the number evaluates to `zero`, and the other if the number evaluates to
- the successor of another number.
+
+- `eval (fix S) V` tells us that `fix S` evaluates to a value `V`,
+  when `S`, substituting its abstracted variable with `fix S`, evaluates to `V`,
+  very similarly to \\(ε\text{-}fix\\) above.
+- Notice how we have two cases for `case` expressions, one that only applies
+  if the number evaluates to `zero`, and the other if the number evaluates to
+  the successor of another number.
 
 Then, you can go ahead and ask the Makam interpreter to evaluate something:
 
@@ -293,7 +295,7 @@ V := succ zero.
 ```
 
 The first example doesn't change, since a function is already a value.
-But the second example applies this same function to `zero` and gives back 1 (`succ zero`). 
+But the second example applies this same function to `zero` and gives back 1 (`succ zero`).
 If we interpret `zero` as false and `succ zero` as true, then we could
 probably name this function as `isZero`.
 
@@ -301,7 +303,7 @@ probably name this function as `isZero`.
 
 What I showed here is only the tip of the iceberg of what Makam is perfectly capable of handling.
 I suggest reading
-[this paper][makam-paper] by [Originate's][makam-creatorworks] [Antonis Stampoulis](http://astampoulis.github.io/), the creator of Makam, for more complete _(and way more complex)_ examples. 
+[this paper][makam-paper] by [Originate's][makam-creatorworks] [Antonis Stampoulis](http://astampoulis.github.io/), the creator of Makam, for more complete _(and way more complex)_ examples.
 Be sure to also check out [Makam's repo][makam-github]—especially the [`examples`][makam-ex] directory—to learn plenty more.
 
 Also, I only showed a tiny bit of what specifying a language means,

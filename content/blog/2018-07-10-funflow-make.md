@@ -1,7 +1,7 @@
 ---
-title: "Funflow Example:<br/>emulating Make"
+title: "Funflow Example: emulating Make"
 author: Divesh Otwani, Nicholas Clarke
-tags: haskell
+tags: [haskell]
 ---
 
 [Funflow](https://github.com/tweag/funflow) is a workflow management
@@ -9,7 +9,7 @@ tool. It turns out that workflow management tools and build tools are
 closely related. So if you're more familiar with the latter, this post
 might be of interest to you. We'll be illustrating some of Funflow's
 features by
-implementing [Make](https://en.wikipedia.org/wiki/Make_(software)) on
+implementing [Make](<https://en.wikipedia.org/wiki/Make_(software)>) on
 top.
 
 All the code for this example as well as some documentation can be
@@ -52,22 +52,22 @@ The factorial of 5 is 120
 Because we used Funflow, our tool has several desirable properties,
 _both of the tool and of the code itself_:
 
- * **No repeated builds:** If we've built something before, we don't build it again. Period.
-   With `make`, if you make a tiny change and find out it isn't what you want, when you revert
-   back `make` will rebuild something it had built before. Our tool won't.
- * **Enforced target dependencies:** We build each target file in a docker container
-   with exactly the dependencies listed in the `Makefile`. There's no opportunity
-   for hidden dependencies or hidden requirements on the environment. Further,
-   such 'hidden' preconditions are caught early and flagged making it easy to fix
-   the `Makefile`.
- * **Clean Sequencing Code:** The function that makes a target file sequences
-   file processing, recursive calls for making the dependencies of the given target,
-   and running docker containers. Usually, this sequencing is messy
-   and difficult to follow.
-   With Funflow, however, we can inject these various forms of
-   computation into `Flow`s and sequence them seamlessly with arrow notation.
- * **Concise Code:** Because of the abstractions Funflow provides, we can focus on
-   the essential algorithm and get some efficiency \& safety for free.
+- **No repeated builds:** If we've built something before, we don't build it again. Period.
+  With `make`, if you make a tiny change and find out it isn't what you want, when you revert
+  back `make` will rebuild something it had built before. Our tool won't.
+- **Enforced target dependencies:** We build each target file in a docker container
+  with exactly the dependencies listed in the `Makefile`. There's no opportunity
+  for hidden dependencies or hidden requirements on the environment. Further,
+  such 'hidden' preconditions are caught early and flagged making it easy to fix
+  the `Makefile`.
+- **Clean Sequencing Code:** The function that makes a target file sequences
+  file processing, recursive calls for making the dependencies of the given target,
+  and running docker containers. Usually, this sequencing is messy
+  and difficult to follow.
+  With Funflow, however, we can inject these various forms of
+  computation into `Flow`s and sequence them seamlessly with arrow notation.
+- **Concise Code:** Because of the abstractions Funflow provides, we can focus on
+  the essential algorithm and get some efficiency \& safety for free.
 
 ## No Repeat Builds: CAS Gives Us Free Dynamic Programming
 
@@ -190,10 +190,13 @@ makes the code readable and maintainable.
 ### Injecting IO and External Steps
 
 At one point, we needed to inject the `IO` action
+
 ```haskell
 parseRelFile :: String -> IO (Path Rel File)
 ```
+
 and could easily do so:
+
 ```haskell
 flowStringToRelFile :: Flow String (Path Rel File)
 flowStringToRelFile = stepIO parseRelFile
@@ -231,7 +234,6 @@ a generalization of 'do notation', we were able to elegantly and easily
 sequence these `Flow`s. Without going into the details, we can see the
 sequencing is as readable and intuitive as 'do notation'**:
 
-
 ```haskell
 compiledFile <- dockerFlow -< (inputDir,compileScript)
 relpathCompiledFile <- flowStringToRelFile -< tf
@@ -250,7 +252,9 @@ a list of `Flow`s for the other targets:
 depTargetFlows :: [Flow () (Content File)]
 depTargetFlows = map (buildTarget mkfile) depRules
 ```
+
 where
+
 ```haskell
 buildTarget :: MakeFile -> MakeRule -> (Flow () (Content File))
 mkfile :: MakeFile
@@ -263,7 +267,6 @@ would repeat work if flows were distributed.)
 In other words, we need the power to combine an arbitrary amount of
 similar flows into one flow. Because Funflow is embedded in haskell,
 we can write the function `flowJoin`:
-
 
 ```haskell
 flowJoin :: [Flow a b] -> Flow [a] [b]

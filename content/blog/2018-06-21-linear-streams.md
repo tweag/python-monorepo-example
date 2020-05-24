@@ -1,7 +1,7 @@
 ---
-title: Streaming <br/>with linear types
+title: Streaming  with linear types
 author: Edvard Hübinette and Facundo Domínguez
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 ---
 
 In
@@ -24,20 +24,20 @@ may be produced progressively as they are consumed. This ability is
 essential to write programs which run in bounded space despite of
 handling inputs of any size (so-called streaming programs).
 
-Streaming libraries fall short of giving you an airtight *guarantee*
+Streaming libraries fall short of giving you an airtight _guarantee_
 that programs are streaming or correct.
 There are side conditions that are required for proper use. For instance,
 for the [streaming](http://www.stackage.org/package/streaming) package we
 have:
 
- * no length-unbounded stream must be fed to any function that loads it
-   completely into memory like
-   [SB.toStrict](https://www.stackage.org/haddock/lts/streaming-bytestring/Data-ByteString-Streaming-Char8.html#v:toStrict),
- * the resources from where streams are read or written to need to
-   be closed "soon enough" to prevent open handles from accumulating,
- * no stream shall be used after the resources it depends upon have
-   been released,
- * and no stream shall be used a second time.
+- no length-unbounded stream must be fed to any function that loads it
+  completely into memory like
+  [SB.toStrict](https://www.stackage.org/haddock/lts/streaming-bytestring/Data-ByteString-Streaming-Char8.html#v:toStrict),
+- the resources from where streams are read or written to need to
+  be closed "soon enough" to prevent open handles from accumulating,
+- no stream shall be used after the resources it depends upon have
+  been released,
+- and no stream shall be used a second time.
 
 The last condition is necessary because otherwise the effects producing
 the contents of the stream would be replayed yielding an undefined outcome.
@@ -45,7 +45,7 @@ This is left implicit in the documentation of most streaming libraries.
 Suppose we use
 [fromHandle](https://www.stackage.org/haddock/lts-9.4/streaming-0.1.4.5/Streaming-Prelude.html#v:fromHandle):
 
-``` haskell
+```haskell
 -- | Read Strings from a Handle using hGetLine. Terminates on end of input.
 fromHandle :: MonadIO m => Handle -> Stream (Of String) m ()
 ```
@@ -62,7 +62,7 @@ file. When we reach the second evaluation of `toList_ s`, the
 source handle has reached the end of the file, and we get the empty
 list.
 
-``` haskell
+```haskell
 writeFile "stream.txt" "a\nb\nc\n"
 h <- openFile "stream.txt" ReadMode
 s <- fromHandle h
@@ -92,7 +92,7 @@ the type system track what sort of values we have, but also to which
 extent they are used. A linear argument has to be used — or
 _consumed_ — exactly once in a function, or the program will not
 compile. Both forgetting to use a linear value or using it
-more than once will lead to a compile time error. This simple concept 
+more than once will lead to a compile time error. This simple concept
 helps us move a new category of programming errors from the
 responsibility of the programmer to the compiler, making it easier
 to write correct code with stronger guarantees about the implementation.
@@ -117,7 +117,7 @@ were the type parameters
 have almost the same meaning as for unrestricted streams. Most functions
 in the new interface expect `m` to be an instance of [LMonad](https://github.com/m0ar/safe-streaming/blob/master/src/Control/Monad/LMonad.hs) and `f`
 to be an instance of [LFunctor](https://github.com/m0ar/safe-streaming/blob/master/src/Data/Functor/LFunctor.hs).
-With an `LMonad` we can introduce new streams as linear values in our 
+With an `LMonad` we can introduce new streams as linear values in our
 programs.
 `LMonad` is a class offering methods `return` and `>>=` similar to those of
 the `Monad` class, but where arguments have been changed to have a

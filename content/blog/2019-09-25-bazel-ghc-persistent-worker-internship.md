@@ -1,21 +1,21 @@
 ---
-title: "Bazel's Persistent Worker Mode for GHC: <br/>An Industrial Internship"
+title: "Bazel's Persistent Worker Mode for GHC:  An Industrial Internship"
 shortTitle: "Bazel's Persistent Worker Mode for GHC"
 author: Artem Pelenitsyn
-tags: internship, bazel, haskell
+tags: [internship, bazel, haskell]
 description: "I got the opportunity to work on Bazel's Persistent Worker Mode for GHC during my internship at Tweag. My goal was to improve the mode of communication between Bazel and the Haskell GHC compiler."
 ---
 
 I got the opportunity to work on Bazel's Persistent Worker Mode for [Haskell GHC][ghc] during my internship at Tweag. Let's begin with some context. The [`rules_haskell` project][haskell-build] adds support for Haskell components in software based on the [Bazel build system][bazel-build]. By default, compiling an individual Haskell target triggers a separate sandboxed GHC invocation. This approach is not optimal for two reasons: the recurring cost of compiler startups and the potential loss in incremental builds.
-Bazel has a special mode of communication with a compiler to resolve the issue. My internship goal was to improve the method of communication between Bazel and the Haskell GHC compiler by adding support for this _persistent worker mode_ in  `rules_haskell`. Let's explore what I learned and what I was able to accomplish.
+Bazel has a special mode of communication with a compiler to resolve the issue. My internship goal was to improve the method of communication between Bazel and the Haskell GHC compiler by adding support for this _persistent worker mode_ in `rules_haskell`. Let's explore what I learned and what I was able to accomplish.
 
 [haskell-build]: https://haskell.build
 [bazel-build]: https://bazel.build
 [ghc]: https://www.haskell.org/ghc/
+
 ## Call for Persistent Compilers
 
 Consider the following example of a C++ application build script in Bazel.
-
 
 ```python
 cc_library(
@@ -77,7 +77,7 @@ All in all, this scheme looks straightforward except an IPC solution based on `s
 
 ### Second Step: Protobuf for Haskell
 
-Several libraries implement support for Protobuf in the Haskell ecosystem. We chose [`proto-lens`][proto-lens] which allows us to generate Haskell definitions from a `.proto` description and conveniently access data with lenses. 
+Several libraries implement support for Protobuf in the Haskell ecosystem. We chose [`proto-lens`][proto-lens] which allows us to generate Haskell definitions from a `.proto` description and conveniently access data with lenses.
 
 One obstacle with `proto-lens` was that they silently (and [unconsciously, it seems][proto-lens-issue]) dropped support for parsing messages from an unbounded stream. That means once you have a handle to read in a message from, you have to specify the size of the bytestring you're going to read before the parser can get its hands on it. The length of a message is variable and encoded as a [variable-length integer][protobuf-varint] sent in front of every message. The `proto-lens` library had internal machinery to read `varint`s but lacked a reasonable interface to employ it when receiving messages. [I fixed this][proto-lens-pr].
 

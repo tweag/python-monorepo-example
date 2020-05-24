@@ -1,9 +1,9 @@
 ---
-title: Programming R at native speed<br>using Haskell
+title: Programming R at native speed using Haskell
 author: Mathieu Boespflug, Facundo Domínguez, Alexander Vershilov
 preview_image: /images/2015-09-08-programming-r-at-native-speed-in-haskell/preview_image.png
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 Most good data stories start with a interesting question. If the
@@ -20,6 +20,7 @@ analysis deployed on hundreds of machines, the story typically
 involves lots of rewrites, meanderings and building out of a lot of
 code and utilities to improve the precision, speed or scale of the
 analysis.
+
 <!--more-->
 
 R provides a great interactive environment for poking at the dataset
@@ -93,7 +94,7 @@ comparatively reliable. We put together
 you started hassle-free. It includes **Jupyter** and **IHaskell**
 preinstalled. To build **HaskellR** inside it:
 
-``` bash
+```bash
 $ git clone http://github.com/tweag/HaskellR
 $ cd HaskellR
 $ stack --docker build
@@ -102,7 +103,7 @@ $ stack --docker exec ihaskell install
 
 And get started in your browser:
 
-``` bash
+```bash
 $ stack --docker exec ipython notebook
 ```
 
@@ -110,7 +111,7 @@ $ stack --docker exec ipython notebook
 
 Or remain in your terminal:
 
-``` bash
+```bash
 $ stack --docker exec ipython
 ```
 
@@ -129,7 +130,7 @@ Here's a simple example of using R's data analysis facilities on data
 generated in Haskell. Say you have a cluster of noisy data. We'll use
 the `random` package to generate a sample set:
 
-``` haskell
+```haskell
 import Control.Monad
 import System.Random.MWC as MWC
 import System.Random.MWC.Distributions
@@ -144,7 +145,7 @@ main = do
 We can now plot the list of x-ordinates against the list of
 y-ordinates using R's standard library `plot()` function:
 
-``` haskell
+```haskell
   [r| plot(xs_hs, ys_hs) |]
 ```
 
@@ -154,7 +155,7 @@ Better yet: say we want some kind of visualization of the density
 estimation of these points. We can use R's 2D kernel density
 estimation function, available out-of-the-box:
 
-``` haskell
+```haskell
 [r| k <- kde2d(Xv, Yv, n=500)
     image(k, col=topo.colors(8)) |]
 ```
@@ -219,7 +220,7 @@ you with a native view as an algebraic datatype of the foreign data.
 Here's a toy and contrived example, where we define the factorial
 function in Haskell but over R integers:
 
-``` haskell
+```haskell
 fact :: SEXP s 'R.Int -> R s (SEXP s 'R.Int)
 fact (hexp -> Int [0]) = R.cast sing <$> [r| 1L |]
 fact n@(hexp -> Int _) =

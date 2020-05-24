@@ -1,8 +1,8 @@
 ---
-title: "Tweag Fellowships: </br>Funding for Open Source Contributors"
+title: "Tweag Fellowships:  Funding for Open Source Contributors"
 shortTitle: "Tweag's Open Source Fellowship"
 author: Richard Eisenberg and Matthias Meschede
-tags: jobs
+tags: [jobs]
 description: "The first call for the new Tweag Open Source Fellowship is open. It offers financial support and mentorship to open source contributors."
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: "A new ecosystem for Haskell:<br> the JVM"
+title: "A new ecosystem for Haskell:  the JVM"
 author: Mathieu Boespflug, Alp Mestanogullari
 featured: yes
-tags: haskell
+tags: [haskell]
 ---
 
 By now, Haskell has first class support for seamlessly embedding
@@ -10,12 +10,14 @@ foreign code into source files and casually call anything in C (via
 [inline-c][inline-c]) or R (via [inline-r][inline-r]), let alone that
 whole programs can also be compiled down to in-browser JavaScript,
 thanks to [GHCJS][ghcjs]. Today the interoperability story for Haskell
-is getting better still: we're announcing the addition of a new *set
-of languages* into the mix. With [jvm][haskell-jvm], you can call any
+is getting better still: we're announcing the addition of a new _set
+of languages_ into the mix. With [jvm][haskell-jvm], you can call any
 method known to the JVM from Haskell. With [inline-java][inline-java],
 you can moreover call these methods in Java syntax, embedded in your
 source files.
+
 <!--more--> Not that this was particularly our intention - promise!
+
 `inline-java` and friends just fell out naturally from our work on
 [sparkle][sparkle]...
 
@@ -63,9 +65,9 @@ The key enabler to talking to Java and all the other JVM languages
 from Haskell is that Haskell speaks C and the JVM speaks C. That is,
 both Haskell and the JVM make it possible to call C functions and have
 C functions call them. In both cases, this is done as part of their
-respective foreign function interfaces (FFI). So we have a *lingua
-franca* for both languages: to move from Haskell to Java or *vice
-versa*, go through C first. Each language has their own custom calling
+respective foreign function interfaces (FFI). So we have a _lingua
+franca_ for both languages: to move from Haskell to Java or _vice
+versa_, go through C first. Each language has their own custom calling
 convention anyways, so some small amount of glue code to mediate
 between the two is inevitable.
 
@@ -96,7 +98,7 @@ callFoo = do
 ```
 
 Because the JVM allows overloaded method names, when grabbing a handle
-to invoke a method, you'll need to specify a *type signature* to
+to invoke a method, you'll need to specify a _type signature_ to
 disambiguate which method you really want to call. But the JNI was
 purposefully designed independently of Java's syntax, to the point
 where even class names are written differently. The
@@ -112,11 +114,11 @@ a toolkit for invoking JVM methods more conveniently and robustly.
 
 There are two downsides to the raw JNI calls we saw above:
 
-* **performance:** getting class and method handles is expensive.
-  Ideally, we'd only ever lookup classes and methods by name *at most
-  once* throughout the lifetime of the program, assuming that loaded
+- **performance:** getting class and method handles is expensive.
+  Ideally, we'd only ever lookup classes and methods by name _at most
+  once_ throughout the lifetime of the program, assuming that loaded
   classes exist for all time and are never redefined.
-* **stringly typing:** we pass signatures explicitly, but these are
+- **stringly typing:** we pass signatures explicitly, but these are
   literally strings, typos and all. If you mistype the signature, no
   compiler will call that out. Ideally ill-formed signatures would be
   caught at compile-time, rather than at runtime when it's far too
@@ -175,15 +177,15 @@ genSingletons ['JType]
 
 Thus equipped, we can write types like,
 
-* the type of Swing option panes, `J ('Class "javax.swing.JOptionPane")`
-* the type of boxed Java integers, `J ('Class "java.lang.Integer")`,
-* the type of primitive integer arrays, `J ('Array ('Prim "int"))`,
-* etc.
+- the type of Swing option panes, `J ('Class "javax.swing.JOptionPane")`
+- the type of boxed Java integers, `J ('Class "java.lang.Integer")`,
+- the type of primitive integer arrays, `J ('Array ('Prim "int"))`,
+- etc.
 
 What's more, thanks to the family of singleton types and instances
 created by `genSingletons` above, we can reflect on the type of any
 Java object at runtime to get a representation of the type at the
-value level. This is helpful to *auto compute* JNI type signatures
+value level. This is helpful to _auto compute_ JNI type signatures
 from the types alone. No more stringly typing will all those typos in
 tow: JNI type signatures are now correct by construction.
 
@@ -232,7 +234,7 @@ data JValue
 
 In this way, values of primitive type can be passed to Java without
 penalty: no need to box them into tiny objects first. It turns out we
-can extend the same idea to obtain unboxed *return* values, but the
+can extend the same idea to obtain unboxed _return_ values, but the
 technical details get a bit more intricate, so we'll have to defer
 that to the [module's documentation][haskell-jvm-docs].
 
@@ -264,7 +266,7 @@ To achieve that, we use GHC's
 [quasiquotation extension][quasiquotation]. This extension allows us
 to embed syntax from arbitrary foreign languages in Haskell source
 files, in between special brackets. Better yet, we are free to extend
-the foreign syntax to express antiquotation variables, *i.e.*
+the foreign syntax to express antiquotation variables, _i.e._
 variables that refer to the enclosing context in Haskell. Take for
 example our earlier "hello world" code snippet, simplified:
 
@@ -273,8 +275,7 @@ do message <- reflect "Hello World!"
    [java| javax.swing.JOptionPane.showMessageDialog(null, $message) |]
 ```
 
-Using `reflect`, also provided by `inline-java`, we create a `J
-"java.lang.String"` from a Haskell `String`. We can then refer to this
+Using `reflect`, also provided by `inline-java`, we create a `J "java.lang.String"` from a Haskell `String`. We can then refer to this
 Java object, bound to a Haskell variable, from inside the Java code
 snippet. The `$` sigil is there to disambiguate between variables
 bound in the Haskell context (aka antiquotation) and in the Java
@@ -306,16 +307,16 @@ mixing multiple languages and blithely crossing language boundaries
 without guilt. In this post we presented a suite of packages for
 high-speed Java/Haskell interop, which together ensure:
 
-* **box-free foreign calls:** because we infer precise JVM types from
+- **box-free foreign calls:** because we infer precise JVM types from
   Haskell types, arguments passed to JVM methods are boxed only if
   they need to be. Small values of primitive type can be passed
   to/from the JVM with no allocation at all on the heap.
-* **marshalling-free argument passing:** Java objects can be
+- **marshalling-free argument passing:** Java objects can be
   manipulated as easily from Haskell as from Java. This means that you
   can stick to representing all your data as Java objects if you
   find yourself calling into Java very frequently, hence avoiding
   any marshalling costs when transferring control to/from the JVM.
-* **type safe Java calls:** when calls are made in Java syntax, this
+- **type safe Java calls:** when calls are made in Java syntax, this
   syntax is supplied to an embedded instance of `javac` at
   compile-time for scope checking and type checking. That way we have
   a static guarantee that the types on the Haskell side match up with

@@ -1,18 +1,17 @@
 ---
-title: "A Tale of Two Functors<br/> or: How I learned to Stop Worrying and Love Data and Control"
+title: "A Tale of Two Functors  or: How I learned to Stop Worrying and Love Data and Control"
 shortTitle: A Tale of Two Functors
 author: Arnaud Spiwack
-tags: haskell, linear-types
+tags: [haskell, linear-types]
 description: "Haskell's Data and Control
-    module hierarchies have always bugged me. Now, I understand that the intuition
-    behind the Data/Control separation is rooted in a deep technical justification."
+  module hierarchies have always bugged me. Now, I understand that the intuition
+  behind the Data/Control separation is rooted in a deep technical justification."
 ---
 
 Haskell's `Data` and `Control` module
 hierarchies have always bugged me. They feel arbitrary. There's `Data.Functor` _and_
 `Control.Monad`—why? Monads are, after all, functors. They should
 belong to the same hierarchy!
-
 
 I'm not that person anymore. Now, I understand that the intuition
 behind the Data/Control separation is rooted in a deep
@@ -43,6 +42,7 @@ instance Functor [] where
 ```
 
 How could we give it a linear type?
+
 - Surely, it's ok to take a linear function as an argument (if `fmap`
   works on any function, it will work on functions which happen to be
   linear).
@@ -86,7 +86,7 @@ data V2 a = V2 a a
 
 instance Data.Functor f where
   fmap f (V2 x y) = V2 (f x) (f y)
-  
+
 instance Data.Applicative f where
   pure x = V2 x x
   (V2 f g) <*> (V2 x y) = V2 (f x) (g y)
@@ -126,7 +126,6 @@ just discovered a new kind of functor! Rather than containing data,
 we see them as
 wrapping a result value with an effect. They are _control functors_.
 
-
 ```haskell
 class Control.Functor m where
   fmap :: (a ⊸ b) ⊸ m a ⊸ m b
@@ -158,11 +157,12 @@ instance Control.Functor (State s) where
 ## Conclusion
 
 There you have it. There indeed are two kinds of functors: _data_ and _control_.
+
 - **Data functors** are containers: they contain many values; some are data
-applicatives that let you zip containers together.
+  applicatives that let you zip containers together.
 - **Control functors**
-contain a single value and are all about effects; some are monads that
-the do-notation can chain.
+  contain a single value and are all about effects; some are monads that
+  the do-notation can chain.
 
 That is all you need to know. Really.
 
@@ -172,7 +172,6 @@ foundation behind it all. It involves a branch of category theory
 called [enriched category theory][enriched-cat-wiki].
 
 Either way, I hope you enjoyed the post and learned lots. Thanks for reading!
-
 
 ## Appendix: The maths behind it all
 
@@ -190,7 +189,7 @@ objects and objects-of-\\(\mathcal{C}\\) of morphisms between them.
 For instance, we can consider categories enriched in [abelian groups][abelian-group-link]:
 between each pair of objects there is an abelian group of morphisms. In
 particular, there is at least one morphism, 0, between each pair of objects. The category
-of vector spaces over a given field (and, more generally, of modules over a given ring) 
+of vector spaces over a given field (and, more generally, of modules over a given ring)
 is enriched in abelian groups. Categories enriched in abelian groups are
 relevant, for instance, to homology theory.
 
@@ -221,12 +220,11 @@ functions, while data functors are the regular functors.
 Here's the last bit of insight: why isn't there a `Data.Monad`? The
 mathematical notion of a monad does apply perfectly well to data
 functors—it just wouldn't be especially useful in Haskell. We need the monad to be
-[strong][strong-monad-wiki] for things like the do-notation 
+[strong][strong-monad-wiki] for things like the do-notation
 to work correctly. But, as it happens, [a strong functor is
 the same as an enriched functor][strength-nlab], so data monads aren't
 strong. Except in Hask, of course, where data monads and control
 monads, being the same, are, in particular, strong.
-
 
 [functor-link]: https://wiki.haskell.org/Functor
 [hask-link]: https://wiki.haskell.org/Hask

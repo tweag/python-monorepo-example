@@ -1,8 +1,8 @@
 ---
-title: Streaming programs without laziness:<br> a short primer
+title: "Streaming programs without laziness: a short primer"
 shortTitle: Streaming programs without laziness
 author: Facundo Domínguez and Mathieu Boespflug
-tags: haskell
+tags: [haskell]
 ---
 
 In school, we're taught that I/O is a simple affair: read data in,
@@ -35,7 +35,7 @@ and disk space.
 If the amount of memory does not grow beyond a finite bound, for all
 possible inputs, we say that the program runs in bounded memory. More
 generally, we will say that **a program is streaming** if the usage of
-some resources considered *scarce* is bounded.
+some resources considered _scarce_ is bounded.
 
 In our example we care about memory and file handles. It's important
 to tame RAM usage, because the amount of fast volatile memory
@@ -50,22 +50,21 @@ another imperative: don't give up on writing programs from composable
 pieces that can be well understood in isolation from each other, lest
 you end up with unmaintainable spaghetti. This is where streaming
 libraries can help: the idea is to define once and for all common
-patterns that enable building streaming *and* compositional programs.
-
+patterns that enable building streaming _and_ compositional programs.
 
 # Writing a streaming program
 
 Resuming our running example, we could make a streaming program from
 function `headLine` provided that we satisfy the following conditions:
 
-* evaluation of the output string should not be forced into memory all
+- evaluation of the output string should not be forced into memory all
   at once by any callers of `headLine` and
-* the source of the input string needs to be closed *soon enough* to
+- the source of the input string needs to be closed _soon enough_ to
   prevent open handles from accumulating.
-  
-Additionally, for the program to be a *correct* program,
 
-* the source of the input string should not be closed before the
+Additionally, for the program to be a _correct_ program,
+
+- the source of the input string should not be closed before the
   output string has been fully evaluated.
 
 These conditions embody the amount of thinking that the programmer
@@ -96,8 +95,8 @@ printHeadLine1 path = do
 
 The type checker is happy to let it go through. However, it always
 produces an empty output. This is because what `hGetContents` returns
-(something of type `String`) is really a *computation that performs
-I/O as a side effect*, not a regular value, despite what the type
+(something of type `String`) is really a _computation that performs
+I/O as a side effect_, not a regular value, despite what the type
 suggests. As soon as we evaluate `contents`, or any part of it, those side
 effects will have to occur. But in the example above, due to laziness,
 any evaluation of `contents` will happen as part of the evaluation of
@@ -135,10 +134,9 @@ printHeadLine path = do
       hGetContents h >>= putStr . headLine
 ```
 
-So it turns out that we *can* write a correct and streaming program.
+So it turns out that we _can_ write a correct and streaming program.
 But it would be great if the type checker could help us verify
 the three conditions above.
-
 
 ## Streaming with a streaming library
 
@@ -191,6 +189,7 @@ SB.lines :: Monad m => ByteString m r -> Stream (ByteString m) m r
 Streaming.takes :: Monad m => Int -> Stream (ByteString m) m r -> Stream (ByteString m) m ()
 SB.unlines :: Monad m => Stream (ByteString m) m r -> ByteString m r
 ```
+
 The function starts by creating a stream of
 [lines](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:lines).
 Each line is itself
@@ -204,16 +203,17 @@ and finally, it assembles a bytestring from the resulting stream
 
 The conditions to ensure that the resulting program is streaming and
 correct are as follows:
- * The output `ByteString` is not fed to any function that loads all of
-   the output into memory like
-   [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
- * the source of the input `ByteString` needs to be closed *soon enough* to
-   prevent open handles from accumulating, and
- * the output `ByteString` shall not be used after the source of the
-   input `ByteString` is closed.
+
+- The output `ByteString` is not fed to any function that loads all of
+  the output into memory like
+  [SB.toStrict](https://www.stackage.org/haddock/lts-8.22/streaming-bytestring-0.1.4.6/Data-ByteString-Streaming-Char8.html#v:toStrict),
+- the source of the input `ByteString` needs to be closed _soon enough_ to
+  prevent open handles from accumulating, and
+- the output `ByteString` shall not be used after the source of the
+  input `ByteString` is closed.
 
 These might look similar to the conditions we had to satisfy
-previously, but now these conditions do not refer to some *evaluation*
+previously, but now these conditions do not refer to some _evaluation_
 that may happen lazily. Programmers are no longer responsible for
 distinguishing values from effectful computations, the compiler will
 do it for them. Thus, **by using a streaming library, we are reducing
@@ -248,7 +248,7 @@ by printing it to the standard output.
 
 # Summary
 
-Streaming libraries support writing *composable* streaming programs
+Streaming libraries support writing _composable_ streaming programs
 without relying on lazy I/O. This simplifies reasoning about the order
 in which resources are acquired, used, and released. However, no
 streaming library today guarantees that well-typed programs are always
