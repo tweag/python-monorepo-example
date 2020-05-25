@@ -1,12 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import JQuery from "./jquery"
+
 import blackLogo from "../images/logo_tweag_black.svg"
 import whiteLogo from "../images/logo_tweag_white.svg"
 
 const Header = () => {
   return (
     <header className="header">
+      <JQuery />
       <div className="header-holder">
         <strong className="logo">
           <Link to="/">
