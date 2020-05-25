@@ -1918,9 +1918,7 @@ h3 {
   background: #ecece9;
   overflow: hidden;
 }
-main nav ul {
-  padding: 60px 120px;
-}
+
 main nav ul li a {
   color: $color_1;
 }
@@ -1994,7 +1992,7 @@ pre {
 .part2 .text-area h4,
 .part2 .text-area ul,
 .part2 .text-area ol,
-main nav ul {
+main nav {
   width: 65%;
   margin: 0 0 30px;
   padding: 0 0 0 120px;
@@ -2694,7 +2692,7 @@ img.uc_rotate {
   .part2 .text-area h4,
   .part2 .text-area ul,
   .part2 .text-area ol,
-  main nav ul {
+  main nav {
     padding: 0 0 0 60px;
   }
   .part2 .text-area h2 {
@@ -2893,7 +2891,7 @@ img.uc_rotate {
   img.uc_rotate {
     transform: none;
   }
-  main nav ul {
+  main nav {
     margin: 30px 15px !important;
     padding: 0;
   }
@@ -3026,10 +3024,6 @@ img.uc_rotate {
     animation: 8s scroll_r infinite linear;
     background-size: contain;
     min-height: 200px;
-  }
-  .biotech .image-holder2 {
-    display: block;
-    margin: 0;
   }
   .biotech .text-area h1 {
     padding: 0;
@@ -3358,7 +3352,7 @@ img.uc_rotate {
   .part2 .text-area h4,
   .part2 .text-area ol,
   .part2 .text-area ul,
-  main nav ul {
+  main nav {
     margin: 20px 15px;
     padding: 0 15px;
     width: 100%;
@@ -3505,6 +3499,11 @@ img.uc_rotate {
   .services-section.biotech .image-holder.image-holder2 img {
     width: 250px;
     margin-bottom: 50px;
+  }
+  .services-section.biotech .image-holder2 {
+    display: block;
+    margin: 0;
+    justify-content: flex-start;
   }
   .services-section.biotech .text-area .text-wrap {
     margin: 30px 0 0;
