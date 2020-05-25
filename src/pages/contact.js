@@ -37,7 +37,9 @@ const ContactPage = () => {
       <div class="section s_white section-wrap services-section contact_addr viewport-section">
         <div class="text-wrap text-area">
           <label>Or send a direct email to our team</label>
-          <p class="hello">hello@tweag.io </p>
+          <p class="hello">
+            <a href="mailto:hello@tweag.io">hello@tweag.io</a>
+          </p>
         </div>
         <div class="text-area">
           <div class="col-area animation-wrap">
