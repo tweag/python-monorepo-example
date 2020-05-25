@@ -111,9 +111,35 @@ const OpenSourcePage = () => {
             Tweagers are among the top contributors to GHC, a mature,
             state-of-the-art compiler for Haskell. Haskell is now recognized as
             the shortest path to correct, scalable code for industries where
-            mistakes matter. We created language interop with Java, C, R,
-            JavaScript, make Haskell run in your browser, and do the heavy
-            lifting in your analytics pipelines.
+            mistakes matter. We created language interop with{" "}
+            <a className="lined" href="https://github.com/tweag/inline-java">
+              Java
+            </a>{" "}
+            <a className="lined" href="https://github.com/tweag/inline-js">
+              JavaScript
+            </a>{" "}
+            <a className="lined" href="https://github.com/fpco/inline-c">
+              C
+            </a>{" "}
+            and{" "}
+            <a className="lined" href="https://github.com/tweag/HaskellR">
+              R
+            </a>
+            {","}
+            we make Haskell{" "}
+            <a className="lined" href="https://github.com/tweag/asterius">
+              run in your browser
+            </a>
+            {","}
+            and do the{" "}
+            <a className="lined" href="https://github.com/tweag/funflow">
+              heavy lifting
+            </a>{" "}
+            in your{" "}
+            <a className="lined" href="https://github.com/tweag/porcupine">
+              analytics pipelines
+            </a>
+            {"."}
           </p>
         </Community>
         <Community title="Bazel" className="s_grey opensource2">
