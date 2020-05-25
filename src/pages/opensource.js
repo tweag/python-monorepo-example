@@ -18,10 +18,10 @@ const Manifesto = () => {
           <h1>COMMITED TO OPEN SOURCE AND ADVANCING KNOWLEDGE.</h1>
           <div className="text-wrap">
             <p>
-              At Tweag, we’ve been committed to open source since day 0. Many of
-              our team come from academic settings where this is the norm.
-              Today, open source is also becoming the norm for many companies
-              that want to work with the highest levels of engineering talent.
+              Open source is how we roll. 60% of our team where for a time in
+              academia, where this is the norm. Today, open source is also
+              becoming the norm for many companies that want to attract the
+              highest levels of engineering talent.
             </p>
             <p>
               Why?{" "}
@@ -43,7 +43,6 @@ const Manifesto = () => {
         </div>
         <div className="text-wrap text-area2">
           <p>
-            Our commitment to knowledge sharing runs deeper than sharing code.
             We employ researchers with strong academic backgrounds and ask them
             to keep pushing the envelope. Their sole focus is to identify future
             directions for programming languages, and we bring research to
@@ -69,7 +68,7 @@ const Manifesto = () => {
           <p>
             These commitments have helped us build strong, deep, and wide
             connections in open source projects that are changing the tech
-            landscape. Here are just a few:
+            landscape. Below are just a few.
           </p>
         </div>
       </div>
@@ -96,54 +95,44 @@ const OpenSourcePage = () => {
       <SEO title="Our open source projects" />
       <section className="section-area">
         <Manifesto />
-        <Community title="NIX" className="s_red opensource">
+        <Community title="Nix" className="s_red opensource">
           <p>
-            Many Tweagers act as shepherds of the Nix community, where we
-            contribute to a large portion of the technical roadmap. Eelco
-            Dolstra, inventor of Nix and several of the{" "}
+            Many thought leaders of the{" "}
             <a className="lined" href="https://nixos.org">
               Nix community
             </a>{" "}
-            thought leaders are Tweagers.
+            are Tweagers. Together with our clients, we contribute much of the
+            technical roadmap, from better reproducibily and performance to new
+            use cases and developer tools.
           </p>
         </Community>
-        <Community title="BAZEL" className="s_grey opensource2">
+        <Community title="Haskell" className="s_orange opensource3">
           <p>
-            We were among the first outside of Google to adopt Bazel and they
-            have recognized us among the first{" "}
+            Tweagers are among the top contributors to GHC, a mature,
+            state-of-the-art compiler for Haskell. Haskell is now recognized as
+            the shortest path to correct, scalable code for industries where
+            mistakes matter. We created language interop with Java, C, R,
+            JavaScript, make Haskell run in your browser, and do the heavy
+            lifting in your analytics pipelines.
+          </p>
+        </Community>
+        <Community title="Bazel" className="s_grey opensource2">
+          <p>
+            We were among the first outside of Google to adopt Bazel. We are{" "}
             <a className="lined" href="https://bazel.build/experts.html">
-              certified community experts
+              recognized community experts
             </a>
             {". "}
             We have contributed key features and new programming language
-            support for the tool. We did all this open source work for ourselves
-            and now{" "}
+            support to Bazel. We did this for ourselves and now{" "}
             <Link to="/bazel" className="lined">
               we can do it for you
             </Link>
             {". "}
           </p>
         </Community>
-        <Community title="Haskell" className="s_orange opensource3">
-          <p>
-            Haskell was our first practice area. Tweagers are among the top
-            contributors to GHC, a mature, state-of-the-art compiler for
-            Haskell. We are proud to say that Haskell, once considered an
-            academic niche, is now recognized as the shortest path to correct,
-            scalable code for many industries where mistakes matter: Finance,
-            biotech, and autonomous vehicles are obvious examples, and we
-            haven’t found many applications where mistakes don’t matter. Teams
-            that choose Haskell today have a lot of choices when they want help
-            to go faster or somewhere new. We think that’s great. But wherever
-            Haskell goes, Tweag won’t be far away.
-          </p>
-        </Community>
         <div className="section s_white about-section opensource opensource4 viewport-section">
           <div className="text-wrap text-area w100">
-            <p className="sample">
-              That’s just a sample of our open source projects and community
-              involvement!
-            </p>
             <p className="check">
               Check out our
               <a className="btn noarrow" href="https://github.com/tweag">
