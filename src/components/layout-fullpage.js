@@ -15,6 +15,7 @@ const LayoutFullPage = ({ children }) => {
       <Header />
       <ReactFullpage
         licenseKey={FULLPAGE_LICENSE_KEY}
+        responsiveWidth={769}
         render={({ state, fullpageApi }) => {
           return (
             <>
