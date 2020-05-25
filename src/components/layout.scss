@@ -123,8 +123,11 @@ html {
 .contact_addr .hello {
   font-size: $font_5;
   line-height: 1.5;
-
   padding-bottom: 50px;
+  color: $color_1;
+}
+.contact_addr .hello a {
+  color: $color_1;
 }
 .contact_field input,
 .contact_field textarea {
@@ -161,11 +164,9 @@ html {
   -webkit-animation: fadeIn ease-in 1; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
   -moz-animation: fadeIn ease-in 1;
   animation: fadeIn ease-in 1;
-
   -webkit-animation-fill-mode: forwards; /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-
   -webkit-animation-duration: 2s;
   -moz-animation-duration: 2s;
   animation-duration: 2s;
@@ -318,7 +319,6 @@ textarea {
   -webkit-border-radius: 0;
   border-radius: 0;
   box-sizing: border-box;
-
   padding: 0.4em 0.7em;
 }
 input[type="text"]:focus,
@@ -1988,15 +1988,19 @@ pre {
   color: $color_10;
 }
 .part2 .text-area p,
+.part2 .text-area h1,
 .part2 .text-area h2,
 .part2 .text-area h3,
 .part2 .text-area h4,
 .part2 .text-area ul,
 .part2 .text-area ol,
 main nav ul {
-  width: 80%;
+  width: 65%;
   margin: 0 0 30px;
   padding: 0 0 0 120px;
+}
+.part2 .text-area h1 {
+  font-size: $font_5;
 }
 .part2 .text-area h2 {
   margin: 60px 0 30px;
@@ -2112,274 +2116,6 @@ img.uc_rotate {
 /* *************************************************** */
 /* *************************************************** */
 
-@media (max-width: 767px) {
-  h1 {
-    font-size: $font_6;
-  }
-  h2 {
-    font-size: $font_5;
-  }
-  h3 {
-    font-size: $font_3;
-  }
-  img.uc_rotate {
-    transform: none;
-  }
-  pre {
-    padding-left: 0;
-    overflow: hidden;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding-left: 0 !important;
-    margin: 40px 0;
-  }
-
-  .about-section .image-holder img {
-    width: 250px;
-  }
-  .about-section .image-holder {
-    width: 100%;
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    margin: 0 0 30px;
-  }
-  .about-section .section-title {
-    top: 0;
-  }
-  .about-section .text-area p.check .btn {
-    padding: 8px;
-    line-height: 0px;
-    height: 20px;
-    margin: 0 10px;
-  }
-  .about-section .text-area {
-    padding: 0 25px;
-    text-align: left;
-    width: 100%;
-    -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
-  }
-  .about-section.opensource4 {
-    padding: 20px 0;
-  }
-  .btn {
-    font-size: $font_2;
-    padding: 8px 18px;
-  }
-  .col-area .description p {
-    margin: 0 0 25px;
-  }
-  .col-area .description {
-    font-size: $font_0;
-    line-height: 22px;
-  }
-  .col-area .image-holder {
-    width: 175px;
-    margin: 0 auto 18px;
-  }
-  .contact_addr .hello {
-    padding: 0;
-  }
-  .contact_addr.section-wrap .text-wrap {
-    margin: 0;
-  }
-  .contact_addr.services-section .text-area h3 {
-    margin: 30px 0 0 0;
-    font-size: $font_6;
-  }
-  .contact_field.services-section {
-    padding: 60px 0 0 0;
-  }
-  .contactus-holder .text-list {
-    font-size: $font_0;
-    line-height: 22px;
-  }
-
-  .contact_field input,
-  .contact_field textarea {
-    font-size: $font_3;
-  }
-  .f-logo {
-    width: 120px;
-  }
-  .footer {
-    font-size: $font_0;
-    line-height: 20px;
-  }
-  .footer-col .title {
-    margin: 0 0 10px;
-  }
-  .footer-col {
-    padding: 0 10px;
-    margin: 0 0 20px;
-  }
-  .header {
-    padding: 20px 15px;
-  }
-  .hideresp {
-    display: none !important;
-  }
-  .joinus-holder .image-holder {
-    width: 35%;
-  }
-  .joinus-holder .text-wrap {
-    width: 50%;
-  }
-  .joinus-holder {
-    margin-right: calc((100vw - 738px) / -2);
-  }
-  .logo {
-    width: 200px;
-  }
-  .menu > li {
-    margin: 0 8px;
-  }
-  .menu {
-    font-size: $font_0;
-    margin: 0 -8px;
-  }
-  .method-area .image-holder img {
-    width: 250px;
-  }
-  .method-area .image-holder {
-    width: 100%;
-    margin: 0 0 30px;
-  }
-  .method-area .text-area {
-    width: 100%;
-    text-align: left;
-    margin: 0 0 30px;
-    padding: 0 25px;
-  }
-  .part2 .text-area h2 {
-    padding: 0 !important;
-    margin: 40px 15px 20px !important;
-    width: 90% !important;
-  }
-  .part2 .text-area p,
-  .part2 .text-area ul,
-  .part2 .text-area ol,
-  main nav ul {
-    padding: 0 !important;
-    margin: 20px 15px !important;
-    width: 90% !important;
-  }
-  .part2 .text-area h2,
-  .part2 .text-area h3,
-  .part2 .text-area h4 {
-    padding-left: 0 !important;
-  }
-  .partners-list .logo-wrap img {
-    -webkit-transform: scale(0.75);
-    -ms-transform: scale(0.75);
-    transform: scale(0.75);
-  }
-  .section-area {
-    padding: 100px 0 70px;
-  }
-  .section-area:before {
-    left: 25px;
-    right: 25px;
-  }
-  .section-title {
-    position: relative;
-    top: 0;
-    padding: 0;
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-    margin: 0 0 25px;
-  }
-  .section-wrap.key_indus {
-    position: relative;
-    padding: 0;
-    margin-bottom: 30px;
-    overflow: hidden;
-  }
-  .services-section .image-holder img {
-    width: 250px;
-  }
-  .services-section .image-holder {
-    width: 100%;
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    margin: 0 0 30px;
-  }
-  .services-section .text-area {
-    -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
-    padding: 0 25px;
-    text-align: left;
-    width: 100%;
-  }
-  .services-section .text-wrap {
-    max-width: inherit;
-  }
-  .services-section.use_case.first {
-    flex-direction: column-reverse;
-  }
-  .use_case .image-holder.image-holder img {
-    display: block;
-    margin-right: 0;
-    width: 50%;
-    margin: 30px 0;
-  }
-  .use_case .image-holder.image-holder {
-    display: block;
-    margin-right: 0;
-    width: 100%;
-    margin-top: 0px;
-    display: flex;
-  }
-  .use_case.results .image-holder.image-holder {
-    margin: 0;
-  }
-  .use_case.results ul {
-    margin-top: 0;
-  }
-  .use_case.results {
-    padding: 0;
-  }
-  .vision-holder .image-holder {
-    width: 35%;
-  }
-  .vision-holder h2 {
-    max-width: inherit;
-    width: 100%;
-    margin: 0 0 15px;
-  }
-  .vision-holder {
-    margin-right: calc((100vw - 738px) / -2);
-  }
-  .visual-holder .visual-caption {
-    font-size: $font_3;
-    line-height: 30px;
-    width: 43%;
-  }
-  #___gatsby {
-    overflow: hidden;
-  }
-}
 @media (min-width: 768px) {
   .col-area .image-holder {
     width: 220px;
@@ -2952,6 +2688,7 @@ img.uc_rotate {
     margin-bottom: 40px;
   }
   .part2 .text-area p,
+  .part2 .text-area h1,
   .part2 .text-area h2,
   .part2 .text-area h3,
   .part2 .text-area h4,
@@ -3132,103 +2869,6 @@ img.uc_rotate {
   }
 }
 @media (max-width: 767px) {
-  .Blog-content .Article-text pre code {
-    margin: 0;
-  }
-  .part2 .text-area p,
-  .part2 .text-area h2,
-  .part2 .text-area h3,
-  .part2 .text-area h4,
-  .part2 .text-area ol,
-  main nav ul {
-    padding: 0 15px;
-    width: 100%;
-  }
-  .part2 .text-area ul {
-    padding: 0 15px;
-    margin: 30px 0;
-  }
-  main nav ul {
-    margin: 30px 15px !important;
-    padding: 0;
-  }
-  .part2 .text-area h2,
-  .part2 .text-area h3,
-  .part2 .text-area h4 {
-    margin: 20px 15px;
-  }
-  .part2 .text-area ol {
-    margin: 20px 30px !important;
-  }
-  .col-area .image-holder img {
-    margin-left: 15px;
-  }
-  .col-area .image-holder {
-    width: 220px;
-    margin: 0 0 30px 0;
-  }
-  .about-section.use_case .text-area {
-    width: 100%;
-    padding: 0 15px;
-  }
-  .about-section.use_case .text-area p {
-    font-size: $font_2;
-    margin-top: 20px;
-  }
-  .use_case.bloc1,
-  .use_case.bloc2 {
-    padding: 40px 0;
-  }
-  .about-section.use_case .text-area h1 {
-    text-align: left;
-  }
-  .services-section.use_cases.second .text-area2 {
-    padding: 0 15px;
-    margin: 0;
-  }
-  .services-section.use_cases.second {
-    margin: 0;
-  }
-  .services-section.opensource1 .text-area {
-    margin: 0;
-  }
-  .about-section.opensource .w30 {
-    width: 100% !important;
-    padding-bottom: 20px;
-  }
-  .about-section.opensource .w70 {
-    width: 100% !important;
-  }
-  .about-section.opensource h1 {
-    margin-top: 20px;
-  }
-  .post_container {
-    margin: 0 15px;
-  }
-  .post_content {
-    width: 100%;
-    display: block;
-    height: auto;
-  }
-  .section-title.homepost {
-    padding: 0;
-    margin: 0;
-  }
-  .services-section.Blog-home > .text-area {
-    margin: 0;
-    padding: 0 15px;
-    text-align: left;
-  }
-  .services-section.Blog-content.topsep > .text-area {
-    width: 100%;
-    padding: 0;
-    margin: 0 15px;
-    border: 0px;
-  }
-  .services-section.opensource1.Blog-content .text-area,
-  .services-section.opensource1.Blog-content.part2 .text-area {
-    width: 100%;
-  }
   code,
   kbd,
   pre,
@@ -3237,90 +2877,82 @@ img.uc_rotate {
     font-size: $font_1;
     text-align: left;
   }
+  h1 {
+    font-size: $font_5;
+  }
+  h2 {
+    font-size: $font_3;
+  }
+
+  h3 {
+    font-size: $font_2;
+  }
   header {
     background: $color_2;
   }
-  .header-holder {
-    height: 20px;
-    margin: 0;
+  img.uc_rotate {
+    transform: none;
+  }
+  main nav ul {
+    margin: 30px 15px !important;
     padding: 0;
-  }
-  .about-section .image-holder.image-holder4 {
-    justify-content: flex-start;
-  }
-  .about-section .image-holder img {
-    height: 100%;
-    width: 100%;
-  }
-  .line_sep {
-    margin: 20px;
-  }
-  .services-section .text-wrap p {
-    font-size: $font_2;
   }
   p.use_case_excerpt {
     margin: 0;
     padding: 0;
   }
-  .section-wrap.biotech {
-    padding: 0;
-    margin-bottom: 30px;
+  pre {
+    padding-left: 0;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-left: 0 !important;
+    margin: 40px 0;
   }
-  .col-area .info-col2,
-  .col-area .info-col1 {
+  .Blog-content .Article-text pre code {
+    margin: 0;
+  }
+  .about-section .image-holder img {
+    height: 100%;
     width: 100%;
-  }
-  .col-area .info-col2 {
-    padding: 30px 15px 0;
-  }
-  h1 {
-    font-size: $font_5;
-  }
-  .services-section .text-area h1 {
-    margin: 20px 0 35px;
-  }
-  .services-section.opensource1 .text-area {
-    width: 100%;
-  }
-  h2 {
-    font-size: $font_3;
-  }
-  h3 {
-    font-size: $font_2;
-  }
-  .about-section .text-area {
-    padding: 0 15px;
-    margin-bottom: 0;
-  }
-  .about-section.learnmore .text-area {
-    padding: 0 15px;
-    width: 100%;
-  }
-  .about-section.learnmore .split-col1,
-  .about-section.learnmore .split-col2 {
-    width: 48%;
   }
   .about-section .image-holder img {
     width: 190px;
     margin-bottom: 20px;
   }
-  .about-section.learnmore .btn {
-    font-size: 100%;
-    height: auto;
+
+  .about-section .image-holder {
+    width: 100%;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    margin: 0 0 30px;
   }
-  .biotech .text-area h1 {
-    padding: 0;
-    margin: 0;
+  .about-section .image-holder.image-holder4 {
+    justify-content: flex-start;
   }
-  .about-section.biotech {
-    padding: 60px 0 20px 0;
+  .about-section .section-title {
+    top: 0;
   }
-  .about-section.biotech .text-list li p {
-    font-size: $font_2;
+  .about-section .text-area p.check .btn {
+    padding: 8px;
+    line-height: 0px;
+    height: 20px;
+    margin: 0 10px;
   }
-  .about-section.biotech .contact.btn {
-    margin: 30px 0;
+  .about-section .text-area {
+    padding: 0 15px;
+    margin-bottom: 0;
   }
+
   .about-section .text-list li i {
     margin: 3px 5px 0 0;
   }
@@ -3339,28 +2971,84 @@ img.uc_rotate {
     padding: 0;
     margin: 0px !important;
   }
+  .about-section.biotech .contact.btn {
+    margin: 30px 0;
+  }
+  .about-section.biotech .text-list li p {
+    font-size: $font_2;
+  }
+  .about-section.biotech {
+    padding: 60px 0 20px 0;
+  }
+  .about-section.learnmore .btn {
+    font-size: 100%;
+    height: auto;
+  }
+  .about-section.learnmore .split-col1,
+  .about-section.learnmore .split-col2 {
+    width: 48%;
+  }
+  .about-section.learnmore .text-area {
+    padding: 0 15px;
+    width: 100%;
+  }
+  .about-section.learnmore h3 {
+    padding-top: 30px;
+  }
+  .about-section.opensource .w30 {
+    width: 100% !important;
+    padding-bottom: 20px;
+  }
+  .about-section.opensource .w70 {
+    width: 100% !important;
+  }
+  .about-section.opensource h1 {
+    margin-top: 20px;
+  }
   .about-section.opensource {
     font-size: $font_2;
+  }
+  .about-section.opensource4 {
+    padding: 20px 0;
+  }
+  .about-section.use_case .text-area h1 {
+    text-align: left;
+  }
+  .about-section.use_case .text-area p {
+    font-size: $font_2;
+    margin-top: 20px;
+  }
+  .about-section.use_case .text-area {
+    width: 100%;
+    padding: 0 15px;
   }
   .backdrop {
     animation: 8s scroll_r infinite linear;
     background-size: contain;
     min-height: 200px;
   }
+  .biotech .image-holder2 {
+    display: block;
+    margin: 0;
+  }
+  .biotech .text-area h1 {
+    padding: 0;
+    margin: 0;
+  }
   .btn {
     font-size: $font_1;
     margin: 0;
   }
+  .btn {
+    font-size: $font_2;
+    padding: 8px 18px;
+  }
+  .col-area .description .btn {
+    margin-left: 15px;
+  }
   .col-area .description h3 {
     text-align: left;
     padding: 0 15px;
-  }
-  .contact_addr .col-area .description h3 {
-    text-align: left;
-    padding: 0;
-  }
-  .contact_addr .col-area .info-col {
-    margin: 0;
   }
   .col-area .description p {
     text-align: left;
@@ -3371,12 +3059,23 @@ img.uc_rotate {
     text-align: left;
     padding: 0;
   }
-  .col-area .description .btn {
+  .col-area .image-holder img {
     margin-left: 15px;
+  }
+  .col-area .image-holder {
+    width: 220px;
+    margin: 0 0 30px 0;
   }
   .col-area .info-col {
     width: 100%;
     margin: 0 0 60px;
+  }
+  .col-area .info-col2 {
+    padding: 30px 15px 0;
+  }
+  .col-area .info-col2,
+  .col-area .info-col1 {
+    width: 100%;
   }
   .col-area .info-col:last-child {
     margin-bottom: 40px;
@@ -3385,6 +3084,33 @@ img.uc_rotate {
     margin: 40px 0 40px;
     text-align: left;
     padding: 0 15px;
+  }
+  .contact_addr .col-area .description h3 {
+    text-align: left;
+    padding: 0;
+  }
+  .contact_addr .col-area .info-col {
+    margin: 0;
+  }
+  .contact_addr .hello {
+    padding: 0;
+  }
+  .contact_addr.section-wrap .text-wrap {
+    margin: 0;
+  }
+  .contact_addr.services-section .text-area h3 {
+    margin: 30px 0 0 0;
+    font-size: $font_6;
+  }
+  .contact_field input,
+  .contact_field textarea {
+    font-size: $font_3;
+  }
+  .contact_field.services-section {
+    padding: 60px 0 0 0;
+  }
+  .contactus-holder .image-col img {
+    margin-left: -30px;
   }
   .contactus-holder .image-col {
     display: -webkit-box;
@@ -3395,9 +3121,6 @@ img.uc_rotate {
     width: 100%;
     margin: 30px 0 50px 0;
     padding: 0;
-  }
-  .contactus-holder .image-col img {
-    margin-left: -30px;
   }
   .contactus-holder .image-holder {
     -webkit-box-ordinal-group: 2;
@@ -3416,6 +3139,7 @@ img.uc_rotate {
   .contactus-holder .text-list {
     font-size: $font_0;
   }
+
   .contactus-holder h2 {
     text-align: left;
     width: 100%;
@@ -3441,13 +3165,23 @@ img.uc_rotate {
   .copyright-col2 {
     width: 100%;
   }
+  .f-logo {
+    width: 120px;
+  }
   .footer {
     padding: 60px 0;
     font-size: $font_0;
     line-height: 18px;
   }
+  .footer-col .title {
+    margin: 0 0 10px;
+  }
   .footer-col {
     width: 50%;
+  }
+  .footer-col {
+    padding: 0 10px;
+    margin: 0 0 20px;
   }
   .footer-col.tweag {
     width: 50%;
@@ -3461,8 +3195,24 @@ img.uc_rotate {
     position: fixed;
   }
   .header-holder {
+    height: 20px;
+    margin: 0;
+    padding: 0;
     position: static;
     display: block;
+  }
+  .hideresp {
+    display: none !important;
+  }
+  .home-holder.highlight.image-holder img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .home-holder.highlight.image-holder {
+    display: block;
+    margin: 0 0 20px;
+    padding: 0;
   }
   .inner .fixed-header .logo,
   .inner .fixed-header .menu {
@@ -3476,10 +3226,7 @@ img.uc_rotate {
     width: 280px;
     margin: 0 -15px 0 0;
   }
-  .joinus-holder .image-holder .image-wrap {
-    width: 280px;
-    margin: 0 -15px 0 0;
-  }
+
   .joinus-holder .image-holder {
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
@@ -3489,6 +3236,7 @@ img.uc_rotate {
     width: 100%;
     justify-content: flex-end;
   }
+
   .joinus-holder .text-wrap {
     text-align: left;
     -webkit-box-ordinal-group: 3;
@@ -3498,6 +3246,7 @@ img.uc_rotate {
     padding: 0 15px;
     margin: 20px 0 10px 0;
   }
+
   .joinus-holder .title {
     font-size: $font_3;
     line-height: 30px;
@@ -3505,6 +3254,9 @@ img.uc_rotate {
   }
   .joinus-holder {
     margin: 30px 0;
+  }
+  .line_sep {
+    margin: 20px;
   }
   .logo {
     width: 175px;
@@ -3525,6 +3277,7 @@ img.uc_rotate {
   .menu > li {
     margin: 0 0 15px;
   }
+
   .menu > li:hover .dropdown-menu {
     display: block;
   }
@@ -3540,6 +3293,7 @@ img.uc_rotate {
     padding: 50px 15px;
     border: 0px solid $color_1;
     height: 100vh;
+    margin: 0 -8px;
   }
   .menu-active .nav-area {
     -webkit-transform: translateY(-10px);
@@ -3555,6 +3309,10 @@ img.uc_rotate {
   .method-area .image-holder img {
     width: 200px;
   }
+  .method-area .image-holder {
+    width: 100%;
+    margin: 0 0 30px;
+  }
   .method-area .text-area h2::after {
     content: "";
     display: block;
@@ -3567,6 +3325,8 @@ img.uc_rotate {
   .method-area .text-area {
     padding: 0 15px;
     width: 100%;
+    text-align: left;
+    margin: 0 0 30px;
   }
   .nav-area {
     -webkit-transform: translateY(-100%);
@@ -3586,6 +3346,30 @@ img.uc_rotate {
     max-height: 0;
     z-index: 99;
   }
+  .part2 .text-area h2 {
+    padding: 0 !important;
+    margin: 40px 15px 20px !important;
+    width: 90% !important;
+  }
+  .part2 .text-area p,
+  .part2 .text-area h1,
+  .part2 .text-area h2,
+  .part2 .text-area h3,
+  .part2 .text-area h4,
+  .part2 .text-area ol,
+  .part2 .text-area ul,
+  main nav ul {
+    margin: 20px 15px;
+    padding: 0 15px;
+    width: 100%;
+  }
+  .part2 .text-area ol {
+    margin: 20px 30px;
+  }
+  .part2 .text-area ul {
+    padding: 0 15px;
+    margin: 30px 0;
+  }
   .partners-area h2 {
     margin: 30px 0 30px 0;
     padding: 0 15px;
@@ -3600,13 +3384,17 @@ img.uc_rotate {
     margin: 0 0 20px;
     width: 33.333%;
   }
+  .post_container {
+    margin: 0 15px;
+  }
+  .post_content {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
   .section {
     padding: 0;
     margin-top: 0;
-  }
-  .section06a {
-    padding: 0;
-    margin-top: 0px;
   }
   .section-area {
     padding: 65px 0 0px;
@@ -3616,9 +3404,32 @@ img.uc_rotate {
     left: 15px;
     right: 15px;
   }
+  .section-title {
+    position: relative;
+    top: 0;
+    padding: 0;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    margin: 0 0 25px;
+  }
+  .section-title.homepost {
+    padding: 0;
+    margin: 0;
+  }
   .section-wrap {
     padding: 0;
     margin-bottom: 0;
+  }
+  .section-wrap.biotech {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .section-wrap.key_indus {
+    position: relative;
+    padding: 0;
+    margin-bottom: 30px;
+    overflow: hidden;
   }
   .section01 .section-wrap {
     padding: 0;
@@ -3627,11 +3438,12 @@ img.uc_rotate {
   .section01 {
     padding-top: 70px;
   }
-  .services-section.biotech .text-area h3 {
-    margin: 0 0 20px;
-  }
-  .vision-area6 .container {
+  .section06a {
     padding: 0;
+    margin-top: 0px;
+  }
+  .services-section .image-holder img {
+    width: 150px;
   }
   .services-section .image-holder {
     width: 100%;
@@ -3648,74 +3460,122 @@ img.uc_rotate {
     justify-content: flex-end;
     margin: 0 0 30px;
   }
-  .biotech .image-holder2 {
-    display: block;
-    margin: 0;
-  }
-  .services-section.biotech .image-holder.image-holder2 img {
-    width: 250px;
-    margin-bottom: 50px;
-  }
-  .services-section.use_cases .image-holder.image-holder2 {
-    display: none;
-  }
   .services-section .image-holder3 {
     display: none;
     margin: 0 0 30px;
   }
-  .services-section.use_cases.second .text-wrap {
-    margin-bottom: 30px;
-  }
-  .home-holder.highlight.image-holder {
-    display: block;
-    margin: 0 0 20px;
-    padding: 0;
-  }
-  .home-holder.highlight.image-holder img {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .services-section .image-holder img {
-    width: 150px;
+  .services-section .text-area h1 {
+    margin: 20px 0 35px;
   }
   .services-section .text-area {
     padding: 0 15px;
     width: 100%;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    text-align: left;
   }
-  .services-section.Blog-content.part2 .text-area {
-    padding: 0;
-    width: 100%;
-  }
-  .services-section.use_case .text-area {
-    margin: 0;
-  }
-  .services-section.biotech .text-area {
-    margin: 0;
+  .services-section .text-wrap p {
+    font-size: $font_2;
   }
   .services-section .text-wrap {
     font-size: $font_1;
     line-height: 1.2;
     padding-bottom: 20px;
-  }
-  .services-section.use_case .text-wrap {
-    padding-bottom: 0;
-  }
-  .about-section.learnmore h3 {
-    padding-top: 30px;
+    max-width: inherit;
   }
   .services-section.Blog-content .text-wrap {
     margin-bottom: 0;
     padding-bottom: 0;
   }
+  .services-section.Blog-content.part2 .text-area {
+    padding: 0;
+    width: 100%;
+  }
+  .services-section.Blog-content.topsep > .text-area {
+    width: 100%;
+    padding: 0;
+    margin: 0 15px;
+    border: 0px;
+  }
+  .services-section.Blog-home > .text-area {
+    margin: 0;
+    padding: 0 15px;
+    text-align: left;
+  }
+  .services-section.biotech .image-holder.image-holder2 img {
+    width: 250px;
+    margin-bottom: 50px;
+  }
   .services-section.biotech .text-area .text-wrap {
     margin: 30px 0 0;
+  }
+  .services-section.biotech .text-area h3 {
+    margin: 0 0 20px;
+  }
+  .services-section.biotech .text-area {
+    margin: 0;
   }
   .services-section.biotech .text-area2 {
     margin: 0 0 30px;
     padding: 0 15px;
     width: 100%;
     text-align: left;
+  }
+  .services-section.opensource1 .text-area {
+    margin: 0;
+    width: 100%;
+  }
+  .services-section.opensource1.Blog-content .text-area,
+  .services-section.opensource1.Blog-content.part2 .text-area {
+    width: 100%;
+  }
+  .services-section.use_case .text-area {
+    margin: 0;
+  }
+  .services-section.use_case .text-wrap {
+    padding-bottom: 0;
+  }
+  .services-section.use_case.first {
+    flex-direction: column-reverse;
+  }
+  .services-section.use_cases .image-holder.image-holder2 {
+    display: none;
+  }
+  .services-section.use_cases.second .text-area2 {
+    padding: 0 15px;
+    margin: 0;
+  }
+  .services-section.use_cases.second .text-wrap {
+    margin-bottom: 30px;
+  }
+  .services-section.use_cases.second {
+    margin: 0;
+  }
+  .use_case .image-holder.image-holder img {
+    display: block;
+    margin-right: 0;
+    width: 50%;
+    margin: 30px 0;
+  }
+  .use_case .image-holder.image-holder {
+    display: block;
+    margin-right: 0;
+    width: 100%;
+    margin-top: 0px;
+    display: flex;
+  }
+  .use_case.bloc1,
+  .use_case.bloc2 {
+    padding: 40px 0;
+  }
+  .use_case.results .image-holder.image-holder {
+    margin: 0;
+  }
+  .use_case.results ul {
+    margin-top: 0;
+  }
+  .use_case.results {
+    padding: 0;
   }
   .vision-area .container {
     padding: 0;
@@ -3725,6 +3585,9 @@ img.uc_rotate {
   }
   .vision-area2 .container,
   .vision-area3 .container {
+    padding: 0;
+  }
+  .vision-area6 .container {
     padding: 0;
   }
   .vision-holder .image-holder .image-wrap {
@@ -3779,5 +3642,8 @@ img.uc_rotate {
   .visual-holder {
     display: block;
     padding: 0;
+  }
+  #___gatsby {
+    overflow: hidden;
   }
 }
