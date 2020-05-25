@@ -121,18 +121,18 @@ beyond a personal learning experience.
 
 In order to do this, it must be clear:
 
-- *Who* are the readers you want to target with your post. That should
+- _Who_ are the readers you want to target with your post. That should
   give you an idea on what you assume as background knowledge from
   your readers, and what you are going to show them that is
   interesting.
 
-- *What* the reader should expect by reading your post. Very often
+- _What_ the reader should expect by reading your post. Very often
   this is the solution of a problem. That should include the end goal
   you want to achieve by your process, and the constraints that you
   have when solving this problem. This may not apply strictly when the
   post has a teaching nature.
 
-- *How* we achieve our end goal. Very often this describes how the
+- _How_ we achieve our end goal. Very often this describes how the
   problem has been solved. That should include the steps of the
   process, which should constitute the main content of the text, but
   also what this solution offers in terms of advantages and
@@ -140,9 +140,9 @@ In order to do this, it must be clear:
   strictly when the post has a teaching nature.
 
 The title should make clear what is achieved in the end. The intro
-should cover the *What* and *How* points, with the conclusion
-recalling *What* was achieved, together with the qualities of the
-*How* with relation to others.
+should cover the _What_ and _How_ points, with the conclusion
+recalling _What_ was achieved, together with the qualities of the
+_How_ with relation to others.
 
 If the end goal cannot be described explicitly in the post (for
 example, when trying to sell a technology like Haskell or Nix), this
@@ -177,17 +177,17 @@ you are the boss.
 The phases of the reviewing process are roughly the following:
 
 - Content review:
-    - Comments on meaning and phrasing of sentences and code
-    - add links to other Tweag's post on related subjects.
-    - _Responsibles_: author, editor and volunteer proofreaders.
+  - Comments on meaning and phrasing of sentences and code
+  - add links to other Tweag's post on related subjects.
+  - _Responsibles_: author, editor and volunteer proofreaders.
 - Grammar and spelling check:
-    - _Responsibles_: author, editor and volunteer proofreaders.
+  - _Responsibles_: author, editor and volunteer proofreaders.
 - Code snippets review:
-    - Make sure all the code snippets run and that nothing is missing.
-    - _Responsible_: author.
+  - Make sure all the code snippets run and that nothing is missing.
+  - _Responsible_: author.
 - Style check
-    - Markup, capitalization, meta-tags (description, image),
-    - _Responsible_: editor.
+  - Markup, capitalization, meta-tags (description, image),
+  - _Responsible_: editor.
 
 When you are satisfied with the result, approve the PR (with Github's
 semantical review) and move the card to Staging (see the README card).
@@ -222,12 +222,12 @@ Most importantly, GatsbyJS is an incredibly well-documented project.
 
 There are two modes in Gatsby:
 
-* **development mode:** useful for iterating quickly on a new page
+- **development mode:** useful for iterating quickly on a new page
   design;
-* **build mode:** takes longer, but produces assets optimized for
+- **build mode:** takes longer, but produces assets optimized for
   production that can be deployed anywhere.
 
 The two modes are documented extensively [here][gatsby-build-process].
 
-[GatsbyJS]: https://gatsbyjs.org
+[gatsbyjs]: https://gatsbyjs.org
 [gatsby-build-process]: https://www.gatsbyjs.org/docs/overview-of-the-gatsby-build-process/
