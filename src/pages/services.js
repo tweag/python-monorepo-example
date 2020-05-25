@@ -49,7 +49,7 @@ const Quote = () => {
         <h2>
           It&rsquo;s really, really great working with Tweag. The quality of
           their work is top-notch. Their productivity is higher than average.
-          And they&rsquo;re domain experts in languages.
+          And they&rsquo;re domain experts in programming languages.
         </h2>
         <span className="text">
           <i className="icon-arrow-right1"></i> Fred Cogny, CTO, NovaDiscovery
@@ -68,32 +68,37 @@ const WhatWeDo = () => {
         </a>
         <ul className="text-list">
           <li>
+            <i className="icon-arrow-right1"></i> Software Engineering
+            <p>
+              We use tools and programming languages that represent the future
+              of reliable software development. Reliability is baked into how we
+              build your software.
+            </p>
+          </li>
+          <li>
             <i className="icon-arrow-right1"></i> DevOps &amp; Infrastructure
             <p>
-              Gain a developer efficiency boost through software best practices
-              and processes that accelerate your time to market.
+              Software gets rebuilt and deployed over and over again. We
+              specialize in making that process efficient for your business and
+              auditable end-to-end so you always know exactly what is in
+              production. It&rsquo;s one of our favorite things to do.
             </p>
           </li>
           <li>
             <i className="icon-arrow-right1"></i> Statistics &amp; Machine
             Learning
             <p>
-              Gain a developer efficiency boost through software best practices
-              and processes that accelerate your time to market.
-            </p>
-          </li>
-          <li>
-            <i className="icon-arrow-right1"></i> Software Engineering
-            <p>
-              Gain a developer efficiency boost through software best practices
-              and processes that accelerate your time to market.
+              We know how to train and deploy models. We are also here to
+              address the growing pains that organizations face in building out
+              this new capability.
             </p>
           </li>
           <li>
             <i className="icon-arrow-right1"></i> Applied Research
             <p>
-              Gain a developer efficiency boost through software best practices
-              and processes that accelerate your time to market.
+              There’s nothing more practical than applying the right theory. We
+              have a track record in taking the best ideas from research and
+              successfully bringing them to market.
             </p>
           </li>
         </ul>
