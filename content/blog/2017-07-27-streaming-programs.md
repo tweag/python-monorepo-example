@@ -17,7 +17,7 @@ to enlightenment: streaming resources. Did you ever wonder what they
 are about? This post is an attempt at explaining why you'd want to
 think about this topic.
 
-# Streaming programs
+## Streaming programs
 
 Let's say we want to write a small utility that truncates any input to
 its topmost line. We can start with a pure function from input to
@@ -53,7 +53,7 @@ you end up with unmaintainable spaghetti. This is where streaming
 libraries can help: the idea is to define once and for all common
 patterns that enable building streaming _and_ compositional programs.
 
-# Writing a streaming program
+## Writing a streaming program
 
 Resuming our running example, we could make a streaming program from
 function `headLine` provided that we satisfy the following conditions:
@@ -139,7 +139,7 @@ So it turns out that we _can_ write a correct and streaming program.
 But it would be great if the type checker could help us verify
 the three conditions above.
 
-## Streaming with a streaming library
+### Streaming with a streaming library
 
 Streaming libraries are a great help to write correct streaming
 programs. There are many out there, but we'll focus here on
@@ -247,7 +247,7 @@ The call to
 will consume the effectful `ByteString` returned by `headLineStream`
 by printing it to the standard output.
 
-# Summary
+## Summary
 
 Streaming libraries support writing _composable_ streaming programs
 without relying on lazy I/O. This simplifies reasoning about the order

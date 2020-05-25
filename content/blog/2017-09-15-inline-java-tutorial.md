@@ -25,7 +25,7 @@ have.
 [This git repository](https://github.com/tweag/inline-java/tree/master/examples/hello) contains
 the minimal configuration necessary to try the examples that follow.
 
-# Invoking java methods
+## Invoking java methods
 
 Let's start with a simple program.
 
@@ -69,7 +69,7 @@ the [jni](https://www.stackage.org/package/jni) package. Finally, inline-java
 makes use of the package [jvm](https://www.stackage.org/package/jvm) to have
 the bytecode executed.
 
-# Marshalling values
+## Marshalling values
 
 Now, suppose we have some value in Haskell that we want to provide as
 an argument to a Java method.
@@ -133,7 +133,7 @@ As it was the case for antiquoted variables, the
 return type of the quasiquotation needs to be an instance of
 `Language.Java.Coercible a ty`.
 
-# Marshalling Java objects
+## Marshalling Java objects
 
 Coercing values is useful enough until we consider how to marshal values
 which do not have an obvious counterpart in Java. For instance, what do
@@ -205,7 +205,7 @@ main = withJVM [] $ do
     print (xs :: [Text])
 ```
 
-# Type checking
+## Type checking
 
 One of the strengths of `inline-java` is that it makes it difficult to
 get an ill-typed interaction between Haskell and Java. What if a
@@ -255,7 +255,7 @@ Java, involve a dynamic type check, which can fail if the objects are
 downcasted to the wrong type. In this sense, Haskell + Java is no
 safer than Java alone.
 
-# Summary
+## Summary
 
 In this blogpost we introduced quasiquotation, `Coercible` and the
 `Reify/Reflect` type classes. We saw that with inline-java, it's

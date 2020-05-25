@@ -22,7 +22,7 @@ me on a journey to sort a list:
 sortBy :: (a->a->Ordering) -> [a] -> [a]
 ```
 
-# What is reflection?
+## What is reflection?
 
 Type class reflection is an extension of Haskell which makes it
 possible to use a value as a type class instance. There is a [package
@@ -34,7 +34,7 @@ is, it can't be defined from other Haskell features), this
 implementation is GHC-specific and will probably not work with another
 compiler.
 
-# Literate Haskell
+## Literate Haskell
 
 This blog post was generated from literate Haskell sources. You can
 find an extracted Haskell source file [here][lhs-sources].
@@ -57,7 +57,7 @@ scary, I know. It is unfortunately required. It means that we could
 technically send the type checker into an infinite loop. Of course, we
 will be careful not to introduce such loops.
 
-# Sorted lists
+## Sorted lists
 
 My goal, today, is to sort a list. In order to make the exercise
 a tiny bit interesting, I will use types to enforce invariants. I'll
@@ -116,7 +116,7 @@ to take the ordering as an extra argument, we could change the order for
 each call of `merge`; we couldn't even state that `SortedList a` are
 sorted.
 
-# If it weren't for you meddling type classes
+## If it weren't for you meddling type classes
 
 That's it! we are done writing unsafe code. We can sort lists with the
 `SortedList` interface: we simply need to split the list in two parts,
@@ -224,7 +224,7 @@ dependency](https://wiki.haskell.org/Functional_dependencies). It is
 used by GHC to figure out which type class instance to use; we won't
 have to think about it.
 
-# Sorting with reflection
+## Sorting with reflection
 
 All that's left to do is to use reflection to give an `Ord` instance to
 `ReflectedOrd`. We need a dictionary for `Ord`: in order to build an
@@ -278,7 +278,7 @@ fromCompare ord = ReifiedOrd {
   reifiedCompare = ord }
 ```
 
-# Wrap up & further reading
+## Wrap up & further reading
 
 We've reached the end of our journey. And we've seen along the way that
 we can enjoy the safety of type classes, which makes it safe to write

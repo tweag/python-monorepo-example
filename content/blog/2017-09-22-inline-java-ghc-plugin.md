@@ -24,7 +24,7 @@ _vice versa_).
 [inline-java-tutorial]: ./2017-09-15-inline-java-tutorial.html
 [inline-java-stackage]: https://www.stackage.org/package/inline-java
 
-# Calling Java
+## Calling Java
 
 `inline-java` makes it possible to invoke code written in Java using
 a Haskell language feature known
@@ -66,7 +66,7 @@ Finally, `inline-java` makes use of the
 [`jvm`](https://www.stackage.org/package/jvm) package
 to have the bytecode executed.
 
-# Type safety
+## Type safety
 
 A notable characteristic of this approach is that we know at compile
 time if types are correct. We know that Java won't return an object if
@@ -114,7 +114,7 @@ Specifically, for inline-java to query the types that GHC inferred for
 the antiquoted variables, and also query the type of the entire
 quasiquotation.
 
-# Looking for the types
+## Looking for the types
 
 At first, it appears as if determining these types is trivial. There is
 a Template Haskell primitive called
@@ -154,7 +154,7 @@ neither of which is an attractive option.
 Eventually, we learnt that Template Haskell was not the only way to
 query the output of the type checker.
 
-# Enter GHC Core plugins
+## Enter GHC Core plugins
 
 The GHC compiler uses an explicitly typed intermediate language known as
 Core. All type applications of terms in Core are explicit, making it
@@ -216,7 +216,7 @@ the option `-fplugin=Language.Java.Inline.Plugin`. But this is only until
 Template Haskell learns
 [the ability to tell GHC which plugins to use](https://phabricator.haskell.org/D3821).
 
-# Summary
+## Summary
 
 By using a GHC plugin, we have simplified `inline-java` from a
 complicated spaghetti which sprung from attempting to use

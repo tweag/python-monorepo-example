@@ -17,7 +17,7 @@ by considering
 and uncover their potential to have the compiler enforce more
 properties statically.
 
-# Streaming today
+## Streaming today
 
 Streaming libraries provide abstractions to manipulate
 sequences of values which may not reside fully in memory, but which
@@ -86,7 +86,7 @@ one element has been extracted, processing should continue on the tail
 of the stream. Could the compiler help ensuring that we don't use
 invalid stream references?
 
-# Linear streams
+## Linear streams
 
 With linear types we introduce _multiplicity_ of values; not only does
 the type system track what sort of values we have, but also to which
@@ -139,7 +139,7 @@ error is caught at compile time!
 Moreover, the handle `h` can't be closed before invoking `fromHandle` or the
 typechecker would notice that the handle is used more than once.
 
-# Linear vs affine streams
+## Linear vs affine streams
 
 Linear types ensure both that the effects are not duplicated and the
 resources are properly freed. Do we really need the latter?
@@ -201,7 +201,7 @@ If we had a stream `s` which produces a sequence of linear values, the
 expression `take 0 s` would cause all of the values to be dropped, which
 the compiler would not stand.
 
-# Summary
+## Summary
 
 We have shown how linear types can prevent some forms of
 mistakes when writing streaming programs. This translates in fewer

@@ -26,7 +26,7 @@ To illustrate, we ran a topic analysis Haskell/Scala app applied to
 _all of English Wikipedia_ on 16 nodes (64 cores and 480GB RAM in
 total) simultaneously.
 
-# The application
+## The application
 
 We'll use topic modeling with [Latent Dirichlet Allocation (LDA)][lda]
 from our [last post][hello-sparkle] as a running example. The full
@@ -82,7 +82,7 @@ Amazon EMR too.
 [sparkle-lda]: https://github.com/tweag/sparkle/tree/master/apps/lda
 [stack-nix]: http://stack.readthedocs.io/en/stable/nix_integration/
 
-# On Databricks
+## On Databricks
 
 Think of Databricks as an IDE for analytics. You get,
 
@@ -135,7 +135,7 @@ make up the English language Wikipedia in 27 minutes**. And the
 [sparkle]: https://github.com/tweag/sparkle
 [sparkle-lda-wiki-results]: https://gist.github.com/mboes/8634b4e2ae1bd7e1002c98695694905d
 
-# On Amazon Elastic MapReduce
+## On Amazon Elastic MapReduce
 
 Alternatively, you can run the same `.jar` on Amazon Elastic MapReduce
 (EMR). Getting started with Amazon's EMR just requires an AWS account.
@@ -153,7 +153,7 @@ With those credentials in hand, the process is a matter of:
 
 [aws-emr]: https://console.aws.amazon.com/elasticmapreduce/home
 
-# What's next?
+## What's next?
 
 What we've shown in this post is that by packaging Haskell
 applications as standalone `.jar` files binding to industry standard

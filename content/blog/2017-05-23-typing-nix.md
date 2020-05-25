@@ -11,7 +11,7 @@ spending six months on devising a type system for the Nix language._
 
 [gofundme]: https://www.gofundme.com/typing-nix
 
-# Nix, the purely functional package manager
+## Nix, the purely functional package manager
 
 [Nix][nix] is a cross platform tool for managing the _configuration_
 (set of packages installed, `/etc/` config files etc) of your system.

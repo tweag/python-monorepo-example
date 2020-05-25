@@ -76,7 +76,7 @@ lightning-fast editor and shell experience.
 When entering a project directory your tools just appear, ready to
 use.
 
-# Using lorri
+## Using lorri
 
 lorri is used in two parts:
 

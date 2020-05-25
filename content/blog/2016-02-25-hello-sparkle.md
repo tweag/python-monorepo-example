@@ -15,7 +15,7 @@ Spark is a popular piece of the puzzle that leverages the huge [Hadoop ecosystem
 
 Today, Spark is already available to write scalable Scala, Java, R or Python applications. Haskell is a great language for writing clearly the kind of intricately complex algorithms common in analytics, **so we're throwing Haskell into the mix**. With Haskell, you get the benefit of a language and ecosystem ruthlessly focused on refactorability, backed by a state of the art optimizing native code compiler supporting SIMD intrinsics when you need them.
 
-# sparkle basics
+## sparkle basics
 
 So what is it like in practice? sparkle's "Hello World" on a hosted Amazon EMR cluster:
 
@@ -55,7 +55,7 @@ Spark goes far beyond your basic `map`, `filter` or `fold`: it also provides mod
 
 What sparkle does is provide bindings for the API of this middleware, along with a framework to conveniently write Spark based apps in Haskell and package them for distribution cluster-wide. There's a lot more that we can do with this than counting lines - in just a moment we'll have a look at a full scale machine learning example. But first let's take a quick peek under the hood.
 
-# Shipping functions across language boundaries and across machines
+## Shipping functions across language boundaries and across machines
 
 The core computational content of our app above is captured in the lambda passed to `filter. Note that once again, Spark may choose to perform the filtering over the dataset given a predicate on one or more remote nodes in the cluster, in parallel. But if it is an arbitrary closure, how does this one get shipped around the cluster? Does sparkle somehow know how to serialize closures into a sequence of bytes, hand it to Spark, and tell Spark how to deserialize this closure on the other end of the wire?
 
@@ -65,7 +65,7 @@ So operationally, Spark handles the input data, notices that our application is 
 
 It's a nice enough toy example, but we'll explore next how to use sparkle for a real machine learning use case.
 
-# Online Latent Dirichlet Allocation, from Haskell
+## Online Latent Dirichlet Allocation, from Haskell
 
 We'll try [this Scala application](https://gist.github.com/feynmanliang/3b6555758a27adcb527d) in Haskell. The goal: classify articles according to the overall topic they're likely to be covering (zoology? television? distributed computing?). The method we'll use for this is called Latent Dirichlet Allocation (LDA), as described [here](https://databricks.com/blog/2015/09/22/large-scale-topic-modeling-improvements-to-lda-on-spark.html) using Scala, but here's a one-sentence summary: given a collection of text documents, the algorithm tries to infer the different topics discussed in the said documents by looking at the distribution of words used in those documents. The "online" variation consists in learning an LDA model incrementally, instead of having to go through the entire collection of documents before it can give us a model. For the curious, this variation is described in [this paper](https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf).
 
@@ -159,11 +159,11 @@ world -> 0.009556332963292368
 .... (a bunch more topics)
 ```
 
-# Complete code and examples
+## Complete code and examples
 
 All the code for _sparkle_, including for the two demos from this blog post, is available [here](https://github.com/tweag/sparkle). The `apps/` folder contains the code for the demos while the `sparkle/` folder contains all the code that makes the demos work.
 
-# Where to from here?
+## Where to from here?
 
 We set out on a pragmatic mission: marry two different ecosystems that rarely cross over for a quick, painless but very robust solution to support common analytics workflows in Haskell. To do so we had to teach JVM to Haskell, and Haskell to the JVM. It turns out that doing so was nowhere near painless (more on that in the next post!), but quicker than scattering both communities' resources on reimplementing their own platforms for medium to large scale analytics. Do note that sparkle is still just a tech preview, but we can already realize these benefits:
 

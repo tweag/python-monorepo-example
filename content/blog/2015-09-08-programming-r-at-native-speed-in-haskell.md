@@ -75,7 +75,7 @@ in the Haskell world with [ghclive](https://github.com/shapr/ghclive/)
 and Manuel Chakravarty realized more recently on OS X with
 [Haskell for Mac](http://haskellformac.com/).
 
-# Charts, code, prose and formulas in a playground
+## Charts, code, prose and formulas in a playground
 
 HaskellR features two interactive prompts:
 
@@ -182,7 +182,7 @@ common cases, we can do so with no marshalling at all, so you can
 cross the language boundaries repeatedly in a tight loop with impunity
 if you like.
 
-# Elements of design
+## Elements of design
 
 The core idea behind **HaskellR** is that language interop should be
 zero-cost, or close to. There should be no reason why you would
@@ -248,7 +248,7 @@ There's plenty more to talk about regarding the design of
 **HaskellR**, but this post is already getting long, so we'll keep
 a few topics for next time.
 
-# Future work
+## Future work
 
 In the meantime, there's plenty more to work on, so feel free to jump
 in and contribute to the project. In the end what **HaskellR**

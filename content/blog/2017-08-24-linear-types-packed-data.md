@@ -22,7 +22,7 @@ following datatype:
 data Tree = Branch Tree Tree | Leaf Int
 ```
 
-# Network communication and serialization
+## Network communication and serialization
 
 Say I have one such `Tree`. And suppose that I want to use a service,
 on a different machine across the network, that adds `1` to all the
@@ -47,7 +47,7 @@ This goes to show that it should be no surprise when overhead of
 serialization and deserialization in a distributed application is
 significant. It can even become the main bottleneck.
 
-# Compact normal forms
+## Compact normal forms
 
 To overcome this, [compact normal forms][cnf] were introduced in GHC
 8.2. The idea is to dispense with the specialised serialized representation
@@ -88,7 +88,7 @@ get two additional benefits from compact normal forms:
   the garbage collector means both more predictable latencies and
   better throughput.
 
-# Programming with serialized representations
+## Programming with serialized representations
 
 Compact normal forms save a lot of copies. But they still _impose_ one
 copy as `compact` is the only way to introduce a compact value. To

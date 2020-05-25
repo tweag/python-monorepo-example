@@ -31,7 +31,7 @@ a smaller memory footprint in Haskell, and give you a preview of what
 you might expect in your favourite compiler in the not-so-distant
 future.
 
-# A bit of history
+## A bit of history
 
 Once upon a time, Jean-Yves Girard was playing with ways to describe
 the semantics of a λ-calculus with types, when he realised that from
@@ -40,7 +40,7 @@ type (the type for functions): it could be described in terms of two
 simpler constructions. He followed this thread through and came up
 with a strange beast he called _linear logic_.
 
-## Two of everything
+### Two of everything
 
 Linear logic had two of everything: two ways of building conjunctions
 and disjunctions, two notions of truth, falsehood and two ways to
@@ -58,7 +58,7 @@ not zero times: just once. It turns out that this property, which has
 come to be known as _linearity_, is very useful for compilers of
 functional programs.
 
-## Typing resources
+### Typing resources
 
 Programming language researchers quickly took notice. It was not long
 before [Yves Lafont][lafont] proposed a language with safe memory
@@ -81,7 +81,7 @@ a system of ownership which is not unlike Clean's uniqueness types.
 Both are complex systems that permeate the entire language and
 ecosystem in ways that make the learning curve pretty steep.
 
-## Linear types as an extension
+### Linear types as an extension
 
 What if you could enjoy all your favourite goodies from your favourite
 programming language, and yet be able to leverage linear types for
@@ -97,7 +97,7 @@ be grafted to your favourite functional language at no cost for the
 programmer. We're working on GHC, but this would work just as well in
 your favourite ML flavour.
 
-# So why are we doing this?
+## So why are we doing this?
 
 Among our many projects, we are working together
 with [Seagate][seagate] and a number of consortium partners on
@@ -146,7 +146,7 @@ bugs where some component doesn't respect the protocol that was agreed
 upon with others. We don't talk about that much in the paper, but
 we'll touch on that here.
 
-# What it will look like
+## What it will look like
 
 Let's start slow, with the `fst` function projecting the first
 component from a pair:
@@ -300,7 +300,7 @@ One thing that the article does not have, however, is a good
 description of how our prototype implementation (and type inference)
 works.
 
-# Did you say prototype?
+## Did you say prototype?
 
 Yes! There is a [branch of GHC][prototype] where we are implementing
 the above proposal. At the time of writing the prototype is still

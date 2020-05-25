@@ -60,7 +60,7 @@ publicly and boundless custom enterprise developments.
 [inline-r]: http://tweag.github.io/HaskellR/
 [ghcjs]: https://github.com/ghcjs/ghcjs
 
-# How it works
+## How it works
 
 The key enabler to talking to Java and all the other JVM languages
 from Haskell is that Haskell speaks C and the JVM speaks C. That is,
@@ -82,7 +82,7 @@ we wrote near complete bindings to all of the JNI, using
 
 [jni]: https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html
 
-## Calling into the JVM, the hard way
+### Calling into the JVM, the hard way
 
 We could just expose the raw JNI API in Haskell and call it a day.
 Using raw JNI calls to invoke say a static Java method called `foo`,
@@ -111,7 +111,7 @@ a toolkit for invoking JVM methods more conveniently and robustly.
 
 [jni-typesigs]: http://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/types.html#type_signatures
 
-## Using Haskell types for safer JVM calls
+### Using Haskell types for safer JVM calls
 
 There are two downsides to the raw JNI calls we saw above:
 
@@ -248,7 +248,7 @@ call :: (SingI ty, SingI tyr)
 
 [haskell-jvm-docs]: https://stackage.org/package/jvm
 
-## JVM calls the Java way
+### JVM calls the Java way
 
 `call` and `callStatic` are surprisingly versatile facilities for
 calling arbitrary JVM methods with an arbitrary number of boxed or
@@ -297,7 +297,7 @@ a journey in [compiler hacking][addmodfinalizer-local],
 [ghc-heap-view]: https://www.stackage.org/package/ghc-heap-view
 [static-pointers]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#static-pointers
 
-# The road ahead
+## The road ahead
 
 There are plenty of solutions out there for lightweight interop across
 languages. You can start by swapping JSON messages between separate

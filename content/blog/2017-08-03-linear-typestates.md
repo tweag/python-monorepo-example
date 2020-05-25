@@ -26,7 +26,7 @@ a ready-made Docker image, so you don't have to compile GHC yourself
 just to play with linear types. It's all in the `README`: check it
 out!
 
-# I/O states, in your types
+## I/O states, in your types
 
 Say you want to communicate across a network. You use
 the [socket][socket-library] library. You open the documentation and find that to
