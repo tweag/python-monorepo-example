@@ -16,7 +16,7 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <SEO title="Engineering Blog" />
-      <section className="section-area">
+      <section className="section s_white section-area">
         <div className="services-section Blog-content Blog-home viewport-section">
           <div className="text-area">
             <div className="section-title">Blog</div>

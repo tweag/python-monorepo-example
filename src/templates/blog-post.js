@@ -14,7 +14,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article className="section-area">
+      <article className="section s_white section-area">
         <header className="services-section opensource1 Blog-content viewport-section">
           <div className="text-area">
             <div className="section-title">
