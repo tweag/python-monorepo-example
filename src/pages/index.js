@@ -23,7 +23,7 @@ const IndexPage = ({ data, location }) => {
       <SEO title="Software innovation lab" />
       <div id="fullpage">
         <div className="section section01">
-          <div className="visual-area section-wrap">
+          <div className="visual-area section-wrap head1">
             <div className="container fullp animation-wrap">
               <div className="visual-holder">
                 <div className="image-holder">
