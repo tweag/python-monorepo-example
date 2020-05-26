@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Typed from "react-typed"
 
 import Footer from "../components/footer"
 import KeyIndustries from "../components/keyindustries"
@@ -40,7 +41,13 @@ const IndexPage = ({ data, location }) => {
                   </video>
                 </div>
                 <div className="visual-caption">
-                  <h1 className="typeit">SCALE YOUR ENGINEERING POWER.</h1>
+                  <h1 className="typeit">
+                    <Typed
+                      strings={["SCALE YOUR ENGINEERING POWER."]}
+                      typeSpeed={50}
+                      showCursor={false}
+                    />
+                  </h1>
                   <p>
                     We enable deep tech startups to achieve their vision, from
                     research to product delivery.
