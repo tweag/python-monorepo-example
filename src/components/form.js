@@ -1,7 +1,6 @@
 export function submitForm(e) {
     console.log('submitting now');
     e.preventDefault()
-    return
 
     // Create the new request 
     var portalid = '6929938';
