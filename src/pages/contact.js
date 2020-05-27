@@ -24,11 +24,29 @@ const ContactPage = () => {
           <div class="section s_yellow services-section contact_field viewport-section">
             <div class="text-wrap text-area">
               <label>Email*</label>
-              <input name="email" type="text" placeholder="myemail@xyz.com" />
+              <input
+                name="email"
+                type="text"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'myemail@example.com'"
+                placeholder="myemail@example.com"
+              />
               <label>Company*</label>
-              <input name="company" type="text" placeholder="My Company" />
+              <input
+                name="company"
+                type="text"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'My Company'"
+                placeholder="My Company"
+              />
               <label>Website*</label>
-              <input name="website" type="text" placeholder="http://" />
+              <input
+                name="website"
+                type="text"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'https://'"
+                placeholder="https://"
+              />
             </div>
           </div>
           <div class="section s_white services-section contact_field viewport-section">

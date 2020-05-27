@@ -1129,15 +1129,9 @@ h3 {
   text-align: center;
 }
 .partners-list .logo-wrap img {
-  display: block;
-}
-.partners-list a {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-}
-.partners-list a:hover {
-  opacity: 0.7;
 }
 .vision-area5 {
   background: $color_11;
@@ -1446,6 +1440,7 @@ h3 {
   margin-top: 20px;
   color: $color_2;
   border-color: $color_2;
+  height: auto;
 }
 .about-section.learnmore .btn:hover {
   margin-top: 20px;
@@ -2142,8 +2137,8 @@ img.uc_rotate {
     padding: 20px;
   }
   .visual-holder .image-holder {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2151,8 +2146,8 @@ img.uc_rotate {
     transform: translateY(300px);
   }
   .visual-holder .visual-caption {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2162,8 +2157,8 @@ img.uc_rotate {
     transition-delay: 0.8s;
   }
   .contactus-holder .image-col {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2171,19 +2166,19 @@ img.uc_rotate {
     transform: translateY(300px);
   }
   .contactus-holder .text-area {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
     -ms-transform: translateY(300px);
     transform: translateY(300px);
-    -webkit-transition-delay: 0.9s;
-    transition-delay: 0.9s;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
   }
   .col-area h2 {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2191,8 +2186,8 @@ img.uc_rotate {
     transform: translateY(300px);
   }
   .col-area .info-col {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2212,8 +2207,8 @@ img.uc_rotate {
     transition-delay: 0.9s;
   }
   .joinus-holder .text-wrap {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2221,8 +2216,8 @@ img.uc_rotate {
     transform: translateY(300px);
   }
   .joinus-holder .image-holder {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateX(300px);
@@ -2232,8 +2227,8 @@ img.uc_rotate {
     transition-delay: 0.9s;
   }
   .partners-area h2 {
-    -webkit-transition: all 0.4s ease 0.6s;
-    transition: all 0.4s ease 0.6s;
+    -webkit-transition: all 0.4s ease 0.3s;
+    transition: all 0.4s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2241,8 +2236,8 @@ img.uc_rotate {
     transform: translateY(300px);
   }
   .partners-list li {
-    -webkit-transition: all 0.4s ease 0.6s;
-    transition: all 0.4s ease 0.6s;
+    -webkit-transition: all 0.4s ease 0.3s;
+    transition: all 0.4s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2282,8 +2277,8 @@ img.uc_rotate {
     transition-delay: 1.7s;
   }
   .vision-holder .image-holder {
-    -webkit-transition: all 1.9s ease 0.6s;
-    transition: all 1.9s ease 0.6s;
+    -webkit-transition: all 1.9s ease 0.3s;
+    transition: all 1.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateX(300px);
@@ -2293,8 +2288,8 @@ img.uc_rotate {
     transition-delay: 0.9s;
   }
   .vision-holder .text-col {
-    -webkit-transition: all 0.9s ease 0.6s;
-    transition: all 0.9s ease 0.6s;
+    -webkit-transition: all 0.9s ease 0.3s;
+    transition: all 0.9s ease 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(300px);
@@ -2322,8 +2317,8 @@ img.uc_rotate {
     transform: translateX(300px);
     -webkit-transition: all 0.9s ease;
     transition: all 0.9s ease;
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
     opacity: 0;
     visibility: hidden;
   }
@@ -2393,8 +2388,16 @@ img.uc_rotate {
     margin: 80px 0 80px 0;
   }
   .services-section .image-holder {
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+  .services-section .image-holder2 {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+  .services-section .image-holder3 {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
   }
   .services-section.in-viewport .text-area,
   .services-section.in-viewport .image-holder,
@@ -2424,8 +2427,8 @@ img.uc_rotate {
     visibility: hidden;
   }
   .method-area .text-area {
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
   }
   .method-area.in-viewport .text-area,
   .method-area.in-viewport .image-holder {
@@ -2468,8 +2471,8 @@ img.uc_rotate {
     width: 70%;
   }
   .about-section .image-holder {
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
   }
   .about-section.in-viewport .text-area,
   .about-section.in-viewport .image-holder {
@@ -2522,7 +2525,7 @@ img.uc_rotate {
 
   .visual-holder .image-holder video {
     display: block;
-    width: 85%;
+    width: 105%;
     height: auto;
   }
 }
@@ -2536,9 +2539,6 @@ img.uc_rotate {
   }
   .joinus-holder .text-wrap {
     margin-left: 80px;
-  }
-  h1.typeit {
-    min-height: 230px;
   }
   .posts-holder.image-holder {
     margin-top: 0;
@@ -2634,6 +2634,10 @@ img.uc_rotate {
   .section-wrap.key_indus {
     padding: 70px 35px;
   }
+  .services-section.opensource .text-area {
+    width: 52%;
+    margin: 80px 0 30px;
+  }
   .services-section.opensource1 .text-area {
     width: 70%;
     margin: 0 0 30px;
@@ -2720,7 +2724,7 @@ img.uc_rotate {
     padding: 0;
   }
   .container {
-    padding: 0 15px;
+    padding: 0 60px;
   }
   .vision-area.home-vision .container {
     padding: 0;
@@ -2802,9 +2806,6 @@ img.uc_rotate {
   }
   .section-wrap {
     padding: 100px 0;
-  }
-  h1 {
-    font-size: $font_7;
   }
   h2 {
     font-size: $font_5;
