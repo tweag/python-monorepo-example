@@ -1,11 +1,14 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import { submitForm } from "../components/form"
 
 const ContactPage = () => {
   return (
     <Layout>
       <section class="section-area contact">
+        <form name="contact" data-netlify-honeypot="bot-field"
+          data-netlify="true" onSubmit={submitForm}>
         <div class="section s_white services-section viewport-section">
           <div class="text-area">
             <h1>
@@ -26,13 +29,14 @@ const ContactPage = () => {
         <div class="section s_white services-section contact_field viewport-section">
           <div class="text-wrap text-area">
             <label>Your message</label>
-            <textarea>Write your message</textarea>
-            <a class="btn" href="#">
+            <textarea placeholder="Write your message"></textarea>
+            <button class="btn" type="submit">
               Send message
-            </a>
+            </button>
           </div>
         </div>
         <div class="line_sep"></div>
+      </form>
       </section>
       <div class="section s_white section-wrap services-section contact_addr viewport-section">
         <div class="text-wrap text-area">
