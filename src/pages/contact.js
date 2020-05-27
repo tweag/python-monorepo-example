@@ -7,37 +7,48 @@ const ContactPage = () => {
   return (
     <Layout>
       <section class="section-area contact">
-        <form id="contactform" name="contact" data-netlify-honeypot="bot-field"
-          data-netlify="true" onSubmit={submitForm}>
-        <div class="section s_white services-section viewport-section">
-          <div class="text-area">
-            <h1>
-              <i></i> GET IN TOUCH.
-            </h1>
+        <form
+          id="contactform"
+          name="contact"
+          data-netlify-honeypot="bot-field"
+          data-netlify="true"
+          onSubmit={submitForm}
+        >
+          <div class="section s_white services-section viewport-section">
+            <div class="text-area">
+              <h1>
+                <i></i> GET IN TOUCH.
+              </h1>
+            </div>
           </div>
-        </div>
-        <div class="section s_yellow services-section contact_field viewport-section">
-          <div class="text-wrap text-area">
-            <label>Email*</label>
-            <input name="email" type="text" placeholder="myemail@xyz.com" />
-            <label>Company*</label>
-            <input name="company" type="text" placeholder="My Company" />
-            <label>Website*</label>
-            <input name="website" type="text" placeholder="http://" />
+          <div class="section s_yellow services-section contact_field viewport-section">
+            <div class="text-wrap text-area">
+              <label>Email*</label>
+              <input name="email" type="text" placeholder="myemail@xyz.com" />
+              <label>Company*</label>
+              <input name="company" type="text" placeholder="My Company" />
+              <label>Website*</label>
+              <input name="website" type="text" placeholder="http://" />
+            </div>
           </div>
-        </div>
-        <div class="section s_white services-section contact_field viewport-section">
-          <div class="text-wrap text-area">
-            <label>Your message</label>
-            <textarea name="message" placeholder="Write your message"></textarea>
-            <button class="btn" type="submit">
-              Send message
-            </button>
-            <p id="formmessage" style={{visibility:"hidden"}}> Placeholder </p>
+          <div class="section s_white services-section contact_field viewport-section">
+            <div class="text-wrap text-area">
+              <label>Your message</label>
+              <textarea
+                name="message"
+                placeholder="Write your message"
+              ></textarea>
+              <button class="btn" type="submit">
+                Send message
+              </button>
+              <p id="formmessage" style={{ visibility: "hidden" }}>
+                {" "}
+                Placeholder{" "}
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="line_sep"></div>
-      </form>
+          <div class="line_sep"></div>
+        </form>
       </section>
       <div class="section s_white section-wrap services-section contact_addr viewport-section">
         <div class="text-wrap text-area">
