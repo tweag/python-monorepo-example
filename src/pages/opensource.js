@@ -18,10 +18,10 @@ const Manifesto = () => {
           <h1>COMMITED TO OPEN SOURCE AND ADVANCING KNOWLEDGE.</h1>
           <div className="text-wrap">
             <p>
-              Open source is how we roll. 60% of our team were for a time in
-              academia, where this is the norm. Today, open source is also
-              becoming the norm for many companies that want to attract the
-              highest levels of engineering talent.
+              Open source is how we roll. 60% of our team are from academia,
+              where open source is the norm. Open source is becoming the norm
+              for companies that want to attract the highest levels of
+              engineering talent.
             </p>
             <p>
               Why?{" "}
