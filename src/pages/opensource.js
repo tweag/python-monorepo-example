@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
+
+import CallToAction from "../components/cta"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -171,6 +173,9 @@ const OpenSourcePage = () => {
               to learn more
             </p>
           </div>
+        </div>
+        <div className="section s_grey section06a viewport-section">
+          <CallToAction backdropIndex={5} />
         </div>
       </section>
     </Layout>

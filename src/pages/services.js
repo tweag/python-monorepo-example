@@ -1,5 +1,6 @@
 import React from "react"
 
+import CallToAction from "../components/cta"
 import KeyIndustries from "../components/keyindustries"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -121,6 +122,9 @@ const ServicesPage = () => {
       </div>
       <div className="line_sep"></div>
       <KeyIndustries />
+      <div className="section s_orange section06a viewport-section">
+        <CallToAction areaIndex={2} backdropIndex={3} />
+      </div>
     </Layout>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react"
 
+import CallToAction from "../../components/cta"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 
@@ -119,6 +120,9 @@ const PfizerPage = () => {
             <img class="uc_rotate" src={imgVertical2} alt="" />
             <img src={imgVertical2} alt="" />
           </div>
+        </div>
+        <div className="section s_green section06a viewport-section">
+          <CallToAction backdropIndex={8} />
         </div>
       </section>
     </Layout>
