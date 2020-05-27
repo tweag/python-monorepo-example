@@ -184,8 +184,8 @@ group by topological space ([topological group][topological-group-link]) or by s
 ([Lie group][lie-group-link]).
 
 [Enriched category theory][enriched-cat-wiki] is about playing this game on the definition
-of categories itself: a category enriched in \\(\mathcal{C}\\) has a collection of
-objects and objects-of-\\(\mathcal{C}\\) of morphisms between them.
+of categories itself: a category enriched in $\mathcal{C}$ has a collection of
+objects and objects-of-$\mathcal{C}$ of morphisms between them.
 
 For instance, we can consider categories enriched in [abelian groups][abelian-group-link]:
 between each pair of objects there is an abelian group of morphisms. In
@@ -209,11 +209,11 @@ functors are enriched because “Set-enriched functor” means the same as
 “regular functor”. That's why Haskell without linear types doesn't
 need a separate enriched functor type class.
 
-In the category of abelian groups, the functor which maps \\(A\\) to
-\\(A\otimes A\\) is an example of a functor which is not enriched: the
-map from \\(A → B\\) to \\(A\otimes A → B\otimes B\\), which maps \\(f\\) to
-\\(f\otimes f\\) is not a group morphism. But the functor from \\(A\\) to
-\\(A\oplus A\\) is.
+In the category of abelian groups, the functor which maps $A$ to
+$A\otimes A$ is an example of a functor which is not enriched: the
+map from $A → B$ to $A\otimes A → B\otimes B$, which maps $f$ to
+$f\otimes f$ is not a group morphism. But the functor from $A$ to
+$A\oplus A$ is.
 
 Control functors are the enriched functors of the category of linear
 functions, while data functors are the regular functors.

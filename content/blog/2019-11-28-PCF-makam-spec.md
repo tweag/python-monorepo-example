@@ -109,10 +109,10 @@ A, B ≔ Num ~|~ A → B \\\\[5pt]
 s, ~ t, ~ u ≔ x ~|~ s ~ t ~|~ λx.s ~|~ fix ~ x.s ~|~ zero ~|~ succ(s) ~|~ \text{case} ~ s ~ \text{of} ~ \\{ 0 ⇒ t ~ ; ~ succ(x) ⇒ u \\}
 $$
 
-... where a type (noted \\(A\\), \\(B\\), ...) can be either a \\(Num\\),
-representing numbers, or an arrow \\(→\\) from one type to another, representing functions.
-On the other side, a term (noted \\(s\\), \\(t\\), ...) can be a variable (\\(x\\)),
-an application of two terms, a lambda abstraction (\\(λ\\)), a recursive term (\\(fix\\)),
+... where a type (noted $A$, $B$, ...) can be either a $Num$,
+representing numbers, or an arrow $→$ from one type to another, representing functions.
+On the other side, a term (noted $s$, $t$, ...) can be a variable ($x$),
+an application of two terms, a lambda abstraction ($λ$), a recursive term ($fix$),
 zero, the successor of a term or a case over a term to handle numbers.
 
 Now, let's see how to write this in Makam:
@@ -202,7 +202,7 @@ over which the Makam interpreter can look for a proof. Let's go over a few of th
   variables, which means they'll match with anything that makes the bit after `:-` true. In this
   case, `N` must be a `term` with type `num`.
 - Now, look at `typeof (lam S) (arrow A B)`. Since we don't have variables anymore, we can't
-  have a context like \\(Γ\\); we need something else. Let's read it together: `x: term ->` introduces
+  have a context like $Γ$; we need something else. Let's read it together: `x: term ->` introduces
   a fresh `term`, called `x`. You can assume that `x` has type `A`
   (`typeof x A ->`). And you need to show that `S x` has type `B`.
 
@@ -213,7 +213,7 @@ since we don't have to deal with the context bureaucracy at all in Makam.
 
 Now, in case you were wondering why this is useful, if you load this into the Makam interpreter,
 you can ask it for the type of any expression.
-Let's try with \\(λx. \text{case} ~ x ~ \text{of} ~ \\{ 0 ⇒ succ(zero) ~ ; ~ succ(y) ⇒ zero \\} \\):
+Let's try with $λx. \text{case} ~ x ~ \text{of} ~ \\{ 0 ⇒ succ(zero) ~ ; ~ succ(y) ⇒ zero \\} $:
 
 ```haskell
 typeof (lam (fun x => case x (succ zero) (fun _ => zero))) Ty ?
@@ -230,8 +230,8 @@ Ty := arrow num num.
 Finally, we can give meaning to our PCF formalization
 by defining operational semantics rules. Remember that only closed terms
 that actually type check reach this point. The final result is always a value,
-which can either be a number of the form \\(succ(succ(...succ(zero)))\\)
-(with zero or more \\(succ\\)s) or a λ-abstraction.
+which can either be a number of the form $succ(succ(...succ(zero)))$
+(with zero or more $succ$s) or a λ-abstraction.
 
 <!-- TODO: Reorder this figure once it's reviewed -->
 
@@ -277,7 +277,7 @@ but let's still go through some of the cases:
 
 - `eval (fix S) V` tells us that `fix S` evaluates to a value `V`,
   when `S`, substituting its abstracted variable with `fix S`, evaluates to `V`,
-  very similarly to \\(ε\text{-}fix\\) above.
+  very similarly to $ε\text{-}fix$ above.
 - Notice how we have two cases for `case` expressions, one that only applies
   if the number evaluates to `zero`, and the other if the number evaluates to
   the successor of another number.

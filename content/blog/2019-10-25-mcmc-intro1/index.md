@@ -42,11 +42,11 @@ Now that we know why we want to sample, let's get to the heart of MCMC: Markov c
 What is a Markov chain? Without all the technical details, a Markov chain is a random sequence of states in some state space in which the probability of picking a certain state next depends only on the current state in the chain and not on the previous history: it is memory-less.
 Under certain conditions, a Markov chain has a unique stationary distribution of states to which it converges after a certain number of states. From that number on, states in the Markov chain are distributed according to the invariant distribution.
 
-In order to sample from a distribution \\(\pi(x)\\), a MCMC algorithm constructs and simulates a Markov chain whose stationary distribution is \\(\pi(x)\\), meaning that, after an initial "burn-in" phase, the states of that Markov chain are distributed according to \\(\pi(x)\\).
-We thus just have to store the states to obtain samples from \\(\pi(x)\\).
+In order to sample from a distribution $\pi(x)$, a MCMC algorithm constructs and simulates a Markov chain whose stationary distribution is $\pi(x)$, meaning that, after an initial "burn-in" phase, the states of that Markov chain are distributed according to $\pi(x)$.
+We thus just have to store the states to obtain samples from $\pi(x)$.
 
 For didactic purposes, let's for now consider both a discrete state space and discrete "time".
-The key quantity characterizing a Markov chain is the transition operator \\(T(x*{i+1}|x_i)\\) which gives you the probability of being in state \\(x*{i+1}\\) at time \\(i+1\\) given that the chain is in state \\(x_i\\) at time \\(i\\).
+The key quantity characterizing a Markov chain is the transition operator $T(x*{i+1}|x_i)$ which gives you the probability of being in state $x*{i+1}$ at time $i+1$ given that the chain is in state $x_i$ at time $i$.
 
 Now just for fun (and for illustration), let's quickly whip up a Markov chain which has a unique stationary distribution.
 We'll start with some imports and settings for the plots:
@@ -114,61 +114,61 @@ plt.show()
 
 ## The mother of all MCMC algorithms: Metropolis-Hastings
 
-So that's lots of fun, but back to sampling an arbitrary probability distribution \\(\pi\\).
-It could either be discrete, in which case we would keep talking about a transition matrix \\(T\\), or be continuous, in which case \\(T\\) would be a transition _kernel_.
+So that's lots of fun, but back to sampling an arbitrary probability distribution $\pi$.
+It could either be discrete, in which case we would keep talking about a transition matrix $T$, or be continuous, in which case $T$ would be a transition _kernel_.
 From now on, we're considering continuous distributions, but all concepts presented here transfer to the discrete case.
 
-If we could design the transition kernel in such a way that the next state is already drawn from \\(\pi\\), we would be done, as our Markov chain would... well... immediately sample from \\(\pi\\).
-Unfortunately, to do this, we need to be able to sample from \\(\pi\\), which we can't.
+If we could design the transition kernel in such a way that the next state is already drawn from $\pi$, we would be done, as our Markov chain would... well... immediately sample from $\pi$.
+Unfortunately, to do this, we need to be able to sample from $\pi$, which we can't.
 Otherwise you wouldn't be reading this, right?
 
-A way around this is to split the transition kernel \\(T(x*{i+1}|x_i)\\) into two parts:
+A way around this is to split the transition kernel $T(x*{i+1}|x_i)$ into two parts:
 a proposal step and an acceptance/rejection step.
-The proposal step features a proposal distribution \\(q(x*{i+1}|x*i)\\), from which we can sample possible next states of the chain.
+The proposal step features a proposal distribution $q(x*{i+1}|x*i)$, from which we can sample possible next states of the chain.
 In addition to being able to sample from it, we can choose this distribution arbitrarily. But, one should strive to design it such that samples from it are both as little correlated with the current state as possible and have a good chance of being accepted in the acceptance step.
-Said acceptance/rejection step is the second part of the transition kernel and corrects for the error introduced by proposal states drawn from \\(q \neq \pi\\).
-It involves calculating an acceptance probability \\(p*\mathrm{acc}(x*{i+1}|x_i)\\) and accepting the proposal \\(x*{i+1}\\) with that probability as the next state in the chain.
-Drawing the next state \\(x*{i+1}\\) from \\(T(x*{i+1}|x*i)\\) is then done as follows:
-first, a proposal state \\(x*{i+1}\\) is drawn from \\(q(x*{i+1}|x_i)\\).
-It is then accepted as the next state with probability \\(p*\mathrm{acc}(x*{i+1}|x_i)\\) or rejected with probability \\(1-p*\mathrm{acc}(x\_{i+1}|x_i)\\), in which case the current state is copied as the next state.
+Said acceptance/rejection step is the second part of the transition kernel and corrects for the error introduced by proposal states drawn from $q \neq \pi$.
+It involves calculating an acceptance probability $p*\mathrm{acc}(x*{i+1}|x_i)$ and accepting the proposal $x*{i+1}$ with that probability as the next state in the chain.
+Drawing the next state $x*{i+1}$ from $T(x*{i+1}|x*i)$ is then done as follows:
+first, a proposal state $x*{i+1}$ is drawn from $q(x*{i+1}|x_i)$.
+It is then accepted as the next state with probability $p*\mathrm{acc}(x*{i+1}|x_i)$ or rejected with probability $1-p*\mathrm{acc}(x\_{i+1}|x_i)$, in which case the current state is copied as the next state.
 
 We thus have
 
 $$
-T(x_{i+1}|x_i)=q(x_{i+1} | x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) \ \mbox .
+T(x_{i+1}|x_i)=q(x_{i+1} | x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) \ \text .
 $$
 
-A sufficient condition for a Markov chain to have \\(\pi\\) as its stationary distribution is the transition kernel obeying _detailed balance_ or, in the physics literature, _microscopic reversibility_:
+A sufficient condition for a Markov chain to have $\pi$ as its stationary distribution is the transition kernel obeying _detailed balance_ or, in the physics literature, _microscopic reversibility_:
 
 $$
 \pi(x_i) T(x_{i+1}|x_i) = \pi(x_{i+1}) T(x_i|x_{i+1})
 $$
 
-This means that the probability of being in a state \\(x*i\\) and transitioning to \\(x*{i+1}\\) must be equal to the probability of the reverse process, namely, being in state \\(x\_{i+1}\\) and transitioning to \\(x_i\\).
+This means that the probability of being in a state $x*i$ and transitioning to $x*{i+1}$ must be equal to the probability of the reverse process, namely, being in state $x\_{i+1}$ and transitioning to $x_i$.
 Transition kernels of most MCMC algorithms satisfy this condition.
 
-For the two-part transition kernel to obey detailed balance, we need to choose \\(p*\mathrm{acc}\\) correctly, meaning that is has to correct for any asymmetries in probability flow from / to \\(x*{i+1}\\) or \\(x_i\\).
+For the two-part transition kernel to obey detailed balance, we need to choose $p*\mathrm{acc}$ correctly, meaning that is has to correct for any asymmetries in probability flow from / to $x*{i+1}$ or $x_i$.
 Metropolis-Hastings uses the Metropolis acceptance criterion:
 
 $$
-p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\\{1, \frac{\pi(x_{i+1}) \times q(x_i|x_{i+1})}{\pi(x_i) \times q(x_{i+1}|x_i)} \right\\} \ \mbox .
+p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\{1, \frac{\pi(x_{i+1}) \times q(x_i|x_{i+1})}{\pi(x_i) \times q(x_{i+1}|x_i)} \right\} \ \text .
 $$
 
 Now here's where the magic happens:
-we know \\(\pi\\) only up to a constant, but it doesn't matter, because that unknown constant cancels out in the expression for \\(p*\mathrm{acc}\\)!
-It is this property of \\(p*\mathrm{acc}\\) which makes algorithms based on Metropolis-Hastings work for unnormalized distributions.
-Often, symmetric proposal distributions with \\(q(x*i|x*{i+1})=q(x\_{i+1}|x_i)\\) are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
+we know $\pi$ only up to a constant, but it doesn't matter, because that unknown constant cancels out in the expression for $p*\mathrm{acc}$!
+It is this property of $p*\mathrm{acc}$ which makes algorithms based on Metropolis-Hastings work for unnormalized distributions.
+Often, symmetric proposal distributions with $q(x*i|x*{i+1})=q(x\_{i+1}|x_i)$ are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
 
 $$
-p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\\{1, \frac{\pi(x_{i+1})}{\pi(x_i)} \right\\} \ \mbox .
+p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\{1, \frac{\pi(x_{i+1})}{\pi(x_i)} \right\} \ \text .
 $$
 
 We can then write the complete Metropolis-Hastings transition kernel as
 
 $$
 T(x_{i+1}|x_i) = \begin{cases}
-                   q(x_{i+1}|x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) &: x_{i+1} \neq x_i \mbox ; \\\\
-                   1 - \int \mathrm{d}x_{i+1} \ q(x_{i+1}|x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) &: x_{i+1} = x_i\mbox .
+                   q(x_{i+1}|x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) &: x_{i+1} \neq x_i \text ; \\\\
+                   1 - \int \mathrm{d}x_{i+1} \ q(x_{i+1}|x_i) \times p_\mathrm{acc}(x_{i+1}|x_i) &: x_{i+1} = x_i\text .
                  \end{cases}
 $$
 
@@ -183,7 +183,7 @@ def log_prob(x):
 ```
 
 Next, we choose a symmetric proposal distribution. Generally, including information you have about the distribution you want to sample from in the proposal distribution will lead to better performance of the Metropolis-Hastings algorithm.
-A naive approach is to just take the current state \\(x\\) and pick a proposal from \\(\mathcal{U}(x-\frac{\Delta}{2}, x+\frac{\Delta}{2})\\), that is, we set some step size \\(\Delta\\) and move left or right a maximum of \\(\frac{\Delta}{2}\\) from our current state:
+A naive approach is to just take the current state $x$ and pick a proposal from $\mathcal{U}(x-\frac{\Delta}{2}, x+\frac{\Delta}{2})$, that is, we set some step size $\Delta$ and move left or right a maximum of $\frac{\Delta}{2}$ from our current state:
 
 ```python
 def proposal(x, stepsize):
@@ -290,7 +290,7 @@ Looks great!
 
 Now, what's up with the parameters `stepsize` and `n_total`?
 We'll discuss the step size first: it determines how far away a proposal state can be from the current state of the chain.
-It is thus a parameter of the proposal distribution \\(q\\) and controls how big the random steps are which the Markov chain takes.
+It is thus a parameter of the proposal distribution $q$ and controls how big the random steps are which the Markov chain takes.
 If the step size is too large, the proposal state will often be in the tails of the distribution, where probability is low.
 The Metropolis-Hastings sampler rejects most of these moves, meaning that the acceptance rate decreases and convergence is much slower.
 See for yourself:

@@ -116,10 +116,12 @@ const OpenSourcePage = () => {
             mistakes matter. We created language interop with{" "}
             <a className="lined" href="https://github.com/tweag/inline-java">
               Java
-            </a>{", "}
+            </a>
+            {", "}
             <a className="lined" href="https://github.com/tweag/inline-js">
               JavaScript
-            </a>{", "}
+            </a>
+            {", "}
             <a className="lined" href="https://github.com/fpco/inline-c">
               C
             </a>{" "}
