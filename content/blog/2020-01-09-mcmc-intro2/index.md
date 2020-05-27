@@ -71,7 +71,7 @@ bivariate_normal = BivariateNormal(mu1=0.0, mu2=0.0, sigma1=1.0, sigma2=0.15)
 The `@` is a recent-ish addition to Python and denotes the matrix multiplication operator.
 Let's plot this density:
 
-![png](../../img/posts/mcmc-intro2-2Ddensity.png)
+![png](./mcmc-intro2-2Ddensity.png)
 
 Now you can try to sample from this using the previously discussed Metropolis-Hastings algorithm with a uniform proposal distribution.
 Remember that in Metropolis-Hastings, a Markov chain is built by jumping a certain distance ("step size") away from the current state, and accepting or rejecting the new state according to an acceptance probability.
@@ -188,7 +188,7 @@ We now plot a 2D histogram of the samples (with the estimated probability densit
 plot_bivariate_samples(chain, burnin=200, pdf=bivariate_normal)
 ```
 
-![png](../../img/posts/mcmc-intro2-2Dsamples.png)
+![png](./mcmc-intro2-2Dsamples.png)
 
 Looking at the path the Markov chain takes, we see several horizontal and vertical lines.
 These are Gibbs sampling steps in which only one of the Metropolis-Hastings moves was accepted.
@@ -214,7 +214,7 @@ mix_params = dict(mu1=1.0, mu2=2.0, sigma1=0.5, sigma2=0.2, w1=0.3, w2=0.7)
 How does it look like?
 Well, it's a superposition of two normal distributions:
 
-![png](../../img/posts/mcmc-intro2-mixture_components.png)
+![png](./mcmc-intro2-mixture_components.png)
 
 Inspired by this figure, we can also make the mixture nature of that density more explicit by introducing an additional integer variable \\( k \in \\{1,2\\} \\) which enumerates the mixture components.
 This will allow us to highlight several features and properties of the Gibbs sampler and to introduce an important term in probability theory along the way.
@@ -370,7 +370,7 @@ x_states = [state[0] for state in chain[burnin:]]
 
 Plotting a histogram of our samples shows that the Gibbs sampler correctly reproduces the desired Gaussian mixture:
 
-![png](../../img/posts/mcmc-intro2-mixtureeasy.png)
+![png](./mcmc-intro2-mixtureeasy.png)
 
 You might wonder why we're also printing the average probability for the chain to sample from the component it is currently _not_ in.
 If this probability is very low, the Markov chain will get stuck for some time in the current mode and thus will have difficulties exploring the distribution rapidly.
@@ -392,7 +392,7 @@ x_states = [state[0] for state in chain[burnin:]]
 
 Let's plot the samples and the true distribution and see how the Gibbs sampler performs in this case:
 
-![png](../../img/posts/mcmc-intro2-mixturehard.png)
+![png](./mcmc-intro2-mixturehard.png)
 
 You should see the probability decrease significantly and perhaps one of the modes being strongly over- and the other undersampled.
 The lesson here is that the Gibbs sampler might produce highly correlated samples.

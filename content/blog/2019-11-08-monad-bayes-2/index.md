@@ -118,7 +118,7 @@ vlShow $ plot -- [... x, y, prob ...]
 -- (the full hvega plotting code can be found in the associated notebook)
 ```
 
-![png](../img/posts/bayes2_01.svg)
+![png](./bayes2_01.svg)
 
 You can think about it as a line with some noise around, or as a Gaussian distribution with fixed standard deviation in `y` direction and a mean that increases linearly with `x`, which is closer to the definition.
 
@@ -158,7 +158,7 @@ points2 =
 vlShow $ plot -- [... iparam, x, y, likelihood ...]
 ```
 
-![png](../img/posts/bayes2_02.svg)
+![png](./bayes2_02.svg)
 
 Each distribution varies in terms of its slope, intercept and standard deviation.
 Note that the maximum of a distribution is lower if it has a higher standard deviation, which is due to the normalized `normalPdf` function we used.
@@ -192,7 +192,7 @@ pointsMCMC <- sampleIOfixed $ mkSampler $ likelihoodDist params0
 vlShow $ plot -- [... pointsMCMC ...]
 ```
 
-![png](../img/posts/bayes2_03.svg)
+![png](./bayes2_03.svg)
 
 Did this work?
 Well, we got some samples, and they are roughly distributed according to the desired distribution that we showed above.
@@ -257,7 +257,7 @@ The remaining points are therefore independent and distributed according to our 
 vlShow $ plot -- [... points ...]
 ```
 
-![png](../img/posts/bayes2_04.svg)
+![png](./bayes2_04.svg)
 
 Rejection sampling is often not very efficient, but it is simple and straight forward.
 By design, most rejected samples are in low probability regions, and it is thus crucial to choose an initial distribution that is concentrated around high probability regions—if we know where they are.
@@ -301,7 +301,7 @@ stable = take 800 modelsamples
 vlShow $ plot -- [... stable ...]
 ```
 
-![png](../img/posts/bayes2_05.svg)
+![png](./bayes2_05.svg)
 
 This posterior distribution over model parameters describes how likely each sampling distribution in the model generates the observed data.
 It peaks at an intercept of `-1.5` - `-1` (the actual value was `-1.2`) and a slope of `1.5`-`2.5` (the actual value was `2.3`).
@@ -346,7 +346,7 @@ The data looks like this:
 vlShow $ plot  -- [... predPoints, points ...]
 ```
 
-![png](../img/posts/bayes2_06.svg)
+![png](./bayes2_06.svg)
 
 This looks quite OK; the simulated distribution (blue) looks similar to the original data (green).
 Although we have drawn 40000 samples with MCMC, you see that the distribution is still not as smooth and nice as we would expect.
@@ -385,7 +385,7 @@ nsamples = length likelihoods
 vlShow $ plot  -- [... likelihoods ...]
 ```
 
-![png](../img/posts/bayes2_07.svg)
+![png](./bayes2_07.svg)
 
 Our MC chain is non-stationary in the beginning at `imodel` values up to 100, and then reaches stationary behaviour.
 

@@ -110,7 +110,7 @@ despine(ax, ('top', 'right'))
 plt.show()
 ```
 
-![png](../../img/posts/mcmc-intro1-weatherchain.png)
+![png](./mcmc-intro1-weatherchain.png)
 
 ## The mother of all MCMC algorithms: Metropolis-Hastings
 
@@ -284,7 +284,7 @@ ax.set_yticks(())
 plt.show()
 ```
 
-![png](../../img/posts/mcmc-intro1-mhgood.png)
+![png](./mcmc-intro1-mhgood.png)
 
 Looks great!
 
@@ -310,7 +310,7 @@ sample_and_display(np.array([2.0]), 30, 10000, 500, log_prob)
 
     Acceptance rate: 0.116
 
-![png](../../img/posts/mcmc-intro1-mhbigstep.png)
+![png](./mcmc-intro1-mhbigstep.png)
 
 Not as cool, right?
 Now you could think the best thing to do is do choose a tiny step size.
@@ -322,7 +322,7 @@ sample_and_display(np.array([2.0]), 0.1, 10000, 500, log_prob)
 
     Acceptance rate: 0.992
 
-![png](../../img/posts/mcmc-intro1-mhsmallstep.png)
+![png](./mcmc-intro1-mhsmallstep.png)
 
 No matter how you choose the step size parameter, the Markov chain will eventually converge to its stationary distribution.
 But it may take a looooong time.
@@ -336,7 +336,7 @@ sample_and_display(np.array([2.0]), 0.1, 500000, 25000, log_prob)
 
     Acceptance rate: 0.990
 
-![png](../../img/posts/mcmc-intro1-mhsmallsteplong.png)
+![png](./mcmc-intro1-mhsmallsteplong.png)
 
 Sloooowly getting there...
 

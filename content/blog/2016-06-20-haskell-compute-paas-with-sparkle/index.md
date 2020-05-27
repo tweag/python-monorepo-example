@@ -99,17 +99,17 @@ Haskell is supported too, via the
 through the process of running a distributed Haskell app in
 Databricks.
 
-![Jobs dashboard](../img/posts/databricks-jobs.png)
+![Jobs dashboard](./databricks-jobs.png)
 
 We'll want to,
 
 1. create a new job,
 
-![New job](../img/posts/db-new-job.png)
+![New job](./db-new-job.png)
 
 2. upload the `.jar` we created in the previous section,
 
-![JAR form](../img/posts/db-jar-upload.png)
+![JAR form](./db-jar-upload.png)
 
 3. select a cluster size and press "Run".
 
@@ -145,7 +145,7 @@ With those credentials in hand, the process is a matter of:
 2. configuring a new cluster (click _Create cluster_ on the [EMR home
    page][aws-emr]),
 
-![Enable Spark support](../img/posts/emr-cluster-config.png)
+![Enable Spark support](./emr-cluster-config.png)
 
 3. adding the `.jar` to the cluster as a new "step" (click _Add step_
    in the task list and paste in the S3 location where you uploaded

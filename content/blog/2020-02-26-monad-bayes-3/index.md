@@ -118,7 +118,7 @@ points1 =
 vlShow $ -- checkout the notebook for the plotting code
 ```
 
-![png](../../img/posts/bayes3_01.svg)
+![png](./bayes3_01.svg)
 
 We can see that our neural networks computes distributions centered around a step function.
 The positions of the steps are determined by the biases, while their height is determined by the weights.
@@ -215,7 +215,7 @@ val = Vec.toList $ DH.histData hist
 vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
-![png](../img/posts/bayes3_02.svg)
+![png](./bayes3_02.svg)
 
 The predictive data distribution, shown with a blue histogram, neatly follows the observed blue scatter points.
 We have thus successfully "fitted" a line with a neural network using Bayesian inference!
@@ -245,7 +245,7 @@ val = Vec.toList $ DH.histData hist
 vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
-![png](../img/posts/bayes3_03.svg)
+![png](./bayes3_03.svg)
 
 Pretty neat! We can still see the three steps.
 Still, we get a reasonable approximation of our sine wave.
@@ -263,7 +263,7 @@ val = Vec.toList $ DH.histData hist
 vlShow $ plot -- checkout the notebook for the plotting code
 ```
 
-![png](../img/posts/bayes3_05.svg)
+![png](./bayes3_05.svg)
 
 The x-axis shows the step positions (`biass`) and the y-axis shows the step amplitudes (`weights`).
 We have trained a three-node (_i.e._ three-step) neural network, so we see three modes in the histogram:

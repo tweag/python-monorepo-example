@@ -264,7 +264,7 @@ import qualified IHaskell.Display as D
 D.Display [D.json vegaString]
 ```
 
-![Vega Wordcloud](../img/posts/jupyterlab-json.png)
+![Vega Wordcloud](./jupyterlab-json.png)
 
 In a similar way, we can annotate the display message with the
 `application/vnd.vegalite.v2+json` MIME renderer type. The VEGA string that we
@@ -275,7 +275,7 @@ VEGA code:
 D.Display [D.vegalite vegaString]
 ```
 
-![Vega Wordcloud](../img/posts/jupyterlab-wordcloud.png)
+![Vega Wordcloud](./jupyterlab-wordcloud.png)
 
 ## Conclusion
 

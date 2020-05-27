@@ -185,7 +185,7 @@ $ firefox "localhost:3000/Hilbert.html"
 
 Your browser should display the following image:
 
-![image](../../img/posts/asterius-diagrams-Hilbert.png)
+![image](./asterius-diagrams-Hilbert.png)
 
 And [here][wasm-hilbert] is a precompiled version you can try right now in your
 browser. (Due to an open [issue][safari-issue], this example cannot currently be

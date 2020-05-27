@@ -66,7 +66,7 @@ You can find our custom plotting functions for Vega-Lite in the notebook.
 vlShow $ plot (200, 100) [barPlot "b"] [("b", VL.Booleans samples)]
 ```
 
-![png](../img/posts/bayes1_01.svg)
+![png](./bayes1_01.svg)
 
 So far, so good: we now have a model that represents a distribution of `True/False` values and we can draw samples from it.
 But how can we include observations into this model?
@@ -136,7 +136,7 @@ samples <- sampleIOfixed $ prior $ mh nsamples model2
 vlShow $ plot (200, 100) [barPlot "b"] [("b", VL.Booleans samples)]
 ```
 
-![png](../img/posts/bayes1_02.svg)
+![png](./bayes1_02.svg)
 
 Voilà, we wrote down a model (answer to "Did it rain yesterday?") with an uninformed (uniform) prior, and updated it based on the observation "It rained yesterday!".
 The distribution of parameter `b` after scoring—its posterior distribution—has probability `1` for True and probability `0` for False.
@@ -172,7 +172,7 @@ vlShow $ plot (600, 300)
               [("b", VL.Numbers xValues), ("m", VL.Numbers yValues)]
 ```
 
-![png](../img/posts/bayes1_03.svg)
+![png](./bayes1_03.svg)
 
 The resulting distribution in the plot above is `0` where `b<m`, and approximately uniform when `b>m`, as we'd expect.
 You might spot the initial state of the Markov chain as a faint rectangle in the `b<m` region.
@@ -202,7 +202,7 @@ vlShow $ plot (600, 300)
               [("b", VL.Numbers xValues), ("m", VL.Numbers yValues)]
 ```
 
-![png](../img/posts/bayes1_04.svg)
+![png](./bayes1_04.svg)
 
 ## Conclusions
 
