@@ -18,7 +18,7 @@ const Manifesto = () => {
           <h1>COMMITED TO OPEN SOURCE AND ADVANCING KNOWLEDGE.</h1>
           <div className="text-wrap">
             <p>
-              Open source is how we roll. 60% of our team where for a time in
+              Open source is how we roll. 60% of our team were for a time in
               academia, where this is the norm. Today, open source is also
               becoming the norm for many companies that want to attract the
               highest levels of engineering talent.
