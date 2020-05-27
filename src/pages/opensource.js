@@ -116,10 +116,10 @@ const OpenSourcePage = () => {
             mistakes matter. We created language interop with{" "}
             <a className="lined" href="https://github.com/tweag/inline-java">
               Java
-            </a>{" "}
+            </a>{", "}
             <a className="lined" href="https://github.com/tweag/inline-js">
               JavaScript
-            </a>{" "}
+            </a>{", "}
             <a className="lined" href="https://github.com/fpco/inline-c">
               C
             </a>{" "}
@@ -127,12 +127,12 @@ const OpenSourcePage = () => {
             <a className="lined" href="https://github.com/tweag/HaskellR">
               R
             </a>
-            {","}
+            {", "}
             we make Haskell{" "}
             <a className="lined" href="https://github.com/tweag/asterius">
               run in your browser
             </a>
-            {","}
+            {", "}
             and do the{" "}
             <a className="lined" href="https://github.com/tweag/funflow">
               heavy lifting
