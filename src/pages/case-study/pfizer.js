@@ -111,7 +111,7 @@ const PfizerPage = () => {
               </h3>
             </quote>
             <span class="text">
-              <i class="icon-arrow-right1"></i> Eric Fauma, Senior Scientific
+              <i class="icon-arrow-right1"></i> Eric Fauman, Senior Scientific
               Director, Head Integrative Biology, Pfizer
             </span>
           </div>

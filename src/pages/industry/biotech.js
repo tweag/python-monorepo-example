@@ -119,7 +119,7 @@ const BiotechPage = () => {
                 creativity and willingness to try different things.
               </h3>
               <span className="text">
-                <i className="icon-arrow-right1"></i>&nbsp;&nbsp;Eric Fauma,
+                <i className="icon-arrow-right1"></i>&nbsp;&nbsp;Eric Fauman,
                 Senior Scientific Director, Head Integrative Biology, Pfizer
               </span>
             </div>
