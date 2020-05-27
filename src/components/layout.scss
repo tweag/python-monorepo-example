@@ -2118,6 +2118,9 @@ img.uc_rotate {
 /* *************************************************** */
 
 @media (min-width: 768px) {
+  h1.typeit {
+      min-height: 200px;
+  }
   .col-area .image-holder {
     width: 220px;
     margin: auto;
@@ -2552,6 +2555,9 @@ img.uc_rotate {
     margin-top: 0;
     width: 30%;
   }
+  h1.typeit {
+      min-height: 200px;
+  }
   .home-holder.image-holder {
     margin-top: 40px;
     width: 45%;
@@ -2681,9 +2687,6 @@ img.uc_rotate {
     background: #f67752;
     position: relative;
     width: 100%;
-  }
-  h1.typeit {
-    min-height: 230px;
   }
   .about-section .text-area {
     position: relative;
