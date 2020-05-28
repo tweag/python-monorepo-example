@@ -43,8 +43,7 @@ const ContactPage = () => {
               </button>
               <p id="formmessage" style={{ visibility: "hidden" }}>
                 {" "}
-                Thank you for reaching out, we will soon reply to your request.
-                {" "}
+                Thank you for reaching out, we will soon reply to your request.{" "}
               </p>
             </div>
             <div class="line_sep"></div>
@@ -55,8 +54,7 @@ const ContactPage = () => {
               </p>
             </div>
           </div>
-          <div class="section s_white services-section contact_field viewport-section">
-          </div>
+          <div class="section s_white services-section contact_field viewport-section"></div>
         </form>
       </section>
       <div class="section s_white section-wrap services-section contact_addr viewport-section">
