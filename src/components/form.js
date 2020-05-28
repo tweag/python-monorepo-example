@@ -32,13 +32,13 @@ export function submitForm(e) {
       formmessage.innerHTML =
         "Thank you for reaching out, we will soon reply to your request."
     } else if (xhr.readyState == 4 && xhr.status == 400) {
-      formmessage.innerHTML = "Please fill out all fields."
+      formmessage.innerHTML = "Please fill out the email and message fields."
       console.log(xhr.responseText) // Returns a 400 error if the submission is rejected.
     } else if (xhr.readyState == 4 && xhr.status == 403) {
-      formmessage.innerHTML = "No connection to the form, please try later."
+      formmessage.innerHTML = "No connection to our systems, please try later."
       console.log(xhr.responseText) // Returns a 403 error if the portal isn't allowed to post submissions.
     } else if (xhr.readyState == 4 && xhr.status == 404) {
-      formmessage.innerHTML = "No connection to the form, please try later."
+      formmessage.innerHTML = "No connection to our systems, please try later."
       console.log(xhr.responseText) //Returns a 404 error if the formGuid isn't found
     }
     formmessage.style.visibility = "visible"

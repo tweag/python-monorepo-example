@@ -31,7 +31,7 @@ const ContactPage = () => {
                 onblur="this.placeholder = 'myemail@example.com'"
                 placeholder="myemail@example.com"
               />
-              <label>Company*</label>
+              <label>Company</label>
               <input
                 name="company"
                 type="text"
@@ -39,7 +39,7 @@ const ContactPage = () => {
                 onblur="this.placeholder = 'My Company'"
                 placeholder="My Company"
               />
-              <label>Website*</label>
+              <label>Website</label>
               <input
                 name="website"
                 type="text"
