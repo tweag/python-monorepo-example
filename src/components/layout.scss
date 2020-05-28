@@ -155,6 +155,8 @@ html {
   color: $color_2;
   text-indent: 0;
 }
+
+
 .contact_field {
   padding: 60px 0 0 0;
 }
@@ -320,6 +322,13 @@ textarea {
   border-radius: 0;
   box-sizing: border-box;
   padding: 0.4em 0.7em;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    // this is a hack to get transparent autoselect backgrounds
+    transition: background-color 10000s ease-in-out 0s;
 }
 input[type="text"]:focus,
 input[type="tel"]:focus,
