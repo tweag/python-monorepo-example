@@ -46,7 +46,7 @@ In order to sample from a distribution $\pi(x)$, a MCMC algorithm constructs and
 We thus just have to store the states to obtain samples from $\pi(x)$.
 
 For didactic purposes, let's for now consider both a discrete state space and discrete "time".
-The key quantity characterizing a Markov chain is the transition operator $T(x*{i+1}|x_i)$ which gives you the probability of being in state $x*{i+1}$ at time $i+1$ given that the chain is in state $x_i$ at time $i$.
+The key quantity characterizing a Markov chain is the transition operator $T(x_{i+1}|x_i)$ which gives you the probability of being in state $x_{i+1}$ at time $i+1$ given that the chain is in state $x_i$ at time $i$.
 
 Now just for fun (and for illustration), let's quickly whip up a Markov chain which has a unique stationary distribution.
 We'll start with some imports and settings for the plots:
@@ -122,15 +122,15 @@ If we could design the transition kernel in such a way that the next state is al
 Unfortunately, to do this, we need to be able to sample from $\pi$, which we can't.
 Otherwise you wouldn't be reading this, right?
 
-A way around this is to split the transition kernel $T(x*{i+1}|x_i)$ into two parts:
+A way around this is to split the transition kernel $T(x_{i+1}|x_i)$ into two parts:
 a proposal step and an acceptance/rejection step.
-The proposal step features a proposal distribution $q(x*{i+1}|x*i)$, from which we can sample possible next states of the chain.
+The proposal step features a proposal distribution $q(x_{i+1}|x_i)$, from which we can sample possible next states of the chain.
 In addition to being able to sample from it, we can choose this distribution arbitrarily. But, one should strive to design it such that samples from it are both as little correlated with the current state as possible and have a good chance of being accepted in the acceptance step.
 Said acceptance/rejection step is the second part of the transition kernel and corrects for the error introduced by proposal states drawn from $q \neq \pi$.
-It involves calculating an acceptance probability $p*\mathrm{acc}(x*{i+1}|x_i)$ and accepting the proposal $x*{i+1}$ with that probability as the next state in the chain.
-Drawing the next state $x*{i+1}$ from $T(x*{i+1}|x*i)$ is then done as follows:
-first, a proposal state $x*{i+1}$ is drawn from $q(x*{i+1}|x_i)$.
-It is then accepted as the next state with probability $p*\mathrm{acc}(x*{i+1}|x_i)$ or rejected with probability $1-p*\mathrm{acc}(x\_{i+1}|x_i)$, in which case the current state is copied as the next state.
+It involves calculating an acceptance probability $p_\mathrm{acc}(x_{i+1}|x_i)$ and accepting the proposal $x_{i+1}$ with that probability as the next state in the chain.
+Drawing the next state $x_{i+1}$ from $T(x_{i+1}|x_i)$ is then done as follows:
+first, a proposal state $x_{i+1}$ is drawn from $q(x_{i+1}|x_i)$.
+It is then accepted as the next state with probability $p_\mathrm{acc}(x_{i+1}|x_i)$ or rejected with probability $1-p_\mathrm{acc}(x\_{i+1}|x_i)$, in which case the current state is copied as the next state.
 
 We thus have
 
@@ -144,10 +144,10 @@ $$
 \pi(x_i) T(x_{i+1}|x_i) = \pi(x_{i+1}) T(x_i|x_{i+1})
 $$
 
-This means that the probability of being in a state $x*i$ and transitioning to $x*{i+1}$ must be equal to the probability of the reverse process, namely, being in state $x\_{i+1}$ and transitioning to $x_i$.
+This means that the probability of being in a state $x_i$ and transitioning to $x_{i+1}$ must be equal to the probability of the reverse process, namely, being in state $x\_{i+1}$ and transitioning to $x_i$.
 Transition kernels of most MCMC algorithms satisfy this condition.
 
-For the two-part transition kernel to obey detailed balance, we need to choose $p*\mathrm{acc}$ correctly, meaning that is has to correct for any asymmetries in probability flow from / to $x*{i+1}$ or $x_i$.
+For the two-part transition kernel to obey detailed balance, we need to choose $p_\mathrm{acc}$ correctly, meaning that is has to correct for any asymmetries in probability flow from / to $x_{i+1}$ or $x_i$.
 Metropolis-Hastings uses the Metropolis acceptance criterion:
 
 $$
@@ -155,9 +155,9 @@ p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\{1, \frac{\pi(x_{i+1}) \times q
 $$
 
 Now here's where the magic happens:
-we know $\pi$ only up to a constant, but it doesn't matter, because that unknown constant cancels out in the expression for $p*\mathrm{acc}$!
-It is this property of $p*\mathrm{acc}$ which makes algorithms based on Metropolis-Hastings work for unnormalized distributions.
-Often, symmetric proposal distributions with $q(x*i|x*{i+1})=q(x\_{i+1}|x_i)$ are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
+we know $\pi$ only up to a constant, but it doesn't matter, because that unknown constant cancels out in the expression for $p_\mathrm{acc}$!
+It is this property of $p_\mathrm{acc}$ which makes algorithms based on Metropolis-Hastings work for unnormalized distributions.
+Often, symmetric proposal distributions with $q(x_i|x_{i+1})=q(x\_{i+1}|x_i)$ are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
 
 $$
 p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\{1, \frac{\pi(x_{i+1})}{\pi(x_i)} \right\} \ \text .

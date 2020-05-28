@@ -82,8 +82,8 @@ Note that we could also choose a bivariate proposal distribution in the Metropol
 ## The systematic scan Gibbs sampler
 
 So how does Gibbs sampling work?
-The basic idea is that given the joint distribution $p(x, y)$ and a state $(x*i, y_i)$ from that distribution, you obtain a new state as follows:
-first, you sample a new value for one variable, say, $x*{i+1}$, from its distribution conditioned on $y*i$, that is, from $p(x|y_i)$. Then, you sample a new state for the second variable, $y*{i+1}$, from its distribution conditioned on the previously drawn state for $x$, that is, from $p(y|x\_{i+1})$.
+The basic idea is that given the joint distribution $p(x, y)$ and a state $(x_i, y_i)$ from that distribution, you obtain a new state as follows:
+first, you sample a new value for one variable, say, $x_{i+1}$, from its distribution conditioned on $y_i$, that is, from $p(x|y_i)$. Then, you sample a new state for the second variable, $y_{i+1}$, from its distribution conditioned on the previously drawn state for $x$, that is, from $p(y|x\_{i+1})$.
 This two-step procedure can be summarized as follows:
 
 $$
@@ -226,7 +226,7 @@ $$
 p(x,k) = w_k p_\mathcal{N}(x; \mu_k, \sigma_k)
 $$
 
-- $p(x|k)$: the conditional distribution of $x$ given $k$ tells us the probability of $x$ for a certain $k$. For example, if $k=1$, what is $p(x|k)$? Setting $k=1$ means we're considering only the first mixture component, which is a normal distribution with mean $\mu*1$ and standard deviation $\sigma_1$ and thus $p(x|k=1)=p*\mathcal{N}(x; \mu_1, \sigma_1)$. In general we then have
+- $p(x|k)$: the conditional distribution of $x$ given $k$ tells us the probability of $x$ for a certain $k$. For example, if $k=1$, what is $p(x|k)$? Setting $k=1$ means we're considering only the first mixture component, which is a normal distribution with mean $\mu_1$ and standard deviation $\sigma_1$ and thus $p(x|k=1)=p_\mathcal{N}(x; \mu_1, \sigma_1)$. In general we then have
 
 $$
 p(x|k) = p_\mathcal{N}(x; \mu_k, \sigma_k) \ \text .
