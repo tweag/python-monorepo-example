@@ -14,7 +14,7 @@ const BiotechPage = () => {
     <Layout>
       <SEO title="Biotech" />
       <section className="section-area">
-        <div className="services-section biotech viewport-section">
+        <div className="section s_white services-section biotech viewport-section">
           <div className="text-area">
             <div className="section-title">Key industry</div>
             <h3>
@@ -35,7 +35,7 @@ const BiotechPage = () => {
             </div>
           </div>
         </div>
-        <div className="services-section biotech viewport-section">
+        <div className="section s_white services-section biotech viewport-section">
           <div className="image-holder image-holder2">
             <img src={img9} alt="" />
           </div>
@@ -49,7 +49,7 @@ const BiotechPage = () => {
             </p>
           </div>
         </div>
-        <div className="about-section biotech viewport-section">
+        <div className="section s_beige about-section biotech viewport-section">
           <div className="text-area">
             <h3> Examples of Tweag&rsquo;s work in biotech includes:</h3>
             <ul className="text-list">
