@@ -33,30 +33,13 @@ const PfizerPage = () => {
                 Everything (ToE): a dynamic internal database that catalogues
                 almost 20,000 human genes and their related diseases and traits,
                 and automatically updates weekly. It allows scientists to
-                quickly access information related to a specific gene. Code
-                sharing works.
+                quickly access information related to a specific gene.
               </p>
             </div>
           </div>
           <div class="image-holder image-holder">
             <img class="uc_rotate" src={imgVertical1} alt="" />
             <img src={imgVertical2} alt="" />
-          </div>
-        </div>
-        <div class="services-section use_cases second viewport-section">
-          <div class="image-holder image-holder2">
-            <img src={img15} alt="" />
-          </div>
-          <div class="text-wrap text-area2">
-            <p>
-              Our commitment to knowledge sharing runs deeper than sharing code.
-              We employ researchers with strong academic backgrounds and ask
-              them to keep pushing the envelope. Their sole focus is to identify
-              future directions for programming languages, and we bring research
-              to production faster than ever before. Tweagers are working on
-              linear types, dependent types and mobile code that runs{" "}
-              <strong>everywhere.</strong>
-            </p>
           </div>
         </div>
         <div class="about-section use_case bloc1 viewport-section">
@@ -80,7 +63,7 @@ const PfizerPage = () => {
               expertise in bioinformatics and biology. This gave Tweag engineers
               a richer understanding of Pfizer’s goals and needs, so they could
               recommend the right specs to achieve them. Tweag’s bioinformatic
-              expertise saved Pfizer time and money in software development.
+              expertise saved Pfizer time and money to get the tool they wanted.
             </p>
           </div>
         </div>
