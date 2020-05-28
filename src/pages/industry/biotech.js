@@ -51,7 +51,7 @@ const BiotechPage = () => {
         </div>
         <div className="about-section biotech viewport-section">
           <div className="text-area">
-            <h3> Examples of Tweag&rsquo;s work in Biotechnology includes:</h3>
+            <h3> Examples of Tweag&rsquo;s work in biotech includes:</h3>
             <ul className="text-list">
               <li>
                 <div className="icon-arrow-right1"> </div>
@@ -93,13 +93,13 @@ const BiotechPage = () => {
             <img src={img10} alt="" />
           </div>
         </div>
-        <div className="about-section biotech learnmore viewport-section">
+        <div className="section s_green about-section biotech learnmore viewport-section">
           <div className="image-holder image-holder4">
             <img src={img11} alt="" />
           </div>
           <div className="text-area">
             <div className="section-title">Case studies</div>
-            <h1> learn more about our projects.</h1>
+            <h1>Learn more about our projects.</h1>
             <div className="split">
               <div className="split-col1">
                 <h3>Pfizer</h3>

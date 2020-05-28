@@ -16,10 +16,10 @@ const KeyIndustries = ({ isFullPage }) => {
             <div className="info-col">
               <div className="block">
                 <div className="image-holder">
-                  <img src={biotech} alt="Biotechnology" />
+                  <img src={biotech} alt="Biotech" />
                 </div>
                 <div className="description">
-                  <h3>Biotechnology</h3>
+                  <h3>Biotech</h3>
                   <p>
                     Build statistical models, iterate on them quickly and
                     increase productivity.
