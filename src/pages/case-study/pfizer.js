@@ -42,6 +42,36 @@ const PfizerPage = () => {
             <img src={imgVertical2} alt="" />
           </div>
         </div>
+        <div class="services-section use_cases second viewport-section">
+          <div class="image-holder image-holder2">
+            <img src={img15} alt="" />
+          </div>
+          <div class="text-wrap text-area2">
+            <p>
+              Pfizer partnered with Tweag to maintain and enhance the
+              application to meet the evolving needs of its scientists. In support
+              of this goal, Tweag:
+            </p>
+            <ul>
+              <li>
+                Introduced modern development techniques and automation to
+                increase efficiency and performance
+              </li>
+              <li>
+                Remodelled the user interface to improve usability
+              </li>
+              <li>
+                Enhanced the database architecture to increase efficiency
+              </li>
+              <li>
+                Updated the software to better integrate with other components and systems
+              </li>
+              <li>
+                Added features to serve the needs of both power users and casual users
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="about-section use_case bloc1 viewport-section">
           <div class="text-wrap text-area">
             <h1>FAST &amp; ITERATIVE COLLABORATION</h1>
@@ -59,11 +89,11 @@ const PfizerPage = () => {
           <div class="text-wrap text-area">
             <h1>SOFTWARE &amp; BIOINFORMATIC EXPERTS</h1>
             <p>
-              Unlike typical software engineers, Tweag engineers have domain
-              expertise in bioinformatics and biology. This gave Tweag engineers
-              a richer understanding of Pfizer’s goals and needs, so they could
-              recommend the right specs to achieve them. Tweag’s bioinformatic
-              expertise saved Pfizer time and money to get the tool they wanted.
+	      Unlike typical software engineers, Tweag engineers have domain
+	      expertise in bioinformatics and biology. This gave Tweag engineers a
+	      richer understanding of Pfizer’s goals and needs, so they could
+	      recommend the right specs to achieve them. Tweag’s bioinformatic
+	      expertise saved Pfizer time and money in software development.
             </p>
           </div>
         </div>
