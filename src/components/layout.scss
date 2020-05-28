@@ -151,8 +151,12 @@ html {
 .contact_field textarea {
   min-height: 300px;
 }
+.contact_field textarea::placeholder {
+  color: $color_10;
+  text-indent: 0;
+}
 .contact_field input::placeholder {
-  color: $color_2;
+  color: $color_10;
   text-indent: 0;
 }
 
@@ -354,6 +358,7 @@ input[type="submit"] {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   border-radius: 0;
+  background-color: transparent;
   /* cursor: pointer;  */
 }
 @font-face {

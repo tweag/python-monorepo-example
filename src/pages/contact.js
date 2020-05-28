@@ -31,27 +31,9 @@ const ContactPage = () => {
                 onblur="this.placeholder = 'myemail@example.com'"
                 placeholder="myemail@example.com"
               />
-              <label>Company</label>
-              <input
-                name="company"
-                type="text"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'My Company'"
-                placeholder="My Company"
-              />
-              <label>Website</label>
-              <input
-                name="website"
-                type="text"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'https://'"
-                placeholder="https://"
-              />
             </div>
-          </div>
-          <div class="section s_white services-section contact_field viewport-section">
             <div class="text-wrap text-area">
-              <label>Your message*</label>
+              <label>Message*</label>
               <textarea
                 name="message"
                 placeholder="Write your message"
@@ -61,20 +43,23 @@ const ContactPage = () => {
               </button>
               <p id="formmessage" style={{ visibility: "hidden" }}>
                 {" "}
-                Placeholder{" "}
+                Thank you for reaching out, we will soon reply to your request.
+                {" "}
+              </p>
+            </div>
+            <div class="line_sep"></div>
+            <div class="text-wrap text-area">
+              <label>Or send a direct email to our team</label>
+              <p class="hello">
+                <a href="mailto:hello@tweag.io">hello@tweag.io</a>
               </p>
             </div>
           </div>
-          <div class="line_sep"></div>
+          <div class="section s_white services-section contact_field viewport-section">
+          </div>
         </form>
       </section>
       <div class="section s_white section-wrap services-section contact_addr viewport-section">
-        <div class="text-wrap text-area">
-          <label>Or send a direct email to our team</label>
-          <p class="hello">
-            <a href="mailto:hello@tweag.io">hello@tweag.io</a>
-          </p>
-        </div>
         <div class="text-area">
           <div class="col-area animation-wrap">
             <div class="col-row">
