@@ -274,6 +274,7 @@ body.menu-active .menu a:after {
 a.lined {
   text-decoration: underline;
   color: $color_1;
+  white-space: nowrap;
 }
 .lined {
   display: inline;
@@ -1987,6 +1988,7 @@ pre {
 .part2 .text-area h4,
 .part2 .text-area ul,
 .part2 .text-area ol,
+.part2 .text-area center,
 main nav {
   width: 65%;
   margin: 0 0 30px;
@@ -2544,9 +2546,6 @@ img.uc_rotate {
     margin-top: 0;
     width: 30%;
   }
-  h1.typeit {
-    min-height: 200px;
-  }
   .home-holder.image-holder {
     margin-top: 10px;
     width: 45%;
@@ -2699,6 +2698,7 @@ img.uc_rotate {
   .part2 .text-area h4,
   .part2 .text-area ul,
   .part2 .text-area ol,
+  .part2 .text-area center,
   main nav {
     padding: 0 0 0 60px;
   }
@@ -2871,6 +2871,26 @@ img.uc_rotate {
   }
 }
 @media (max-width: 767px) {
+  .menu .dropdown-list li a {
+    font-size: 75%;
+  }
+  .Blog-content .Article-text ul li:before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    margin-left: -31px;
+    margin-top: 5px;
+    background: #000;
+    border-radius: 10px;
+  }
+  .Blog-content .Article-text ol,
+  .Blog-content .Article-text ul li {
+    display: block;
+    padding-left: 35px;
+    margin-bottom: 10px;
+  }
   code,
   kbd,
   pre,
@@ -3277,7 +3297,7 @@ img.uc_rotate {
   }
 
   .menu > li:hover .dropdown-menu {
-    display: block;
+    /*display: block;*/
   }
   .menu > li:last-child {
     margin-bottom: 0;
@@ -3356,6 +3376,7 @@ img.uc_rotate {
   .part2 .text-area h4,
   .part2 .text-area ol,
   .part2 .text-area ul,
+  .part2 .text-area center,
   main nav {
     margin: 20px 15px;
     padding: 0 15px;
