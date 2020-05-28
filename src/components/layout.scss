@@ -147,7 +147,7 @@ html {
 }
 .contact_field .btn {
   font-size: $font_3;
-  background: $color_2;
+  background: $color_3;
 }
 .contact_field textarea {
   color: $color_11;
@@ -1970,8 +1970,8 @@ pre {
   background-color: #ecece9;
   font-size: $font_2;
   border-left: 15px solid $color_9;
-  margin-bottom: 60px;
-  margin-top: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   padding-left: 50px;
   overflow: hidden;
   white-space: pre-wrap;
@@ -2941,7 +2941,7 @@ img.uc_rotate {
     white-space: pre-wrap;
     word-wrap: break-word;
     padding-left: 0 !important;
-    margin: 40px 0;
+    margin: 30px 0;
   }
   .Blog-content .Article-text pre code {
     margin: 0;
