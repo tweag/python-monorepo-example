@@ -135,7 +135,7 @@ html {
   margin: 20px 0;
   border: 0;
   background: transparent;
-  color: $color_2;
+  color: $color_1;
   padding: 20px 0 40px 0 !important;
   font-size: $font_6;
   font-weight: normal;
@@ -149,7 +149,6 @@ html {
   font-size: $font_3;
 }
 .contact_field textarea {
-  color: $color_11;
   min-height: 300px;
 }
 .contact_field input::placeholder {

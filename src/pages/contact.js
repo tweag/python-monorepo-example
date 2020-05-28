@@ -51,7 +51,7 @@ const ContactPage = () => {
           </div>
           <div class="section s_white services-section contact_field viewport-section">
             <div class="text-wrap text-area">
-              <label>Your message</label>
+              <label>Your message*</label>
               <textarea
                 name="message"
                 placeholder="Write your message"
