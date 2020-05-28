@@ -135,7 +135,7 @@ html {
   margin: 20px 0;
   border: 0;
   background: transparent;
-  color: $color_1;
+  color: $color_2;
   padding: 20px 0 40px 0 !important;
   font-size: $font_6;
   font-weight: normal;
@@ -147,20 +147,16 @@ html {
 }
 .contact_field .btn {
   font-size: $font_3;
+  background: $color_2;
 }
 .contact_field textarea {
+  color: $color_11;
   min-height: 300px;
 }
-.contact_field textarea::placeholder {
-  color: $color_10;
-  text-indent: 0;
-}
 .contact_field input::placeholder {
-  color: $color_10;
+  color: $color_2;
   text-indent: 0;
 }
-
-
 .contact_field {
   padding: 60px 0 0 0;
 }
@@ -327,13 +323,6 @@ textarea {
   box-sizing: border-box;
   padding: 0.4em 0.7em;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    // this is a hack to get transparent autoselect backgrounds
-    transition: background-color 10000s ease-in-out 0s;
-}
 input[type="text"]:focus,
 input[type="tel"]:focus,
 input[type="email"]:focus,
@@ -358,7 +347,6 @@ input[type="submit"] {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   border-radius: 0;
-  background-color: transparent;
   /* cursor: pointer;  */
 }
 @font-face {
@@ -869,6 +857,7 @@ h3 {
   z-index: 2;
   margin-bottom: 30px;
 }
+
 .btn:before {
   display: inline-block;
   vertical-align: top;
@@ -1766,6 +1755,9 @@ h3 {
   line-height: 35px;
   max-width: 800px;
 }
+.services-section.Blog-content .text-wrap {
+  font-size: $font_3;
+}
 .services-section {
   position: relative;
   display: -webkit-box;
@@ -2002,6 +1994,7 @@ pre {
 .part2 .text-area ul,
 .part2 .text-area ol,
 .part2 .text-area center,
+.part2 .text-area .katex-display,
 main nav {
   width: 65%;
   margin: 0 0 30px;
@@ -2560,7 +2553,7 @@ img.uc_rotate {
     width: 30%;
   }
   .home-holder.image-holder {
-    margin-top: 10px;
+    margin-top: 40px;
     width: 45%;
   }
   .services-section.topsep .text-area p {
@@ -2697,6 +2690,11 @@ img.uc_rotate {
     padding: 0 0 0 120px;
   }
 }
+@media (min-width: 1500px) {
+  .home-holder.image-holder {
+    margin-top: 10px;
+  }
+}
 @media (max-width: 1499px) {
   .copyright-area {
     margin: 0;
@@ -2712,6 +2710,7 @@ img.uc_rotate {
   .part2 .text-area ul,
   .part2 .text-area ol,
   .part2 .text-area center,
+  .part2 .text-area .katex-display,
   main nav {
     padding: 0 0 0 60px;
   }
@@ -2743,7 +2742,7 @@ img.uc_rotate {
     padding: 0 60px;
   }
   .vision-area.home-vision .container {
-    padding: 0;
+    padding: 0 0 0 60px;
   }
   .services-section .text-area {
     position: relative;
@@ -3310,7 +3309,7 @@ img.uc_rotate {
   }
 
   .menu > li:hover .dropdown-menu {
-    /*display: block;*/
+    display: block;
   }
   .menu > li:last-child {
     margin-bottom: 0;
@@ -3390,6 +3389,7 @@ img.uc_rotate {
   .part2 .text-area ol,
   .part2 .text-area ul,
   .part2 .text-area center,
+  .part2 .text-area .katex-display,
   main nav {
     margin: 20px 15px;
     padding: 0 15px;
