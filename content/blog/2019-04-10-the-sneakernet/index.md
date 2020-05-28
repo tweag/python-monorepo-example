@@ -88,13 +88,7 @@ the history of the internet_.
 Wow, that's impressive. Here is a little graph that shows how the Sneakernet
 compares to more traditional technology:
 
-<a href="../img/posts/sneakernet.png">
-<img
-  title="The Sneakernet"
-  src="../img/posts/sneakernet.png"
-  style="max-width:100%; max-height:100%;"
-/>
-</a>
+![sneakernet](sneakernet.png)
 
 What about the time needed for loading and unloading data from the disks? And
 the food that the pigeons need to fly such large distances? What is the best

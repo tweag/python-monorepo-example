@@ -105,7 +105,7 @@ minimizeS f xi
 
 using the `minimize` function of `hmatrix-gsl`’s [Numeric.GSL.Minimization](https://www.stackage.org/haddock/lts-8.9/hmatrix-gsl-0.18.0.1/Numeric-GSL-Minimization.html). It provides us with the minimum as well as the path taken by the algorithm to reach that solution. Using gnuplot by way of `hmatrix`’ undocumented `Graphics.Plot` interface, to visualise the path, we get
 
-![Minimise Plot](./Hmatrix-Minimise-Plot.svg)
+![Minimise Plot](Hmatrix-Minimise-Plot.svg)
 
 For the full example code, see [minimize.hs](https://raw.githubusercontent.com/albertoruiz/hmatrix/master/examples/minimize.hs).
 
