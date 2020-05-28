@@ -1756,7 +1756,8 @@ h3 {
   max-width: 800px;
 }
 .services-section.Blog-content .text-wrap {
-  font-size: $font_3;
+  font-size: $font_2;
+  line-height: 28px;
 }
 .services-section {
   position: relative;
@@ -1891,7 +1892,7 @@ h3 {
   border-radius: 10px;
 }
 .Blog-content .Article-text p {
-  margin: 0 0 40px 0 !important;
+  margin: 0 0 20px 0 !important;
 }
 .Blog-content .Article-text li p {
   padding: 0;

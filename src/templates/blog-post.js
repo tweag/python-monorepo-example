@@ -52,7 +52,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         </header>
         <section className="services-section opensource1 Blog-content part2 viewport-section">
           <div className="text-area">
-            <div className="text-wrap">
+      <div className="text-wrap" style={{size: "18px"}}>
               <div
                 className="Article-text"
                 dangerouslySetInnerHTML={{
