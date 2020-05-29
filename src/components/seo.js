@@ -54,6 +54,10 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: `${site.siteMetadata.siteUrl}/logo.png`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -67,7 +71,11 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:site`,
+          content: site.siteMetadata.social.twitter,
         },
         {
           name: `twitter:creator`,
