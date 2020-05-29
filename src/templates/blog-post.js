@@ -52,7 +52,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             </ul>
           </div>
         </header>
-        <section className="services-section opensource1 Blog-content part2 viewport-section">
+        <section className="services-section opensource1 Blog-content part2 viewport-section in-viewport">
           <div className="text-area">
             <div className="text-wrap">
               <div
