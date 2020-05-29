@@ -18,7 +18,7 @@ const AutonomousPage = () => {
           <div className="text-area">
             <div className="section-title">Key industry</div>
             <h3>
-              <i className="icon-arrow-right1"></i>Autonomous vehicles
+              <i className="icon-arrow-right1"></i> Autonomous vehicles
             </h3>
             <h1>
               WE PARTNER WITH VISIONARY STARTUPS AND GLOBAL LEADERS TO BUILD

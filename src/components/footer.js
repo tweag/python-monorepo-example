@@ -23,7 +23,7 @@ const Footer = () => {
             <strong className="title">See our work</strong>
             <ul className="footer-nav">
               <li>
-                <Link to="/industry/biotech">Biotechnology</Link>
+                <Link to="/industry/biotech">Biotech</Link>
               </li>
               <li>
                 <Link to="/industry/fintech">Fintech</Link>
