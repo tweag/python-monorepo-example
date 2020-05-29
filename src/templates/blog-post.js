@@ -77,14 +77,14 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                ← {previous.frontmatter.shortTitle || previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                {next.frontmatter.shortTitle || next.frontmatter.title} →
               </Link>
             )}
           </li>
@@ -107,6 +107,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        shortTitle
         author
         description
       }
