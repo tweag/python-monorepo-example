@@ -9,8 +9,10 @@ import "katex/dist/katex.min.css"
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
-  const prevTitle = previous && (previous.frontmatter.shortTitle || previous.frontmatter.title)
-  const nextTitle = next && (next.frontmatter.shortTitle || next.frontmatter.title)
+  const prevTitle =
+    previous && (previous.frontmatter.shortTitle || previous.frontmatter.title)
+  const nextTitle =
+    next && (next.frontmatter.shortTitle || next.frontmatter.title)
 
   return (
     <Layout>
