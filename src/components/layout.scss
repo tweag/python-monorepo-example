@@ -149,8 +149,10 @@ html {
   font-size: $font_3;
   background: $color_3;
 }
+.contact_field textarea::placeholder {
+  color: $color_2;
+}
 .contact_field textarea {
-  color: $color_11;
   min-height: 300px;
 }
 .contact_field input::placeholder {
