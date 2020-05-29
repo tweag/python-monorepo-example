@@ -17,24 +17,29 @@ const Manifesto = () => {
           <h1>TWEAG KNOWS BAZEL.</h1>
           <div className="text-wrap">
             <p>
-              <strong>Bazel builds billions of lines of source code, thousands of times 
-              a day at Google.</strong> When you build software with Bazel, you're using 
-              the same tool Google relies on to build their mission-critical infrastructure, 
+              <strong>
+                Bazel builds billions of lines of source code, thousands of
+                times a day at Google.
+              </strong>{" "}
+              When you build software with Bazel, you're using the same tool
+              Google relies on to build their mission-critical infrastructure,
               services, and applications.
             </p>
             <p>
-              That's impressive—but not everyone's a Google. There's a broad, growing 
-              community of Bazel users in more typical settings who build software that 
-              does remarkable things in commercial environments and in open source projects. 
-              Bazel builds software that's in your daily life, software that could save your 
-              life, and software that will change your life.
+              That's impressive—but not everyone's a Google. There's a broad,
+              growing community of Bazel users in more typical settings who
+              build software that does remarkable things in commercial
+              environments and in open source projects. Bazel builds software
+              that's in your daily life, software that could save your life, and
+              software that will change your life.
             </p>
             <p>
-              We believe Bazel has the potential to be a leading build tool for a long time. 
-              For many, Bazel as your build tool isn't an if—it's a when. Bazel's tagline 
-              Build and test software of any size, quickly and reliably is accurate. It's also 
-              accurate that Bazel migrations and tuning can be challenging. That's why we're 
-              helping worldwide with Bazel's adoption, and with its ongoing development—at its 
+              We believe Bazel has the potential to be a leading build tool for
+              a long time. For many, Bazel as your build tool isn't an if—it's a
+              when. Bazel's tagline Build and test software of any size, quickly
+              and reliably is accurate. It's also accurate that Bazel migrations
+              and tuning can be challenging. That's why we're helping worldwide
+              with Bazel's adoption, and with its ongoing development—at its
               core, and with complementary open source tooling.
             </p>
           </div>

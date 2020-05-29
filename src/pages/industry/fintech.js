@@ -18,7 +18,7 @@ const FintechPage = () => {
           <div className="text-area">
             <div className="section-title">Key industry</div>
             <h3>
-              <i className="icon-arrow-right1"></i>FINTECH
+              <i className="icon-arrow-right1"></i> FINTECH
             </h3>
             <h1>
               WE PARTNER WITH VISIONARY STARTUPS AND GLOBAL LEADERS TO MANAGE
@@ -47,7 +47,7 @@ const FintechPage = () => {
               engineering practices that make it easier to find and eliminate
               bugs in a transparent way.
             </p>
-            <p>
+            <p style={{ marginTop: "1.5rem" }}>
               We also understand financial products. Our background in finance,
               mathematics and data science means we speak your language, and we
               can reach a deep understanding of your challenges and goals. This

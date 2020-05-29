@@ -18,7 +18,7 @@ const BiotechPage = () => {
           <div className="text-area">
             <div className="section-title">Key industry</div>
             <h3>
-              <i className="icon-arrow-right1"></i> BIOTECHNOLOGY
+              <i className="icon-arrow-right1"></i> BIOTECH
             </h3>
             <h1>
               WE PARTNER WITH VISIONARY STARTUPS AND GLOBAL LEADERS TO ADVANCE

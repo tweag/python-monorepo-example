@@ -9,6 +9,8 @@ import "katex/dist/katex.min.css"
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
+  const prevTitle = previous && (previous.frontmatter.shortTitle || previous.frontmatter.title)
+  const nextTitle = next && (next.frontmatter.shortTitle || next.frontmatter.title)
 
   return (
     <Layout>
@@ -63,7 +65,6 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </div>
         </section>
       </article>
-
       <nav>
         <ul
           style={{
@@ -77,14 +78,14 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.shortTitle || previous.frontmatter.title}
+                ← {prevTitle}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.shortTitle || next.frontmatter.title} →
+                {nextTitle} →
               </Link>
             )}
           </li>

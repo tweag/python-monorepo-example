@@ -45,7 +45,7 @@ their vision, from research to product delivery.
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-katex`,
-	  `gatsby-remark-numbered-footnotes`,
+          `gatsby-remark-numbered-footnotes`,
         ],
       },
     },

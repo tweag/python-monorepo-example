@@ -46,7 +46,7 @@ const AutonomousPage = () => {
               formal methods to create testing and analysis tools that find bugs
               early.
             </p>
-            <p>
+            <p style={{ marginTop: "1.5rem" }}>
               Our capabilities go beyond safety. Tweag helps you quickly scale
               your engineering performance to build and innovate faster. Our
               expertise in infrastructure and software development processes
