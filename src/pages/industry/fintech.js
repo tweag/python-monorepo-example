@@ -116,9 +116,6 @@ const FintechPage = () => {
                   Designing Plutus, the smart contract language for a world
                   top-10 currency.
                 </p>
-                <Link to="/case-study/iohk" className="btn">
-                  Read case study
-                </Link>
               </div>
               <div className="split-col2"></div>
               <h3 className="quote">

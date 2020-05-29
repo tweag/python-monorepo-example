@@ -117,9 +117,6 @@ const IndexPage = ({ data, location }) => {
                     software. We apply mathematics, computer science and open
                     source methodologies to advance software engineering.
                   </strong>
-                  <Link to="/careers" className="btn">
-                    Join us
-                  </Link>
                 </div>
                 <div
                   className="image-holder backdrop"

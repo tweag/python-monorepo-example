@@ -56,49 +56,6 @@ const AutonomousPage = () => {
             </p>
           </div>
         </div>
-        <div className="section s_green about-section biotech learnmore viewport-section">
-          <div className="image-holder image-holder4">
-            <img src={img11} alt="" />
-          </div>
-          <div className="text-area">
-            <div className="section-title">Case studies</div>
-            <h1>Learn more about our projects.</h1>
-            <div className="split">
-              <div className="split-col1">
-                <h3>Kitty Hawk</h3>
-                <p>
-                  Generating embedded code for the autopilot of flying
-                  autonomous taxis.
-                </p>
-                <p>
-                  Building high-performance, auditable and traceable continous
-                  integration.
-                </p>
-              </div>
-              <div className="split-col2">
-                <h3>La Fabrique des Mobilités</h3>
-                <p>
-                  End-to-end solution to record accident parameters on the
-                  blockchain and improve driving behaviour.
-                </p>
-                <p>
-                  Won{" "}
-                  <a href="http://occ-challenge.mystrikingly.com/">2nd prize</a>{" "}
-                  of the Open Connected Cars Challenge.
-                </p>
-              </div>
-              <h3 className="quote">
-                “Tweag all very smart people. Everyone is really energetic and
-                intelligent and competent. They’ve made really good decisions. I
-                trust them.”
-              </h3>
-              <span className="text">
-                <i className="icon-arrow-right1"></i>&nbsp;&nbsp;Greg Horn,
-                Director of Software and Controls, Kitty Hawk
-              </span>
-            </div>
-          </div>
-        </div>
         <div className="about-section viewport-section"></div>
         <div className="section s_beige section06a viewport-section">
           <CallToAction areaIndex={3} backdropIndex={4} />

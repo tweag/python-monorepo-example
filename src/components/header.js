@@ -25,12 +25,6 @@ const Header = () => {
               <li>
                 <Link to="/services">Services</Link>
               </li>
-              <li>
-                <Link to="/about">Team</Link>
-              </li>
-              <li>
-                <Link to="/careers">Careers</Link>
-              </li>
               <li className="active">
                 <a href="#top">Key industries</a>
                 <div className="dropdown-menu">

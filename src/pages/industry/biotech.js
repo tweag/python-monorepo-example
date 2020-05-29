@@ -104,16 +104,10 @@ const BiotechPage = () => {
               <div className="split-col1">
                 <h3>Pfizer</h3>
                 <p>Making genetic data accessible for drug discovery.</p>
-                <Link to="/case-study/pfizer" className="btn">
-                  Read case study
-                </Link>
               </div>
               <div className="split-col2">
                 <h3>NovaDiscovery</h3>
                 <p>Simulating human physiology to cut clinical trial costs.</p>
-                <Link to="/case-study/novadiscovery" className="btn">
-                  Read case study
-                </Link>
               </div>
               <h3 className="quote">
                 I really value Tweag&rsquo;s rapid prototyping and their
