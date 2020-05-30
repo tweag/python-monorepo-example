@@ -17,7 +17,6 @@
     "gatsby-plugin-manifest": "^2.4.2",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-netlify": "^2.3.3",
-    "gatsby-plugin-offline": "^3.2.1",
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-sass": "^2.3.2",
     "gatsby-plugin-sharp": "^2.6.2",
@@ -43,7 +42,6 @@
     "react-typed": "^1.2.0"
   },
   "devDependencies": {
-    "gatsby-plugin-prettier-eslint": "^1.0.4",
     "prettier": "2.0.5"
   },
   "scripts": {
