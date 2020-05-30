@@ -3,5 +3,5 @@
 with pkgs;
 
 mkShell {
-  buildInputs = [ nodejs ];
+  buildInputs = [ nodejs-12_x ];
 }
