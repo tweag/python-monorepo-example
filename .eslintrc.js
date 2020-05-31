@@ -23,11 +23,12 @@ module.exports = {
     sourceType: `module`,
   },
   plugins: [
+    `filenames`,
     `prettier`,
     `react`,
   ],
   rules: {
-    "filenames/match-regex": ["error", "^[a-z-\\d\\.]+$", true],
+    "filenames/match-regex": [`error`, `^[a-z-\\d\\.]+$`, true],
     "quotes": [`error`, `backtick`],
     "react/jsx-key": `warn`,
     "react/prop-types": `off`,
