@@ -30,7 +30,8 @@ const Manifesto = () => {
               <strong>
                 Open source attracts minds from across the world and helps our
                 customers build systems better and faster.
-              </strong>{` `}
+              </strong>
+              {` `}
               Code sharing works.
             </p>
           </div>
@@ -63,7 +64,8 @@ const Manifesto = () => {
             <strong>
               Our clients get easy access to some of the best minds in computer
               science.
-            </strong>{` `}
+            </strong>
+            {` `}
             They also get Tweagers standing on the shoulders of giants who are
             right behind them. Knowledge sharing works.
           </p>
@@ -102,7 +104,8 @@ const OpenSourcePage = () => {
             Many thought leaders of the{` `}
             <a className="lined" href="https://nixos.org">
               Nix community
-            </a>{` `}
+            </a>
+            {` `}
             are Tweagers. Together with our clients, we contribute much of the
             technical roadmap, from better reproducibily and performance to new
             use cases and developer tools.
@@ -124,7 +127,8 @@ const OpenSourcePage = () => {
             {`, `}
             <a className="lined" href="https://github.com/fpco/inline-c">
               C
-            </a>{` `}
+            </a>
+            {` `}
             and{` `}
             <a className="lined" href="https://github.com/tweag/HaskellR">
               R
@@ -138,7 +142,8 @@ const OpenSourcePage = () => {
             and do the{` `}
             <a className="lined" href="https://github.com/tweag/funflow">
               heavy lifting
-            </a>{` `}
+            </a>
+            {` `}
             in your{` `}
             <a className="lined" href="https://github.com/tweag/porcupine">
               analytics pipelines
@@ -148,7 +153,8 @@ const OpenSourcePage = () => {
         </Community>
         <Community title="Bazel" className="s_grey opensource2">
           <p>
-            We were among the first outside of Google to adopt Bazel. We are{` `}
+            We were among the first outside of Google to adopt Bazel. We are
+            {` `}
             <a className="lined" href="https://bazel.build/experts.html">
               recognized community experts
             </a>

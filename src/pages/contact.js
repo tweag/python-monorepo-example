@@ -43,7 +43,8 @@ const ContactPage = () => {
               </button>
               <p id="formmessage" style={{ visibility: `hidden` }}>
                 {` `}
-                Thank you for reaching out, we will soon reply to your request.{` `}
+                Thank you for reaching out, we will soon reply to your request.
+                {` `}
               </p>
             </div>
             <div className="line_sep"></div>

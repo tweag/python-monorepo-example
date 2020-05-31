@@ -31,7 +31,11 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               <div className="post_tags">
                 {post.frontmatter.tags.map(tag => {
                   return (
-                    <Link to={`/blog/tags/${tag}`} className="btn noarrow">
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      key={tag}
+                      className="btn noarrow"
+                    >
                       {tag}
                     </Link>
                   )

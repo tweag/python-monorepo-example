@@ -123,8 +123,8 @@ const PfizerPage = () => {
               </h3>
             </quote>
             <span className="text">
-              <i className="icon-arrow-right1"></i> Eric Fauman, Senior Scientific
-              Director, Head Integrative Biology, Pfizer
+              <i className="icon-arrow-right1"></i> Eric Fauman, Senior
+              Scientific Director, Head Integrative Biology, Pfizer
             </span>
           </div>
           <div className="image-holder image-holder">

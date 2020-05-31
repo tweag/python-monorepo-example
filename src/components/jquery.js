@@ -4,7 +4,7 @@ import { withPrefix } from "gatsby"
 const addScript = attrs => {
   const script = document.createElement(`script`)
   for (const attr in attrs) {
-    if({}.hasOwnProperty.call(attrs, attr)) {
+    if ({}.hasOwnProperty.call(attrs, attr)) {
       script[attr] = attrs[attr]
     }
   }

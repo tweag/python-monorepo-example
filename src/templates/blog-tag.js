@@ -23,7 +23,7 @@ const TagPage = ({ data, pageContext }) => {
         <div className="services-section Blog-content viewport-section">
           <div className="post_container">
             {edges.map(post => {
-              return <Card node={post.node} />
+              return <Card node={post.node} key={post.node.fields.slug} />
             })}
           </div>
         </div>

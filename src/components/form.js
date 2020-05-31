@@ -29,11 +29,9 @@ export function submitForm(e) {
   const formmessage = document.querySelector(`#formmessage`)
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      formmessage.innerHTML =
-        `Thank you for reaching out, we will soon reply to your request.`
+      formmessage.innerHTML = `Thank you for reaching out, we will soon reply to your request.`
     } else if (xhr.readyState == 4 && xhr.status == 400) {
-      formmessage.innerHTML =
-        `Please fill in a valid email address and a message.`
+      formmessage.innerHTML = `Please fill in a valid email address and a message.`
       console.log(xhr.responseText) // Returns a 400 error if the submission is rejected.
     } else if (xhr.readyState == 4 && xhr.status == 403) {
       formmessage.innerHTML = `No connection to our systems, please try later.`

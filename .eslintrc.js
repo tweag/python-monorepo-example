@@ -1,3 +1,6 @@
+// Lint rules and style based on
+// https://github.com/gatsbyjs/gatsby/tree/master/.eslintrc.js.
+
 module.exports = {
   env: {
     browser: true,
@@ -11,10 +14,6 @@ module.exports = {
     `prettier`,
     `prettier/react`,
   ],
-  globals: {
-    Atomics: `readonly`,
-    SharedArrayBuffer: `readonly`,
-  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -22,14 +21,11 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: `module`,
   },
-  plugins: [
-    `filenames`,
-    `prettier`,
-    `react`,
-  ],
+  plugins: [`filenames`, `prettier`, `react`],
   rules: {
     "filenames/match-regex": [`error`, `^[a-z-\\d\\.]+$`, true],
-    "quotes": [`error`, `backtick`],
+    "prettier/prettier": `error`,
+    quotes: [`error`, `backtick`],
     "react/jsx-key": `warn`,
     "react/prop-types": `off`,
     "require-jsdoc": `off`,
@@ -40,4 +36,4 @@ module.exports = {
       version: `16.4.2`,
     },
   },
-};
+}

@@ -32,7 +32,11 @@ export const TopCard = ({ node }) => {
             <div className="post_tags">
               {tags.map(tag => {
                 return (
-                  <Link to={`/blog/tags/${tag}`} className="btn noarrow">
+                  <Link
+                    to={`/blog/tags/${tag}`}
+                    key={tag}
+                    className="btn noarrow"
+                  >
                     {tag}
                   </Link>
                 )
@@ -77,7 +81,11 @@ export const Card = ({ node }) => {
           <div className="post_tags">
             {tags.map(tag => {
               return (
-                <Link to={`/blog/tags/${tag}`} className="btn noarrow">
+                <Link
+                  to={`/blog/tags/${tag}`}
+                  key={tag}
+                  className="btn noarrow"
+                >
                   {tag}
                 </Link>
               )
