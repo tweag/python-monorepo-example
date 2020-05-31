@@ -47,7 +47,7 @@ const FintechPage = () => {
               engineering practices that make it easier to find and eliminate
               bugs in a transparent way.
             </p>
-            <p style={{ marginTop: "1.5rem" }}>
+            <p style={{ marginTop: `1.5rem` }}>
               We also understand financial products. Our background in finance,
               mathematics and data science means we speak your language, and we
               can reach a deep understanding of your challenges and goals. This
@@ -66,7 +66,7 @@ const FintechPage = () => {
                   Tweagers were leaders of the design of Plutus, the smart
                   contract language for one of the world&rsquo;s top-10
                   cryptocurrencies with <strong>IOHK</strong>
-                  {"."}
+                  {`.`}
                 </p>
               </li>
               <li>
@@ -79,7 +79,7 @@ const FintechPage = () => {
               <li>
                 <div className="icon-arrow-right1"></div>
                 <p>
-                  Tweag streamlined devops and infrastructure for{" "}
+                  Tweag streamlined devops and infrastructure for{` `}
                   <strong>Digital Asset</strong> so they could focus on things
                   like replacing the ASX legacy clearing and settlement system
                   with multi-party, automated, and simplified workflows.

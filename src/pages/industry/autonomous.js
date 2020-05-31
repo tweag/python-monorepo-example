@@ -1,13 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import CallToAction from "../../components/cta"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 
 import img9 from "../../images/img9.svg"
-import img10 from "../../images/img10.svg"
-import img11 from "../../images/img11.svg"
 
 const AutonomousPage = () => {
   return (
@@ -46,7 +43,7 @@ const AutonomousPage = () => {
               formal methods to create testing and analysis tools that find bugs
               early.
             </p>
-            <p style={{ marginTop: "1.5rem" }}>
+            <p style={{ marginTop: `1.5rem` }}>
               Our capabilities go beyond safety. Tweag helps you quickly scale
               your engineering performance to build and innovate faster. Our
               expertise in infrastructure and software development processes

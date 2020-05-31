@@ -9,7 +9,7 @@ const TagPage = ({ data, pageContext }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const title = `Blog: ${tag} (${totalCount} post${
-    totalCount === 1 ? "" : "s"
+    totalCount === 1 ? `` : `s`
   })`
   return (
     <Layout>

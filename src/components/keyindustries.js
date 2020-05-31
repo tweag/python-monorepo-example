@@ -6,7 +6,7 @@ import fintech from "../images/img4.gif"
 import vehicles from "../images/img5.gif"
 
 const KeyIndustries = ({ isFullPage }) => {
-  const containerClasses = isFullPage ? "container fullp" : "container"
+  const containerClasses = isFullPage ? `container fullp` : `container`
   return (
     <div className="section s_white section-wrap key_indus viewport-section">
       <div className={containerClasses}>

@@ -13,7 +13,7 @@ export const TopCard = ({ node }) => {
           to={node.fields.slug}
           className="post_content_1"
           // TODO put in class
-          style={{ color: "#000" }}
+          style={{ color: `#000` }}
         >
           <header>
             <div className="section-title homepost">{node.fields.date}</div>
@@ -56,7 +56,7 @@ export const Card = ({ node }) => {
       <Link
         to={node.fields.slug}
         className="post_content_1"
-        style={{ color: "#000" }}
+        style={{ color: `#000` }}
       >
         <header>
           <div className="post_date">{node.fields.date}</div>

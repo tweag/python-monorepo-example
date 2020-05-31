@@ -12,13 +12,13 @@ const PfizerPage = () => {
   return (
     <Layout>
       <SEO title="Making genetic data accessible for drug discovery" />
-      <section class="section-area">
-        <div class="services-section use_case first viewport-section">
-          <div class="text-area">
-            <div class="section-title">Use case</div>
+      <section className="section-area">
+        <div className="services-section use_case first viewport-section">
+          <div className="text-area">
+            <div className="section-title">Use case</div>
             <h1>MAKING GENETIC DATA ACCESSIBLE FOR DRUG DISCOVERY.</h1>
-            <div class="text-wrap">
-              <p class="use_case_excerpt">
+            <div className="text-wrap">
+              <p className="use_case_excerpt">
                 Tweag collaborated with Pfizer to enhance its search engine for
                 human genetic data to help advance scientific discovery.
               </p>
@@ -37,16 +37,16 @@ const PfizerPage = () => {
               </p>
             </div>
           </div>
-          <div class="image-holder image-holder">
-            <img class="uc_rotate" src={imgVertical1} alt="" />
+          <div className="image-holder image-holder">
+            <img className="uc_rotate" src={imgVertical1} alt="" />
             <img src={imgVertical2} alt="" />
           </div>
         </div>
-        <div class="services-section use_cases second viewport-section">
-          <div class="image-holder image-holder2">
+        <div className="services-section use_cases second viewport-section">
+          <div className="image-holder image-holder2">
             <img src={img15} alt="" />
           </div>
-          <div class="text-wrap text-area2">
+          <div className="text-wrap text-area2">
             <p>
               Pfizer partnered with Tweag to maintain and enhance the
               application to meet the evolving needs of its scientists. In
@@ -70,8 +70,8 @@ const PfizerPage = () => {
             </ul>
           </div>
         </div>
-        <div class="about-section use_case bloc1 viewport-section">
-          <div class="text-wrap text-area">
+        <div className="about-section use_case bloc1 viewport-section">
+          <div className="text-wrap text-area">
             <h1>FAST &amp; ITERATIVE COLLABORATION</h1>
             <p>
               Tweag used a fast, iterative approach to develop the ToE to meet
@@ -83,8 +83,8 @@ const PfizerPage = () => {
             </p>
           </div>
         </div>
-        <div class="about-section use_case bloc2 viewport-section">
-          <div class="text-wrap text-area">
+        <div className="about-section use_case bloc2 viewport-section">
+          <div className="text-wrap text-area">
             <h1>SOFTWARE &amp; BIOINFORMATIC EXPERTS</h1>
             <p>
               Unlike typical software engineers, Tweag engineers have domain
@@ -95,10 +95,10 @@ const PfizerPage = () => {
             </p>
           </div>
         </div>
-        <div class="services-section use_case results viewport-section">
-          <div class="text-area">
+        <div className="services-section use_case results viewport-section">
+          <div className="text-area">
             <h1>RESULTS</h1>
-            <div class="text-wrap">
+            <div className="text-wrap">
               <ul>
                 <li>
                   The Table of Everything was recognized with a prestigious
@@ -122,13 +122,13 @@ const PfizerPage = () => {
                 and willingness to try different things.
               </h3>
             </quote>
-            <span class="text">
-              <i class="icon-arrow-right1"></i> Eric Fauman, Senior Scientific
+            <span className="text">
+              <i className="icon-arrow-right1"></i> Eric Fauman, Senior Scientific
               Director, Head Integrative Biology, Pfizer
             </span>
           </div>
-          <div class="image-holder image-holder">
-            <img class="uc_rotate" src={imgVertical2} alt="" />
+          <div className="image-holder image-holder">
+            <img className="uc_rotate" src={imgVertical2} alt="" />
             <img src={imgVertical2} alt="" />
           </div>
         </div>

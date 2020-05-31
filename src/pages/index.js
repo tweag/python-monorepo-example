@@ -43,7 +43,7 @@ const IndexPage = ({ data, location }) => {
                 <div className="visual-caption">
                   <h1 className="typeit">
                     <Typed
-                      strings={["SCALE YOUR ENGINEERING POWER."]}
+                      strings={[`SCALE YOUR ENGINEERING POWER.`]}
                       typeSpeed={50}
                       showCursor={false}
                     />
@@ -120,7 +120,7 @@ const IndexPage = ({ data, location }) => {
                 </div>
                 <div
                   className="image-holder backdrop"
-                  style={{ animation: "none" }}
+                  style={{ animation: `none` }}
                 ></div>
               </div>
             </div>

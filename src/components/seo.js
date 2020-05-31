@@ -42,7 +42,7 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
         canonical
           ? [
               {
-                rel: "canonical",
+                rel: `canonical`,
                 href: canonical,
               },
             ]

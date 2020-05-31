@@ -64,7 +64,7 @@ const BiotechPage = () => {
                 <div className="icon-arrow-right1"></div>
                 <p>
                   Developing software that runs models of blood flow in the
-                  human body to analyze drug effects on patients with{" "}
+                  human body to analyze drug effects on patients with{` `}
                   <strong>NovaDiscovery.</strong>
                 </p>
               </li>

@@ -54,7 +54,7 @@ const Header = () => {
           </div>
         </div>
         <a className="menu-opener" href="#top">
-          {" "}
+          {` `}
         </a>
       </div>
     </header>

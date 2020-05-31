@@ -26,11 +26,11 @@ const Manifesto = () => {
               engineering talent.
             </p>
             <p>
-              Why?{" "}
+              Why?{` `}
               <strong>
                 Open source attracts minds from across the world and helps our
                 customers build systems better and faster.
-              </strong>{" "}
+              </strong>{` `}
               Code sharing works.
             </p>
           </div>
@@ -49,7 +49,7 @@ const Manifesto = () => {
             to keep pushing the envelope. Their sole focus is to identify future
             directions for programming languages, and we bring research to
             production faster than ever before. Tweagers are working on linear
-            types, dependent types and mobile code that runs{" "}
+            types, dependent types and mobile code that runs{` `}
             <strong>everywhere.</strong>
           </p>
         </div>
@@ -63,7 +63,7 @@ const Manifesto = () => {
             <strong>
               Our clients get easy access to some of the best minds in computer
               science.
-            </strong>{" "}
+            </strong>{` `}
             They also get Tweagers standing on the shoulders of giants who are
             right behind them. Knowledge sharing works.
           </p>
@@ -99,10 +99,10 @@ const OpenSourcePage = () => {
         <Manifesto />
         <Community title="Nix" className="s_red opensource">
           <p>
-            Many thought leaders of the{" "}
+            Many thought leaders of the{` `}
             <a className="lined" href="https://nixos.org">
               Nix community
-            </a>{" "}
+            </a>{` `}
             are Tweagers. Together with our clients, we contribute much of the
             technical roadmap, from better reproducibily and performance to new
             use cases and developer tools.
@@ -113,52 +113,52 @@ const OpenSourcePage = () => {
             Tweagers are among the top contributors to GHC, a mature,
             state-of-the-art compiler for Haskell. Haskell is now recognized as
             the shortest path to correct, scalable code for industries where
-            mistakes matter. We created language interop with{" "}
+            mistakes matter. We created language interop with{` `}
             <a className="lined" href="https://github.com/tweag/inline-java">
               Java
             </a>
-            {", "}
+            {`, `}
             <a className="lined" href="https://github.com/tweag/inline-js">
               JavaScript
             </a>
-            {", "}
+            {`, `}
             <a className="lined" href="https://github.com/fpco/inline-c">
               C
-            </a>{" "}
-            and{" "}
+            </a>{` `}
+            and{` `}
             <a className="lined" href="https://github.com/tweag/HaskellR">
               R
             </a>
-            {", "}
-            we make Haskell{" "}
+            {`, `}
+            we make Haskell{` `}
             <a className="lined" href="https://github.com/tweag/asterius">
               run in your browser
             </a>
-            {", "}
-            and do the{" "}
+            {`, `}
+            and do the{` `}
             <a className="lined" href="https://github.com/tweag/funflow">
               heavy lifting
-            </a>{" "}
-            in your{" "}
+            </a>{` `}
+            in your{` `}
             <a className="lined" href="https://github.com/tweag/porcupine">
               analytics pipelines
             </a>
-            {"."}
+            {`.`}
           </p>
         </Community>
         <Community title="Bazel" className="s_grey opensource2">
           <p>
-            We were among the first outside of Google to adopt Bazel. We are{" "}
+            We were among the first outside of Google to adopt Bazel. We are{` `}
             <a className="lined" href="https://bazel.build/experts.html">
               recognized community experts
             </a>
-            {". "}
+            {`. `}
             We have contributed key features and new programming language
-            support to Bazel. We did this for ourselves and now{" "}
+            support to Bazel. We did this for ourselves and now{` `}
             <Link to="/bazel" className="lined">
               we can do it for you
             </Link>
-            {". "}
+            {`. `}
           </p>
         </Community>
         <div className="section s_white about-section opensource opensource4 viewport-section">

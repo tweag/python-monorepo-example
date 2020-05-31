@@ -10,10 +10,10 @@ const NotFoundPage = ({ data, location }) => {
       <SEO title="Page not found" pathname="/404.html" />
       <div
         className="section s_white section-wrap viewport-section"
-        style={{ paddingTop: "150px", margin: "0 auto 0 auto", width: "32em" }}
+        style={{ paddingTop: `150px`, margin: `0 auto 0 auto`, width: `32em` }}
       >
         <h1>Page not found</h1>
-        <p style={{ paddingTop: "1em", paddingBottom: "1em" }}>
+        <p style={{ paddingTop: `1em`, paddingBottom: `1em` }}>
           Oops! The page you are looking for has been removed or relocated.
         </p>
         <p>

@@ -1,64 +1,64 @@
 module.exports = {
   siteMetadata: {
-    title: "Tweag",
+    title: `Tweag`,
     description: `
 Scale your engineering power. We enable deep tech startups to achieve
 their vision, from research to product delivery.
     `,
-    siteUrl: "https://tweag.io",
+    siteUrl: `https://tweag.io`,
     social: {
-      twitter: "tweagio",
+      twitter: `tweagio`,
     },
   },
   plugins: [
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
-        name: "blog",
+        name: `blog`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/images`,
-        name: "images",
+        name: `images`,
       },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-images",
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
             },
           },
           {
-            resolve: "gatsby-remark-responsive-iframe",
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: "margin-bottom: 1.0725rem",
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-smartypants",
-          "gatsby-remark-katex",
-          "gatsby-remark-numbered-footnotes",
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-katex`,
+          `gatsby-remark-numbered-footnotes`,
         ],
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-47336061-2",
+        trackingId: `UA-47336061-2`,
       },
     },
     {
-      resolve: "gatsby-plugin-feed",
+      resolve: `gatsby-plugin-feed`,
       options: {
         query: `
           {
@@ -108,9 +108,9 @@ their vision, from research to product delivery.
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "Tweag - Engineering blog",
-            match: "^/blog/",
+            output: `/rss.xml`,
+            title: `Tweag - Engineering blog`,
+            match: `^/blog/`,
           },
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
@@ -148,29 +148,29 @@ their vision, from research to product delivery.
                 }
               }
             `,
-            output: "/rss-nix.xml",
-            title: "Tweag - Nix blog",
-            match: "^/blog/",
+            output: `/rss-nix.xml`,
+            title: `Tweag - Nix blog`,
+            match: `^/blog/`,
           },
         ],
       },
     },
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Tweag",
-        short_name: "Tweag",
-        start_url: "/",
-        background_color: "#ffffff",
-        theme_color: "#fe7853",
-        display: "minimal-ui",
-        icon: "content/assets/tweag-icon.png",
+        name: `Tweag`,
+        short_name: `Tweag`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#fe7853`,
+        display: `minimal-ui`,
+        icon: `content/assets/tweag-icon.png`,
       },
     },
-    "gatsby-plugin-react-helmet",
-    "gatsby-redirect-from",
-    "gatsby-plugin-meta-redirect",
-    "gatsby-plugin-sass",
-    "gatsby-plugin-netlify",
+    `gatsby-plugin-react-helmet`,
+    `gatsby-redirect-from`,
+    `gatsby-plugin-meta-redirect`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
   ],
 }

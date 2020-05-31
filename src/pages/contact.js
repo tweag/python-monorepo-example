@@ -6,7 +6,7 @@ import { submitForm } from "../components/form"
 const ContactPage = () => {
   return (
     <Layout>
-      <section class="section-area contact">
+      <section className="section-area contact">
         <form
           id="contactform"
           name="contact"
@@ -14,56 +14,56 @@ const ContactPage = () => {
           data-netlify="true"
           onSubmit={submitForm}
         >
-          <div class="section s_white services-section viewport-section">
-            <div class="text-area">
+          <div className="section s_white services-section viewport-section">
+            <div className="text-area">
               <h1>
                 <i></i> GET IN TOUCH.
               </h1>
             </div>
           </div>
-          <div class="section s_yellow services-section contact_field viewport-section">
-            <div class="text-wrap text-area">
+          <div className="section s_yellow services-section contact_field viewport-section">
+            <div className="text-wrap text-area">
               <label>Email*</label>
               <input
                 name="email"
                 type="text"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'myemail@example.com'"
+                onFocus="this.placeholder = ''"
+                onBlur="this.placeholder = 'myemail@example.com'"
                 placeholder="myemail@example.com"
               />
             </div>
-            <div class="text-wrap text-area">
+            <div className="text-wrap text-area">
               <label>Message*</label>
               <textarea
                 name="message"
                 placeholder="Write your message"
               ></textarea>
-              <button class="btn" type="submit">
+              <button className="btn" type="submit">
                 Send message
               </button>
-              <p id="formmessage" style={{ visibility: "hidden" }}>
-                {" "}
-                Thank you for reaching out, we will soon reply to your request.{" "}
+              <p id="formmessage" style={{ visibility: `hidden` }}>
+                {` `}
+                Thank you for reaching out, we will soon reply to your request.{` `}
               </p>
             </div>
-            <div class="line_sep"></div>
-            <div class="text-wrap text-area">
+            <div className="line_sep"></div>
+            <div className="text-wrap text-area">
               <label>Or send a direct email to our team</label>
-              <p class="hello">
+              <p className="hello">
                 <a href="mailto:hello@tweag.io">hello@tweag.io</a>
               </p>
             </div>
           </div>
-          <div class="section s_white services-section contact_field viewport-section"></div>
+          <div className="section s_white services-section contact_field viewport-section"></div>
         </form>
       </section>
-      <div class="section s_white section-wrap services-section contact_addr viewport-section">
-        <div class="text-area">
-          <div class="col-area animation-wrap">
-            <div class="col-row">
-              <div class="info-col">
-                <div class="block">
-                  <div class="description">
+      <div className="section s_white section-wrap services-section contact_addr viewport-section">
+        <div className="text-area">
+          <div className="col-area animation-wrap">
+            <div className="col-row">
+              <div className="info-col">
+                <div className="block">
+                  <div className="description">
                     <h3>PARIS</h3>EURL Tweag
                     <br />
                     207 Rue de Bercy
@@ -74,9 +74,9 @@ const ContactPage = () => {
                   </div>
                 </div>
               </div>
-              <div class="info-col">
-                <div class="block">
-                  <div class="description">
+              <div className="info-col">
+                <div className="block">
+                  <div className="description">
                     <h3>LONDON</h3>Tweag UK
                     <br />
                     Devonshire House,
@@ -89,9 +89,9 @@ const ContactPage = () => {
                   </div>
                 </div>
               </div>
-              <div class="info-col">
-                <div class="block">
-                  <div class="description">
+              <div className="info-col">
+                <div className="block">
+                  <div className="description">
                     <h3>CYPRUS</h3>Tweag I/O Limited
                     <br />
                     Servias street 1<br />

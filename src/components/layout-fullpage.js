@@ -7,7 +7,7 @@ import Footer from "./footer"
 import "normalize.css"
 import "./layout.scss"
 
-const FULLPAGE_LICENSE_KEY = "E12D894A-7B8349EE-B967F95D-3FF82929"
+const FULLPAGE_LICENSE_KEY = `E12D894A-7B8349EE-B967F95D-3FF82929`
 
 const LayoutFullPage = ({ children }) => {
   return (
