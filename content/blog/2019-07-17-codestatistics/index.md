@@ -54,13 +54,7 @@ We can easily determine a package's fraction of lines of code that correspond to
 this fraction is just the number of lines of code with import and language pragma keywords divided by the number of all lines of code.
 The following histograms show the results:
 
-<center>
-
-<a href="../img/posts/codestatistics_swearwords.png">
-<img title="Histograms of fractions of lines of code with import statements or LANGUAGE pragmas" src="../img/posts/codestatistics_histogram_importfractions_both.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
-
-</center>
+![Histograms of fractions of lines of code with import statements or LANGUAGE pragmas](./codestatistics_histogram_importfractions_both.png)
 
 Haskell tends to have more `import` and `LANGUAGE` statements per package than Python, as indicated by the average percentage (dashed lines):
 for Python, it's about 6%, while for Haskell it's about 9.5%.
@@ -73,7 +67,7 @@ In case of Python, such packages often are `setuptools` scripts, while for Haske
 Answering this question amounts to extracting the name of the imported package or used `LANGUAGE` pragma for each line of code.
 For Python, we first look at basic `import [...]` statements:
 
-<img title="Most frequently imported Python packages" src="../img/posts/codestatistics_py_imports.png" style="max-width: 100%;max-height: 100%;"/>
+![Most frequently imported Python packages](./codestatistics_py_imports.png)
 
 Few surprises for Python's basic `import`s - `os` and `sys` are the most frequently imported modules.
 In fact, they make up 27% and 19% of all basic imports.
@@ -87,7 +81,7 @@ Disregarding that package, around 2.5% of all `import` statements are concerned 
 
 Onwards to Haskell:
 
-<img title="Most frequently imported Haskell modules" src="../img/posts/codestatistics_hask_boilerplate.png" style="max-width: 100%;max-height: 100%;"/>
+![Most frequently imported Haskell modules](./codestatistics_hask_boilerplate.png)
 
 Here we find an unexpectedly high occurrence of explicit `Prelude` imports. Imports from the `Data` namespace make up 34% of all import statements, which matches our intuition that its contents are very frequently used.
 

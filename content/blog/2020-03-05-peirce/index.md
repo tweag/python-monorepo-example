@@ -43,7 +43,7 @@ implies `B`, then we know the fact `B` (_modus ponens_). We will represent this
 process with the following [diagram][n-cat]:
 
 <center>
-<img title="Deduction" src="../img/peirce-deduction.svg" style="margin-bottom:20px;"></img>
+<img title="Deduction" src="./peirce-deduction.svg" style="margin-bottom:20px;"></img>
 </center>
 
 In philosophy books, it is very common to identify the sides of this triangle
@@ -95,7 +95,7 @@ that `A` implies `B`, then we abduce `A` as a plausible thing. This can be
 represented in the following diagram:
 
 <center>
-<img title="Abduction" src="../img/peirce-abduction.svg" style="margin-bottom:20px;"></img>
+<img title="Abduction" src="./peirce-abduction.svg" style="margin-bottom:20px;"></img>
 </center>
 
 Abduction is the process that we identify with writing code and engineering,
@@ -150,7 +150,7 @@ a fact `A`, then we induce `A` implies `B` as a plausible thing. This can be
 represented in the following diagram:
 
 <center>
-<img title="Induction" src="../img/peirce-induction.svg" style="margin-bottom:20px;"></img>
+<img title="Induction" src="./peirce-induction.svg" style="margin-bottom:20px;"></img>
 </center>
 
 Induction is the process that we identify with writing types and science,

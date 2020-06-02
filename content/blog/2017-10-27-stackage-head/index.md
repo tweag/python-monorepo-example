@@ -38,7 +38,7 @@ Building of so called _Stackage snapshots_ is a two-phase process. First, a Dock
 
 To perform regression testing of GHC HEAD, we need to alter both steps. Firstly, we use `stackage:nightly` as the basis for a Docker image that contains all the same non-Haskell dependencies, but includes the latest development version of GHC. We call it `stackage:head`. This is illustrated in the below diagram.
 
-<center><img title="Stackage Docker images" alt="Stackage Docker images" src="../img/posts/StackageDocker-squashed.jpg" style="max-width: 50%;max-height: 50%;"></img></center>
+![Stackage Docker images](./StackageDocker-squashed.jpg)
 
 ## Pruning constraints
 
@@ -46,7 +46,7 @@ The second step in the Stackage build process, based on `stackage-curator`, is i
 
 However, not every generated build plan can be executed. In case of package version conflicts, we may get an invalid plan. When using the latest development version of GHC, the HEAD, in combination with the build constraints of Stackage Nightly (which is curated to work with the latest stable release version of GHC), we invariably get an invalid plan. As we want regression testing to be a fully automatic process, we don’t want any manual intervention in the form of manually curating a set of build constraints specifically for GHC HEAD. Instead, we use a small Haskell script that prunes the build constraints by simply removing all packages that participate in a conflict. We call the resulting set of build constraints the _pruned build constraints_. They are then used to build packages. That build process may fail for individual packages if there is a regression or a conscious change in GHC. Overall, we get the following architecture.
 
-<center><img title="Stackage HEAD build process" alt="Stackage HEAD build process" src="../img/posts/Stackage-Regression-squashed.jpg" style="max-width: 65%;max-height: 65%;"></img></center>
+![Stackage HEAD build process](./Stackage-Regression-squashed.jpg)
 
 ## Assessing changes to GHC
 
@@ -54,7 +54,7 @@ One of the interesting questions that we want to answer with the HEAD build of S
 
 However, a change to GHC is always a change with respect to a particular earlier version of GHC HEAD — this may be in the form of a pull request or a differential. Hence, what we are actually interested in is the _change_ in package failures between two only slightly different versions of GHC. Any package whose build fails for both versions can simply be ignored. In contrast, whenever a pull request or differential leads to a _new_ package failure, we have got a situation, where a code reviewer or code author needs to assess whether the failure is acceptable (GHC’s behaviour or core library APIs underwent a planned change) or whether it indicates a regression.
 
-<center><img title="Comparing builds before and after a change" alt="Comparing builds before and after a change" src="../img/posts/StackageCompare-squashed.jpg" style="max-width: 65%;max-height: 65%;"></img></center>
+![Comparing builds before and after a change](./StackageCompare-squashed.jpg)
 
 ## Collaboration
 

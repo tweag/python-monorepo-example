@@ -1,6 +1,6 @@
 ---
 redirect_from: [/posts/2017-09-06-hyperion.html]
-title: Tracking performance  over the entire software lifecycle
+title: Tracking performance over the entire software lifecycle
 shortTitle: Tracking performance
 author: Nicolas Mattia
 tags: [devops]
@@ -12,7 +12,7 @@ is, how to get something like the below picture. For that, you'll need
 to _systematically_ track and store benchmark results over time. We'll
 use Elasticsearch for that.
 
-<img title="Evolution of our client's benchmarks over a month" alt="Evolution of our client's benchmarks over a month" src="../img/posts/hyperion-realworld.png" style="max-width: 100%;max-height: 100%;"></img>
+![Evolution of our client's benchmarks over a month](./hyperion-realworld.png)
 
 Here's a standard workflow:
 
@@ -350,7 +350,7 @@ picker at the top right corner and set the time range to "Last 6 months"
 your data with falls into that range). We can fill the `metrics` and `buckets`
 settings in the panel on the left hand side (see picture below).
 
-<img title="Panel settings for the Fibonacci plot" alt="Panel settings for the Fibonacci plot" src="../img/posts/hyperion-data-settings.png" style="max-width: 300px;float: right; padding: 20px;"></img>
+![Panel settings for the Fibonacci plot](./hyperion-data-settings.png)
 
 Let's break this down:
 
@@ -374,7 +374,7 @@ Let's break this down:
 
 You should get a plot similar to the following image:
 
-<img title="Fibonacci plot result" alt="Fibonacci plot result" src="../img/posts/hyperion-fib-vs-x1.png" style="max-width: 100%;"></img>
+![Fibonacci plot result](./hyperion-fib-vs-x1.png)
 
 And there it is!
 

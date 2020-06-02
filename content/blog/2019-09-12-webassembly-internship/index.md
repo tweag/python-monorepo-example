@@ -137,9 +137,7 @@ Similarly, another technique I began using was to create debug logs that would e
 render the state of the heap at that given point in time: this is a much saner way to see what's
 going on than view raw numbers or bit strings. For example:
 
-<center>
-<img title="Heap structure during crash: Gray is dead memory, green is memory that should be live" src="../img/posts/2019-07-31-webassembly-internship-heap-render-fib.png" style="max-width: 100%;max-height: 100%;"/>
-</center>
+![Heap structure during crash: Gray is dead memory, green is memory that should be live](./heap-render-fib.png)
 
 The fact that the gray region overlaps with the green region is a Bad Thing
 since we were freeing up some memory that is actually still kept alive by the

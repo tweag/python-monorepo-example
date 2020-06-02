@@ -4,7 +4,7 @@ title: "JupyterWith:  Declarative, Reproducible Notebook Environments"
 shortTitle: "Declarative, Reproducible Jupyter Environments"
 author: Juan Simões, Matthias Meschede
 description: "Millions of Jupyter notebooks are spread over the internet - machine learning, astrophysics, biology, economy, you name it. What a great age for reproducible science! Or that's what you think until you try to actually run these notebooks. Then you realize that having understandable high-level code alone is not enough to reproduce something on a computer. JupyterWith is a solution to this problem."
-image: "posts/jupyter-kernels-box.png"
+image: "./jupyter-kernels-box.png"
 tags: [nix, data-science]
 ---
 
@@ -41,13 +41,7 @@ The Jupyter environments can also be containerized with a single Nix command as 
 Such Docker images can then be served with [JupyterHub][jupyterhub] to give multiple users access to a well-defined reproducible environment.
 With this setup, installation of a Jupyterlab environment with multiple kernels such as in the following image is easy and robust:
 
-<a href="../img/posts/jupyter-kernels.png">
-<img
-  title="JupyterWith Kernels"
-  src="../img/posts/jupyter-kernels.png"
-  style="max-width:100%; max-height:100%;"
-/>
-</a>
+![png](./jupyter-kernels.png)
 
 A reproducible compute environment is certainly not the only thing that is required to reproduce a notebook.
 Just think of a random number generator that could be called in one of the code cells.
@@ -109,13 +103,7 @@ We can also programmatically compose different derivations, our own or the ones 
 For example, different kernels that are themselves composite packages can be combined with Jupyterlab into a single application.
 The output is a big dependency web that links the final build output, i.e. Jupyterlab with kernels to all of its dependencies as shown in this dependency graph:
 
-<a href="../img/posts/jupyter-graph.png">
-<img
-  title="JupyterWith Dependencies Graph"
-  src="../img/posts/jupyter-graph.png"
-  style="max-width: 100%;max-height: 100%;"
-/>
-</a>
+![png](./jupyter-graph.png)
 
 Packages and their dependencies are represented as interconnected nodes in this graph.
 Such a graph is called the _closure_ of JupyterWith, that is the set of all derivations that are required to run the Jupyterlab.

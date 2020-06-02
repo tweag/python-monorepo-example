@@ -160,7 +160,7 @@ COST CENTRE                  MODULE                      entries  %time %alloc  
 which results in the following [flamegraph][flamegraph]:
 
 <center>
-<img title="Profiling" src="../img/posts/profiling-bad.svg" style="margin-bottom:20px;"></img>
+<img title="profiling" src="./profiling-bad.svg"></img>
 </center>
 
 Here we see that the function `addSlow` is slow as expected, however,
@@ -183,7 +183,7 @@ COST CENTRE     MODULE entries %time %alloc   %time %alloc
 which results in the following flamegraph:
 
 <center>
-<img title="Profiling" src="../img/posts/profiling-good.svg" style="margin-bottom:20px;"></img>
+<img title="profiling" src="./profiling-good.svg"></img>
 </center>
 
 This is much more straightforward, showing that `addSlow` is the culprit

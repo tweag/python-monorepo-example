@@ -48,23 +48,19 @@ we count the number of unequal entries of two feature vectors and the lower that
 A popular technique to reduce the number of dimensions while trying to maintain the structure of the data or, equivalently, the distances between similar data points, is UMAP.
 We first use UMAP to calculate a two-dimensional map of both the Python and the Haskell data set and color points depending on whether the line of code they represent contain certain keywords:
 
-<img title="UMAP embedding of the Python and Haskell code data sets" src="../img/posts/codestatistics_umap_embeddings_words_small.png" style="max-width: 100%;max-height: 100%;"/>
+![UMAP embedding of the Python and Haskell code data sets](./codestatistics_umap_embeddings_words_small.png)
 
 We immediately notice the complex structure of the data set, which seems to consist of a large number of clusters comprising very similar lines of code. We expect many lines of code containing the keywords we chose to be close together on the UMAP which is indeed what we observe, although they do not necessarily form connected clusters. Furthermore, one line of code could contain several of the keywords, which would not be visible in our representation.
 
 To find out what kind of code other clusters represent, we perform clustering on the UMAP embedding, meaning that we run an algorithm on the map which automatically determines which points belong to which cluster. Starting with the Python data set, we annotate the twenty most dense and reasonably large clusters with the two words which co-occur most frequently in a cluster:
 
-<a href="../img/posts/codestatistics_py_umap_embedding_clusters_large.png">
-<img title="UMAP embedding of the Python code data set" src="../img/posts/codestatistics_py_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
+![UMAP embedding of the Python code data set](./codestatistics_py_umap_embedding_clusters_large.png)
 
 We are not surprised to find clusters with the most frequent words being `for` and `in`, which corresponds to Python `for`-loops, or `assertEqual` and `self`, which stems from the `unittest` framework. Some other clusters, though, do not remind us of common Python idioms. The most common words in cluster 17 are `xd` and `xc`. Looking up what kinds of lines of code contain both of these words, we find that these occur very often in byte strings. In our [earlier blog post](https://www.tweag.io/posts/2019-07-17-codestatistics.html) we already learned that in Haskell, byte strings feature prominently in a few select packages.
 
 Performing the same analysis for the Haskell data set, we find clusters such as a very well-defined one containing often both `text` and `maybe` and clusters corresponding to popular imports:
 
-<a href="../img/posts/codestatistics_hask_umap_embedding_clusters_large.png">
-<img title="UMAP embedding of the Haskell code data set" src="../img/posts/codestatistics_hask_umap_embedding_clusters_small.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
+![UMAP embedding of the Haskell code data set](./codestatistics_hask_umap_embedding_clusters_large.png)
 
 Furthermore, the big blue cluster (#16) seems to contain mostly auto-generated code from the `amazonka` package, which implements communication with Amazon Web Service-compatible APIs.
 

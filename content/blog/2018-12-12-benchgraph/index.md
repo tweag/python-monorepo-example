@@ -144,7 +144,7 @@ Thanks to the rich R ecosystem, this is easy to achieve. In addition to
 [shinyWidgets][shinywidgets] for the benchmark selection. It lets us
 quickly build a nice interactive graph to compare all our commits.
 
-<img title="Sample benchmark graph" alt="Sample benchmark graph" src="../img/posts/benchgraph_screenshot.png" style="max-width: 100%; max-height: 100%"></img>
+![Sample benchmark graph](./benchgraph_screenshot.png)
 
 [ggplot]: https://ggplot2.tidyverse.org/
 [plotly]: https://plot.ly/r/
