@@ -52,9 +52,7 @@ Before explaining in detail what I did, let's start with a teaser. Check out
 the structure in this fascinating image where each little dot represents a
 single software package in the Nixpkgs repository:
 
-<a href="../img/posts/nixverse_without_labels.png">
-<img title="The Nixverse" src="../img/posts/nixverse_without_labels.png" style="max-width: 100%;max-height: 100%;"/>
-</a>
+![png](./nixverse_without_labels.png)
 
 What looks remotely like the section of a mouse brain actually represents
 around 46000 software packages. Each dot in this image corresponds to a
@@ -99,9 +97,7 @@ largest nodes - we'll call them hub nodes - are well readable but to read the
 labels of the smaller nodes you should click on the image and use your browsers
 zoom functionality.
 
-<a href="../img/posts/nixverse_with_labels_big.png">
-<img title="The Nixverse (labeled)" src="../img/posts/nixverse_with_labels.png" style="max-width: 100%;max-height: 100%;"></img>
-</a>
+![png](./nixverse_with_labels_big.png)
 
 Most central to the Nixpkgs repository are the primary hub nodes _bash_ and the
 Nix _stdenv_ derivation. Unsurprisingly, most derivations depend on them - at
@@ -133,9 +129,7 @@ corresponding hub node's name is indicated above each subplot. It illustrates
 nicely how clusters form around a compiler, an interpreter or just an important
 tool:
 
-<a href="../img/posts/nixverse_ego_networks.png">
-<img title="The Nixverse - Ego Networks" src="../img/posts/nixverse_ego_networks.png" style="max-width: 100%;max-height: 100%;"></img>
-</a>
+![png](./nixverse_ego_networks.png)
 
 The ego networks confirm our previous intuition that some clusters correspond
 to different programming languages. They also provide basic orientation on this
@@ -203,7 +197,7 @@ an integral, the cumulative distribution has a better behavior when the density
 of packages gets low at high degrees. We plot it here for the in and
 out degrees in log-log scale such that a power-law is just a straight line:
 
-<img title="The Nixverse" src="../img/posts/nixverse_degree_distribution.png" style="max-width: 100%;max-height: 100%;"/>
+![png](./nixverse_degree_distribution.png)
 
 The cumulative in degree distribution is a very clean power-law decay with an
 exponent of -0.9. The in degree distribution itself has an exponent of -1.9,
