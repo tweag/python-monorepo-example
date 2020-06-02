@@ -33,6 +33,20 @@ environment.systemPackages = [ pkgs.git-lfs ];
 or if your using something else than NixOS, follow their installation
 guide on the website.
 
+If you see a warning message such as:
+
+```
+Encountered 1 file(s) that should have been pointers, but weren't:
+	app/assets/img/team/someone.jpg
+```
+
+this can be corrected with the following command, which creates a "add to lfs"
+commit:
+
+```
+git lfs migrate import --no-rewrite -m "add to lfs" app/assets/img/team/someone.jpg
+```
+
 ## Building the website
 
 For convenience, a [shell.nix](./shell.nix) file is provided to
