@@ -1,21 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW 2020 (64-Bit) -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="72.0002mm" height="96mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 1388.41 1851.2"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .fil0 {fill:#5374CF}
-    .fil1 {fill:#FC7851}
-   ]]>
-  </style>
- </defs>
- <g id="Plan_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0" d="M771.34 1388.4l-308.53 0 -462.8 0 0 462.8 462.8 0 308.53 0c84.96,0 154.27,-69.3 154.27,-154.26l0 -154.27c0,-84.96 69.3,-154.27 154.27,-154.27l154.27 0c84.97,0 154.27,-69.3 154.27,-154.27l0 -308.53 -462.8 0 0 308.53c0,84.97 -69.3,154.27 -154.27,154.27z"/>
-  <path class="fil1" d="M771.34 462.8l-154.27 0c-84.97,0 -154.27,-69.3 -154.27,-154.27l0 -154.27c0,-84.96 -69.3,-154.27 -154.27,-154.27l-154.27 0c-84.97,0 -154.27,69.3 -154.27,154.27l0 154.27 0 308.53c0,-84.97 69.3,-154.27 154.27,-154.27l154.27 0c84.96,0 154.27,69.3 154.27,154.27l0 308.53 462.8 0 0 -308.53c0,-84.96 -69.3,-154.27 -154.27,-154.27z"/>
- </g>
-</svg>
+version https://git-lfs.github.com/spec/v1
+oid sha256:3981d2d3585a72a784163b1ef014019f87c9dc2f1d8f774f31662570e9db2226
+size 1419
