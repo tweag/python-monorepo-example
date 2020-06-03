@@ -179,5 +179,6 @@ their vision, from research to product delivery.
     `gatsby-plugin-meta-redirect`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sitemap`,
   ],
 }
