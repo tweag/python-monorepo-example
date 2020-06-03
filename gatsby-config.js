@@ -1,3 +1,8 @@
+const GA = {
+  identifier: `UA-47336061-2`,
+  viewId: `121593838`,
+}
+
 module.exports = {
   siteMetadata: {
     title: `Tweag`,
@@ -54,7 +59,9 @@ their vision, from research to product delivery.
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-47336061-2`,
+        trackingId: GA.identifier,
+        anonymize: true,
+        allowLinker: true,
       },
     },
     {
