@@ -1,7 +1,8 @@
 import React from "react"
 import { Global } from "@emotion/core"
 
-import Header from "./header"
+import JQuery from "./jquery"
+import Navigation from "./navigation"
 import Footer from "./footer"
 import { globalStyles } from "../styles/global"
 
@@ -12,8 +13,11 @@ import "../fonts/icomoon.css"
 const Layout = ({ children }) => {
   return (
     <div id="wrapper" className="inner">
-      <Header />
       <Global styles={globalStyles} />
+      <header className="header">
+        <JQuery />
+        <Navigation />
+      </header>
       <main>{children}</main>
       <Footer />
     </div>
