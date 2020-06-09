@@ -6,6 +6,7 @@ import frise_biotech from "../images/frise_biotech.svg"
 import frise_blog_home from "../images/frise_blog_home.svg"
 import frise_blog_post from "../images/frise_blog_post.svg"
 import frise_home from "../images/frise_home.svg"
+import frise_joinus from "../images/home_joinus_frise.svg"
 import frise_opensource from "../images/frise_opensource.svg"
 import frise_services from "../images/frise_services.svg"
 import frise_use_cases from "../images/frise_use_cases.svg"
@@ -671,7 +672,7 @@ export const globalStyles = t => {
     }
     .backdrop {
       animation: 10s scroll infinite linear;
-      background: url(../images/home_joinus_frise.svg);
+      background: url(${frise_joinus});
       min-height: 500px;
     }
     .backdrop2 {
