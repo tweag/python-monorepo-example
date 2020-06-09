@@ -16,6 +16,8 @@ their vision, from research to product delivery.
     },
   },
   plugins: [
+    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -177,7 +179,6 @@ their vision, from research to product delivery.
     `gatsby-plugin-react-helmet`,
     `gatsby-redirect-from`,
     `gatsby-plugin-meta-redirect`,
-    `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sitemap`,
   ],

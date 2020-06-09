@@ -1,0 +1,37 @@
+export default {
+  breakpoints: [`768px`, `1024px`, `1200px`, `1400px`, `1500px`, `1600px`],
+  colors: {
+    text: `black`,
+    background: `white`,
+    beige: `#f5cfb1`,
+    blue: `#5373cf`,
+    green: `#55c171`,
+    grey: `#dad9d7`,
+    orange: `#fc7851`,
+    purple: `#4d22a8`,
+    red: `#ff3b5a`,
+    yellow: `#fee080`,
+  },
+  fonts: {
+    body: `stratos, Arial, Helvetica, sans-serif`,
+  },
+  fontSizes: [
+    `14px`,
+    `16px`,
+    `18px`,
+    `24px`,
+    `27px`,
+    `34px`,
+    `42px`,
+    `46px`,
+    `66px`,
+  ],
+  fontWeights: {
+    body: 400,
+    heading: 700,
+    bold: 700,
+  },
+  lineHeights: {},
+  space: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72],
+  transition: {},
+}

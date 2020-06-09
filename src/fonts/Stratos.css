@@ -1,0 +1,14 @@
+@font-face {
+  font-family: stratos;
+  src: url("./Stratos-Regular.woff") format("woff"),
+    url("./Stratos-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: stratos;
+  src: url("./Stratos-Bold.woff") format("woff"),
+    url("./Stratos-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}

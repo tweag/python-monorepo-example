@@ -225,6 +225,8 @@ _should not_ see an image preview in your PR.
 
 ## Implementation details
 
+### Build process
+
 We use the [GatsbyJS] framework to generate a static website from YAML
 data and JSX pages. Ready to deploy HTML pages and CSS are built from
 JSX source files consisting of [React] components. This gives us the
@@ -245,3 +247,24 @@ The two modes are documented extensively [here][gatsby-build-process].
 
 [gatsbyjs]: https://gatsbyjs.org
 [gatsby-build-process]: https://www.gatsbyjs.org/docs/overview-of-the-gatsby-build-process/
+
+### Styling
+
+Styles are assembled programmatically from JavaScript source embedding
+CSS syntax as string literals and CSS properties as objects. This is
+called [CSS-in-JS][gatsby-css-in-js]. We use the [Emotion
+library][gatsby-emotion] for this. Global CSS rules are in
+`src/styles/global.js`. Adding new global rules should be avoided.
+Most styling should go in the same source file as the component it
+pertains to.
+
+Some basic global properties (fonts, colors, spacing, etc), used
+pervasively on all pages of the website, are set as part of a _theme_.
+See `src/gatsby-plugin-theme-ui/index.js`. Properties of the theme can
+be accessed in any `sx` prop of a component. We use [Theme
+UI][gatsby-theme-ui] for this.
+
+[theme-ui]: https://theme-ui.com
+[gatsby-css-in-js]: https://www.gatsbyjs.org/docs/css-in-js/
+[gatsby-emotion]: https://www.gatsbyjs.org/docs/emotion/
+[gatsby-theme-ui]: https://www.gatsbyjs.org/docs/theme-ui/
