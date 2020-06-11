@@ -3,7 +3,7 @@ redirect_from: [/posts/2017-09-15-inline-java-tutorial.html]
 title: "Java from Haskell:  a tutorial"
 author: Facundo Domínguez
 featured: yes
-tags: [haskell]
+tags: [haskell, inline-java]
 ---
 
 Our

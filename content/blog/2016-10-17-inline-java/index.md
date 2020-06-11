@@ -3,7 +3,7 @@ redirect_from: [/posts/2016-10-17-inline-java.html]
 title: "A new ecosystem for Haskell:  the JVM"
 author: Mathieu Boespflug, Alp Mestanogullari
 featured: yes
-tags: [haskell]
+tags: [haskell, inline-java]
 ---
 
 By now, Haskell has first class support for seamlessly embedding

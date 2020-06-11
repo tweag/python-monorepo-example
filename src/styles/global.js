@@ -19,6 +19,27 @@ export const globalStyles = t => {
     img::-moz-selection {
       background-color: rgba(255, 255, 255, 0) !important;
     }
+    tbody tr:nth-child(odd) {
+      background-color: ${t.colors.grey};
+    }
+    table {
+      margin-bottom: 2em;
+      border-collapse: collapse;
+    }
+    th {
+      font-weight: bold;
+    }
+    th,
+    td {
+      padding: 5px 15px 5px 15px;
+      min-width: 120px;
+      max-width: 240px;
+    }
+    tr,
+    td,
+    th {
+      vertical-align: middle;
+    }
     svg {
       width: 100%;
       height: 100%;

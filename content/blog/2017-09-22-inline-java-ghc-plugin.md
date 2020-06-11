@@ -3,7 +3,7 @@ redirect_from: [/posts/2017-09-22-inline-java-ghc-plugin.html]
 title: "GHC compiler plugins in the wild:  typing Java"
 author: Facundo Domínguez, Mathieu Boespflug
 featured: yes
-tags: [haskell]
+tags: [haskell, inline-java]
 ---
 
 [Previously][inline-java-tutorial], we discussed how to

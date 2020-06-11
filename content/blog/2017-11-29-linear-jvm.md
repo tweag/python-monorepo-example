@@ -3,7 +3,7 @@ redirect_from: [/posts/2017-11-29-linear-jvm.html]
 title: Making two garbage collectors be good neighbours   (using linear types)
 shortTitle: Making two garbage collectors be good neighbours
 author: Facundo Domínguez and Mathieu Boespflug
-tags: [haskell, linear-types]
+tags: [haskell, linear-types, inline-java]
 ---
 
 Foreign function interfaces (FFI) allow fast interop between
