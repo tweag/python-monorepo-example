@@ -67,7 +67,7 @@ percentage of the one performed by _wizzardo-http_.
 
 To understand the trend in the table, it must be noted that `inline-java` is
 expected to add a constant overhead per request, since we need to invoke a
-couple of methods of the JVM to marshall the response from Haskell to Java.
+couple of methods of the JVM to marshal the response from Haskell to Java.
 
 In all cases, one has to convert a Haskell `ByteString` to a Java `byte`
 array. The code to convert the `ByteString` to a `byte` array is in the
@@ -85,9 +85,10 @@ After obtaining a C-style buffer with the bytes from the ByteString,
 we create a byte array object with newByteArray, and then ask the
 JVM to copy the bytes from our buffer with setByteArrayRegion.
 
-The JVM does some extra bookepping when copying bytes to make sure that the
-copy succeds despite the chance of its garbage collector moving the
-destination. After obtaining the `byte` array, a Java method is invoked to feed
+The JVM does some extra bookkeeping when copying bytes. The destination
+could be moved by the Java garbage collector during the copying, so
+arrangements are necessary for the operation to complete safely.
+After obtaining the `byte` array, a Java method is invoked to feed
 it back to the server framework. In the case of the _Single query_ test, an
 extra Java method must be called in order to kick the query to the database.
 
