@@ -88,7 +88,7 @@ const Footer = () => (
         color: `white !important`,
       },
       "a::after": {
-        top: `20px`,
+        top: `20px !important`,
         background: `white !important`,
       },
     }}

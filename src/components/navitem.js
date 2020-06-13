@@ -16,7 +16,7 @@ const NavItem = props => (
         position: `absolute`,
         left: 0,
         width: 0,
-        top: `20px`,
+        top: `25px`,
         height: `2px`,
         bottom: 0,
         transition: `all 0.4s ease`,

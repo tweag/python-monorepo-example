@@ -227,32 +227,6 @@ export const globalStyles = t => {
     a {
       text-decoration: none;
     }
-    .menu a {
-      color: black;
-      display: inline;
-      font-weight: normal;
-      position: relative;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      text-align: center;
-      overflow: hidden;
-      z-index: 2;
-    }
-    .menu a:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 0;
-      top: 25px;
-      height: 2px;
-      bottom: 0;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      background: black;
-    }
-    .menu a:hover:after {
-      width: 100%;
-    }
     body.menu-active .menu a:after {
       top: 45px;
     }
@@ -441,13 +415,6 @@ export const globalStyles = t => {
       transform: rotate(-45deg);
       top: 10px;
     }
-    .nav-drop {
-      position: relative;
-    }
-    .nav-area {
-      position: relative;
-      padding-top: 16px;
-    }
     .home .nav-area {
       position: relative;
       padding-top: 0px;
@@ -455,86 +422,6 @@ export const globalStyles = t => {
     .fixed-header .nav-area {
       position: relative;
       padding-top: 0px;
-    }
-    .menu {
-      font-size: ${t.fontSizes[2]};
-      line-height: 1.1;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      position: relative;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      margin: 0 -15px;
-    }
-    .menu *::selection {
-      background-color: rgba(255, 255, 255, 0) !important;
-    }
-    .menu *::-moz-selection {
-      background-color: rgba(255, 255, 255, 0) !important;
-    }
-    .menu > li {
-      position: relative;
-      margin: 0 25px;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-    }
-    .menu > li.active {
-      font-weight: 700;
-    }
-    .menu > li:hover {
-      font-weight: 700;
-    }
-    .menu > li:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-    }
-    .menu a {
-      -webkit-transition: all 0.4s ease 0.4s;
-      transition: all 0.4s ease 0.4s;
-      position: relative;
-      color: black;
-      vertical-align: bottom;
-    }
-    .menu .dropdown-menu {
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      position: absolute;
-      left: 0;
-      top: 100%;
-      min-width: 300px;
-      padding: 10px 0 0;
-      opacity: 0;
-      visibility: hidden;
-      font-weight: 400;
-      z-index: 5;
-    }
-    .menu .dropdown-list {
-      margin: 0 0 0 -10px;
-      padding: 0;
-      list-style: none;
-      position: relative;
-      background: white;
-      padding: 10px;
-    }
-    .menu .dropdown-list li {
-      position: relative;
-      margin: 0 0 10px;
-    }
-    .menu .dropdown-list li:last-child {
-      margin-bottom: 0;
-    }
-    .menu .dropdown-list li a {
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
     }
     .section-wrap {
       position: relative;
@@ -2330,12 +2217,6 @@ export const globalStyles = t => {
       .line-arrow {
         display: block;
       }
-      .menu {
-        margin-top: -10px;
-        -webkit-transform: scale(0.9);
-        -ms-transform: scale(0.9);
-        transform: scale(0.9);
-      }
       .fp-viewing-0 .logo,
       .fp-viewing-0 .menu {
         margin-top: initial;
@@ -2600,9 +2481,6 @@ export const globalStyles = t => {
         position: relative;
         padding: 130px 0 0px;
       }
-      .menu {
-        font-size: ${t.fontSizes[1]};
-      }
       .menu > li {
         position: relative;
         margin: 0 15px;
@@ -2691,9 +2569,6 @@ export const globalStyles = t => {
       }
     }
     @media (max-width: 767px) {
-      .menu .dropdown-list li a {
-        font-size: 75%;
-      }
       .Blog-content .Article-text ul li:before {
         content: "";
         display: block;
@@ -3064,40 +2939,6 @@ export const globalStyles = t => {
       .line_sep {
         margin: 20px;
       }
-      .menu .dropdown-list {
-        padding-bottom: 0;
-      }
-      .menu .dropdown-menu {
-        min-width: inherit;
-        right: 0;
-        top: 0;
-        position: relative;
-        opacity: 1;
-        visibility: visible;
-        padding: 0;
-        display: none;
-      }
-      .menu > li {
-        margin: 0 0 15px;
-      }
-
-      .menu > li:hover .dropdown-menu {
-        display: block;
-      }
-      .menu > li:last-child {
-        margin-bottom: 0;
-      }
-      .menu {
-        font-size: ${t.fontSizes[4]};
-        line-height: 1.8;
-        background: white;
-        display: block;
-        text-align: center;
-        padding: 50px 15px;
-        border: 0px solid black;
-        height: 100vh;
-        margin: 0 -8px;
-      }
       .menu-active .nav-area {
         -webkit-transform: translateY(-10px);
         -ms-transform: translateY(-10px);
@@ -3130,24 +2971,6 @@ export const globalStyles = t => {
         width: 100%;
         text-align: left;
         margin: 0 0 30px;
-      }
-      .nav-area {
-        -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-        transform: translateY(-100%);
-        -webkit-transition: all 0.4s ease;
-        transition: all 0.4s ease;
-      }
-      .nav-drop {
-        -webkit-transition: all 0.4s ease;
-        transition: all 0.4s ease;
-        position: absolute;
-        left: 0;
-        top: 100%;
-        width: 100%;
-        overflow: hidden;
-        max-height: 0;
-        z-index: 99;
       }
       .part2 .text-area h2 {
         padding: 0 !important;
