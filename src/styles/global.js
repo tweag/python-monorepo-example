@@ -228,7 +228,6 @@ export const globalStyles = t => {
       text-decoration: none;
     }
     .menu a {
-      text-decoration: none;
       color: black;
       display: inline;
       font-weight: normal;
@@ -392,20 +391,6 @@ export const globalStyles = t => {
       max-width: 100%;
       padding: 0 0 0 120px;
     }
-    .header {
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      padding: 35px;
-      z-index: 99;
-      height: 50px;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      -ms-transition: all 0.3s;
-      transition: all 0.3s;
-    }
     .sticky-wrap-header {
       height: 1px;
       -webkit-transition: all 0.8s ease-out;
@@ -413,45 +398,6 @@ export const globalStyles = t => {
       -o-transition: all 0.8s ease-out;
       -ms-transition: all 0.8s ease-out;
       transition: all 0.8s ease-out;
-    }
-    .header-holder {
-      position: relative;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-    }
-    .logo {
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      position: relative;
-      width: 300px;
-      display: block;
-      padding-bottom: 10px;
-    }
-    .logo a {
-      display: block;
-    }
-    .logo img {
-      display: block;
-      width: 100%;
-      height: auto;
-      -webkit-transition: all 0.4s ease 0.4s;
-      transition: all 0.4s ease 0.4s;
-    }
-    .logo .white-logo {
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      visibility: hidden;
     }
     .menu-opener {
       position: absolute;
@@ -2384,12 +2330,6 @@ export const globalStyles = t => {
       .line-arrow {
         display: block;
       }
-      .logo {
-        -webkit-transform: scale(0.9);
-        -ms-transform: scale(0.9);
-        transform: scale(0.9);
-        margin-top: -14px;
-      }
       .menu {
         margin-top: -10px;
         -webkit-transform: scale(0.9);
@@ -2659,12 +2599,6 @@ export const globalStyles = t => {
       .section-area {
         position: relative;
         padding: 130px 0 0px;
-      }
-      .header {
-        padding: 25px;
-      }
-      .logo {
-        width: 275px;
       }
       .menu {
         font-size: ${t.fontSizes[1]};
@@ -3073,20 +3007,6 @@ export const globalStyles = t => {
       .f-logo {
         width: 120px;
       }
-      .header .container {
-        position: static;
-      }
-      .header {
-        padding: 15px;
-        position: fixed;
-      }
-      .header-holder {
-        height: 20px;
-        margin: 0;
-        padding: 0;
-        position: static;
-        display: block;
-      }
       .hideresp {
         display: none !important;
       }
@@ -3143,9 +3063,6 @@ export const globalStyles = t => {
       }
       .line_sep {
         margin: 20px;
-      }
-      .logo {
-        width: 175px;
       }
       .menu .dropdown-list {
         padding-bottom: 0;
