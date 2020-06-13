@@ -13,7 +13,7 @@ const ContactUs = () => (
       fontSize: 1,
       p: `5px 18px`,
       height: `auto`,
-      "&:after": {
+      "&::after": {
         background: `white`,
       },
       "&:hover": {
@@ -75,7 +75,34 @@ const Nav = props => (
   />
 )
 
-const NavItem = props => <li {...props} />
+const NavItem = props => (
+  <li
+    {...props}
+    sx={{
+      a: {
+        color: `white`,
+        position: `relative`,
+        overflow: `hidden`,
+        zIndex: 2,
+      },
+      "a::after": {
+        content: `""`,
+        position: `absolute`,
+        left: 0,
+        width: 0,
+        top: `20px`,
+        height: `2px`,
+        bottom: 0,
+        transition: `all 0.4s ease`,
+        background: `white`,
+      },
+      "a:hover::after": {
+        width: `100%`,
+        color: `white`,
+      },
+    }}
+  />
+)
 
 const Footer = () => (
   <footer
@@ -94,9 +121,6 @@ const Footer = () => (
       "*::-moz-selection": {
         bg: `rgba(255, 255, 255, 0.99)`,
         color: `black`,
-      },
-      a: {
-        color: `white`,
       },
     }}
   >
