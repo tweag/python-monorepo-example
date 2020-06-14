@@ -161,6 +161,40 @@ const Menu = ({ children }) => (
   </div>
 )
 
+const MobileMenuOpener = () => (
+  <a
+    className="menu-opener"
+    href="#top"
+    sx={{
+      position: `absolute`,
+      top: `15px`,
+      right: `15px`,
+      borderTop: `2px solid black`,
+      transition: `all 0.4s ease`,
+      width: `30px`,
+      height: `20px`,
+      display: [`block`, `none`],
+      "&::before, &::after": {
+        width: `30px`,
+        height: `2px`,
+        left: 0,
+        transition: `all 0.4s ease`,
+        content: `""`,
+        position: `absolute`,
+        background: `black`,
+      },
+      "&::before": {
+        top: `6px`,
+      },
+      "&::after": {
+        top: `15px`,
+      },
+    }}
+  >
+    {` `}
+  </a>
+)
+
 const Navigation = () => (
   <header
     className="header"
@@ -213,9 +247,7 @@ const Navigation = () => (
           <Link to="/blog">Blog</Link>
         </NavItem>
       </Menu>
-      <a className="menu-opener" href="#top">
-        {` `}
-      </a>
+      <MobileMenuOpener />
     </div>
   </header>
 )

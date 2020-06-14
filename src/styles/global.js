@@ -373,31 +373,8 @@ export const globalStyles = t => {
       -ms-transition: all 0.8s ease-out;
       transition: all 0.8s ease-out;
     }
-    .menu-opener {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      border-top: 2px solid black;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      width: 30px;
-      height: 20px;
-      display: none;
-    }
     .menu-active .menu-opener {
       border-top: none;
-    }
-    .menu-opener:before,
-    .menu-opener:after {
-      width: 30px;
-      height: 2px;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 6px;
-      background: black;
     }
     .menu-active .menu-opener:before,
     .menu-active .menu-opener:after {
@@ -405,9 +382,6 @@ export const globalStyles = t => {
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
       top: 10px;
-    }
-    .menu-opener:after {
-      top: 15px;
     }
     .menu-active .menu-opener:after {
       -webkit-transform: rotate(-45deg);
@@ -2946,9 +2920,6 @@ export const globalStyles = t => {
       }
       .menu-active .nav-drop {
         max-height: 4000px;
-      }
-      .menu-opener {
-        display: block;
       }
       .method-area .image-holder img {
         width: 200px;
