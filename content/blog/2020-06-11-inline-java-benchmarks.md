@@ -14,7 +14,7 @@ multi-language solution can be a good compromise.
 
 One trade-off is performance, keeping in mind that communicating across language boundaries always
 has costs. In this post, I want to argue that `inline-java` can be a good
-solution for integrating Haskell and Java from a perfomance standpoint. We do
+solution for integrating Haskell and Java from a performance standpoint. We do
 this by benchmarking a concrete example, and discuss in which situations this
 kind of integration becomes affordable as compared to projects that go full
 Haskell or full Java for their implementations.
@@ -23,15 +23,15 @@ Haskell or full Java for their implementations.
 
 [FrameworkBenchmarks][framework-benchmarks] is a project that gathers
 benchmarks of HTTP servers for a large set of implementations in different
-languages. At the time of this writing, there are six types of test, but a
+languages. At the time of this writing, there are six types of tests, but a
 given implementation doesn't need to implement all six of them.
 
 I provided an implementation of a fast HTTP server implemented in Java which
 invokes a handler implemented in Haskell for every request. The handler, in
 turn, uses `inline-java` to interact
-with the HTTP server. The implementation is based on [wizzardo-http][wizzardo],
-a fast full-Java HTTP server and is called
-[wizzardo-inline][wizzardo-inline].
+with the HTTP server. The implementation is called
+[wizzardo-inline][wizzardo-inline] and it is based on
+[wizzardo-http][wizzardo], a fast full-Java HTTP server.
 
 I implemented three of the test types:
 
@@ -46,7 +46,7 @@ I implemented three of the test types:
   random record retrieved from a database, encoded again as a JSON object, such
   as `"{ \"id\" : 1234, \"randomNumber\" : 6678 }"`.
 
-These benchmarks measure the throughput of the server, that is the amount of
+These benchmarks measure the throughput of the server, that is, the number of
 requests per second that each implementation could deliver. That means that
 higher numbers are better.
 
@@ -86,7 +86,7 @@ we create a byte array object with newByteArray, and then ask the
 JVM to copy the bytes from our buffer with setByteArrayRegion.
 
 The JVM does some extra bookkeeping when copying bytes. The destination
-could be moved by the Java garbage collector during the copying, so
+could be moved by the Java garbage collector during copying, so
 arrangements are necessary for the operation to complete safely.
 After obtaining the `byte` array, a Java method is invoked to feed
 it back to the server framework. In the case of the _Single query_ test, an
@@ -96,7 +96,7 @@ The overhead of these conversions and method calls amounts to 4 microseconds,
 give or take. This constant overhead is very noticeable for fast requests. For
 instance, lets say that `wizzardo-http` can execute a _Plaintext_ request in 3
 microseconds. Therefore `wizzardo-inline` needs 7 microseconds, which is more
-than the double the time.
+than twice the time.
 
 A more interesting test is _Single query_ where one has an additional database
 call. Supposing that `wizzardo-http` takes 15 microseconds to serve a request,
@@ -133,7 +133,7 @@ compares it with `wizzardo-inline`.
 
 </center>
 
-As we can see, the throughtput of `warp` is comparable or better on the
+As we can see, the throughput of `warp` is comparable or better on the
 simplest tests, but worse on the _Single query_ one.
 I don't claim `wizzardo-http` to be superior to `warp`, because I haven't
 analyzed the performance differences. But replace _warp_ with whatever
