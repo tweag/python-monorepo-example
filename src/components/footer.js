@@ -112,7 +112,7 @@ const Footer = () => (
       position: `relative`,
       bg: `black`,
       color: `white`,
-      p: [`60px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
+      p: [`40px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
       width: `100%`,
       "*::selection": {
         bg: `rgba(255, 255, 255, 0.99)`,

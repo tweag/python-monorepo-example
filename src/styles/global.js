@@ -3032,7 +3032,7 @@ export const globalStyles = t => {
         -ms-flex-order: 1;
         order: 1;
         width: 100%;
-        margin: 0 auto 40px;
+        margin: 0 auto 40px 30px;
         padding: 0 15px;
       }
       .contactus-holder .text-area {
@@ -3057,6 +3057,9 @@ export const globalStyles = t => {
       }
       .contactus-holder {
         display: block;
+      }
+      .container {
+        padding: 0;
       }
       .copyright {
         margin: 0 0 20px;
@@ -3107,6 +3110,9 @@ export const globalStyles = t => {
       }
       .joinus-area .container {
         padding: 0;
+      }
+      .joinus-area.section-wrap {
+        padding: 10px 0;
       }
       .joinus-holder .image-holder .image-wrap {
         width: 280px;
@@ -3470,11 +3476,14 @@ export const globalStyles = t => {
       .use_case.results {
         padding: 0;
       }
-      .vision-area .container {
+      .vision-area .container, .vision-area.home-vision .container {
         padding: 0;
       }
       .vision-area {
         padding: 0;
+      }
+      .vision-area.home-vision.animation-wrap .vision-holder {
+        padding: 10px 0;
       }
       .vision-area2 .container,
       .vision-area3 .container {
