@@ -3,9 +3,24 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 import NavList from "./navlist"
-import NavItem from "./navitem"
+import BlackNavItem from "./navitem"
 
 import logo from "../images/tweag_logo_footer.svg"
+
+const NavItem = props => (
+  <BlackNavItem
+    {...props}
+    sx={{
+      a: {
+        color: `white !important`,
+      },
+      "a::after": {
+        top: `20px !important`,
+        background: `white !important`,
+      },
+    }}
+  />
+)
 
 const ContactUs = () => (
   <Link
@@ -83,13 +98,6 @@ const Footer = () => (
       "*::-moz-selection": {
         bg: `rgba(255, 255, 255, 0.99)`,
         color: `black`,
-      },
-      a: {
-        color: `white !important`,
-      },
-      "a::after": {
-        top: `20px !important`,
-        background: `white !important`,
       },
     }}
   >
