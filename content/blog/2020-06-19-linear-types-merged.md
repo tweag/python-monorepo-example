@@ -137,7 +137,7 @@ Plenty of things are missing from the proposal too. In no particular order:
   it to misbehave most of the time.
 - Record fields are always linear.
 - `let` and `where` bindings are never linear.
-- The scrutiny of a `case` expression is always considered as being
+- The scrutinee of a `case` expression is always considered as being
   used non-linearly.
 
   A trick, found by my colleague Divesh Otwani, which you can use to work around
