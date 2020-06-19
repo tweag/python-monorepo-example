@@ -9,7 +9,7 @@ tags: [nix]
 Reproducible builds and deployments — this is the ambition that Nix proclaims for itself.
 This ambition comes, however, with a fine print: builds are reproducible _only if the original source code still exists_.
 Otherwise, Nix can't download, build and deploy it.
-The community maintains binary caches like `cache.nixos.org`, but these don't preserve anything - caches are ephemeral.
+The community maintains binary caches like `cache.nixos.org`, but these don't preserve anything — caches are ephemeral.
 After all, preserving source code is not Nix's primary mission!
 
 [Software Heritage](https://www.softwareheritage.org/), on the other hand, aspires to preserve software forever.
@@ -83,7 +83,7 @@ First, we need to find the correct source, the one that Nix tried to download un
 We cannot simply use the original source URL to query the Software Heritage archive because the URL alone doesn't identify uniquely the content that is behind it.
 What if the code that a URL points to has changed over time?
 To check this, Nix associates a hash with each downloaded artifact.
-Such a build step is called a [fixed output derivation](https://nixos.org/nix/manual/#fixed-output-drvs) because Nix verifies that the output hash remains immitagably unchanged.
+Such a build step is called a [fixed output derivation](https://nixos.org/nix/manual/#fixed-output-drvs) because Nix verifies that the output hash remains immitigably unchanged.
 It thus ensures that the content that it downloads is always the same, and emits an error otherwise.
 What we therefore really want is querying Software Heritage with the _contents_, that is, the hash of the source code artifact itself.
 
@@ -115,7 +115,7 @@ When updating a package in Nixpkgs, the maintainer can just pick the checksum pr
 
 Ideally, Nix fetchers and these package repositories would provide checksums of the unpacked _contents_ of their packages as much as possible.
 This would give us the freedom to identify content independently of the way it is packed, transferred and stored.
-We haven't yet decided how to move on, but rest reassured that we will continue to work on it.
+We haven't yet decided how to move on, but rest assured that we will continue to work on it.
 
 # Wrap up
 

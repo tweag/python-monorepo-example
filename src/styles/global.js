@@ -3476,7 +3476,8 @@ export const globalStyles = t => {
       .use_case.results {
         padding: 0;
       }
-      .vision-area .container, .vision-area.home-vision .container {
+      .vision-area .container,
+      .vision-area.home-vision .container {
         padding: 0;
       }
       .vision-area {
