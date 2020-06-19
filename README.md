@@ -47,26 +47,32 @@ commit:
 git lfs migrate import --no-rewrite -m "add to lfs" app/assets/img/team/someone.jpg
 ```
 
-## Building the website
+## Building and linting the website
 
-For convenience, a [shell.nix](./shell.nix) file is provided to
-provision a shell environment with Node.js installed, using
-`nix-shell`.
+For convenience, a [shell.nix](./shell.nix) file is provided to provision a
+shell environment with Node.js installed. To enter the shell, type `nix-shell`.
+
+All basic commands are accessible in the Makefile. To list the available
+commands, run `make`.
 
 To install and build the website (run from inside the `nix-shell` to
 ensure you have Node.js installed):
 
 ```
-$ npm install
+$ make install
 ```
 
 To start the website in development mode locally:
 
 ```
-$ npm run develop
+$ make develop
 ```
 
 The webserver's address will be shown in the commands' output.
+
+To auto-format files, run `make prettier`. This repository's CI runs a linter
+to check code formatting, so make sure to run `make lint` before committing to
+check that everything is correct.
 
 ## Submitting a change
 
