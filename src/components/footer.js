@@ -2,7 +2,25 @@
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
+import NavList from "./navlist"
+import BlackNavItem from "./navitem"
+
 import logo from "../images/tweag_logo_footer.svg"
+
+const NavItem = props => (
+  <BlackNavItem
+    {...props}
+    sx={{
+      a: {
+        color: `white !important`,
+      },
+      "a::after": {
+        top: `20px !important`,
+        background: `white !important`,
+      },
+    }}
+  />
+)
 
 const ContactUs = () => (
   <Link
@@ -63,47 +81,6 @@ const ColumnTitle = props => (
   />
 )
 
-const Nav = props => (
-  <ul
-    {...props}
-    sx={{
-      m: 0,
-      p: 0,
-      listStyle: `none`,
-      position: `relative`,
-    }}
-  />
-)
-
-const NavItem = props => (
-  <li
-    {...props}
-    sx={{
-      a: {
-        color: `white`,
-        position: `relative`,
-        overflow: `hidden`,
-        zIndex: 2,
-      },
-      "a::after": {
-        content: `""`,
-        position: `absolute`,
-        left: 0,
-        width: 0,
-        top: `20px`,
-        height: `2px`,
-        bottom: 0,
-        transition: `all 0.4s ease`,
-        background: `white`,
-      },
-      "a:hover::after": {
-        width: `100%`,
-        color: `white`,
-      },
-    }}
-  />
-)
-
 const Footer = () => (
   <footer
     sx={{
@@ -135,7 +112,7 @@ const Footer = () => (
       </Column>
       <Column>
         <ColumnTitle>See our work</ColumnTitle>
-        <Nav>
+        <NavList>
           <NavItem>
             <Link to="/industry/biotech">Biotech</Link>
           </NavItem>
@@ -148,11 +125,11 @@ const Footer = () => (
           <NavItem>
             <Link to="/opensource">Open source</Link>
           </NavItem>
-        </Nav>
+        </NavList>
       </Column>
       <Column>
         <ColumnTitle>Stay connected</ColumnTitle>
-        <Nav>
+        <NavList>
           <NavItem>
             <a href="https://twitter.com/tweagio">Twitter</a>
           </NavItem>
@@ -165,18 +142,18 @@ const Footer = () => (
           <NavItem>
             <a href="/rss.xml">RSS</a>
           </NavItem>
-        </Nav>
+        </NavList>
       </Column>
       <Column>
         <ColumnTitle>About us</ColumnTitle>
-        <Nav>
+        <NavList>
           <NavItem>
             <Link to="/services">Services</Link>
           </NavItem>
           <NavItem>
             <Link to="/blog">Blog</Link>
           </NavItem>
-        </Nav>
+        </NavList>
       </Column>
       <Column sx={{ paddingTop: `20px` }}>
         <strong className="f-logo">

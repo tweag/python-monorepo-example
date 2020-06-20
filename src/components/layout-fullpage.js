@@ -17,10 +17,8 @@ const LayoutFullPage = ({ children }) => {
   return (
     <div id="wrapper" className="home">
       <Global styles={globalStyles} />
-      <header className="header">
-        <JQuery />
-        <Navigation />
-      </header>
+      <JQuery />
+      <Navigation />
       <ReactFullpage
         licenseKey={FULLPAGE_LICENSE_KEY}
         responsiveWidth={769}

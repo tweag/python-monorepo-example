@@ -14,10 +14,8 @@ const Layout = ({ children }) => {
   return (
     <div id="wrapper" className="inner">
       <Global styles={globalStyles} />
-      <header className="header">
-        <JQuery />
-        <Navigation />
-      </header>
+      <JQuery />
+      <Navigation />
       <main>{children}</main>
       <Footer />
     </div>
