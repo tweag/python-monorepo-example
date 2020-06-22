@@ -99,7 +99,7 @@ const OpenSourcePage = () => {
       <SEO title="Our open source projects" />
       <section className="section-area">
         <Manifesto />
-        <Community title="Nix" className="s_red opensource">
+        <Community title="Nix" className="s_red">
           <p>
             Many thought leaders of the{` `}
             <a className="lined" href="https://nixos.org">
