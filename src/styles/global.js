@@ -1563,6 +1563,13 @@ export const globalStyles = t => {
       display: block;
       padding-left: 35px;
     }
+    /* Nested lists */
+    .Blog-content .Article-text ul li ul,
+    .Blog-content .Article-text ul li ol {
+      display: block;
+      padding-left: 0px;
+      width: 100%;
+    }
     .Blog-content .Article-text ul li::before {
       content: "";
       display: block;
@@ -1580,6 +1587,7 @@ export const globalStyles = t => {
     .Blog-content .Article-text li p {
       padding: 0;
       margin: 0 !important;
+      width: 100%;
     }
     .Blog-content .Article-text a,
     .Blog-content .Article-text a:visited {
@@ -1602,7 +1610,10 @@ export const globalStyles = t => {
       background: #ecece9;
       overflow: hidden;
     }
-
+    /* Code inside lists */
+    .Blog-content .Article-text li pre code {
+      padding: 20px 0px;
+    }
     main nav ul li a {
       color: black;
     }
