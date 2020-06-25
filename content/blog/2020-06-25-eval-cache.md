@@ -186,13 +186,13 @@ locally. However, Nix could automatically _download_ precomputed
 caches, similar to how it has a binary cache for the contents of store
 paths. That is, if we need a cache like `302043eedf….sqlite`, we could
 first check if it's available on `cache.nixos.org` and if so fetch it
-from there. In this way, when we run a command such as `nix run nixpkgs#firefox`, we could even avoid the need to fetch the actual
+from there. In this way, when we run a command such as `nix shell nixpkgs#firefox`, we could even avoid the need to fetch the actual
 source of the flake!
 
 Another future improvement is to populate and use the cache in the
 evaluator itself. Currently the cache is populated and cached in the
-user interface (that is, the `nix` command). The command `nix run nixpkgs#firefox` will create a cache entry for `firefox`, but not for
-the dependencies of `firefox`; thus a subsequent `nix run nixpkgs#thunderbird` won't see a speed improvement even though it
+user interface (that is, the `nix` command). The command `nix shell nixpkgs#firefox` will create a cache entry for `firefox`, but not for
+the dependencies of `firefox`; thus a subsequent `nix shell nixpkgs#thunderbird` won't see a speed improvement even though it
 shares most of its dependencies. So it would be nice if the evaluator
 had knowledge of the evaluation cache. For example, the evaluation of
 thunks that represent attributes like
