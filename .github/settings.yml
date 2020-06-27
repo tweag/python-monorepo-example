@@ -33,3 +33,6 @@ labels:
     color: 0052cc
   - name: "wontfix"
     color: ffffff
+  - name: "percy"
+    color: d63c39
+    description: "run Percy visual diffing for this PR"
