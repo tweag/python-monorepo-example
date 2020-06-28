@@ -19,3 +19,21 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - name: Deploy to Netlify
+        id: deploy
+        run: |
+          # Awk is required because netlify outputs some warnings on stdout.
+          npx netlify deploy --json | awk "/{/,/}/" > result.json
+          echo "::set-output name=deploy_url::$(jq -r .deploy_url result.json)"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Add commit status
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.pull_request.head.sha || github.sha }}
+          context: deploy/netlify2
+          description: Deploy preview ready
+          state: success
+          target_url: ${{ steps.deploy.outputs.deploy_url }}
