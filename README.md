@@ -70,6 +70,14 @@ The webserver's address will be shown in the commands' output.
 
 ## Submitting a change
 
+Before committing a change, make sure to run the code formatter and linter:
+
+```
+$ npm run format
+```
+
+CI builds will fail during the linting stage if you omit this step.
+
 The site is deployed using [Netlify](https://www.netlify.com/). A new version
 auto-deploys to production upon a push to the `master` branch.
 
