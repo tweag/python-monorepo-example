@@ -85,8 +85,10 @@ Whenever you submit a new PR, Netlify creates a new instance of the production
 site available at a temporary URL of the form:
 
 ```
-https://deploy-preview-<PR_NUMBER>--tweag-www.netlify.com
+https://<HASH>--tweag-www.netlify.app/
 ```
+
+You can access this link in the details of the CI action `deploy/netlify`.
 
 It might take a few minutes for the deploy process to finish and for
 the URL to be operational.
