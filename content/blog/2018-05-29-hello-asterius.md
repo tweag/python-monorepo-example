@@ -2,7 +2,7 @@
 redirect_from: [/posts/2018-05-29-hello-asterius.html]
 title: "Fibonacci compiles end-to-end —  Haskell to WebAssembly via GHC"
 shortTitle: Compiling Haskell to WebAssembly
-author: Shao Cheng
+author: Cheng Shao
 tags: [haskell, asterius]
 ---
 

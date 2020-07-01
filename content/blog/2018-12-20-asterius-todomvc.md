@@ -2,7 +2,7 @@
 redirect_from: [/posts/2018-12-20-asterius-todomvc.html]
 title: "Asterius GHC WebAssembly backend reaches TodoMVC"
 shortTitle: TodoMVC in Haskell via WebAssembly
-author: Shao Cheng
+author: Cheng Shao
 tags: [haskell, asterius]
 ---
 
