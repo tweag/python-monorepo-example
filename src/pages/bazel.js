@@ -76,15 +76,31 @@ const BazelPage = () => {
         </Community>
         <Community title="Result" className="s_grey opensource2">
           <p>We have worked with clients across a range of industries:</p>
-          <p class="tab">    
-             <i class="icon-arrow-right1">     In silico simulations of human physiology</i><br/>
-             <i class="icon-arrow-right1">     Novel static analysis tools for the autopilot software in autonomous taxis</i><br/>
-             <i class="icon-arrow-right1">     Designing smart contract languages</i><br/>
-             <i class="icon-arrow-right1">     Improving the performance of third generation blockchains</i>
+          <p className="tab">
+            <i className="icon-arrow-right1">
+              {` `}
+              In silico simulations of human physiology
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Novel static analysis tools for the autopilot software in
+              autonomous taxis
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Designing smart contract languages
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Improving the performance of third generation blockchains
+            </i>
           </p>
         </Community>
-	<div className="section s_white viewport-section">
-          <CallToAction areaIndex={4} backdropIndex={3}/>
+        <div className="section s_white viewport-section">
+          <CallToAction areaIndex={4} backdropIndex={3} />
         </div>
       </section>
     </Layout>
