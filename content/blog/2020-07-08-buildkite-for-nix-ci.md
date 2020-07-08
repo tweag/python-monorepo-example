@@ -6,34 +6,19 @@ tags: [nix, devops]
 description: "How to setup a Buildkite-based CI for Nix projects with workers running on GCP."
 ---
 
-Setting up continuous integration (CI) for projects that rely on Nix is
-often a nuisance. The two main reasons for that are:
-
-- Nix must be set up in the CI environment. In practice this often means
-  running the entire build in a Docker container with Nix installed. Unless
-  the image is already cached, this implies that one or more minutes will be
-  spent each time on downloading the image. Besides, not every CI service
-  allows running builds in a Docker container.
-
-- A Nix cache should be set up. While this is not particularly hard to do
-  with third-party solutions like [Cachix][cachix], there are several
-  drawbacks:
-
-  - Cachix makes your scripts noisier because you have to set it up and
-    upload the built artifacts explicitly as part of the CI script.
-  - The setup and push steps take extra time and make your build slower.
-  - It is hard to estimate correctly what exactly should be pushed. The
-    standard practice is doing something like this:
-    ```bash
-    $ nix-store -qR --include-outputs $(nix-instantiate default.nix)
-    ```
-    which typically includes more than actually needs to be uploaded for a
-    given run.
-
 In this post I'm going to show how to setup, with Terraform, a Buildkite-based CI using your
 own workers that run on GCP. For reference, the complete
 Terraform configuration for this post is available in [this
 repository][example].
+
+- The setup gives you complete control on how fast your worker are.
+
+- The workers come with Nix pre-installed, so you won't need to spend
+  time downloading the same docker container again and again on every
+  push as would usually happen with most cloud CI providers.
+
+- The workers come with a distributed Nix cache should be set up. So
+  authors of CI scripts won't have to bother about caching at all.
 
 ## Secrets
 
@@ -346,7 +331,6 @@ Builds with up-to-date cache that does not cause re-builds may finish in
 literally 1 second.
 
 [buildkite]: https://buildkite.com
-[cachix]: https://cachix.org
 [example]: https://github.com/tweag/blog-resources/tree/master/buildkite-for-nix-ci
 [secret-resource]: https://www.tweag.io/posts/2019-04-03-terraform-provider-secret.html
 [nixos-image-custom]: https://github.com/tweag/terraform-nixos/tree/master/google_image_nixos_custom
