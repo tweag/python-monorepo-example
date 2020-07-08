@@ -17,7 +17,7 @@ repository][example].
   time downloading the same docker container again and again on every
   push as would usually happen with most cloud CI providers.
 
-- The workers come with a distributed Nix cache should be set up. So
+- The workers come with a distributed Nix cache set up. So
   authors of CI scripts won't have to bother about caching at all.
 
 ## Secrets
