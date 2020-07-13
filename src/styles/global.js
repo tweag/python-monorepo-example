@@ -1362,8 +1362,7 @@ export const globalStyles = t => {
       border-bottom: 1px solid black;
       color: black;
       text-align: center;
-      height: 36px;
-      padding: 0px 0px 40px 0;
+      padding: 0px 0px 10px 0;
       font-size: ${t.fontSizes[2]};
       line-height: 22px;
       font-weight: 400;
@@ -3023,7 +3022,6 @@ export const globalStyles = t => {
       .section-title {
         position: relative;
         top: 0;
-        padding: 0;
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
