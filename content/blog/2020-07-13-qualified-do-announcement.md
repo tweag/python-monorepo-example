@@ -1,7 +1,7 @@
 ---
 title: "Qualified do: rebind your do-notation the right way"
 shortTitle: "Announcing qualified do"
-author: Matthías Páll Gissurarson, Facundo Domínguez, Arnaud Spiwack
+author: Matthías Páll Gissurarson (Chalmers), Facundo Domínguez, Arnaud Spiwack
 tags: [haskell, linear-types]
 description: "Announcement of the upcoming QualifiedDo language extension."
 ---
@@ -48,7 +48,7 @@ class Applicative m => Monad m where
   (>>=) :: m a -> (a -> m b) -> m b
 
 instance Monad T where
-  . . .
+  ...
 ```
 
 ## Monad-like
@@ -86,7 +86,7 @@ the operations that do-notation should use.
 import Control.Monad.Linear as Linear
 
 instance Linear.Monad LinearT where
-  . . .
+  ...
 
 f :: LinearT String
 f = do h1 <- linearOpenAFile
@@ -135,11 +135,11 @@ sendAMessage :: String -> IO ()
 It gets worse:
 
 ```Haskell
-. . .
+...
   if statusCode r == 200
   then putStrLn "Done!"
   else putStrLn "Request failed!"
-. . .
+...
 ```
 
 There would be:
@@ -172,7 +172,7 @@ the desugaring.
 import qualified Control.Monad.Linear as Linear
 
 instance Linear.Monad LinearT where
-  . . .
+  ...
 
 f :: LinearT String
 f = Linear.do                                      -- Desugars to:
