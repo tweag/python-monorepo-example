@@ -2491,10 +2491,10 @@ export const globalStyles = t => {
         width: 100%;
       }
       .about-section.opensource .w70 {
-        width: 70% !important;
+        width: 60% !important;
       }
       .about-section.opensource .w30 {
-        width: 20% !important;
+        width: 30% !important;
       }
       .services-section .text-area {
         width: 70%;

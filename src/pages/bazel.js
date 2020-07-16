@@ -64,7 +64,7 @@ const BazelPage = () => {
             migration to a Bazel build system.
           </p>
         </Community>
-        <Community title="Implement" className="s_orange opensource3">
+        <Community title="Tune" className="s_orange opensource3">
           <p>
             Harness Bazel&rsquo;s power after migration. We&rsquo;ll help you
             tune your Bazel to enjoy dramatic improvements in productivity and
