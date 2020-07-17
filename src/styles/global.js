@@ -2488,7 +2488,9 @@ export const globalStyles = t => {
         width: 70% !important;
       }
       .about-section.opensource .w30 {
-        width: 20% !important;
+        width: 30% !important;
+        padding-right: 5%;
+        padding-left: 5%;
       }
       .services-section .text-area {
         width: 70%;
@@ -2700,6 +2702,7 @@ export const globalStyles = t => {
       .about-section.opensource .w30 {
         width: 100% !important;
         padding-bottom: 20px;
+        padding-left: 15px;
       }
       .about-section.opensource .w70 {
         width: 100% !important;
