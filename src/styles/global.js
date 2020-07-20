@@ -1597,7 +1597,7 @@ export const globalStyles = t => {
       color: ${t.colors.orange} !important;
     }
     .Blog-content .Article-text code {
-      background: ${t.colors.grey};
+      background: ${t.colors.greyLight};
       padding: 1px 8px;
       overflow: hidden;
     }
