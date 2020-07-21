@@ -113,7 +113,7 @@ access, and calling to the JVM becomes more affordable in that case.
 Provisionally, we ran the benchmarks on an `m4.2xlarge` instance on
 Amazon's EC2 service. But we expect the `FrameworkBenchmarks`
 to provide definitive measures when the next round of benchmarks is
-executed by [TechEmpower][round18], the software consultancy firm running
+executed by [TechEmpower][round18][^addendum], the software consultancy firm running
 the project.
 
 ## Final remarks
@@ -155,3 +155,11 @@ negligible, turning the multi-language integration path into the ideal one.
 [round18]: https://www.techempower.com/blog/2019/07/09/framework-benchmarks-round-18/
 [wizzardo]: https://github.com/wizzardo/webery
 [wizzardo-inline]: https://github.com/TechEmpower/FrameworkBenchmarks/tree/master/frameworks/Haskell/wizzardo-inline
+
+[^addendum]:
+  Between the writing and publishing of this post, TechEmpower
+  published a [new round][round19] of benchmark results. The numbers
+  from TechEmpower are different, but still consistent with the claims
+  made here.
+
+[round19]: https://www.techempower.com/blog/2020/05/28/framework-benchmarks-round-19/
