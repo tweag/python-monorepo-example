@@ -88,7 +88,10 @@ site available at a temporary URL of the form:
 https://<HASH>--tweag-www.netlify.app/
 ```
 
-You can access this link in the details of the CI action `deploy/netlify`.
+You can access this link in the details of the CI action `deploy/netlify`:
+See the CI block that appears immediately above where you can add comments.
+The last entry is `deploy/netlify`; clicking the "Details" link at right will
+bring you to the rendered page.
 
 It might take a few minutes for the deploy process to finish and for
 the URL to be operational.
