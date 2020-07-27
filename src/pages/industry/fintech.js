@@ -72,8 +72,9 @@ const FintechPage = () => {
               <li>
                 <div className="icon-arrow-right1"></div>
                 <p>
-                  We created a new booking system for equity swaps for a global
-                  bank.
+                  We made a global bank&rsquo;s booking system for equity swaps
+                  more stable and performant, allowing it to scale to new use
+                  cases.
                 </p>
               </li>
               <li>
