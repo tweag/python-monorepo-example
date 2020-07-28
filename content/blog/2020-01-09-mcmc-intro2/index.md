@@ -287,7 +287,7 @@ The interesting point here (and, in fact, the reason I chose this example) is th
 While we could just use a built-in `numpy` function to draw from the normal distributions $p(x|k)$, we will use Metropolis-Hastings.
 The freedom to do this really demonstrates the flexibility we have in choosing samplers for the conditional distributions.
 
-So we need to reimplement `sample_gibbs` and `build_gibbs_chain`, whose arguments are very similar to the previous implementation, but with a slight difference: the states now consist of a float for the continuous variabe and an integer for the mixture component, and instead of a list of stepsizes we just need one single stepsize, as we have only one variable to be sampled with Metropolis-Hastings.
+So we need to reimplement `sample_gibbs` and `build_gibbs_chain`, whose arguments are very similar to the previous implementation, but with a slight difference: the states now consist of a float for the continuous variable and an integer for the mixture component, and instead of a list of stepsizes we just need one single stepsize, as we have only one variable to be sampled with Metropolis-Hastings.
 
 ```python
 def sample_gibbs(old_state, mixture, stepsize):
