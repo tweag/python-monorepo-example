@@ -112,11 +112,11 @@ const IndexPage = ({ data, location }) => {
             <div className="container">
               <div className="joinus-holder animation-wrap">
                 <div className="text-wrap">
-                  <strong className="title">
+                  <p className="title">
                     At Tweag, we drive purposeful innovation through lasting
                     software. We apply mathematics, computer science and open
                     source methodologies to advance software engineering.
-                  </strong>
+                  </p>
                 </div>
                 <div
                   className="image-holder backdrop"
