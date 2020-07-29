@@ -157,7 +157,7 @@ export const globalStyles = t => {
     }
     .contact_field .btn {
       font-size: ${t.fontSizes[3]};
-      background: ${t.colors.yellow};
+      background: transparent;
     }
     .contact_field textarea::placeholder {
       color: white;
