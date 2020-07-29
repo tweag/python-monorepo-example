@@ -16,7 +16,7 @@ const PfizerPage = () => {
         <div className="services-section use_case first viewport-section">
           <div className="text-area">
             <div className="section-title">Use case</div>
-            <h1>MAKING GENETIC DATA ACCESSIBLE FOR DRUG DISCOVERY.</h1>
+            <h1>Making genetic data accessible for drug discovery</h1>
             <div className="text-wrap">
               <p className="use_case_excerpt">
                 Tweag collaborated with Pfizer to enhance its search engine for
@@ -72,7 +72,7 @@ const PfizerPage = () => {
         </div>
         <div className="about-section use_case bloc1 viewport-section">
           <div className="text-wrap text-area">
-            <h1>FAST &amp; ITERATIVE COLLABORATION</h1>
+            <h1>Fast &amp; iterative collaboration</h1>
             <p>
               Tweag used a fast, iterative approach to develop the ToE to meet
               Pfizer’s needs. Tweag engineers embedded with Pfizer’s R&D to
@@ -85,7 +85,7 @@ const PfizerPage = () => {
         </div>
         <div className="about-section use_case bloc2 viewport-section">
           <div className="text-wrap text-area">
-            <h1>SOFTWARE &amp; BIOINFORMATIC EXPERTS</h1>
+            <h1>Software &amp; bioinformatic experts</h1>
             <p>
               Unlike typical software engineers, Tweag engineers have domain
               expertise in bioinformatics and biology. This gave Tweag engineers
@@ -97,7 +97,7 @@ const PfizerPage = () => {
         </div>
         <div className="services-section use_case results viewport-section">
           <div className="text-area">
-            <h1>RESULTS</h1>
+            <h1>Results</h1>
             <div className="text-wrap">
               <ul>
                 <li>

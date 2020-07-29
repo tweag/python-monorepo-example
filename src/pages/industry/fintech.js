@@ -21,8 +21,8 @@ const FintechPage = () => {
               <i className="icon-arrow-right1"></i> FINTECH
             </h3>
             <h1>
-              WE PARTNER WITH VISIONARY STARTUPS AND GLOBAL LEADERS TO MANAGE
-              ASSETS SAFELY.
+              We partner with visionary startups and global leaders to manage
+              assets safely
             </h1>
             <div className="text-wrap">
               <p>
@@ -109,7 +109,7 @@ const FintechPage = () => {
           </div>
           <div className="text-area">
             <div className="section-title">Case studies</div>
-            <h1>Learn more about our projects.</h1>
+            <h1>Learn more about our projects</h1>
             <div className="split">
               <div className="split-col1">
                 <h3>IOHK</h3>

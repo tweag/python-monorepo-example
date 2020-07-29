@@ -18,8 +18,8 @@ const AutonomousPage = () => {
               <i className="icon-arrow-right1"></i> Autonomous vehicles
             </h3>
             <h1>
-              WE PARTNER WITH VISIONARY STARTUPS AND GLOBAL LEADERS TO BUILD
-              SELF-DRIVING CARS.
+              We partner with visionary startups and global leaders to build
+              self-driving cars
             </h1>
             <div className="text-wrap">
               <p>

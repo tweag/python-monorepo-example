@@ -12,7 +12,7 @@ const Manifesto = () => {
           <a className="section-title" href="#bazel" id="bazel">
             Bazel
           </a>
-          <h1>OPTIMIZE YOUR BAZEL IMPLEMENTATION.</h1>
+          <h1>Optimize your Bazel implementation</h1>
           <div className="text-wrap">
             <p>
               Tweag is the software innovation lab driving Bazel’s worldwide

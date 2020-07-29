@@ -99,7 +99,7 @@ const BiotechPage = () => {
           </div>
           <div className="text-area">
             <div className="section-title">Case studies</div>
-            <h1>Learn more about our projects.</h1>
+            <h1>Learn more about our projects</h1>
             <div className="split">
               <div className="split-col1">
                 <h3>Pfizer</h3>
