@@ -68,6 +68,12 @@ $ npm run develop
 
 The webserver's address will be shown in the commands' output.
 
+To test the production build, just to be sure:
+
+```
+$ npm run build
+```
+
 ## Submitting a change
 
 Before committing a change, make sure to run the code formatter and linter:
