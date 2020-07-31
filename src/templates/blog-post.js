@@ -44,6 +44,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             )}
           </div>
           <div className="posts-holder image-holder">
+            {/* TODO: Implement the functionality of latest posts.
             <h3>RECENT POSTS</h3>
             <ul>
               <li>
@@ -56,6 +57,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               <li>Lorem ipsum dolor sit amet</li>
               <li>Lorem ipsum dolor sit amet</li>
             </ul>
+            */}
           </div>
         </header>
         <section className="services-section opensource1 Blog-content part2 viewport-section in-viewport">

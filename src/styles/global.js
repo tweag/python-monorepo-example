@@ -1367,8 +1367,7 @@ export const globalStyles = t => {
       border-bottom: 1px solid black;
       color: black;
       text-align: center;
-      height: 36px;
-      padding: 0px 0px 40px 0;
+      padding: 0px 0px 10px 0;
       font-size: ${t.fontSizes[2]};
       line-height: 22px;
       font-weight: 400;
@@ -1603,7 +1602,7 @@ export const globalStyles = t => {
       color: ${t.colors.orange} !important;
     }
     .Blog-content .Article-text code {
-      background: ${t.colors.grey};
+      background: ${t.colors.greyLight};
       padding: 1px 8px;
       overflow: hidden;
     }
@@ -2495,6 +2494,8 @@ export const globalStyles = t => {
       }
       .about-section.opensource .w30 {
         width: 30% !important;
+        padding-right: 5%;
+        padding-left: 5%;
       }
       .services-section .text-area {
         width: 70%;
@@ -2706,6 +2707,7 @@ export const globalStyles = t => {
       .about-section.opensource .w30 {
         width: 100% !important;
         padding-bottom: 20px;
+        padding-left: 15px;
       }
       .about-section.opensource .w70 {
         width: 100% !important;
@@ -3028,7 +3030,6 @@ export const globalStyles = t => {
       .section-title {
         position: relative;
         top: 0;
-        padding: 0;
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;

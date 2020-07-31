@@ -4,7 +4,6 @@ import { Global } from "@emotion/core"
 
 import JQuery from "./jquery"
 import Navigation from "./navigation"
-import Footer from "./footer"
 import { globalStyles } from "../styles/global"
 
 import "normalize.css"
@@ -26,7 +25,6 @@ const LayoutFullPage = ({ children }) => {
           return (
             <>
               <main>{children}</main>
-              <Footer />
             </>
           )
         }}

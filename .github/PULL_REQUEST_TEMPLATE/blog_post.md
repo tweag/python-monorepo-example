@@ -34,3 +34,6 @@ Responsible: Juan (@guaraqe)
 
 - [ ] Check media image for Twitter on https://cards-dev.twitter.com/validator. Should be done after merging master.
       Responsible: Juan (@guaraqe)
+
+- [ ] Check that the rendered version is suitable for all screen sizes.
+      Responsible: Juan (@guaraqe)
