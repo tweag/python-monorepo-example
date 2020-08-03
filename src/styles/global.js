@@ -1543,6 +1543,17 @@ export const globalStyles = t => {
     .blog-content a.btn.noarrow:hover {
       color: var(--bg-color);
     }
+
+    .licence {
+      font-weight: 300;
+      margin: 20px 0;
+    }
+    .licence .cc-icon {
+      display: inline-block;
+      height: 1em;
+      margin-right: 0.5em;
+    }
+
     /* code section overrides */
 
     .part2 .text-area {
@@ -1587,6 +1598,9 @@ export const globalStyles = t => {
       max-width: 1000px;
       margin: 0 0 30px;
       padding: 0 0 0 120px;
+    }
+    .licence {
+      padding-left: 120px;
     }
     .part2 .text-area h1 {
       font-size: ${t.fontSizes[5]};
@@ -2304,6 +2318,9 @@ export const globalStyles = t => {
       main nav {
         padding: 0 0 0 60px;
       }
+      .licence {
+        padding-left: 60px;
+      }
       .part2 .text-area h2 {
         padding: 0 0 0 60px;
       }
@@ -2491,6 +2508,9 @@ export const globalStyles = t => {
       main nav {
         margin: 30px 15px !important;
         padding: 0;
+      }
+      .licence {
+        padding-left: 0;
       }
       p.use-case-excerpt {
         margin: 0;
@@ -2871,6 +2891,9 @@ export const globalStyles = t => {
         margin: 20px 15px;
         padding: 0 15px;
         width: 100%;
+      }
+      .licence {
+        padding-left: 15px;
       }
       .part2 .text-area ol {
         padding-left: 0;

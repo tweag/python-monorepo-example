@@ -6,6 +6,9 @@ import SEO from "../components/seo"
 
 import "katex/dist/katex.min.css"
 
+import cc from "../images/cc.svg"
+import ccBy from "../images/cc-by.svg"
+
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
@@ -70,6 +73,16 @@ const BlogPostTemplate = ({ data, pageContext }) => {
                 }}
               />
             </div>
+          </div>
+          <div className="licence view">
+            <img className="cc-icon" src={cc} />
+            <img className="cc-icon" src={ccBy} />
+            This article is licensed under a{` `}
+            <a href="https://creativecommons.org/licenses/by/4.0/">
+              Creative Commons Attribution 4.0 International
+            </a>
+            {` `}
+            license.
           </div>
         </section>
       </article>
