@@ -203,7 +203,7 @@ const Navigation = () => (
       left: 0,
       right: 0,
       top: 0,
-      height: `50px`,
+      minHeight: `50px`,
       p: [`15px`, `25px`, null, null, null, `35px`],
       zIndex: 99,
       transition: `all 0.3s`,
