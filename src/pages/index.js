@@ -112,11 +112,11 @@ const IndexPage = ({ data, location }) => {
             <div className="container">
               <div className="joinus-holder animation-wrap">
                 <div className="text-wrap">
-                  <strong className="title">
+                  <p className="title">
                     At Tweag, we drive purposeful innovation through lasting
                     software. We apply mathematics, computer science and open
                     source methodologies to advance software engineering.
-                  </strong>
+                  </p>
                 </div>
                 <div
                   className="image-holder backdrop"
@@ -130,8 +130,8 @@ const IndexPage = ({ data, location }) => {
           <div className="partners-area section-wrap">
             <div className="container animation-wrap">
               <h2>
-                TRUSTED BY LEADERS <br />
-                &amp; INNOVATORS
+                Trusted by leaders <br />
+                &amp; innovators
               </h2>
               <ul className="partners-list">
                 <li>
@@ -173,7 +173,7 @@ const IndexPage = ({ data, location }) => {
             <div className="container">
               <div className="vision-holder">
                 <div className="text-col">
-                  <h2>READY TO ACHIEVE YOUR BIG VISION?</h2>
+                  <h2>Ready to achieve your big vision?</h2>
                   <Link to="/contact" className="btn">
                     Contact us
                   </Link>

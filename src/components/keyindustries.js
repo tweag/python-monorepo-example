@@ -11,7 +11,7 @@ const KeyIndustries = ({ isFullPage }) => {
     <div className="section s_white section-wrap key_indus viewport-section">
       <div className={containerClasses}>
         <div className="col-area animation-wrap">
-          <h2>KEY INDUSTRIES WE SERVE</h2>
+          <h2>Key industries we serve</h2>
           <div className="col-row">
             <div className="info-col">
               <div className="block">

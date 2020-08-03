@@ -17,7 +17,7 @@ const Manifesto = () => {
           <a className="section-title" href="#open-source" id="open-source">
             Open source
           </a>
-          <h1>COMMITTED TO OPEN SOURCE AND ADVANCING KNOWLEDGE.</h1>
+          <h1>Committed to Open Source and advancing knowledge</h1>
           <div className="text-wrap">
             <p>
               Open source is how we roll. 60% of our team are from academia,

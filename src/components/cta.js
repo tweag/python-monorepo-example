@@ -9,7 +9,7 @@ const CallToAction = ({ areaIndex, backdropIndex }) => {
       <div className="container">
         <div className="vision-holder">
           <div className="text-col">
-            <h2>READY TO ACHIEVE YOUR BIG VISION?</h2>
+            <h2>Ready to achieve your big vision?</h2>
             <Link to="/contact" className="btn">
               Contact us
             </Link>

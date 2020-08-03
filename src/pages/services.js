@@ -17,8 +17,7 @@ const Services = () => {
           Services
         </a>
         <h1>
-          <i></i> TWEAG TRANSLATES AMBITIOUS VISIONS INTO TECHNOLOGY SOLUTIONS
-          THAT WORK.
+          Tweag translates ambitious visions into technology solutions that work
         </h1>
         <div className="text-wrap">
           <p>
