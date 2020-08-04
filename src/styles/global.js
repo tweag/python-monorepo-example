@@ -2006,6 +2006,12 @@ export const globalStyles = t => {
       .fp-viewing-3 .dropdown-list a {
         color: black;
       }
+      .fp-viewing-3 .menu a::after {
+        background: white;
+      }
+      .fp-viewing-3 .dropdown-list a::after {
+        background: black;
+      }
       .services-section .text-area {
         -webkit-transform: translateY(300px);
         -ms-transform: translateY(300px);
