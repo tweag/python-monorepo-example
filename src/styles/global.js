@@ -1010,11 +1010,13 @@ export const globalStyles = t => {
     .vision-holder .btn:after {
       background: white;
     }
+    .vision-area4 .vision-holder .btn,
     .vision-area5 .vision-holder .btn,
     .vision-area7 .vision-holder .btn {
       color: black;
       border-color: black;
     }
+    .vision-area4 .vision-holder .btn:after,
     .vision-area5 .vision-holder .btn:after,
     .vision-area7 .vision-holder .btn:after {
       background: black;
@@ -1024,6 +1026,9 @@ export const globalStyles = t => {
     }
     .vision-area3 .vision-holder .btn:hover {
       color: ${t.colors.beige};
+    }
+    .vision-area4 .vision-holder .btn:hover {
+      color: white;
     }
     .vision-area5 .vision-holder .btn:hover {
       color: white;
@@ -2491,7 +2496,7 @@ export const globalStyles = t => {
         width: 100%;
       }
       .about-section.opensource .w70 {
-        width: 70% !important;
+        width: 60% !important;
       }
       .about-section.opensource .w30 {
         width: 30% !important;

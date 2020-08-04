@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import CallToAction from "../components/cta"
 
 import img12 from "../images/img12.svg"
 
@@ -63,7 +64,7 @@ const BazelPage = () => {
             migration to a Bazel build system.
           </p>
         </Community>
-        <Community title="Implement" className="s_orange opensource3">
+        <Community title="Tune" className="s_orange opensource3">
           <p>
             Harness Bazel&rsquo;s power after migration. We&rsquo;ll help you
             tune your Bazel to enjoy dramatic improvements in productivity and
@@ -73,20 +74,34 @@ const BazelPage = () => {
             use-case requirements incorporated into core Bazel.
           </p>
         </Community>
-        <Community title="Result" className="s_red opensource">
-          <p>
-            We have worked with clients across a range of industries:
-            <ul>
-              <li>In silico simulations of human physiology</li>
-              <li>
-                Novel static analysis tools for the autopilot software in
-                autonomous taxis
-              </li>
-              <li>Designing smart contract languages</li>
-              <li>Improving the performance of third generation blockchains</li>
-            </ul>
+        <Community title="Result" className="s_grey opensource2">
+          <p>We have worked with clients across a range of industries:</p>
+          <p className="tab">
+            <i className="icon-arrow-right1">
+              {` `}
+              In silico simulations of human physiology
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Novel static analysis tools for the autopilot software in
+              autonomous taxis
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Designing smart contract languages
+            </i>
+            <br />
+            <i className="icon-arrow-right1">
+              {` `}
+              Improving the performance of third generation blockchains
+            </i>
           </p>
         </Community>
+        <div className="section s_white viewport-section">
+          <CallToAction areaIndex={4} backdropIndex={3} />
+        </div>
       </section>
     </Layout>
   )
