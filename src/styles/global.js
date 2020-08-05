@@ -436,6 +436,24 @@ export const globalStyles = t => {
       opacity: 1;
       visibility: visible;
     }
+    @media only percy {
+      .section .visual-holder .image-holder,
+      .section .visual-holder .visual-caption,
+      .section .contactus-holder .image-col,
+      .section .contactus-holder .text-area,
+      .section .col-area h2,
+      .section .col-area .info-col,
+      .section .joinus-holder .text-wrap,
+      .section .joinus-holder .image-holder,
+      .section .vision-holder .text-col,
+      .section .vision-holder .image-holder,
+      .section .partners-area h2,
+      .section .partners-list li {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
     .section01,
     .s_white {
       background: white;
@@ -2123,6 +2141,15 @@ export const globalStyles = t => {
         -ms-transform: none;
         transform: none;
       }
+      @media only percy {
+        .services-section .text-area,
+        .services-section .image-holder,
+        .services-section .text-area2 {
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+        }
+      }
       .method-area .text-area {
         -webkit-transform: translateY(300px);
         -ms-transform: translateY(300px);
@@ -2152,6 +2179,14 @@ export const globalStyles = t => {
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
+      }
+      @media only percy {
+        .method-area .text-area,
+        .method-area .image-holder {
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+        }
       }
       .about-section .text-area {
         -webkit-transform: translateY(300px);
@@ -2196,7 +2231,14 @@ export const globalStyles = t => {
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
-        /* margin-bottom: 60px; */
+      }
+      @media only percy {
+        .about-section .text-area,
+        .about-section .image-holder {
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+        }
       }
       .w30 {
         width: 30% !important;
@@ -3282,6 +3324,11 @@ export const globalStyles = t => {
       }
       #___gatsby {
         overflow: hidden;
+      }
+    }
+    @media only percy {
+      .hide-in-percy {
+        visibility: hidden;
       }
     }
   `

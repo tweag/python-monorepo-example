@@ -41,7 +41,7 @@ const IndexPage = ({ data, location }) => {
                   </video>
                 </div>
                 <div className="visual-caption">
-                  <h1 className="typeit">
+                  <h1 className="typeit hide-in-percy">
                     <Typed
                       strings={[`SCALE YOUR ENGINEERING POWER.`]}
                       typeSpeed={50}

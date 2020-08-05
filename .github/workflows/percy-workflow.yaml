@@ -1,0 +1,32 @@
+name: Percy diff
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - labeled
+      - opened
+      - synchronize
+jobs:
+  percy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          lfs: true
+      - uses: actions/setup-node@v1
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci --only=production
+      - run: npm run build
+      - name: Run percy
+        run: |
+          npx percy snapshot --config .percy.yml
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'percy') || github.ref == 'refs/heads/master' }}
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
