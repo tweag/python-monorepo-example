@@ -31,7 +31,7 @@ environment.systemPackages = [ pkgs.git-lfs ];
 ```
 
 or if your using something else than NixOS, follow their installation
-guide on the website.
+guide [on the website](https://git-lfs.github.com/).
 
 If you see a warning message such as:
 
