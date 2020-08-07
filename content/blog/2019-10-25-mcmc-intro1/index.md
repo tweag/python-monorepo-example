@@ -17,6 +17,7 @@ This is part 1 of a series of blog posts about MCMC techniques:
 
 - the basics
 - [Gibbs sampling](https://www.tweag.io/posts/2020-01-09-mcmc-intro2.html)
+- [Hamiltonian Monte Carlo](https://www.tweag.io/blog/2020-08-06-mcmc-intro3/)
 
 [Markov chain Monte Carlo](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) (MCMC) is a powerful class of methods to sample from probability distributions known only up to an (unknown) normalization constant. But before we dive into MCMC, let's consider why you might want to do sampling in the first place.
 
