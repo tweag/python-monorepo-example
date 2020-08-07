@@ -1713,6 +1713,7 @@ export const globalStyles = t => {
     .part2 .text-area .katex-display,
     main nav {
       width: 65%;
+      max-width: 1000px;
       margin: 0 0 30px;
       padding: 0 0 0 120px;
     }
