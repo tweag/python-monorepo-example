@@ -302,6 +302,6 @@ In future posts, we'll explore:
 
 ---
 
-Learn more about building polyglot projects using Bazel in our post _[Nix + Bazel = fully reproducible, incremental builds][nix_bazel_post]_.
+Learn more about building polyglot projects using Bazel in our post _[Nix + Bazel = fully reproducible, incremental builds][nix-bazel-post]_.
 
-[nix_bazel_post]: https://www.tweag.io/posts/2018-03-15-bazel-nix.html
+[nix-bazel-post]: /posts/2018-03-15-bazel-nix.html
