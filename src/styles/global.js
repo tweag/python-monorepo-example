@@ -145,7 +145,6 @@ export const globalStyles = t => {
       margin: 20px 0;
       border: 0;
       background: transparent;
-      color: white;
       padding: 20px 0 40px 0 !important;
       font-size: ${t.fontSizes[6]};
       font-weight: normal;
@@ -157,16 +156,16 @@ export const globalStyles = t => {
     }
     .contact_field .btn {
       font-size: ${t.fontSizes[3]};
-      background: ${t.colors.yellow};
+      background: transparent;
     }
     .contact_field textarea::placeholder {
-      color: white;
+      opacity: 0.3;
     }
     .contact_field textarea {
       min-height: 300px;
     }
     .contact_field input::placeholder {
-      color: white;
+      opacity: 0.3;
       text-indent: 0;
     }
     .contact_field {
