@@ -1605,7 +1605,7 @@ export const globalStyles = t => {
     img.uc-rotate {
       transform: rotate(180deg);
     }
-    .use_case .image-holder.image-holder {
+    .use_case .image-holder {
       margin-right: -8.2%;
       width: 27%;
       margin-top: 50px;
@@ -3057,13 +3057,13 @@ export const globalStyles = t => {
       .services-section.use-cases.second {
         margin: 0;
       }
-      .use_case .image-holder.image-holder img {
+      .use_case .image-holder img {
         display: block;
         margin-right: 0;
         width: 50%;
         margin: 30px 0;
       }
-      .use_case .image-holder.image-holder {
+      .use_case .image-holder {
         display: block;
         margin-right: 0;
         width: 100%;
@@ -3074,7 +3074,7 @@ export const globalStyles = t => {
       .use_case.bloc2 {
         padding: 40px 0;
       }
-      .use_case.results .image-holder.image-holder {
+      .use_case.results .image-holder {
         margin: 0;
       }
       .use_case.results ul {
