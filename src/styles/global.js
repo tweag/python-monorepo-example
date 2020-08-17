@@ -463,7 +463,7 @@ export const globalStyles = t => {
       background: white;
     }
     .section06,
-    s_black {
+    .s_black {
       background: black;
     }
     .section06 .fp-tableCell {
