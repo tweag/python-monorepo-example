@@ -21,74 +21,73 @@ const IndexPage = ({ data, location }) => {
   return (
     <LayoutFullPage>
       <SEO title="Software innovation lab" />
-      <div id="fullpage">
-        <div className="section section01">
-          <div className="visual-area section-wrap head1">
-            <div className="container fullp animation-wrap">
-              <div className="visual-holder">
-                <div className="image-holder">
-                  <video
-                    width="600"
-                    height="600"
-                    loop
-                    autoPlay
-                    muted
-                    playsInline
-                    data-keepplaying
-                    poster={homePreview}
-                  >
-                    <source src={homeVideo} type="video/mp4" />
-                  </video>
-                </div>
-                <div className="visual-caption">
-                  <h1 className="typeit hide-in-percy">
-                    <Typed
-                      strings={[`SCALE YOUR ENGINEERING POWER.`]}
-                      typeSpeed={50}
-                      showCursor={false}
-                    />
-                  </h1>
-                  <p>
-                    We enable deep tech startups to achieve their vision, from
-                    research to product delivery.
-                  </p>
-                </div>
+      <div className="section section01">
+        <div className="visual-area section-wrap head1">
+          <div className="container animation-wrap">
+            <div className="visual-holder">
+              <div className="image-holder">
+                <video
+                  width="600"
+                  height="600"
+                  loop
+                  autoPlay
+                  muted
+                  playsInline
+                  data-keepplaying
+                  poster={homePreview}
+                >
+                  <source src={homeVideo} type="video/mp4" />
+                </video>
+              </div>
+              <div className="visual-caption">
+                <h1 className="typeit hide-in-percy">
+                  <Typed
+                    strings={[`SCALE YOUR ENGINEERING POWER.`]}
+                    typeSpeed={50}
+                    showCursor={false}
+                  />
+                </h1>
+                <p>
+                  We enable deep tech startups to achieve their vision, from
+                  research to product delivery.
+                </p>
               </div>
             </div>
           </div>
-          <div className="line-arrow down"></div>
         </div>
-        <div className="section section02">
-          <div className="contactus-area section-wrap">
-            <div className="container fullp">
-              <div className="contactus-holder animation-wrap">
-                <div className="image-col">
-                  <h2>PARTNERING WITH VISIONARIES TO ADVANCE TECHNOLOGY</h2>
+        <div className="line-arrow down"></div>
+      </div>
+      <div className="section section02">
+        <div className="contactus-area section-wrap">
+          <div className="container">
+            <div className="contactus-holder animation-wrap">
+              <div className="image-col">
+                <h2>PARTNERING WITH VISIONARIES TO ADVANCE TECHNOLOGY</h2>
 
-                  <div className="image-holder">
-                    <img src={visionaries} alt="Partnering with visionaries" />
-                  </div>
+                <div className="image-holder">
+                  <img src={visionaries} alt="Partnering with visionaries" />
                 </div>
-                <div className="text-area">
-                  <ul className="text-list">
-                    <li>
-                      <h3>Scale with confidence</h3>
-                      <p>
-                        Quickly grow your team with vetted, senior engineers.
-                        Tweag provides the expertise needed to execute
-                        high-risk, high-reward projects.
-                      </p>
-                    </li>
-                    <li>
-                      <h3>Increase developer productivity</h3>
-                      <p>
-                        Gain a developer efficiency boost through software best
-                        practices and processes that accelerate your time to
-                        market.
-                      </p>
-                    </li>
-                    <li>
-                      <h3>Solve complex problems</h3>
+              </div>
+              <div className="text-area">
+                <ul className="text-list">
+                  <li>
+                    <h3>Scale with confidence</h3>
+                    <p>
+                      Quickly grow your team with vetted, senior engineers.
+                      Tweag provides the expertise needed to execute
+                      high-risk, high-reward projects.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Increase developer productivity</h3>
+                    <p>
+                      Gain a developer efficiency boost through software best
+                      practices and processes that accelerate your time to
+                      market.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Solve complex problems</h3>
                       <p>
                         Realize your breakthrough vision. Together, we&apos;ll
                         iterate quickly and transform your ideas into products
@@ -184,7 +183,6 @@ const IndexPage = ({ data, location }) => {
           </div>
           <Footer />
         </div>
-      </div>
     </LayoutFullPage>
   )
 }

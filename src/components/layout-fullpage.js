@@ -23,9 +23,9 @@ const LayoutFullPage = ({ children }) => {
         responsiveWidth={769}
         render={({ state, fullpageApi }) => {
           return (
-            <>
-              <main>{children}</main>
-            </>
+            <main>
+              {children}
+            </main>
           )
         }}
       />
