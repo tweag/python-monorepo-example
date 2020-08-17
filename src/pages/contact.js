@@ -27,8 +27,6 @@ const ContactPage = () => {
               <input
                 name="email"
                 type="text"
-                onFocus="this.placeholder = ''"
-                onBlur="this.placeholder = 'myemail@example.com'"
                 placeholder="myemail@example.com"
               />
             </div>
