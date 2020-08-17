@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article className="section s_white section-area">
-        <header className="services-section opensource1 Blog-content viewport-section">
+        <header className="services-section opensource1 blog-content viewport-section">
           <div className="text-area">
             <div className="section-title">
               {post.fields.date} — by {post.frontmatter.author}
@@ -60,11 +60,11 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             */}
           </div>
         </header>
-        <section className="services-section opensource1 Blog-content part2 viewport-section in-viewport">
+        <section className="services-section opensource1 blog-content part2 viewport-section in-viewport">
           <div className="text-area">
             <div className="text-wrap">
               <div
-                className="Article-text"
+                className="article-text"
                 dangerouslySetInnerHTML={{
                   __html: post.html,
                 }}

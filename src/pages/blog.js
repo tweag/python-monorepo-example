@@ -17,13 +17,13 @@ const BlogIndex = ({ data }) => {
     <Layout>
       <SEO title="Engineering Blog" />
       <section className="section s_white section-area">
-        <div className="services-section Blog-content Blog-home viewport-section">
+        <div className="services-section blog-content blog-home viewport-section">
           <div className="text-area">
             <div className="section-title">Blog</div>
           </div>
         </div>
         <TopCard node={topPost.node} />
-        <div className="services-section Blog-content viewport-section">
+        <div className="services-section blog-content viewport-section">
           <div className="post_container">
             {posts.map((post, i) => {
               // Display a pattern periodically.

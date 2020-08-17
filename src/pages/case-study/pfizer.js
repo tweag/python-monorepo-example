@@ -18,7 +18,7 @@ const PfizerPage = () => {
             <div className="section-title">Use case</div>
             <h1>Making genetic data accessible for drug discovery</h1>
             <div className="text-wrap">
-              <p className="use_case_excerpt">
+              <p className="use-case-excerpt">
                 Tweag collaborated with Pfizer to enhance its search engine for
                 human genetic data to help advance scientific discovery.
               </p>
@@ -38,11 +38,11 @@ const PfizerPage = () => {
             </div>
           </div>
           <div className="image-holder image-holder">
-            <img className="uc_rotate" src={imgVertical1} alt="" />
+            <img className="uc-rotate" src={imgVertical1} alt="" />
             <img src={imgVertical2} alt="" />
           </div>
         </div>
-        <div className="services-section use_cases second viewport-section">
+        <div className="services-section use-cases second viewport-section">
           <div className="image-holder image-holder2">
             <img src={img15} alt="" />
           </div>
@@ -128,7 +128,7 @@ const PfizerPage = () => {
             </span>
           </div>
           <div className="image-holder image-holder">
-            <img className="uc_rotate" src={imgVertical2} alt="" />
+            <img className="uc-rotate" src={imgVertical2} alt="" />
             <img src={imgVertical2} alt="" />
           </div>
         </div>
