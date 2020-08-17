@@ -23,7 +23,7 @@ const IndexPage = ({ data, location }) => {
       <SEO title="Software innovation lab" />
       <div className="section section01">
         <div className="visual-area section-wrap head1">
-          <div className="container animation-wrap">
+          <div className="container">
             <div className="visual-holder">
               <div className="image-holder">
                 <video
@@ -60,7 +60,7 @@ const IndexPage = ({ data, location }) => {
       <div className="section section02">
         <div className="contactus-area section-wrap">
           <div className="container">
-            <div className="contactus-holder animation-wrap">
+            <div className="contactus-holder">
               <div className="image-col">
                 <h2>PARTNERING WITH VISIONARIES TO ADVANCE TECHNOLOGY</h2>
 
@@ -109,7 +109,7 @@ const IndexPage = ({ data, location }) => {
         <div className="section section04">
           <div className="joinus-area section-wrap">
             <div className="container">
-              <div className="joinus-holder animation-wrap">
+              <div className="joinus-holder">
                 <div className="text-wrap">
                   <p className="title">
                     At Tweag, we drive purposeful innovation through lasting
@@ -127,7 +127,7 @@ const IndexPage = ({ data, location }) => {
         </div>
         <div className="section section05">
           <div className="partners-area section-wrap">
-            <div className="container animation-wrap">
+            <div className="container">
               <h2>
                 Trusted by leaders <br />
                 &amp; innovators
@@ -168,7 +168,7 @@ const IndexPage = ({ data, location }) => {
           </div>
         </div>
         <div className="section section06">
-          <div className="vision-area home-vision animation-wrap">
+          <div className="vision-area home-vision">
             <div className="container">
               <div className="vision-holder">
                 <div className="text-col">

@@ -2492,13 +2492,13 @@ export const globalStyles = t => {
         margin-right: 14%;
         max-width: 600px;
       }
-      .vision-area.home-vision.animation-wrap .vision-holder {
+      .vision-area.home-vision .vision-holder {
         padding: 60px 0 60px 50px;
       }
       .vision-holder {
         padding: 60px 0 60px 50px;
       }
-      .vision-area.home-vision.animation-wrap .vision-holder {
+      .vision-area.home-vision .vision-holder {
         padding: 60px 0 60px 0;
       }
       .section-area {
@@ -3246,7 +3246,7 @@ export const globalStyles = t => {
       .vision-area {
         padding: 0;
       }
-      .vision-area.home-vision.animation-wrap .vision-holder {
+      .vision-area.home-vision .vision-holder {
         padding: 10px 0;
       }
       .vision-area2 .container,

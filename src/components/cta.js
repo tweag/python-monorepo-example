@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 const CallToAction = ({ areaIndex, backdropIndex }) => {
-  const areaClass = `vision-area${areaIndex || backdropIndex} animation-wrap`
+  const areaClass = `vision-area${areaIndex || backdropIndex}`
   const backdropClass = `image-holder backdrop${backdropIndex}`
   return (
     <div className={areaClass}>
