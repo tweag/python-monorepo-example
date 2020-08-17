@@ -21,7 +21,7 @@ const ContactPage = () => {
               </h1>
             </div>
           </div>
-          <div className="section s_yellow services-section contact_field viewport-section">
+          <div className="section s_yellow services-section contact-field viewport-section">
             <div className="text-wrap text-area">
               <label>Email*</label>
               <input
@@ -47,7 +47,7 @@ const ContactPage = () => {
                 {` `}
               </p>
             </div>
-            <div className="line_sep"></div>
+            <div className="line-sep"></div>
             <div className="text-wrap text-area">
               <label>Or send a direct email to our team</label>
               <p className="hello">
@@ -55,10 +55,10 @@ const ContactPage = () => {
               </p>
             </div>
           </div>
-          <div className="section s_white services-section contact_field viewport-section"></div>
+          <div className="section s_white services-section contact-field viewport-section"></div>
         </form>
       </section>
-      <div className="section s_white section-wrap services-section contact_addr viewport-section">
+      <div className="section s_white section-wrap services-section contact-addr viewport-section">
         <div className="text-area">
           <div className="col-area animation-wrap">
             <div className="col-row">

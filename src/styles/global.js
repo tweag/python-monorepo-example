@@ -99,48 +99,48 @@ export const globalStyles = t => {
         opacity: 1;
       }
     }
-    .contact .line_sep {
+    .contact .line-sep {
       padding: 0;
       margin: 20px 60px 40px;
     }
-    .contact_addr .description {
+    .contact-addr .description {
       text-align: left;
     }
-    .contact_addr .container {
+    .contact-addr .container {
       margin-left: 0;
       padding-left: 120px;
     }
-    .contact_addr .col-area .description {
+    .contact-addr .col-area .description {
       margin: 0;
     }
-    .contact_addr .col-area .info-col {
+    .contact-addr .col-area .info-col {
       width: auto;
       padding-right: 80px;
     }
-    .contact_addr.section-wrap {
+    .contact-addr.section-wrap {
       padding: 20px 0 60px 0;
     }
-    .contact_addr h3 {
+    .contact-addr h3 {
       font-size: ${t.fontSizes[8]};
     }
-    .contact_field label,
-    .contact_addr label {
+    .contact-field label,
+    .contact-addr label {
       font-weight: bold;
     }
-    .contact_field.section-area {
+    .contact-field.section-area {
       padding: 60px 0 0 0;
     }
-    .contact_addr .hello {
+    .contact-addr .hello {
       font-size: ${t.fontSizes[5]};
       line-height: 1.5;
       padding-bottom: 50px;
       color: black;
     }
-    .contact_addr .hello a {
+    .contact-addr .hello a {
       color: black;
     }
-    .contact_field input,
-    .contact_field textarea {
+    .contact-field input,
+    .contact-field textarea {
       display: block;
       margin: 20px 0;
       border: 0;
@@ -150,25 +150,25 @@ export const globalStyles = t => {
       font-weight: normal;
       width: 100%;
     }
-    .contact_field .text-area {
+    .contact-field .text-area {
       font-size: ${t.fontSizes[3]};
       line-height: 35px;
     }
-    .contact_field .btn {
+    .contact-field .btn {
       font-size: ${t.fontSizes[3]};
       background: transparent;
     }
-    .contact_field textarea::placeholder {
+    .contact-field textarea::placeholder {
       opacity: 0.3;
     }
-    .contact_field textarea {
+    .contact-field textarea {
       min-height: 300px;
     }
-    .contact_field input::placeholder {
+    .contact-field input::placeholder {
       opacity: 0.3;
       text-indent: 0;
     }
-    .contact_field {
+    .contact-field {
       padding: 60px 0 0 0;
     }
     .fade-in {
@@ -1413,10 +1413,10 @@ export const globalStyles = t => {
       font-size: 100%;
       line-height: 1;
     }
-    .services-section.Blog-content.topsep {
+    .services-section.blog-content.topsep {
       margin-bottom: 60px;
     }
-    .services-section.Blog-content.topsep > .text-area {
+    .services-section.blog-content.topsep > .text-area {
       margin: 40px 0 0 120px;
       border-top: 1px solid black;
       padding-left: 0px;
@@ -1438,7 +1438,7 @@ export const globalStyles = t => {
       width: 49%;
       padding: 0 0 0 120px;
     }
-    .services-section.Blog-home > .text-area {
+    .services-section.blog-home > .text-area {
       position: relative;
       width: 43%;
       padding: 0 0 0 120px;
@@ -1459,7 +1459,7 @@ export const globalStyles = t => {
       line-height: 35px;
       max-width: 800px;
     }
-    .services-section.Blog-content .text-wrap {
+    .services-section.blog-content .text-wrap {
       font-size: ${t.fontSizes[2]};
       line-height: 28px;
     }
@@ -1506,7 +1506,7 @@ export const globalStyles = t => {
     .about-section.biotech .text-list {
       font-size: ${t.fontSizes[4]};
     }
-    .line_sep {
+    .line-sep {
       width: auto;
       margin: 40px 60px 0;
       height: 1px;
@@ -1514,21 +1514,21 @@ export const globalStyles = t => {
     }
     /* Blog post */
 
-    .Blog-content h1 a,
-    .Blog-content h2 a,
-    .Blog-content h1 a:visited,
-    .Blog-content h2 a:visited,
-    .Blog-content h1 a:active,
-    .Blog-content h2 a:active {
+    .blog-content h1 a,
+    .blog-content h2 a,
+    .blog-content h1 a:visited,
+    .blog-content h2 a:visited,
+    .blog-content h1 a:active,
+    .blog-content h2 a:active {
       color: black;
       text-decoration: none;
     }
-    .Blog-content h1 a:hover,
-    .Blog-content h2 a:hover {
+    .blog-content h1 a:hover,
+    .blog-content h2 a:hover {
       text-decoration: underline;
     }
-    .Blog-content .Article-text a,
-    .Blog-content .Article-text a:visited {
+    .blog-content .article-text a,
+    .blog-content .article-text a:visited {
       color: ${t.colors.purple};
     }
     .services-section .posts-holder.image-holder {
@@ -1570,28 +1570,28 @@ export const globalStyles = t => {
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .Blog-content .Article-text h2 {
+    .blog-content .article-text h2 {
       margin: 80px 0 40px 0;
     }
-    .Blog-content .post_title h2 {
+    .blog-content .post_title h2 {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .Blog-content .Article-text ul li,
-    .Blog-content .Article-text ol {
+    .blog-content .article-text ul li,
+    .blog-content .article-text ol {
       display: block;
       padding-left: 35px;
     }
     /* Nested lists */
-    .Blog-content .Article-text ul li ul,
-    .Blog-content .Article-text ul li ol {
+    .blog-content .article-text ul li ul,
+    .blog-content .article-text ul li ol {
       display: block;
       padding-left: 0px;
       width: 100%;
     }
-    .Blog-content .Article-text ul li::before {
+    .blog-content .article-text ul li::before {
       content: "";
       display: block;
       width: 10px;
@@ -1602,28 +1602,28 @@ export const globalStyles = t => {
       background: black;
       border-radius: 10px;
     }
-    .Blog-content .Article-text p {
+    .blog-content .article-text p {
       margin: 0 0 20px 0 !important;
     }
-    .Blog-content .Article-text li p {
+    .blog-content .article-text li p {
       padding: 0;
       margin: 0 !important;
       width: 100%;
     }
-    .Blog-content .Article-text a,
-    .Blog-content .Article-text a:visited {
+    .blog-content .article-text a,
+    .blog-content .article-text a:visited {
       color: ${t.colors.purple};
     }
-    .Blog-content .Article-text code a,
-    .Blog-content .Article-text code a:visited {
+    .blog-content .article-text code a,
+    .blog-content .article-text code a:visited {
       color: ${t.colors.orange} !important;
     }
-    .Blog-content .Article-text code {
+    .blog-content .article-text code {
       background: ${t.colors.greyLight};
       padding: 1px 8px;
       overflow: hidden;
     }
-    .Blog-content .Article-text pre code {
+    .blog-content .article-text pre code {
       display: block;
       width: 100%;
       padding: 20px 55px;
@@ -1632,7 +1632,7 @@ export const globalStyles = t => {
       overflow: hidden;
     }
     /* Code inside lists */
-    .Blog-content .Article-text li pre code {
+    .blog-content .article-text li pre code {
       padding: 20px 0px;
     }
     main nav ul li a {
@@ -1647,7 +1647,7 @@ export const globalStyles = t => {
       font-size: ${t.fontSizes[2]};
       overflow: hidden;
     }
-    .Blog-content a.btn.noarrow {
+    .blog-content a.btn.noarrow {
       display: inline-block;
       vertical-align: top;
       font-size: ${t.fontSizes[1]};
@@ -1668,7 +1668,7 @@ export const globalStyles = t => {
       text-transform: none;
       font-weight: normal;
     }
-    .Blog-content a.btn.noarrow:hover {
+    .blog-content a.btn.noarrow:hover {
       color: white;
     }
     /* code section overrides */
@@ -1731,12 +1731,12 @@ export const globalStyles = t => {
     }
     /**/
 
-    p.use_case_excerpt {
+    p.use-case-excerpt {
       font-size: ${t.fontSizes[5]};
       font-weight: bold;
       padding: 10px 0 30px 0;
     }
-    img.uc_rotate {
+    img.uc-rotate {
       transform: rotate(180deg);
     }
     .use_case .image-holder.image-holder {
@@ -1770,14 +1770,14 @@ export const globalStyles = t => {
       color: white;
       padding: 80px 0;
     }
-    .services-section.use_cases .image-holder.image-holder2 {
+    .services-section.use-cases .image-holder.image-holder2 {
       width: 17%;
       margin-top: 0;
     }
-    .services-section.use_cases.second {
+    .services-section.use-cases.second {
       margin: 100px 0;
     }
-    .services-section.use_cases.second .text-area2 {
+    .services-section.use-cases.second .text-area2 {
       margin-right: 14%;
       max-width: 800px;
     }
@@ -2301,7 +2301,7 @@ export const globalStyles = t => {
       .services-section.topsep .text-area h1 {
         margin-top: 0px;
       }
-      .services-section.Blog-content.topsep > .text-area {
+      .services-section.blog-content.topsep > .text-area {
         margin-top: 10px;
       }
       .partners-area2 {
@@ -2375,7 +2375,7 @@ export const globalStyles = t => {
         width: 52%;
         margin: 0 0 30px;
       }
-      .services-section.contact_addr .text-area {
+      .services-section.contact-addr .text-area {
         width: 70%;
       }
       .section-wrap.key_indus {
@@ -2393,7 +2393,7 @@ export const globalStyles = t => {
         width: 60%;
         margin: 0 0 30px;
       }
-      .services-section.opensource1.Blog-content.part2 .text-area {
+      .services-section.opensource1.blog-content.part2 .text-area {
         width: 100%;
         margin: 0 0 30px;
       }
@@ -2456,7 +2456,7 @@ export const globalStyles = t => {
       pre {
         padding-left: 50px;
       }
-      .Blog-content a.btn.noarrow {
+      .blog-content a.btn.noarrow {
         font-size: ${t.fontSizes[0]};
         padding: 0px 20px;
         height: 30px;
@@ -2485,11 +2485,11 @@ export const globalStyles = t => {
         width: 49%;
         padding: 0 0 0 60px;
       }
-      .services-section.Blog-home > .text-area {
+      .services-section.blog-home > .text-area {
         padding: 0 0 0 60px;
         margin: 0;
       }
-      .services-section.Blog-content.topsep > .text-area {
+      .services-section.blog-content.topsep > .text-area {
         margin: 40px 0 0 60px;
         border-top: 1px solid black;
         padding-left: 0px;
@@ -2500,7 +2500,7 @@ export const globalStyles = t => {
       .about-section.use_case .text-area {
         width: 60%;
       }
-      .services-section.use_cases.second .text-area2 {
+      .services-section.use-cases.second .text-area2 {
         margin-right: 14%;
         max-width: 600px;
       }
@@ -2530,10 +2530,10 @@ export const globalStyles = t => {
       .services-section.opensource1 .text-area {
         width: 70%;
       }
-      .services-section.opensource1.Blog-content .text-area {
+      .services-section.opensource1.blog-content .text-area {
         width: 55%;
       }
-      .services-section.opensource1.Blog-content.part2 .text-area {
+      .services-section.opensource1.blog-content.part2 .text-area {
         width: 100%;
       }
       .about-section.opensource .w70 {
@@ -2607,7 +2607,7 @@ export const globalStyles = t => {
       }
     }
     @media (max-width: 767px) {
-      .Blog-content .Article-text ul li:before {
+      .blog-content .article-text ul li:before {
         content: "";
         display: block;
         width: 8px;
@@ -2618,8 +2618,8 @@ export const globalStyles = t => {
         background: #000;
         border-radius: 10px;
       }
-      .Blog-content .Article-text ol,
-      .Blog-content .Article-text ul li {
+      .blog-content .article-text ol,
+      .blog-content .article-text ul li {
         display: block;
         padding-left: 35px;
         margin-bottom: 10px;
@@ -2646,14 +2646,14 @@ export const globalStyles = t => {
       header {
         background: white;
       }
-      img.uc_rotate {
+      img.uc-rotate {
         transform: none;
       }
       main nav {
         margin: 30px 15px !important;
         padding: 0;
       }
-      p.use_case_excerpt {
+      p.use-case-excerpt {
         margin: 0;
         padding: 0;
       }
@@ -2665,7 +2665,7 @@ export const globalStyles = t => {
         padding-left: 0 !important;
         margin: 30px 0;
       }
-      .Blog-content .Article-text pre code {
+      .blog-content .article-text pre code {
         margin: 0;
       }
       .about-section .image-holder img {
@@ -2838,28 +2838,28 @@ export const globalStyles = t => {
         text-align: left;
         padding: 0 15px;
       }
-      .contact_addr .col-area .description h3 {
+      .contact-addr .col-area .description h3 {
         text-align: left;
         padding: 0;
       }
-      .contact_addr .col-area .info-col {
+      .contact-addr .col-area .info-col {
         margin: 0;
       }
-      .contact_addr .hello {
+      .contact-addr .hello {
         padding: 0;
       }
-      .contact_addr.section-wrap .text-wrap {
+      .contact-addr.section-wrap .text-wrap {
         margin: 0;
       }
-      .contact_addr.services-section .text-area h3 {
+      .contact-addr.services-section .text-area h3 {
         margin: 30px 0 0 0;
         font-size: ${t.fontSizes[6]};
       }
-      .contact_field input,
-      .contact_field textarea {
+      .contact-field input,
+      .contact-field textarea {
         font-size: ${t.fontSizes[3]};
       }
-      .contact_field.services-section {
+      .contact-field.services-section {
         padding: 60px 0 0 0;
       }
       .contactus-holder .image-col img {
@@ -2981,7 +2981,7 @@ export const globalStyles = t => {
       .joinus-holder {
         margin: 30px 0;
       }
-      .line_sep {
+      .line-sep {
         margin: 20px;
       }
       .menu-active .nav-area {
@@ -3152,21 +3152,21 @@ export const globalStyles = t => {
         padding-bottom: 20px;
         max-width: inherit;
       }
-      .services-section.Blog-content .text-wrap {
+      .services-section.blog-content .text-wrap {
         margin-bottom: 0;
         padding-bottom: 0;
       }
-      .services-section.Blog-content.part2 .text-area {
+      .services-section.blog-content.part2 .text-area {
         padding: 0;
         width: 100%;
       }
-      .services-section.Blog-content.topsep > .text-area {
+      .services-section.blog-content.topsep > .text-area {
         width: 100%;
         padding: 0;
         margin: 0 15px;
         border: 0px;
       }
-      .services-section.Blog-home > .text-area {
+      .services-section.blog-home > .text-area {
         margin: 0;
         padding: 0 15px;
         text-align: left;
@@ -3199,8 +3199,8 @@ export const globalStyles = t => {
         margin: 0;
         width: 100%;
       }
-      .services-section.opensource1.Blog-content .text-area,
-      .services-section.opensource1.Blog-content.part2 .text-area {
+      .services-section.opensource1.blog-content .text-area,
+      .services-section.opensource1.blog-content.part2 .text-area {
         width: 100%;
       }
       .services-section.use_case .text-area {
@@ -3212,17 +3212,17 @@ export const globalStyles = t => {
       .services-section.use_case.first {
         flex-direction: column-reverse;
       }
-      .services-section.use_cases .image-holder.image-holder2 {
+      .services-section.use-cases .image-holder.image-holder2 {
         display: none;
       }
-      .services-section.use_cases.second .text-area2 {
+      .services-section.use-cases.second .text-area2 {
         padding: 0 15px;
         margin: 0;
       }
-      .services-section.use_cases.second .text-wrap {
+      .services-section.use-cases.second .text-wrap {
         margin-bottom: 30px;
       }
-      .services-section.use_cases.second {
+      .services-section.use-cases.second {
         margin: 0;
       }
       .use_case .image-holder.image-holder img {

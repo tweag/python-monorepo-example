@@ -7,7 +7,7 @@ export const TopCard = ({ node }) => {
   const title = node.frontmatter.shortTitle || node.frontmatter.title
   const tags = node.frontmatter.tags
   return (
-    <div className="services-section Blog-content Blog-home topsep viewport-section">
+    <div className="services-section blog-content blog-home topsep viewport-section">
       <article className="text-area">
         <Link
           to={node.fields.slug}
