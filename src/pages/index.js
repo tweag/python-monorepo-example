@@ -105,7 +105,7 @@ const IndexPage = ({ data, location }) => {
           </div>
         </div>
         <div className="section section03">
-          <KeyIndustries isFullPage={true} />
+          <KeyIndustries/>
         </div>
         <div className="section section04">
           <div className="joinus-area section-wrap">
