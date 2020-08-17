@@ -232,7 +232,6 @@ export const globalStyles = t => {
     a.lined {
       text-decoration: underline;
       color: black;
-      white-space: nowrap;
     }
     .lined {
       display: inline;
@@ -244,20 +243,9 @@ export const globalStyles = t => {
       overflow: hidden;
       z-index: 2;
     }
-    .lined:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 0;
-      top: 0;
-      bottom: 0;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      background: black;
-      z-index: -1;
-    }
     .lined:hover {
       color: white;
+      background: black;
     }
     .lined:hover:after {
       width: 100%;
