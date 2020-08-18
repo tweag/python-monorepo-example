@@ -54,7 +54,7 @@ const AutonomousPage = () => {
           </div>
         </div>
         <div className="about-section viewport-section"></div>
-        <div className="section s_beige section06a viewport-section">
+        <div className="section s_beige viewport-section">
           <CallToAction areaIndex={3} backdropIndex={4} />
         </div>
       </section>

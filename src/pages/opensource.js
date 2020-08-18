@@ -182,7 +182,7 @@ const OpenSourcePage = () => {
             </p>
           </div>
         </div>
-        <div className="section s_grey section06a viewport-section">
+        <div className="section s_grey viewport-section">
           <CallToAction backdropIndex={5} />
         </div>
       </section>

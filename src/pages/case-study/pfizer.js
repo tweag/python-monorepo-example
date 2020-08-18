@@ -132,7 +132,7 @@ const PfizerPage = () => {
             <img src={imgVertical2} alt="" />
           </div>
         </div>
-        <div className="section s_green section06a viewport-section">
+        <div className="section s_green viewport-section">
           <CallToAction backdropIndex={8} />
         </div>
       </section>

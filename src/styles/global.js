@@ -462,7 +462,6 @@ export const globalStyles = t => {
       vertical-align: top;
       background: black;
     }
-    .section06a,
     .s_orange {
       background: ${t.colors.orange};
     }
@@ -3093,10 +3092,6 @@ export const globalStyles = t => {
         padding: 0;
         margin-bottom: 30px;
         overflow: hidden;
-      }
-      .section06a {
-        padding: 0;
-        margin-top: 0px;
       }
       .services-section .image-holder img {
         width: 150px;
