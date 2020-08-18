@@ -21,7 +21,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <LayoutFullPage>
       <SEO title="Software innovation lab" />
-      <div className="section section01">
+      <div className="section s_white">
         <div className="visual-area section-wrap head1">
           <div className="container">
             <div className="visual-holder">
@@ -57,7 +57,7 @@ const IndexPage = ({ data, location }) => {
         </div>
         <div className="line-arrow down"></div>
       </div>
-      <div className="section section02">
+      <div className="section s_yellow">
         <div className="contactus-area section-wrap">
           <div className="container">
             <div className="contactus-holder">
@@ -74,8 +74,8 @@ const IndexPage = ({ data, location }) => {
                     <h3>Scale with confidence</h3>
                     <p>
                       Quickly grow your team with vetted, senior engineers.
-                      Tweag provides the expertise needed to execute
-                      high-risk, high-reward projects.
+                      Tweag provides the expertise needed to execute high-risk,
+                      high-reward projects.
                     </p>
                   </li>
                   <li>
@@ -88,101 +88,101 @@ const IndexPage = ({ data, location }) => {
                   </li>
                   <li>
                     <h3>Solve complex problems</h3>
-                      <p>
-                        Realize your breakthrough vision. Together, we&apos;ll
-                        iterate quickly and transform your ideas into products
-                        that work.
-                      </p>
-                    </li>
-                  </ul>
-                  <Link to="/contact" className="btn">
-                    Contact us
-                  </Link>
-                </div>
+                    <p>
+                      Realize your breakthrough vision. Together, we&apos;ll
+                      iterate quickly and transform your ideas into products
+                      that work.
+                    </p>
+                  </li>
+                </ul>
+                <Link to="/contact" className="btn">
+                  Contact us
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="section section03">
-          <KeyIndustries/>
-        </div>
-        <div className="section section04">
-          <div className="joinus-area section-wrap">
-            <div className="container">
-              <div className="joinus-holder">
-                <div className="text-wrap">
-                  <p className="title">
-                    At Tweag, we drive purposeful innovation through lasting
-                    software. We apply mathematics, computer science and open
-                    source methodologies to advance software engineering.
-                  </p>
-                </div>
-                <div
-                  className="image-holder backdrop"
-                  style={{ animation: `none` }}
-                ></div>
+      </div>
+      <div className="section s_white">
+        <KeyIndustries />
+      </div>
+      <div className="section s_purple">
+        <div className="joinus-area section-wrap">
+          <div className="container">
+            <div className="joinus-holder">
+              <div className="text-wrap">
+                <p className="title">
+                  At Tweag, we drive purposeful innovation through lasting
+                  software. We apply mathematics, computer science and open
+                  source methodologies to advance software engineering.
+                </p>
               </div>
+              <div
+                className="image-holder backdrop"
+                style={{ animation: `none` }}
+              ></div>
             </div>
           </div>
         </div>
-        <div className="section section05">
-          <div className="partners-area section-wrap">
-            <div className="container">
-              <h2>
-                Trusted by leaders <br />
-                &amp; innovators
-              </h2>
-              <ul className="partners-list">
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoAmgen} width="200" alt="Amgen" />
-                  </div>
-                </li>
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoCea} width="100" alt="CEA" />
-                  </div>
-                </li>
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoGoogle} width="200" alt="Google" />
-                  </div>
-                </li>
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoOrange} width="100" alt="Orange" />
-                  </div>
-                </li>
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoPfizer} width="150" alt="Pfizer" />
-                  </div>
-                </li>
-                <li>
-                  <div className="logo-wrap">
-                    <img src={logoTarget} width="100" alt="Target" />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="section section06">
-          <div className="vision-area home-vision">
-            <div className="container">
-              <div className="vision-holder">
-                <div className="text-col">
-                  <h2>Ready to achieve your big vision?</h2>
-                  <Link to="/contact" className="btn">
-                    Contact us
-                  </Link>
+      </div>
+      <div className="section s_white">
+        <div className="partners-area section-wrap">
+          <div className="container">
+            <h2>
+              Trusted by leaders <br />
+              &amp; innovators
+            </h2>
+            <ul className="partners-list">
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoAmgen} width="200" alt="Amgen" />
                 </div>
-                <div className="image-holder backdrop2"></div>
+              </li>
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoCea} width="100" alt="CEA" />
+                </div>
+              </li>
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoGoogle} width="200" alt="Google" />
+                </div>
+              </li>
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoOrange} width="100" alt="Orange" />
+                </div>
+              </li>
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoPfizer} width="150" alt="Pfizer" />
+                </div>
+              </li>
+              <li>
+                <div className="logo-wrap">
+                  <img src={logoTarget} width="100" alt="Target" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="section s_red">
+        <div className="vision-area">
+          <div className="container">
+            <div className="vision-holder">
+              <div className="text-col">
+                <h2>Ready to achieve your big vision?</h2>
+                <Link to="/contact" className="btn">
+                  Contact us
+                </Link>
               </div>
+              <div className="image-holder backdrop2"></div>
             </div>
           </div>
-          <Footer />
         </div>
+        <Footer />
+      </div>
     </LayoutFullPage>
   )
 }

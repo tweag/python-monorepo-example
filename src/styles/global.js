@@ -441,33 +441,26 @@ export const globalStyles = t => {
         visibility: visible;
       }
     }
-    .section01,
     .s_white {
       background: white;
     }
-    .section02,
     .s_yellow {
       background: ${t.colors.yellow};
     }
-    .section03 {
-      background: white;
-    }
-    .section04 {
+    .s_purple {
       background: ${t.colors.purple};
       color: white;
     }
     .s_blue {
       background: ${t.colors.blue};
     }
-    .section05 {
-      background: white;
-    }
-    .section06,
     .s_black {
       background: black;
+      color: white;
     }
-    .section06 .fp-tableCell {
+    main > .fp-section:last-child .fp-tableCell {
       vertical-align: top;
+      background: black;
     }
     .section06a,
     .s_orange {
@@ -484,6 +477,19 @@ export const globalStyles = t => {
     }
     .s_red {
       background: ${t.colors.red};
+    }
+    // In full-page mode (though not on small screens) we allow the content
+    // to be seen behind the fixed
+    .fp-enabled body:not(.fp-responsive) header.s_white,
+    .fp-enabled body:not(.fp-responsive) header.s_yellow,
+    .fp-enabled body:not(.fp-responsive) header.s_purple,
+    .fp-enabled body:not(.fp-responsive) header.s_blue,
+    .fp-enabled body:not(.fp-responsive) header.s_black,
+    .fp-enabled body:not(.fp-responsive) header.s_green,
+    .fp-enabled body:not(.fp-responsive) header.s_beige,
+    .fp-enabled body:not(.fp-responsive) header.s_grey,
+    .fp-enabled body:not(.fp-responsive) header.s_red {
+      background-color: transparent;
     }
     .section06 .fp-scroller {
       overflow: visible !important;
@@ -1237,19 +1243,19 @@ export const globalStyles = t => {
       display: block;
       width: 152px;
     }
-    .fp-viewing-3 .logo .black-logo {
+    .header-inverse .logo .black-logo {
       opacity: 0;
       visibility: hidden;
     }
-    .fp-viewing-3 .logo .white-logo {
+    .header-inverse .logo .white-logo {
       opacity: 1;
       visibility: visible;
     }
-    .fp-viewing-3 .menu-opener {
+    .header-inverse .menu-opener {
       border-top-color: white;
     }
-    .fp-viewing-3 .menu-opener:after,
-    .fp-viewing-3 .menu-opener:before {
+    .header-inverse .menu-opener:after,
+    .header-inverse .menu-opener:before {
       background: white;
     }
     .in-viewport .col-area .info-col,
@@ -2010,16 +2016,16 @@ export const globalStyles = t => {
         -ms-transform: translateY(300px);
         transform: translateY(300px);
       }
-      .fp-viewing-3 .menu a {
+      .header-inverse .menu a {
         color: white;
       }
-      .fp-viewing-3 .dropdown-list a {
+      .header-inverse .dropdown-list a {
         color: black;
       }
-      .fp-viewing-3 .menu a::after {
+      .header-inverse .menu a::after {
         background: white;
       }
-      .fp-viewing-3 .dropdown-list a::after {
+      .header-inverse .dropdown-list a::after {
         background: black;
       }
       .services-section .text-area {
@@ -3087,13 +3093,6 @@ export const globalStyles = t => {
         padding: 0;
         margin-bottom: 30px;
         overflow: hidden;
-      }
-      .section01 .section-wrap {
-        padding: 0;
-        margin-bottom: 30px;
-      }
-      .section01 {
-        padding-top: 70px;
       }
       .section06a {
         padding: 0;

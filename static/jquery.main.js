@@ -973,9 +973,11 @@ $(document).scroll(function () {
         .filter(str => str.startsWith("s_"))[0]
       $(".header")
         .removeClass(
-          "s_white s_yellow s_black s_grey s_red s_blue s_beige s_orange s_green"
+          "s_white s_yellow s_black s_purple s_grey s_red s_blue s_beige s_orange s_green header-inverse"
         )
-        .addClass(_myclass)
+        .addClass(_myclass);
+      if (["s_purple", "s_black"].includes(_myclass))
+        $(".header").addClass("header-inverse")
       return false
     }
   })
