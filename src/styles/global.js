@@ -138,10 +138,6 @@ export const globalStyles = t => {
       font-size: ${t.fontSizes[5]};
       line-height: 1.5;
       padding-bottom: 50px;
-      color: black;
-    }
-    .contact-addr .hello a {
-      color: black;
     }
     .contact-field input,
     .contact-field textarea {
@@ -230,13 +226,13 @@ export const globalStyles = t => {
     p {
       margin: 0 0 1em;
     }
-    a {
+    a:link {
       text-decoration: none;
     }
     body.menu-active .menu a:after {
       top: 45px;
     }
-    a.lined {
+    a:link.lined {
       text-decoration: underline;
       color: var(--fg-color);
     }
@@ -337,7 +333,7 @@ export const globalStyles = t => {
       overflow: hidden;
       width: 100%;
     }
-    a {
+    a:link {
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
     }
@@ -1255,7 +1251,7 @@ export const globalStyles = t => {
     .section-title {
       position: relative;
       border-bottom: 1px solid black;
-      color: black;
+      color: var(--fg-color);
       text-align: center;
       padding: 0px 0px 10px 0;
       font-size: ${t.fontSizes[2]};
@@ -1500,7 +1496,7 @@ export const globalStyles = t => {
       display: block;
       width: 100%;
       padding: 20px 55px;
-      color: black;
+      color: var(--fg-color);
       background: #ecece9;
       overflow: hidden;
     }
@@ -1509,10 +1505,10 @@ export const globalStyles = t => {
       padding: 20px 0px;
     }
     main nav ul li a {
-      color: black;
+      color: var(--fg-color);
     }
     main nav ul li a:hover {
-      color: black;
+      color: var(--fg-color);
       text-decoration: underline;
     }
     .code-section pre {
@@ -1529,12 +1525,12 @@ export const globalStyles = t => {
       text-decoration: none;
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
-      border: 1px solid black;
+      border: 1px solid var(--fg-color);
       border-radius: 35px;
       text-align: center;
       height: 30px;
       padding: 0px 20px;
-      color: black;
+      color: var(--fg-color);
       overflow: hidden;
       z-index: 2;
       margin: 0px 15px 5px 0;
@@ -1542,7 +1538,7 @@ export const globalStyles = t => {
       font-weight: normal;
     }
     .blog-content a.btn.noarrow:hover {
-      color: white;
+      color: var(--bg-color);
     }
     /* code section overrides */
 
@@ -2854,7 +2850,7 @@ export const globalStyles = t => {
         display: block;
         width: 100px;
         height: 1px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--fg-color);
         padding-top: 40px;
         margin: 0;
       }
