@@ -168,7 +168,7 @@ const IndexPage = ({ data, location }) => {
         </div>
       </div>
       <div className="section s_red">
-        <div className="vision-area">
+        <div className="s_red vision-area">
           <div className="container">
             <div className="vision-holder">
               <div className="text-col">

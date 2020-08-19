@@ -135,7 +135,7 @@ const FintechPage = () => {
         </div>
         <div className="about-section viewport-section"></div>
         <div className="section s_beige viewport-section">
-          <CallToAction areaIndex={3} backdropIndex={4} />
+          <CallToAction backdropIndex={4} />
         </div>
       </section>
     </Layout>

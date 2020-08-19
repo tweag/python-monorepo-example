@@ -100,7 +100,7 @@ const BazelPage = () => {
           </p>
         </Community>
         <div className="section s_white viewport-section">
-          <CallToAction areaIndex={4} backdropIndex={3} />
+          <CallToAction backdropIndex={3} />
         </div>
       </section>
     </Layout>

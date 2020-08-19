@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const CallToAction = ({ areaIndex, backdropIndex }) => {
-  const areaClass = `vision-area${areaIndex || backdropIndex}`
+const CallToAction = ({ backdropIndex }) => {
   const backdropClass = `image-holder backdrop${backdropIndex}`
   return (
-    <div className={areaClass}>
+    <div className="vision-area">
       <div className="container">
         <div className="vision-holder">
           <div className="text-col">

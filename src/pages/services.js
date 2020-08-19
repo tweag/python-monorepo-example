@@ -122,7 +122,7 @@ const ServicesPage = () => {
       <div className="line-sep"></div>
       <KeyIndustries />
       <div className="section s_orange viewport-section">
-        <CallToAction areaIndex={2} backdropIndex={3} />
+        <CallToAction backdropIndex={3} />
       </div>
     </Layout>
   )
