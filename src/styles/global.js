@@ -892,7 +892,6 @@ export const globalStyles = t => {
     }
     .vision-area {
       position: relative;
-      padding: 60px 0 0px;
       width: 100%;
     }
     .vision-holder {
