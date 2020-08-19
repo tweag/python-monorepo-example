@@ -237,6 +237,6 @@ its own blog post in the near future:
 [hilbert]: https://diagrams.github.io/gallery/Hilbert.html
 [todomvc]: https://www.tweag.io/posts/2018-12-20-asterius-todomvc.html
 [wai-app-static]: https://github.com/yesodweb/wai/tree/master/wai-app-static
-[wasm-hilbert]: https://tweag.io/wasm-hilbert
+[wasm-hilbert]: https://asterius.netlify.app/demo/diagrams/hilbert.html
 [safari-issue]: https://github.com/tweag/asterius/issues/401
 [haste]: https://haste-lang.org

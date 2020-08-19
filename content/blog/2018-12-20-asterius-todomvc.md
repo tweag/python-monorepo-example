@@ -19,7 +19,7 @@ browser. [Try it out!][tweag-todomvc]. (Since our emitted code uses the
 run it.)
 
 [asterius-ffi]: https://www.tweag.io/posts/2018-09-12-asterius-ffi.html
-[tweag-todomvc]: https://tweag.io/wasm-todomvc
+[tweag-todomvc]: https://asterius.netlify.app/demo/todomvc/index.html
 
 ## Trying this at home
 
