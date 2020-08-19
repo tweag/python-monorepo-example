@@ -652,6 +652,7 @@ export const globalStyles = t => {
       height: 60px;
       padding: 15px 18px;
       color: var(--fg-color);
+      background: transparent;
       overflow: hidden;
       z-index: 2;
       margin-bottom: 30px;
