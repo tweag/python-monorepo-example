@@ -195,9 +195,9 @@ const MobileMenuOpener = () => (
   </a>
 )
 
-const Navigation = () => (
+const Navigation = ({ className }) => (
   <header
-    className="header"
+    className={`header ` + (className ? className : ``)}
     sx={{
       position: `fixed`,
       left: 0,

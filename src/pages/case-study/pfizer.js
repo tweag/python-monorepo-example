@@ -70,7 +70,7 @@ const PfizerPage = () => {
             </ul>
           </div>
         </div>
-        <div className="about-section use_case bloc1 viewport-section">
+        <div className="section s_beige about-section use_case bloc1 viewport-section">
           <div className="text-wrap text-area">
             <h1>Fast &amp; iterative collaboration</h1>
             <p>
@@ -83,7 +83,7 @@ const PfizerPage = () => {
             </p>
           </div>
         </div>
-        <div className="about-section use_case bloc2 viewport-section">
+        <div className="about-section s_green use_case viewport-section">
           <div className="text-wrap text-area">
             <h1>Software &amp; bioinformatic experts</h1>
             <p>
@@ -132,7 +132,7 @@ const PfizerPage = () => {
             <img src={imgVertical2} alt="" />
           </div>
         </div>
-        <div className="section s_green section06a viewport-section">
+        <div className="section s_green viewport-section">
           <CallToAction backdropIndex={8} />
         </div>
       </section>

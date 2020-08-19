@@ -5,12 +5,11 @@ import biotech from "../images/img3.gif"
 import fintech from "../images/img4.gif"
 import vehicles from "../images/img5.gif"
 
-const KeyIndustries = ({ isFullPage }) => {
-  const containerClasses = isFullPage ? `container fullp` : `container`
+const KeyIndustries = () => {
   return (
     <div className="section s_white section-wrap key_indus viewport-section">
-      <div className={containerClasses}>
-        <div className="col-area animation-wrap">
+      <div className="container">
+        <div className="col-area">
           <h2>Key industries we serve</h2>
           <div className="col-row">
             <div className="info-col">

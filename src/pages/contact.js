@@ -58,7 +58,7 @@ const ContactPage = () => {
       </section>
       <div className="section s_white section-wrap services-section contact-addr viewport-section">
         <div className="text-area">
-          <div className="col-area animation-wrap">
+          <div className="col-area">
             <div className="col-row">
               <div className="info-col">
                 <div className="block">

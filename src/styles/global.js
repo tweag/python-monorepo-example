@@ -13,6 +13,10 @@ import frise_use_cases from "../images/frise_use_cases.svg"
 
 export const globalStyles = t => {
   return css`
+    :root {
+      --bg-color: white;
+      --fg-color: black;
+    }
     img::selection {
       background-color: rgba(255, 255, 255, 0) !important;
     }
@@ -134,10 +138,6 @@ export const globalStyles = t => {
       font-size: ${t.fontSizes[5]};
       line-height: 1.5;
       padding-bottom: 50px;
-      color: black;
-    }
-    .contact-addr .hello a {
-      color: black;
     }
     .contact-field input,
     .contact-field textarea {
@@ -156,7 +156,6 @@ export const globalStyles = t => {
     }
     .contact-field .btn {
       font-size: ${t.fontSizes[3]};
-      background: transparent;
     }
     .contact-field textarea::placeholder {
       opacity: 0.3;
@@ -187,12 +186,17 @@ export const globalStyles = t => {
       flex-direction: row-reverse;
     }
     body {
-      color: black;
-      background: white;
+      color: var(--fg-color);
+      background-color: var(--bg-color);
       font: 16px/1.2 "stratos", "Arial", "Helvetica", sans-serif;
       min-width: 320px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+    *::selection,
+    *::-moz-selection {
+      background: rgba(0, 0, 0, 0.99);
+      color: var(--bg-color);
     }
     img {
       max-width: 100%;
@@ -218,20 +222,19 @@ export const globalStyles = t => {
       font-family: inherit;
       font-weight: bold;
       margin: 0 0 0.5em;
-      color: inherit;
     }
     p {
       margin: 0 0 1em;
     }
-    a {
+    a:link {
       text-decoration: none;
     }
     body.menu-active .menu a:after {
       top: 45px;
     }
-    a.lined {
+    a:link.lined {
       text-decoration: underline;
-      color: black;
+      color: var(--fg-color);
     }
     .lined {
       display: inline;
@@ -244,8 +247,8 @@ export const globalStyles = t => {
       z-index: 2;
     }
     .lined:hover {
-      color: white;
-      background: black;
+      color: var(--bg-color);
+      background: var(--fg-color);
     }
     .lined:hover:after {
       width: 100%;
@@ -321,19 +324,16 @@ export const globalStyles = t => {
       height: 40px;
     }
     .line-arrow.down {
-      border-top: 1px solid black;
-      border-right: 1px solid black;
+      border-top: 1px solid var(--fg-color);
+      border-right: 1px solid var(--fg-color);
       transform: rotate(135deg) skew(0deg);
-    }
-    body {
-      color: black;
     }
     #wrapper {
       position: relative;
       overflow: hidden;
       width: 100%;
     }
-    a {
+    a:link {
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
     }
@@ -343,12 +343,7 @@ export const globalStyles = t => {
       padding: 0 15px;
       max-width: 1440px;
     }
-    .vision-area2 .container,
-    .vision-area3 .container,
-    .vision-area5 .container,
-    .vision-area8 .container,
-    .vision-area6 .container,
-    .vision-area7 .container {
+    .vision-area .container {
       max-width: 100%;
       padding: 0 0 0 120px;
     }
@@ -441,50 +436,86 @@ export const globalStyles = t => {
         visibility: visible;
       }
     }
-    .section01,
     .s_white {
-      background: white;
+      --bg-color: white;
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
-    .section02,
     .s_yellow {
-      background: ${t.colors.yellow};
+      --bg-color: ${t.colors.yellow};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
-    .section03 {
-      background: white;
-    }
-    .section04 {
-      background: ${t.colors.purple};
-      color: white;
+    .s_purple {
+      --bg-color: ${t.colors.purple};
+      --fg-color: white;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
     .s_blue {
-      background: ${t.colors.blue};
+      --bg-color: ${t.colors.blue};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
-    .section05 {
-      background: white;
+    .s_black {
+      --bg-color: black;
+      --fg-color: white;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
-    .section06,
-    s_black {
-      background: black;
-    }
-    .section06 .fp-tableCell {
-      vertical-align: top;
-    }
-    .section06a,
     .s_orange {
-      background: ${t.colors.orange};
+      --bg-color: ${t.colors.orange};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
     .s_green {
-      background: ${t.colors.green};
+      --bg-color: ${t.colors.green};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
     .s_beige {
-      background: ${t.colors.beige};
+      --bg-color: ${t.colors.beige};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
     .s_grey {
-      background: ${t.colors.grey};
+      --bg-color: ${t.colors.grey};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
     .s_red {
-      background: ${t.colors.red};
+      --bg-color: ${t.colors.red};
+      --fg-color: black;
+      background-color: var(--bg-color);
+      color: var(--fg-color);
     }
+
+    // In full-page mode (though not on small screens) we allow the content
+    // to be seen behind the fixed nav header
+    .fp-enabled body:not(.fp-responsive) header.s_white,
+    .fp-enabled body:not(.fp-responsive) header.s_yellow,
+    .fp-enabled body:not(.fp-responsive) header.s_purple,
+    .fp-enabled body:not(.fp-responsive) header.s_blue,
+    .fp-enabled body:not(.fp-responsive) header.s_black,
+    .fp-enabled body:not(.fp-responsive) header.s_green,
+    .fp-enabled body:not(.fp-responsive) header.s_beige,
+    .fp-enabled body:not(.fp-responsive) header.s_grey,
+    .fp-enabled body:not(.fp-responsive) header.s_red {
+      background-color: transparent;
+    }
+
+    main > .fp-section:last-child .fp-tableCell {
+      vertical-align: top;
+      background: black; // Match the footer down to bottom of viewport
+    }
+
     .section06 .fp-scroller {
       overflow: visible !important;
     }
@@ -568,14 +599,6 @@ export const globalStyles = t => {
       justify-content: space-between;
       padding: 30px 0 0;
     }
-    .visual-holder .visual-caption *::selection {
-      background: rgba(0, 0, 0, 0.99); /* WebKit/Blink Browsers */
-      color: white;
-    }
-    .visual-holder .visual-caption *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99); /* Gecko Browsers */
-      color: white;
-    }
     .visual-holder .image-holder {
       position: relative;
       width: 40%;
@@ -623,12 +646,13 @@ export const globalStyles = t => {
       text-decoration: none;
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
-      border: 1px solid black;
+      border: 1px solid var(--fg-color);
       border-radius: 35px;
       text-align: center;
       height: 60px;
       padding: 15px 18px;
-      color: black;
+      color: var(--fg-color);
+      background: transparent;
       overflow: hidden;
       z-index: 2;
       margin-bottom: 30px;
@@ -660,11 +684,11 @@ export const globalStyles = t => {
       bottom: 0;
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
-      background: black;
+      background: var(--fg-color);
       z-index: -1;
     }
     .btn:hover {
-      color: white;
+      color: var(--bg-color);
     }
     .btn:hover:after {
       width: 100%;
@@ -685,14 +709,6 @@ export const globalStyles = t => {
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
       justify-content: space-between;
-    }
-    .contactus-holder *::selection {
-      background: rgba(0, 0, 0, 0.99); /* WebKit/Blink Browsers */
-      color: ${t.colors.yellow};
-    }
-    .contactus-holder *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99); /* Gecko Browsers */
-      color: ${t.colors.yellow};
     }
     .contactus-holder .image-col {
       position: relative;
@@ -733,19 +749,8 @@ export const globalStyles = t => {
     .contactus-holder .text-list p {
       margin: 0;
     }
-    .contactus-holder .btn:hover {
-      color: ${t.colors.yellow};
-    }
     .col-area {
       position: relative;
-    }
-    .col-area *::selection {
-      background: rgba(0, 0, 0, 0.99); /* WebKit/Blink Browsers */
-      color: white;
-    }
-    .col-area *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99); /* Gecko Browsers */
-      color: white;
     }
     .col-area h2 {
       text-align: center;
@@ -816,14 +821,6 @@ export const globalStyles = t => {
     .joinus-area {
       position: relative;
     }
-    .joinus-area *::selection {
-      background: rgba(255, 255, 255, 0.99); /* WebKit/Blink Browsers */
-      color: ${t.colors.blue};
-    }
-    .joinus-area *::-moz-selection {
-      background: rgba(255, 255, 255, 0.99); /* Gecko Browsers */
-      color: ${t.colors.blue};
-    }
     .joinus-holder {
       position: relative;
       display: -webkit-box;
@@ -847,16 +844,6 @@ export const globalStyles = t => {
       display: block;
       margin: 0 0 40px;
     }
-    .joinus-holder .btn {
-      border-color: white;
-      color: white;
-    }
-    .joinus-holder .btn:after {
-      background: white;
-    }
-    .joinus-holder .btn:hover {
-      color: ${t.colors.blue};
-    }
     .joinus-holder .image-holder {
       position: relative;
       width: 45%;
@@ -868,14 +855,6 @@ export const globalStyles = t => {
     }
     .partners-area {
       position: relative;
-    }
-    .partners-area *::selection {
-      background: rgba(0, 0, 0, 0.99); /* WebKit/Blink Browsers */
-      color: white;
-    }
-    .partners-area *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99); /* Gecko Browsers */
-      color: white;
     }
     .partners-area h2 {
       text-align: center;
@@ -912,53 +891,9 @@ export const globalStyles = t => {
       vertical-align: middle;
       position: relative;
     }
-    .vision-area5 {
-      background: ${t.colors.grey};
-      position: relative;
-      width: 100%;
-    }
-    .vision-area6 {
-      background: ${t.colors.purple};
-      position: relative;
-      width: 100%;
-      color: white;
-    }
-    .vision-area7 {
-      background: ${t.colors.yellow};
-      position: relative;
-      width: 100%;
-      color: black;
-    }
-    .vision-area8 {
-      background: ${t.colors.green};
-      position: relative;
-      width: 100%;
-      color: black;
-    }
-    .vision-area3 {
-      background: ${t.colors.beige};
-      position: relative;
-      width: 100%;
-    }
-    .vision-area2 {
-      background: #f67752;
-      position: relative;
-      padding: 0px;
-      width: 100%;
-    }
     .vision-area {
-      background: ${t.colors.red};
       position: relative;
-      padding: 60px 0 0px;
       width: 100%;
-    }
-    .vision-area *::selection {
-      background: rgba(0, 0, 0, 0.99); /* WebKit/Blink Browsers */
-      color: ${t.colors.red};
-    }
-    .vision-area *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99); /* Gecko Browsers */
-      color: ${t.colors.red};
     }
     .vision-holder {
       padding: 60px 0 60px 0px;
@@ -1008,45 +943,6 @@ export const globalStyles = t => {
       line-height: 1.3;
       padding-bottom: 20px;
     }
-    .vision-holder .btn {
-      color: white;
-      border-color: white;
-    }
-    .vision-holder .btn:after {
-      background: white;
-    }
-    .vision-area4 .vision-holder .btn,
-    .vision-area5 .vision-holder .btn,
-    .vision-area7 .vision-holder .btn {
-      color: black;
-      border-color: black;
-    }
-    .vision-area4 .vision-holder .btn:after,
-    .vision-area5 .vision-holder .btn:after,
-    .vision-area7 .vision-holder .btn:after {
-      background: black;
-    }
-    .vision-holder .btn:hover {
-      color: ${t.colors.red};
-    }
-    .vision-area3 .vision-holder .btn:hover {
-      color: ${t.colors.beige};
-    }
-    .vision-area4 .vision-holder .btn:hover {
-      color: white;
-    }
-    .vision-area5 .vision-holder .btn:hover {
-      color: white;
-    }
-    .vision-area6 .vision-holder .btn:hover {
-      color: ${t.colors.purple};
-    }
-    .vision-area7 .vision-holder .btn:hover {
-      color: ${t.colors.yellow};
-    }
-    .vision-area8 .vision-holder .btn:hover {
-      color: ${t.colors.green};
-    }
     .about-section .image-holder img {
       width: 100%;
       height: auto;
@@ -1073,35 +969,27 @@ export const globalStyles = t => {
       margin: 20px 6px;
     }
     .about-section.biotech {
-      background: ${t.colors.beige};
       padding: 60px 0 100px 0;
     }
     .about-section.opensource {
-      background: ${t.colors.red};
       padding: 20px 0 40px 0;
       align-items: start;
       justify-content: normal;
       font-size: ${t.fontSizes[4]};
     }
     .about-section.opensource2 {
-      background: ${t.colors.grey};
       padding: 20px 0 40px 0;
     }
     .about-section.opensource3 {
-      background: ${t.colors.orange};
       padding: 20px 0 40px 0;
     }
     .about-section.opensource4 {
-      background: white;
       padding: 40px 0 60px 0;
     }
     .about-section.opensource4 p.sample {
       font-weight: bold;
       padding: 20px 0 40px 0;
       max-width: 500px;
-    }
-    .about-section.learnmore {
-      background-color: ${t.colors.green};
     }
     .about-section.learnmore .text-area {
       padding: 50px 220px;
@@ -1134,17 +1022,10 @@ export const globalStyles = t => {
     }
     .about-section.learnmore .btn {
       margin-top: 20px;
-      color: white;
-      border-color: white;
       height: auto;
     }
     .about-section.learnmore .btn:hover {
       margin-top: 20px;
-      color: ${t.colors.green};
-      border-color: white;
-    }
-    .about-section.learnmore .btn:after {
-      background: white;
     }
     .about-section.learnmore h3.quote {
       padding-top: 80px;
@@ -1237,19 +1118,19 @@ export const globalStyles = t => {
       display: block;
       width: 152px;
     }
-    .fp-viewing-3 .logo .black-logo {
+    .header-inverse .logo .black-logo {
       opacity: 0;
       visibility: hidden;
     }
-    .fp-viewing-3 .logo .white-logo {
+    .header-inverse .logo .white-logo {
       opacity: 1;
       visibility: visible;
     }
-    .fp-viewing-3 .menu-opener {
+    .header-inverse .menu-opener {
       border-top-color: white;
     }
-    .fp-viewing-3 .menu-opener:after,
-    .fp-viewing-3 .menu-opener:before {
+    .header-inverse .menu-opener:after,
+    .header-inverse .menu-opener:before {
       background: white;
     }
     .in-viewport .col-area .info-col,
@@ -1370,7 +1251,7 @@ export const globalStyles = t => {
     .section-title {
       position: relative;
       border-bottom: 1px solid black;
-      color: black;
+      color: var(--fg-color);
       text-align: center;
       padding: 0px 0px 10px 0;
       font-size: ${t.fontSizes[2]};
@@ -1615,7 +1496,7 @@ export const globalStyles = t => {
       display: block;
       width: 100%;
       padding: 20px 55px;
-      color: black;
+      color: var(--fg-color);
       background: #ecece9;
       overflow: hidden;
     }
@@ -1624,10 +1505,10 @@ export const globalStyles = t => {
       padding: 20px 0px;
     }
     main nav ul li a {
-      color: black;
+      color: var(--fg-color);
     }
     main nav ul li a:hover {
-      color: black;
+      color: var(--fg-color);
       text-decoration: underline;
     }
     .code-section pre {
@@ -1644,12 +1525,12 @@ export const globalStyles = t => {
       text-decoration: none;
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
-      border: 1px solid black;
+      border: 1px solid var(--fg-color);
       border-radius: 35px;
       text-align: center;
       height: 30px;
       padding: 0px 20px;
-      color: black;
+      color: var(--fg-color);
       overflow: hidden;
       z-index: 2;
       margin: 0px 15px 5px 0;
@@ -1657,7 +1538,7 @@ export const globalStyles = t => {
       font-weight: normal;
     }
     .blog-content a.btn.noarrow:hover {
-      color: white;
+      color: var(--bg-color);
     }
     /* code section overrides */
 
@@ -1733,8 +1614,6 @@ export const globalStyles = t => {
       margin-top: 50px;
     }
     .use_case.bloc1 {
-      background-color: #5374cf;
-      color: white;
       padding: 80px 0;
     }
     .use_case.bloc1 .text-area h1,
@@ -1754,8 +1633,6 @@ export const globalStyles = t => {
       margin: auto;
     }
     .use_case.bloc2 {
-      background-color: ${t.colors.green};
-      color: white;
       padding: 80px 0;
     }
     .services-section.use-cases .image-holder.image-holder2 {
@@ -2010,16 +1887,16 @@ export const globalStyles = t => {
         -ms-transform: translateY(300px);
         transform: translateY(300px);
       }
-      .fp-viewing-3 .menu a {
+      .header-inverse .menu a {
         color: white;
       }
-      .fp-viewing-3 .dropdown-list a {
+      .header-inverse .dropdown-list a {
         color: black;
       }
-      .fp-viewing-3 .menu a::after {
+      .header-inverse .menu a::after {
         background: white;
       }
-      .fp-viewing-3 .dropdown-list a::after {
+      .header-inverse .dropdown-list a::after {
         background: black;
       }
       .services-section .text-area {
@@ -2404,11 +2281,6 @@ export const globalStyles = t => {
       .line-arrow.down {
         margin-top: 0px;
       }
-      .vision-area2 {
-        background: #f67752;
-        position: relative;
-        width: 100%;
-      }
       .about-section .text-area {
         position: relative;
         padding: 0 0 0 120px;
@@ -2453,20 +2325,12 @@ export const globalStyles = t => {
       .posts-holder.image-holder {
         padding-right: 60px;
       }
-      .vision-area2 .container,
-      .vision-area3 .container,
-      .vision-area5 .container,
-      .vision-area8 .container,
-      .vision-area6 .container,
-      .vision-area7 .container {
+      .vision-area .container {
         max-width: 100%;
         padding: 0;
       }
       .container {
         padding: 0 60px;
-      }
-      .vision-area.home-vision .container {
-        padding: 0 0 0 60px;
       }
       .services-section .text-area {
         position: relative;
@@ -2492,14 +2356,8 @@ export const globalStyles = t => {
         margin-right: 14%;
         max-width: 600px;
       }
-      .vision-area.home-vision.animation-wrap .vision-holder {
-        padding: 60px 0 60px 50px;
-      }
       .vision-holder {
         padding: 60px 0 60px 50px;
-      }
-      .vision-area.home-vision.animation-wrap .vision-holder {
-        padding: 60px 0 60px 0;
       }
       .section-area {
         position: relative;
@@ -2992,7 +2850,7 @@ export const globalStyles = t => {
         display: block;
         width: 100px;
         height: 1px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--fg-color);
         padding-top: 40px;
         margin: 0;
       }
@@ -3087,17 +2945,6 @@ export const globalStyles = t => {
         padding: 0;
         margin-bottom: 30px;
         overflow: hidden;
-      }
-      .section01 .section-wrap {
-        padding: 0;
-        margin-bottom: 30px;
-      }
-      .section01 {
-        padding-top: 70px;
-      }
-      .section06a {
-        padding: 0;
-        margin-top: 0px;
       }
       .services-section .image-holder img {
         width: 150px;
@@ -3239,21 +3086,10 @@ export const globalStyles = t => {
       .use_case.results {
         padding: 0;
       }
-      .vision-area .container,
-      .vision-area.home-vision .container {
+      .vision-area .container {
         padding: 0;
       }
       .vision-area {
-        padding: 0;
-      }
-      .vision-area.home-vision.animation-wrap .vision-holder {
-        padding: 10px 0;
-      }
-      .vision-area2 .container,
-      .vision-area3 .container {
-        padding: 0;
-      }
-      .vision-area6 .container {
         padding: 0;
       }
       .vision-holder .image-holder .image-wrap {
