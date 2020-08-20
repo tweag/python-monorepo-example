@@ -1118,13 +1118,10 @@ export const globalStyles = t => {
       display: block;
       width: 152px;
     }
-    .header-inverse .logo .black-logo {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .header-inverse .logo .white-logo {
-      opacity: 1;
-      visibility: visible;
+    .header-inverse .black-logo,
+    .s_purple .black-logo,
+    .s_black.black-logo {
+      filter: invert(100%);
     }
     .header-inverse .menu-opener {
       border-top-color: white;

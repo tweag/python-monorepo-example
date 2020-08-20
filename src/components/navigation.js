@@ -6,7 +6,6 @@ import NavList from "./navlist"
 import NavItem from "./navitem"
 
 import blackLogo from "../images/logo_tweag_black.svg"
-import whiteLogo from "../images/logo_tweag_white.svg"
 
 const Logo = () => (
   <strong
@@ -32,20 +31,6 @@ const Logo = () => (
   >
     <Link to="/">
       <img className="black-logo" src={blackLogo} alt="Tweag" />
-    </Link>
-    <Link to="/">
-      <img
-        sx={{
-          position: `absolute`,
-          left: 0,
-          top: 0,
-          opacity: 0,
-          visibility: `hidden`,
-        }}
-        className="white-logo"
-        src={whiteLogo}
-        alt="Tweag"
-      />
     </Link>
   </strong>
 )
