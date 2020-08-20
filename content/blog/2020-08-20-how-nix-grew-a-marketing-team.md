@@ -16,7 +16,7 @@ I think that Nix has the perfect foundation for becoming a success but that it s
 Many others agree with me, and that's why we formed the [Nix marketing team][marketing-team].
 
 I would like to convince you that indeed, marketing is the way to go and that it is worth it.
-Therefore, in this post I will share my thoughts on what kind of success we aim for Nix, and which marketing efforts we are currently pursuing.
+Therefore, in this post I will share my thoughts on what kind of success we aim for, and which marketing efforts we are currently pursuing.
 The marketing team is already giving its first results, and with your input, we can go further.
 
 ## What does success look like?
@@ -50,7 +50,7 @@ Others need to know about the existence of your code, understand how it can solv
 
 That is why marketing, and, more generally, non-technical work, is at least as important as technical work.
 Documentation, writing blog posts, creating content for the website, release announcements, conference talks, conference booths, forums, chat channels, email lists, demo videos, use cases, swag, search engine optimisation, social media presence, engaging with the community...
-There are all crucial parts of any successful project.
+These are all crucial parts of any successful project.
 
 Nix needs better marketing, from a better website to better documentation, along with all the ingredients mentioned above.
 If we want Nix to grow as a project we need to improve our marketing game, since this is the area of work that is historically receiving the least amount of attention.
@@ -62,7 +62,7 @@ But before the Nix marketing team could start doing any actual work we had to an
 
 ## What is Nix?
 
-I want to argue that the Nix community is still missing an answer to an apparently very simple question: *What is Nix?*.
+I want to argue that the Nix community is still missing an answer to an apparently very simple question: _What is Nix?_.
 
 The reason why _what is Nix?_ is a harder question than it may appear at first, is that any complete answer has to tell us _what_ and _who_ Nix is for.
 Knowing the audience and primary use cases is a precondition to improving the website, documentation, or even Nix itself.
@@ -106,7 +106,7 @@ So far, the Marketing team focused on improving the website:
    If you remember, the navigation was different for each project that was listed on the website.
    We removed the project differentiation and unified navigation.
    This will show Nix ecosystem as a unified story and not a collection of projects.
-   One story is easier to follow then five.
+   One story is easier to follow than five.
 
 3. **Created a new learn page.**
    Discoverability of documentation was a huge problem.
@@ -125,13 +125,13 @@ So far, the Marketing team focused on improving the website:
 
 The work of the marketing team has just started, and there is still a lot to be done.
 We are working hard on [redesigning the website][redesign] and [improving the messaging][message].
-The [roadmap][roadmap] will tell you more what to expect next.
+The [roadmap][roadmap] will tell you more about what to expect next.
 
 > **If you wish to help** come and say hi to [#nixos-marketing on irc.freenode.org][irc].
 
 ## Conclusion
 
-Marketing, and non-technical work, is all too often an afterthought for developers. I really wished it weren't the case.
+Marketing, and non-technical work, is all too often an afterthought for developers. I really wish it weren't the case.
 Having clearly defined problems, audience and strategy should be as important to us as having clean and tested code.
 This is important for Nix. This is important for any project that aims to succeed.
 
