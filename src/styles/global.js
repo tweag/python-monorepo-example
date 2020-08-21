@@ -1697,6 +1697,7 @@ export const globalStyles = t => {
     @media (min-width: 768px) {
       h1.typeit {
         min-height: 200px;
+        min-width: 400px;
       }
       .col-area .image-holder {
         width: 220px;
@@ -2149,9 +2150,6 @@ export const globalStyles = t => {
       .posts-holder.image-holder {
         margin-top: 0;
         width: 30%;
-      }
-      h1.typeit {
-        min-height: 200px;
       }
       .home-holder.image-holder {
         margin-top: 40px;
