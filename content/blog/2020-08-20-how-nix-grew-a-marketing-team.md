@@ -79,7 +79,7 @@ In this way, new users will not be overwhelmed with all the existing options and
 Some reasons for selecting the two use cases are:
 
 - Both use cases are relatively polished solutions.
-  Clearly, there is a lot to be done to improve user experience, but currently this is as good as it gets with Nix.
+  Clearly, there is still much to be improved, but currently these are the two use cases with the best user experience in the Nix ecosystem.
 
 - One use case is a natural continuation of another.
   First, you develop and then you can use the same tools to package and deploy.
