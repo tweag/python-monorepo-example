@@ -195,7 +195,7 @@ export const globalStyles = t => {
     }
     *::selection,
     *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99);
+      background: var(--fg-color);
       color: var(--bg-color);
     }
     img {
@@ -1884,17 +1884,9 @@ export const globalStyles = t => {
         -ms-transform: translateY(300px);
         transform: translateY(300px);
       }
-      .header-inverse .menu a {
-        color: white;
-      }
-      .header-inverse .dropdown-list a {
-        color: black;
-      }
-      .header-inverse .menu a::after {
-        background: white;
-      }
-      .header-inverse .dropdown-list a::after {
-        background: black;
+      .header.header-inverse {
+        --fg-color: white;
+        --bg-color: transparent;
       }
       .services-section .text-area {
         -webkit-transform: translateY(300px);
