@@ -1471,6 +1471,16 @@ export const globalStyles = t => {
     .blog-content .article-text p {
       margin: 0 0 20px 0 !important;
     }
+    .blog-content .article-text .twitter-tweet {
+      margin: 0 0 20px 0 !important;
+      padding: 0 0 0 120px;
+      @media screen and (max-width: 1499px) {
+        padding: 0 0 0 60px;
+      }
+      @media screen and (max-width: 767px) {
+        padding: 0 15px;
+      }
+    }
     .blog-content .article-text li p {
       padding: 0;
       margin: 0 !important;
