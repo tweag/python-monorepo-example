@@ -1445,10 +1445,25 @@ export const globalStyles = t => {
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .blog-content .article-text ul li,
-    .blog-content .article-text ol {
+    .blog-content .article-text ul li {
       display: block;
       padding-left: 35px;
+    }
+    .article-text ol {
+      list-style: none;
+      counter-reset: ol-item-counter;
+    }
+    .article-text ol li {
+      position: relative;
+      counter-increment: ol-item-counter;
+      margin-left: 2em;
+    }
+    .article-text ol li::before {
+      content: counter(ol-item-counter) ". ";
+      font-weight: bold;
+      position: absolute;
+      left: -2em;
+      display: inline-block;
     }
     /* Nested lists */
     .blog-content .article-text ul li ul,
@@ -2469,7 +2484,6 @@ export const globalStyles = t => {
         background: #000;
         border-radius: 10px;
       }
-      .blog-content .article-text ol,
       .blog-content .article-text ul li {
         display: block;
         padding-left: 35px;
@@ -2885,7 +2899,7 @@ export const globalStyles = t => {
         width: 100%;
       }
       .part2 .text-area ol {
-        margin: 20px 30px;
+        padding-left: 0;
       }
       .part2 .text-area ul {
         padding: 0 15px;
