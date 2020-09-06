@@ -195,7 +195,7 @@ export const globalStyles = t => {
     }
     *::selection,
     *::-moz-selection {
-      background: rgba(0, 0, 0, 0.99);
+      background: var(--fg-color);
       color: var(--bg-color);
     }
     img {
@@ -1211,7 +1211,7 @@ export const globalStyles = t => {
       display: block;
       width: 100px;
       height: 1px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--fg-color);
       padding-top: 40px;
     }
     .method-area .text-area {
@@ -1247,7 +1247,7 @@ export const globalStyles = t => {
     }
     .section-title {
       position: relative;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--fg-color);
       color: var(--fg-color);
       text-align: center;
       padding: 0px 0px 10px 0;
@@ -1284,7 +1284,7 @@ export const globalStyles = t => {
     }
     .services-section.blog-content.topsep > .text-area {
       margin: 40px 0 0 120px;
-      border-top: 1px solid black;
+      border-top: 1px solid var(--fg-color);
       padding-left: 0px;
     }
     .services-section .text-area h1 {
@@ -1376,7 +1376,7 @@ export const globalStyles = t => {
       width: auto;
       margin: 40px 60px 0;
       height: 1px;
-      background: black;
+      background: var(--fg-color);
     }
     /* Blog post */
 
@@ -1386,7 +1386,7 @@ export const globalStyles = t => {
     .blog-content h2 a:visited,
     .blog-content h1 a:active,
     .blog-content h2 a:active {
-      color: black;
+      color: var(--fg-color);
       text-decoration: none;
     }
     .blog-content h1 a:hover,
@@ -1410,8 +1410,8 @@ export const globalStyles = t => {
     }
     .post_content {
       width: 30%;
-      border-top: 1px solid black;
-      background: white;
+      border-top: 1px solid var(--fg-color);
+      background: var(--bg-color);
       margin-bottom: 40px;
       padding: 0;
       display: flex;
@@ -1420,7 +1420,7 @@ export const globalStyles = t => {
       justify-content: space-between;
     }
     .post_content.notop {
-      border-top: 0px solid black;
+      border-top: 0px solid var(--fg-color);
     }
     .post_date {
       padding-top: 15px;
@@ -1631,7 +1631,7 @@ export const globalStyles = t => {
     img.uc-rotate {
       transform: rotate(180deg);
     }
-    .use_case .image-holder.image-holder {
+    .use_case .image-holder {
       margin-right: -8.2%;
       width: 27%;
       margin-top: 50px;
@@ -1705,7 +1705,7 @@ export const globalStyles = t => {
       display: block;
       width: 100px;
       height: 1px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--fg-color);
       padding-top: 40px;
       margin-bottom: 20px;
     }
@@ -1911,17 +1911,9 @@ export const globalStyles = t => {
         -ms-transform: translateY(300px);
         transform: translateY(300px);
       }
-      .header-inverse .menu a {
-        color: white;
-      }
-      .header-inverse .dropdown-list a {
-        color: black;
-      }
-      .header-inverse .menu a::after {
-        background: white;
-      }
-      .header-inverse .dropdown-list a::after {
-        background: black;
+      .header.header-inverse {
+        --fg-color: white;
+        --bg-color: transparent;
       }
       .services-section .text-area {
         -webkit-transform: translateY(300px);
@@ -2364,7 +2356,7 @@ export const globalStyles = t => {
       }
       .services-section.blog-content.topsep > .text-area {
         margin: 40px 0 0 60px;
-        border-top: 1px solid black;
+        border-top: 1px solid var(--fg-color);
         padding-left: 0px;
       }
       .post_container {
@@ -2482,7 +2474,7 @@ export const globalStyles = t => {
         position: absolute;
         margin-left: -31px;
         margin-top: 5px;
-        background: #000;
+        background: var(--fg-color);
         border-radius: 10px;
       }
       .blog-content .article-text ul li {
@@ -2494,7 +2486,7 @@ export const globalStyles = t => {
       kbd,
       pre,
       samp {
-        font-family: monospace, monospace;
+        font-family: monospace;
         font-size: ${t.fontSizes[1]};
         text-align: left;
       }
@@ -2510,7 +2502,7 @@ export const globalStyles = t => {
         font-size: ${t.fontSizes[2]};
       }
       header {
-        background: white;
+        background: var(--bg-color);
       }
       img.uc-rotate {
         transform: none;
@@ -3080,13 +3072,13 @@ export const globalStyles = t => {
       .services-section.use-cases.second {
         margin: 0;
       }
-      .use_case .image-holder.image-holder img {
+      .use_case .image-holder img {
         display: block;
         margin-right: 0;
         width: 50%;
         margin: 30px 0;
       }
-      .use_case .image-holder.image-holder {
+      .use_case .image-holder {
         display: block;
         margin-right: 0;
         width: 100%;
@@ -3097,7 +3089,7 @@ export const globalStyles = t => {
       .use_case.bloc2 {
         padding: 40px 0;
       }
-      .use_case.results .image-holder.image-holder {
+      .use_case.results .image-holder {
         margin: 0;
       }
       .use_case.results ul {

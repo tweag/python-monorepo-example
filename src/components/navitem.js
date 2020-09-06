@@ -7,7 +7,7 @@ const NavItem = props => (
     sx={{
       a: {
         position: `relative`,
-        color: `black`,
+        color: `var(--fg-color)`,
         overflow: `hidden`,
         zIndex: 2,
       },
@@ -16,11 +16,11 @@ const NavItem = props => (
         position: `absolute`,
         left: 0,
         width: 0,
-        top: `25px`,
+        top: `22px`,
         height: `2px`,
         bottom: 0,
         transition: `all 0.4s ease`,
-        background: `black`,
+        background: `var(--fg-color)`,
       },
       "a:hover::after": {
         width: `100%`,

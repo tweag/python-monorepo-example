@@ -57,7 +57,7 @@ const DropdownMenu = ({ children }) => (
       className="dropdown-list"
       sx={{
         ml: `-10px`,
-        background: `white`,
+        background: `var(--bg-color)`,
         p: `10px`,
         pb: [0, `10px`],
         fontSize: [`75%`, `unset`],
@@ -106,7 +106,6 @@ const Menu = ({ children }) => (
       <NavList
         className="menu"
         sx={{
-          background: [`white`, `unset`],
           mx: [`-8px`, `-15px`],
           mb: 0,
           mt: [0, null, `-10px`],
@@ -121,12 +120,6 @@ const Menu = ({ children }) => (
           flexWrap: `wrap`,
           alignItems: `center`,
           transition: `all 0.4s ease`,
-          "*::selection": {
-            backgroundColor: `rgba(255, 255, 255, 0) !important`,
-          },
-          "*::-moz-selection": {
-            backgroundColor: `rgba(255, 255, 255, 0) !important`,
-          },
           "& > li": {
             position: `relative`,
             m: [`0 15px`, null, null, null, null, `0 25px`],
@@ -154,7 +147,7 @@ const MobileMenuOpener = () => (
       position: `absolute`,
       top: `15px`,
       right: `15px`,
-      borderTop: `2px solid black`,
+      borderTop: `2px solid var(--fg-color)`,
       transition: `all 0.4s ease`,
       width: `30px`,
       height: `20px`,
@@ -166,7 +159,7 @@ const MobileMenuOpener = () => (
         transition: `all 0.4s ease`,
         content: `""`,
         position: `absolute`,
-        background: `black`,
+        background: `var(--fg-color)`,
       },
       "&::before": {
         top: `6px`,

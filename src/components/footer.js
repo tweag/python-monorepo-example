@@ -3,40 +3,17 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 import NavList from "./navlist"
-import BlackNavItem from "./navitem"
+import NavItem from "./navitem"
 
 import logo from "../images/tweag_logo_footer.svg"
-
-const NavItem = props => (
-  <BlackNavItem
-    {...props}
-    sx={{
-      a: {
-        color: `white !important`,
-      },
-      "a::after": {
-        top: `20px !important`,
-        background: `white !important`,
-      },
-    }}
-  />
-)
 
 const ContactUs = () => (
   <Link
     to="/contact"
     sx={{
-      color: `white`,
-      borderColor: `white`,
       fontSize: 1,
       p: `5px 18px`,
       height: `auto`,
-      "&::after": {
-        background: `white`,
-      },
-      "&:hover": {
-        color: `black`,
-      },
     }}
     className="btn"
   >
@@ -89,16 +66,10 @@ const Footer = () => (
       position: `relative`,
       bg: `black`,
       color: `white`,
+      "--bg-color": `black`,
+      "--fg-color": `white`,
       p: [`40px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
       width: `100%`,
-      "*::selection": {
-        bg: `rgba(255, 255, 255, 0.99)`,
-        color: `black`,
-      },
-      "*::-moz-selection": {
-        bg: `rgba(255, 255, 255, 0.99)`,
-        color: `black`,
-      },
     }}
   >
     <ColumnArea>
