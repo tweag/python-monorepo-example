@@ -15,12 +15,12 @@ const TagPage = ({ data, pageContext }) => {
     <Layout>
       <SEO title={`Engineering Blog: ${tag}`} />
       <section className="section-area">
-        <div className="services-section blog-content blog-home viewport-section">
+        <div className="section s_white services-section blog-content blog-home viewport-section">
           <div className="text-area">
             <div className="section-title">{title}</div>
           </div>
         </div>
-        <div className="services-section blog-content viewport-section">
+        <div className="section s_white services-section blog-content viewport-section">
           <div className="post_container">
             {edges.map(post => {
               return <Card node={post.node} key={post.node.fields.slug} />
