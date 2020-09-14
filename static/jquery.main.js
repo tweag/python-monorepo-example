@@ -1,19 +1,3 @@
-// initialize fixed blocks on scroll
-function initStickyScrollBlock() {
-  jQuery(".inner .header").stickyScrollBlock({
-    setBoxHeight: true,
-    activeClass: "fixed-header",
-    positionType: "fixed",
-    extraTop: function () {
-      var totalHeight = 0
-      jQuery("0").each(function () {
-        totalHeight += jQuery(this).outerHeight()
-      })
-      return totalHeight
-    },
-  })
-}
-
 // in view port init
 function initInViewport() {
   jQuery(".viewport-section").itemInViewport({
@@ -953,7 +937,6 @@ window.ResponsiveHelper = (function ($) {
   }
 })(jQuery)
 
-initStickyScrollBlock()
 initInViewport()
 initMobileNav()
 
@@ -975,7 +958,7 @@ $(document).scroll(function () {
         .removeClass(
           "s_white s_yellow s_black s_purple s_grey s_red s_blue s_beige s_orange s_green header-inverse"
         )
-        .addClass(_myclass);
+        .addClass(_myclass)
       if (["s_purple", "s_black"].includes(_myclass))
         $(".header").addClass("header-inverse")
       return false
