@@ -99,6 +99,11 @@ Add what follows to the `WORKSPACE` file, adapting the list
 of package according to what your project requires:
 
 ```python
+load(
+    "@rules_haskell//haskell:cabal.bzl",
+    "stack_snapshot",
+)
+
 stack_snapshot(
     name = "stackage",
     packages = [
