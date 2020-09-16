@@ -371,6 +371,10 @@ export const globalStyles = t => {
       transform: rotate(-45deg);
       top: 10px;
     }
+    .nav-drop {
+      background: var(--bg-color);
+      color: var(--fg-color);
+    }
     .home .nav-area {
       position: relative;
       padding-top: 0px;
