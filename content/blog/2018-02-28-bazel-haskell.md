@@ -200,7 +200,7 @@ to build the given top-level target given on the command-line.
 Bazel is very serious about recompilation avoidance. Because it knows
 the entirety of the dependency graph, it can detect precisely which
 parts of the build graph are invariant under a rebuild of some of the
-depndencies. For example, it will relink your Haskell app but won't
+dependencies. For example, it will relink your Haskell app but won't
 rebuild any Haskell code if only a C file changed without altering any
 C header files, even if this was a C file of a package deep in the
 dependency graph.
@@ -283,7 +283,7 @@ Hackage, instead relying on existing tools (in particular Nix) to
 provide those. We use Bazel to build our own code only, not upstream
 dependencies. But there are experiments underway to use Bazel for
 upstream dependencies as well. We encourage you to experiment with
-rules_haskell and [report any issues][rules_haskell-issues] you find.
+[rules_haskell][rules_haskell-home] and [report any issues][rules_haskell-issues] you find.
 We'd love your feedback!
 
 In future posts, we'll explore:
