@@ -64,7 +64,7 @@ List is a functor because it is a container of data. It is a _data functor_.
 
 ```haskell
 class Data.Functor f where
-  fmap :: (a ⊸ b) -> [a] ⊸ [b]
+  fmap :: (a ⊸ b) -> f a ⊸ f b
 ```
 
 Some data functors can be extended to applicatives:
