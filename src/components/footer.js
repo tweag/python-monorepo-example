@@ -124,6 +124,9 @@ const Footer = () => (
           <NavItem>
             <Link to="/blog">Blog</Link>
           </NavItem>
+          <NavItem>
+            <Link to="/contact">Careers</Link>
+          </NavItem>
         </NavList>
       </Column>
       <Column sx={{ paddingTop: `20px` }}>
