@@ -152,6 +152,9 @@ const MobileMenuOpener = () => (
       width: `30px`,
       height: `20px`,
       display: [`block`, `none`],
+      ".menu-active &": {
+        borderTop: `none`,
+      },
       "&::before, &::after": {
         width: `30px`,
         height: `2px`,
@@ -166,6 +169,20 @@ const MobileMenuOpener = () => (
       },
       "&::after": {
         top: `15px`,
+      },
+      ".menu-active &::before": {
+        transform: `rotate(45deg)`,
+        top: `10px`,
+      },
+      ".menu-active &::after": {
+        transform: `rotate(-45deg)`,
+        top: `10px`,
+      },
+      ".header-inverse &": {
+        borderTopColor: `white`,
+      },
+      ".header-inverse &::after, .header-inverse &::after": {
+        background: `white`,
       },
     }}
   >

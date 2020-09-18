@@ -355,22 +355,6 @@ export const globalStyles = t => {
       -ms-transition: all 0.8s ease-out;
       transition: all 0.8s ease-out;
     }
-    .menu-active .menu-opener {
-      border-top: none;
-    }
-    .menu-active .menu-opener:before,
-    .menu-active .menu-opener:after {
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-      top: 10px;
-    }
-    .menu-active .menu-opener:after {
-      -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-      top: 10px;
-    }
     .nav-drop {
       background: var(--bg-color);
       color: var(--fg-color);
@@ -1126,13 +1110,6 @@ export const globalStyles = t => {
     .s_purple .black-logo,
     .s_black.black-logo {
       filter: invert(100%);
-    }
-    .header-inverse .menu-opener {
-      border-top-color: white;
-    }
-    .header-inverse .menu-opener:after,
-    .header-inverse .menu-opener:before {
-      background: white;
     }
     .in-viewport .col-area .info-col,
     .in-viewport .col-area h2,
