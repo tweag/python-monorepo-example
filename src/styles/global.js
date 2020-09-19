@@ -355,7 +355,7 @@ export const globalStyles = t => {
       -ms-transition: all 0.8s ease-out;
       transition: all 0.8s ease-out;
     }
-    .nav-drop {
+    .menu-active .nav-drop {
       background: var(--bg-color);
       color: var(--fg-color);
     }
