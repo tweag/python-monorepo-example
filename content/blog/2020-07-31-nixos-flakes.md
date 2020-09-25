@@ -433,3 +433,9 @@ the same for cloud deployments using NixOps.
 
 Acknowledgment: The development of flakes was partially funded by
 Target Corporation.
+
+## Nix Flakes Series
+
+- [Part 1: An introduction and tutorial](../2020-05-25-flakes)
+- [Part 2: Evaluation caching](../2020-06-25-eval-cache)
+- Part 3: Managing NixOS systems

@@ -198,3 +198,9 @@ had knowledge of the evaluation cache. For example, the evaluation of
 thunks that represent attributes like
 `nixpkgs.legacyPackages.x86_64-linux.<package name>` could check and
 update the cache.
+
+## Nix Flakes Series
+
+- [Part 1: An introduction and tutorial](../2020-05-25-flakes)
+- Part 2: Evaluation caching
+- [Part 3: Managing NixOS systems](../2020-07-31-nixos-flakes)
