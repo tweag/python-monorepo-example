@@ -9,6 +9,10 @@ import img12 from "../images/img12.svg"
 import img13 from "../images/img13.svg"
 import img14 from "../images/img14.svg"
 
+import nixosImg from "../images/nixos-black.png"
+import haskellImg from "../images/haskell-black.png"
+import bazelImg from "../images/bazel-black.png"
+
 const Manifesto = () => {
   return (
     <>
@@ -80,7 +84,7 @@ const Manifesto = () => {
   )
 }
 
-const Community = ({ title, className, children }) => {
+const Community = ({ title, className, children, backgroundImage }) => {
   return (
     <div
       className={`section about-section opensource ${className} viewport-section`}
@@ -89,6 +93,16 @@ const Community = ({ title, className, children }) => {
         <h1>{title}</h1>
       </div>
       <div className="text-wrap text-area w70">{children}</div>
+      <img
+        src={backgroundImage}
+        style={{
+          position: `absolute`,
+          top: `10px`,
+          left: `10px`,
+          width: `300px`,
+          opacity: 0.1,
+        }}
+      />
     </div>
   )
 }
@@ -99,7 +113,7 @@ const OpenSourcePage = () => {
       <SEO title="Our open source projects" />
       <section className="section-area">
         <Manifesto />
-        <Community title="Nix" className="s_red">
+        <Community title="Nix" className="s_red" backgroundImage={nixosImg}>
           <p>
             Many thought leaders of the{` `}
             <a className="lined" href="https://nixos.org">
@@ -111,7 +125,11 @@ const OpenSourcePage = () => {
             use cases and developer tools.
           </p>
         </Community>
-        <Community title="Haskell" className="s_orange opensource3">
+        <Community
+          title="Haskell"
+          className="s_orange opensource3"
+          backgroundImage={haskellImg}
+        >
           <p>
             Tweagers are among the top contributors to GHC, a mature,
             state-of-the-art compiler for Haskell. Haskell is now recognized as
@@ -151,7 +169,11 @@ const OpenSourcePage = () => {
             {`.`}
           </p>
         </Community>
-        <Community title="Bazel" className="s_grey opensource2">
+        <Community
+          title="Bazel"
+          className="s_grey opensource2"
+          backgroundImage={bazelImg}
+        >
           <p>
             We were among the first outside of Google to adopt Bazel. We are
             {` `}
