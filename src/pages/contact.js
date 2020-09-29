@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Layout from "../components/layout"
 import { submitForm } from "../components/form"
 
 const ContactPage = () => {
+  const [messageSent, setMessageSent] = useState(false)
   return (
     <Layout>
       <section className="section-area contact">
@@ -12,7 +13,15 @@ const ContactPage = () => {
           name="contact"
           data-netlify-honeypot="bot-field"
           data-netlify="true"
-          onSubmit={submitForm}
+          onSubmit={e => {
+            if (!messageSent) submitForm(e, () => setMessageSent(true))
+            else {
+              e.preventDefault()
+              const formmessage = document.querySelector(`#formmessage`)
+              formmessage.innerHTML = `A message has been already sent. Please refresh the page if you want to send a new message`
+              formmessage.style.visibility = `visible`
+            }
+          }}
         >
           <div className="section s_white services-section viewport-section">
             <div className="text-area">

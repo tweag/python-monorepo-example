@@ -1,4 +1,4 @@
-export function submitForm(e) {
+export function submitForm(e, onMessageSent) {
   console.log(`submitting now`)
   e.preventDefault()
 
@@ -30,6 +30,7 @@ export function submitForm(e) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       formmessage.innerHTML = `Thank you for reaching out, we will soon reply to your request.`
+      onMessageSent()
     } else if (xhr.readyState == 4 && xhr.status == 400) {
       formmessage.innerHTML = `Please fill in a valid email address and a message.`
       console.log(xhr.responseText) // Returns a 400 error if the submission is rejected.
