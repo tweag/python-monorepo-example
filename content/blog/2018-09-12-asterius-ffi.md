@@ -47,7 +47,7 @@ the [Asterius documentation][asterius-docs]):
 
 ```
 $ docker run -it --rm -v $(pwd):/mirror terrorjack/asterius
-root@6be395fd9d1e:~# ahc-link --input /mirror/jsffi.hs --run
+root@6be395fd9d1e:~# ahc-link --input-hs /mirror/jsffi.hs --run
 [INFO] Loading boot library store from "/root/.stack-work/install/x86_64-linux/ghc-8.7/8.7.20180822/share/x86_64-linux-ghc-8.7.20180822/asterius-0.0.1/.boot/asterius_lib/asterius_store"
 [INFO] Populating the store with builtin routines
 [INFO] Compiling /mirror/jsffi.hs to Cmm

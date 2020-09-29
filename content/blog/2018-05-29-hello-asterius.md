@@ -35,7 +35,7 @@ Before compiling `fib.hs`, we need to build Asterius with a custom version of GH
 After that, we can simply invoke `ahc-link` like this:
 
 ```bash
-$ ahc-link --input asterius/test/fib/fib.hs
+$ ahc-link --input-hs asterius/test/fib/fib.hs
 ```
 
 This will compile `fib.hs` and generate `fib.wasm` and `fib.js` in the same directory. The file `fib.wasm` contains the binary of a standalone WebAssembly module, with an exported `main` function as its entry point. Moreover, `fib.js` contains an inline binary of that module, along with a few generated JavaScript functions required by the module imports. It can be run with Node.js like this:

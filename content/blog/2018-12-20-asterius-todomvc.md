@@ -31,7 +31,7 @@ the simplest way to do that is using our pre-built Docker image:
 
 ```
 $ docker run -it --rm -v $(pwd):/mirror terrorjack/asterius
-root@16758a0232ba:~/asterius# ahc-link --input asterius/test/todomvc/todomvc.hs --browser
+root@16758a0232ba:~/asterius# ahc-link --input-hs asterius/test/todomvc/todomvc.hs --browser
 [INFO] Loading boot library store from "/root/asterius/.stack-work/install/x86_64-linux/ghc-8.7/8.7.20181115/share/x86_64-linux-ghc-8.7.20181115/asterius-0.0.1/.boot/asterius_lib/asterius_store"
 [INFO] Populating the store with builtin routines
 [INFO] Compiling asterius/test/todomvc/todomvc.hs to Cmm
