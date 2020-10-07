@@ -132,6 +132,7 @@ export const pageQuery = graphql`
         shortTitle
         author
         description
+        tags
       }
     }
   }

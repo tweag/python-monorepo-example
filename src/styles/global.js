@@ -2464,6 +2464,9 @@ export const globalStyles = t => {
       }
     }
     @media (max-width: 767px) {
+      .post_tags {
+        margin-bottom: 20px;
+      }
       .blog-content .article-text ul li:before {
         content: "";
         display: block;
@@ -3020,6 +3023,7 @@ export const globalStyles = t => {
       .services-section.blog-home > .text-area {
         margin: 0;
         padding: 0 15px;
+        width: 100%;
         text-align: left;
       }
       .services-section.biotech .image-holder.image-holder2 img {

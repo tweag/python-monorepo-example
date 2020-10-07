@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import { Card, TopCard } from "../components/blog-card"
@@ -13,13 +13,46 @@ const BlogIndex = ({ data }) => {
   const topPost = data.allMarkdownRemark.edges[0]
   const posts = data.allMarkdownRemark.edges.slice(1)
   const patterns = [pattern1, pattern2, pattern3]
+  const AllTags = () => {
+    const tagsNumCitetions = {}
+    posts.forEach(post => {
+      post.node.frontmatter.tags.forEach(t => {
+        if (tagsNumCitetions[t] == null) tagsNumCitetions[t] = 0
+        else tagsNumCitetions[t] += 1
+      })
+    })
+    const tagsUniques = Object.keys(tagsNumCitetions).sort(
+      (a, b) => tagsNumCitetions[b] - tagsNumCitetions[a]
+    )
+    return (
+      <div
+        className="all_tags"
+        style={{
+          marginBottom: `20px`,
+        }}
+      >
+        <div>
+          {tagsUniques.map(tag => {
+            return (
+              <Link to={`/blog/tags/${tag}`} key={tag} className="btn noarrow">
+                {tag}
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
   return (
     <Layout>
       <SEO title="Engineering Blog" />
       <section className="section s_white section-area">
         <div className="services-section blog-content blog-home viewport-section">
           <div className="text-area">
-            <div className="section-title">Blog</div>
+            <div className="section-title" style={{ marginBottom: `20px` }}>
+              Blog
+            </div>
+            <AllTags />
           </div>
         </div>
         <TopCard node={topPost.node} />
