@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 import NavList from "./navlist"
 import NavItem from "./navitem"
@@ -190,6 +190,25 @@ const MobileMenuOpener = () => (
   </a>
 )
 
+const MyLink = ({ children, href }) => {
+  const handleNavClick = e => {
+    e.preventDefault()
+    const pageLink = e.target.getAttribute(`href`)
+    navigate(pageLink)
+    const body = document.getElementsByTagName(`body`)[0]
+    const menuActiveClass = `menu-active`
+    if (body.classList.contains(menuActiveClass))
+      body.classList.remove(menuActiveClass)
+  }
+  return (
+    <NavItem>
+      <a href={href} onClick={handleNavClick}>
+        {children}
+      </a>
+    </NavItem>
+  )
+}
+
 const Navigation = ({ className }) => (
   <header
     className={`header ` + (className ? className : ``)}
@@ -215,32 +234,18 @@ const Navigation = ({ className }) => (
     >
       <Logo />
       <Menu>
-        <NavItem>
-          <Link to="/services">Services</Link>
-        </NavItem>
+        <MyLink href="/services">Services </MyLink>
         <NavItem className="active">
           <a href="#top">Key industries</a>
           <DropdownMenu>
-            <NavItem>
-              <Link to="/industry/biotech">Biotech</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/industry/fintech">Fintech</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/industry/autonomous">Autonomous vehicles</Link>
-            </NavItem>
+            <MyLink href="/industry/biotech">Biotech</MyLink>
+            <MyLink href="/industry/fintech">Fintech</MyLink>
+            <MyLink href="/industry/autonomous">Autonomous vehicles</MyLink>
           </DropdownMenu>
         </NavItem>
-        <NavItem>
-          <Link to="/opensource">Open source</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/contact">Contact</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/blog">Blog</Link>
-        </NavItem>
+        <MyLink href="/opensource">Open source</MyLink>
+        <MyLink href="/contact">Contact</MyLink>
+        <MyLink href="/blog">Blog</MyLink>
       </Menu>
       <MobileMenuOpener />
     </div>
