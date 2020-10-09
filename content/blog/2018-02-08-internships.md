@@ -3,7 +3,7 @@ redirect_from: [/posts/2018-02-08-internships.html]
 title: "Tweag Internship Programme"
 shortTitle: "Internships at Tweag"
 author: "Nicholas Clarke"
-tags: [hiring, internship]
+tags: [jobs, internship]
 ---
 
 Tweag I/O is inviting applications from students for our paid internship
