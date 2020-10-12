@@ -1,9 +1,10 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import { Card, TopCard } from "../components/blog-card"
 import SEO from "../components/seo"
+import AllTags from "../components/all-tags"
 
 import pattern1 from "../images/post_pattern1.png"
 import pattern2 from "../images/post_pattern2.png"
@@ -13,36 +14,6 @@ const BlogIndex = ({ data }) => {
   const topPost = data.allMarkdownRemark.edges[0]
   const posts = data.allMarkdownRemark.edges.slice(1)
   const patterns = [pattern1, pattern2, pattern3]
-  const AllTags = () => {
-    const tagsNumCitetions = {}
-    posts.forEach(post => {
-      post.node.frontmatter.tags.forEach(t => {
-        if (tagsNumCitetions[t] == null) tagsNumCitetions[t] = 0
-        else tagsNumCitetions[t] += 1
-      })
-    })
-    const tagsUniques = Object.keys(tagsNumCitetions).sort(
-      (a, b) => tagsNumCitetions[b] - tagsNumCitetions[a]
-    )
-    return (
-      <div
-        className="all_tags"
-        style={{
-          marginBottom: `20px`,
-        }}
-      >
-        <div>
-          {tagsUniques.map(tag => {
-            return (
-              <Link to={`/blog/tags/${tag}`} key={tag} className="btn noarrow">
-                {tag}
-              </Link>
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
   return (
     <Layout>
       <SEO title="Engineering Blog" />

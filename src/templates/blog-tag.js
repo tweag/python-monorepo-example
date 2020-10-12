@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Card } from "../components/blog-card"
 import SEO from "../components/seo"
+import AllTags from "../components/all-tags"
 
 const TagPage = ({ data, pageContext }) => {
   const { tag } = pageContext
@@ -17,7 +18,10 @@ const TagPage = ({ data, pageContext }) => {
       <section className="section-area">
         <div className="section s_white services-section blog-content blog-home viewport-section">
           <div className="text-area">
-            <div className="section-title">{title}</div>
+            <div className="section-title" style={{ marginBottom: `20px` }}>
+              {title}
+            </div>
+            <AllTags />
           </div>
         </div>
         <div className="section s_white services-section blog-content viewport-section">
