@@ -15,8 +15,9 @@ tags: [data-science, python, statistics]
 
 This is the third post of a series of blog posts about Markov Chain Monte Carlo (MCMC) techniques:
 
-- [Part I: Metropolis-Hastings](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html)
+- [Part I: The basics and Metropolis-Hastings](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html)
 - [Part II: Gibbs sampling](https://www.tweag.io/posts/2020-01-09-mcmc-intro2.html)
+- [Part IV: Replica Exchange](https://www.tweag.io/blog/2020-10-28-mcmc-intro-4/)
 
 So far, we discussed two MCMC algorithms: the Metropolis-Hastings algorithm and the Gibbs sampler.
 Both algorithms can produce highly correlated samples&mdash;Metropolis-Hastings has a pronounced random walk behaviour, while the Gibbs sampler can easily get trapped when variables are highly correlated.

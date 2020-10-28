@@ -14,9 +14,9 @@ tags: [data-science, python, statistics]
 
 This is part 4 of a series of blog posts about MCMC techniques:
 
-- [The basics](https://www.tweag.io/blog/2019-10-25-mcmc-intro1/)
-- [Gibbs sampling](https://www.tweag.io/blog/2020-01-09-mcmc-intro2/)
-- [Hamiltonian Monte Carlo](https://www.tweag.io/blog/2020-08-06-mcmc-intro3/)
+- [Part I: The basics](https://www.tweag.io/blog/2019-10-25-mcmc-intro1/)
+- [Part II: Gibbs sampling](https://www.tweag.io/blog/2020-01-09-mcmc-intro2/)
+- [Part III: Hamiltonian Monte Carlo](https://www.tweag.io/blog/2020-08-06-mcmc-intro3/)
 
 In the previous three posts, we covered both basic and more powerful Markov chain Monte Carlo (MCMC) techniques.
 In case you are unfamiliar with MCMC:

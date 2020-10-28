@@ -16,9 +16,9 @@ tags: [data-science, python, statistics]
 
 This is part 2 of a series of blog posts about MCMC techniques:
 
-- [the basics](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html)
-- Gibbs sampling
-- [Hamiltonian Monte Carlo](https://www.tweag.io/blog/2020-08-06-mcmc-intro3/)
+- [Part I: The basics and Metropolis-Hastings](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html)
+- [Part III: Hamiltonian Monte Carlo](https://www.tweag.io/blog/2020-08-06-mcmc-intro3/)
+- [Part IV: Replica Exchange](https://www.tweag.io/blog/2020-10-28-mcmc-intro-4/)
 
 In the [first blog post](https://www.tweag.io/posts/2019-10-25-mcmc-intro1.html) of this series, we discussed Markov chains and the most elementary [MCMC](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) method, the [Metropolis-Hastings algorithm](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm), and used it to sample from a univariate distribution.
 In this episode, we discuss another famous sampling algorithm: the (systematic scan) [Gibbs sampler](https://en.wikipedia.org/wiki/Gibbs_sampling).
