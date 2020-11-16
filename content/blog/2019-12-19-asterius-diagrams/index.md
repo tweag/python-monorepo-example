@@ -136,7 +136,7 @@ To build the `Hilbert` project, proceed as follows:
 ```bash
 asterius@hostname:/mirror$ ahc-cabal new-update
 # Short update time
-asterius@hostname:/mirror$ ahc-cabal new-install . --symlink-bindir .
+asterius@hostname:/mirror$ ahc-cabal new-install . --installdir .
 # Longer build time
 ```
 
