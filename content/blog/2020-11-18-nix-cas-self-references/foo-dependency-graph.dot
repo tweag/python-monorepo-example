@@ -1,0 +1,7 @@
+digraph {
+  rankdir=LR;
+  lib0 -> lib1;
+  lib0 -> lib2;
+  lib1 -> foo;
+  lib2 -> foo;
+}

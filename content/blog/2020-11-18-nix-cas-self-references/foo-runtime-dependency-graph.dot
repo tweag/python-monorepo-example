@@ -1,0 +1,14 @@
+digraph {
+  rankdir=LR;
+  {
+    node [color="#bbbbbb", fillcolor="#bbbbff", style="filled"];
+    lib0a; lib1a;
+  }
+  {
+    node [color="#bbbbbb", fillcolor="#bbffbb", style="filled"];
+    lib0b; lib1b;
+  }
+
+  lib0a -> lib1a -> foo;
+  lib0b -> lib1b -> foo;
+}
