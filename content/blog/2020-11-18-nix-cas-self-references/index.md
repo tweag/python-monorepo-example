@@ -148,7 +148,7 @@ Besides that, this breaks down the purity of the build as we get a different beh
 
 ## Getting out of this
 
-[Nix's fundational paper][eelco-phd] shows a way out of this by rewriting hashes in substituted paths.
+[Nix's foundational paper][eelco-phd] shows a way out of this by rewriting hashes in substituted paths.
 This is however quite complex to implement for a first version, so the current implementation settles down on a simpler (though not optimal) behavior where we only allow one build for each derivation.
 In the example above, `lib0` has already been instantiated (as `lib0_a`), so we don't allow pulling in `lib0_b` (nor `lib1_b`) and we rebuild both `lib1` and `foo`.
 

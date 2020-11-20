@@ -6,9 +6,9 @@ digraph {
   }
   {
     node [color="#bbbbbb", fillcolor="#bbffbb", style="filled"];
-    lib0b; lib1b;
+    lib0b; lib2b;
   }
 
   lib0a -> lib1a -> foo;
-  lib0b -> lib1b -> foo;
+  lib0b -> lib2b -> foo;
 }
