@@ -2124,6 +2124,10 @@ export const globalStyles = t => {
       .w100 {
         width: 100% !important;
       }
+      .text-wrap.careers {
+        font-size: ${t.fontSizes[3]};
+        line-height: 35px;
+      }
     }
     @media (min-width: 1024px) {
       .line-arrow {

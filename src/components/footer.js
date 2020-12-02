@@ -9,7 +9,7 @@ import logo from "../images/tweag_logo_footer.svg"
 
 const ContactUs = () => (
   <Link
-    to="/contact"
+    to="/careers"
     sx={{
       fontSize: 1,
       p: `5px 18px`,
@@ -17,7 +17,7 @@ const ContactUs = () => (
     }}
     className="btn"
   >
-    Contact us
+    Join us
   </Link>
 )
 
@@ -76,7 +76,7 @@ const Footer = () => (
       <Column>
         <div className="mail-area">
           <strong className="mail-title">
-            Interested in working together?
+            Interested in working at Tweag?
           </strong>
           <ContactUs />
         </div>
