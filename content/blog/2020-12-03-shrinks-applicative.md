@@ -160,4 +160,4 @@ instance Shrinkable a => Shrinkable [a] where
 
 [quickcheck]: https://hackage.haskell.org/package/QuickCheck
 [hedgehog]: https://hackage.haskell.org/package/hedgehog
-[edkso-shrinkers]: http://www.well-typed.com/blog/2019/05/integrated-shrinking/
+[edsko-shrinkers]: http://www.well-typed.com/blog/2019/05/integrated-shrinking/
