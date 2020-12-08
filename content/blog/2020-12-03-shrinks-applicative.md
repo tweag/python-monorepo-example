@@ -44,7 +44,7 @@ data T a
   | MkT2 a (T a)
   | MkT3 a (T a) a
 
-class Traversable T where
+instance Traversable T where
   traverse f (MkT1 a) = MkT1 <$> f a
   traverse f (MkT2 a as) = MkT2 <$> f a <*> traverse f as
   traverse f (MkT3 a1 as a2) = MkT3 <$> f a1 <*> traverse f as <*> f a2
