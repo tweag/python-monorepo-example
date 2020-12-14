@@ -25,7 +25,7 @@ const ContactPage = () => {
         >
           <div className="section s_white services-section viewport-section">
             <div className="text-area">
-              <h1>Interested in working together? Get in touch.</h1>
+              <h1>Contact Us</h1>
             </div>
           </div>
           <div className="section s_yellow services-section contact-field viewport-section">

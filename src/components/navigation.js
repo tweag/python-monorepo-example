@@ -245,6 +245,7 @@ const Navigation = ({ className }) => (
         </NavItem>
         <MyLink href="/opensource">Open source</MyLink>
         <MyLink href="/contact">Contact</MyLink>
+        <MyLink href="/careers">Careers</MyLink>
         <MyLink href="/blog">Blog</MyLink>
       </Menu>
       <MobileMenuOpener />
