@@ -29,10 +29,11 @@ myFunc = $(importHidden "foo" "Foo" "func")
 
 `myFunc` can now be used just like the original `func` value. And `myFunc`
 itself doesn't need to be defined as a top-level value; one can drop an
-`importHidden` splice anywhere, provided the value is explicitly typed. We only
-needs to ensure the `foo` package is a transitive dependency of the current
-package, enable the `TemplateHaskell` extension and import the module which
-implements `importHidden`.
+`importHidden` splice anywhere, provided the value's type is explicitly
+annotated and matches the original type. We only needs to ensure the `foo`
+package is a transitive dependency of the current package, enable the
+`TemplateHaskell` extension and import the module which implements
+`importHidden`.
 
 The curious reader may check the Template Haskell API documentation and try to
 come up with their own `importHidden` implementation. It is well known that with
