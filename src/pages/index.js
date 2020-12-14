@@ -81,9 +81,8 @@ const IndexPage = ({ data, location }) => {
                   <li>
                     <h3>Increase developer productivity</h3>
                     <p>
-                      Gain a developer efficiency boost through software best
-                      practices and processes that accelerate your time to
-                      market.
+                      Boost developer efficiency with best practices that reduce
+                      your time to market.
                     </p>
                   </li>
                   <li>

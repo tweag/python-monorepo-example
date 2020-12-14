@@ -108,7 +108,7 @@ const Footer = () => (
             <a href="https://github.com/tweag">GitHub</a>
           </NavItem>
           <NavItem>
-            <a href="https://www.linkedin.com/company/tweag-i-o/">Linkedin</a>
+            <a href="https://www.linkedin.com/company/tweag-i-o/">LinkedIn</a>
           </NavItem>
           <NavItem>
             <a href="/rss.xml">RSS</a>
@@ -125,7 +125,10 @@ const Footer = () => (
             <Link to="/blog">Blog</Link>
           </NavItem>
           <NavItem>
-            <Link to="/contact">Careers</Link>
+            <Link to="/careers">Careers</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/contact">Contact us</Link>
           </NavItem>
         </NavList>
       </Column>
