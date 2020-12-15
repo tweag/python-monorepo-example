@@ -3,17 +3,18 @@ title: "Haskell dark arts, part I: importing hidden values"
 shortTitle: "Haskell dark arts, part I: importing hidden values"
 author: Cheng Shao
 tags: [haskell]
-description: "How to break encapsulation and import a hidden value in Haskell"
+description: "How to break encapsulation and import a hidden value in Haskell."
 ---
 
 You are a Haskeller debugging a large codebase. After hours of hopping around
-the source code of different modules, you notice some dirty & interesting code
+the source code of different modules, you notice some dirty and interesting code
 in one of your dependency's `Util` or `Internal` module. You want to try calling
-some functions there in your code, but hold on, the module (or the function) is
+a function there in your code, but hold on -- the module (or the function) is
 hidden! Now you need to make your own fork, change the project build plan and do
 a lot of rebuilding. Some extra coffee break time is not bad, but what if we
-tell you this encapsulation can be broken and you can import hidden functions
-with ease? Read the rest of the post to find out how.
+tell you this encapsulation can be broken, and you can import hidden functions
+with ease? Of course, this comes with lots of caveats, but no spoilers -- read
+the rest of the post to find out how (and when).
 
 ## Importing a hidden value with Template Haskell
 
@@ -23,14 +24,14 @@ exported or `Foo` is not exposed. But don't worry, with a single line of code in
 our own codebase, we can jailbreak the encapsulation:
 
 ```haskell
-myFunc :: Int -> Int -- must match the type of `func`
+myFunc :: Int -> Int -- must exactly match the type of `func`
 myFunc = $(importHidden "foo" "Foo" "func")
 ```
 
 `myFunc` can now be used just like the original `func` value. And `myFunc`
 itself doesn't need to be defined as a top-level value; one can drop an
 `importHidden` splice anywhere, provided the value's type is explicitly
-annotated and matches the original type. We only needs to ensure the `foo`
+annotated and matches the original type. We only need to ensure the `foo`
 package is a transitive dependency of the current package, enable the
 `TemplateHaskell` extension and import the module which implements
 `importHidden`.
@@ -45,9 +46,9 @@ reveals the secret.
 
 ### Abusing foreign imports
 
-Let's forget about `importHidden` for a minute. How to handwrite Haskell code to
-bring `foo` into scope without actually importing `Foo`? The answer may seem
-surprising at first glance: use a foreign import!
+Let's forget about `importHidden` for a minute and think: how to handwrite
+Haskell code to bring `foo` into scope without actually importing `Foo`? The
+answer may seem surprising at first glance: use a foreign import!
 
 GHC compiles Haskell definitions into machine code in static/dynamic libraries.
 The Haskell module encapsulation doesn't affect machine code; regardless of
@@ -105,9 +106,9 @@ this approach has a significant restriction: it doesn't work for hidden modules.
 
 ### Abusing GHC API
 
-Recall that Template Haskell is usually run by a GHC process, and the high-level
-build tool like `cabal`/`stack` will pass a bunch of command-line arguments,
-which will include something like `-package-id foo-xxx` if `foo` is a transitive
+Recall that Template Haskell is usually run by a GHC process, to which the high-level
+build tool like `cabal`/`stack` will pass a bunch of command-line arguments.
+These will include something like `-package-id foo-xxx` if `foo` is a transitive
 dependency! We may call `getArgs` in Template Haskell to get these arguments
 then look for package flags, but a better solution would be using GHC API itself
 to handle the parsing logic:
@@ -150,7 +151,7 @@ findUnitId pkg_name = runIO $ do
           comp_id
 ```
 
-Here, inside a Template Haskell function, we use GHC API to parse the
+Here, inside a Template Haskell function, we use the GHC API to parse the
 command-line arguments, handle the package-related arguments, then use the given
 package name to look up the corresponding unit ID.
 
@@ -214,7 +215,7 @@ Template Haskell, we practiced some Haskell dark arts and were able to summon
 hidden values. Before plugging this hack into a real-world codebase, let's
 discuss the problems of this approach.
 
-`importHidden` is dynamically typed, since all Haskell type information
+First, `importHidden` is dynamically typed. Since all Haskell type information
 is lost at the lowest level, we can't do meaningful type checking in the
 returned expression. All of its use sites must be explicitly annotated with the
 original types, otherwise, segmentation faults await.
@@ -224,17 +225,17 @@ it at its call sites, therefore the closure symbol we're seeking may be
 non-existent. In that case, the error message won't be good, since it'll only be
 an "undefined symbol" error at link-time.
 
-The types of hidden value are also restricted. It's fine if it doesn't carry
+The types of hidden values are also restricted. It's fine if it doesn't carry
 constraints, but it won't work if constraints are present, since our
 implementation doesn't take the dictionary passing mechanism of type classes
 into account.
 
 And finally, given we're trying to query GHC arguments via `getArgs`, it surely
-won't work with the external interpreter or cross GHCs. And even if we only
-intend to support the non cross-compilation scenario, calling GHC API in
-Template Haskell code is highly unsafe, given GHC API has process-global state
+won't work with an external interpreter or cross GHCs. And even if we only
+intend to support the non cross-compilation scenario, calling the GHC API in
+Template Haskell code is highly unsafe, given that the GHC API has process-global state
 and doesn't have any reentrancy guarantee. It just happens to work in our case since
-we only use a small subset and don't create a proper GHC session.
+we only use a small subset of it, and don't create a proper GHC session.
 
 Should you use `importHidden`? Most likely no, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
