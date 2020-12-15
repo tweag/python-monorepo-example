@@ -42,7 +42,7 @@ Template Haskell, one can summon the hidden constructors of datatypes, but
 summoning arbitrary hidden values is not directly supported. The next section
 reveals the secret.
 
-## Implementing `importHidden`
+## Implementing the importHidden splice
 
 ### Abusing foreign imports
 
@@ -201,12 +201,15 @@ importHidden pkg_name mod_name val_name = do
   [|closureFromPtr $(varE import_name)|]
 ```
 
-Using a foreign import, we can obtain a `Ptr` value which is the hidden value's
-closure address. The `addrToAny#` primop allows us to cast a closure address to
-a Haskell value. In this case, we're handling a static closure whose address
-remains constant through garbage collections so it's fine, but keep in mind that
-`addrToAny#`/`anyToAddr#` is incredibly unsafe for dynamic closures and must be
-used with extreme care.
+Summarizing, our summoning ritual consisted of:
+
+- Using GHC API and user-specified info to calculate a hidden value's closure
+  symbol.
+- Using a foreign import to obtain the closure address as a `Ptr` value.
+- Using `addrToAny#` to cast the closure address back to a Haskell value.
+
+With these hacks combined, now you can transcend the barriers of modules and
+packages!
 
 ## Conclusion
 
