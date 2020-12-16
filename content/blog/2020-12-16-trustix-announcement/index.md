@@ -11,8 +11,8 @@ After all, building software from source is a chore -- it requires both time and
 But how do we know that we aren't installing something malicious from these providers?
 
 Typically, we trust these binaries because we trust the provider.
-We believe that they were built from trusted trusted sources, in a trusted computational environment, and with trusted build instructions.
-But even if the provider does everything transparently and in good faith, these could still be _anything_ if the provider's system is compromised.
+We believe that they were built from trusted sources, in a trusted computational environment, and with trusted build instructions.
+But even if the provider does everything transparently and in good faith, the binaries could still be _anything_ if the provider's system is compromised.
 In other words, the build process requires _trust_ even if all build inputs (sources, dependencies, build scripts, etc...) are known.
 
 Overcoming this problem is hard -- after all, how can we verify the output of arbitrary build inputs?
@@ -37,8 +37,8 @@ The tool is still in development, but I'm very excited to announce it already!
 ## How Nix verifies binary cache results
 
 Most Linux package managers use a very simple signature scheme to secure binary distribution to users.
-Some use GPG keys, some use OpenSSL certificates, and others use some other kind of key, but the scheme is essentially the same for all of them.
-The general idea is that binaries are signed with a private key, and clients can use an associated public key to check that a binary was really signed by the trusted entity.
+Some use GPG keys, some use OpenSSL certificates, and others use some other kind of key, but the idea is essentially the same for all of them.
+The general approach is that binaries are signed with a private key, and clients can use an associated public key to check that a binary was really signed by the trusted entity.
 
 Nix for example uses an ed25519-based key signature scheme and comes with a default hard-coded public key that corresponds to the default cache.
 This key can be overridden or complemented by others, allowing the use of additional caches.
