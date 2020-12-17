@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `Tweag`,
     description: `
-Scale your engineering power. We enable deep tech startups to achieve
+Scale your engineering power. We enable deep-tech startups to achieve
 their vision, from research to product delivery.
     `,
     siteUrl: `https://tweag.io`,
