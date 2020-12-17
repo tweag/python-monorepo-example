@@ -29,7 +29,7 @@ Conversely, it can also be used to uncover non-reproducible builds, corrupted or
 
 The initial implementation of Trustix, and its description in this post are based on the Nix package manager.
 Nix focuses on isolated builds, provides access to the hashes of all build inputs as well as a high quantity of bit-reproducible packages, making it the ideal initial testing ecosystem.
-However, Trustix was designed to be system-independented, and is not strongly tied to Nix.
+However, Trustix was designed to be system-independent, and is not strongly tied to Nix.
 
 The developmentent of [Trustix][trustix] is funded by [NLnet foundation][nlnet] and the European Commission's [Next Generation Internet][ngi] programme through the [NGI Zero PET][pet] (privacy and trust enhancing technologies) fund.
 The tool is still in development, but I'm very excited to announce it already!
