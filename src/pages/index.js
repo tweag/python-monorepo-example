@@ -48,7 +48,7 @@ const IndexPage = ({ data, location }) => {
                   />
                 </h1>
                 <p>
-                  We enable deep tech startups to achieve their vision, from
+                  We enable deep-tech startups to achieve their vision, from
                   research to product delivery.
                 </p>
               </div>
