@@ -116,7 +116,7 @@ With this in mind, let's revisit the above issues
   built yourself.
 
   Therefore you never need to invalidate an entire binary cache: you
-  can still verify the trustworthiness of old package, even if newer
+  can still verify the trustworthiness of old packages, even if newer
   packages are built by a malicious actor.
 
 - In Trustix, you never typically consider any build machine to be
