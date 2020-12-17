@@ -98,7 +98,7 @@ Trustix aims to solve these problems by assembling a mapping from build inputs t
 
 Instead of relying on verifying packages signatures, like the traditional Nix model does, Trustix only exposes packages that it considers trustworthy.
 Concretely, Trustix is configured as a proxy for a binary cache, and hides the packages which are not trustworthy.
-As far as Nix is concerned, the package not being trustworth is exactly as if the package wasn't stored in the binary cache to begin with.
+As far as Nix is concerned, the package not being trustworthy is exactly as if the package wasn't stored in the binary cache to begin with.
 If such a package is required, Nix will therefore build it from source.
 
 Trustix doesn't define what a trustworthy package is.
