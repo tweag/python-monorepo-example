@@ -86,7 +86,7 @@ For whatever hidden value we'd like to use, we already know the
 package/module/value name, so do we have all the ingredients to cook the correct
 closure symbol name? Not yet. The unit ID is not trivial to obtain.
 
-What does unit IDs look like? For packages shipped with GHC, they're either the
+What do unit IDs look like? For packages shipped with GHC, they're either the
 package name (e.g. `base`), or the package name followed by the version number
 (e.g. `Cabal-3.0.1.0`). However, unit IDs of third-party packages have a unique
 hash suffix (e.g. `aeson-1.4.7.1-BBxO5joHKZ5L11K8E1qG5k`). If a package is built
