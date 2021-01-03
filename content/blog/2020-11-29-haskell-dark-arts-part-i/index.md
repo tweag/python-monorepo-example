@@ -205,11 +205,14 @@ just need to query a package's unit ID, so it should be fairly easy to patch GHC
 to support it when cross compiling: just add a method in the `Quasi` class, and
 support one more message variant in the external interpreter.
 
-Compared to running `TcM` actions in the `Q` monad, a more principled approach
-is GHC plugins, since they have full access to the GHC session state and can
-call arbitrary GHC API anyway.
+Running `TcM` actions in the `Q` monad is an interesting hack that doesn't seem
+to have been used in the wild, and Richard has a nice [video][rae-video] that
+introduces it. However, there's a more principled way: GHC plugins, since they
+have full access to the GHC session state and can call arbitrary GHC API anyway.
 
 Should you use `importHidden`? Most likely no, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
 exercise, and we hope this post serves as a peek into how GHC works under the
 hood :)
+
+[rae-video]: https://www.youtube.com/watch?v=Z6z3Bnnh_iY
