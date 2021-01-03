@@ -1,7 +1,7 @@
 ---
 title: "Haskell dark arts, part I: importing hidden values"
 shortTitle: "Haskell dark arts, part I: importing hidden values"
-author: Cheng Shao
+author: Cheng Shao, Richard Eisenberg
 tags: [haskell]
 description: "How to break encapsulation and import a hidden value in Haskell."
 ---
@@ -13,8 +13,8 @@ a function there in your code, but hold on -- the module (or the function) is
 hidden! Now you need to make your own fork, change the project build plan and do
 a lot of rebuilding. Some extra coffee break time is not bad, but what if we
 tell you this encapsulation can be broken, and you can import hidden functions
-with ease? Of course, this comes with lots of caveats, but no spoilers -- read
-the rest of the post to find out how (and when).
+with ease? Of course, this comes with some caveats, but no spoilers -- read the
+rest of the post to find out how (and when).
 
 ## Importing a hidden value with Template Haskell
 
@@ -24,77 +24,55 @@ exported or `Foo` is not exposed. But don't worry, with a single line of code in
 our own codebase, we can jailbreak the encapsulation:
 
 ```haskell
-myFunc :: Int -> Int -- must exactly match the type of `func`
 myFunc = $(importHidden "foo" "Foo" "func")
 ```
 
-`myFunc` can now be used just like the original `func` value. And `myFunc`
-itself doesn't need to be defined as a top-level value; one can drop an
-`importHidden` splice anywhere, provided the value's type is explicitly
-annotated and matches the original type. We only need to ensure the `foo`
-package is a transitive dependency of the current package, enable the
-`TemplateHaskell` extension and import the module which implements
-`importHidden`.
+`myFunc` can now be used just like the original `func` value. It doesn't need to
+be defined as a top-level value, one can drop an `importHidden` splice anywhere.
+We only need to ensure the `foo` package is a transitive dependency of the
+current package, enable the `TemplateHaskell` extension and import the module
+which implements `importHidden`.
 
 The curious reader may check the Template Haskell API documentation and try to
 come up with their own `importHidden` implementation. It is well known that with
-Template Haskell, one can summon the hidden constructors of datatypes, but
-summoning arbitrary hidden values is not directly supported. The next section
-reveals the secret.
+Template Haskell, one can reify the information of datatypes and summon its
+hidden constructors, but summoning arbitrary hidden values is not directly
+supported. The next section reveals the secret.
 
 ## Implementing the importHidden splice
 
-### Abusing foreign imports
+### Finding a package's unit id
 
-Let's forget about `importHidden` for a minute and think: how to handwrite
-Haskell code to bring `foo` into scope without actually importing `Foo`? The
-answer may seem surprising at first glance: use a foreign import!
+Let's forget about `importHidden` for a minute and consider how to handwrite
+Haskell code to bring a hidden value into scope. Since we already know the
+package/module/value name, we can construct a Template Haskell `Name` that
+refers to the value, then use it to create the `Exp` that brings the value back.
+Time to give it a try in ghci:
 
-GHC compiles Haskell definitions into machine code in static/dynamic libraries.
-The Haskell module encapsulation doesn't affect machine code; regardless of
-whether a Haskell value is hidden or not, its symbols will be visible to the
-linker. This opens up the possibility of jailbreaking: if we can calculate a
-value's symbol name, we can bring its address into scope using a foreign import,
-and reconstruct the high-level Haskell value using some kind of unsafe coercion.
+```
+Prelude Language.Haskell.TH.Syntax> myFunc = $(pure $ VarE $ Name (OccName "func") (NameG VarName (PkgName "foo") (ModName "Foo")))
 
-So what do GHC-generated symbols look like? We can use `nm` to inspect the
-symbol table of an installed Haskell package, say, `base`:
-
-```sh
-$ cd $(ghc --print-libdir)
-$ cd base-4.14.1.0
-$ nm libHSbase-4.14.1.0.a
-...
-0000000000000000 D base_ForeignziForeignPtrziImp_withForeignPtr_closure
-0000000000000018 T base_ForeignziForeignPtrziImp_withForeignPtr_info
-                 U base_GHCziForeignPtr_ForeignPtr_con_info
-...
+<interactive>:3:8: error:
+    • Failed to load interface for ‘Foo’
+      no unit id matching ‘foo’ was found
+    • In the expression:
+        (foo:Foo.func)
+      In an equation for ‘myFunc’:
+          myFunc = (foo:Foo.func)
 ```
 
-The symbol names may look weird in the beginning, but they all follow a similar
-pattern:
+Oops, GHC complains that the `foo` package can't be found. The `PkgName` type in
+Template Haskell is a bit misleading here; GHC expects it to be the full unit ID
+of a package instead of the package name. What do unit IDs look like?
 
-- The symbols are Z-encoded. Think of Z-encoding as a way to escape certain
-  characters to make the C toolchain happy. For instance, the `zi` substring
-  decodes to `.` in the example above.
-- There are 4 underscore-delimited components. The package's unit ID, the module
-  name, the value name, and the type of the thing indexed by that symbol. In our
-  case, we're interested in `closure` symbols which represent the static heap
-  object address of a Haskell value.
-
-For whatever hidden value we'd like to use, we already know the
-package/module/value name, so do we have all the ingredients to cook the correct
-closure symbol name? Not yet. The unit ID is not trivial to obtain.
-
-What do unit IDs look like? For packages shipped with GHC, they're either the
-package name (e.g. `base`), or the package name followed by the version number
-(e.g. `Cabal-3.0.1.0`). However, unit IDs of third-party packages have a unique
-hash suffix (e.g. `aeson-1.4.7.1-BBxO5joHKZ5L11K8E1qG5k`). If a package is built
-with different build plans, the hash suffix will differ. Thanks to this
-mechanism, packages can be rebuilt multiple times and coexist in the same
-package database, a `cabal build` run will never fail due to version conflict
-with existing packages, and the so-called "cabal hell" becomes an ancient
-memory.
+For packages shipped with GHC, they're either the package name (e.g. `base`), or
+the package name followed by the version number (e.g. `Cabal-3.0.1.0`). However,
+unit IDs of third-party packages have a unique ABI hash suffix (e.g.
+`aeson-1.4.7.1-BBxO5joHKZ5L11K8E1qG5k`), and the hash suffix differs if a
+package is built with different build plans. Thanks to this mechanism, most
+packages can be rebuilt multiple times and coexist in the same package database,
+a `cabal build` run will never fail due to version conflict with existing
+packages, and the so-called "cabal hell" becomes an ancient memory.
 
 For `importHidden` to be useful, it needs to support third-party packages,
 therefore we need to find a way to query the exact unit ID given a package name
@@ -104,143 +82,134 @@ its import list. So if `Foo` appears in the current module's import list, we can
 use `reifyModule` to get `Foo` metadata which includes `foo`'s unit ID. However,
 this approach has a significant restriction: it doesn't work for hidden modules.
 
-### Abusing GHC API
+### Abusing GHC API in Template Haskell
 
-Recall that Template Haskell is usually run by a GHC process, to which the high-level
-build tool like `cabal`/`stack` will pass a bunch of command-line arguments.
-These will include something like `-package-id foo-xxx` if `foo` is a transitive
-dependency! We may call `getArgs` in Template Haskell to get these arguments
-then look for package flags, but a better solution would be using GHC API itself
-to handle the parsing logic:
+Recall that Template Haskell is usually run by a GHC process, so it's possible
+to jailbreak the usual Template Haskell API and access the full GHC state when
+running a Template Haskell splice. The `Q` monad is defined as:
 
 ```haskell
-{-# LANGUAGE MagicHash #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE UnboxedTuples #-}
+newtype Q a = Q { unQ :: forall m. Quasi m => m a }
+```
 
-import qualified CLabel as GHC
-import qualified DynFlags as GHC
-import qualified FastString as GHC
-import Foreign.Ptr
-import qualified GHC
-import GHC.Exts
-import qualified IdInfo as GHC
-import Language.Haskell.TH.Lib
+This encodes a program that uses the `Quasi` class as its "instruction set". In
+GHC, the typechecker monad `TcM` implements its `Quasi` instance which drives
+the actual Template Haskell logic. When running a splice, the polymorphic `Quasi m => m a` value inside a `Q a` splice is instantiated as `TcM a` value. If we
+can disguise a `TcM a` value as a `Q a` value, then we can access the full GHC
+session state inside `TcM`, which grants us access to the complete GHC API:
+
+```haskell
+import DynFlags
+import FastString
 import Language.Haskell.TH.Syntax
-import qualified Module as GHC
-import qualified Name as GHC
-import qualified Outputable as GHC
-import qualified Packages as GHC
-import System.Environment.Blank
-import qualified Unique as GHC
+import Module
+import Packages
+import TcRnMonad
+import Unsafe.Coerce
 
-findUnitId :: String -> Q GHC.UnitId
-findUnitId pkg_name = runIO $ do
-  args <- getArgs
-  (dflags0, _, _) <-
-    GHC.parseDynamicFlags GHC.unsafeGlobalDynFlags $
-      map GHC.noLoc args
-  (dflags1, _) <- GHC.initPackages dflags0
-  let Just comp_id =
-        GHC.lookupPackageName dflags1 $ GHC.PackageName $ GHC.fsLit pkg_name
-  pure $
-    GHC.DefiniteUnitId $
-      GHC.DefUnitId $
-        GHC.componentIdToInstalledUnitId
-          comp_id
+unsafeRunTcM :: TcM a -> Q a
+unsafeRunTcM m = unsafeCoerce (\_ -> m)
 ```
 
-Here, inside a Template Haskell function, we use the GHC API to parse the
-command-line arguments, handle the package-related arguments, then use the given
-package name to look up the corresponding unit ID.
-
-After the unit ID is obtained, calculating the value's closure symbol is pretty
-simple:
+The implementation of `unsafeRunTcM` requires a bit of understanding about the
+dictionary-passing mechanism of type classes in GHC. The definition of `Q` can
+be interpreted as:
 
 ```haskell
-findClosureSymbol :: String -> String -> String -> Q String
-findClosureSymbol pkg_name mod_name val_name = do
-  unit_id <- findUnitId pkg_name
-  pure $
-    GHC.showSDoc GHC.unsafeGlobalDynFlags $
-      GHC.pprCode GHC.AsmStyle $
-        GHC.ppr $
-          GHC.mkClosureLabel
-            ( GHC.mkExternalName
-                (GHC.mkUniqueGrimily 0)
-                (GHC.mkModule unit_id (GHC.mkModuleName mod_name))
-                (GHC.mkVarOcc val_name)
-                GHC.noSrcSpan
-            )
-            GHC.MayHaveCafRefs
+data QuasiDict m = QuasiDict {
+  qNewName :: String -> m Name,
+  ..
+}
+
+newtype Q a = Q { unQ :: forall m . QuasiDict m -> m a }
 ```
 
-Now that we can calculate a value's closure symbol, we need to generate a
-top-level foreign import declaration to convert it to a pointer, and return an
-expression splice which coerces the pointer to a Haskell value of any
-user-annotated type:
+A `QuasiDict m` value is a dictionary which carries the implementation of
+`Quasi` methods in the `m` monad. A `Q a` value is a function which takes a
+`QuasiDict m` dictionary and calls the methods in it to construct a computation
+of type `m a`. When we instantiate the polymorphic computation `Quasi m => m a`
+to a specific type like `TcM a`, GHC picks the corresponding dictionary and
+passes it to the function.
+
+In our case, we know in advance that the `Q a` computation will be run in the
+`TcM` monad, therefore we can wrap a `TcM a` value in a lambda which discards
+its argument (which will be the `TcM` instance dictionary) and coerce it to `Q a`. Another way to implement the coercion is:
 
 ```haskell
-closureFromPtr :: Ptr () -> a
-closureFromPtr (Ptr addr) = case addrToAny# addr of
-  (# a #) -> a
+unsafeRunTcM :: TcM a -> Q a
+unsafeRunTcM m = Q (unsafeCoerce m)
+```
+
+GHC will automatically generate the dictionary-passing lambda in the above code.
+The `unsafeCoerce` application must return a polymorphic value with the `Quasi`
+class constraint, and if we simply do `unsafeRunTcM = unsafeCoerce`, the
+resulting `Q a` value has the wrong function arity which leads to segmentation
+fault at runtime.
+
+Now that we can hook into GHC internal workings by running `TcM a` computations,
+it's trivial to query the package state and find a package's unit ID given its
+name. The rest of `importHidden` implementation follows:
+
+```haskell
+qGetDynFlags :: Q DynFlags
+qGetDynFlags = unsafeRunTcM getDynFlags
+
+qLookupUnitId :: String -> Q UnitId
+qLookupUnitId pkg_name = do
+  dflags <- qGetDynFlags
+  comp_id <- case lookupPackageName dflags $ PackageName $ fsLit pkg_name of
+    Just comp_id -> pure comp_id
+    _ -> fail $ "Package not found: " ++ pkg_name
+  pure $ DefiniteUnitId $ DefUnitId $ componentIdToInstalledUnitId comp_id
+
+qLookupPkgName :: String -> Q PkgName
+qLookupPkgName pkg_name = do
+  unit_id <- qLookupUnitId pkg_name
+  pure $ PkgName $ unitIdString unit_id
 
 importHidden :: String -> String -> String -> Q Exp
 importHidden pkg_name mod_name val_name = do
-  closure_name <- findClosureSymbol pkg_name mod_name val_name
-  import_name <- newName "__hidden"
-  import_dec <-
-    forImpD
-      CCall
-      Unsafe
-      ("&" <> closure_name)
-      import_name
-      [t|Ptr ()|]
-  addTopDecls [import_dec]
-  [|closureFromPtr $(varE import_name)|]
+  pkg_name' <- qLookupPkgName pkg_name
+  pure $
+    VarE $
+      Name
+        (OccName val_name)
+        (NameG VarName pkg_name' (ModName mod_name))
 ```
 
 Summarizing, our summoning ritual consisted of:
 
-- Using GHC API and user-specified info to calculate a hidden value's closure
-  symbol.
-- Using a foreign import to obtain the closure address as a `Ptr` value.
-- Using `addrToAny#` to cast the closure address back to a Haskell value.
+- Use `unsafeCoerce` to enable running a typechecker action in the Template
+  Haskell `Q` monad.
+- Obtain the `DynFlags` of the current GHC session and query the package state
+  to find a package's full unit ID.
+- Construct a `Name` that refers to the hidden value and create the
+  corresponding `Exp`.
 
 With these hacks combined, now you can transcend the barriers of modules and
 packages!
 
 ## Conclusion
 
-Through a bit of knowledge about compiled Haskell code and abusing GHC API in
-Template Haskell, we practiced some Haskell dark arts and were able to summon
-hidden values. Before plugging this hack into a real-world codebase, let's
-discuss the problems of this approach.
-
-First, `importHidden` is dynamically typed. Since all Haskell type information
-is lost at the lowest level, we can't do meaningful type checking in the
-returned expression. All of its use sites must be explicitly annotated with the
-original types, otherwise, segmentation faults await.
+Through a bit of knowledge about GHC internal workings, we practiced some
+Haskell dark arts and were able to summon hidden values. Before plugging this
+hack into a real-world codebase, let's discuss the drawbacks of this approach.
 
 If a top-level value isn't exported, then the GHC inliner may choose to inline
-it at its call sites, therefore the closure symbol we're seeking may be
-non-existent. In that case, the error message won't be good, since it'll only be
-an "undefined symbol" error at link-time.
+it at its call sites, therefore the interface file won't contain its entry, and
+the summoning will fail at compile-time.
 
-The types of hidden values are also restricted. It's fine if it doesn't carry
-constraints, but it won't work if constraints are present, since our
-implementation doesn't take the dictionary passing mechanism of type classes
-into account.
+Given we expect the splices to be run in the GHC process, it surely won't work
+with an external interpreter or cross GHCs. For this particular use case, we
+just need to query a package's unit ID, so it should be fairly easy to patch GHC
+to support it when cross compiling: just add a method in the `Quasi` class, and
+support one more message variant in the external interpreter.
 
-And finally, given we're trying to query GHC arguments via `getArgs`, it surely
-won't work with an external interpreter or cross GHCs. And even if we only
-intend to support the non cross-compilation scenario, calling the GHC API in
-Template Haskell code is highly unsafe, given that the GHC API has process-global state
-and doesn't have any reentrancy guarantee. It just happens to work in our case since
-we only use a small subset of it, and don't create a proper GHC session.
+Compared to running `TcM` actions in the `Q` monad, a more principled approach
+is GHC plugins, since they have full access to the GHC session state and can
+call arbitrary GHC API anyway.
 
 Should you use `importHidden`? Most likely no, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
-exercise, and we hope this post serves as a peek into how Haskell code works
-under the hood :)
+exercise, and we hope this post serves as a peek into how GHC works under the
+hood :)
