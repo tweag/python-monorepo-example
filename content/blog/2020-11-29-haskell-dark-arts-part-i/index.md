@@ -28,7 +28,7 @@ myFunc = $(importHidden "foo" "Foo" "func")
 ```
 
 `myFunc` can now be used just like the original `func` value. It doesn't need to
-be defined as a top-level value, one can drop an `importHidden` splice anywhere.
+be defined as a top-level value; one can drop an `importHidden` splice anywhere.
 We only need to ensure the `foo` package is a transitive dependency of the
 current package, enable the `TemplateHaskell` extension and import the module
 which implements `importHidden`.
@@ -143,7 +143,7 @@ unsafeRunTcM m = Q (unsafeCoerce m)
 GHC will automatically generate the dictionary-passing lambda in the above code.
 The `unsafeCoerce` application must return a polymorphic value with the `Quasi`
 class constraint, and if we simply do `unsafeRunTcM = unsafeCoerce`, the
-resulting `Q a` value has the wrong function arity which leads to segmentation
+resulting `Q a` value has the wrong function arity which leads to a segmentation
 fault at runtime.
 
 Now that we can hook into GHC internal workings by running `TcM a` computations,
@@ -177,7 +177,7 @@ importHidden pkg_name mod_name val_name = do
         (NameG VarName pkg_name' (ModName mod_name))
 ```
 
-Summarizing, our summoning ritual consisted of:
+Summarizing, our summoning ritual consists of:
 
 - Use `unsafeCoerce` to enable running a typechecker action in the Template
   Haskell `Q` monad.
@@ -206,7 +206,7 @@ to support it when cross compiling: just add a method in the `Quasi` class, and
 support one more message variant in the external interpreter.
 
 Running `TcM` actions in the `Q` monad is an interesting hack that doesn't seem
-to have been used in the wild, and Richard has a nice [video][rae-video] that
+to have been used in the wild, and my Tweag colleague Richard Eisenberg has a nice [video][rae-video] that
 introduces it. However, there's a more principled way: GHC plugins, since they
 have full access to the GHC session state and can call arbitrary GHC API anyway.
 
