@@ -50,15 +50,15 @@ refers to the value, then use it to create the `Exp` that brings the value back.
 Time to give it a try in ghci:
 
 ```
+Prelude> :set -XTemplateHaskell
+Prelude> import Language.Haskell.TH.Syntax
 Prelude Language.Haskell.TH.Syntax> myFunc = $(pure $ VarE $ Name (OccName "func") (NameG VarName (PkgName "foo") (ModName "Foo")))
 
-<interactive>:3:8: error:
+<interactive>:3:12: error:
     • Failed to load interface for ‘Foo’
       no unit id matching ‘foo’ was found
-    • In the expression:
-        (foo:Foo.func)
-      In an equation for ‘myFunc’:
-          myFunc = (foo:Foo.func)
+    • In the expression: (foo:Foo.func)
+      In an equation for ‘myFunc’: myFunc = (foo:Foo.func)
 ```
 
 Oops, GHC complains that the `foo` package can't be found. The `PkgName` type in
@@ -94,9 +94,10 @@ newtype Q a = Q { unQ :: forall m. Quasi m => m a }
 
 This encodes a program that uses the `Quasi` class as its "instruction set". In
 GHC, the typechecker monad `TcM` implements its `Quasi` instance which drives
-the actual Template Haskell logic. When running a splice, the polymorphic `Quasi m => m a` value inside a `Q a` splice is instantiated as `TcM a` value. If we
-can disguise a `TcM a` value as a `Q a` value, then we can access the full GHC
-session state inside `TcM`, which grants us access to the complete GHC API:
+the actual Template Haskell logic. When running a splice, the type variable `m`
+is instantiated to `TcM`. If we can disguise a `TcM a` value as a `Q a` value,
+then we can access the full GHC session state inside `TcM`, which grants us
+access to the complete GHC API:
 
 ```haskell
 import DynFlags
@@ -127,13 +128,13 @@ newtype Q a = Q { unQ :: forall m . QuasiDict m -> m a }
 A `QuasiDict m` value is a dictionary which carries the implementation of
 `Quasi` methods in the `m` monad. A `Q a` value is a function which takes a
 `QuasiDict m` dictionary and calls the methods in it to construct a computation
-of type `m a`. When we instantiate the polymorphic computation `Quasi m => m a`
-to a specific type like `TcM a`, GHC picks the corresponding dictionary and
-passes it to the function.
+of type `m a`. When we instantiate `m` to a specific type constructor like
+`TcM`, GHC picks the corresponding dictionary and passes it to the function.
 
-In our case, we know in advance that the `Q a` computation will be run in the
-`TcM` monad, therefore we can wrap a `TcM a` value in a lambda which discards
-its argument (which will be the `TcM` instance dictionary) and coerce it to `Q a`. Another way to implement the coercion is:
+In our case, we know in advance that the `Q a` type is just a `newtype` of the
+`Quasi m => m a` computation which will be coerced to run in the `TcM` monad,
+therefore we can wrap a `TcM a` value in a lambda which discards its argument
+(which will be the `Quasi` instance dictionary for `TcM`) and coerce it to `Q a`. Another way to implement the coercion is:
 
 ```haskell
 unsafeRunTcM :: TcM a -> Q a
