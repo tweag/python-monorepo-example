@@ -18,18 +18,18 @@ rest of the post to find out how (and when).
 
 ## Importing a hidden value with Template Haskell
 
-Suppose we'd like to use the `func` top-level value defined in the `Foo` module
-of the `foo` package. We can't simply `import Foo` and use it if `foo` is not
-exported or `Foo` is not exposed. But don't worry, with a single line of code in
-our own codebase, we can jailbreak the encapsulation:
+Suppose we'd like to use the `func` top-level value defined in the `Hidden`
+module of the `pkg` package. We can't simply `import Hidden` and use it if
+`func` is not exported or `Hidden` is not exposed. But don't worry, with a
+single line of code in our own codebase, we can jailbreak the encapsulation:
 
 ```haskell
-myFunc = $(importHidden "foo" "Foo" "func")
+myFunc = $(importHidden "pkg" "Hidden" "func")
 ```
 
 `myFunc` can now be used just like the original `func` value. It doesn't need to
 be defined as a top-level value; one can drop an `importHidden` splice anywhere.
-We only need to ensure the `foo` package is a transitive dependency of the
+We only need to ensure the `pkg` package is a transitive dependency of the
 current package, enable the `TemplateHaskell` extension and import the module
 which implements `importHidden`.
 
@@ -52,16 +52,16 @@ Time to give it a try in ghci:
 ```
 Prelude> :set -XTemplateHaskell
 Prelude> import Language.Haskell.TH.Syntax
-Prelude Language.Haskell.TH.Syntax> myFunc = $(pure $ VarE $ Name (OccName "func") (NameG VarName (PkgName "foo") (ModName "Foo")))
+Prelude Language.Haskell.TH.Syntax> myFunc = $(pure $ VarE $ Name (OccName "func") (NameG VarName (PkgName "pkg") (ModName "Hidden")))
 
 <interactive>:3:12: error:
-    • Failed to load interface for ‘Foo’
-      no unit id matching ‘foo’ was found
-    • In the expression: (foo:Foo.func)
-      In an equation for ‘myFunc’: myFunc = (foo:Foo.func)
+    • Failed to load interface for ‘Hidden’
+      no unit id matching ‘pkg’ was found
+    • In the expression: (pkg:Hidden.func)
+      In an equation for ‘myFunc’: myFunc = (pkg:Hidden.func)
 ```
 
-Oops, GHC complains that the `foo` package can't be found. The `PkgName` type in
+Oops, GHC complains that the `pkg` package can't be found. The `PkgName` type in
 Template Haskell is a bit misleading here; GHC expects it to be the full unit ID
 of a package instead of the package name. What do unit IDs look like?
 
@@ -78,9 +78,10 @@ For `importHidden` to be useful, it needs to support third-party packages,
 therefore we need to find a way to query the exact unit ID given a package name
 via Template Haskell. Among the existing Template Haskell APIs, the closest
 thing to achieve this goal is `reifyModule`, which given a module name, returns
-its import list. So if `Foo` appears in the current module's import list, we can
-use `reifyModule` to get `Foo` metadata which includes `foo`'s unit ID. However,
-this approach has a significant restriction: it doesn't work for hidden modules.
+its import list. So if `Hidden` appears in the current module's import list, we
+can use `reifyModule` to get `Hidden` metadata which includes `pkg`'s unit ID.
+However, this approach has a significant restriction: it doesn't work for hidden
+modules.
 
 ### Abusing GHC API in Template Haskell
 
@@ -207,9 +208,10 @@ to support it when cross compiling: just add a method in the `Quasi` class, and
 support one more message variant in the external interpreter.
 
 Running `TcM` actions in the `Q` monad is an interesting hack that doesn't seem
-to have been used in the wild, and my Tweag colleague Richard Eisenberg has a nice [video][rae-video] that
-introduces it. However, there's a more principled way: GHC plugins, since they
-have full access to the GHC session state and can call arbitrary GHC API anyway.
+to have been used in the wild, and my Tweag colleague Richard Eisenberg has a
+nice [video][rae-video] that introduces it. However, there's a more principled
+way: GHC plugins, since they have full access to the GHC session state and can
+call arbitrary GHC API anyway.
 
 Should you use `importHidden`? Most likely no, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
