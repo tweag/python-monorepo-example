@@ -215,7 +215,7 @@ call arbitrary GHC API anyway.
 
 Should you use `importHidden`? Most likely no, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
-exercise, and we hope this post serves as a peek into how GHC works under the
+exercise, and I hope this post serves as a peek into how GHC works under the
 hood :)
 
 [rae-video]: https://www.youtube.com/watch?v=Z6z3Bnnh_iY
