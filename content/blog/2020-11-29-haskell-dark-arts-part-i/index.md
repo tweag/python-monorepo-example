@@ -142,7 +142,6 @@ unsafeRunTcM :: TcM a -> Q a
 unsafeRunTcM m = Q (unsafeCoerce m)
 ```
 
-GHC will automatically generate the dictionary-passing lambda in the above code.
 The `unsafeCoerce` application must return a polymorphic value with the `Quasi`
 class constraint, and if we simply do `unsafeRunTcM = unsafeCoerce`, the
 resulting `Q a` value has the wrong function arity which leads to a segmentation
@@ -202,9 +201,10 @@ it at its call sites, therefore the interface file won't contain its entry, and
 the summoning will fail at compile-time.
 
 Given we expect the splices to be run in the GHC process, it surely won't work
-with an external interpreter or cross GHCs. For this particular use case, we
-just need to query a package's unit ID, so it should be fairly easy to patch GHC
-to support it when cross compiling: just add a method in the `Quasi` class, and
+with an external interpreter or cross GHCs (see our previous
+[post][th-cross-post] for details). For this particular use case, we just need
+to query a package's unit ID, so it should be fairly easy to patch GHC to
+support it when cross compiling: just add a method in the `Quasi` class, and
 support one more message variant in the external interpreter.
 
 Running `TcM` actions in the `Q` monad is an interesting hack that doesn't seem
@@ -219,3 +219,4 @@ exercise, and I hope this post serves as a peek into how GHC works under the
 hood :)
 
 [rae-video]: https://www.youtube.com/watch?v=Z6z3Bnnh_iY
+[th-cross-post]: https://www.tweag.io/blog/2020-11-25-asterius-th
