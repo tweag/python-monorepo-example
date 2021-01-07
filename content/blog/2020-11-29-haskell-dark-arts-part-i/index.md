@@ -200,22 +200,22 @@ If a top-level value isn't exported, then the GHC inliner may choose to inline
 it at its call sites, therefore the interface file won't contain its entry, and
 the summoning will fail at compile-time.
 
-Given we expect the splices to be run in the GHC process, it surely won't work
-with an external interpreter or cross GHCs (see our previous
-[post][th-cross-post] for details). For this particular use case, we just need
+Given that we expect the splices to be run in the GHC process, it surely won't work
+with an [external interpreter or cross GHCs][th-cross-post].
+On the other hand, for the particular use case of `importHidden`, we just need
 to query a package's unit ID, so it should be fairly easy to patch GHC to
 support it when cross compiling: just add a method in the `Quasi` class, and
 support one more message variant in the external interpreter.
 
 Running `TcM` actions in the `Q` monad is an interesting hack that doesn't seem
-to have been used in the wild, and my Tweag colleague Richard Eisenberg has a
+to have been used in the wild, and Richard Eisenberg has a
 nice [video][rae-video] that introduces it. However, there's a more principled
 way: GHC plugins, since they have full access to the GHC session state and can
 call arbitrary GHC API anyway.
 
-Should you use `importHidden`? Most likely no, since patching the desired
+Should you use `importHidden`? Most likely not, since patching the desired
 dependencies is always simpler and more robust. Nevertheless, it's a fun
-exercise, and I hope this post serves as a peek into how GHC works under the
+exercise, and we hope this post serves as a peek into how GHC works under the
 hood :)
 
 [rae-video]: https://www.youtube.com/watch?v=Z6z3Bnnh_iY
