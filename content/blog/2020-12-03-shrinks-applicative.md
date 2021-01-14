@@ -102,7 +102,7 @@ the original `x` and `y` around.
 Let's define our `Shrinks` applicative:
 
 ```haskell
-newtype Shrinks a = Shrinks { original :: a, shrinks :: [a] }
+data Shrinks a = Shrinks { original :: a, shrinks :: [a] }
   deriving (Functor)
 
 -- | Class laws:
@@ -127,7 +127,7 @@ instance Applicative Shrinks where
 
   fs <*> xs = Shrinks
     { original = (original fs) (original xs)
-    , shrinks = [f (original x) | f <- shrinks fs] ++ [(original f) x | x <- shrinks xs]
+    , shrinks = [f (original xs) | f <- shrinks fs] ++ [(original fs) x | x <- shrinks xs]
     }
 ```
 
