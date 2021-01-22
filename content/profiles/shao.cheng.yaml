@@ -1,0 +1,41 @@
+name: Shao Cheng
+github: terrorjack
+bio: |
+  Cheng is a Software Engineer who specializes in the implementation
+  of functional programming languages, and he is also the project lead
+  on Tweag’s Haskell-to-WebAssembly compiler project named Asterius.
+  Before joining Tweag, Shao got his Bachelor's in Computer Science
+  from Tsinghua University, and in his spare time can be found
+  exploring Paris, listening to classical music, and watching anime.
+skills:
+  - Haskell
+  - WebAssembly
+  - JavaScript
+  - Python
+  - DevOps
+speaks:
+  - English
+  - Mandarin
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2018-present
+    description:
+  - employer: ThoughtWorks
+    role: Technical intern
+    years: 2017
+    description:
+education:
+  - qualification: BSc
+    name: Computer Science & Technology
+    institution: Tsingua University
+    years: 2014-2017
+    description:
+  - qualification: BSc
+    name: Life Sciences
+    institution: Tsingua University
+    years: 2012-2014
+    description:
+talks:
+  - "Bringing Haskell to WebAssembly (lightning talk), Haskell Implementors' Workshop 2018"
+  - "Bringing Haskell to WebAssembly (full talk), Haskell Implementors' Workshop 2020"
