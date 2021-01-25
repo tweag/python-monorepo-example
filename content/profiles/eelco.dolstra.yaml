@@ -1,0 +1,63 @@
+name: Eelco Dolstra
+github: edolstra
+bio: |
+  Eelco is the creator of Nix/NixOS and works on Nix and Rust
+  consulting and development for Tweag. He is also President of the
+  NixOS Foundation, a non-profit organisation in the Netherlands that
+  supports the development of Nix and NixOS. Prior to joining the
+  Tweag team, Eelco was a Computer Scientist at LogicBlox (Infor),
+  where he worked on deployment tools and purely functional database
+  engines. He received his PhD in Computer Science from Utrecht
+  University, and was a postdoctoral researcher at the same university
+  and at Delft University of Technology
+skills:
+  - Nix
+  - NixOS
+  - Rust
+  - C++
+speaks:
+  - Dutch
+  - English
+  - German
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: June 2018-present
+    description: |
+      Multiple projects across Rust, Nix NixOS.
+  - employer: LogicBlox / Infor
+    role: Computer Scientist
+    years: March 2012 - June 2018
+  - employer: Delft University of Technology
+    role: Postdoctoral researcher
+    years: 2008 - 2012
+  - employer: Nutriënten Management Instituut
+    role: System Administrator
+    years: 2000 - 2004
+  - employer: Utrecht University
+    role: Teaching assistant
+    years: 1997 - 2000
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Utrecht University
+    years: 2001 - 2005
+    description: |
+      thesis title: “The Purely Functional Software Deployment Model”
+  - qualification: Masters
+    name: Computer Science
+    institution: Utrecht University
+    years: 1996 - 2001
+    description: |
+      thesis title: “First Class Rules and Generic Traversals for Program Transformation Languages”
+publications:
+  - "S. van der Burg, E. Dolstra, S. McIntosh, J. Davies, D. M. German and A. Hemel. Tracing Software Build Processes to Uncover License Com pliance Inconsistencies. In 29th IEEE/ACM International Conference on Automated Software Engineering (ASE 2014), 2014. ACM Press."
+  - ". Dolstra, R. Vliegendhart and J. Pouwelse. Crowdsourcing GUI Tests. In Sixth IEEE International Conference on Software Testing, Veri ication and Validation (ICST 2013), 2013. IEEE."
+  - ". Hemel, K. T. Kalleberg, R. Vermaas and E. Dolstra. Finding Software License Violations Through Binary Code Clone Detection. In 8th Work ing Conference on Mining Software Repositories (MSR 2011), Honolulu, Hawaii, USA, 2011. ACM Press."
+  - ". van der Burg and E. Dolstra. Automating System Tests Using Declara tive Virtual Machines. In 21st IEEE International Symposium on Software Reliability Engineering (ISSRE 2010), San Jose, California, USA, 2010. IEEE."
+  - ". Bravenboer, E. Dolstra and E. Visser. Preventing Injection Attacks with Syntax Embeddings. In Science of Computer Programming, volume 75. Elsevier."
+  - ". Dolstra and A. Löh. NixOS: A Purely Functional Linux Distribution. In ICFP 2008: 13th ACM SIGPLAN International Conference on Functional Programming, Victoria, British Columbia, Canada, 2008. ACM Press."
+  - ". Dolstra and A. Hemel. Purely Functional System Con iguration Man agement. In 11th Workshop on Hot Topics in Operating Systems (HotOS XI), San Diego, California, USA, 2007. USENIX."
+  - ". Dolstra. Secure sharing between untrusted users in a transparent source/binary deployment model. In ASE ’05: Proceedings of the 20th IEEE/ACM international Conference on Automated software engineering, pages 154–163, New York, NY, USA, 2005. ACM Press."
+  - ". Dolstra, M. de Jonge, and E. Visser. Nix: A safe and policy-free system for software deployment. In L. Damon, editor, 18th Large Installation Sys tem Administration Conference (LISA ’04), pages 79–92, Atlanta, Georgia, USA, November 2004. USENIX."
+  - ". Dolstra, E. Visser, and M. de Jonge. Imposing a memory management discipline on software deployment. In J. Estublier and D. Rosenblum, ed itors, 26th International Conference on Software Engineering (ICSE’04), pages 583–592, Edinburgh, Scotland, May 2004. IEEE Computer Society."
