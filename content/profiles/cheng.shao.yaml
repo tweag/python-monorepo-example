@@ -1,5 +1,5 @@
-name: Shao Cheng
-github: terrorjack
+name: Cheng Shao
+github: TerrorJack
 bio: |
   Cheng is a Software Engineer who specializes in the implementation
   of functional programming languages, and he is also the project lead
@@ -37,5 +37,6 @@ education:
     years: 2012-2014
     description:
 talks:
-  - "Bringing Haskell to WebAssembly (lightning talk), Haskell Implementors' Workshop 2018"
   - "Bringing Haskell to WebAssembly (full talk), Haskell Implementors' Workshop 2020"
+  - "The Secrets of the GHC Garbage Collector, Skills Matter 2020"
+  - "Bringing Haskell to WebAssembly (lightning talk), Haskell Implementors' Workshop 2018"
