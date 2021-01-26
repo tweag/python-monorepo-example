@@ -1,0 +1,33 @@
+name: Théophane Hufschmitt
+github: regnat
+bio: |
+  Théophane is a Software Engineer, a Bazel/Nix expert, and began his career as an Tweag intern working on adding a type-system for Nix.
+  Before becoming a Tweager, Théophane received a MSc at École Polytechnique and a MSc in Computer Science from the MPRI.
+  Away from his work, he can be found playing the piano or the organ, singing and conducting in his local choir, and spending time with his three sons.
+skills:
+  - Haskell
+  - Nix
+  - Bazel
+  - OCaml
+speaks:
+experience:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2017-present
+    description:
+education:
+  - qualification: Masters
+    name: Engineering
+    institution: École polytechnique
+    years: 2014-2017
+    description:
+  - qualification: Masters
+    name: Parisian Master Of Research In Computer Science
+    institution: Paris-Saclay University
+    years: 2012-2014
+    description:
+talks:
+  - "A type-system for Nix, NixCon 2017"
+
