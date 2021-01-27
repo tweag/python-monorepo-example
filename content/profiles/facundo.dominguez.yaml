@@ -1,0 +1,92 @@
+name: Facundo Domínguez
+github: facundominguez
+bio: |
+  Facundo is a Senior Software Engineer and supports design,
+  development and research projects at Tweag. He is also the
+  maintainer of inline-java and sparkle. Prior to joining Tweag,
+  Facundo worked as a computer engineer at Parallel Scientific, where
+  he wrote and verified distributed programs in Haskell, before using
+  them on high-speed networks. He received a MSc in Computer Science
+  at Universidad de la República in Montevideo, researching program
+  transformation techniques. Out of the office, Facundo reads, plays
+  guitar, and enjoys traveling and spending time with his family.
+skills:
+  - Functional Programming
+  - Distributed systems
+  - Language integration
+  - Compilers
+speaks:
+  - English
+  - Spanish
+  - Portuguese
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: November 2013-present
+    description: |
+      Language extensions for GHC, integration of Haskell with Java
+      and R, distributed algorithms, Cloud Haskell.
+  - employer: Parallel Scientific
+    role: Senior Software Engineer
+    years: December 2011 - November 2013
+    description: |
+      Fault-tolerant distributed algorithms, algorithm verification,
+      Haskell bindings for high-speed networking.
+  - employer: Patchtag
+    role: Senior Software Engineer
+    years: November 2011 - January 2012
+    description: |
+      Maintenance of a web application for hosting darcs repositories
+  - employer: Market Psych
+    role: Senior Software Engineer
+    years: March 2011 - December 2011
+    description: |
+      Maintenance of Happstack-based website, front-end processing algorithms.
+  - employer: Freelancer
+    role: Software Engineer
+    description: |
+      Various clients, web-applications, electronic books with 3D graphics, and others.
+    years: November 2009 - March 2011
+  - employer: Storytron
+    role: Software Engineer
+    description: |
+      Client-server system for creation of interactive stories.
+    years: January 2007 - October 2009
+  - employer: Softmath
+    role: Software Engineer
+    description: |
+      Desktop application for teaching high-school mathematics.
+    years: January 2007 - June 2008
+  - employer: Universidad de la República - Uruguay
+    role: Teaching Assistant
+    description: |
+      Programming 101, classical logic, computability theory.
+    years: September 2001 - February 2007
+  - employer: Active Software
+    role: Software Engineer
+    description: |
+      Error-correction algorithms for optical recognition, a spreadsheet
+      engine for financial applications.
+    years: January 2005 - March 2006
+education:
+  - qualification: Masters
+    name: Computer Science
+    institution: Universidad de la República - Uruguay
+    years: 2006 - 2009
+    description: |
+      thesis title: “HFusion: a fusion tool based on Acid Rain plus extensions”
+  - qualification: Bachelor's Degree
+    name: Computer Engineer
+    institution: Universidad de la República - Uruguay
+    years: 1999 - 2004
+publications:
+  - "M. Boespflug, F. Domínguez, A. Vershilov and A. Brown. Project H: Programming R in Haskell. In 26$^{th}$ Symposium on Implementation and Application of Functional Languages. October 2014. Boston, MA, USA."
+  - "F. Domínguez and A. Pardo. Exploiting algebra/coalgebra duality for program fusion extensions. In 11th Workshop on Language Descriptions, Tools and Applications, 2011. Saarbrücken, Germany. ACM New York. "
+  - "F. Domínguez. Hfusion: a fusion tool based on acid rain plus extensions. Tesis de maestría. Universidad de la República (Uruguay). Facultad de Ingeniería. Instituto de Computación. 2009"
+  - "F. Domínguez and A. Pardo. Automatización de leyes de fusión. In 32nd Conferencia Latinoamericana de Informática, 2006. Santiago, Chile."
+  - "F. Domínguez and A. Pardo. Program Fusion with Paramorphisms. Workshop on Mathematically Structured Functional Programming (MSFP’06) satellite event of the conference MPC/AMAST’06, Kuressaare, Estonia, 2006. Electronic Workshops in Computing (eWiC)."
+talks:
+  - "Typecheck your memory management with linear types. Haskell eXchange 2020. Online."
+  - "QualifiedDo - Customizable do-notation without fuss. Zurihac 2020. Online."
+  - "Connecting the JVM to Haskell. Scalatam 2019, Universidad ORT, Montevideo, Uruguay."
+  - "Implementing inline-*. Haskell eXchange 2018. London, UK."
