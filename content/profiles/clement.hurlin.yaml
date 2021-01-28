@@ -1,0 +1,76 @@
+name: Clément Hurlin
+github: smelc
+bio: |
+  Clément is a Senior Software Engineer and prides himself
+  on applying programming language theory to write beautiful, maintainable,
+  and testable code. Prior to joining Tweag, he worked for over 8 years
+  writing compilers and provers for proving ARM microkernels.
+  Clément studied Computer Science at Telecom Nancy and received his PhD
+  from Université Nice Sophia Antipolis, where he proved multithreaded
+  programs using linear logic.
+
+  Away from the office, Clément can be found reading, developing games,
+  and having a good time with his wife and two kids.
+skills:
+  - OCaml
+  - Haskell
+  - python
+  - Java
+speaks:
+  - French
+  - English
+  - Italian
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: February 2020 - present
+    description: |
+      Working remotely for a French blockchain company, developing
+      alternative client/server protocols, for enhanced performance
+      and security. Core member of the Tezos blockchain.
+
+      Tech: OCaml
+  - employer: Prove & Run
+    role: Research & Development Engineer
+    years: September 2011 - January 2020
+    description: |
+      Worked remotely for a French startup developing
+      a proven microkernel written in a custom first-order functional
+      programming language. Co-authored the compiler and the prover,
+      and developed the company's CI/CD for all products.
+
+      Tech: Java, python, Scala
+  - employer: Université Rennes 1
+    role: Teaching assistant and research assistant
+    years: 2010 - 2011
+    description: |
+      Developed a custom type system for proving the correctness
+      of Java serialization methods.
+  - employer: Inria Bordeaux
+    role: Postdoctoral researcher
+    years: 2009 - 2010
+    description: |
+      Automatic analysis of security policies
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Université Nice Sophia-Antipolis and University of Twente
+    years: 2006 - 2009
+    description: |
+      thesis title: Specification and Verification of Multithreaded Object-Oriented Programs with Separation Logic
+  - qualification: Masters
+    name: Computer Science
+    institution: Université Nancy 1 and Technische Universität München
+    years: 2006
+    description: |
+      thesis title: Practical Proof Reconstruction for First-order Logic and Set-Theoretical Constructions
+publications:
+  - "Afshin Amighi, Christian Haack, Marieke Huisman, Clément Hurlin: Permission-Based Separation Logic for Multithreaded Java Programs. Log. Methods Comput. Sci. 11(1) (2015)"
+  - "Clément Hurlin, Hélène Kirchner: Semi-automatic Synthesis of Security Policies by Invariant-Guided Abduction. Formal Aspects in Security and Trust 2010: 157-175 (2010)"
+  - "Christian Haack, Clément Hurlin: Resource Usage Protocols for Iterators. J. Object Technol. 8(4): 55-83 (2009)"
+  - "Clément Hurlin: Specifying and checking protocols of multithreaded classes. SAC 2009: 587-592"
+  - "Clément Hurlin: Automatic Parallelization and Optimization of Programs by Proof Rewriting. SAS 2009: 52-68"
+  - "Christian Haack, Clément Hurlin: Separation Logic Contracts for a Java-Like Language with Fork/Join. AMAST 2008: 199-215"
+  - "Christian Haack, Marieke Huisman, Clément Hurlin: Reasoning about Java's Reentrant Locks. APLAS 2008: 171-187"
+  - "Clément Hurlin: Specifying Correct Protocols of Multithreaded Java-like Programs. Software Engineering Research and Practice 2008: 127-133"
+  - "Joseph R. Kiniry, Patrice Chalin, Clément Hurlin: Integrating Static Checking and Interactive Verification: Supporting Multiple Theories and Provers in Verification. VSTTE 2005: 153-160"
