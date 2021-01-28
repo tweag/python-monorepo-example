@@ -1,0 +1,304 @@
+name: Steve Purcell
+github: purcell
+bio: |
+  Steve simplifies and optimises software and human systems. With 25
+  years in the industry across many sectors and in roles extending to
+  CTO level, he's still writing code (much of it open source) and
+  excited about good teams delivering useful software products that
+  make customers happy.
+skills:
+  - Haskell
+  - Linux
+  - SQL
+  - Ruby
+  - Python
+  - Products
+  - Many more
+speaks:
+  - English
+  - German
+  - Rusty French
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: Aug 2019-present
+    description: |
+      Working remotely with a global (but primarily European) team
+      helping clients use and adapt advanced open source technologies
+      to improve their software practices.
+
+      - One project for a US-based startup in the cashierless checkout
+        space: Google Cloud, Kubernetes, Python, Rust, Apache Airflow,
+        Docker, Nix, Linux, Tensorflow, OpenCV
+      - Another project for a French blockchain company developing a
+        novel smart contract
+
+  - employer: Look To The Stars
+    role: Founder, CTO and entire technology team
+    years: Feb 2006 – Present
+    description: |
+      Attracting millions of readers each year, this social enterprise
+      website promotes and catalogues the charitable side of
+      high-profile celebrities, encouraging their fans to help make
+      the world a better place.
+
+      Tech: Ruby on Rails, PostgreSQL, Javascript, Bootstrap, nginx,
+      memcached, varnish, SEO, Linux, Stripe payments
+
+  - employer: BucketLabs
+    role: Co-Founder, CTO
+    years: Sep 2018 – Aug 2019
+    location: Wellington, New Zealand
+    description: |
+      A startup building software visualisation solutions to help
+      cities better understand their spaces, population and
+      environment. Working with local government and commercial data
+      providers in New Zealand.
+
+      Tech: Haskell, Purescript, React, Javascript,
+      PostgreSQL, PostGIS, AWS, Terraform
+  - employer: Choice
+    role: Software Development Advisor
+    years: Sep 2018 – Jun 2019
+    location: Wellington, New Zealand
+    description: |
+      I provided security and architectural reviews for this
+      innovative payment provider's software development team, and
+      guidance on best practices.
+
+      Tech: Ruby on Rails, PostgreSQL, Banking APIs, Heroku
+  - employer: NEC New Zealand Limited
+    role: Lead Software Architect, Smart City Solutions
+    years: Aug 2017 – Aug 2018
+    location: Wellington, New Zealand
+    description: |
+      We built a platform to provide local governments with data and
+      insights that can help them plan more effectively. With networks
+      of innovative sensors for vehicular and pedestrian traffic, air
+      quality and more, we gathered data that cities could combine
+      with their own geographical datasets and then freely analyse and
+      intuitively visualise the results in 2D and VR.
+
+      I helped the team make great technical decisions so that our
+      software could grow smoothly with our customers' needs and run
+      reliably, leaving us to focus on enabling our customers to serve
+      their citizens. I also wrote a big chunk of the software myself,
+      while coaching the less experienced developers, and took care of
+      setting up a highly available CI and deployment environment.
+
+      The business unit was de-funded by NEC Global and ceased work in
+      August 2018. The software is still in use by customers.
+
+      Tech: PostgreSQL, PostGIS, Haskell, Elm, Rust, AWS, Docker, Terraform,
+      Ruby on Rails, Javascript, IoT, Rust, Linux
+  - employer: Powershop NZ Ltd
+    role: Development Practice Manager
+    years: Dec 2016 – Aug 2017
+    location: Wellington, New Zealand
+    description: |
+      Working across Powershop's delivery team of 80+ developers
+      and testers, I was responsible for aligning our development
+      skills and practices with the immediate and long-term
+      interests of our business.
+      Key activities in this role were:
+       - Involvement across the business to understand current and future development needs
+       - Introducing practices and technology which increase efficiency and software quality
+       - Working with teams to experiment and improve the way they develop software
+       - Overseeing the selection and technical onboarding of outstanding new hires
+       - Championing a collaborative learning culture inside and beyond Powershop
+       - Helping individuals grow in their software careers …
+
+  - employer: Powershop NZ Ltd
+    role: Software Development Manager
+    years: Jun 2015 – Dec 2016
+    location: Wellington, New Zealand
+    description: |
+      I helped to build and support several teams of talented and
+      friendly software developers who were happy, productive and
+      growing both professionally and personally as they worked
+      closely together to bring Powershop to more customers.
+
+      This has involved hands-on training and mentoring, delivery
+      process curation, hiring 30+ outstanding developers, line
+      management of up to 20 developers, career planning and more.
+
+  - employer: Hello2morrow GmbH
+    role: Open Source Technology Consultant
+    years: Jan 2008 – 2016
+    description: |
+      I laid the foundations for a Ruby on Rails rewrite of
+      Hello2morrow's product website in order to improve customer
+      service levels, Google profile, reporting, and sales conversion
+      rate. I continue to manage the hosting and production
+      infrastructure, and occasionally provide further consulting and
+      development assistance.
+
+      Key technologies: Ruby on Rails, PostgreSQL, SOAP, Javascript, Linux
+
+  - employer: Equal Experts
+    role: Agile Delivery Consultant
+    years: 2015
+    Location: United Kingdom
+    description: |
+      Helping clients' high-value software projects succeed by
+      applying my technical and organisational experience.
+
+      - Assisted a large struggling Agile programme in the public
+        sector at the request of its governance, by interviewing staff
+        and reviewing planned work, then providing a report with
+        concrete organisational and process suggestions which have
+        since allowed the project to make drastically better progress.
+      - Reviewed the technology choices and working practices of that
+        same project from the bottom up, providing technical
+        recommendations to reduce vendor lock-in and accelerate
+        development.
+  - employer: RSK Orbital
+    role: Open Source Technology Consultant
+    years: Jan 2013 – Aug 2014
+    location: United Kingdom
+    description: |
+      Provided architectural and development guidance in the
+      transition of a flagship product from a Microsoft-based stack to
+      a fully open-source Linux platform.
+
+      Tech: PostgreSQL+PostGIS, Javascript, AngularJS, React.js, node.js,
+      nginx, haproxy.
+
+  - employer: RetentionGrid
+    role: Ruby on Rails Consultant
+    years: Oct 2013 – Feb 2014
+    location: Berlin, Germany
+    description: |
+      Provided assistance with the construction of an innovative tool
+      for retention marketing. Redesigned and tuned complex back-end
+      code to provide acceptable performance, adapting front end code
+      where appropriate.
+
+      Tech: Ruby on Rails, PostgreSQL, Linux, Javascript, HTML5
+
+  - employer: Autoscout24
+    role: Engineering Team Lead
+    years: Jul 2006 – May 2009
+    location: Munich, Germany
+    description: |
+      This mature German-based web business planned an ambitious new Ruby
+      on Rails project to replace its CRM solution, and sought the support
+      of a proven Rails expert. With my help, on a long-term contract
+      basis, we hired and grew a strong team, and built what was probably
+      the largest Rails app in Europe at the time.
+
+      Tech: Ruby on Rails, PostgreSQL, SOAP, Javascript, Linux
+
+  - employer: Royal Bank of Scotland
+    role: Software Consultant
+    years: 2006
+    location: London, United Kingdom
+    description: |
+      Brought in by former colleagues to assist their team in meeting the
+      delivery deadline for the Market/Static Data component of a new
+      Credit Derivatives trading platform.
+
+      Tech: Java, Spring, Oracle
+
+  - employer: Sproglogs.com
+    role: Founder
+    years: 2005 – 2006
+    description: |
+      I built a commercial website to help parents around the world
+      keep an online log of their child's early years and safely share
+      that log with friends and relatives. I took care of everything,
+      from graphic design and marketing to software development,
+      accounting and customer support.
+
+      Key technologies: Ruby on Rails, Javascript, Linux, PostgreSQL
+
+  - employer: BNP Paribas
+    role: Senior Software Consultant
+    years: Dec 2004 – May 2005
+    location: London, United Kingdom
+    description: |
+      I worked in a close-knit Extreme Programming team writing a new
+      system to consolidate bond static data from multiple sources and
+      feed it to upstream systems. The project was wildly successful,
+      and may inadvertently have contributed to the 2007 financial
+      crisis.
+
+      Tech: Linux, Java, Oracle, Sybase, Hibernate
+
+  - employer: ThoughtWorks
+    role: Senior Architect & Agile Consultant
+    years: Mar 2003 – Oct 2004
+    location: London, United Kingdom
+    description: |
+      As a senior technologist with the élite consultancy ThoughtWorks
+      I was able to help a number of very different organisations to
+      build better software faster. My work ranged from pure
+      consultancy to agile (XP) process coaching, architecture and
+      some hands-on development.
+
+      Tech: Java, Python, Linux
+
+  - employer: Publishers Market AG
+    role: Technical Lead
+    years: 2000 – 2002
+    location: Munich, Germany
+    description: |
+      I built the core of this company's web-based ASP platform for
+      the German print publishing industry, and grew & led a team of
+      developers that nurtured the platform to go-live and beyond.
+
+      Tech: Java, Linux, Web, Enhydra, PostgreSQL, Oracle
+
+  - employer: Inkontact
+    role: Co-Founder and CTO
+    years: 2000
+    location: Sydney, Australia
+    description: |
+      I helped grow this Sydney-based Web/WAP start-up to 15 people
+      before the internet bubble burst. I spent much of my time
+      selling the concept to investors and prospective partners.
+
+      Tech: Java / J2EE, Linux, Web, WAP, Linux
+  - employer: Websentric
+    role: Software developer
+    years: 1998 – 2000
+    location: Munich, Germany
+    description: |
+      Helped develop a pure-Java PowerPoint clone using the earliest
+      available versions of Swing.
+
+      This was part of an ambitious effort to build a web-based
+      presentation conferencing solution which worked on the
+      then-current Netscape and Internet Explorer platforms, complete
+      with synchronized audio and audience feedback. The company's
+      lunch was ultimately eaten by WebEx.
+
+  - employer: TIBCO
+    role: Software Consultant
+    years: 1996 – 1998
+    location: Luxembourg
+    description: |
+      Carried out intensive integration testing and bug fixing in the
+      course of deploying the bank's brand new real-time settlement
+      system, a suite of aggressively multi-threaded distributed C++
+      applications. Was credited with allowing the system to achieve
+      the stability it required for its mission-critical role.
+
+      Tech: C++, ClearCase, Solaris, Unix, Java, Oracle, Perl
+
+  - employer: Real Time Control
+    role: Software Engineer
+    years: 1995 – 1996
+    location: Watford, United Kingdom
+    description: |
+      Helped re-architect and modernise a Windows Point-of-Sale
+      software suite used by major nationwide retail clients such as
+      House of Fraser. Tasks included porting a 16-bit TCL interpreter
+      written in C to 32-bit, building new COM controls in C++, and
+      putting in place an easily-customisable VB front-end.
+
+education:
+  - qualification: BSc. (hons)
+    name: Theoretical Physics
+    institution: Lancaster University
+    years: 1992 - 1995
