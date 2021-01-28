@@ -1,0 +1,32 @@
+name: Mark Karpov
+github: mrkkrp
+bio: |
+  Mark is a software engineer specializing in functional programming using
+  strong static type systems. As a consultant he helps clients design and
+  build correct, robust, and maintainable software. Having started in the
+  industry as a Haskell developer, he has gradually mastered many other
+  skills such as Nix, DevOps, and Bazel build system. His personal projects
+  include high-profile Haskell libraries, tutorials, and a technical blog.
+skills:
+  - Haskell
+  - Nix
+  - DevOps
+  - Bazel
+speaks:
+  - English
+  - French
+  - Russian
+experience:
+  - employer: Tweag
+    role: Software engineer
+    years: 2018-present
+    description:
+  - employer: Stack Builders
+    role: Haskell developer
+    years: 2016-2017
+    description:
+education:
+  - qualification: Engineer
+    name: Informational technology and measuring engineering
+    years: 2009-2014
+    description:
