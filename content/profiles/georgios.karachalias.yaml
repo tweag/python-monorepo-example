@@ -1,0 +1,62 @@
+name: Georgios Karachalias
+github: gkaracha
+bio: |
+  Georgios is a Software Engineer with expertise in the design and
+  implementation of functional programming languages. Prior to joining Tweag,
+  he was in academia; during that time he designed extensions to Haskell, made
+  contributions to GHC, and published his research to top conferences, such as
+  ICFP and Haskell Symposium. He holds an MSc in Electrical and Computer
+  Engineering from the National Technical University of Athens, and a PhD and
+  postdoctorate from KU Leuven. Outside of work, Georgios enjoys reading books,
+  carving wooden pipes, and hiking in forests and mountains with his wife and
+  their dog.
+skills:
+  - Haskell
+  - OCaml
+  - Functional programming
+  - Static typing
+speaks:
+  - English
+  - Greek
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2020 - present
+    description: |
+      Made contributions to the Haskell-to-WebAssembly compiler, Asterius, and
+      worked with Tweag's clients.
+  - employer: KU Leuven
+    role: Postdoctoral researcher
+    years: 2019 - 2020
+    description: |
+      Conducted and published research on state-of-the-art type systems,
+      provided daily advice to MSc students, PhD students, and student interns,
+      delivered lectures on Haskell, composed and submitted funding
+      applications.
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: KU Leuven
+    years: 2014 - 2018
+    description: |
+      thesis title: "Extensions to Type Classes and Pattern Match Checking"
+  - qualification: Masters
+    name: Computer Science
+    institution: National Technical University of Athens
+    years: 2007 - 2013
+    description: |
+      thesis title: "Pattern Matching Exhaustiveness for GADTs"
+publications:
+  - "Koar Marntirosian, Tom Schrijvers, Bruno C. d. S. Oliveira, and Georgios Karachalias. Resolution as Intersection Subtyping via Modus Ponens. In Proc. ACM Program. Lang. 4, OOPSLA, Article 206 (Nov. 2020), 2020."
+  - "Georgios Karachalias, Matija Pretnar, Amr Hany Saleh, Stien Vanderhallen, and Tom Schrijvers. Explicit Effect Subtyping. In Journal of Functional Programming (JFP), 2020."
+  - "Koen Pauwels, Georgios Karachalias, Michiel Derhaeg, and Tom Schrijvers. Bidirectional Type Class Instances. In Proceedings of the 12th ACM SIGPLAN International Haskell Symposium (Haskell '19), Berlin, Germany, 2019."
+  - "Amr Hany Saleh, Georgios Karachalias, Matija Pretnar, and Tom Schrijvers. Explicit Effect Subtyping. In Proceedings of the 27th European Symposium on Programming (ESOP '18), Thessaloniki, Greece, 2018."
+  - "Georgios Karachalias and Tom Schrijvers. Elaboration on Functional Dependencies: Functional Dependencies Are Dead, Long Live Functional Dependencies! In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
+  - "Gert-Jan Bottu, Georgios Karachalias, Tom Schrijvers, Bruno C. d. S. Oliveira and Philip Wadler. Quantified Class Constraints. In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
+  - "Georgios Karachalias, Tom Schrijvers, Dimitrios Vytiniotis and Simon Peyton Jones. GADTs Meet Their Match: Pattern-matching Warnings That Account for GADTs, Guards, and Laziness. In Proceedings of the 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2015."
+talks:
+  - "Functional Dependencies in Haskell, Leuven Haskell User Group Meeting, KU Leuven, Belgium, 1 March, 2016."
+  - "Functional Dependencies in System FC, Dutch Functional Programming Day, Utrecht University, The Netherlands, 8 January, 2016."
+  - "GADTs Meet Their Match, 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2 September, 2015."
+  - "GADTs Meet Their Match, Leuven Haskell User Group Meeting, KU Leuven, Belgium, 19 May, 2015."
+  - "Reasoning about GADT Pattern Matching in Haskell (invited talk), Microsoft Research Cambridge, UK, 22 October, 2014."
