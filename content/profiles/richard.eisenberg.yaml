@@ -75,7 +75,7 @@ education:
     name: Physics
     institution: Harvard University
     years: 1999-2003
-    
+
 publications:
   - "P. Choudhury, H. Eades III, R. A. Eisenberg, and S. Weirich. A Graded Dependent Type System with a Usage-Aware Semantics. In Proceedings of the ACM on Programming Languages, Vol. 5, Issue POPL (POPL '21), ACM, 2021. Article 50, 32 pages."
   - "P. Downen, Z. M. Ariola, S. Peyton Jones, R. A. Eisenberg. Kinds are Calling Conventions. In Proceedings of the ACM on Programming Languages, Vol. 4, Issue ICFP (ICFP '20), ACM, 2020. Article 104, 29 pages."
@@ -128,12 +128,3 @@ talks:
   - "System FC with Explicit Kind Equality. ICFP, Sept. 2013, Boston, MA, USA"
   - "GeneralizedNewtypeDeriving is now Type-safe: How Roles Save the Day. Haskell Implementors' Workshop, Sept. 2013, Boston, MA, USA"
   - "Dependently Typed Programming with Singletons. Haskell Symposium, Sept. 2012, Copenhagen, Denmark"
-
-
-
-
-
-
-
-
-
