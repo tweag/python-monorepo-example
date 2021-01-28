@@ -1,0 +1,50 @@
+name: Sjoerd Visscher
+github: sjoerdvisscher
+bio: |
+  Sjoerd has been an active member of the Haskell community since about 2008
+  and has created several packages, mainly in the area of generic programming.
+  Sjoerd studied applied math at the University of Twente but quit after 2
+  years in 1998 because he found the internet more interesting. Math has been
+  a hobby of his ever since, and these days he is mostly interested in
+  category theory and its implications on API design and code reuse. When he
+  is not working, Sjoerd is bouldering (inside because there aren’t any big
+  enough natural boulders in the Netherlands) and sings in a choir. He also
+  sometimes composes music and has designed his own isomorphic keyboard.
+  Sjoerd lives currently in The Hague with his wife and 2 cats.
+skills:
+  - Haskell
+  - PureScript
+  - TypeScript
+  - HTML/CSS
+  - Bazel
+speaks:
+  - Dutch
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2020-present
+  - employer: Statebox
+    role: Software Engineer
+    years: 2019-2020
+  - employer: Q42
+    role: Software Engineer
+    years: 2012-2019
+  - employer: SDL
+    role: Software Engineer
+    years: 2010-2012
+  - employer: Xopus
+    role: Software Engineer
+    years: 2009-2010
+  - employer: Q42
+    role: Software Engineer
+    years: 2001-2008
+  - employer: Locosoft B.V.
+    role: Software Engineer
+    years: 1997-2000
+education:
+  - qualification: DNF
+    name: Applied Mathmatics
+    institution: University of Twente
+    years: 1995-1997
+    description: Did Not Finish
