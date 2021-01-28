@@ -1,0 +1,55 @@
+name: Juan Raphael Diaz Simões
+github: guaraqe
+bio: |
+  Juan is a sofware engineer who supports mainly Haskell and Nix projects at
+  Tweag, but is not afraid of working with any kind of technology clients are
+  willing to use, from SQL to Python to Javascript. He is also an editor for
+  Tweag's blog, helping writers on both content and presentation. Prior to
+  joining Tweag, Juan was in academia where he worked among biologists,
+  physicists and computer scientists on the embryogenesis of multiple model
+  animals, researching physical and computational problems. He has a PhD from
+  the Université Paris-Saclay and a MSc from the École Polytechnique, both on
+  complex systems science.
+skills:
+  - Haskell
+  - Nix
+  - Terraform
+speaks:
+  - English
+  - French
+  - Portuguese
+  - Spanish
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: September 2018 - Present
+    description: |
+      Client projects:
+      - Infrastructure for developers using Nix and Terraform.
+      - Performance optimization, refactoring and maintenance of financial Haskell software.
+      - Creation of a Haskell/React/PostgreSQL software for a logistics company.
+      Internal projects:
+      - Blog post edition.
+      - Maintenance of JupyterWith.
+  - employer: École Polytechnique
+    role: Research Engineer
+    years: April 2018 - August 2018
+  - employer: CNRS
+    role: Research Engineer
+    years: November 2017 - March 2018
+education:
+  - qualification: PhD
+    name: Complex Systems Science
+    institution: Université Paris-Saclay
+    years: 2013 - 2017
+    description: |
+      Thesis: A mathematical approach to embryonic morphogenesis based on spatio-temporal cell lineages
+  - qualification: Masters
+    name: Complex Systems Science
+    institution: École Polytechnique
+    years: 2010 - 2013
+    description: |
+      Thesis: Generalized Langevin equations driven by fractional Brownian noise
+publications:
+  - "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Brownian-like deviation of neighboring cells in the early embryogenesis of the zebrafish. In Physical Biology, February 2019"
+  - "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Cell Trajectory Clustering: Towards the Automated Identification of Morphogenetic Fields in Animal Embryogenesis. In ICPRAM 2017 Proceedings – February 2017"
