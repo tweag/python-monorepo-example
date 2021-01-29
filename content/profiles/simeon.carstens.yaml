@@ -1,0 +1,78 @@
+name: Simeon Carstens
+github: simeoncarstens
+bio:
+skills:
+  - Bayesian statistics
+  - Probabilistic programming
+  - Machine learning
+  - Python
+  - Data engineering
+  - Google Cloud Platform
+  - Bioinformatics
+speaks:
+  - German
+  - English
+  - French
+  - Basic Italian
+experience:
+  - employer: Tweag
+    role: Data Scientist
+    years: May 2019-present
+    location: Paris, France
+    description: |
+      One project for a US-based startup, working on data engineering
+      topics and statistical data analysis using Hidden Markov Models.
+      Since Dec 2020: leading the data science team.
+      Publication of didactic blog posts about Markov chain Monte Carlo
+      sampling and presentations on diverse subjects in Bayesian
+      statistics.
+
+  - employer: Max Planck Institute for Biophysical Chemistry
+    role: Postdoctoral researcher
+    years: May 2017 – Sep 2018
+    location: Göttingen, Germany
+    description: |
+      Research on a topic in computational structural biology involving
+      Bayesian inference, Python software development, high-performance
+      computing and chromosome biology
+
+  - employer: New York University
+    role: Postdoctoral researcher
+    years: Apr 2016-Mar 2017
+    location: New York City, United States
+    description: |
+      Research on topics in the biophysics of the cell nucleus involving
+      MATLAB, analysis of high-resolution microscopy images, and
+      mentoring of students
+
+  - employer: Institut Pasteur
+    role: PhD student
+    years: Jan 2013-Mar 2016
+    location: Paris, France
+    description: |
+      - Research on a topic in computational structural biology incolving
+        Bayesian inference, Python software development, high-performance
+        computing and chromosome biology
+      - Research on Markov chain Monte Carlo methods
+
+  - employer: Max Planck Institutes for Developmental Biology
+    role: PhD student
+    years: Nov 2011-Dec 2012
+    location: Tübingen, Germany
+    description: |
+      - Research on Markov chain Monte Carlo methods
+
+education:
+  - qualification: PhD
+    name: Computational Biology
+    institution: Technische Universität München
+    years: 2012-2016
+  - qualification: Diplom (equivalent to MSc)
+    name: Physics
+    institution: Eberhard Karls Universitat Tübingen
+    years: 2005-2011
+
+publications:
+  - "Simeon Carstens, Michael Nilges, and Michael Habeck: Bayesian inference of chromatin structure ensembles from population-averaged contact data. Proceedings of the National Academy of Sciences Apr 2020, 117 (14) 7824-7830"
+  - "Simeon Carstens, Michael Nilges, and Michael Habeck: Inferential Structure Determination of Chromosomes from Single-Cell Hi-C Data. PLOS Computational Biology, 12(12):e1005292, 2016"
+  - "Ivan Kalev, Martin Mechelke, Klaus O. Kopec, Thomas Holder, Simeon Carstens, and Michael Habeck. CSB: a Python framework for structural bioinformatics. Bioinformatics, 28(22):2996-2997, 2012"
