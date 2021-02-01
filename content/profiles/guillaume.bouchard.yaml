@@ -43,21 +43,21 @@ experience:
     role: R&D Software Engineer / PhD Student
     years: 2010 - 2013
     description: |
-       I tried to solve the problem of rendering in the highly specular context of automotive lamps.
+      I tried to solve the problem of rendering in the highly specular context of automotive lamps.
 
-       - Core developer of https://luxcorerender.org/
-       - C++ / Python / OpenCL / OpenGL
+      - Core developer of https://luxcorerender.org/
+      - C++ / Python / OpenCL / OpenGL
 
   - employer: Various University
     role: Teacher
     years: 2008 - present
     description: |
-        - Gamagora. M2. (Lyon 3): Advanced computer graphics, realtime and simulation for game developers.
-        - Icom. M1 & L3. (Lyon 3): Introduction to computer graphics for artists (with blender).
-        - UCBL (Lyon 1): Compilation (M2), Operating System (M2), Advanced programming with C++ (L3), Proof and functional programming (M1), Computer graphics (M2), Calculability (M1), Shell programming (L3), ...
-        - ENS Lyon: Programming course (I was supporting student in their journey through many programming languages, including C++, Rust, Haskell, Java, PHP, Python, OCaml, ... I wrote the Haskell course).
-        - Lyon CPU: Realtime computer graphics introduction.
-        - IUT Lyon: Introduction to computer graphics.
+      - Gamagora. M2. (Lyon 3): Advanced computer graphics, realtime and simulation for game developers.
+      - Icom. M1 & L3. (Lyon 3): Introduction to computer graphics for artists (with blender).
+      - UCBL (Lyon 1): Compilation (M2), Operating System (M2), Advanced programming with C++ (L3), Proof and functional programming (M1), Computer graphics (M2), Calculability (M1), Shell programming (L3), ...
+      - ENS Lyon: Programming course (I was supporting student in their journey through many programming languages, including C++, Rust, Haskell, Java, PHP, Python, OCaml, ... I wrote the Haskell course).
+      - Lyon CPU: Realtime computer graphics introduction.
+      - IUT Lyon: Introduction to computer graphics.
 
 education:
   - qualification: PhD
@@ -70,14 +70,13 @@ education:
     name: Computer Science / Computer Graphics
     institution: Université Claude Bernard Lyon 1
     years: 2009
-    description:
-        Realtime visualization of near field light acquisition
+    description: Realtime visualization of near field light acquisition
   - qualification: Engineering
     name: Computer Science
     institution: INSA Lyon
     years: 2009
 
 publications:
-    - Hachisuka, T., Jarosz, W., Bouchard, G., Christensen, P., Frisvad, J.R., Jakob, W., Jensen, H.W., Kaschalk, M., Knaus, C., Selle, A. and Spencer, B., 2012. State of the art in photon density estimation. In Acm Siggraph 2012 Courses.
-    - Bouchard, G., Iehl, J.C., Ostromoukhov, V. and Poulin, P., 2013. Improving robustness of monte-carlo global illumination with directional regularization. In SIGGRAPH Asia 2013 Technical Briefs.
-    - Bouchard, G., Iehl, J.C., Ostromoukhov, V., Péroche, B., Albin, S., Guenegou, R. and Uson, C., 2012. Specular BSDF Approximation for Efficient Specular Scene Rendering. In ILISIS 2012 Technical Papers.
+  - Hachisuka, T., Jarosz, W., Bouchard, G., Christensen, P., Frisvad, J.R., Jakob, W., Jensen, H.W., Kaschalk, M., Knaus, C., Selle, A. and Spencer, B., 2012. State of the art in photon density estimation. In Acm Siggraph 2012 Courses.
+  - Bouchard, G., Iehl, J.C., Ostromoukhov, V. and Poulin, P., 2013. Improving robustness of monte-carlo global illumination with directional regularization. In SIGGRAPH Asia 2013 Technical Briefs.
+  - Bouchard, G., Iehl, J.C., Ostromoukhov, V., Péroche, B., Albin, S., Guenegou, R. and Uson, C., 2012. Specular BSDF Approximation for Efficient Specular Scene Rendering. In ILISIS 2012 Technical Papers.
