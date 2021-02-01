@@ -27,7 +27,6 @@ experience:
         - Design & development of an eDSL for code generation of robust drone-control code
         - Design & development of flight critical embedded and ground control UI.
 
-experience:
   - employer: Mercenaries Engineering
     role: R&D Software Engineer
     years: June 2014 - May 2018
@@ -40,7 +39,6 @@ experience:
         - Optimisations of algorithms in a high CPU / Memory context
         - Adaptive sampling, bidirectional path tracing, realtime path tracing for viewport, stereoscopic rendering optimisations, noise filtering, "(Huge) Many lights" optimisations, sub surface scattering.
 
-experience:
   - employer: Valeo Lighting Systems
     role: R&D Software Engineer / PhD Student
     years: 2010 - 2013
@@ -50,7 +48,6 @@ experience:
        - Core developer of https://luxcorerender.org/
        - C++ / Python / OpenCL / OpenGL
 
-experience:
   - employer: Various University
     role: Teacher
     years: 2008 - present
