@@ -1,0 +1,82 @@
+name: Guillaume Bouchard
+github: guibou
+bio:
+
+skills:
+  - Haskell
+  - C++
+  - Python
+  - Nix / NixOS
+  - OpenGL / OpenCL / Cuda
+  - Graphical programming
+
+speaks:
+  - French
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: June 2018 - present
+    description: |
+      Working on various client projects, including KittyHawk.aero.
+
+        - Full configuration of a reproducible build environment with Nix / Bazel
+        - Quality process enhancements
+        - Multiples languages (Haskell, C++, Python, C, Bash) as well as cross compilation
+        - Design & development of an eDSL for code generation of robust drone-control code
+        - Design & development of flight critical embedded and ground control UI.
+
+  - employer: Mercenaries Engineering
+    role: R&D Software Engineer
+    years: June 2014 - May 2018
+    description: |
+      Transition of a computer graphics production rendering engine from a rasterization architecture to a modern (bidirectional) path tracing.
+
+        - C++ / Python / Haskell / Lua / OpenGL / OpenCL
+        - Setup of an integration test pipeline with statistic tests to track image differences in a stochastic context
+        - Full rewrite of a new bidirectional path tracing engine, used in production for major motion pictures
+        - Optimisations of algorithms in a high CPU / Memory context
+        - Adaptive sampling, bidirectional path tracing, realtime path tracing for viewport, stereoscopic rendering optimisations, noise filtering, "(Huge) Many lights" optimisations, sub surface scattering.
+
+  - employer: Valeo Lighting Systems
+    role: R&D Software Engineer / PhD Student
+    years: 2010 - 2013
+    description: |
+      I tried to solve the problem of rendering in the highly specular context of automotive lamps.
+
+      - Core developer of https://luxcorerender.org/
+      - C++ / Python / OpenCL / OpenGL
+
+  - employer: Various University
+    role: Teacher
+    years: 2008 - present
+    description: |
+      - Gamagora. M2. (Lyon 3): Advanced computer graphics, realtime and simulation for game developers.
+      - Icom. M1 & L3. (Lyon 3): Introduction to computer graphics for artists (with blender).
+      - UCBL (Lyon 1): Compilation (M2), Operating System (M2), Advanced programming with C++ (L3), Proof and functional programming (M1), Computer graphics (M2), Calculability (M1), Shell programming (L3), ...
+      - ENS Lyon: Programming course (I was supporting student in their journey through many programming languages, including C++, Rust, Haskell, Java, PHP, Python, OCaml, ... I wrote the Haskell course).
+      - Lyon CPU: Realtime computer graphics introduction.
+      - IUT Lyon: Introduction to computer graphics.
+
+education:
+  - qualification: PhD
+    name: Computer Science / Computer Graphics
+    institution: Université Claude Bernard Lyon 1
+    years: 2009-2014
+    description: |
+      thesis title: Physically Based Image Rendering in an Highly Specular Context
+  - qualification: Masters
+    name: Computer Science / Computer Graphics
+    institution: Université Claude Bernard Lyon 1
+    years: 2009
+    description: Realtime visualization of near field light acquisition
+  - qualification: Engineering
+    name: Computer Science
+    institution: INSA Lyon
+    years: 2009
+
+publications:
+  - Hachisuka, T., Jarosz, W., Bouchard, G., Christensen, P., Frisvad, J.R., Jakob, W., Jensen, H.W., Kaschalk, M., Knaus, C., Selle, A. and Spencer, B., 2012. State of the art in photon density estimation. In Acm Siggraph 2012 Courses.
+  - Bouchard, G., Iehl, J.C., Ostromoukhov, V. and Poulin, P., 2013. Improving robustness of monte-carlo global illumination with directional regularization. In SIGGRAPH Asia 2013 Technical Briefs.
+  - Bouchard, G., Iehl, J.C., Ostromoukhov, V., Péroche, B., Albin, S., Guenegou, R. and Uson, C., 2012. Specular BSDF Approximation for Efficient Specular Scene Rendering. In ILISIS 2012 Technical Papers.
