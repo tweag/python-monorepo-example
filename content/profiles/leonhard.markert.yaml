@@ -1,0 +1,67 @@
+name: Leonhard Markert
+github: curiousleo
+bio: |
+  Leonhard enjoys building and helping others build foundational software and
+  APIs where correctness, maintainability, observability and performance
+  matter.
+skills:
+  - JVM
+  - Rust
+  - Haskell
+  - distributed systems architecture
+speaks:
+  - English
+  - German
+  - French (limited working proficiency)
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: September 2019-present
+    description:
+      - Extended lorri, a Nix-based reproducible development environment setup tool in Rust
+      - Helped reboot random, Haskell's pseudo-random number generation library
+      - JVM/distributed system benchmarking and optimisation
+  - employer: Improbable
+    role: Software Engineer
+    years: September 2015-March 2019
+    description:
+      - Distributed system design and implementation
+      - API and protocol design for performance, compatibility and ease of use
+      - JVM and Linux monitoring, benchmarking and optimisation
+      - Cloud deployment and orchestration
+
+      - Worked on requirements gathering, technical design and implementation
+        as software engineer and tech lead
+      - Supported product managers in customer meetings by clearly
+        communicating options
+      - Supported project managers by providing technical assessments and
+        estimates
+      - Mentored new joiners and interns
+      - Co-organised internal knowledge sharing sessions
+      - Conducted technical and behavioural interviews with applicants for
+        engineering and managerial positions
+  - employer: TNG Technology Consulting
+    role: Junior Consultant
+    years: July 2013-September 2013
+    description:
+      - Built a distributed key-value store based on structured voting schemes
+        as a proof of concept for my mentor’s doctoral dissertation,
+        "Specification and Analytical Evaluation of Heterogeneous Dynamic
+        Quorum-Based Data Replication Schemes".
+  - employer: Cambridge CMOS Sensors
+    role: Intern
+    years: June 2011-August 2011 and December 2011
+    description:
+      - Developed a plotting GUI in Python that showed measurements taken by a
+        microcontroller and transmitted via a serial port, and set up a
+        packaging toolchain using SetupTools and PyInstaller.
+education:
+  - qualification: MEng
+    name: Computer Science
+    institution: The University of Cambridge
+    years: 2010-2015
+    description:
+      - interactive theorem proving
+      - functional programming
+      - category theory and logic
+
