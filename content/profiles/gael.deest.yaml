@@ -1,0 +1,56 @@
+name: Gaël Deest
+github: gdeest
+bio: |
+
+  Gaël is a versatile software engineer with a background compilers, signal
+  processing and hardware design. Before joining Tweag, he received a PhD from
+  the University of Rennes 1, where he applied polyhedral compilation techniques
+  to the automation of Design-Space Exploration for FPGA accelerators.
+
+  In his spare time, Gaël can be found playing the piano, taking care of his
+  dogs, cooking or growing vegetables.
+
+skills:
+  - Haskell
+  - PureScript
+  - OCaml
+  - Nix
+  - Terraform / AWS
+
+speaks:
+  - French
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: June 2017 - present
+    description: |
+      Working on various client projects:
+
+      - Modelling distributed transaction algorithms and in-situ processing for
+        next-generation storage clusters.
+      - Deploying a commercial blockchain platform in the cloud.
+      - Migrating a polyglot monorepo to Bazel.
+      - Developing a new supply-chain solution for customs brokerage.
+
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Université de Rennes 1
+    years: 2013-2017
+    description: |
+      thesis title: Implementation trade-offs for FPGA accelerators
+  - qualification: Masters
+    name: Computer Science
+    institution: Université de Rennes 1
+    years: 2011
+    description: |
+      thesis title: Scalable analytical accuracy models for fixed-point arithmetic implementations
+
+publications:
+  - "Gaël Deest: Implementation Trade-Offs for FGPA accelerators. University of Rennes 1, France, 2017"
+  - "Gaël Deest, Tomofumi Yuki, Sanjay V. Rajopadhye, Steven Derrien: One size does not fit all: Implementation trade-offs for iterative stencil computations on FPGAs. FPL 2017: 1-8"
+  - "Nicolas Estibals, Gaël Deest, Ali Hassan El Moussawi, Steven Derrien: System level synthesis for virtual memory enabled hardware threads. DATE 2016: 738-743"
+  - "Gaël Deest, Tomofumi Yuki, Olivier Sentieys, Steven Derrien: Toward scalable source level accuracy analysis for floating-point to fixed-point conversion. ICCAD 2014: 726-733"
+  - "Rodolphe Gonzales, Jeffrey A. Cardille, Lael Parrott, Caroline Gaudreau, Gaël Deest: SFMN GeoSearch: An interactive approach to the visualization and exchange of point-based ecological data. Ecol. Informatics 4(4): 196-205 (2009)"
