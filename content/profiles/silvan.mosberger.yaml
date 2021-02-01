@@ -1,0 +1,42 @@
+name: Silvan Mosberger
+github: infinisil
+bio: |
+  Silvan is an active member of the Nix community, specializing in NixOS
+  modules and deployment, Nix internals and state-of-the-art improvements.
+  His go-to language for programming is Haskell, which was also used for his
+  Thesis for the Bachelor in Computer Science at ETH in Zurich.
+skills:
+  - Nix
+  - NixOS
+  - Haskell
+  - Functional Programming
+  - DevOps
+  - Docker
+speaks:
+  - German
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: September 2020-present
+    description: |
+      - Created the foundation for a Nix dependency management system between multiple parties
+      - Made a number of improvements to the NixOS module system
+      - Debugged and refactored Nix problems
+  - employer: Niteo
+    role: Nix Mentor/Support
+    years: November 2019-present
+    description: |
+      - Nix mentoring and support
+      - Installed and debugged NixOS installations on twenty different hosting providers
+      - Debugged and fixed Nix problems relating to especially Python
+      - Developed a prototype for an auto-rollback deployment system
+      - Created a system for continuously updated Nix Docker base images
+education:
+  - qualification: Bachelor
+    name: Computer Science
+    institution: ETHZ
+    years: 2015 - 2020
+    description: |
+      thesis title: "Arvy Heuristics for Distributed Mutual Exclusion"
+publications:
