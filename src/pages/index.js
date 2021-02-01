@@ -112,8 +112,8 @@ const IndexPage = ({ data, location }) => {
               <div className="text-wrap">
                 <p className="title">
                   At Tweag, we drive purposeful innovation through lasting
-                  software. We apply mathematics, computer science and open
-                  source methodologies to advance software engineering.
+                  software. We apply mathematics, computer science and the
+                  methods of open source to advance software engineering.
                 </p>
               </div>
               <div
