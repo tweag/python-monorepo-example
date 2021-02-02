@@ -55,3 +55,6 @@ education:
 publications:
   - "Dorran Howell, Matthias Meschede, Guillaume Desforges. 2021, Funflow2: Functional data pipelines with controlled effects: The 4th International Conference on Emerging Data and Industry 4.0 (in review)."
   - "Lara S. Wagner, Karen M. Fischer, Robert Hawman, Emily Hopper, Dorran Howell. 2018, The relative roles of inheritance and long-term passive margin lithospheric evolution on the modern structure and tectonic activity in the southeastern United States: Geosphere."
+
+talks:
+  - "Simeon Carstens, Dorran Howell. 2020, Intro to Bayesian Modeling with TensorFlow Probability. Data Science Conference Europe 2020."
