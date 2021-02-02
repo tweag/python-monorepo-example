@@ -1,0 +1,42 @@
+---
+name: Yann Hamdaoui
+github: yannham
+skills:
+  - Programming languages theory & design
+  - OCaml
+  - Rust
+  - TypeScript/JavaScript
+bio:
+education:
+  - description: Concurrency, references and linear logic
+    institution: "IRIF, Université Paris Diderot - Université Paris-Sorbonne Cité"
+    name: Computer Science
+    qualification: PhD
+    years: 2014-2018
+  - institution: CentraleSupelec (ex École Centrale Paris)
+    name: Engineering
+    qualification: Masters
+    years: 2012-2014
+  - institution: Université Paris Diderot
+    name: Parisian Master Of Research In Computer Science
+    qualification: Masters
+    years: 2013-2014
+experience:
+  - description: "Working on the design and the implementation of Nickel, a Nix-inspired next generation configuration language written in Rust."
+    employer: Tweag
+    role: Software engineer
+    years: 2020-present
+  - description: "Worked as a freelance fullstack developer to build various internal tools and platforms for companies."
+    employer: Self employed
+    role: Software engineer
+    years: 2019-2020
+  - employer: Université Paris Diderot
+    role: Teaching assistant
+    years: 2014-2017
+speaks:
+  - French
+  - English
+  - Japanese (basic)
+talks:
+  - "Multitoken Geometry of Interaction and Multimoves Games - 2015, GALOP workshop at European Joint Conferences on Theory & Practice of Software (ETAPS)."
+  - "Geometry of interaction for an effectful concurrent lambda calculus - 2016, CRECOGI gathering at Computer Science Logic (CSL)"
