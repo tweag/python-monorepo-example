@@ -1,0 +1,105 @@
+name: Hans Hoeglund
+github: hanshoglund
+bio: |
+  Hans has over ten years of experience in Software Engineering, working in
+  everything from automated music composition to real-time audio processing,
+  visual analytics for advertising, and high-performance trading systems.
+
+  He specializes in functional programming and distributed computation and
+  particularly enjoys applying formal and quantitative methods to drive
+  improved performance and correctness.
+skills:
+  - Haskell
+  - Rust
+  - Agda
+  - Java/Scala/JVM
+  - Python
+  - WebAssembly
+  - Kubernetes
+  - Performance Monitoring
+  - Linux
+speaks:
+  - English
+  - Swedish
+  - Basic French
+
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: 2019-present
+    description: |
+      Leading the Performance/QA team for a major smart smart contracts
+      platform (Haskell, Scala, Kubernetes, Google Cloud).
+
+      Consultant architect for a database/machine learning product supporting
+      strong differential privacy (Haskell, Python, Scala, Spark). Worked on
+      query language compiler, RPC layer and distributed computation backend.
+
+      Recruiting, fundraising & business development.
+
+  - employer: Standard Chartered
+    role: Quantitative Developer
+    years: 2016-2018
+    description: |
+      Cloud migration and scaling of cross-asset pricing and risk management
+      services (Haskell, C++).
+
+      Architect and lead developer for on-prem/hybrid cloud infrastructure
+      (Consul, Nomad).
+
+      Integration of scheduling, service discovery, QA, monitoring, logging,
+      tracing and analytics pipelines. Achieved 99.999% uptime in the first 6
+      months of deployment.
+
+      State-machine based UI framework, dashboard and visualization toolkit
+      (Haskell).
+
+  - employer: Beautiful Destinations
+    role: Senior Software Engineer
+    years: 2011-2014
+    description: |
+      Core team member for business-facing adtech platform (Haskell, Python,
+      JavaScript). Visual analytics using Convolutional Neural Networks, data
+      pipelines and automation.
+
+      FRP library and platform UX (Elm, Haskell).
+
+      High-performance embedded DSLs for data visualization using Haskell and
+      asm.js (precursor to WebAssembly).
+
+  - employer: Doremir Music Research AB
+    role: Software Engineer
+    years: Aug 2019-present
+    description: |
+      Lead developer of the audio/DSP backend for ScoreCloud, an AI-driven
+      music transcription and analysis application. Built Faudio, an open
+      source a cross-platform audio engine (C, C++) supporting low-latency
+      signal processing, real-time and batch mode DSP, hardware probing and
+      device hot-plugging.
+
+      Integration work involving various cloud, mobile and desktop environments
+      (Common Lisp, Objective C, JavaScript).
+
+      Worked directly with the research team to productionize and translate
+      audio recognition algorithms from Lisp, Matlab, Python and R to C/C++.
+
+
+
+
+education:
+  - qualification: MA
+    name: Music Composition
+    institution: Guildhall School of Music & Drama
+    years: 2014 - 2015
+  - qualification: BA
+    name: Music Composition
+    institution: Royal College of Music, Stockholm
+    years: 2008 - 2011
+
+talks:
+  - title: FRP == OOP
+    venue: Skills Matter
+    year: 2016
+  - title: Music Suite: A Family of Musical Representations
+    venue: ICPF (FARM)
+    year: 2014
