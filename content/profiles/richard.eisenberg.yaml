@@ -1,5 +1,7 @@
 name: Richard Eisenberg
 github: goldfirere
+twitter: @RaeHaskell
+website: https://richarde.dev/
 bio: |
   Richard is Tweag’s Principal Researcher and joined the company to continue
   on his mission to shape the future of high-assurance programming. A core
@@ -11,6 +13,7 @@ bio: |
   and play board games with his wife and daughter.
 skills:
   - Haskell
+  - GHC development
   - programming language theory
   - language design
   - type systems
@@ -75,6 +78,68 @@ education:
     name: Physics
     institution: Harvard University
     years: 1999-2003
+
+professional_activities:
+  - organization: Haskell Foundation
+    role: Chair of Board of Directors
+    years: February 2021-present
+  - organization: Haskell eXchange
+    role: Member of Programme Committee
+    years: November 2020
+  - organization: International Conference on Functional Programming (ICFP)
+    role: Member of Program Committee
+    years: August 2020
+  - organization: Haskell Symposium
+    role: Chair of Program Committe
+    years: August 2019
+  - organization: Workshop on Type-Directed Development (TyDe)
+    role: Co-Chair of Program Committee
+    years: September 2018
+  - organization: Symposium on the Implementation and Application of Functional Languages (IFL)
+    role: Member of Program Committee
+    years: September 2018
+  - organization: Haskell Implementors' Workshop (HIW)
+    role: Chair of Program Committee
+    years: September 2017
+  - organization: GHC Steering Committee
+    role: Member
+    years: January 2017-present
+
+honors:
+  - organization: Symposium on Principles of Programming Languages (POPL)
+    honor: Distinguished Paper Award
+    date: January 2020
+  - organization: University of Pennsylvania School of Engineering and Applied Science
+    honor: Morris and Dorothy Rubinoff Award
+    date: June 2017
+    description: |
+      Awarded to a doctoral candidate whose dissertation may lead to
+      innovative applications of computer technology
+  - organization: University of Pennsylvania
+    honor: Penn Prize for Excellence in Teaching by Graduate Students
+    date: June 2016
+    description: |
+      Awarded to ten graduate students across the university recognized
+      for our teaching, nominated by undergraduates
+  - organization: Microsoft Research
+    honor: Graduate Student Fellowship
+    date: 2014
+    description: |
+      Awarded to twelve doctoral students chosen among candidates from U.S. and Canada;
+      covers full tuition, stipend, and travel budget for two years of graduate school
+  - organization: University of Pennsylvania School of Engineering and Applied Science
+    honor: John Henry Towne Fellowship
+    date: 2012
+    description: |
+      Awarded to exceptionally qualifed frst-year doctoral students.
+  - organization: Harvard University
+    honor: John Harvard Scholarship
+    date: 2002, 2003
+    description: Awarded to undergraduates in the top 5% of their class.
+  - organization: Harvard University
+    honor: Harvard College Scholarship
+    date: 2001
+    description: Awarded to undergraduates in the top 10% of their class.
 
 publications:
   - "P. Choudhury, H. Eades III, R. A. Eisenberg, and S. Weirich. A Graded Dependent Type System with a Usage-Aware Semantics. In Proceedings of the ACM on Programming Languages, Vol. 5, Issue POPL (POPL '21), ACM, 2021. Article 50, 32 pages."
