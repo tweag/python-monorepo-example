@@ -1,0 +1,48 @@
+name: Divesh Otwani
+github: Divesh-Otwani
+
+bio: |
+  Divesh is a Software Engineer with a strong background in fancy type-level
+  Haskell and rigorous mathematics. Before joining Tweag, Divesh worked on
+  optimizing polyhedral compilers targeting supercomputers in a research lab in
+  NYC. He graduated from Haverford College with a double major in Mathematics
+  and Computer Science.  In his free time, he likes reading classic works of
+  literature, poetry, doing abstract math and practicing martial arts.
+
+skills:
+  - Haskell
+  - C
+  - Python
+  - Rigorous Mathematics
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: March 2020 - present
+    description:
+      - Worked on linear-base, a standard library for Linear Types in GHC
+      - Presently assisting with testing blockchain consensus algorithms
+
+  - employer: Reservoir Labs
+    role: Research Engineer
+    years: August 2019 - December 2019
+    description:
+      - Performance analyzed of the HOMME climate model for supercomputers
+      - Creating and hand-tuning GPU polyhedral optimizations of HOMME kernels
+
+education:
+  - qualification: B.S.
+    name: Mathematics, Computer Science
+    institution: Haverford College
+    years: 2015 - 2019
+    description: |
+      Graduated magna cum laude with High Honors in Computer Science and
+      Honors in Mathematics.
+      Math Thesis: Knot Theory: Close and Sharp Bounds on the Grid Index.
+      CS Thesis: Programmer-Controlled Readable Polyhedral Optimizations of syr2k.
+
+publications:
+  - "Divesh Otwani, Richard A. Eisenberg. The Thoralf plugin: for your fancy type needs. In Proceedings of the 11th ACM SIGPLAN International Symposium on Haskell, 2018."
