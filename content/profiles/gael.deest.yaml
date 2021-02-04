@@ -2,7 +2,7 @@ name: Gaël Deest
 github: gdeest
 bio: |
 
-  Gaël is a versatile software engineer with a background compilers, signal
+  Gaël is a versatile software engineer with a background in compilers, signal
   processing and hardware design. Before joining Tweag, he received a PhD from
   the University of Rennes 1, where he applied polyhedral compilation techniques
   to the automation of Design-Space Exploration for FPGA accelerators.
