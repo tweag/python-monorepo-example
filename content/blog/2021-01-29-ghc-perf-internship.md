@@ -146,4 +146,6 @@ language). We will collect applications until Thursday, March 4, 2021 (anywhere
 on Earth) and then review all collected applications; we hope to be able to
 update applicants on their status within days. The internship can start any time
 after the offer is made, subject to mutual availability. Internships typically
-last 12 weeks, although there may be some flexibility here. Please do [apply][application]!
+last 12 weeks, although there may be some flexibility here. If you have
+any questions, feel free to [email me directly](mailto:richard.eisenberg@tweag.io).
+Please do [apply][application]!
