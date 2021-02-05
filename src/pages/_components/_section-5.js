@@ -2,7 +2,41 @@
 import { jsx } from "theme-ui"
 import { Grid, Box, Text } from "theme-ui"
 
-function Section5({ partners }) {
+import logoAmgen from "../../images/logo_amgen.png"
+import logoCea from "../../images/logo_cea.png"
+import logoGoogle from "../../images/logo_google.png"
+import logoPfizer from "../../images/logo_pfizer.png"
+import logoTarget from "../../images/logo_target.png"
+import logoOrange from "../../images/logo_orange.png"
+
+const partners = [
+  {
+    src: logoAmgen,
+    name: `Amgen`,
+  },
+  {
+    src: logoCea,
+    name: `CEA`,
+  },
+  {
+    src: logoGoogle,
+    name: `Google`,
+  },
+  {
+    src: logoOrange,
+    name: `Orange`,
+  },
+  {
+    src: logoPfizer,
+    name: `Pfizer`,
+  },
+  {
+    src: logoTarget,
+    name: `Target`,
+  },
+]
+
+function Section5() {
   return (
     <Grid
       columns={[1]}

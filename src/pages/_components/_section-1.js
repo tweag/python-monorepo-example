@@ -4,7 +4,10 @@ import React from "react"
 import Typed from "react-typed"
 import { Grid, Box } from "theme-ui"
 
-export default function Section1({ homePreview, homeVideo }) {
+import homePreview from "../../images/home_preview.png"
+import homeVideo from "../../images/home.mp4"
+
+export default function Section1() {
   return (
     <React.Fragment>
       <Grid

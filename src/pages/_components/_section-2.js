@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx, Grid, Box, Text } from "theme-ui"
 import { Link } from "gatsby"
+import visionaries from "../../images/img2.gif"
 
-function Section2({ visionaries }) {
+function Section2() {
   return (
     <Grid
       columns={[1, 1, 2]}
