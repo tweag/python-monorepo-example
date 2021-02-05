@@ -56,7 +56,7 @@ experience:
 
   - employer: Beautiful Destinations
     role: Senior Software Engineer
-    years: 2011-2014
+    years: 2015-2016
     description: |
       Core team member for business-facing adtech platform (Haskell, Python,
       JavaScript). Visual analytics using Convolutional Neural Networks, data
@@ -69,7 +69,7 @@ experience:
 
   - employer: Doremir Music Research AB
     role: Software Engineer
-    years: Aug 2019-present
+    years: 2011-2014
     description: |
       Lead developer of the audio/DSP backend for ScoreCloud, an AI-driven
       music transcription and analysis application. Built Faudio, an open
@@ -98,5 +98,5 @@ talks:
     venue: Skills Matter
     year: 2016
   - title: "Music Suite: A Family of Musical Representations"
-    venue: ICPF (FARM)
+    venue: ICFP (FARM)
     year: 2014
