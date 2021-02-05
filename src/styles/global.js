@@ -103,6 +103,74 @@ export const globalStyles = t => {
         opacity: 1;
       }
     }
+
+    /* Transitions
+	 ========================================================================== */
+
+    .transition--slide-fade-in {
+      -webkit-transition: all 0.9s ease 0.3s;
+      transition: all 0.9s ease 0.3s;
+      opacity: 0;
+      visibility: hidden;
+
+      &.delayed {
+        transition-delay: 0.8s;
+      }
+
+      &.bottom-in {
+        -webkit-transform: translateY(300px);
+        -ms-transform: translateY(300px);
+        transform: translateY(300px);
+      }
+
+      &.top-in {
+        -webkit-transform: translateY(-300px);
+        -ms-transform: translateY(-300px);
+        transform: translateY(-300px);
+      }
+
+      &.right-in {
+        -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+        transform: translateX(300px);
+      }
+
+      &.left-in {
+        -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+        transform: translateX(-300px);
+      }
+
+      ${t.breakpoints.map((v, i) => {
+        return `
+          &.only-above-${i} {
+            @media only screen and (max-width: ${v}) {
+              transform: none;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        `
+      })}
+    }
+
+    .section:not(.active) {
+      .transition--slide-fade-in {
+        transition-delay: 0s;
+      }
+    }
+
+    .section.active {
+      .transition--slide-fade-in {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    /* Transitions end.
+	 ========================================================================== */
+
     .contact .line-sep {
       padding: 0;
       margin: 20px 60px 40px;
