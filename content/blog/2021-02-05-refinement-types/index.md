@@ -1,5 +1,5 @@
 ---
-title: "Integrating refinement and dependenty types: a fellowship report"
+title: "Integrating refinement and dependent types: a fellowship report"
 shortTitle: Refinement and dependent types fellowship
 author: Georg Rudoy
 tags: [fellowship]
