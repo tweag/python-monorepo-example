@@ -12,7 +12,8 @@ function Section2() {
         textAlign: [`start`, `start`],
         maxWidth: [`100%`, `100%`, `100%`],
         px: [`15px`, `15px`, `60px`, `60px`, `60px`, `120px`],
-        py: [`0px`, `0px`, `90px`],
+        pt: [`0px`, `0px`, `90px`],
+        pb: [`0px`],
         mt: [`30px`, `30px`],
         mb: [`40px`, `40px`],
       }}
