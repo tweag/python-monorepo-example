@@ -1,5 +1,13 @@
 export default {
-  breakpoints: [`768px`, `1024px`, `1200px`, `1400px`, `1500px`, `1600px`],
+  breakpoints: [
+    `480px`,
+    `768px`,
+    `1024px`,
+    `1200px`,
+    `1400px`,
+    `1500px`,
+    `1600px`,
+  ],
   colors: {
     text: `black`,
     background: `white`,
