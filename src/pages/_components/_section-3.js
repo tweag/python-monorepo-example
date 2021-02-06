@@ -70,7 +70,7 @@ function Section3() {
       <Grid gap={[`40px`, `40px`]} columns={[1, 1, 3]}>
         {industries.map(({ h, link, p, src }, i) => (
           <Grid
-            key={h}
+            key={i}
             sx={{
               transitionDelay: `${0.5 + 0.1 * i}s`,
             }}
