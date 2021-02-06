@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-// eslint-disable-next-line no-unused-vars
-import React from "react"
+import { Fragment } from "react"
 import { Grid, Box, Text } from "theme-ui"
 import { Link } from "gatsby"
 
@@ -11,34 +10,34 @@ import vehicles from "../../images/img5.gif"
 
 const industries = [
   {
-    h: <>Biotech</>,
+    h: <Fragment>Biotech</Fragment>,
     p: (
-      <>
+      <Fragment>
         Build statistical models, iterate on them quickly and increase
         productivity.
-      </>
+      </Fragment>
     ),
     src: biotech,
     link: `/industry/biotech`,
   },
   {
-    h: <>Fintech</>,
+    h: <Fragment>Fintech</Fragment>,
     p: (
-      <>
+      <Fragment>
         Minimize risk with high-assurance software, from blockchain to trading
         systems.
-      </>
+      </Fragment>
     ),
     src: fintech,
     link: `/industry/fintech`,
   },
   {
-    h: <>Autonomous vehicles</>,
+    h: <Fragment>Autonomous vehicles</Fragment>,
     p: (
-      <>
+      <Fragment>
         Put safety first with robust and reliable software, backed by static
         analysis.
-      </>
+      </Fragment>
     ),
     src: vehicles,
     link: `/industry/autonomous`,
