@@ -107,6 +107,7 @@ export const globalStyles = t => {
     /* Transitions
 	 ========================================================================== */
 
+    /*   for react-full-page */
     .transition--slide-fade-in {
       -webkit-transition: all 0.9s ease 0.3s;
       transition: all 0.9s ease 0.3s;
@@ -162,6 +163,67 @@ export const globalStyles = t => {
 
     .section.active {
       .transition--slide-fade-in {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .transition-section__transition--slide-fade-in {
+      -webkit-transition: all 0.9s ease 0.3s;
+      transition: all 0.9s ease 0.3s;
+      opacity: 0;
+      visibility: hidden;
+
+      &.delayed {
+        transition-delay: 0.8s;
+      }
+
+      &.bottom-in {
+        -webkit-transform: translateY(300px);
+        -ms-transform: translateY(300px);
+        transform: translateY(300px);
+      }
+
+      &.top-in {
+        -webkit-transform: translateY(-300px);
+        -ms-transform: translateY(-300px);
+        transform: translateY(-300px);
+      }
+
+      &.right-in {
+        -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+        transform: translateX(300px);
+      }
+
+      &.left-in {
+        -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+        transform: translateX(-300px);
+      }
+
+      ${t.breakpoints.map((v, i) => {
+        return `
+          &.only-above-${i} {
+            @media only screen and (max-width: ${v}) {
+              transform: none;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        `
+      })}
+    }
+
+    .transition-section:not(.in-viewport) {
+      .transition-section__transition--slide-fade-in {
+        transition-delay: 0s;
+      }
+    }
+
+    .transition-section.in-viewport {
+      .transition-section__transition--slide-fade-in {
         transform: none;
         opacity: 1;
         visibility: visible;
