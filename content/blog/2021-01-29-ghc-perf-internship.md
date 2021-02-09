@@ -60,7 +60,7 @@ Do you have the interest and skills to improve compile times? Please [apply][app
 - **Algorithms**. There are a number of algorithms that do unnecessary work within
   GHC. For example, we might want to know whether there are any free type variables
   in an expression. A simple way to do this is to gather all the free variables of
-  an expression (there is a function for that) and then iterate throught the set
+  an expression (there is a function for that) and then iterate through the set
   of variables (there is a function for that) detecting type variables (there is
   a function for that). But this is madness: it allocates a ton of space in building
   the set, when a straightforward traversal of the expression would yield what we want,
