@@ -63,7 +63,7 @@ export default function Services() {
           gap={[`15px`]}
           sx={{
             fontSize: [`18px`, `18px`, `27px`],
-            lineHeight: [1.2, `35px`],
+            lineHeight: [1.2, 1.2, `35px`],
             maxWidth: [`100%`, `100%`, `90%`],
           }}
         >
