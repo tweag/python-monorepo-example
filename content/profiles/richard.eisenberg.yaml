@@ -1,0 +1,195 @@
+name: Richard Eisenberg
+github: goldfirere
+twitter: @RaeHaskell
+website: https://richarde.dev/
+bio: |
+  Richard is Tweag’s Principal Researcher and joined the company to continue
+  on his mission to shape the future of high-assurance programming. A core
+  GHC contributor and Haskell Foundation board member, Richard has a BA
+  in Physics and MS in Computer Science from Harvard, and received his PhD in
+  Computer Science at the University of Pennsylvania. Away from
+  day-to-day-implementation efforts and publishing papers on the design of
+  programming languages and type systems, Richard likes to travel, hike, ski,
+  and play board games with his wife and daughter.
+skills:
+  - Haskell
+  - GHC development
+  - programming language theory
+  - language design
+  - type systems
+  - public speaking
+  - teaching
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Principal Researcher
+    years: August 2020-present
+    description:
+      - development and maintenance of GHC
+      - research and publications on Haskell and type systems
+      - leadership of Haskell Foundation
+  - employer: Bryn Mawr College
+    role: Assistant Professor of Computer Science
+    years: August 2016-July 2020
+    description:
+      - research and publications on Haskell and type systems
+      - teaching undergraduate computer science courses
+      - supervising undergraduate research
+  - employer: Microsoft Research
+    role: Research Intern
+    years: Summer 2013
+    description:
+      - implement the "roles" feature in GHC
+      - write paper in collaboration with Microsoft researchers
+  - employer: American School in London
+    role: Computer Science and Mathematics Teacher in Upper School
+    years: August 2008-June 2011
+    description:
+      - introductory and AP computer science courses, taught in Java
+      - algebra II and precalculus mathematics courses
+      - US FIRST robotics team mentor for both FIRST Robotics Competition (high school)
+        and FIRST LEGO League (middle school)
+  - employer: Northfield Mount Hermon School
+    role: Computer Science Teacher and Dormitory Head
+    years: August 2003-June 2008
+    description:
+      - introductory and AP computer science courses, taught in Java
+      - multivariable calculus
+      - dormitory head
+  - employer: Harvard University
+    role: Teaching Fellow and Head Teaching Fellow
+    years: Fall 2000-Fall 2002
+    description:
+      - teach and administer introductory computer science course, taught in C
+education:
+  - qualification: PhD
+    name: Computer and Information Science
+    institution: University of Pennsylvania
+    years: 2011-2016
+    description:
+      - published 11 peer-reviewed papers
+      - thesis: "Dependent Types in Haskell: Theory and Practice"
+  - qualification: MS
+    name: Computer Science
+    institution: Harvard University
+    years: 2000-2003
+  - qualification: BA
+    name: Physics
+    institution: Harvard University
+    years: 1999-2003
+
+professional_activities:
+  - organization: Haskell Foundation
+    role: Chair of Board of Directors
+    years: February 2021-present
+  - organization: Haskell eXchange
+    role: Member of Programme Committee
+    years: November 2020
+  - organization: International Conference on Functional Programming (ICFP)
+    role: Member of Program Committee
+    years: August 2020
+  - organization: Haskell Symposium
+    role: Chair of Program Committe
+    years: August 2019
+  - organization: Workshop on Type-Directed Development (TyDe)
+    role: Co-Chair of Program Committee
+    years: September 2018
+  - organization: Symposium on the Implementation and Application of Functional Languages (IFL)
+    role: Member of Program Committee
+    years: September 2018
+  - organization: Haskell Implementors' Workshop (HIW)
+    role: Chair of Program Committee
+    years: September 2017
+  - organization: GHC Steering Committee
+    role: Member
+    years: January 2017-present
+
+honors:
+  - organization: Symposium on Principles of Programming Languages (POPL)
+    honor: Distinguished Paper Award
+    date: January 2020
+  - organization: University of Pennsylvania School of Engineering and Applied Science
+    honor: Morris and Dorothy Rubinoff Award
+    date: June 2017
+    description: |
+      Awarded to a doctoral candidate whose dissertation may lead to
+      innovative applications of computer technology
+  - organization: University of Pennsylvania
+    honor: Penn Prize for Excellence in Teaching by Graduate Students
+    date: June 2016
+    description: |
+      Awarded to ten graduate students across the university recognized
+      for our teaching, nominated by undergraduates
+  - organization: Microsoft Research
+    honor: Graduate Student Fellowship
+    date: 2014
+    description: |
+      Awarded to twelve doctoral students chosen among candidates from U.S. and Canada;
+      covers full tuition, stipend, and travel budget for two years of graduate school
+  - organization: University of Pennsylvania School of Engineering and Applied Science
+    honor: John Henry Towne Fellowship
+    date: 2012
+    description: |
+      Awarded to exceptionally qualifed frst-year doctoral students.
+  - organization: Harvard University
+    honor: John Harvard Scholarship
+    date: 2002, 2003
+    description: Awarded to undergraduates in the top 5% of their class.
+  - organization: Harvard University
+    honor: Harvard College Scholarship
+    date: 2001
+    description: Awarded to undergraduates in the top 10% of their class.
+
+publications:
+  - "P. Choudhury, H. Eades III, R. A. Eisenberg, and S. Weirich. A Graded Dependent Type System with a Usage-Aware Semantics. In Proceedings of the ACM on Programming Languages, Vol. 5, Issue POPL (POPL '21), ACM, 2021. Article 50, 32 pages."
+  - "P. Downen, Z. M. Ariola, S. Peyton Jones, R. A. Eisenberg. Kinds are Calling Conventions. In Proceedings of the ACM on Programming Languages, Vol. 4, Issue ICFP (ICFP '20), ACM, 2020. Article 104, 29 pages."
+  - "R. A. Eisenberg. Stitch: The Sound Type-Indexed Type Checker (Functional Pearl). In Proceedings of the 2020 ACM SIGPLAN Symposium on Haskell (Haskell '20), ACM, 2020. pp. 39-53."
+  - "Y. Parès, J.-P. Bernardy, R. A. Eisenberg. Composing Effects into Tasks and Workflows. In Proceedings of the 2020 ACM SIGPLAN Symposium on Haskell (Haskell '20), ACM, 2020. pp. 80-94."
+  - "N. Xie, R. A. Eisenberg, B. C. d. S. Oliveira. Kind Inference for Datatypes. In Proceedings of the ACM on Programming Languages, Vol. 4, Issue POPL (POPL '20), ACM, 2020. Article 53, 28 pages. (Recipient of the POPL'20 Distinguished Paper Award, given to fewer than 10% of accepted articles.)"
+  - "M. P. Jones, J. G. Morris, R. A. Eisenberg. Partial Type Constructors; Or, Making ad hoc datatypes less ad hoc. In Proceedings of the ACM on Programming Languages, Vol. 4, Issue POPL (POPL '20), ACM, 2020. Article 40, 28 pages."
+  - "S. Weirich, P. Choudhury, A. Voizard, R. A. Eisenberg. A Role for Dependent Types in Haskell. In Proceedings of the ACM on Programming Languages, Vol. 3, Issue ICFP (ICFP '19), ACM, 2019. Article 101, 29 pages."
+  - "R. A. Eisenberg, J. Breitner, and S. Peyton Jones. Type Variables in Patterns. In Proceedings of the 2018 ACM SIGPLAN Symposium on Haskell (Haskell '18), ACM, 2018, pp. 94-105."
+  - "D. Otwani and R. A. Eisenberg. The Thoralf Plugin: For Your Fancy Type Needs. In Proceedings of the 2018 ACM SIGPLAN Symposium on Haskell (Haskell '18), ACM, 2018, pp. 106-118."
+  - "J. G. Morris and R. A. Eisenberg. Constrained Type Families. In Proceedings of the ACM on Programming Languages, Vol. 1, Issue ICFP (ICFP '17), ACM, 2017. Article 42, 28 pages."
+  - "S. Weirich, A. Voizard, P. H. Azevedo de Amorim, R. A. Eisenberg. A Specification for Dependently-Typed Haskell. In Proceedings of the 22nd ACM SIGPLAN International Conference on Functional Programming (ICFP '17), ACM, 2017. Article 31, 29 pages."
+  - "R. A. Eisenberg, S. Peyton Jones. Levity Polymorphism. In Proceedings of the 2017 ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI '17). ACM, 2017. pp. 525-539."
+  - "M. Pickering, G. Érdi, S. Peyton Jones, R. A. Eisenberg. Pattern Synonyms. In Proceedings of the 2016 ACM SIGPLAN Symposium on Haskell (Haskell '16), ACM, 2016. pp. 80-91."
+  - "J. Breitner, R. A. Eisenberg, S. Peyton Jones, S. Weirich. Safe Zero-cost Coercions for Haskell. In Journal of Functional Programming, Vol. 26. Cambridge University Press, 2016. 79 pages."
+  - "R. A. Eisenberg, S. Weirich, H. Ahmed. Visible Type Application. In Programming Languages and Systems: 25th European Symposium on Programming (ESOP '16). LNCS 9632, Springer, 2016. pp. 229-254."
+  - "S. Peyton Jones, S. Weirich, R. A. Eisenberg, D. Vytiniotis. A reflection on types. In A List of Successes that Can Change the World, a festschrift in honor of Phil Wadler. LNCS 9600, Springer, 2016. pp. 292-317."
+  - "J. Stolarek, S. Peyton Jones, R. A. Eisenberg. Injective Type Families for Haskell. In Proceedings of the 2015 ACM SIGPLAN Symposium on Haskell (Haskell '15), ACM, 2015. pp. 118-128."
+  - "T. Muranushi, R. A. Eisenberg. Experience Report: Type-checking Polymorphic Units for Astrophysics Research in Haskell. In Proceedings of the 2014 ACM SIGPLAN Symposium on Haskell (Haskell '14), ACM, 2014. pp. 31-38."
+  - "R. A. Eisenberg, J. Stolarek. Promoting Functions to Type Families in Haskell. In Proceedings of the 2014 ACM SIGPLAN Symposium on Haskell (Haskell '14), ACM, 2014. pp. 95-106."
+  - "J. Breitner, R. A. Eisenberg, S. Peyton Jones, S. Weirich. Safe Zero-cost Coercions for Haskell. In Proceedings of the 19th ACM SIGPLAN International Conference on Functional Programming (ICFP '14), ACM, 2014. pp. 189-202."
+  - "R. A. Eisenberg, D. Vytiniotis, S. Peyton Jones, S. Weirich. Closed Type Families with Overlapping Equations. In Proceedings of the 41st ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL '14), ACM, 2014. pp. 671-683."
+  - "C. DeLozier, R. A. Eisenberg, S. Nagarakatte, P.-M. Osera, M. M. K. Martin, and S. Zdancewic. Ironclad C++: A Library-Augmented Type-Safe Subset of C++. In Proceedings of the 2013 ACM SIGPLAN International Conference on Object Oriented Programming, Systems, Languages, & Applications (OOPSLA '13), ACM, 2013. pp. 287-304."
+  - "S. Weirich, J. Hsu, and R. A. Eisenberg. System FC with Explicit Kind Equality. In Proceedings of the 18th ACM SIGPLAN International Conference on Functional Programming (ICFP '13), ACM, 2013. pp. 275-286."
+  - "R. A. Eisenberg and S. Weirich. Dependently Typed Programming with Singletons. In Proceedings of the 2012 Haskell Symposium (Haskell '12), ACM, 2012. pp. 117-130."
+
+talks:
+  - "Simplifying Constraint Solving in GHC. Haskell eXchange, Nov. 2020, online"
+  - "Stitch: the Type-Indexed Type Checker (Functional Pearl). Haskell Symposium, Aug. 2020, online"
+  - "Parameters of Many Flavors. Invited talk, Haskell Love, Aug. 2020, online"
+  - "How to Extend GHC. GHC Track talk, ZuriHac, June 2020, online"
+  - "Partial Type Constructors. Invited lecture, University of Nottingham, May 2020, online"
+  - "Partial Type Constructors. Invited lecture, University of Cambridge, Nov. 2019, Cambridge, UK"
+  - "Stitch: the Type Indexed Type-Checker. Haskell eXchange, Oct. 2019, London, UK"
+  - "Stitch: the Type Indexed Type-Checker. Invited keynote, ZuriHac, June 2019, Zürich, Switzerland"
+  - "Tour of the GHC Front End. GHC Track talk, ZuriHac, June 2019, Zürich, Switzerland"
+  - "Generalized Newtype Compiling: Don't let you types slow you down. IFIP Working Group 2.8, May 2019, Bordeaux, France"
+  - "Type Variables in Patterns. Haskell Symposium, Sept. 2018, St. Louis, MO, USA"
+  - "Stitch: the Type Indexed Type-Checker. New York Haskell Users' Group, Apr. 2018, NY, USA"
+  - "Constrained Type Families. ICFP, Sept. 2017, Oxford, UK"
+  - "Levity Polymorphism. PLDI, June 2017, Barcelona, Spain"
+  - "A Dependent Haskell Triptych. Haskell Implementors' Workshop, Sept. 2016, Nara, Japan"
+  - "Visible Type Application. European Symposium on Programming, Apr. 2016, Eindhoven, Netherlands"
+  - "Levity Polymorphism in Dependent Haskell. Haskell Implementors' Workshop, Aug. 2015, Vancouver, Canada"
+  - "A Practical Introduction to Haskell GADTs. Invited speaker, LambdaConf, May 2015, Boulder, CO"
+  - "Dependent Types for Haskell. Invited speaker, New York City Haskell Users' Group, Oct. 2014, NY, USA"
+  - "Dependent Haskell. Haskell Implementors' Workshop, Sept. 2014, Gothenburg, Sweden"
+  - "Safe Zero-cost Coercions for Haskell. ICFP, Sept. 2014, Gothenburg, Sweden"
+  - "Closed Type Families with Overlapping Equations. POPL, Jan. 2014, San Diego, CA, USA"
+  - "System FC with Explicit Kind Equality. ICFP, Sept. 2013, Boston, MA, USA"
+  - "GeneralizedNewtypeDeriving is now Type-safe: How Roles Save the Day. Haskell Implementors' Workshop, Sept. 2013, Boston, MA, USA"
+  - "Dependently Typed Programming with Singletons. Haskell Symposium, Sept. 2012, Copenhagen, Denmark"
