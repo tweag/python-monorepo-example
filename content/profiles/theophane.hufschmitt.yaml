@@ -30,4 +30,3 @@ education:
     description:
 talks:
   - "A type-system for Nix, NixCon 2017"
-
