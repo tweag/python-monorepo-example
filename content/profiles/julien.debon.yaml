@@ -1,0 +1,38 @@
+name: Julien Debon
+github: Sir4ur0n
+bio: |
+  Julien is a Software Engineer who has worked on several
+  applications, mainly in Java and Haskell, with a focus on quality.
+  He also likes to learn and share his knowledge through talks and
+  mentoring, and more generally enjoys helping others.
+  On his spare time, Julien plays squash and video games, and is fond
+  of various mountain sports like hiking and skiing.
+skills:
+  - Haskell
+  - OCaml
+  - Java
+speaks:
+  - English
+  - French
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2021-present
+    description: Contributor to the Mockup/Proxy/Light modes of Tezos.
+  - employer: Decathlon
+    role: Technical Leader
+    years: 2016-2020
+    description: |
+      Development team leader on various backend and frontend applications for Offer, Pricing and Merchandizing processes.
+      Core contributor of internal tech guilds (knowledge sharing).
+      Developer mentor.
+education:
+  - qualification: Masters
+    name: Engineering
+    institution: École Centrale de Nantes
+    years: 2009-2012
+talks:
+  - "Property-based tests: Write less tests, find more bugs, Devfest Lille 2019"
+  - "Workshop on Property-based tests in Haskell, ReasonML, Java, Rust and Javascript (with Thomas Haessle), Agile Tour Lille 2019"
+publications:
+  - "Beginner-to-intermediary blog posts on Effect handling in Haskell using Polysemy"

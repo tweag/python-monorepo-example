@@ -1,0 +1,72 @@
+name: Mathieu Boespflug
+github: mboes
+bio:
+skills:
+  - Engineering leadership
+  - Architecture
+  - Haskell
+  - OCaml
+speaks:
+  - English
+  - French
+experience:
+  - employer: Tweag
+    role: CEO and founder
+    years: December 2013 - present
+    description: |
+      Business strategist, leader, and manager. Owner of the vision
+      and positioning of the company. Tech lead on multiple client and
+      open source projects, including language interoperability
+      solutions between Haskell, R and Java, distributed programming
+      frameworks, distributed build systems, compilers and
+      biomodeling.
+  - employer: Parallel Scientific
+    role: Software architect and then CTO
+    years: October 2012 - November 2013
+    description: |
+      Designed high-availability solutions for the high-performance
+      computing industry.
+  - employer: McGill University
+    role: Postdoctoral fellow
+    years: January 2011 - February 2012
+    description: |
+      Worked with Brigitte Pientka on contextual modal type theory and
+      its applications to formal verification of metatheory as well as
+      metaprogramming.
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: École Polytechnique
+    years: 2007 - 2010
+    description: |
+      thesis title: Design and implementation of a proof-checking
+      kernel for the λΠ-calculus modulo.
+  - qualification: MMath
+    name: Computer Science and Mathematics
+    institution: University of York
+    years: 2003 - 2007
+talks:
+  - title: Miniaturize all the states
+    venue: Rebase
+    year: 2020
+    url: https://www.youtube.com/watch?v=sn8QtMloBLk
+  - title: What to do when you have plenty of (non-)Haskell
+    venue: Haskell eXchange
+    year: 2019
+    url: https://skillsmatter.com/skillscasts/14134-what-to-do-when-you-have-plenty-of-non-haskell
+  - title: From C++ to Haskell to Java and back
+    venue: BazelCon
+    year: 2018
+    url: https://www.youtube.com/watch?v=20fYYDwiNqw
+  - title: Nix + Bazel
+    venue: BazelCon
+    year: 2018
+    url: https://www.youtube.com/watch?v=hDdDUrty1Gw
+  - title: Haskell meets Java
+    venue: Haskell eXchange
+    year: 2016
+    url: https://skillsmatter.com/skillscasts/8725-haskell-meets-java
+  - title: Distributed programming in Haskell
+    venue: ZuriHac
+    year: 2015
+    url: https://www.youtube.com/watch?v=qlnU73a3Cw0
