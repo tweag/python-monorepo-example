@@ -46,7 +46,13 @@ const industries = [
 
 function KeyIndustries() {
   return (
-    <div className="section s_white viewport-section transition-section">
+    <div
+      className="section s_white viewport-section transition-section"
+      sx={{
+        maxWidth: `1440px`,
+        margin: `auto`,
+      }}
+    >
       <ListIndustries
         industries={industries}
         transitionClass={`transition-section__transition--slide-fade-in`}
