@@ -2,21 +2,14 @@
 
 # pages
 
-All pages go in the main `src/pages` folder.
-By Gatsby convention, every file in this folder is turned into a route.
-Except for the following naming conventions
+All pages go in the `src/views` folder.
+We only use the `src/pages` folder for Routing purpose:
+Gatsby creates a page for each file present in
+the `src/pages` folder with the folder structure hierarchy as routes.
+Example:
+If we have a file in `src/pages/services/peoples` then,
+it will create a page at `tweag.io/services/peoples`
 
-1. `/.*****`.
-2. `/_*****`.
-
-Each page has some sections to show the user some info/content.
-If the page you are creating goes 200+ lines, then it's recommended to do the following:
-Add a `/_components` directory to the main root folder of the page.
-Then, keep all the components related to that page in that folder
-with this name convention:
-
-1. Start each section file name with `/_`. For instance, `/_mainHero.js`
-2. Start each component file name with `.`. For instance, `/.CustomBgImgWithStrip.js`
-3. Export all the main sections from the `/_index` file in the `/_components` folder.
-   Note: There should be no page file in the `/_components` folder.
-   Note: If you ever need to use the `/_components` route then consider changing the folder structure there as you best fit. Overall, follow the above convention.
+To do this, we will first import the file from the `src/views`
+that is being used for rendering of this page, and then
+export it from the `src/pages` folder.

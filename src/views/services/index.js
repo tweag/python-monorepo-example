@@ -1,13 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui"
 import { CallToActionFooter } from "../../components"
-import {
-  Services,
-  Quote,
-  WhatWeDo,
-  Divider,
-  KeyIndustries,
-} from "./_components/_index"
+import { Services, Quote, WhatWeDo, Divider, KeyIndustries } from "./components"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"

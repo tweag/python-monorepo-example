@@ -4,7 +4,7 @@ import { Grid, Box, Text } from "theme-ui"
 
 import img6 from "../../../images/img6.svg"
 
-import SectionHeading from "./.SectionHeading"
+import SectionHeading from "./SectionHeading"
 
 const content = {
   title: `Services`,
