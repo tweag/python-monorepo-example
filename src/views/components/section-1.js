@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { Grid, Box } from "theme-ui"
 
-import homePreview from "../../images/home_preview.png"
 import homeAnim from "../../images/home.svg"
 
 import { Arrow } from "../../components"
@@ -30,7 +29,8 @@ export default function Section1() {
               width: `100%`,
               height: `auto`,
               maxWidth: [`280px`, `300px`, `90%`],
-            }} />
+            }}
+          />
         </Box>
         <Box
           sx={{
