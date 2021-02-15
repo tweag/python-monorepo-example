@@ -1,5 +1,6 @@
 name: Georgios Karachalias
 github: gkaracha
+website: https://gkaracha.github.io/
 bio: |
   Georgios is a Software Engineer with expertise in the design and
   implementation of functional programming languages. Prior to joining Tweag,
@@ -11,10 +12,10 @@ bio: |
   carving wooden pipes, and hiking in forests and mountains with his wife and
   their dog.
 skills:
-  - Haskell
-  - OCaml
   - Functional programming
   - Static typing
+  - Haskell
+  - OCaml
 speaks:
   - English
   - Greek
@@ -22,17 +23,19 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: 2020 - present
-    description: |
-      Made contributions to the Haskell-to-WebAssembly compiler, Asterius, and
-      worked with Tweag's clients.
+    location: remote
+    description:
+      - Contributions to Asterius, the Haskell-to-WebAssembly compiler.
+      - Financial application development for a distributed ledger.
   - employer: KU Leuven
     role: Postdoctoral researcher
     years: 2019 - 2020
-    description: |
-      Conducted and published research on state-of-the-art type systems,
-      provided daily advice to MSc students, PhD students, and student interns,
-      delivered lectures on Haskell, composed and submitted funding
-      applications.
+    location: Leuven, Belgium
+    description:
+      - Conduct and publish research on state-of-the-art type systems.
+      - Supervise PhD students, MSc students, and student interns.
+      - Deliver lectures on Haskell.
+      - Compose and submit funding applications.
 education:
   - qualification: PhD
     name: Computer Science
@@ -40,8 +43,8 @@ education:
     years: 2014 - 2018
     description: |
       thesis title: "Extensions to Type Classes and Pattern Match Checking"
-  - qualification: Masters
-    name: Computer Science
+  - qualification: MEng
+    name: Electrical and Computer Engineering
     institution: National Technical University of Athens
     years: 2007 - 2013
     description: |
@@ -55,8 +58,72 @@ publications:
   - "Gert-Jan Bottu, Georgios Karachalias, Tom Schrijvers, Bruno C. d. S. Oliveira and Philip Wadler. Quantified Class Constraints. In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
   - "Georgios Karachalias, Tom Schrijvers, Dimitrios Vytiniotis and Simon Peyton Jones. GADTs Meet Their Match: Pattern-matching Warnings That Account for GADTs, Guards, and Laziness. In Proceedings of the 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2015."
 talks:
-  - "Functional Dependencies in Haskell, Leuven Haskell User Group Meeting, KU Leuven, Belgium, 1 March, 2016."
-  - "Functional Dependencies in System FC, Dutch Functional Programming Day, Utrecht University, The Netherlands, 8 January, 2016."
-  - "GADTs Meet Their Match, 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2 September, 2015."
-  - "GADTs Meet Their Match, Leuven Haskell User Group Meeting, KU Leuven, Belgium, 19 May, 2015."
-  - "Reasoning about GADT Pattern Matching in Haskell (invited talk), Microsoft Research Cambridge, UK, 22 October, 2014."
+  - title: Functional Dependencies in Haskell
+    venue: Leuven Haskell User Group Meeting
+    year: 2016
+    url:
+  - title: Functional Dependencies in System FC
+    venue: Dutch Functional Programming Day
+    year: 2016
+    url:
+  - title: GADTs Meet Their Match
+    venue: International Conference on Functional Programming (ICFP)
+    year: 2015
+    url: https://www.youtube.com/watch?v=AFSLMTgoClI
+  - title: GADTs Meet Their Match
+    venue: Leuven Haskell User Group Meeting
+    year: 2015
+    url:
+  - title: Reasoning about GADT Pattern Matching in Haskell
+    venue: Microsoft Research Cambridge (invited talk)
+    year: 2014
+    url: https://www.microsoft.com/en-us/research/video/reasoning-about-gadt-pattern-matching-in-haskell/
+research-community-service:
+  - venue: Haskell Symposium (Haskell)
+    role: Member of Program Committee
+    year: 2021
+  - venue: Haskell Implementors' Workshop (HIW)
+    role: Member of Program Committee
+    year: 2020
+  - venue: Symposium on Implementation and Application of Functional Languages (IFL)
+    role: External Reviewer
+    year: 2019
+  - venue: International Workshop on Functional and (constraint) Logic Programming (WFLP)
+    role: External Reviewer
+    year: 2018
+  - venue: International Conference on Functional Programming (ICFP)
+    role: Member of Artifact Evaluation Committee
+    year: 2017
+  - venue: International Conference on Logic Programming (ICLP)
+    role: External Reviewer
+    year: 2017
+  - venue: European Symposium on Programming (ESOP)
+    role: External Reviewer
+    year: 2017
+  - venue: International Conference on Functional Programming (ICFP)
+    role: External Reviewer
+    year: 2016
+  - venue: International Symposium on Principles and Practice of Declarative Programming (PPDP)
+    role: External Reviewer
+    year: 2016
+  - venue: Symposium on Implementation and Application of Functional Languages (IFL)
+    role: Member of Organizing Committee
+    year: 2016
+  - venue: International Symposium on Functional and Logic Programming (FLOPS)
+    role: External Reviewer
+    year: 2016
+  - venue: International Symposium on Practical Aspects of Declarative Languages (PADL)
+    role: External Reviewer
+    year: 2016
+  - venue: ML Family Workshop (ML)
+    role: External Reviewer
+    year: 2015
+  - venue: International Conference on Functional Programming (ICFP)
+    role: Student Volunteer
+    year: 2015
+  - venue: International Symposium on Principles and Practice of Declarative Programming (PPDP)
+    role: External Reviewer
+    year: 2015
+  - venue: Mathematics of Program Construction Conference (MPC)
+    role: External Reviewer
+    year: 2015

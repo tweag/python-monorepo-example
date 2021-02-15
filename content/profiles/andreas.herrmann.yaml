@@ -1,0 +1,59 @@
+name: Andreas Herrmann
+github: aherrmann
+skills:
+  - Bazel
+  - C++
+  - Haskell
+  - Nix
+  - Python
+  - Scala
+speaks:
+  - English
+  - German
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2017 - present
+    description: |
+      - Maintain various open source projects.
+      - Contribute to distributed ledger application platform.
+      - Migration of polyglot monorepo to Bazel.
+      - Analysis pipeline for genome sequencing data.
+      - Model distributed transactions for exascale storage cluster.
+  - employer: University of Fribourg
+    role: Diplomassistent
+    years: 2013 - 2017
+    description: |
+      Teaching assistant for quantum mechanics, introductory physics, physics labs, and numerical atelier.
+  - employer: HyperTension Webdesign GmbH
+    role: Intern
+    years: 2004
+    description: |
+      Graphic design and C++ programming.
+education:
+  - qualification: PhD
+    name: Physics
+    institution: University of Fribourg
+    years: 2013 - 2019
+    description: |
+      thesis title: Nonequilibrium Dynamics in Strongly Correlated Electron Systems
+  - qualification: Master of Science ETH
+    name: Physics
+    institution: ETH Zurich
+    years: 2010 - 2012
+    description: |
+      thesis title: Time Dependent Density Functional Theory of Interacting Fermions in One Dimension
+  - qualification: Bachelor of Science ETH
+    name: Physics
+    institution: ETH Zurich
+    years: 2007 - 2010
+publications:
+  - "M. Schüler, D. Golež, Y. Murakami, N. Bittner, A. Herrmann, H. U. R. Strand, P. Werner, and M. Eckstein, NESSi: The Non-Equilibrium Systems Simulation Package, Computer Physics Communications 257, 107484 (2020)."
+  - "A. J. Herrmann, A. E. Antipov, and P. Werner, Spreading of Correlations in the Falicov-Kimball Model, Phys. Rev. B 97, 165107 (2018)."
+  - "A. Herrmann, Y. Murakami, M. Eckstein, and P. Werner, Floquet Prethermalization in the Resonantly Driven Hubbard Model, EPL 120, 57001 (2017)."
+  - "A. J. Herrmann, N. Tsuji, M. Eckstein, and P. Werner, Nonequilibrium Dynamical Cluster Approximation Study of the Falicov-Kimball Model, Phys. Rev. B 94, 245114 (2016)."
+  - "T. T. Nguyen, A. J. Herrmann, M. Troyer, and S. Pilati, Critical Temperature of Interacting Bose Gases in Periodic Potentials, Phys. Rev. Lett. 112, 170402 (2014)."
+talks:
+  - "Package Manager Integration with Bazel, BazelCon, December 2019"
+  - "GHC Hacking Newcomers Tutorial, ZuriHac, June 2018"
+  - "Compiling a Simple Language to LLVM, HaskellerZ Zurich, November 2016"

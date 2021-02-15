@@ -38,9 +38,9 @@ const Column = props => (
     {...props}
     sx={{
       position: `relative`,
-      width: [`50%`, `15%`],
-      m: [`0 0 20px`, `0 0 22px`],
-      p: [`0 10px`, `0`],
+      width: [`50%`, `50%`, `15%`],
+      m: [`0 0 20px`, `0 0 20px`, `0 0 22px`],
+      p: [`0 10px`, `0 10px`, `0`],
     }}
   />
 )
@@ -53,7 +53,7 @@ const ColumnTitle = props => (
       lineHeight: `24px`,
       fontWeight: `400`,
       display: `block`,
-      m: [`0 0 10px`, `0 0 20px`],
+      m: [`0 0 10px`, `0 0 10px`, `0 0 20px`],
     }}
   />
 )
@@ -61,14 +61,14 @@ const ColumnTitle = props => (
 const Footer = () => (
   <footer
     sx={{
-      fontSize: [0, 1, null, null, null, 2],
-      lineHeight: [`18px`, `24px`, null, null, null, `26px`],
+      fontSize: [0, 0, 1, null, null, null, 2],
+      lineHeight: [`18px`, `18px`, `24px`, null, null, null, `26px`],
       position: `relative`,
       bg: `black`,
       color: `white`,
       "--bg-color": `black`,
       "--fg-color": `white`,
-      p: [`40px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
+      p: [`40px 0`, `40px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
       width: `100%`,
     }}
   >

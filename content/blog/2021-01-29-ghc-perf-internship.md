@@ -60,7 +60,7 @@ Do you have the interest and skills to improve compile times? Please [apply][app
 - **Algorithms**. There are a number of algorithms that do unnecessary work within
   GHC. For example, we might want to know whether there are any free type variables
   in an expression. A simple way to do this is to gather all the free variables of
-  an expression (there is a function for that) and then iterate throught the set
+  an expression (there is a function for that) and then iterate through the set
   of variables (there is a function for that) detecting type variables (there is
   a function for that). But this is madness: it allocates a ton of space in building
   the set, when a straightforward traversal of the expression would yield what we want,
@@ -146,4 +146,6 @@ language). We will collect applications until Thursday, March 4, 2021 (anywhere
 on Earth) and then review all collected applications; we hope to be able to
 update applicants on their status within days. The internship can start any time
 after the offer is made, subject to mutual availability. Internships typically
-last 12 weeks, although there may be some flexibility here. Please do [apply][application]!
+last 12 weeks, although there may be some flexibility here. If you have
+any questions, feel free to [email me directly](mailto:richard.eisenberg@tweag.io).
+Please do [apply][application]!

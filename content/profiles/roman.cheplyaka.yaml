@@ -1,0 +1,76 @@
+name: Roman Cheplyaka
+github: feuerbach
+bio: >
+  Roman is a Software Engineer with over 10 years of experience in Haskell and
+  expertise in bioinformatics, mathematics, and statistics. He is an active open
+  source contributor and the author of the Tasty testing framework.
+
+  Roman produces and hosts the podcasts Compositional and The Bioinformatics Chat.
+skills:
+  - Haskell
+  - C
+  - R
+  - Perl
+  - Bioinformatics
+  - Statistics
+speaks:
+  - English
+  - Ukrainian
+  - Russian
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2018–present
+    description: >
+      Helping a client improve their systems biology modeling engine
+      written in Haskell. Notably, implemented just-in-time compilation of
+      mathematical formulas via LLVM, speeding up simulations by 4x–10x.
+  - employer: NStack
+    role: Software Engineer
+    years: 2017–2018
+    description: >
+      Helped NStack to redesign and evolve their domain-specific language
+      implemented in Haskell; improved DSL error messages for syntax and type
+      errors; added type inference.  Developed a Haskell library ("libnstack")
+      with a low-level C interface to be used by packages in different
+      languages. Then developed an R package on top of this library, thus adding
+      support for the R language to the NStack platform.
+  - employer: Signal Vine
+    role: Software Engineer
+    years: 2014–2016
+    description: >
+      Designed, implemented in Haskell, and maintained a core set of services
+      for scheduling, sending, receiving, and processing text messages.
+  - employer: Barclays
+    role: Software Engineer
+    years: 2010–2012
+    description: >
+      Maintained and improved tools in Haskell for traders and quantitative
+      analysts. These tools were used to analyze financial instruments (exotic
+      options) described in a functional domain-specific language.
+  - employer: Massive Solutions
+    role: Software Engineer
+    years: 2009–2010
+    description: >
+      Analyzed and improved performance of parallel programs (mostly in C) targeted for high-performance clusters
+  - employer: AdaptiveRisk
+    role: Software Engineer
+    years: 2006–2009
+    description: >
+      Worked on a modeling framework for financial instruments implemented in C and
+      Common Lisp.
+education:
+  - qualification: BSc
+    name: Mathematics
+    institution: Odesa National University
+    years: 2005–2009
+    description:
+  - qualification: MSc
+    name: Bioinformatics and Systems Biology
+    institution: The University of Manchester
+    years: 2017–2018
+    description:
+talks:
+  - "Generic Traversals, London Haskell 2017"
+  - "Reuse your monadic code, Haskell DC, 2014"
+  - "Applicative regular expressions, Dutch Haskell Day, 2012"

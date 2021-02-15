@@ -1,0 +1,78 @@
+name: Nicolas Frisby
+github: nfrisby
+bio: |
+  Nick is a software architect dedicated to assuring correctness by discovering
+  and encoding the most useful domain abstractions. He enjoys close cooperation
+  with experts to enable and support the re-expression of their knowledge as
+  semi-formal, formal, and even executable specifications. His most trusty tool
+  has been Haskell. Other interests include: consensus building, tutorial
+  writing, knowledge sharing presentations, professional development, all kinds
+  of games, speculative fiction, dogs, hiking, and culinary adventures!
+skills:
+  - expert: Haskell
+  - fluent: C, Python, Matlab, DHTML/JavaScript, LaTeX
+  - system architecture
+  - programming language theory and design
+  - domain specific languages
+  - strong type systems
+  - technical writing and communication
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: July 2019-present
+    description:
+      - GHC typechecker plugin development
+      - technical writing
+      - full-time client assignments
+      - team lead
+      - testing distributed consensus systems
+      - statistical property testing
+  - employer: NAVICAN Inc.
+    role: Principal Developer
+    years: May 2018-July 2019
+    description:
+      - member on multi-disciplinary team
+      - prototyping via collaboration with domain experts
+      - mathematical model of patient treatment and physiology
+  - employer: Amgen
+    role: Principal Algorithm Scientist,
+    years: November 2014-May 2018
+    description:
+      - formerly Principal Software Design Architect
+      - member on multi-disciplinary team
+      - network of dynamical systems as a performant cloud-based Haskell
+      - custom data science analysis of noisy wearable ECG recordings
+  - employer: FP Complete
+    role: Haskell Consultant
+    years: October 2013-November 2014
+    description:
+      - full-time client assignment, subsequently hired
+      - see Amgen position for details
+  - employer: The University of Kansas
+    role: Research Staff
+    years: June 2013-October 2013
+    description:
+      - optimized a Haskell library for rewriting (KURE)
+      - coauthored KURE article in 2014 Journal of Functional Programming
+      - assisted with successful 2014 NSF Career Award
+  - employer: Microsoft Research
+    role: Research Intern
+    years: January 2013-April 2013
+    description:
+      - refreshed the ticky-ticky profiling in GHC
+      - investigated late lambda lift, precursor join-points
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: The University of Kansas
+    years: 2005-2012
+    description:
+      - generic programming
+      - precise types
+      - language processing in Haskell
+  - qualification: BS
+    name: Computer Engineering
+    institution: The University of Kansas
+    years: 2001-2005
