@@ -4,7 +4,7 @@ import React from "react"
 import { Grid, Box } from "theme-ui"
 
 import homePreview from "../../images/home_preview.png"
-import homeVideo from "../../images/home.mp4"
+import homeAnim from "../../images/home.svg"
 
 import { Arrow } from "../../components"
 
@@ -22,23 +22,15 @@ export default function Section1() {
         gap={[`50px`, 5, `10%`]}
       >
         <Box className={`transition--slide-fade-in bottom-in only-above-1`}>
-          <video
+          <img
             width="600"
             height="600"
-            loop
-            autoPlay
-            muted
-            playsInline
-            data-keepplaying
-            poster={homePreview}
+            src={homeAnim}
             sx={{
               width: `100%`,
               height: `auto`,
               maxWidth: [`280px`, `300px`, `90%`],
-            }}
-          >
-            <source src={homeVideo} type="video/mp4" />
-          </video>
+            }} />
         </Box>
         <Box
           sx={{

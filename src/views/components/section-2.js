@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Grid, Box, Text } from "theme-ui"
 import { Link } from "gatsby"
-import visionaries from "../../images/img2.gif"
+import visionaries from "../../images/img2.svg"
 
 function Section2() {
   return (
