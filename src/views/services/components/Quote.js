@@ -5,7 +5,7 @@ import { Grid, Box, Text } from "theme-ui"
 
 import img7 from "../../../images/img7.svg"
 
-import Divider from "./Divider"
+import { Divider } from "../../../components"
 
 const content = {
   main: {

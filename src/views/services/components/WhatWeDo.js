@@ -4,7 +4,7 @@ import { Grid, Box, Text } from "theme-ui"
 
 import img8 from "../../../images/img8.svg"
 
-import SectionHeading from "./SectionHeading"
+import { SectionHeading } from "../../../components"
 
 const content = [
   {
