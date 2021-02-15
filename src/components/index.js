@@ -1,2 +1,6 @@
 export { default as ListIndustries } from "./ListIndustries"
 export { default as CallToActionFooter } from "./CallToActionFooter"
+export { default as Divider } from "./Divider"
+export { default as SectionHeading } from "./SectionHeading"
+export { default as Layout } from "./layout"
+export { default as SEO } from "./seo"
