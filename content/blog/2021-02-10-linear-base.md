@@ -169,7 +169,7 @@ current limitation that all case statements consume the scrutinee (the `x` in
 ```
 
 These are used throughout `linear-base` itself and are likely to
-show up in linearly types programs. For instance,
+show up in linearly typed programs. For instance,
 the linearly-typed streaming function `chain` has
 the following type
 
@@ -241,7 +241,7 @@ repository][linear-base-github].
 [stream-post]: https://www.tweag.io/blog/2018-06-21-linear-streams/
 [functors-post]: https://www.tweag.io/blog/2020-01-16-data-vs-control/
 [lb-ur]: https://github.com/tweag/linear-base/blob/master/src/Data/Unrestricted/Linear.hs
-[lb-cmonad]: https://github.com/tweag/linear-base/blob/master/src/Control/Monad/Linear.hs
+[lb-cmonad]: https://github.com/tweag/linear-base/blob/master/src/Control/Functor/Linear.hs
 [lb-optics]: https://github.com/tweag/linear-base/blob/master/src/Control/Optics/Linear/Internal.hs
 [lb-marshall]: https://github.com/tweag/linear-base/blob/master/src/Foreign/Marshal/Pure.hs
 [lb-dest]: https://github.com/tweag/linear-base/blob/master/src/Data/Array/Destination.hs
