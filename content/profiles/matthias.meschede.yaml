@@ -1,0 +1,75 @@
+name: Matthias Meschede
+github: mmesch
+bio: |
+  Matthias coordinates projects and develops business at Tweag. Besides, he
+  writes code, discusses statistics, and implements machine learning
+  solutions. He is passionate about Tweag’s Open Source fellowship, project
+  development, and loves bringing Tweag’s expertise to new situations and
+  communities. A physicist by training, Matthias has a MSc in Physics from
+  LMU Munich, and received his PhD in Seismology from IPG Paris. He
+  contributed to international journals, conferences and open source codes in
+  the field. In his spare time he enjoys playing various musical instruments,
+  dance, as well as graphic design and illustration.
+skills:
+  - Object Oriented Programming
+  - Functional Programming
+  - Business Development
+speaks:
+  - German (native)
+  - English (fluent)
+  - French (fluent)
+  - Latin (intermediate)
+  - Spanish (basic)
+experience:
+  - employer: Tweag
+    role: Project coordination and business development
+    years: August 2020-present
+    location: Paris, France / remote
+    description: |
+      Tech: Haskell, Nix, Purescript, Elm
+
+  - employer: Tweag
+    role: Data lead
+    years: February 2018-August 2020
+    location: Paris, France / remote
+    description: |
+      Tech: Haskell, Nix, Python, Neural-Networks, Bayesian Statistics, Probabilistic Programming
+
+  - employer: Institut de Physique du Globe
+    role: PostDoc
+    location: Paris, France
+    years: June 2015 – December 2017
+    description: |
+      Tech: Signal Processing, Machine learning, Data visualization, Inverse Problems
+
+  - employer: Institut de Physique du Globe
+    role: PhD Student
+    years: November 2011 – June 2015
+    location: Paris, France
+    description: |
+      Tech: Finite and Spectral Element Simulation, Differential Equations, Spectral Analysis
+
+  - employer: Max Planck Institute for Dynamics and Selforganization
+    role: Scientific assistant
+    years: April 2011 – September 2011
+    location: Goettingen, Germany
+    description: |
+      Tech: Phase transitions, Statistical simulations, Multi-agent modelling
+
+  - employer: Princeton University
+    role: Visiting Student Research Collaborator
+    years: November 2009 – October 2010
+    location: Princeton, NJ, USA
+    description: |
+      Tech: Finite and Spectral Element Simulation, Data visualization
+
+education:
+  - qualification: PhD
+    name: Seismology
+    institution: Institut de Physique du Globe de Paris
+    years: 2011-2015
+
+  - qualification: Diplom (eq. MSc)
+    name: Physics
+    institution: Ludwig Maximilians Universitaet Muenchen
+    years: 2005 - 2011
