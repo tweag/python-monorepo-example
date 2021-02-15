@@ -66,6 +66,7 @@ function TemplateFirstSection({ title, headline, paras }) {
               fontSize: [`18px`, `18px`, `27px`],
               lineHeight: [1.2, 1.2, `35px`],
               maxWidth: [`100%`, `100%`, `90%`, `90%`, `90%`, `800px`],
+              marginTop: [`10px`],
             }}
           >
             <Text>{firstPara}</Text>
@@ -77,9 +78,9 @@ function TemplateFirstSection({ title, headline, paras }) {
       <Grid
         className="viewport-section transition-section"
         columns={[1, 1, 4]}
-        gap={[`30px`, `30px`]}
+        gap={[`35px`]}
         sx={{
-          pt: [`25px`, `25px`, `60px`],
+          pt: [`35px`, `35px`, `60px`],
         }}
       >
         <Box
