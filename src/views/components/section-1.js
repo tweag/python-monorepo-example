@@ -7,6 +7,8 @@ import { Grid, Box } from "theme-ui"
 import homePreview from "../../images/home_preview.png"
 import homeVideo from "../../images/home.mp4"
 
+import { Arrow } from "../../components"
+
 export default function Section1() {
   return (
     <React.Fragment>
@@ -80,13 +82,17 @@ export default function Section1() {
           </p>
         </Box>
       </Grid>
-      <div
-        sx={{
+      <Arrow
+        level={1}
+        size={`40px`}
+        direction={`down`}
+        customSx={{
           position: `relative`,
           top: [0, 0, 0, `10%`],
+          margin: [`0 auto`],
+          display: [`none`, `none`, `none`, `block`],
         }}
-        className="line-arrow down"
-      ></div>
+      />
     </React.Fragment>
   )
 }

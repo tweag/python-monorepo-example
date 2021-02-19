@@ -118,6 +118,14 @@ export const globalStyles = t => {
         transition-delay: 0.8s;
       }
 
+      ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
+        num => `
+        &.delayed-${num} {
+          transition-delay: ${(num * 0.1).toFixed(1)}s;
+        }
+      `
+      )}
+
       &.bottom-in {
         -webkit-transform: translateY(300px);
         -ms-transform: translateY(300px);

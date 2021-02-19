@@ -78,9 +78,10 @@ function Section5() {
               display: `flex`,
               justifyContent: `center`,
               alignItems: `center`,
-              transitionDelay: `${0.5 + 0.1 * i}s`,
             }}
-            className="transition--slide-fade-in bottom-in  only-above-1"
+            className={`transition--slide-fade-in bottom-in  only-above-1 delayed-${
+              5 + 1 * i
+            }`}
           >
             <img
               sx={{
