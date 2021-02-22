@@ -1,0 +1,57 @@
+name: Rok Garbas
+github: garbas
+bio: |
+  Rok is a Senior Software Engineer and is passionate about improving Nix user
+  experience, and growing Nix adoption in the wider tech community. He is
+  vastly experienced as a front, back and DevOps engineer, and worked as a
+  Release Engineer at Mozilla and RhodeCode prior to joining Tweag. Rok is a
+  longtime Nix contributor, founder and leader of the NixOS Marketing Team, and
+  organizer of the first NixCon in Berlin, and away from engineering enjoys
+  gardening, surfing, Brazilian Zouk dancing and spending time with his two
+  sons.
+skills:
+  - Nix
+  - NixOS
+  - Rust
+  - Elm
+  - Python
+  - TypeScript / Javascript
+  - Terraform / AWS
+  - DevRel (Developer relations, marketing and community)
+speaks:
+  - Slovenian (native)
+  - Serbian (native)
+  - English (fluent)
+  - Spanish (advance)
+  - Polish (advance)
+  - German (basic)
+experience:
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: Feb 2020 - present
+    description: |
+      Multiple projects across Nix and NixOS.
+  - employer: Mozilla
+    role: Release Engineer
+    years: Feb 2016 - Feb 2020
+    description: |
+      Help design and improve release process of Firefox and Firefox Mobile.
+  - employer: Shoppimon
+    role: Python Developer
+    years: Nov 2015 - Jan 2016
+    description: |
+      Develop backend metrics processing pipelines using Python, Qt, Nix and
+      ZMQ.
+  - employer: RhodeCode
+    role: Python Developer
+    years: Jul 2014 - Jul 2015
+    description: |
+      Implemented Nix into the process to manage development, testing and
+      deployment environments. Helped port software to Cygwin and create
+      Windows Installer using Inno Setup.
+  - employer: Rok Garbas, spletno svetovanje in razvoj, s.p. (Freelance)
+    role: Python Developer
+    years: Jan 2008 - Jun 2014
+    description: |
+      Many projects and different types of work ranging from backend (Python)
+      development to frontend (web) development.
