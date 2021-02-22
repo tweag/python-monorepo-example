@@ -1,4 +1,5 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx, Flex } from "theme-ui"
 import { graphql, StaticQuery, Link } from "gatsby"
 
 // Static queries are used for queries in non page components. For more info look at:
@@ -17,25 +18,38 @@ const AllTagsByData = ({ data }) => {
     (a, b) => tagsNumCitetions[b] - tagsNumCitetions[a]
   )
   return (
-    <div
-      className="all_tags"
-      style={{
-        marginBottom: `20px`,
+    <Flex
+      sx={{
+        flexWrap: `wrap`,
       }}
     >
-      <div>
-        <Link to={`/blog`} key="all" className="btn noarrow">
-          all
-        </Link>
-        {tagsUniques.map(tag => {
-          return (
-            <Link to={`/blog/tags/${tag}`} key={tag} className="btn noarrow">
-              {tag}
-            </Link>
-          )
-        })}
-      </div>
-    </div>
+      <Link
+        to={`/blog`}
+        key="all"
+        className="button button-secondary button-small"
+        sx={{
+          mr: [`15px`],
+          mb: [`5px`],
+        }}
+      >
+        all
+      </Link>
+      {tagsUniques.map(tag => {
+        return (
+          <Link
+            to={`/blog/tags/${tag}`}
+            key={tag}
+            className="button button-secondary button-small"
+            sx={{
+              mr: [`15px`],
+              mb: [`5px`],
+            }}
+          >
+            {tag}
+          </Link>
+        )
+      })}
+    </Flex>
   )
 }
 

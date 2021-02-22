@@ -1,8 +1,10 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { Grid } from "theme-ui"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import { Card } from "../components/blog-card"
+import { Layout, SectionHeading } from "../components"
+import BlogCard from "../components/blog-card"
 import SEO from "../components/seo"
 import AllTags from "../components/all-tags"
 
@@ -12,26 +14,52 @@ const TagPage = ({ data, pageContext }) => {
   const title = `Blog: ${tag} (${totalCount} post${
     totalCount === 1 ? `` : `s`
   })`
+
   return (
     <Layout>
-      <SEO title={`Engineering Blog: ${tag}`} />
-      <section className="section-area">
-        <div className="section s_white services-section blog-content blog-home viewport-section">
-          <div className="text-area">
-            <div className="section-title" style={{ marginBottom: `20px` }}>
-              {title}
-            </div>
-            <AllTags />
-          </div>
-        </div>
-        <div className="section s_white services-section blog-content viewport-section">
-          <div className="post_container">
-            {edges.map(post => {
-              return <Card node={post.node} key={post.node.fields.slug} />
-            })}
-          </div>
-        </div>
-      </section>
+      <SEO title={`Engineering Blog ${tag}`} />
+      <div
+        className="section s_white  viewport-section transition-section"
+        sx={{
+          pt: [`65px`, `65px`, `130px`, `130px`, `130px`, `130px`, `160px`],
+        }}
+      >
+        <Grid
+          className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed-0"
+          gap={`20px`}
+          sx={{
+            px: [`15px`, `15px`, 0],
+            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            width: [`100%`, `100%`, `50%`],
+          }}
+        >
+          <SectionHeading
+            customSx={{
+              justifySelf: `start`,
+            }}
+          >
+            {title}
+          </SectionHeading>
+          <AllTags />
+        </Grid>
+        <Grid
+          sx={{
+            mt: [`20px`],
+            mb: [`40px`],
+            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            // pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            rowGap: [`60px`, `60px`, `40px`],
+            columnGap: [0, 0, `30px`, `50px`, `5%`],
+          }}
+          columns={[1, 1, 3]}
+          // gap={[`60px`, `60px`, 0]}
+        >
+          {edges.map((post, i) => {
+            // Display a pattern periodically.
+            return <BlogCard key={i} node={post.node} />
+          })}
+        </Grid>
+      </div>
     </Layout>
   )
 }

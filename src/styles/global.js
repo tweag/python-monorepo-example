@@ -187,7 +187,7 @@ export const globalStyles = t => {
         transition-delay: 0.8s;
       }
 
-      ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
+      ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
         num => `
         &.delayed-${num} {
           transition-delay: ${(num * 0.1).toFixed(1)}s;
@@ -248,6 +248,34 @@ export const globalStyles = t => {
 
     /* Transitions end.
 	 ========================================================================== */
+
+    /* New refactored css.  */
+
+    .button {
+      display: inline-block;
+      &.button-small {
+        padding: 7px 20px;
+        font-size: 14px;
+      }
+
+      &.button-secondary {
+        border: 1px solid var(--fg-color);
+        border-radius: 35px;
+        text-align: center;
+        color: var(--fg-color);
+        background: linear-gradient(to right, black 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all 0.5s ease;
+
+        &:hover {
+          color: var(--bg-color);
+          background-position: left bottom;
+        }
+      }
+    }
+
+    /* ========================================================================== */
 
     .contact .line-sep {
       padding: 0;
