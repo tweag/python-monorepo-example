@@ -245,7 +245,9 @@ const Navigation = ({ className }) => (
         </NavItem>
         <MyLink href="/opensource">Open source</MyLink>
         <MyLink href="/contact">Contact</MyLink>
-        <MyLink href="/careers">Careers</MyLink>
+        <NavItem>
+          <a href="//boards.greenhouse.io/tweag">Careers</a>
+        </NavItem>
         <MyLink href="/blog">Blog</MyLink>
       </Menu>
       <MobileMenuOpener />
