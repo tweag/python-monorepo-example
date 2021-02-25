@@ -3,7 +3,7 @@ const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
   const blogTagTemplate = path.resolve(`./src/templates/blog-tag.js`)
@@ -68,6 +68,13 @@ exports.createPages = async ({ graphql, actions }) => {
         tag: tag.fieldValue,
       },
     })
+  })
+
+  // Redirect old careers page
+  createRedirect({
+    fromPath: `/careers`,
+    toPath: `https://boards.greenhouse.io/tweag`,
+    isPermanent: true,
   })
 }
 
