@@ -8,7 +8,7 @@ description: "Understanding monads in OCaml: mixing promises and errors"
 
 Monads allow to chain effectful operations in a correct and practical way. In
 some languages, such as Haskell, they are commonplace, while in OCaml they are
-less common. However, they are also a useful and practical tool in OCaml too!
+less common. However, they are a useful and practical tool in OCaml too!
 
 In this post, I will describe what monads are good for, and what they look like
 in OCaml, taking as example the promises-and-failures monad used in the
@@ -38,7 +38,7 @@ affect the entire codebase: errors can happen anywhere and asynchronicity
 spreads from the functions producing promises to any functions consuming them.
 
 In this post, we will build an OCaml monad that combines the two use cases
-above. That is, we will define a monad that makes easy to:
+above. That is, we will define a monad that makes it easy to:
 
 - declare and handle errors
 - write asynchronous code without even knowing it
@@ -61,7 +61,7 @@ complexity.
 
 ## The error monad
 
-Let's start by thinking about errors, without the promises framework. Errors
+Let's start by thinking about errors without the promises framework. Errors
 are structured values belonging to the type `error`, which is an [extensible
 variant][extensible-variant] type:
 
