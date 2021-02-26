@@ -1,3 +1,4 @@
+slug: jonathon.bartlett
 name: Jonathon Bartlett
 github: JBartlett1
 bio: |
@@ -13,42 +14,43 @@ experience:
   - employer: Tweag
     role: Sales Director
     years: January 2021 - present
-    description: |
-      Responsible for all Sales Management, Account Management and New Business team.
-      GTM planning and strategy
+    description:
+      - Responsible for all Sales Management, Account Management and New Business team.
+        GTM planning and strategy
   - employer: Jonathon Bartlett Consultancy
     role: Owner, Founder and Director
     years: September 2020 - January 2021
-    description: |
-      Self-employed consultancy providing full sales consultancy, training and strategy services
-      Reseller for several respected digital agencies
-      Product and Service Commercial Development
-      Coffee brand creator and Head of Commercial
+    description:
+      - Self-employed consultancy providing full sales consultancy, training and strategy services
+        Reseller for several respected digital agencies
+        Product and Service Commercial Development
+        Coffee brand creator and Head of Commercial
   - employer: Intive
     role: Senior Sales Manager
     years: May 2018 - September 2020
-    description: |
-      Head of UK Sales and AVP of Global Financial Services Team
-      Responsible for new UK sales team and establishing Intive London Studio
-      Co-led the Financial Services team with founder
+    description:
+      - Head of UK Sales and AVP of Global Financial Services Team
+        Responsible for new UK sales team and establishing Intive London Studio
+        Co-led the Financial Services team with founder
   - employer: Endava
     role: Senior Sales Manager
     years: December 2016 - May 2018
-    description: |
-      Head of Sales TMT sector 
-      Sector GTM, New Business and Account Management
+    description:
+      - Head of Sales TMT sector
+      - Sector GTM, New Business and Account Management
   - employer: Ciklum
     role: Senior Sales Manager, Senior Account Manager, Head of Project Sales
     years: January 2011 - September 2015
-    description: |
-      Head of Projects Sales, building and managing team from 0 to 12 across EMEA and US 
-      GTM, New Business, Sales Training, Forcasting and Account Management
-      Senior Sales Manager, Enterprise New Business and Account Management
-      Senior Account Manager, establishing and building Account Management division
+    description:
+      - Head of Projects Sales, building and managing team from 0 to 12 across EMEA and US
+      - GTM, New Business, Sales Training, Forcasting and Account Management
+      - Senior Sales Manager, Enterprise New Business and Account Management
+      - Senior Account Manager, establishing and building Account Management division
 education:
   - qualification: BA
     name: Politics and Economics
     institution: University of East Anglia
     years: 2006 - 2009
-    description: |
-      thesis title: Political Oppression of Women through the Media
+    description:
+      - |
+        thesis title: Political Oppression of Women through the Media

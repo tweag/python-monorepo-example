@@ -1,3 +1,4 @@
+slug: tobias.pflug
 name: Tobias Pflug
 github: gilligan
 bio: |
@@ -22,68 +23,73 @@ experience:
     role: Senior Software Engineer
     years: March 2019-present
     location: remote
-    description: |
-      Working remotely with a global team, supporting international clients
-      according to their needs and technologies and improving their processes.
-
-      - Project for a French-based telco company supporting their
+    description:
+      - Working remotely with a global team, supporting international clients
+        according to their needs and technologies and improving their processes.
+      - |
+        Project for a French-based telco company supporting their
         DevOps team: Nix, NixOS, Rust
-      - Project for a US-based startup in the cashierless checkout
+      - |
+        Project for a US-based startup in the cashierless checkout
         space: Nix, Python, Rust, Docker, Tensorflow
-      - Project for a US-based blockchain company: Nix, Haskell
+      - |
+        Project for a US-based blockchain company: Nix, Haskell
 
   - employer: HolidayCheck
     role: Senior Software Engineer, Mentor
     location: remote
     years: Dec 2015 – Feb 2019
-    description: |
-      HolidayCheck AG operates the biggest independent hotel review and
-      booking portal in the German-speaking area. HolidayCheck enables
-      people to find the ideal hotel to meet their needs, get in touch
-      with others, and book their holiday directly.
+    description:
+      - HolidayCheck AG operates the biggest independent hotel review and
+        booking portal in the German-speaking area. HolidayCheck enables
+        people to find the ideal hotel to meet their needs, get in touch
+        with others, and book their holiday directly.
 
-      I designed and implemented an apprenticeship program to foster
-      a culture of professionalism and expertise and help Engineers grow.
-      I organized and facilitated team and company-wide events for developers
-      to meet and exchange. I introduced new technologies and provided support
-      to onboard Engineers to these technologies.
+      - I designed and implemented an apprenticeship program to foster
+        a culture of professionalism and expertise and help Engineers grow.
+        I organized and facilitated team and company-wide events for developers
+        to meet and exchange. I introduced new technologies and provided support
+        to onboard Engineers to these technologies.
 
-      Tech: Haskell, JavaScript, React, Nix, AWS, k8s, Jenkins, Docker
+      - |
+        Tech: Haskell, JavaScript, React, Nix, AWS, k8s, Jenkins, Docker
 
   - employer: Seitenbau
     role: Senior Software Engineer
     years: Jul 2010 – Dec 2014
     location: Konstanz, Germany
-    description: |
-      Seitenbau provides quality software development and consulting services for the web.
-      I designed and implemented Software for the front- and backend in agile teams.
+    description:
+      - Seitenbau provides quality software development and consulting services for the web.
+        I designed and implemented Software for the front- and backend in agile teams.
 
-      Tech: Javascript, Java, Docker, MySQL, Bash, Python
+      - |
+        Tech: Javascript, Java, Docker, MySQL, Bash, Python
 
   - employer: NewTec GmbH
     role: Software Engineer
     years: Dec 2009 – Jun 2010
     location: Friedrichshafen, Germany
-    description: |
-      NewTec provides custom system engineering services and consulting with a focus on safety and embedded
-      devices. I worked on quality assurance for customer projects implementing tests for software running on
-      embedded devices.
+    description:
+      - NewTec provides custom system engineering services and consulting with a focus on safety and embedded
+        devices. I worked on quality assurance for customer projects implementing tests for software running on
+        embedded devices.
 
-      Tech: C, C++
+      - |
+        Tech: C, C++
   - employer: ATM ComputerSysteme GmbH
     role: Junior Software Engineer
     years: May 2007 – Mar 2009
     location: Konstanz, Germany
-    description: |
-      ATM builds advanced hardware and software for use in the German military
-      service. I designed and implemented a modular and reusable firmware
-      kernel for ATMEL microcontrollers that monitor voltages, power
-      consumption and temperature to ensure correct operation for a new range
-      of hardware products. In doing so I collaborated closely with the
-      electronics department to gain the required knowledge.
+    description:
+      - ATM builds advanced hardware and software for use in the German military
+        service. I designed and implemented a modular and reusable firmware
+        kernel for ATMEL microcontrollers that monitor voltages, power
+        consumption and temperature to ensure correct operation for a new range
+        of hardware products. In doing so I collaborated closely with the
+        electronics department to gain the required knowledge.
 
-
-      Tech: C, Assembler, Oscilloscope
+      - |
+        Tech: C, Assembler, Oscilloscope
 
 education:
   - qualification: BSc. (hons)

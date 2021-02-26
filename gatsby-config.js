@@ -179,5 +179,13 @@ their vision, from research to product delivery.
     `gatsby-plugin-meta-redirect`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sitemap`,
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/profiles`,
+        name: `profiles`,
+      },
+    },
   ],
 }

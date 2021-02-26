@@ -1,8 +1,11 @@
+slug: adam.hose
 name: Adam Hose
 github: adisbladis
 bio: |
-  Adam is a Software Engineer with a long industry in the industry and has experiences in a wide variety of disciplines ranging anywhere from e-commerce to low level cryptography.
+  Adam is a Software Engineer with a long
+   industry in the industry and has experiences in a wide variety of disciplines ranging anywhere from e-commerce to low level cryptography.
   He has a strong passion for open source & open communities, but also takes a special interest in blockchain-related technologies and how to apply them in new and interesting ways.
+
 skills:
   - Nix/NixOS
   - FP/OOP/Scripting
@@ -19,48 +22,55 @@ experience:
     role: DevOps/Research Engineer
     years: November 2018-present
     location: remote
-    description: |
-      Working with a global team with a focus on Nix and related technologies such as NixOps, poetry2nix and Nix deployments.
-      - Invented and developed Trustix, a platform for tracking & verifying reproducible builds.
+    description:
+      - Working with a global team with a focus on Nix and related technologies such as NixOps, poetry2nix and Nix deployments.
+      - |
+        Invented and developed Trustix, a platform for tracking & verifying reproducible builds.
         Technologies: Golang, Nix, Merkle-trees, Python, Javascript
-      - Project for a London-based data-science marketing firm developing their next generation analysis platform.
+      - |
+        Project for a London-based data-science marketing firm developing their next generation analysis platform.
         Technologies: Python, Pandas, Numpy, Conda
-      - Project for a Hong Kong based physics research company to create declarative Windows VMs.
+      - |
+        Project for a Hong Kong based physics research company to create declarative Windows VMs.
         Technologies: Nix, Windows, Qemu
-      - Project for a US-based IOT company deploying to specialised hardware in the field.
+      - |
+        Project for a US-based IOT company deploying to specialised hardware in the field.
         Technologies: NixOps, Nix
-      - Development & maintenance of NixOps
+      - |
+        Development & maintenance of NixOps
         Technologies: Python, Nix
 
   - employer: Enuma Technologies
     role: Senior Software Engineer
     years: Mar 2017 – Oct 2018
     location: Hong Kong
-    description: |
-      Enuma Technologies is a Hong Kong based engineering services firm with a primary focus on blockchain technologies, encryption & security.
-      Technologies: Javascript/Typescript, Golang, Python, Nix/NixOS, Cryptography, Java, Swift, OpenCV, Ethereum, Blockchain, AWS, Kubernetes, Elasticsearch
-
+    description:
+      - |
+        Enuma Technologies is a Hong Kong based engineering services firm with a primary focus on blockchain technologies, encryption & security.
+        Technologies: Javascript/Typescript, Golang, Python, Nix/NixOS, Cryptography, Java, Swift, OpenCV, Ethereum, Blockchain, AWS, Kubernetes, Elasticsearch
   - employer: 5Monkeys Agency
     role: Software Developer
     years: Nov 2013 – Oct 2016
     location: Stockholm, Sweden
-    description: |
-      5 Monkeys Agency is a software consulting firm that does mostly full stack web platforms, primarily in Python (Django).
-      Technologies: Python, Django, PostgreSQL, Elasticsearch/Solr, Javascript, Java
+    description:
+      - |
+        5 Monkeys Agency is a software consulting firm that does mostly full stack web platforms, primarily in Python (Django).
+        Technologies: Python, Django, PostgreSQL, Elasticsearch/Solr, Javascript, Java
 
   - employer: Defunct online startup
     role: Lead Software Developer
     years: Nov 2012 – Oct 2013
     location: Stockholm, Sweden
-    description: |
-      An online startup focusing on social discovery, since defunct.
-      Technologies: Python, Gevent, FFMpeg, Elasticsearch/Solr, NodeJS, ZMQ, Lua
+    description:
+      - |
+        An online startup focusing on social discovery, since defunct.
+        Technologies: Python, Gevent, FFMpeg, Elasticsearch/Solr, NodeJS, ZMQ, Lua
 
   - employer: Chas Visual Management
     role: Software Developer
     years: Oct 2011 – Oct 2012
     location: Stockholm, Sweden
-    description: |
-      Chas is a large software consulting company working with some of the largest companies in north Europe.
-
-      Technologies: Python, SQL, PHP, Solr
+    description:
+      - |
+        Chas is a large software consulting company working with some of the largest companies in north Europe.
+        Technologies: Python, SQL, PHP, Solr

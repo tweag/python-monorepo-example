@@ -1,3 +1,4 @@
+slug: clement.hurlin
 name: Clément Hurlin
 github: smelc
 bio: |
@@ -24,46 +25,49 @@ experience:
   - employer: Tweag
     role: Senior Software Engineer
     years: February 2020 - present
-    description: |
-      Working remotely for a French blockchain company, developing
-      alternative client/server protocols, for enhanced performance
-      and security. Core member of the Tezos blockchain.
-
-      Tech: OCaml
+    description:
+      - |
+        Working remotely for a French blockchain company, developing
+        alternative client/server protocols, for enhanced performance
+        and security. Core member of the Tezos blockchain.
+        Tech: OCaml
   - employer: Prove & Run
     role: Research & Development Engineer
     years: September 2011 - January 2020
-    description: |
-      Worked remotely for a French startup developing
-      a proven microkernel written in a custom first-order functional
-      programming language. Co-authored the compiler and the prover,
-      and developed the company's CI/CD for all products.
+    description:
+      - |
+        Worked remotely for a French startup developing
+        a proven microkernel written in a custom first-order functional
+        programming language. Co-authored the compiler and the prover,
+        and developed the company's CI/CD for all products.
+        Tech: Java, python, Scala
 
-      Tech: Java, python, Scala
   - employer: Université Rennes 1
     role: Teaching assistant and research assistant
     years: 2010 - 2011
-    description: |
-      Developed a custom type system for proving the correctness
-      of Java serialization methods.
+    description:
+      - Developed a custom type system for proving the correctness
+        of Java serialization methods.
   - employer: Inria Bordeaux
     role: Postdoctoral researcher
     years: 2009 - 2010
-    description: |
-      Automatic analysis of security policies
+    description:
+      - Automatic analysis of security policies
 education:
   - qualification: PhD
     name: Computer Science
     institution: Université Nice Sophia-Antipolis and University of Twente
     years: 2006 - 2009
-    description: |
-      thesis title: Specification and Verification of Multithreaded Object-Oriented Programs with Separation Logic
+    description:
+      - |
+        thesis title: Specification and Verification of Multithreaded Object-Oriented Programs with Separation Logic
   - qualification: Masters
     name: Computer Science
     institution: Université Nancy 1 and Technische Universität München
     years: 2006
-    description: |
-      thesis title: Practical Proof Reconstruction for First-order Logic and Set-Theoretical Constructions
+    description:
+      - |
+        thesis title: Practical Proof Reconstruction for First-order Logic and Set-Theoretical Constructions
 publications:
   - "Afshin Amighi, Christian Haack, Marieke Huisman, Clément Hurlin: Permission-Based Separation Logic for Multithreaded Java Programs. Log. Methods Comput. Sci. 11(1) (2015)"
   - "Clément Hurlin, Hélène Kirchner: Semi-automatic Synthesis of Security Policies by Invariant-Guided Abduction. Formal Aspects in Security and Trust 2010: 157-175 (2010)"

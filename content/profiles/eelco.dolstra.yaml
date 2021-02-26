@@ -1,3 +1,4 @@
+slug: eelco.dolstra
 name: Eelco Dolstra
 github: edolstra
 bio: |
@@ -23,8 +24,8 @@ experience:
   - employer: Tweag
     role: Senior Software Engineer
     years: June 2018-present
-    description: |
-      Multiple projects across Rust, Nix NixOS.
+    description:
+      - Multiple projects across Rust, Nix NixOS.
   - employer: LogicBlox / Infor
     role: Computer Scientist
     years: March 2012 - June 2018
@@ -42,14 +43,16 @@ education:
     name: Computer Science
     institution: Utrecht University
     years: 2001 - 2005
-    description: |
-      thesis title: “The Purely Functional Software Deployment Model”
+    description:
+      - |
+        thesis title: “The Purely Functional Software Deployment Model”
   - qualification: Masters
     name: Computer Science
     institution: Utrecht University
     years: 1996 - 2001
-    description: |
-      thesis title: “First Class Rules and Generic Traversals for Program Transformation Languages”
+    description:
+      - |
+        thesis title: “First Class Rules and Generic Traversals for Program Transformation Languages”
 publications:
   - "S. van der Burg, E. Dolstra, S. McIntosh, J. Davies, D. M. German and A. Hemel. Tracing Software Build Processes to Uncover License Compliance Inconsistencies. In 29th IEEE/ACM International Conference on Automated Software Engineering (ASE 2014), 2014. ACM Press."
   - ". Dolstra, R. Vliegendhart and J. Pouwelse. Crowdsourcing GUI Tests. In Sixth IEEE International Conference on Software Testing, Verification and Validation (ICST 2013), 2013. IEEE."

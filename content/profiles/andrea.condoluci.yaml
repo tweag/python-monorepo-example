@@ -1,3 +1,4 @@
+slug: andrea.condoluci
 name: Andrea Condoluci
 github: acondolu
 bio: TODO
@@ -13,7 +14,7 @@ experience:
   - employer: Tweag I/O
     role: Software Engineer
     years: December 2019-present
-    description: |
+    description:
       - Investigating incremental garbage collection for
         Asterius Haskell-to-Wasm compiler
       - Using Haskell in finance in a microservices setting,
@@ -21,18 +22,21 @@ experience:
   - employer: Università di Bologna
     role: Teaching Assistant
     years: 2017
-    description: tutor and assess students in Programming, Algorithms and Data Structures
+    description:
+      - tutor and assess students in Programming, Algorithms and Data Structures
   - employer: PhonicScore
     role: Frontend Developer
     years: 2016
-    description: TypeScript library for displaying sheet music in the browser
+    description:
+      - TypeScript library for displaying sheet music in the browser
 education:
   - qualification: PhD
     name: Computer Science
     institution: Alma Mater Studiorum Università di Bologna, Italy
     years: 2016-2019
-    description: |
-      thesis title: "β-conversion, efficiently"
+    description:
+      - |
+        thesis title: "β-conversion, efficiently"
   - qualification: Visiting PhD Student
     institution: INRIA Saclay
     years: 2018

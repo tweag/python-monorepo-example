@@ -1,10 +1,11 @@
+slug: dorran.howell
 name: Dorran Howell
 github: dorranh
 
 bio: |
   Dorran is a Data Engineer with expertise in data pipelines and ML engineering.
-  Before joining Tweag, Dorran worked at Enverus where he developed data pipelines and Python extensions 
-  to the company’s geophysical modeling application. Outside of work, Dorran enjoys running and hiking in the Alps 
+  Before joining Tweag, Dorran worked at Enverus where he developed data pipelines and Python extensions
+  to the company’s geophysical modeling application. Outside of work, Dorran enjoys running and hiking in the Alps
   with his wife and border collie.
 
 skills:
@@ -42,15 +43,16 @@ education:
     name: Earth Sciences
     institution: ETH Zürich
     years: September 2016 - September 2018
-    description: |
-      Thesis: Modeled the geologic structure of the Himalayas using Bayesian inference and unsupervised classification
-
+    description:
+      - |
+        Thesis: Modeled the geologic structure of the Himalayas using Bayesian inference and unsupervised classification
   - qualification: BSc
     name: Geological Sciences
     institution: University of North Carolina at Chapel Hill
     years: 2010 - 2014
-    description: |
-      Thesis: Built a 3D geophysical model of the earth's mantle beneath the southeastern United States. Graduated with distinction and honors.
+    description:
+      - |
+        Thesis: Built a 3D geophysical model of the earth's mantle beneath the southeastern United States. Graduated with distinction and honors.
 
 publications:
   - "Dorran Howell, Matthias Meschede, Guillaume Desforges. 2021, Funflow2: Functional data pipelines with controlled effects: The 4th International Conference on Emerging Data and Industry 4.0 (in review)."

@@ -1,3 +1,4 @@
+slug: facundo.dominguez
 name: Facundo Domínguez
 github: facundominguez
 bio: |
@@ -23,58 +24,59 @@ experience:
   - employer: Tweag
     role: Senior Software Engineer
     years: November 2013-present
-    description: |
-      Language extensions for GHC, integration of Haskell with Java
-      and R, distributed algorithms, Cloud Haskell.
+    description:
+      - Language extensions for GHC, integration of Haskell with Java
+        and R, distributed algorithms, Cloud Haskell.
   - employer: Parallel Scientific
     role: Senior Software Engineer
     years: December 2011 - November 2013
-    description: |
-      Fault-tolerant distributed algorithms, algorithm verification,
-      Haskell bindings for high-speed networking.
+    description:
+      - Fault-tolerant distributed algorithms, algorithm verification,
+        Haskell bindings for high-speed networking.
   - employer: Patchtag
     role: Senior Software Engineer
     years: November 2011 - January 2012
-    description: |
-      Maintenance of a web application for hosting darcs repositories
+    description:
+      - Maintenance of a web application for hosting darcs repositories
   - employer: Market Psych
     role: Senior Software Engineer
     years: March 2011 - December 2011
-    description: |
-      Maintenance of Happstack-based website, front-end processing algorithms.
+    description:
+      - Maintenance of Happstack-based website, front-end processing algorithms.
   - employer: Freelancer
     role: Software Engineer
-    description: |
-      Various clients, web-applications, electronic books with 3D graphics, and others.
+    description:
+      - Various clients, web-applications, electronic books with 3D graphics, and others.
     years: November 2009 - March 2011
   - employer: Storytron
     role: Software Engineer
-    description: |
-      Client-server system for creation of interactive stories.
+    description:
+      - Client-server system for creation of interactive stories.
     years: January 2007 - October 2009
   - employer: Softmath
     role: Software Engineer
-    description: |
-      Desktop application for teaching high-school mathematics.
+    description:
+      - Desktop application for teaching high-school mathematics.
     years: January 2007 - June 2008
   - employer: Universidad de la República - Uruguay
     role: Teaching Assistant
-    description: |
-      Programming 101, classical logic, computability theory.
+    description:
+      - Programming 101, classical logic, computability theory.
     years: September 2001 - February 2007
   - employer: Active Software
     role: Software Engineer
-    description: |
-      Error-correction algorithms for optical recognition, a spreadsheet
-      engine for financial applications.
+    description:
+      - Error-correction algorithms for optical recognition, a spreadsheet
+        engine for financial applications.
     years: January 2005 - March 2006
 education:
   - qualification: Masters
     name: Computer Science
     institution: Universidad de la República - Uruguay
     years: 2006 - 2009
-    description: |
-      thesis title: “HFusion: a fusion tool based on Acid Rain plus extensions”
+    description:
+      - |
+        thesis title: “HFusion: a fusion tool based on Acid Rain plus extensions”
   - qualification: Bachelor's Degree
     name: Computer Engineer
     institution: Universidad de la República - Uruguay

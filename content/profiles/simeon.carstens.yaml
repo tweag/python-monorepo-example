@@ -1,3 +1,4 @@
+slug: simeon.carstens
 name: Simeon Carstens
 github: simeoncarstens
 bio:
@@ -19,37 +20,38 @@ experience:
     role: Data Scientist
     years: May 2019-present
     location: Paris, France
-    description: |
-      One project for a US-based startup, working on data engineering
-      topics and statistical data analysis using Hidden Markov Models.
-      Since Dec 2020: leading the data science team.
-      Publication of didactic blog posts about Markov chain Monte Carlo
-      sampling and presentations on diverse subjects in Bayesian
-      statistics.
+    description:
+      - |
+        One project for a US-based startup, working on data engineering
+        topics and statistical data analysis using Hidden Markov Models.
+        Since Dec 2020: leading the data science team.
+        Publication of didactic blog posts about Markov chain Monte Carlo
+        sampling and presentations on diverse subjects in Bayesian
+        statistics.
 
   - employer: Max Planck Institute for Biophysical Chemistry
     role: Postdoctoral researcher
     years: May 2017 – Sep 2018
     location: Göttingen, Germany
-    description: |
-      Research on a topic in computational structural biology involving
-      Bayesian inference, Python software development, high-performance
-      computing and chromosome biology
+    description:
+      - Research on a topic in computational structural biology involving
+        Bayesian inference, Python software development, high-performance
+        computing and chromosome biology
 
   - employer: New York University
     role: Postdoctoral researcher
     years: Apr 2016-Mar 2017
     location: New York City, United States
-    description: |
-      Research on topics in the biophysics of the cell nucleus involving
-      MATLAB, analysis of high-resolution microscopy images, and
-      mentoring of students
+    description:
+      - Research on topics in the biophysics of the cell nucleus involving
+        MATLAB, analysis of high-resolution microscopy images, and
+        mentoring of students
 
   - employer: Institut Pasteur
     role: PhD student
     years: Jan 2013-Mar 2016
     location: Paris, France
-    description: |
+    description:
       - Research on a topic in computational structural biology incolving
         Bayesian inference, Python software development, high-performance
         computing and chromosome biology
@@ -59,7 +61,7 @@ experience:
     role: PhD student
     years: Nov 2011-Dec 2012
     location: Tübingen, Germany
-    description: |
+    description:
       - Research on Markov chain Monte Carlo methods
 
 education:

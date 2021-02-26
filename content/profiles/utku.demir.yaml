@@ -1,3 +1,4 @@
+slug: utku.demir
 name: Utku Demir
 github: utdemir
 bio: ""
@@ -12,21 +13,21 @@ experience:
   - employer: Tweag I/O
     role: Software Engineer
     years: 2019-present
-    description: |
-      I mainly help our clients with their Haskell and Nix codebases. These include building data
-      pipelines for a cashierless checkout startup and prototyping a smart-contract for a blockchain
-      company. I also have co-maintained our "linear-base" and "ormolu" projects for some time.
+    description:
+      - I mainly help our clients with their Haskell and Nix codebases. These include building data
+        pipelines for a cashierless checkout startup and prototyping a smart-contract for a blockchain
+        company. I also have co-maintained our "linear-base" and "ormolu" projects for some time.
   - employer: Movio
     role: Software Engineer
     years: 2016-2019
-    description: |
-      Developed batch processing systems using Scala language, Apache Spark and the Hadoop ecosystem.
+    description:
+      - Developed batch processing systems using Scala language, Apache Spark and the Hadoop ecosystem.
   - employer: Picus Security
     role: Software Engineer
     years: 2014-2016
-    description: |
-      As part of a then-small startup, built a distributed application to test network security devices,
-      using Cloud Haskell and Nix.
+    description:
+      - As part of a then-small startup, built a distributed application to test network security devices,
+        using Cloud Haskell and Nix.
 education:
   - qualification: BEng.
     name: Computer Engineering

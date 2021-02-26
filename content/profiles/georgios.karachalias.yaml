@@ -1,3 +1,4 @@
+slug: georgios.karachalias
 name: Georgios Karachalias
 github: gkaracha
 website: https://gkaracha.github.io/
@@ -41,14 +42,16 @@ education:
     name: Computer Science
     institution: KU Leuven
     years: 2014 - 2018
-    description: |
-      thesis title: "Extensions to Type Classes and Pattern Match Checking"
+    description:
+      - |
+        thesis title: "Extensions to Type Classes and Pattern Match Checking"
   - qualification: MEng
     name: Electrical and Computer Engineering
     institution: National Technical University of Athens
     years: 2007 - 2013
-    description: |
-      thesis title: "Pattern Matching Exhaustiveness for GADTs"
+    description:
+      - |
+        thesis title: "Pattern Matching Exhaustiveness for GADTs"
 publications:
   - "Koar Marntirosian, Tom Schrijvers, Bruno C. d. S. Oliveira, and Georgios Karachalias. Resolution as Intersection Subtyping via Modus Ponens. In Proc. ACM Program. Lang. 4, OOPSLA, Article 206 (Nov. 2020), 2020."
   - "Georgios Karachalias, Matija Pretnar, Amr Hany Saleh, Stien Vanderhallen, and Tom Schrijvers. Explicit Effect Subtyping. In Journal of Functional Programming (JFP), 2020."

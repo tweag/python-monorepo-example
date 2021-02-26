@@ -1,3 +1,4 @@
+slug: andreas.herrmann
 name: Andreas Herrmann
 github: aherrmann
 skills:
@@ -14,7 +15,7 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: 2017 - present
-    description: |
+    description:
       - Maintain various open source projects.
       - Contribute to distributed ledger application platform.
       - Migration of polyglot monorepo to Bazel.
@@ -23,26 +24,28 @@ experience:
   - employer: University of Fribourg
     role: Diplomassistent
     years: 2013 - 2017
-    description: |
-      Teaching assistant for quantum mechanics, introductory physics, physics labs, and numerical atelier.
+    description:
+      - Teaching assistant for quantum mechanics, introductory physics, physics labs, and numerical atelier.
   - employer: HyperTension Webdesign GmbH
     role: Intern
     years: 2004
-    description: |
-      Graphic design and C++ programming.
+    description:
+      - Graphic design and C++ programming.
 education:
   - qualification: PhD
     name: Physics
     institution: University of Fribourg
     years: 2013 - 2019
-    description: |
-      thesis title: Nonequilibrium Dynamics in Strongly Correlated Electron Systems
+    description:
+      - |
+        thesis title: Nonequilibrium Dynamics in Strongly Correlated Electron Systems
   - qualification: Master of Science ETH
     name: Physics
     institution: ETH Zurich
     years: 2010 - 2012
-    description: |
-      thesis title: Time Dependent Density Functional Theory of Interacting Fermions in One Dimension
+    description:
+      - |
+        thesis title: Time Dependent Density Functional Theory of Interacting Fermions in One Dimension
   - qualification: Bachelor of Science ETH
     name: Physics
     institution: ETH Zurich

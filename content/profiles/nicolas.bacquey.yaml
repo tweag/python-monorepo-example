@@ -1,3 +1,4 @@
+slug: nicolas.bacquey
 name: Nicolas Bacquey
 github: nbacquey
 bio: |
@@ -24,34 +25,36 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: January 2019 - Present
-    description: |
-      Design, implementation and maintenance of market data services
-      for financial companies in Haskell, Python, and Go
+    description:
+      - Design, implementation and maintenance of market data services
+        for financial companies in Haskell, Python, and Go
   - employer: CRIStAL Research Center
     role: Research Engineer
     years: September 2018 - December 2018
-    description: |
-      Design and implementation of a visualization tool for complex
-      biological interaction networks
+    description:
+      - Design and implementation of a visualization tool for complex
+        biological interaction networks
   - employer: Inria
     role: Postdoctoral researcher
     years: October 2016 - August 2018
-    description: |
-      Proof of formal properties of Unix scripts (idempotence, invertibility)
-      using tree transducers
+    description:
+      - Proof of formal properties of Unix scripts (idempotence, invertibility)
+        using tree transducers
 education:
   - qualification: PhD
     name: Computer Science and Applications
     institution: Université de Caen Normandie
     years: 2012 - 2016
-    description: |
-      Thesis: Algorithmics of periodical configurations on Cellular Automata of arbitrary dimension
+    description:
+      - |
+        Thesis: Algorithmics of periodical configurations on Cellular Automata of arbitrary dimension
   - qualification: Masters
     name: Computer Science
     institution: Université de Caen Normandie
     years: 2010 - 2012
-    description: |
-      Thesis: Cellular Automata: Algorithmics, Complexity, and Implementation
+    description:
+      - |
+        Thesis: Cellular Automata: Algorithmics, Complexity, and Implementation
 publications:
   - "Nicolas Bacquey. Leader election on two-dimensional periodic cellular automata. Theor. Comput. Sci., 659 :36–52, 2017"
   - "Nicolas Bacquey. Complexity classes on spatially periodic cellular automata. In Ernst W. Mayr and Natacha Portier, editors, STACS, pages 112–124, 2014"

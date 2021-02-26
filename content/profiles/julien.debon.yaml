@@ -1,3 +1,4 @@
+slug: julien.debon
 name: Julien Debon
 github: Sir4ur0n
 bio: |
@@ -18,14 +19,15 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: 2021-present
-    description: Contributor to the Mockup/Proxy/Light modes of Tezos.
+    description:
+      - Contributor to the Mockup/Proxy/Light modes of Tezos.
   - employer: Decathlon
     role: Technical Leader
     years: 2016-2020
-    description: |
-      Development team leader on various backend and frontend applications for Offer, Pricing and Merchandizing processes.
-      Core contributor of internal tech guilds (knowledge sharing).
-      Developer mentor.
+    description:
+      - Development team leader on various backend and frontend applications for Offer, Pricing and Merchandizing processes.
+      - Core contributor of internal tech guilds (knowledge sharing).
+      - Developer mentor.
 education:
   - qualification: Masters
     name: Engineering

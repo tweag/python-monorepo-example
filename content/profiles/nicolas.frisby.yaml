@@ -1,3 +1,4 @@
+slug: nicolas.frisby
 name: Nicolas Frisby
 github: nfrisby
 bio: |
@@ -9,8 +10,8 @@ bio: |
   writing, knowledge sharing presentations, professional development, all kinds
   of games, speculative fiction, dogs, hiking, and culinary adventures!
 skills:
-  - expert: Haskell
-  - fluent: C, Python, Matlab, DHTML/JavaScript, LaTeX
+  - Haskell
+  - C, Python, Matlab, DHTML/JavaScript, LaTeX
   - system architecture
   - programming language theory and design
   - domain specific languages

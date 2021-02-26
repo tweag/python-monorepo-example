@@ -1,3 +1,4 @@
+slug: arnaud.spiwack
 name: Arnaud Spiwack
 github: aspiwack
 bio: |
@@ -35,8 +36,9 @@ education:
     name: Computer Science
     institution: "École Polytechnique & Chalmers University of Technology"
     years: 2006 - 2010
-    description: |
-      thesis title: “Verified Computing in Homological Algebra: A Journey Exploring the Power and Limits of Dependent Type Theory”
+    description:
+      - |
+        thesis title: “Verified Computing in Homological Algebra: A Journey Exploring the Power and Limits of Dependent Type Theory”
   - qualification: Master
     name: Computer Science
     institution: Ens Cachan

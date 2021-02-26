@@ -1,6 +1,8 @@
+slug: richard.eisenberg
 name: Richard Eisenberg
 github: goldfirere
-twitter: @RaeHaskell
+twitter: "@RaeHaskell"
+
 website: https://richarde.dev/
 bio: |
   Richard is Tweag’s Principal Researcher and joined the company to continue
@@ -11,6 +13,7 @@ bio: |
   day-to-day-implementation efforts and publishing papers on the design of
   programming languages and type systems, Richard likes to travel, hike, ski,
   and play board games with his wife and daughter.
+
 skills:
   - Haskell
   - GHC development
@@ -69,7 +72,8 @@ education:
     years: 2011-2016
     description:
       - published 11 peer-reviewed papers
-      - thesis: "Dependent Types in Haskell: Theory and Practice"
+      - |
+        thesis: "Dependent Types in Haskell: Theory and Practice"
   - qualification: MS
     name: Computer Science
     institution: Harvard University

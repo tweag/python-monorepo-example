@@ -1,3 +1,4 @@
+slug: krzysztof.gogolewski
 name: Krzysztof Gogolewski
 github: monoidal
 bio: |
@@ -20,29 +21,29 @@ experience:
     role: senior software engineer
     years: October 2018 - present
     location: Paris, France
-    description: |
-      I worked on adding linear types to GHC. This involved large-scale
-      merging work and accounting for many interactions of linear types
-      with existing features in the compiler - data constructors,
-      Template Haskell, Core and so on. The branch was merged in June 2020
-      and will be released in GHC 9.0.
-      I am working with Zeus Logics on automatisation of supply chains.
-      The project uses Haskell, PureScript and Nix. It involves collection
-      of documents from freight forwarders, tracking location of containers,
-      submission of declarations to US Customs.
+    description:
+      - I worked on adding linear types to GHC. This involved large-scale
+        merging work and accounting for many interactions of linear types
+        with existing features in the compiler - data constructors,
+        Template Haskell, Core and so on. The branch was merged in June 2020
+        and will be released in GHC 9.0.
+      - I am working with Zeus Logics on automatisation of supply chains.
+        The project uses Haskell, PureScript and Nix. It involves collection
+        of documents from freight forwarders, tracking location of containers,
+        submission of declarations to US Customs.
   - employer: Codility
     role: software engineer, from October 2015 senior software engineer
     years: November 2013 - June 2018
     location: Warsaw, Poland
-    description: |
-      Codility is a recruitment tool. Programmers applying for a job
-      are asked to solve a simple problem that is later automatically graded.
-      I worked in depth on essentially every subsystem in Codility -
-      Django frontend, assessment engine, customer invoice statistics,
-      new algorithmic tasks, integrations with external services,
-      database migrations, deployment scripts, build system etc.
-      I introduced new types of user accounts, everyday production deployments,
-      participated in firefighting many times and more. Over 6000 commits in total.
+    description:
+      - Codility is a recruitment tool. Programmers applying for a job
+        are asked to solve a simple problem that is later automatically graded.
+        I worked in depth on essentially every subsystem in Codility -
+        Django frontend, assessment engine, customer invoice statistics,
+        new algorithmic tasks, integrations with external services,
+        database migrations, deployment scripts, build system etc.
+        I introduced new types of user accounts, everyday production deployments,
+        participated in firefighting many times and more. Over 6000 commits in total.
 education:
   - qualification: BSc
     name: Mathematics

@@ -1,3 +1,4 @@
+slug: divesh.otwani
 name: Divesh Otwani
 github: Divesh-Otwani
 
@@ -38,11 +39,12 @@ education:
     name: Mathematics, Computer Science
     institution: Haverford College
     years: 2015 - 2019
-    description: |
-      Graduated magna cum laude with High Honors in Computer Science and
-      Honors in Mathematics.
-      Math Thesis: Knot Theory: Close and Sharp Bounds on the Grid Index.
-      CS Thesis: Programmer-Controlled Readable Polyhedral Optimizations of syr2k.
+    description:
+      - |
+        Graduated magna cum laude with High Honors in Computer Science and
+        Honors in Mathematics.
+        Math Thesis: Knot Theory: Close and Sharp Bounds on the Grid Index.
+        CS Thesis: Programmer-Controlled Readable Polyhedral Optimizations of syr2k.
 
 publications:
   - "Divesh Otwani, Richard A. Eisenberg. The Thoralf plugin: for your fancy type needs. In Proceedings of the 11th ACM SIGPLAN International Symposium on Haskell, 2018."

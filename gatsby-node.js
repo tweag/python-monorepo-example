@@ -7,6 +7,21 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
   const blogTagTemplate = path.resolve(`./src/templates/blog-tag.js`)
+  const cvTemplate = path.resolve(`./src/templates/cvs/template-1.js`)
+  const cvListTemplate = path.resolve(`./src/templates/cvs/allCvs.js`)
+
+  const profiles = await graphql(
+    `
+      {
+        profiles: allProfilesYaml {
+          nodes {
+            slug
+            name
+          }
+        }
+      }
+    `
+  )
 
   const result = await graphql(
     `
@@ -70,6 +85,24 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // main cvs list page;
+  createPage({
+    path: `/cv`,
+    component: cvListTemplate,
+    context: {
+      cvs: profiles.data.profiles.nodes,
+    },
+  })
+
+  profiles.data.profiles.nodes.forEach(({ slug }) => {
+    createPage({
+      path: `/cv/${slug}`,
+      component: cvTemplate,
+      context: {
+        slug,
+      },
+    })
+  })
   // Redirect old careers page
   createRedirect({
     fromPath: `/careers`,
@@ -94,4 +127,40 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: `/blog${value}`,
     })
   }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+  type  ProfilesYamlExperience   {
+     employer: String
+     role: String
+     years: String
+     location: String
+     description: [String]
+  }
+
+  type  ProfilesYamlEducation  {
+    qualification: String
+    name: String
+    institution: String
+    years: String
+    description: [String]
+
+  }
+
+  type ProfilesYaml implements Node @dontInfer {
+    slug: String!
+    name: String!
+    github: String
+		bio: String
+		skills: [String]
+    speaks: [String]
+    publications: [String]
+    experience: [ProfilesYamlExperience]
+    education: [ProfilesYamlEducation]
+  }
+
+  `
+  createTypes(typeDefs)
 }

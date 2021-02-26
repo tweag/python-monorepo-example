@@ -1,3 +1,4 @@
+slug: mathieu.boespflug
 name: Mathieu Boespflug
 github: mboes
 bio:
@@ -13,34 +14,35 @@ experience:
   - employer: Tweag
     role: CEO and founder
     years: December 2013 - present
-    description: |
-      Business strategist, leader, and manager. Owner of the vision
-      and positioning of the company. Tech lead on multiple client and
-      open source projects, including language interoperability
-      solutions between Haskell, R and Java, distributed programming
-      frameworks, distributed build systems, compilers and
-      biomodeling.
+    description:
+      - Business strategist, leader, and manager. Owner of the vision
+        and positioning of the company. Tech lead on multiple client and
+        open source projects, including language interoperability
+        solutions between Haskell, R and Java, distributed programming
+        frameworks, distributed build systems, compilers and
+        biomodeling.
   - employer: Parallel Scientific
     role: Software architect and then CTO
     years: October 2012 - November 2013
-    description: |
-      Designed high-availability solutions for the high-performance
-      computing industry.
+    description:
+      - Designed high-availability solutions for the high-performance
+        computing industry.
   - employer: McGill University
     role: Postdoctoral fellow
     years: January 2011 - February 2012
-    description: |
-      Worked with Brigitte Pientka on contextual modal type theory and
-      its applications to formal verification of metatheory as well as
-      metaprogramming.
+    description:
+      - Worked with Brigitte Pientka on contextual modal type theory and
+        its applications to formal verification of metatheory as well as
+        metaprogramming.
 education:
   - qualification: PhD
     name: Computer Science
     institution: École Polytechnique
     years: 2007 - 2010
-    description: |
-      thesis title: Design and implementation of a proof-checking
-      kernel for the λΠ-calculus modulo.
+    description:
+      - |
+        thesis title: Design and implementation of a proof-checking
+        kernel for the λΠ-calculus modulo.
   - qualification: MMath
     name: Computer Science and Mathematics
     institution: University of York

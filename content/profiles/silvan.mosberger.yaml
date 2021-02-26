@@ -1,3 +1,4 @@
+slug: silvan.mosberger
 name: Silvan Mosberger
 github: infinisil
 bio: |
@@ -19,14 +20,14 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: September 2020-present
-    description: |
+    description:
       - Created the foundation for a Nix dependency management system between multiple parties
       - Made a number of improvements to the NixOS module system
       - Debugged and refactored Nix problems
   - employer: Niteo
     role: Nix Mentor/Support
     years: November 2019-present
-    description: |
+    description:
       - Nix mentoring and support
       - Installed and debugged NixOS installations on twenty different hosting providers
       - Debugged and fixed Nix problems relating to especially Python
@@ -37,6 +38,7 @@ education:
     name: Computer Science
     institution: ETHZ
     years: 2015 - 2020
-    description: |
-      thesis title: "Arvy Heuristics for Distributed Mutual Exclusion"
+    description:
+      - |
+        thesis title: "Arvy Heuristics for Distributed Mutual Exclusion"
 publications:

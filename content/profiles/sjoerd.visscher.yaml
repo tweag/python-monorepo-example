@@ -1,3 +1,4 @@
+slug: sjoerd.visscher
 name: Sjoerd Visscher
 github: sjoerdvisscher
 bio: |
@@ -47,4 +48,6 @@ education:
     name: Applied Mathematics
     institution: University of Twente
     years: 1995-1997
-    description: Did Not Finish
+    description:
+      - |
+        Did Not Finish

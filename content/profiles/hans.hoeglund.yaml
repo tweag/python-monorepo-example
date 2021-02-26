@@ -1,3 +1,4 @@
+slug: hans.hoeglund
 name: Hans Hoeglund
 github: hanshoglund
 bio: |
@@ -27,61 +28,61 @@ experience:
   - employer: Tweag
     role: Senior Software Engineer
     years: 2019-present
-    description: |
-      Leading the Performance/QA team for a major smart smart contracts
-      platform (Haskell, Scala, Kubernetes, Google Cloud).
+    description:
+      - Leading the Performance/QA team for a major smart smart contracts
+        platform (Haskell, Scala, Kubernetes, Google Cloud).
 
-      Consultant architect for a database/machine learning product supporting
-      strong differential privacy (Haskell, Python, Scala, Spark). Worked on
-      query language compiler, RPC layer and distributed computation backend.
+      - Consultant architect for a database/machine learning product supporting
+        strong differential privacy (Haskell, Python, Scala, Spark). Worked on
+        query language compiler, RPC layer and distributed computation backend.
 
-      Recruiting, fundraising & business development.
+      - Recruiting, fundraising & business development.
 
   - employer: Standard Chartered
     role: Quantitative Developer
     years: 2016-2018
-    description: |
-      Cloud migration and scaling of cross-asset pricing and risk management
-      services (Haskell, C++).
+    description:
+      - Cloud migration and scaling of cross-asset pricing and risk management
+        services (Haskell, C++).
 
-      Architect and lead developer for on-prem/hybrid cloud infrastructure
-      (Consul, Nomad).
+      - Architect and lead developer for on-prem/hybrid cloud infrastructure
+        (Consul, Nomad).
 
-      Integration of scheduling, service discovery, QA, monitoring, logging,
-      tracing and analytics pipelines. Achieved 99.999% uptime in the first 6
-      months of deployment.
+      - Integration of scheduling, service discovery, QA, monitoring, logging,
+        tracing and analytics pipelines. Achieved 99.999% uptime in the first 6
+        months of deployment.
 
-      State-machine based UI framework, dashboard and visualization toolkit
-      (Haskell).
+      - State-machine based UI framework, dashboard and visualization toolkit
+        (Haskell).
 
   - employer: Beautiful Destinations
     role: Senior Software Engineer
     years: 2015-2016
-    description: |
-      Core team member for business-facing adtech platform (Haskell, Python,
-      JavaScript). Visual analytics using Convolutional Neural Networks, data
-      pipelines and automation.
+    description:
+      - Core team member for business-facing adtech platform (Haskell, Python,
+        JavaScript). Visual analytics using Convolutional Neural Networks, data
+        pipelines and automation.
 
-      FRP library and platform UX (Elm, Haskell).
+      - FRP library and platform UX (Elm, Haskell).
 
-      High-performance embedded DSLs for data visualization using Haskell and
-      asm.js (precursor to WebAssembly).
+      - High-performance embedded DSLs for data visualization using Haskell and
+        asm.js (precursor to WebAssembly).
 
   - employer: Doremir Music Research AB
     role: Software Engineer
     years: 2011-2014
-    description: |
-      Lead developer of the audio/DSP backend for ScoreCloud, an AI-driven
-      music transcription and analysis application. Built Faudio, an open
-      source a cross-platform audio engine (C, C++) supporting low-latency
-      signal processing, real-time and batch mode DSP, hardware probing and
-      device hot-plugging.
+    description:
+      - Lead developer of the audio/DSP backend for ScoreCloud, an AI-driven
+        music transcription and analysis application. Built Faudio, an open
+        source a cross-platform audio engine (C, C++) supporting low-latency
+        signal processing, real-time and batch mode DSP, hardware probing and
+        device hot-plugging.
 
-      Integration work involving various cloud, mobile and desktop environments
-      (Common Lisp, Objective C, JavaScript).
+      - Integration work involving various cloud, mobile and desktop environments
+        (Common Lisp, Objective C, JavaScript).
 
-      Worked directly with the research team to productionize and translate
-      audio recognition algorithms from Lisp, Matlab, Python and R to C/C++.
+      - Worked directly with the research team to productionize and translate
+        audio recognition algorithms from Lisp, Matlab, Python and R to C/C++.
 
 education:
   - qualification: MA
