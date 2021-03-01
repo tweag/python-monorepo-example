@@ -1,0 +1,191 @@
+slug: robin.bate-boerop
+name: Robin Bate Boerop
+github: robinbb
+bio: |
+  Robin provides engineering management help to companies who need leadership as well as DevOps and Nix expertise.
+  He has twenty years of experience as a software engineer, leading or managing development teams for the last nine at companies like LeapYear and Formation AI.
+  Robin holds a B.Sc. in Computing & Information Science from Queen's University, Canada
+  and co-founded a sold tech startup whose engine was initially built with Haskell.
+  He lives in Canada having returned from San Francisco and enjoys talking walks in nature and reading on IT subjects not directly related to work.
+skills:
+  - Software Development
+  - Haskell
+  - Nix
+speaks:
+  - English
+  - French
+experience:
+  - employer: Tweag
+    role: Global Software Leadership Consultant
+    years: April 2020 - present
+
+  - employer: Engine ML
+    role: Senior Software Engineer
+    years: October 2018 - April 2020
+    description:
+      - |
+        Engine ML made computing infrastructure to support AI/ML engineers; it supported distributed GPU-enabled computation for deep learning in the cloud.
+        Robin created and maintained software automation for the deployment of cloud infrastructure on AWS and GCP;
+        used several languages to allow for a fast-moving heterogeneous team - Python, Bash, Kotlin, Haskell;
+        employed new cloud technologies when designing architecture - Docker, Kubernetes, Terraform, NixOps;
+        created state-of-the-art build automation to manage many software dependencies of the Engine ML product using Nix, Shake, Docker;
+        designed and implemented a novel CI/CD pipeline; led the implementation of DevOps practices and development process.
+
+  - employer: Formation
+    role: Engineering Lead
+    years: December 2017 - October 2018
+    description:
+      - |
+        Formation is a marketing technology startup that uses data science and machine learning to create personalized experiences that support both the objectives of Fortune 500 brands and the motivations of their customers.
+        At Formation, Robin: designed developed, and scaled several back-end microservices;
+        used Haskell and JavaScript to build RESTful APIs;
+        provided technical expertise in Haskell, Nix, Docker, gRPC, PostgreSQL, and AWS services;
+        developed and optimized software engineering processes and practices to maintain the balance between developing a complex innovative product and shipping quickly;
+        collaborated with engineers to design and develop software by planning, prioritizing, and delivering;
+        promoted continuous feedback, continuous deployment, and software testing;
+        lead by example, set the right context, and inspired teams to do their best work by fostering an environment that’s open, transparent and respectful.
+
+  - employer: LeapYear Technologies
+    role: Engineering Manager - Infrastructure
+    years: April 2017 - December 2017
+    description:
+      - |
+        LeapYear Technologies is a Berkeley-based software startup that develops a privacy enhancing data management platform.
+        LeapYear enables the world's largest enterprises to leverage their most sensitive data assets.
+        While at LeapYear, Robin: drove the planning, technical specification, code review, and documentation of all aspects of software development, with particular responsibility for platform infrastructure;
+        developed standards and practices for software engineering, recruiting, training, project monitoring, and product testing; interviewed, trained, supervised, and evaluated the work of software engineers;
+        chose fundamental technology for LeapYear's software;
+        conducted security reviews, internal audits, and vulnerability assessments;
+        directed the review of production costs; advocated for customer focused decision-making.
+
+  - employer: LeapYear Technologies
+    role: Software Engineer
+    years: October 2016 - April 2017
+    description:
+      - |
+        LeapYear Technologies is a Berkeley-based software startup that develops a privacy enhancing data management platform.
+        LeapYear's platform enables the world's largest enterprises to leverage their most sensitive data assets.
+        While a software engineer at LeapYear, Robin: planned, implemented, and optimized new features for LeapYear’s core platform;
+        designed, implemented, and debugged internal tools and software applications;
+        prepared LeapYear’s platform for delivery to customers and provided guidance on implementation;
+        ensured high quality and performance of complex analysis of large data sets;
+        provided technical expertise in Haskell, Nix, devops, software design, cloud computing, distributed computing, Java, computer security, Apache Spark;
+        and developed performance critical Haskell code.
+
+  - employer: Spinzo
+    role: VP Software Development
+    years: July 2015 - October 2016
+    description:
+      - |
+        Spinzo, a Ticketmaster certified partner, provides a white-labeled software platform that helps brands create promotions with a unique incentive:
+        the more who buy, the less everyone pays.
+        Robin was responsible for all aspects of software development, deployment, scaling, and service.
+        Augmented integration with Ticketmaster Archtics.
+        Implemented Stripe Connect payments system, automated build system in AWS Elastic Beanstalk, team process for software development.
+        Used Docker, PHP, Bash, MySQL, JavaScript, SQL, Bootstrap, jQuery, Node.js, HTML, CSS, Less, Apache, AWS services.
+
+  - employer: Karamaan Group, LLC
+    role: Software Analyst (Contractor)
+    years: February 2015 - June 2015
+    description:
+      - Karamaan Group is a principal investment firm based in New York.
+
+  - employer: Blue Spurs Consulting, Inc.
+    role: Senior Technical Team Lead
+    years: February 2014 - February 2015
+    description:
+      - |
+        Blue Spurs is a software consultancy specializing in mobile and cloud services.
+        Led software development teams; architected data warehouse using
+        AWS Redshift; improved implementation of Scrum;
+        developed software in JavaScript, C++, SQL, Nix, Bash, and PHP; used Amazon AWS and Chef (Ruby) to augment cloud ops;
+        pioneered development process improvements;
+        designed and implemented performance improvements for embedded systems; coached programming techniques.
+
+  - employer: UserEvents, Inc.
+    role: Chief Technology Officer
+    years: September 2011 - April 2013
+    description:
+      - |
+        UserEvents created a low latency, highly available distributed computing system for detecting and acting on software events described by user- programmable rules.
+        Co-founded company; architected, designed, and developed core technology;
+        conceptualized and implemented a highly available system to process big data volumes;
+        custom-made distributed in-memory storage systems with Haskell, Clojure, and the Zab protocol for distributed consensus;
+        created patentable computing systems; prototyped cloud deployment (devops) software;
+        supervised graduate-level research projects; attracted technical talent.
+        UserEvents was acquired by LiveOps, Inc. in 2014.
+
+  - employer: Tabture, Inc.
+    role: Founder
+    years: September 2011 - June 2012
+    description:
+      - |
+        Tabture is in-browser collaboration software.
+        Co-founded company; architected product, raised funding, built strategic partnerships,
+        developed working prototype of software using JavaScript, Haskell, and WebSockets.
+
+  - employer: Collabora, Ltd.
+    role: Software Developer
+    years: July 2009 - August 2011
+    description:
+      - |
+        Collabora is an open source software consultancy that supports the Linux ecosystem.
+        Assisted Mozilla with the development of multi-process Firefox; contributed code in C/C++ and Python.
+        Conducted a feasibility study of porting the Sugar operating system to a non-Linux OS;
+        innovated technical solutions for a low effort port;
+        performed analysis of exact software package dependencies. Wrote a scientific report on the performance of D-Bus;
+        led a team which designed benchmarks and analyzed code;
+        prototyped specific improvements.
+
+  - employer: Shore Street Software, Inc.
+    role: CTO
+    years: July 2003 - March 2009
+    description:
+      - |
+        Shore Street Software was a technology company that performed both R&D and specialized consulting.
+        Founded company. Won contracts from the National Research Council of Canada (NRC-IRAP) and Mozilla Corporation.
+        Developed software for improving the execution speed of a Java Virtual Machine, including multithreading improvements and concurrency control improvements on the IA-32 microarchitecture;
+        programmed in Java and Intel assembly language.
+        Developed "UT", a software tool for test driven development, using the Haskell programming language. UT is a superset of the Java language.
+        Developed a high level assembler in Haskell for the PowerPC instruction set architecture.
+        Contracted to augment the Nanojit technology in Adobe's open source JavaScript engine and Mozilla's JavaScript engine;
+        those engines were made to produce machine language for the Power (PowerPC) architecture, 32- and 64-bit.
+        Led design and development of interactive websites based on Plone (Python) and Drupal (PHP) content management systems.
+
+  - employer: Mozilla Corporation
+    role: Software Developer (Contractor)
+    years: December 2007 - April 2008
+    description:
+      - |
+        Mozilla is responsible for developing the Firefox open source web browser.
+        Analyzed, debugged, and augmented memory management code (C/C++) in Mozilla's JavaScript and portable runtime (NSPR) libraries.
+        Worked as part of a large distributed development team. Transferred knowledge to Mozilla community on the topic of memory management.
+
+  - employer: IBM Canada Ltd.
+    role: Software Analyst
+    years: May 2000 - November 2002
+    description:
+      - |
+        DB2 is IBM's premiere database product for Linux, Unix, and Windows.
+        Programmed in C/C++ to augment internals of DB2. Worked as part of a large distributed software engineering team.
+        Evangelized C++, object oriented programming, and design patterns.
+        Maintained DB2 engine code related to memory management, custom concurrency control constructs, and other low level operating system services.
+        Advised on performance issues. Formed part of "final stop" problem solving team.
+
+  - employer: Queen's University
+    role: Teaching Assistant
+    years: September 1998 - April 2000
+    description:
+      - |
+        Designed and presented tutorials, marked assignments, coordinated study groups, and devised sample exams.
+        Responsible for MATH 121 (calculus for math majors), CISC 121 (intro to computing with Java), and CISC 454 (compiler construction).
+
+education:
+  - qualification: B.Sc.Hons
+    name: Computing & Information Science
+    institution: Queen's University
+    years: 1993 - 1999
+    description:
+      - |
+        Interests, performance programming, assembly language, compiler construction, type theory, Java.
+        Thesis, simplifying performance metrics for uniprocessors.

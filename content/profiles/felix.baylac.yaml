@@ -1,3 +1,4 @@
+slug: felix.baylac
 name: Félix Baylac Jacqué
 github: NinjaTrappeur
 bio: |
@@ -19,13 +20,10 @@ experience:
   - employer: Tweag
     role: Software engineer
     years: 2019-present
-    description:
   - employer: Air Liquide
     role: Software engineer
     years: 2015-2017
-    description:
 education:
   - qualification: Engineer
     name: Université de Pau et des Pays de l'Adour
     years: 2010-2015
-    description:
