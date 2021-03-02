@@ -272,6 +272,18 @@ export const globalStyles = t => {
         font-size: 14px;
       }
 
+      &.button-medium {
+        padding: 8px 18px;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+       &.button-medium-thin {
+        padding: 5px 18px;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
       &.button-secondary {
         border: 1px solid var(--fg-color);
         border-radius: 35px;
@@ -281,6 +293,25 @@ export const globalStyles = t => {
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all 0.5s ease;
+
+        &.inverted {
+          border: 1px solid var(--fg-color);
+          color: var(--fg-color);
+          background: linear-gradient(to right, white 50%, black 50%);
+          background-size: 200% 100%;
+          background-position: right bottom;
+          transition: all 0.5s ease;
+        }
+
+        &.pre-arrow-right {
+            &::before {
+              display: inline-block;
+              vertical-align: top;
+              font-family: "icomoon" !important;
+              content: "\\e900";
+              margin: 1px 4px 0 0;
+            }
+        }
 
         &:hover {
           color: var(--bg-color);

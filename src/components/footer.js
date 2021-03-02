@@ -10,12 +10,7 @@ import logo from "../images/tweag_logo_footer.svg"
 const ContactUs = () => (
   <Link
     to="/careers"
-    sx={{
-      fontSize: 1,
-      p: `5px 18px`,
-      height: `auto`,
-    }}
-    className="btn"
+    className="button button-secondary button-medium-thin inverted pre-arrow-right"
   >
     Join us
   </Link>
@@ -74,8 +69,22 @@ const Footer = () => (
   >
     <ColumnArea>
       <Column>
-        <div className="mail-area">
-          <strong className="mail-title">
+        <div
+          sx={{
+            display: `block`,
+            position: `relative`,
+          }}
+        >
+          <strong
+            sx={{
+              fontWeight: [300],
+              position: `relative`,
+              display: `block`,
+              margin: [`0px 0px 20px`],
+              fontSize: [3],
+              lineHeight: [`24px`],
+            }}
+          >
             Interested in working at Tweag?
           </strong>
           <ContactUs />
@@ -133,16 +142,61 @@ const Footer = () => (
         </NavList>
       </Column>
       <Column sx={{ paddingTop: `20px` }}>
-        <strong className="f-logo">
-          <Link to="/">
-            <img src={logo} alt="Tweag" />
+        <strong
+          sx={{
+            position: `relative`,
+            display: `block`,
+            width: [`120px`, `120px`, `152px`],
+          }}
+        >
+          <Link to="/" style={{ display: `block` }}>
+            <img
+              sx={{
+                display: `block`,
+                width: `100%`,
+                height: `auto`,
+              }}
+              src={logo}
+              alt="Tweag"
+            />
           </Link>
         </strong>
       </Column>
     </ColumnArea>
-    <div className="copyright-area">
-      <div className="copyright-col1">
-        <span className="copyright">
+    <div
+      sx={{
+        fontSize: [0],
+        position: `relative`,
+        display: [`block`, `block`, `flex`],
+        flexWrap: `wrap`,
+        alignItems: `center`,
+        justifyContent: `space-between`,
+        margin: [
+          `0px -15px 25px`,
+          `0px -15px 25px`,
+          0,
+          0,
+          0,
+          0,
+          `50px 0px 25px`,
+        ],
+        padding: [`25px`, `25px`, 0],
+      }}
+    >
+      <div
+        sx={{
+          margin: `0 0 22px`,
+          position: `relative`,
+          width: [`100%`, `100%`, `80%`],
+        }}
+      >
+        <span
+          sx={{
+            position: `relative`,
+            display: `block`,
+            margin: [`0 0 20px`, `0 0 20px`, 0],
+          }}
+        >
           Tweag HQ &rarr; 207 Rue de Bercy &mdash; 75012 Paris &mdash; France
           <span>
             <br />
@@ -150,8 +204,20 @@ const Footer = () => (
           </span>
         </span>
       </div>
-      <div className="copyright-col2">
-        <span className="copyright">
+      <div
+        sx={{
+          margin: `0 0 22px`,
+          position: `relative`,
+          width: [`100%`, `100%`, `20%`],
+        }}
+      >
+        <span
+          sx={{
+            position: `relative`,
+            display: `block`,
+            margin: [`0 0 20px`, `0 0 20px`, 0],
+          }}
+        >
           &copy; 2020 Tweag.&nbsp;All rights reserved
           <span>
             <br />
