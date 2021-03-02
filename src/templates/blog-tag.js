@@ -3,12 +3,13 @@ import { jsx } from "theme-ui"
 import { Grid } from "theme-ui"
 import { graphql } from "gatsby"
 
-import { Layout, SectionHeading } from "../components"
+import { Layout, SectionHeading, Tags, SEO } from "../components"
 import BlogCard from "../components/blog-card"
-import SEO from "../components/seo"
-import AllTags from "../components/all-tags"
+
+import { useAllTags } from "../hooks"
 
 const TagPage = ({ data, pageContext }) => {
+  const allTags = useAllTags({ withLinks: true, appendGeneral: `all` })
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const title = `Blog: ${tag} (${totalCount} post${
@@ -40,7 +41,7 @@ const TagPage = ({ data, pageContext }) => {
           >
             {title}
           </SectionHeading>
-          <AllTags />
+          <Tags tags={allTags} />
         </Grid>
         <Grid
           sx={{

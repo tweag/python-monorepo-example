@@ -3,10 +3,12 @@ import { Fragment } from "react"
 import { jsx } from "theme-ui"
 import { Grid, Box, Flex } from "theme-ui"
 
+import { useAllTags } from "../hooks"
+
 import { Layout, SectionHeading } from "../components"
 import BlogCard from "../components/blog-card"
 import SEO from "../components/seo"
-import AllTags from "../components/all-tags"
+import Tags from "../components/tags"
 
 import pattern1 from "../images/post_pattern1.png"
 import pattern2 from "../images/post_pattern2.png"
@@ -15,6 +17,8 @@ import pattern3 from "../images/post_pattern3.png"
 import homePost from "../images/home_post.png"
 
 const BlogIndex = ({ data }) => {
+  const allTags = useAllTags({ withLinks: true, appendGeneral: `all` })
+
   const [topPost, ...posts] = data.allMarkdownRemark.edges
   const patterns = [pattern1, pattern2, pattern3]
   return (
@@ -42,7 +46,7 @@ const BlogIndex = ({ data }) => {
           >
             Blog
           </SectionHeading>
-          <AllTags />
+          <Tags tags={allTags} />
         </Grid>
         <Flex
           sx={{
