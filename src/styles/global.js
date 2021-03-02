@@ -161,6 +161,13 @@ export const globalStyles = t => {
           }
         `
       })}
+
+       /* No transitions in percy testing. */
+       @media only percy {
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+       }
     }
 
     .section:not(.active) {
@@ -230,6 +237,13 @@ export const globalStyles = t => {
           }
         `
       })}
+
+      /* No transitions in percy testing. */
+       @media only percy {
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+       }
     }
 
     .transition-section:not(.in-viewport) {
