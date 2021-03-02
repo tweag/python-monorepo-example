@@ -162,12 +162,12 @@ export const globalStyles = t => {
         `
       })}
 
-       /* No transitions in percy testing. */
+      /* No transitions in percy testing. */
        @media only percy {
-          transform: none;
-          opacity: 1;
-          visibility: visible;
-       }
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     .section:not(.active) {
@@ -240,10 +240,10 @@ export const globalStyles = t => {
 
       /* No transitions in percy testing. */
        @media only percy {
-          transform: none;
-          opacity: 1;
-          visibility: visible;
-       }
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     .transition-section:not(.in-viewport) {
@@ -278,7 +278,7 @@ export const globalStyles = t => {
         line-height: 1.2;
       }
 
-       &.button-medium-thin {
+      &.button-medium-thin {
         padding: 5px 18px;
         font-size: 16px;
         line-height: 1.2;
@@ -304,13 +304,13 @@ export const globalStyles = t => {
         }
 
         &.pre-arrow-right {
-            &::before {
-              display: inline-block;
-              vertical-align: top;
-              font-family: "icomoon" !important;
-              content: "\\e900";
-              margin: 1px 4px 0 0;
-            }
+          &::before {
+            display: inline-block;
+            vertical-align: top;
+            font-family: "icomoon" !important;
+            content: "\\e900";
+            margin: 1px 4px 0 0;
+          }
         }
 
         &:hover {
@@ -323,7 +323,6 @@ export const globalStyles = t => {
     /* blog post styles.  */
 
     .blog-post-content {
-
       line-height: 28px;
       font-size: 18px;
       a,
@@ -370,7 +369,7 @@ export const globalStyles = t => {
         font-size: 1em;
         text-align: left;
 
-         a {
+        a {
           color: ${t.colors.orange} !important;
           &:visited {
             color: ${t.colors.orange} !important;
@@ -463,7 +462,6 @@ export const globalStyles = t => {
         }
         @media (min-width: ${t.breakpoints[5]}) {
           padding: 0 0 0 120px;
-
         }
       }
 
@@ -477,14 +475,14 @@ export const globalStyles = t => {
         counter-reset: ol-item-counter;
 
         @media (min-width: ${t.breakpoints[1]}) {
-           margin: 0px 0px 30px;
-           padding: 0 0 0 60px;
-           max-width: 1000px;
-           width: 65%;
+          margin: 0px 0px 30px;
+          padding: 0 0 0 60px;
+          max-width: 1000px;
+          width: 65%;
         }
 
         @media (min-width: ${t.breakpoints[5]}) {
-           padding: 0 0 0 120px;
+          padding: 0 0 0 120px;
         }
 
         li {
@@ -517,15 +515,15 @@ export const globalStyles = t => {
           width: 65%;
         }
 
-         @media (min-width: ${t.breakpoints[5]}) {
-            padding-left: 120px;
-         }
+        @media (min-width: ${t.breakpoints[5]}) {
+          padding-left: 120px;
+        }
 
         li {
           margin-bottom: 10px;
           padding-left: 35px;
           display: block;
-          &::before  {
+          &::before {
             content: "";
             display: block;
             width: 8px;
@@ -538,7 +536,7 @@ export const globalStyles = t => {
           }
 
           @media (min-width: ${t.breakpoints[1]}) {
-              &::before {
+            &::before {
               content: "";
               display: block;
               width: 10px;
@@ -548,8 +546,8 @@ export const globalStyles = t => {
               margin-top: 12px;
               background: black;
               border-radius: 10px;
-              }
-        }
+            }
+          }
         }
 
         ul {
@@ -566,21 +564,20 @@ export const globalStyles = t => {
       }
 
       .katex-display {
-         margin: 20px 15px;
-          padding: 0px 15px;
-          width: 100%;
+        margin: 20px 15px;
+        padding: 0px 15px;
+        width: 100%;
 
-          @media (min-width: ${t.breakpoints[1]}) {
-             padding: 0 0 0 60px;
-             width: 65%;
-             max-width: 1000px;
-             margin: 0px 0px 30px;
-          }
+        @media (min-width: ${t.breakpoints[1]}) {
+          padding: 0 0 0 60px;
+          width: 65%;
+          max-width: 1000px;
+          margin: 0px 0px 30px;
+        }
 
-          @media (min-width: ${t.breakpoints[5]}) {
-            padding: 0 0 0 120px;
-          }
-
+        @media (min-width: ${t.breakpoints[5]}) {
+          padding: 0 0 0 120px;
+        }
       }
 
       .twitter-tweet {
@@ -590,7 +587,7 @@ export const globalStyles = t => {
           padding: 0 0 0 60px;
         }
         @media (min-width: ${t.breakpoints[5]}) {
-           padding: 0 0 0 120px;
+          padding: 0 0 0 120px;
         }
       }
     }
@@ -3378,7 +3375,7 @@ export const globalStyles = t => {
         padding: 0 !important;
         margin: 40px 15px 20px !important;
         width: 90% !important;
-      }import useAllTags from './../hooks/useAllTags';
+      }
 
       .part2 .text-area p,
       .part2 .text-area h1,
