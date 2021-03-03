@@ -3,7 +3,7 @@ title: "Making GHCIDE smarter and faster: a fellowship summary"
 shortTitle: "GHCIDE Fellowship summary"
 author: Zubin Duggal
 description: "Summary of the Tweag open source fellowship work related to ghcide"
-tags: [haskell]
+tags: [haskell, fellowship]
 ---
 
 As a Tweag Open Source
