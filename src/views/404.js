@@ -1,27 +1,52 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx, Grid, Text } from "theme-ui"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { Layout, SEO } from "../components"
 
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage = () => {
   return (
     <Layout>
       <SEO title="Page not found" pathname="/404.html" />
-      <div
-        className="section s_white section-wrap viewport-section"
-        style={{ paddingTop: `150px`, margin: `0 auto 0 auto`, width: `32em` }}
+      <Grid
+        sx={{
+          pt: [`100px`, `100px`, `150px`],
+          pb: [`60px`, `60px`, `150px`],
+          px: [`15px`, `15px`],
+          maxWidth: `32em`,
+          margin: `auto`,
+          gridAutoRows: `max-content`,
+          height: [null, null, `60vh`],
+        }}
+        gap={[`30px`, `30px`, `10px`]}
       >
-        <h1>Page not found</h1>
-        <p style={{ paddingTop: `1em`, paddingBottom: `1em` }}>
+        <Text
+          sx={{
+            textTransform: `uppercase`,
+            fontWeight: 700,
+            fontSize: [5, 5, 8],
+          }}
+        >
+          Page not found
+        </Text>
+        <Text
+          sx={{
+            fontSize: [2, 2, 2],
+          }}
+        >
           Oops! The page you are looking for has been removed or relocated.
-        </p>
-        <p>
-          <Link to="/" className="btn noarrow" style={{ margin: 0 }}>
-            Go back
-          </Link>
-        </p>
-      </div>
+        </Text>
+        <Link
+          sx={{
+            justifySelf: `start`,
+            mt: [0, 0, `20px`],
+          }}
+          to="/"
+          className="button button-medium button-secondary"
+        >
+          Go back
+        </Link>
+      </Grid>
     </Layout>
   )
 }
