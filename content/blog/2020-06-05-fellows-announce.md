@@ -1,7 +1,7 @@
 ---
 title: "Tweag Open Source Fellows"
 author: Richard Eisenberg
-tags: [jobs]
+tags: [jobs, fellowship]
 description: "Tweag introduces our first cohort of Open Source Fellows."
 ---
 

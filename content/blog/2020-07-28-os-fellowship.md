@@ -2,7 +2,7 @@
 title: "Fall 2020 Fellowships: Funding for Open Source Contributors"
 shortTitle: "Fall 2020 Open Source Fellowships"
 author: Richard Eisenberg and Matthias Meschede
-tags: [jobs]
+tags: [jobs, fellowship]
 description: "The second call for projects for the Tweag Open Source Fellowship is open and brings financial support and mentorship for Open source contributors."
 ---
 
