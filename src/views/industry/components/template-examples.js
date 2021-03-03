@@ -72,7 +72,7 @@ function TemplateExamples({ examples }) {
             justifySelf: [`start`],
           }}
           to="/contact"
-          className="contact btn"
+          className="btn"
         >
           Contact us
         </Link>
