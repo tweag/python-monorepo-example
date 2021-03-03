@@ -1,18 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import Footer from "../components/footer"
 import LayoutFullPage from "../components/layout-fullpage"
-import SEO from "../components/seo"
+import Footer from "../components/footer"
+import { SEO, CallToActionFooter } from "../components"
 
-import {
-  Section1,
-  Section2,
-  Section3,
-  Section4,
-  Section5,
-  Section6,
-} from "./components"
+import { Section1, Section2, Section3, Section4, Section5 } from "./components"
 
 const IndexPage = () => {
   return (
@@ -35,7 +28,14 @@ const IndexPage = () => {
       </div>
       <div className="section s_red">
         <div className="s_red">
-          <Section6 />
+          <CallToActionFooter
+            title={`Ready to achieve your big vision?`}
+            backdropVariant={2}
+            transitionClass={`transition--slide-fade-in`}
+            customWrapperSx={{
+              py: [`40px`, `40px`, `60px`],
+            }}
+          />
         </div>
         <Footer />
       </div>

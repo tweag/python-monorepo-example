@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui"
 import { Grid, Box, Text } from "theme-ui"
 
+import friseJoinus from "../../images/home_joinus_frise.svg"
+
 function Section4() {
   return (
     <Grid
@@ -59,9 +61,11 @@ function Section4() {
               `100%`,
               `715px`,
             ],
+            minHeight: [`200px`, `200px`, `500px`],
+            background: `url(${friseJoinus})`,
+            backgroundSize: [`contain`, `contain`, null],
           }}
-          className="image-holder backdrop"
-          style={{ animation: `none` }}
+          className="image-holder"
         ></div>
       </Box>
     </Grid>

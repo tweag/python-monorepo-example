@@ -8,6 +8,7 @@
     "url": "https://github.com/tweag/www/issues"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "@fullpage/react-fullpage": "^0.1.17",
     "gatsby": "^2.21.22",
     "gatsby-cli": "^2.12.22",

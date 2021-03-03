@@ -2,15 +2,6 @@
 
 import { css } from "@emotion/core"
 
-import frise_biotech from "../images/frise_biotech.svg"
-import frise_blog_home from "../images/frise_blog_home.svg"
-import frise_blog_post from "../images/frise_blog_post.svg"
-import frise_home from "../images/frise_home.svg"
-import frise_joinus from "../images/home_joinus_frise.svg"
-import frise_opensource from "../images/frise_opensource.svg"
-import frise_services from "../images/frise_services.svg"
-import frise_use_cases from "../images/frise_use_cases.svg"
-
 export const globalStyles = t => {
   return css`
     :root {
@@ -75,33 +66,6 @@ export const globalStyles = t => {
     }
     * {
       max-height: 1000000px;
-    }
-    /* Body fade-in
-	 ========================================================================== */
-
-    @-webkit-keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @-moz-keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
     }
 
     /* Transitions
@@ -320,278 +284,6 @@ export const globalStyles = t => {
       }
     }
 
-    /* blog post styles.  */
-
-    .blog-post-content {
-      line-height: 28px;
-      font-size: 18px;
-      a,
-      a:visited {
-        color: ${t.colors.purple};
-      }
-
-      li {
-        p {
-          padding: 0px;
-          width: 100%;
-          margin: 0px !important;
-        }
-      }
-
-      p {
-        font-size: 18px;
-        line-height: 1.5;
-        padding: 0px 15px;
-        margin-bottom: 20px;
-
-        a,
-        a:visited {
-          color: ${t.colors.purple};
-        }
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          padding: 0px;
-          padding-left: 60px;
-          width: 65%;
-          max-width: 1000px;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding-left: 120px;
-        }
-      }
-
-      code {
-        background: var(--theme-ui-colors-greyLight, #f0f0f0);
-        padding: 1px 8px;
-        overflow: hidden;
-        font-family: monospace;
-        font-size: 1em;
-        text-align: left;
-
-        a {
-          color: ${t.colors.orange} !important;
-          &:visited {
-            color: ${t.colors.orange} !important;
-          }
-        }
-      }
-
-      pre {
-        code {
-          display: block;
-          line-height: 1.75;
-          font-size: 16px;
-          padding: 20px 55px;
-
-          @media (min-width: ${t.breakpoints[1]}) {
-            font-size: 18px;
-          }
-        }
-      }
-
-      h1 {
-        padding: 0px;
-        margin: 40px 15px 20px;
-        font-size: 34px;
-        max-width: 1000px;
-        min-height: auto;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          margin: 0px;
-          margin-bottom: 30px;
-          padding: 0px;
-          padding-left: 60px;
-          width: 65%;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding-left: 120px;
-        }
-      }
-
-      h2 {
-        padding: 0px;
-        margin: 40px 15px 20px;
-        width: 90%;
-        font-size: 24px;
-        line-height: 1;
-        font-size: 700;
-        text-transform: uppercase;
-
-        @media (min-width: 768px) {
-          padding: 0px;
-          padding-left: 60px;
-          margin: 60px 0px 30px;
-          width: 65%;
-          max-width: 1000px;
-          font-size: 34px;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding-left: 120px;
-          font-size: 42px;
-        }
-      }
-
-      h3 {
-        margin: 20px 15px;
-        padding: 0px 15px;
-        width: 100%;
-        max-width: 1000px;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          margin: 0px;
-          margin-bottom: 30px;
-          padding: 0px;
-          padding-left: 60px;
-          width: 65%;
-        }
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding-left: 120px;
-        }
-      }
-
-      h4 {
-        width: 65%;
-        max-width: 1000px;
-        margin: 0px 0px 30px;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          padding: 0 0 0 60px;
-        }
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding: 0 0 0 120px;
-        }
-      }
-
-      ol {
-        margin: 20px 15px;
-        padding: 0px 15px;
-        width: 100%;
-        padding-left: 0px;
-
-        list-style: none;
-        counter-reset: ol-item-counter;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          margin: 0px 0px 30px;
-          padding: 0 0 0 60px;
-          max-width: 1000px;
-          width: 65%;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding: 0 0 0 120px;
-        }
-
-        li {
-          position: relative;
-          counter-increment: ol-item-counter;
-          margin-left: 2em;
-
-          &::before {
-            content: counter(ol-item-counter) ". ";
-            font-weight: bold;
-            position: absolute;
-            left: -2em;
-            display: inline-block;
-          }
-        }
-      }
-
-      ul {
-        margin: 30px 0px;
-        padding: 0px 15px;
-        max-width: 1000px;
-        font-size: 18px;
-        line-height: 1.5;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          margin: 0px;
-          margin-bottom: 30px;
-          padding: 0px;
-          padding-left: 60px;
-          width: 65%;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding-left: 120px;
-        }
-
-        li {
-          margin-bottom: 10px;
-          padding-left: 35px;
-          display: block;
-          &::before {
-            content: "";
-            display: block;
-            width: 8px;
-            height: 8px;
-            position: absolute;
-            margin-left: -31px;
-            margin-top: 5px;
-            background: var(--fg-color);
-            border-radius: 10px;
-          }
-
-          @media (min-width: ${t.breakpoints[1]}) {
-            &::before {
-              content: "";
-              display: block;
-              width: 10px;
-              height: 10px;
-              position: absolute;
-              margin-left: -35px;
-              margin-top: 12px;
-              background: black;
-              border-radius: 10px;
-            }
-          }
-        }
-
-        ul {
-          display: block;
-          padding-left: 0px;
-          width: 100%;
-        }
-
-        ol {
-          display: block;
-          padding-left: 0px;
-          width: 100%;
-        }
-      }
-
-      .katex-display {
-        margin: 20px 15px;
-        padding: 0px 15px;
-        width: 100%;
-
-        @media (min-width: ${t.breakpoints[1]}) {
-          padding: 0 0 0 60px;
-          width: 65%;
-          max-width: 1000px;
-          margin: 0px 0px 30px;
-        }
-
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding: 0 0 0 120px;
-        }
-      }
-
-      .twitter-tweet {
-        margin: 0 0 20px 0 !important;
-        padding: 0 15px;
-        @media (min-width: ${t.breakpoints[1]}) {
-          padding: 0 0 0 60px;
-        }
-        @media (min-width: ${t.breakpoints[5]}) {
-          padding: 0 0 0 120px;
-        }
-      }
-    }
-
     /* ========================================================================== */
     body {
       color: var(--fg-color);
@@ -610,9 +302,6 @@ export const globalStyles = t => {
       max-width: 100%;
       height: auto;
       vertical-align: top;
-    }
-    .gm-style img {
-      max-width: none;
     }
     h1,
     .h1,
@@ -749,11 +438,6 @@ export const globalStyles = t => {
       position: relative;
       padding-top: 0px;
     }
-    .section-wrap {
-      position: relative;
-      padding: 130px 0;
-      overflow: hidden;
-    }
     .fp-section .container {
       max-width: 1440px;
     }
@@ -843,68 +527,6 @@ export const globalStyles = t => {
 
     .section06 .fp-scroller {
       overflow: visible !important;
-    }
-    @keyframes scroll {
-      to {
-        background-position: -500px 0px; /* size of image */
-      }
-    }
-    @keyframes scroll_r {
-      to {
-        background-position: -200px 0px; /* size of image */
-      }
-    }
-    @keyframes scroll2 {
-      to {
-        background-position: -400px 0px; /* size of image */
-      }
-    }
-    .backdrop {
-      animation: 10s scroll infinite linear;
-      background: url(${frise_joinus});
-      min-height: 500px;
-    }
-    .backdrop2 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_home});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop3 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_services});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop4 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_biotech});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop5 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_opensource});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop6 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_blog_post});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop7 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_blog_home});
-      background-size: 400px 200px;
-      min-height: 200px;
-    }
-    .backdrop8 {
-      animation: 10s scroll2 infinite linear;
-      background: url(${frise_use_cases});
-      background-size: 400px 200px;
-      min-height: 200px;
     }
 
     h1 {
@@ -1102,9 +724,6 @@ export const globalStyles = t => {
         position: relative;
         margin: 0 15px;
       }
-      .section-wrap {
-        padding: 100px 0;
-      }
       h2 {
         font-size: ${t.fontSizes[5]};
       }
@@ -1153,12 +772,6 @@ export const globalStyles = t => {
         padding-left: 0 !important;
         margin: 30px 0;
       }
-
-      .backdrop {
-        animation: 8s scroll_r infinite linear;
-        background-size: contain;
-        min-height: 200px;
-      }
       .btn {
         font-size: ${t.fontSizes[1]};
         margin: 0;
@@ -1189,10 +802,6 @@ export const globalStyles = t => {
       .section {
         padding: 0;
         margin-top: 0;
-      }
-      .section-wrap {
-        padding: 0;
-        margin-bottom: 0;
       }
       #___gatsby {
         overflow: hidden;

@@ -7,6 +7,8 @@ import { Layout, SEO, SectionHeading, Tags } from "../components"
 import cc from "../images/cc.svg"
 import ccBy from "../images/cc-by.svg"
 
+import BlogPostContentWrapper from "./blog-post-wrapper"
+
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   console.log(data)
@@ -67,11 +69,14 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           sx={{
             mt: [`20px`],
           }}
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{
-            __html: post.html,
-          }}
-        />
+          // className="blog-post-content"
+        >
+          <BlogPostContentWrapper
+            dangerouslySetInnerHTML={{
+              __html: post.html,
+            }}
+          />
+        </Box>
         <Box
           sx={{
             mt: [`40px`],
