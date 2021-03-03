@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
 
-function BlogPostContentWrapper({ dangerouslySetInnerHTML }) {
+function BlogPostContent({ dangerouslySetInnerHTML }) {
   const { theme: t } = useThemeUI()
   return (
     <div
@@ -274,9 +274,29 @@ function BlogPostContentWrapper({ dangerouslySetInnerHTML }) {
             padding: 0 0 0 120px;
           }
         }
+        pre {
+          background-color: #ecece9;
+          font-size: ${t.fontSizes[2]};
+          border-left: 15px solid ${t.colors.orange};
+          margin-bottom: 30px;
+          margin-top: 30px;
+          padding-left: 50px;
+          overflow: hidden;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+        .operator,
+        .constant,
+        .namespace,
+        .string {
+          color: ${t.colors.orange};
+        }
+        .comment {
+          color: #898a8c;
+        }
       `}
     />
   )
 }
 
-export default BlogPostContentWrapper
+export default BlogPostContent

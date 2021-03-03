@@ -3,11 +3,15 @@ import { Link, graphql } from "gatsby"
 import { jsx, Flex, Text, Box } from "theme-ui"
 import "katex/dist/katex.min.css"
 
-import { Layout, SEO, SectionHeading, Tags } from "../components"
+import {
+  Layout,
+  SEO,
+  SectionHeading,
+  Tags,
+  BlogPostContent,
+} from "../components"
 import cc from "../images/cc.svg"
 import ccBy from "../images/cc-by.svg"
-
-import BlogPostContentWrapper from "./blog-post-wrapper"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -69,9 +73,8 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           sx={{
             mt: [`20px`],
           }}
-          // className="blog-post-content"
         >
-          <BlogPostContentWrapper
+          <BlogPostContent
             dangerouslySetInnerHTML={{
               __html: post.html,
             }}

@@ -423,12 +423,6 @@ export const globalStyles = t => {
       -webkit-transition: all 0.4s ease;
       transition: all 0.4s ease;
     }
-    .container {
-      position: relative;
-      margin: 0 auto;
-      padding: 0 15px;
-      max-width: 1440px;
-    }
 
     .menu-active .nav-drop {
       background: var(--bg-color);
@@ -437,9 +431,6 @@ export const globalStyles = t => {
     .home .nav-area {
       position: relative;
       padding-top: 0px;
-    }
-    .fp-section .container {
-      max-width: 1440px;
     }
     .section {
       position: relative;
@@ -523,10 +514,6 @@ export const globalStyles = t => {
     main > .fp-section:last-child .fp-tableCell {
       vertical-align: top;
       background: black; // Match the footer down to bottom of viewport
-    }
-
-    .section06 .fp-scroller {
-      overflow: visible !important;
     }
 
     h1 {
@@ -618,12 +605,6 @@ export const globalStyles = t => {
     .inner .menu {
       transform: scale(1);
     }
-    .line-sep {
-      width: auto;
-      margin: 40px 60px 0;
-      height: 1px;
-      background: var(--fg-color);
-    }
     main nav ul li a {
       color: var(--fg-color);
     }
@@ -633,26 +614,6 @@ export const globalStyles = t => {
     }
 
     /* code section overrides */
-    pre {
-      background-color: #ecece9;
-      font-size: ${t.fontSizes[2]};
-      border-left: 15px solid ${t.colors.orange};
-      margin-bottom: 30px;
-      margin-top: 30px;
-      padding-left: 50px;
-      overflow: hidden;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-    .operator,
-    .constant,
-    .namespace,
-    .string {
-      color: ${t.colors.orange};
-    }
-    .comment {
-      color: #898a8c;
-    }
     main nav {
       width: 65%;
       max-width: 1000px;
@@ -672,32 +633,12 @@ export const globalStyles = t => {
     /* *************************************************** */
 
     @media (min-width: 768px) {
-      .container {
-        padding: 0px 100px;
-      }
-
       .header.header-inverse {
         --fg-color: white;
         --bg-color: transparent;
       }
     }
-    @media (min-width: 1024px) {
-      .fp-viewing-0 .logo,
-      .fp-viewing-0 .menu {
-        margin-top: initial;
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-      }
-      .fp-viewing-0 .logo {
-        padding-bottom: 17px;
-      }
-    }
     @media (min-width: 1400px) {
-      .image-holder img {
-        width: 100%;
-        height: 100%;
-      }
       h2 {
         font-size: ${t.fontSizes[6]};
       }
@@ -705,20 +646,9 @@ export const globalStyles = t => {
         font-size: ${t.fontSizes[5]};
       }
     }
-    @media (min-width: 1601px) {
-      .fp-section .container {
-        max-width: 100%;
-      }
-    }
     @media (max-width: 1499px) {
       main nav {
         padding: 0 0 0 60px;
-      }
-      pre {
-        padding-left: 50px;
-      }
-      .container {
-        padding: 0 60px;
       }
       .menu > li {
         position: relative;
@@ -779,12 +709,6 @@ export const globalStyles = t => {
       .btn {
         font-size: ${t.fontSizes[2]};
         padding: 8px 18px;
-      }
-      .container {
-        padding: 0;
-      }
-      .line-sep {
-        margin: 20px;
       }
       .menu-active .nav-area {
         -webkit-transform: translateY(-10px);
