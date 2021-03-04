@@ -253,7 +253,7 @@ export const globalStyles = t => {
         border-radius: 35px;
         text-align: center;
         color: var(--fg-color);
-        background: linear-gradient(to right, black 50%, white 50%);
+        background: linear-gradient(to right, black 50%, transparent 50%);
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all 0.5s ease;
@@ -261,7 +261,7 @@ export const globalStyles = t => {
         &.inverted {
           border: 1px solid var(--fg-color);
           color: var(--fg-color);
-          background: linear-gradient(to right, white 50%, black 50%);
+          background: linear-gradient(to right, white 50%, transparent 50%);
           background-size: 200% 100%;
           background-position: right bottom;
           transition: all 0.5s ease;

@@ -32,9 +32,6 @@ const IndexPage = () => {
             title={`Ready to achieve your big vision?`}
             backdropVariant={2}
             transitionClass={`transition--slide-fade-in`}
-            customWrapperSx={{
-              py: [`40px`, `40px`, `60px`],
-            }}
           />
         </div>
         <Footer />
