@@ -68,8 +68,8 @@ export default function Section1() {
             className="hide-in-percy"
             sx={{
               mb: [`10px`],
-              minHeight: `200px`,
-              minWidth: `400px`,
+              minHeight: [null, null, `200px`],
+              minWidth: [null, null, `400px`],
             }}
           >
             <Typed
