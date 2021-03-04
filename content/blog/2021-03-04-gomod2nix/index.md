@@ -130,7 +130,7 @@ I don't see how Go modules could have done this any better, but the situation is
 In the previous example, I showed how a Go import path looks like.
 Sadly it turns out that the surface simplicity of those paths hide a lot of underlying logic.
 
-Internally, these import paths are handled by the [`RepoRootForImport`](https://godoc.org/golang.org/x/tools/go/vcs#RepoRoot) family of functions in the `vcs` package, which maps import paths to repository URLs and VCS types.
+Internally, these import paths are handled by the [`RepoRootForImport`](https://godoc.org/golang.org/x/tools/go/vcs#RepoRoot) family of functions in the `vcs` (version control system) package, which maps import paths to repository URLs and VCS types.
 Some of these are matched statically using regex but others use active probing.
 
 This is a true showstopper for a pure-Nix Go packaging solution, and the reason why Gomod2nix is a code generation tool -- we don't have network access in the Nix evaluator, making it impossible to correctly resolve VCS from a Nix evaluation.
