@@ -113,7 +113,7 @@ What this means for us in Nix is that we have no good unit of incrementality -- 
 
 Go modules use its own Go-like file format, while Poetry uses [TOML](https://en.wikipedia.org/wiki/TOML) to serialize both its manifest and lock files.
 
-While this is format is simple and writing a parser for it isn't hard, it makes the lives of tooling authors harder.
+While this format is simple and writing a parser for it isn't hard, it makes the lives of tooling authors harder.
 It would be much easier if a standard format for data interchange was used, rather than a custom format.
 
 ### Bespoke hashes
@@ -130,7 +130,7 @@ I don't see how Go modules could have done this any better, but the situation is
 In the previous example, I showed how a Go import path looks like.
 Sadly it turns out that the surface simplicity of those paths hide a lot of underlying logic.
 
-Internally, these import paths are handled by the [`RepoRootForImport`](https://godoc.org/golang.org/x/tools/go/vcs#RepoRoot) family of functions in the `vcs` package, which maps import paths to repository URLs and VCS types.
+Internally, these import paths are handled by the [`RepoRootForImport`](https://godoc.org/golang.org/x/tools/go/vcs#RepoRoot) family of functions in the `vcs` (version control system) package, which maps import paths to repository URLs and VCS types.
 Some of these are matched statically using regex but others use active probing.
 
 This is a true showstopper for a pure-Nix Go packaging solution, and the reason why Gomod2nix is a code generation tool -- we don't have network access in the Nix evaluator, making it impossible to correctly resolve VCS from a Nix evaluation.
@@ -146,7 +146,7 @@ My first attempt at creating a tool for packaging Go modules was [vgo2nix](https
 It was written very shortly after modules were announced, and at the time the tooling support for them wasn't good.
 For example, there wasn't a parser for `go.mod` published back then.
 
-Being based on the older Nixpkgs Go abstraction `buildGoPackage` this method emulates a `$GOPATH` based builds that make some assumptions that are not true.
+It was based on the older Nixpkgs Go abstraction `buildGoPackage`, emulating a `$GOPATH` based build unfortunately with some assumptions that are not true.
 
 Let's again look at an excerpt from `go.sum`:
 
@@ -183,9 +183,9 @@ buildGoModule {
 The `buildGoModule` package is designed around fixed-output derivations, which means that a single derivation is created where all the dependencies of the package you want to build are wrapped, and only a single hash of the derivation is specified.
 It fetches all dependencies in the fixed output, creating a [vendor](https://golang.org/ref/mod#vendoring) directory which is used for the build.
 
-This has several issues, most notably there is no sharing of dependencies between packages that depends on the same Go module.
+This has several issues, most notably there is no sharing of dependencies between packages that depend on the same Go module.
 
-The other notable issue is that it forces developers to remember to edit the `vendorSha256` attribute separately from the already existing `hash`/`sha256` attribute on the derivation.
+The other notable issue is that it forces developers to remember editing the `vendorSha256` attribute separately from the already existing `hash`/`sha256` attribute on the derivation.
 Forgetting to do so can not only lead to incorrect builds but also be frustrating when working with larger packages that takes a long time to build, and only very late in the build notice that something was broken so you have to start over from scratch.
 
 Because of the lack of hash granularity the build needs to clone _every_ dependency every time the `vendorSha256` is invalidated, and cannot use the cache from previous builds.
@@ -197,7 +197,7 @@ Fixed-output derivations can also be considered an impurity, and there is [a pus
 Approach-wise [`gomod2nix`](https://github.com/tweag/gomod2nix) positions itself right between `vgo2nix` and `buildGoModule`.
 It's still a code generation tool like `vgo2nix`, but fully embraces the Go modules world and only supports Go modules based builds -- the old `GOPATH` way is unsupported.
 It uses the same vendoring approach that `buildGoModule` uses, but instead of vendoring the actual sources in a derivation, it uses symlinks instead.
-In that way, dependencies can be fetched separately, and identical dependencies source trees can be shared between multiple different packages in the Nix store.
+In that way, dependencies can be fetched separately, and identical dependency source trees can be shared between multiple different packages in the Nix store.
 
 From a user perspective the workflow is largely similar to `vgo2nix`:
 
