@@ -54,7 +54,7 @@ const H5 = ({ children, customSx, className }) => {
   )
 }
 
-const TitleName = ({ fullname }) => {
+const TitleName = ({ fullname, pronouns }) => {
   return (
     <Grid
       sx={{
@@ -64,6 +64,7 @@ const TitleName = ({ fullname }) => {
     >
       <H1>{fullname}</H1>
       <H2>TWEAGER</H2>
+      <H5>{pronouns}</H5>
     </Grid>
   )
 }
@@ -98,6 +99,7 @@ const ListFeature = ({ title, features }) => {
 const TemplateCV1 = ({ data }) => {
   const {
     name,
+    pronouns,
     bio,
     skills,
     speaks,
@@ -125,7 +127,7 @@ const TemplateCV1 = ({ data }) => {
             gridAutoRows: `max-content`,
           }}
         >
-          <TitleName fullname={name} />
+          <TitleName fullname={name} pronouns={pronouns} />
           <Grid columns={2}>
             <ListFeature title={`Key Skills`} features={skills || []} />
             <ListFeature title={`Languages`} features={speaks || []} />
@@ -249,6 +251,7 @@ export const pageQuery = graphql`
     profile: profilesYaml(slug: { eq: $slug }) {
       slug
       name
+      pronouns
       bio
       skills
       speaks

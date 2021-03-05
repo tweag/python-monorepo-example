@@ -130,7 +130,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes, createFieldExtension } = actions
   const typeDefs = `
   type  ProfilesYamlExperience   {
      employer: String
@@ -152,6 +152,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type ProfilesYaml implements Node @dontInfer {
     slug: String!
     name: String!
+    pronouns: String @optional
     github: String
 		bio: String
 		skills: [String]
@@ -160,7 +161,19 @@ exports.createSchemaCustomization = ({ actions }) => {
     experience: [ProfilesYamlExperience]
     education: [ProfilesYamlEducation]
   }
-
   `
+
+  createFieldExtension({
+    name: `optional`,
+    extend: () => ({
+      resolve(source, args, context, info) {
+        if (source[info.fieldName] == null) {
+          return ``
+        }
+        return source[info.fieldName]
+      },
+    }),
+  })
+
   createTypes(typeDefs)
 }
