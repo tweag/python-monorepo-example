@@ -1,0 +1,122 @@
+slug: noon.vandersilk
+name: Noon van der Silk
+pronouns: He/Him
+github: silky
+website: https://silky.github.io/
+bio: |
+  Noon is a software engineer with a broad range of experience across AI,
+  quantum computing, functional programming and creative projects. He is
+  passionate about learning new things, empathetic and trust-based leadership
+  and supporting companies to achieve their aims through thoughtful and
+  flexible technology. In his spare time Noon likes to explore, read, and
+  collaborate on creative projects! 
+
+skills:
+  - Quantum computing
+  - Deep learning
+  - Haskell
+  - Python
+  - Teaching
+  - Leadership & Strategy
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Senior software engineer
+    years: 2021 - Present
+    description:
+
+  - employer: Riverlane 
+    role: Tech Lead
+    years: 2020 - 2021
+    description:
+      - Worked on existing DSL for quantum-classical computation
+      - "Tech: Python, FPGAs"
+
+  - employer: Braneshop 
+    role: Founder/Director
+    years: 2018 - Present
+    description:
+      - Continued (modernised) training on deep learning
+      - AI consulting projects around generative AI, and insurance
+      - Technical leadership consulting
+      - Community building and engagement through conference organising and support
+      - "Tech: Python, Haskell, PyTorch, TensorFlow"
+
+  - employer: Silverpond 
+    role: AI Engineer
+    years: 2016 - 2018
+    description:
+      - "AI consulting projects across a variety of industries: drones, asset management, medicine, fashion"
+      - Wrote and developed training on deep learning
+      - Community building
+      - Worked on internal AI-as-a-Service offering in Python
+      - Mentorship
+      - Recruitment
+      - Strategy
+      - "Tech: Python, Ruby, Haskell, PyTorch, TensorFlow"
+  
+  - employer: Biarri Networks 
+    role: Software Engineer (part time)
+    years: 2011 - 2016
+    description:
+      - Feature work/bugfixes
+      - Built fibre-network design software
+      - Established development workflows around CI/builds/knowledge sharing
+      - Mentorship
+      - "Tech: Python, C#, WPF, Jenkins"
+
+  - employer: The University of Melbourne
+    role: Research Assistant (part time)
+    years: 2012 - 2013
+    description:
+      - Worked on software for topological quantum computation and quantum error correction
+      - "Tech: Python, Google SketchUp"
+
+  - employer: Cosmos 21+ Group
+    role: Senior Software Engineer
+    years: 2007 - 2010
+    description:
+      - Web/backend development
+      - "Tech: C#, ASP.NET"
+
+  - employer: AT2
+    role: Senior Software Engineer
+    years: 2006 - 2007
+    description:
+      - Web development
+      - "Tech: C#, ASP.NET"
+
+  - employer: Portland House Group
+    role: Software Engineer
+    years: 2002 - 2005
+    description:
+      - Ledger tools, investment analysis tools, funds management platform
+      - "Tech: C#, ASP.NET, Classic ASP"
+
+education:
+  - qualification: MSc
+    name: Masters of Mathematics and Statistics
+    institution: The University of Melbourne
+    years: 2013-2016
+    description:
+      - Focus on mathematics
+      - |
+        thesis: "Minimal resource topological quantum computation"
+
+
+  - qualification: BSc 
+    name: Bachelor of Science (Physics)
+    institution: RMIT
+    years: 2010-2012
+    description:
+      - Focus on Physics and Mathematics
+
+
+  - qualification: Diploma 
+    name: Advanced Diploma of Information Technology
+    institution: RMIT
+    years: 2001-2003
+    description:
