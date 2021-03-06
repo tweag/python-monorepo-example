@@ -2,6 +2,23 @@
 
 import { css } from "@emotion/core"
 
+const buttonSize = {
+  small: `
+    padding: 7px 20px;
+    font-size: 14px;
+  `,
+  medium: `
+    padding: 9px 18px;
+    font-size: 18px;
+    line-height: 1.2;
+  `,
+  large: `
+    padding: 15px 18px;
+    font-size: 24px;
+    line-height: 1.2;
+  `,
+}
+
 export const globalStyles = t => {
   return css`
     :root {
@@ -231,22 +248,35 @@ export const globalStyles = t => {
 
     .button {
       display: inline-block;
+
       &.button-small {
-        padding: 7px 20px;
-        font-size: 14px;
+        ${buttonSize.small}
       }
 
       &.button-medium {
-        padding: 8px 18px;
-        font-size: 16px;
-        line-height: 1.2;
+        ${buttonSize.medium}
       }
 
-      &.button-medium-thin {
-        padding: 5px 18px;
-        font-size: 16px;
-        line-height: 1.2;
+      &.button-large {
+        ${buttonSize.large}
       }
+
+      &.min-5__button-large {
+        @media (min-width: ${t.breakpoints[5]}) {
+          ${buttonSize.large}
+        }
+      }
+
+      ${[5].reduce(
+        (acc, breakpoint) => `${acc}
+            &.min-${breakpoint}__button-large {
+              @media (min-width: ${t.breakpoints[breakpoint]}) {
+                ${buttonSize.large}
+              }
+            }
+          `,
+        ``
+      )}
 
       &.button-secondary {
         border: 1px solid var(--fg-color);
@@ -536,62 +566,6 @@ export const globalStyles = t => {
       font-weight: 700;
       margin: 0;
     }
-    .btn {
-      display: inline-block;
-      vertical-align: top;
-      font-size: clamp(24px, 24px, 16px);
-      line-height: 28px;
-      position: relative;
-      text-decoration: none;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      border: 1px solid var(--fg-color);
-      border-radius: 35px;
-      text-align: center;
-      height: 60px;
-      padding: 15px 18px;
-      color: var(--fg-color);
-      background: transparent;
-      overflow: hidden;
-      z-index: 2;
-      margin-bottom: 30px;
-    }
-
-    .btn:before {
-      display: inline-block;
-      vertical-align: top;
-      font-family: "icomoon" !important;
-      content: "\\e900";
-      margin: 1px 4px 0 0;
-    }
-    .btn.noarrow {
-      margin: -10px 15px;
-    }
-    .btn.noarrow:before {
-      display: inline-block;
-      vertical-align: top;
-      font-family: "icomoon" !important;
-      content: "";
-      margin: 0;
-    }
-    .btn:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 0;
-      top: 0;
-      bottom: 0;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      background: var(--fg-color);
-      z-index: -1;
-    }
-    .btn:hover {
-      color: var(--bg-color);
-    }
-    .btn:hover:after {
-      width: 100%;
-    }
 
     .header-inverse .black-logo,
     .s_purple .black-logo,
@@ -660,12 +634,6 @@ export const globalStyles = t => {
       h3 {
         font-size: ${t.fontSizes[4]};
       }
-      .btn {
-        font-size: ${t.fontSizes[2]};
-        line-height: 1.2;
-        height: 44px;
-        padding: 9px 18px;
-      }
     }
     @media (max-width: 767px) {
       code,
@@ -701,14 +669,6 @@ export const globalStyles = t => {
         word-wrap: break-word;
         padding-left: 0 !important;
         margin: 30px 0;
-      }
-      .btn {
-        font-size: ${t.fontSizes[1]};
-        margin: 0;
-      }
-      .btn {
-        font-size: ${t.fontSizes[2]};
-        padding: 8px 18px;
       }
       .menu-active .nav-area {
         -webkit-transform: translateY(-10px);

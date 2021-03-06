@@ -205,7 +205,7 @@ const ContactPage = () => {
             </Grid>
             <Grid className="transition-section__transition--slide-fade-in bottom-in">
               <button
-                className="btn"
+                className="button button-secondary button-medium pre-arrow-right min-5__button-large"
                 type="submit"
                 sx={{
                   justifySelf: `start`,

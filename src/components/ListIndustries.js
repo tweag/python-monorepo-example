@@ -74,9 +74,10 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
             <Link
               sx={{
                 justifySelf: [`start`, `start`, `center`],
+                alignSelf: [`center`],
               }}
               to={link}
-              className="btn"
+              className="button button-secondary button-medium min-5__button-large pre-arrow-right"
             >
               Learn more
             </Link>

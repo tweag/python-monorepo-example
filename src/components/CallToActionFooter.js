@@ -59,7 +59,10 @@ function CallToActionFooter({
           </Text>
         </Box>
         <Box>
-          <Link to="/contact" className="btn">
+          <Link
+            to="/contact"
+            className="button button-medium min-5__button-large   button-secondary pre-arrow-right"
+          >
             Contact us
           </Link>
         </Box>

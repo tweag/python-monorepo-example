@@ -10,7 +10,7 @@ import logo from "../images/tweag_logo_footer.svg"
 const ContactUs = () => (
   <Link
     to="/careers"
-    className="button button-secondary button-medium-thin inverted pre-arrow-right"
+    className="button button-secondary button-medium inverted pre-arrow-right"
   >
     Join us
   </Link>
