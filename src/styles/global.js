@@ -377,50 +377,6 @@ export const globalStyles = t => {
       top: 45px;
     }
 
-    form,
-    fieldset {
-      margin: 0;
-      padding: 0;
-      border-style: none;
-    }
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="search"],
-    input[type="password"],
-    textarea {
-      -webkit-appearance: none;
-      -webkit-border-radius: 0;
-      border-radius: 0;
-      box-sizing: border-box;
-      padding: 0.4em 0.7em;
-    }
-    input[type="text"]:focus,
-    input[type="tel"]:focus,
-    input[type="email"]:focus,
-    input[type="search"]:focus,
-    input[type="password"]:focus,
-    textarea:focus {
-      outline: none;
-    }
-    select {
-      -webkit-border-radius: 0;
-      border-radius: 0;
-    }
-    textarea {
-      resize: vertical;
-      vertical-align: top;
-    }
-    button,
-    input[type="button"],
-    input[type="reset"],
-    input[type="file"],
-    input[type="submit"] {
-      -webkit-appearance: none;
-      -webkit-border-radius: 0;
-      border-radius: 0;
-      /* cursor: pointer;  */
-    }
     [class^="icon-"],
     [class*=" icon-"] {
       /* use !important to prevent issues with browser extensions that change fonts */

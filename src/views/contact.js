@@ -183,6 +183,9 @@ const ContactPage = () => {
                     "::placeholder": {
                       opacity: 0.3,
                     },
+                    "&:focus": {
+                      outline: `none`,
+                    },
                   }}
                 />
               </Grid>
@@ -199,6 +202,9 @@ const ContactPage = () => {
                     "::placeholder": {
                       opacity: 0.3,
                     },
+                    "&:focus": {
+                      outline: `none`,
+                    },
                   }}
                 />
               </Grid>
@@ -209,7 +215,7 @@ const ContactPage = () => {
                 type="submit"
                 sx={{
                   justifySelf: `start`,
-                  fontSize: [`18px`, `18px`, `24px`],
+                  fontSize: [`18px`, `18px`, `24px !important`],
                 }}
               >
                 Send message
@@ -243,7 +249,7 @@ const ContactPage = () => {
           </Grid>
         </form>
       </div>
-      <div className="section s_white ">
+      <div className="section s_white">
         <Flex
           className="viewport-section transition-section"
           sx={{
