@@ -249,6 +249,10 @@ export const globalStyles = t => {
     .button {
       display: inline-block;
 
+      &.button-lined {
+        text-decoration: underline;
+      }
+
       &.button-small {
         ${buttonSize.small}
       }
@@ -277,6 +281,19 @@ export const globalStyles = t => {
           `,
         ``
       )}
+
+      &.button-link {
+        transition: all 0.4s ease;
+
+        &:not(:visited) {
+          color: var(--fg-color);
+        }
+
+        &:hover {
+          background: var(--fg-color);
+          color: var(--bg-color);
+        }
+      }
 
       &.button-secondary {
         border: 1px solid var(--fg-color);
@@ -359,27 +376,7 @@ export const globalStyles = t => {
     body.menu-active .menu a:after {
       top: 45px;
     }
-    a:link.lined {
-      text-decoration: underline;
-      color: var(--fg-color);
-    }
-    .lined {
-      display: inline;
-      line-height: 28px;
-      position: relative;
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      text-align: center;
-      overflow: hidden;
-      z-index: 2;
-    }
-    .lined:hover {
-      color: var(--bg-color);
-      background: var(--fg-color);
-    }
-    .lined:hover:after {
-      width: 100%;
-    }
+
     form,
     fieldset {
       margin: 0;
