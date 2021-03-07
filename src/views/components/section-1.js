@@ -65,9 +65,11 @@ export default function Section1() {
           className="transition--slide-fade-in bottom-in delayed only-above-1"
         >
           <h1
-            className="typeit hide-in-percy"
+            className="hide-in-percy"
             sx={{
               mb: [`10px`],
+              minHeight: [null, null, `200px`],
+              minWidth: [null, null, `400px`],
             }}
           >
             <Typed

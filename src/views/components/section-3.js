@@ -114,9 +114,10 @@ function Section3() {
             <Link
               sx={{
                 justifySelf: [`start`, `start`, `center`],
+                alignSelf: `center`,
               }}
               to={link}
-              className="btn"
+              className="button button-secondary pre-arrow-right button-medium min-5__button-large"
             >
               Learn more
             </Link>

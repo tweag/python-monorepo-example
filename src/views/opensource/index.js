@@ -30,16 +30,33 @@ const OpenSourcePage = () => {
           Check out our
           <a
             sx={{
-              lineHeight: [`0px`, `0px`, 1.2],
-              padding: [`8px`, `8px`, `9px 18px`],
+              lineHeight: [
+                `0px !important`,
+                `0px !important`,
+                `1.2 !important`,
+              ],
+              padding: [
+                `8px !important`,
+                `8px !important`,
+                `9px 18px !important`,
+              ],
               height: [`20px`, `20px`, `44px`],
+              fontSize: [
+                `18px !important`,
+                `18px !important`,
+                null,
+                null,
+                null,
+                `24px !important`,
+              ],
               m: [
                 `0 10px !important`,
                 `0 10px !important`,
                 `-10px 15px !important`,
               ],
+              verticalAlign: `top`,
             }}
-            className="btn noarrow"
+            className="button button-secondary button-medium  min-5__button-large"
             href="https://github.com/tweag"
           >
             Github page
@@ -47,17 +64,34 @@ const OpenSourcePage = () => {
           or read our
           <Link
             to="/blog"
-            className="btn noarrow"
             sx={{
-              lineHeight: [`0px`, `0px`, 1.2],
-              padding: [`8px`, `8px`, `9px 18px`],
+              lineHeight: [
+                `0px !important`,
+                `0px !important`,
+                `1.2 !important`,
+              ],
+              padding: [
+                `8px !important`,
+                `8px !important`,
+                `9px 18px !important`,
+              ],
               height: [`20px`, `20px`, `44px`],
+              fontSize: [
+                `18px !important`,
+                `18px !important`,
+                null,
+                null,
+                null,
+                `24px !important`,
+              ],
               m: [
                 `0 10px !important`,
                 `0 10px !important`,
                 `-10px 15px !important`,
               ],
+              verticalAlign: `top`,
             }}
+            className="button button-secondary button-medium  min-5__button-large"
           >
             Blog
           </Link>

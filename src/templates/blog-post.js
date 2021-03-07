@@ -3,7 +3,13 @@ import { Link, graphql } from "gatsby"
 import { jsx, Flex, Text, Box } from "theme-ui"
 import "katex/dist/katex.min.css"
 
-import { Layout, SEO, SectionHeading, Tags } from "../components"
+import {
+  Layout,
+  SEO,
+  SectionHeading,
+  Tags,
+  BlogPostContent,
+} from "../components"
 import cc from "../images/cc.svg"
 import ccBy from "../images/cc-by.svg"
 
@@ -67,11 +73,13 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           sx={{
             mt: [`20px`],
           }}
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{
-            __html: post.html,
-          }}
-        />
+        >
+          <BlogPostContent
+            dangerouslySetInnerHTML={{
+              __html: post.html,
+            }}
+          />
+        </Box>
         <Box
           sx={{
             mt: [`40px`],

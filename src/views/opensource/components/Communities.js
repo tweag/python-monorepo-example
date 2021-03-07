@@ -74,7 +74,10 @@ export default function Communities() {
             <Fragment>
               <p>
                 Many thought leaders of the{` `}
-                <a className="lined" href="https://nixos.org">
+                <a
+                  className="button button-link button-lined"
+                  href="https://nixos.org"
+                >
                   Nix community
                 </a>
                 {` `}
@@ -97,37 +100,55 @@ export default function Communities() {
                 as the shortest path to correct, scalable code for industries
                 where mistakes matter. We created language interop with{` `}
                 <a
-                  className="lined"
+                  className="button button-link button-lined"
                   href="https://github.com/tweag/inline-java"
                 >
                   Java
                 </a>
                 {`, `}
-                <a className="lined" href="https://github.com/tweag/inline-js">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/tweag/inline-js"
+                >
                   JavaScript
                 </a>
                 {`, `}
-                <a className="lined" href="https://github.com/fpco/inline-c">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/fpco/inline-c"
+                >
                   C
                 </a>
                 {` `}
                 and{` `}
-                <a className="lined" href="https://github.com/tweag/HaskellR">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/tweag/HaskellR"
+                >
                   R
                 </a>
                 {`, `}
                 we make Haskell{` `}
-                <a className="lined" href="https://github.com/tweag/asterius">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/tweag/asterius"
+                >
                   run in your browser
                 </a>
                 {`, `}
                 and do the{` `}
-                <a className="lined" href="https://github.com/tweag/funflow">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/tweag/funflow"
+                >
                   heavy lifting
                 </a>
                 {` `}
                 in your{` `}
-                <a className="lined" href="https://github.com/tweag/porcupine">
+                <a
+                  className="button button-link button-lined"
+                  href="https://github.com/tweag/porcupine"
+                >
                   analytics pipelines
                 </a>
                 {`.`}
@@ -144,13 +165,16 @@ export default function Communities() {
               <p>
                 We were among the first outside of Google to adopt Bazel. We are
                 {` `}
-                <a className="lined" href="https://bazel.build/experts.html">
+                <a
+                  className="button button-link button-lined"
+                  href="https://bazel.build/experts.html"
+                >
                   recognized community experts
                 </a>
                 {`. `}
                 We have contributed key features and new programming language
                 support to Bazel. We did this for ourselves and now{` `}
-                <Link to="/bazel" className="lined">
+                <Link to="/bazel" className="button button-link button-lined">
                   we can do it for you
                 </Link>
                 {`. `}

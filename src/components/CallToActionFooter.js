@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 import { Grid, Box, Text } from "theme-ui"
 import { Link } from "gatsby"
 
+import Backdrop from "./Backdrop"
+
 function CallToActionFooter({
   title,
   backdropVariant = ``,
@@ -57,7 +59,10 @@ function CallToActionFooter({
           </Text>
         </Box>
         <Box>
-          <Link to="/contact" className="btn">
+          <Link
+            to="/contact"
+            className="button button-medium min-5__button-large   button-secondary pre-arrow-right"
+          >
             Contact us
           </Link>
         </Box>
@@ -78,8 +83,9 @@ function CallToActionFooter({
         }}
         className={`${transitionClass} right-in delayed  only-above-1`}
       >
-        <div
-          sx={{
+        <Backdrop
+          variant={backdropVariant}
+          customSx={{
             width: [
               `100%`,
               `100%`,
@@ -91,8 +97,7 @@ function CallToActionFooter({
               `715px`,
             ],
           }}
-          className={`image-holder backdrop${backdropVariant}`}
-        ></div>
+        />
       </Box>
     </Grid>
   )

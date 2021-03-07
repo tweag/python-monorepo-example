@@ -2,8 +2,6 @@
 import { jsx, Grid, Flex, Text } from "theme-ui"
 import { Link } from "gatsby"
 
-//  to={node.fields.slug}
-
 export const TopCard = ({ node }) => {
   const title = node.frontmatter.shortTitle || node.frontmatter.title
   const tags = node.frontmatter.tags
@@ -54,69 +52,6 @@ export const TopCard = ({ node }) => {
       <Flex
         sx={{
           mt: [`20px`],
-        }}
-      >
-        {tags.map(tag => {
-          return (
-            <Link
-              to={`/blog/tags/${tag}`}
-              key={tag}
-              className="button button-secondary button-small"
-              sx={{
-                mr: [`15px`],
-                mb: [`5px`],
-              }}
-            >
-              {tag}
-            </Link>
-          )
-        })}
-      </Flex>
-    </Grid>
-  )
-}
-
-export const Card = ({ node }) => {
-  const title = node.frontmatter.shortTitle || node.frontmatter.title
-  const tags = node.frontmatter.tags
-  return (
-    <Grid
-      gap={[`0px`]}
-      sx={{
-        borderTop: `solid 1px black;`,
-      }}
-    >
-      <Text
-        sx={{
-          fontSize: [`16px`],
-          mt: [`15px`],
-        }}
-      >
-        {node.fields.date}
-      </Text>
-      <Text
-        sx={{
-          fontSize: [`24px`, `24px`, `34px`],
-          lineHeight: [1],
-          fontWeight: 700,
-          textTransform: `uppercase`,
-          mt: [`10px`],
-        }}
-      >
-        {title}
-      </Text>
-      <Text
-        sx={{
-          fontSize: [`16px`],
-          mt: [`20px`],
-        }}
-        dangerouslySetInnerHTML={{
-          __html: node.frontmatter.description || node.excerpt,
-        }}
-      />
-      <Flex
-        sx={{
-          mt: [`36px`],
         }}
       >
         {tags.map(tag => {

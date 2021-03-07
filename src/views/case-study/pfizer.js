@@ -1,8 +1,6 @@
 import React from "react"
 
-import CallToAction from "../../components/cta"
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import { Layout, SEO, CallToActionFooter } from "../../components"
 
 import imgVertical1 from "../../images/use_case_vertical1.svg"
 import imgVertical2 from "../../images/use_case_vertical2.svg"
@@ -132,8 +130,15 @@ const PfizerPage = () => {
             <img src={imgVertical2} alt="" />
           </div>
         </div>
-        <div className="section s_green viewport-section">
-          <CallToAction backdropIndex={8} />
+        <div className="section s_green viewport-section transition-section">
+          <CallToActionFooter
+            title={`Ready to achieve your big vision?`}
+            backdropVariant={8}
+            transitionClass={`transition-section__transition--slide-fade-in`}
+            customWrapperSx={{
+              py: [`40px`, `40px`, `60px`],
+            }}
+          />
         </div>
       </section>
     </Layout>

@@ -106,7 +106,10 @@ function Section2() {
             </Grid>
           ))}
         </Grid>
-        <Link to="/contact" className="btn">
+        <Link
+          to="/contact"
+          className="button button-secondary pre-arrow-right button-medium min-5__button-large"
+        >
           Contact us
         </Link>
       </Box>
