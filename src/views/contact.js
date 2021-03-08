@@ -257,7 +257,7 @@ const ContactPage = () => {
             pb: [`100px`],
             pl: [`0px`, `0px`, `45px`, `45px`, `45px`, `45px`, `105px`],
             flexWrap: `wrap`,
-            width: [`100%`, `100%`, `70%`],
+            width: [`100%`],
           }}
         >
           {content.locations.map(({ city, address }, i) => (
