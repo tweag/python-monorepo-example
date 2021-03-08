@@ -66,10 +66,14 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             display: block;
             line-height: 1.75;
             font-size: 16px;
-            padding: 20px 55px;
+            padding: 20px 15px;
 
             @media (min-width: ${t.breakpoints[1]}) {
               font-size: 18px;
+            }
+
+            @media (min-width: ${t.breakpoints[5]}) {
+              padding: 20px 55px;
             }
           }
         }
