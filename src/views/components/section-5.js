@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Grid, Box, Text } from "theme-ui"
+import { useBreakpointIndex } from "@theme-ui/match-media"
 
 import logoAmgen from "../../images/logo_amgen.png"
 import logoCea from "../../images/logo_cea.png"
@@ -9,7 +10,7 @@ import logoPfizer from "../../images/logo_pfizer.png"
 import logoTarget from "../../images/logo_target.png"
 import logoOrange from "../../images/logo_orange.png"
 
-const partners = [
+const partnersCol3 = [
   {
     src: logoAmgen,
     name: `Amgen`,
@@ -36,7 +37,36 @@ const partners = [
   },
 ]
 
+const partnersCol2 = [
+  {
+    src: logoAmgen,
+    name: `Amgen`,
+  },
+  {
+    src: logoGoogle,
+    name: `Google`,
+  },
+  {
+    src: logoCea,
+    name: `CEA`,
+  },
+  {
+    src: logoOrange,
+    name: `Orange`,
+  },
+  {
+    src: logoPfizer,
+    name: `Pfizer`,
+  },
+  {
+    src: logoTarget,
+    name: `Target`,
+  },
+]
+
 function Section5() {
+  const index = useBreakpointIndex()
+  const partners = index < 1 ? partnersCol2 : partnersCol3
   return (
     <Grid
       columns={[1]}
@@ -70,7 +100,7 @@ function Section5() {
           &amp; innovators
         </Text>
       </Box>
-      <Grid columns={[3]} gap={[`20px`, `20px`, `60px`]}>
+      <Grid columns={[2, 3]} gap={[`20px`, `20px`, `60px`]}>
         {partners.map(({ src, name }, i) => (
           <Box
             key={name}
