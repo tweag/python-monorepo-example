@@ -5,6 +5,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
   const { theme: t } = useThemeUI()
   return (
     <div
+      className="blog-post-content"
       dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       css={`
         line-height: 28px;
@@ -42,6 +43,21 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
 
           @media (min-width: ${t.breakpoints[5]}) {
             padding-left: 120px;
+          }
+        }
+
+        table {
+          margin: 0px 15px;
+          margin-bottom: 20px;
+          @media (min-width: ${t.breakpoints[1]}) {
+            margin: 0px;
+            margin-bottom: 20px;
+            margin-left: 60px;
+          }
+
+          @media (min-width: ${t.breakpoints[5]}) {
+            margin-left: 120px;
+            margin-bottom: 20px;
           }
         }
 
