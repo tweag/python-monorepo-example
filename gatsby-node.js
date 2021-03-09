@@ -162,18 +162,5 @@ exports.createSchemaCustomization = ({ actions }) => {
     education: [ProfilesYamlEducation]
   }
   `
-
-  createFieldExtension({
-    name: `optional`,
-    extend: () => ({
-      resolve(source, args, context, info) {
-        if (source[info.fieldName] == null) {
-          return ``
-        }
-        return source[info.fieldName]
-      },
-    }),
-  })
-
   createTypes(typeDefs)
 }
