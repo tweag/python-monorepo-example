@@ -152,7 +152,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type ProfilesYaml implements Node @dontInfer {
     slug: String!
     name: String!
-    pronouns: String @optional
+    pronouns: String
     github: String
 		bio: String
 		skills: [String]
