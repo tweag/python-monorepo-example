@@ -130,7 +130,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes, createFieldExtension } = actions
+  const { createTypes } = actions
   const typeDefs = `
   type  ProfilesYamlExperience   {
      employer: String
