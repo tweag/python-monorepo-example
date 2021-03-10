@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "npm-run-all --continue-on-error -p format:code format:other",
     "format:code": "npm run lint:code -- --fix",
     "format:other": "npm run prettier -- --write",

@@ -78,14 +78,41 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
         }
 
         pre {
+          overflow-x: visible;
+
+          ::-webkit-scrollbar {
+            -webkit-appearance: none;
+          }
+
+          ::-webkit-scrollbar:horizontal {
+            height: 8px;
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+          }
+
+          ::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #ffffff;
+          }
+
           code {
             display: block;
             line-height: 1.75;
             font-size: 16px;
             padding: 20px 15px;
+            min-width: max-content;
+            width: 100%;
+            max-width: 1000px;
 
             @media (min-width: ${t.breakpoints[1]}) {
               font-size: 18px;
+              min-width: fit-content;
+              width: 100%;
+              max-width: none;
             }
 
             @media (min-width: ${t.breakpoints[5]}) {
@@ -301,7 +328,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           margin-bottom: 30px;
           margin-top: 30px;
           padding-left: 50px;
-          overflow: hidden;
+          // overflow: hidden;
           white-space: pre-wrap;
           word-wrap: break-word;
         }
