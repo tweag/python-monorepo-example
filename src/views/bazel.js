@@ -164,7 +164,21 @@ const Community = ({ title, bgColor, children, bgImage }) => {
 
 const BazelPage = () => {
   return (
-    <Layout>
+    <Layout
+      fullPageFooter
+      footer={
+        <Box className="section viewport-section s_white transition-section">
+          <CallToActionFooter
+            title={`Ready to achieve your big vision?`}
+            backdropVariant={3}
+            transitionClass={`transition-section__transition--slide-fade-in`}
+            customWrapperSx={{
+              py: [`40px`, `40px`, `60px`],
+            }}
+          />
+        </Box>
+      }
+    >
       <SEO title="Bazel" />
       <Manifesto />
       <Community title="Ready" bgColor="red">
@@ -210,16 +224,6 @@ const BazelPage = () => {
           </i>
         </p>
       </Community>
-      <Box className="section viewport-section s_white transition-section">
-        <CallToActionFooter
-          title={`Ready to achieve your big vision?`}
-          backdropVariant={3}
-          transitionClass={`transition-section__transition--slide-fade-in`}
-          customWrapperSx={{
-            py: [`40px`, `40px`, `60px`],
-          }}
-        />
-      </Box>
     </Layout>
   )
 }

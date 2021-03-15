@@ -942,7 +942,8 @@ initMobileNav()
 
 var stickyOffset = $(".header").offset()
 var $contentDivs = $(".section")
-$(document).scroll(function () {
+
+function updateNavbarBg() {
   $contentDivs.each(function (k) {
     var _thisOffset = $(this).offset()
     var _actPosition = _thisOffset.top - $(window).scrollTop()
@@ -956,12 +957,16 @@ $(document).scroll(function () {
         .filter(str => str.startsWith("s_"))[0]
       $(".header")
         .removeClass(
-          "s_white s_yellow s_black s_purple s_grey s_red s_blue s_beige s_orange s_green header-inverse"
+          "s_white s_yellow s_black s_purple s_grey s_red s_blue s_beige s_orange s_green navbar-inverted"
         )
         .addClass(_myclass)
       if (["s_purple", "s_black"].includes(_myclass))
-        $(".header").addClass("header-inverse")
+        $(".header").addClass("navbar-inverted")
       return false
     }
   })
-})
+}
+
+$(document).scroll(updateNavbarBg)
+
+// updateNavbarBg()

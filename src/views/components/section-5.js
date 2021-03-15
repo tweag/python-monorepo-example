@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Grid, Box, Text } from "theme-ui"
-import { useBreakpointIndex } from "@theme-ui/match-media"
 
 import logoAmgen from "../../images/logo_amgen.png"
 import logoCea from "../../images/logo_cea.png"
@@ -10,34 +9,7 @@ import logoPfizer from "../../images/logo_pfizer.png"
 import logoTarget from "../../images/logo_target.png"
 import logoOrange from "../../images/logo_orange.png"
 
-const partnersCol3 = [
-  {
-    src: logoAmgen,
-    name: `Amgen`,
-  },
-  {
-    src: logoCea,
-    name: `CEA`,
-  },
-  {
-    src: logoGoogle,
-    name: `Google`,
-  },
-  {
-    src: logoOrange,
-    name: `Orange`,
-  },
-  {
-    src: logoPfizer,
-    name: `Pfizer`,
-  },
-  {
-    src: logoTarget,
-    name: `Target`,
-  },
-]
-
-const partnersCol2 = [
+const partners = [
   {
     src: logoAmgen,
     name: `Amgen`,
@@ -65,8 +37,6 @@ const partnersCol2 = [
 ]
 
 function Section5() {
-  const index = useBreakpointIndex()
-  const partners = index < 1 ? partnersCol2 : partnersCol3
   return (
     <Grid
       columns={[1]}

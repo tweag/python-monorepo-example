@@ -19,6 +19,25 @@ const buttonSize = {
   `,
 }
 
+const buttonVariant = {
+  buttonLinkBottomLined: `
+    ::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #000;
+      transition: width 0.4s;
+      margin-top: 2px;
+    }
+
+    :hover::after {
+      width: 100%;
+      //transition: width .4s;
+    }
+  `,
+}
+
 export const globalStyles = t => {
   return css`
     :root {
@@ -90,8 +109,10 @@ export const globalStyles = t => {
 
     /*   for react-full-page */
     .transition--slide-fade-in {
-      -webkit-transition: all 0.9s ease 0.3s;
-      transition: all 0.9s ease 0.3s;
+      -webkit-transition: transform 0.9s ease 0.3s, opacity 0.9s ease 0.3s,
+        visibility 0.9s ease 0.3s;
+      transition: transform 0.9s ease 0.3s, opacity 0.9s ease 0.3s,
+        visibility 0.9s ease 0.3s;
       opacity: 0;
       visibility: hidden;
 
@@ -144,7 +165,7 @@ export const globalStyles = t => {
       })}
 
       /* No transitions in percy testing. */
-       @media only percy {
+      @media only percy {
         transform: none;
         opacity: 1;
         visibility: visible;
@@ -166,13 +187,17 @@ export const globalStyles = t => {
     }
 
     .transition-section__transition--slide-fade-in {
-      -webkit-transition: all 0.9s ease 0.3s;
-      transition: all 0.9s ease 0.3s;
+      -webkit-transition: transform 0.9s ease 0.3s, opacity 0.9s ease 0.3s;
+      transition: transform 0.9s ease 0.3s, opacity 0.9s ease 0.3s;
       opacity: 0;
       visibility: hidden;
 
       &.delayed {
         transition-delay: 0.8s;
+      }
+
+      &.duration-3 {
+        transition-duration: 0.3s;
       }
 
       ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
@@ -219,8 +244,16 @@ export const globalStyles = t => {
         `
       })}
 
+      &.min-1--none {
+        @media only screen and (min-width: ${t.breakpoints[1]}) {
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
       /* No transitions in percy testing. */
-       @media only percy {
+      @media only percy {
         transform: none;
         opacity: 1;
         visibility: visible;
@@ -292,6 +325,15 @@ export const globalStyles = t => {
         &:hover {
           background: var(--fg-color);
           color: var(--bg-color);
+        }
+      }
+
+      &.button-link-bottom-lined {
+        ${buttonVariant[`buttonLinkBottomLined`]}
+      }
+      &.min-1__button-link-bottom-lined {
+        @media (min-width: ${t.breakpoints[1]}) {
+          ${buttonVariant[`buttonLinkBottomLined`]}
         }
       }
 
@@ -407,14 +449,6 @@ export const globalStyles = t => {
       transition: all 0.4s ease;
     }
 
-    .menu-active .nav-drop {
-      background: var(--bg-color);
-      color: var(--fg-color);
-    }
-    .home .nav-area {
-      position: relative;
-      padding-top: 0px;
-    }
     .section {
       position: relative;
     }
@@ -480,20 +514,6 @@ export const globalStyles = t => {
       color: var(--fg-color);
     }
 
-    // In full-page mode (though not on small screens) we allow the content
-    // to be seen behind the fixed nav header
-    .fp-enabled body:not(.fp-responsive) header.s_white,
-    .fp-enabled body:not(.fp-responsive) header.s_yellow,
-    .fp-enabled body:not(.fp-responsive) header.s_purple,
-    .fp-enabled body:not(.fp-responsive) header.s_blue,
-    .fp-enabled body:not(.fp-responsive) header.s_black,
-    .fp-enabled body:not(.fp-responsive) header.s_green,
-    .fp-enabled body:not(.fp-responsive) header.s_beige,
-    .fp-enabled body:not(.fp-responsive) header.s_grey,
-    .fp-enabled body:not(.fp-responsive) header.s_red {
-      background-color: transparent;
-    }
-
     main > .fp-section:last-child .fp-tableCell {
       vertical-align: top;
       background: black; // Match the footer down to bottom of viewport
@@ -520,18 +540,6 @@ export const globalStyles = t => {
       margin: 0;
     }
 
-    .header-inverse .black-logo,
-    .s_purple .black-logo,
-    .s_black.black-logo {
-      filter: invert(100%);
-    }
-    .inner .logo {
-      margin-top: 0;
-    }
-    .inner .logo,
-    .inner .menu {
-      transform: scale(1);
-    }
     main nav ul li a {
       color: var(--fg-color);
     }
@@ -547,24 +555,7 @@ export const globalStyles = t => {
       margin: 0 0 30px;
       padding: 0 0 0 120px;
     }
-    /**/
-    /* *************************************************** */
-    /* *************************************************** */
-    /* *************************************************** */
-    /* *************************************************** */
-    /* ***************** End desktop ********************* */
-    /* *************************************************** */
-    /* *************************************************** */
-    /* *************************************************** */
-    /* *************************************************** */
-    /* *************************************************** */
 
-    @media (min-width: 768px) {
-      .header.header-inverse {
-        --fg-color: white;
-        --bg-color: transparent;
-      }
-    }
     @media (min-width: 1400px) {
       h2 {
         font-size: ${t.fontSizes[6]};
@@ -577,10 +568,6 @@ export const globalStyles = t => {
       main nav {
         padding: 0 0 0 60px;
       }
-      .menu > li {
-        position: relative;
-        margin: 0 15px;
-      }
       h2 {
         font-size: ${t.fontSizes[5]};
       }
@@ -589,14 +576,6 @@ export const globalStyles = t => {
       }
     }
     @media (max-width: 767px) {
-      code,
-      kbd,
-      pre,
-      samp {
-        font-family: monospace;
-        font-size: ${t.fontSizes[1]};
-        text-align: left;
-      }
       h1 {
         font-size: ${t.fontSizes[5]};
         min-height: 100px;
@@ -608,29 +587,11 @@ export const globalStyles = t => {
       h3 {
         font-size: ${t.fontSizes[2]};
       }
-      header {
-        background: var(--bg-color);
-      }
       main nav {
         margin: 30px 15px !important;
         padding: 0;
       }
-      pre {
-        padding-left: 0;
-        overflow: hidden;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        padding-left: 0 !important;
-        margin: 30px 0;
-      }
-      .menu-active .nav-area {
-        -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-        transform: translateY(-10px);
-      }
-      .menu-active .nav-drop {
-        max-height: 4000px;
-      }
+
       main nav {
         margin: 20px 15px;
         padding: 0 15px;

@@ -3,7 +3,8 @@ import ReactFullpage from "@fullpage/react-fullpage"
 import { Global } from "@emotion/core"
 
 import JQuery from "./jquery"
-import Navigation from "./navigation"
+// import Navigation from "./navigation"
+import Header from "./navigation"
 import { globalStyles } from "../styles/global"
 
 import "normalize.css"
@@ -33,7 +34,7 @@ const LayoutFullPage = ({ children }) => {
     <div id="wrapper" className="home">
       <Global styles={globalStyles} />
       <JQuery />
-      <Navigation className={inverseHeader && `header-inverse`} />
+      <Header inverted={inverseHeader} fullpage={true} />
       <ReactFullpage
         licenseKey={FULLPAGE_LICENSE_KEY}
         responsiveWidth={769}

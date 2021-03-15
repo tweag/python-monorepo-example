@@ -9,7 +9,21 @@ import { Manifesto, Communities } from "./components"
 
 const OpenSourcePage = () => {
   return (
-    <Layout>
+    <Layout
+      fullPageFooter
+      footer={
+        <Box className="section viewport-section s_grey transition-section">
+          <CallToActionFooter
+            title={`Ready to achieve your big vision?`}
+            backdropVariant={5}
+            transitionClass={`transition-section__transition--slide-fade-in`}
+            customWrapperSx={{
+              py: [`40px`, `40px`, `60px`],
+            }}
+          />
+        </Box>
+      }
+    >
       <SEO title="Our open source projects" />
       <Manifesto />
       <Communities />
@@ -97,16 +111,6 @@ const OpenSourcePage = () => {
           </Link>
           to learn more
         </Text>
-      </Box>
-      <Box className="section viewport-section s_grey transition-section">
-        <CallToActionFooter
-          title={`Ready to achieve your big vision?`}
-          backdropVariant={5}
-          transitionClass={`transition-section__transition--slide-fade-in`}
-          customWrapperSx={{
-            py: [`40px`, `40px`, `60px`],
-          }}
-        />
       </Box>
     </Layout>
   )

@@ -30,7 +30,21 @@ const content = {
 const AutonomousPage = () => {
   const { title, headline, paras } = content
   return (
-    <Layout>
+    <Layout
+      fullPageFooter
+      footer={
+        <div className="section viewport-section s_beige transition-section">
+          <CallToActionFooter
+            title={`Ready to achieve your big vision?`}
+            backdropVariant={4}
+            transitionClass={`transition-section__transition--slide-fade-in`}
+            customWrapperSx={{
+              py: [`40px`, `40px`, `60px`],
+            }}
+          />
+        </div>
+      }
+    >
       <SEO title="Autonomous vehicles" />
       <div
         className="section s_white"
@@ -39,16 +53,6 @@ const AutonomousPage = () => {
         }}
       >
         <TemplateFirstSection title={title} headline={headline} paras={paras} />
-      </div>
-      <div className="section viewport-section s_beige transition-section">
-        <CallToActionFooter
-          title={`Ready to achieve your big vision?`}
-          backdropVariant={4}
-          transitionClass={`transition-section__transition--slide-fade-in`}
-          customWrapperSx={{
-            py: [`40px`, `40px`, `60px`],
-          }}
-        />
       </div>
     </Layout>
   )
