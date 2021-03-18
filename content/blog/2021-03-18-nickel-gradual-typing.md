@@ -8,7 +8,7 @@ tags: [nix]
 ---
 
 This post is the third one of a series on [Nickel][nickel-repo], a new
-configuration language we are developing at Tweag. In this post, I explore the
+configuration language that I've been working on. In this post, I explore the
 design of Nickel's type system, which mixes static and dynamic typing, and the
 reasons behind this choice.
 
@@ -16,10 +16,9 @@ reasons behind this choice.
 2. [Programming with contracts in Nickel][nickel-contracts]
 3. Types à la carte in Nickel
 
-Tweag's core engineering mantras are "functional, typed, immutable". When
+When
 other constraints allow it (the right tool for the job and all that), I
 personally go for a statically typed language whenever I can.
-
 But the Nickel language is a tad different, for it is a configuration language.
 You usually run a terminating program once on fixed inputs to generate a static
 text file. In this context, any type error will most likely either be triggered
