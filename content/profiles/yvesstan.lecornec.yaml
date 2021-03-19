@@ -1,0 +1,82 @@
+slug: yves.stan.lecornec
+name: Yves-Stan Le Cornec
+pronouns: He/Him
+github: ylecornec
+bio: |
+  Yves-Stan is a Software Engineer and is especially interested in
+  automatic techniques and tooling that foster writing correct code.
+  Prior to joining the Tweag team, Yves-Stan worked as INRIA research
+  engineer at the Paris ENS, doing static analysis of C code by
+  abstract interpretation. Prior to that he had a postdoctoral
+  position at the Lyon ENS, working on a web application designed to
+  build models of biological systems. His PhD at the university of
+  Evry related to model checking, developing methods to analyse
+  modular systems using hierarchical abstractions.
+
+skills:
+  - Abstract Interpretation
+  - Model Checking
+  - Web Development
+  - OCaml
+  - Haskell
+  - Rust
+  - Python
+  - JavaScript
+  - ReScript
+
+speaks:
+  - French
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: March 2021-present
+  - employer: INRIA
+    role: Research Engineer
+    years: 2017 - 2020
+    description:
+      - |
+        Development on the Astrée software, which does static analysis
+        of C code by Abstract Interpretation.
+  - employer: ENS of Lyon
+    role: Postdoctoral researcher
+    years: 2016 - 2017
+    description:
+      - |
+        Development of a Web application for the KAMI project. This
+        framework facilitates building, composing and maintaining
+        knowledge bases of protein interactions.
+
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: University of Evry
+    years: 2011 - 2016
+    description:
+      - |
+        Design and implementation of model-checking algorithms
+        suitable to modular systems.
+  - qualification: Software Engineer
+    name: Software Engineer
+    institution: ENSIIE
+    years: 2008 - 2011
+    description:
+      - |
+        The ENSIIE is a French software engineering and computer
+        science "Grande École".
+
+  - qualification: Masters
+    name: MOPS
+    institution: University of Evry
+    years: 2010 - 2011
+    description:
+      - |
+        This degree (Models, Optimisation, programming and services)
+        specialises in formal methods
+
+publications:
+  - "Russ Harmer, Yves-Stan Le Cornec, Sébastien Légaré, Ievgeniia Oshurko: Bio-Curation for Cellular Signalling: The KAMI Project. CMSB 2017: 3-19"
+  - "Yves-Stan Le Cornec: Analyse de systèmes modulaires à l'aide de techniques d'abstractions hiérarchiques. (Analysing modular systems with hierarchical abractions). University of Paris-Saclay, France, 2016"
+  - "Yves-Stan Le Cornec, Franck Pommereau: Modular µ-Calculus Model-Checking with Formula-Dependent Hierarchical Abstractions. ACSD 2014: 11-20"
+  - "Nuno D. Mendes, Frédéric Lang, Yves-Stan Le Cornec, Radu Mateescu, Grégory Batt, Claudine Chaouiya: Composition and abstraction of logical regulatory modules: application to multicellular systems. Bioinform. 29(6): 749-757 (2013)"
