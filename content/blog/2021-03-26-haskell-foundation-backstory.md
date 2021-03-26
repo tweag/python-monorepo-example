@@ -108,9 +108,9 @@ gathering feedback from an ever widening group. We really wanted to
 iron out the wrinkles to avoid announcing something that could fall
 flat on its face.
 
-As the central architect and developer behind the Haskell ecosystem,
-the rest of us thought that the visible involvement and leadership of
-Simon Peyton Jones would be essential. Happily, Simon agreed to stay
+As Simon Peyton Jones is the central architect and developer behind the
+Haskell ecosystem, the rest of us thought that his visible involvement and
+leadership would be essential. Happily, Simon agreed to stay
 involved and eventually spent way more time than he had planned.
 
 We still had some worries. Would others consider affiliating?
