@@ -1,0 +1,120 @@
+slug: adrian.robert
+name: Adrian Robert
+github: arobertn
+bio: |
+  Adrian hails originally from academia but left after a PhD to get hands-on
+  with software in advanced visualization and informatics. But technological
+  foundations were lacking and as efforts towards a brave new semantic web
+  fizzled out, he focused increasingly on the drive towards seamless
+  computation: cloud and DevOps. After having fallen in love with Scala he
+  believes functional programming paradigms will play in an increasing role in
+  these major trends.
+
+  Outside the office, he enjoys the outdoors on foot or two wheels (motorized
+  or not) and also plays with novel user interface ideas on his computer.
+skills:
+  - Scala (+ Java, etc.)
+  - DevOps (often glued together with Python)
+  - Objective-C and iOS, Swift
+  - Relational Databases
+speaks:
+  - English
+  - Finnish
+  - Chinese, French (once fluent but disused, recoverable)
+  - Norwegian (soon)
+experience:
+  - employer: Tweag I/O
+    role: Software Engineer
+    years: March 2021 - Present
+    description:
+      - |
+        Benchmarking infrastructure for smart contract platform.
+  - employer: GE Healthcare
+    role: Product Owner
+    years: December 2018 - November 2020
+    description:
+      - Directed Test Automation and Build & Integration teams delivering
+        services to medical device embedded software development teams.
+        (Python, Robot Framework, Yocto, Buildbot, Graylog)
+  - employer: Solaforce Oy
+    role: Principal Engineer
+    years: September 2014 - December 2018
+    description:
+      - Technology selection, design, implementation, development processes
+        and testing methods, from paper to production for a new SaaS offering
+        in Human Resources.
+        (Scala, AWS, Postgres, Python)
+  - employer: Cozify Oy
+    role: Lead Software Architect
+    years: November 2013 - June 2014
+    description:
+      - Architecture, technology selection, and implementation of cloud server
+        and embedded home automation hub software.
+        (Scala, Python, Buildroot)
+  - employer: NaviSite
+    role: Platform Engineer
+    years: June 2012 - July 2013
+    description:
+      - Evaluated, selected, and configured compute, storage, backup, logging,
+        and networking resources for VMware-based IaaS deployed to four
+        datacenters to support Fortune 1000 customers.
+        (VMware, IOS, SAN)
+  - employer: Envisage Systems
+    role: Senior Software Engineer -> Technical Analyst
+    years: November 2009 - June 2012
+    description:
+      - Technical lead and business interface for team developing application
+        and backend processing for retirement plan administration.
+        (Java, Maven)
+  - employer: Cedexis
+    role: Senior Software Engineer
+    years: October 2009 - March 2010
+    description:
+      - Design and development of high-performance backend for leading edge
+        content distribution network consolidator in startup stage.
+        (Postgres, C, DNS)
+  - employer: CSC Arabia
+    role: Senior Software Engineer
+    years: September 2009 - May 2008
+    description:
+      - Development and design for biometric border control information
+        system in Saudi Arabia.
+        (Java, J2EE, JNI)
+  - employer: Natural Designs Software
+    role: Founder
+    years: January 2007 - Present
+    description:
+      - Innovative user interfaces for education and entertainment.
+        (Objective-C, iOS, Swift)
+  - employer: Cornell University Medical College
+    role: Research Scientist
+    years: January 2003 - December 2006
+    description:
+      - Web-based informatics software for neuroscience data collection,
+        presentation, and application.
+        (Java, XML, OWL)
+  - employer: Polexis
+    role: Software Engineer
+    years: September 2009 - December 2002
+    description:
+      - Government contracting on prototype and production software for
+        integrated data visualization.
+        (Java, XML)
+education:
+  - qualification: PhD
+    name: Cognitive Science
+    institution: University of California, San Diego
+    years: 1993-1999
+  - qualification: BS, BA
+    name: Computer Science, Mathematics
+    institution: Cornell University
+    years: 1988 - 1993
+publications:
+  - "Robert, A. (1999): Lamination and Within-Area Integration in the Neocortex;
+    Doctoral Dissertation, University of California, San Diego, Cognitive
+    Science."
+  - "Robert, A. (1999); Pyramidal Arborizations and Activity Spread in
+     Neocortex; Neurocomputing 26-27:483-90."
+  - "Robert, A. (1998); Blending and Other Conceptual Operations in the
+     Interpretation of Mathematical Proofs; Koenig, J.P. (ed.), Discourse and
+     Cognition: Bridging the Gap, pp. 337-50."
