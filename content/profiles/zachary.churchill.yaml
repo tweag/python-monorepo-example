@@ -22,21 +22,26 @@ experience:
   - employer: ITProTV
     role: Software Developer
     years: Sep 2020 - Apr 2021
-    description: |
-      - Maintenance and development of a REST 
+    description:
+      - |
+        Maintenance and development of a REST 
         api and elm frontend for an online IT video training program.
   - employer: Layer 3 Communications
     role: Software Developer
     years: May 2018 - Aug 2020
-    description: |
-      - Maintenance and development of a suite of network security 
+    description:
+      - | 
+        Maintenance and development of a suite of network security 
         and performance monitoring tools, including a SIEM with a 
         robust correlation engine.
-      - Most of their education happened here as an intern under
+      - |
+        Most of their education happened here as an intern under
         Haskell Core Libraries Committee members @chessai and @andrewthad
-      - They then continued to develop their 
+      - | 
+        They then continued to develop their 
         skills here as a Senior Software Developer.
-      - technologies used include but are not limited to Haskell,
+      - |
+        technologies used include but are not limited to Haskell,
         Nix, reflex, yesod, dependant types a la the Hasochism paper.
 education:
   - qualification: AA
