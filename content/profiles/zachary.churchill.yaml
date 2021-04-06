@@ -1,0 +1,51 @@
+slug: zachary.churchill
+name: Zachary Churchill
+github: goolord
+bio: |
+  Zach is a software engineer with a love for functional programming.
+  They have the unique experience of their first programming language 
+  being Haskell, which has shaped their love for beautiful, concise code.
+  In their spare time, they're a multi-instrumentalist musician and producer,
+  they love competitive games, reading manga, and learning pure math.
+skills:
+  - Haskell
+  - Nix
+  - Rust
+  - Elm
+  - JavaScript
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: Apr 2021-present
+  - employer: ITProTV
+    role: Software Developer
+    years: Sep 2020 - Apr 2021
+    description:
+      - |
+        Maintenance and development of a REST 
+        api and elm frontend for an online IT video training program.
+  - employer: Layer 3 Communications
+    role: Software Developer
+    years: May 2018 - Aug 2020
+    description:
+      - |
+        Maintenance and development of a suite of network security 
+        and performance monitoring tools, including a SIEM with a 
+        robust correlation engine.
+      - |
+        Most of their education happened here as an intern under
+        Haskell Core Libraries Committee members @chessai and @andrewthad
+      - |
+        They then continued to develop their 
+        skills here as a Senior Software Developer.
+      - |
+        technologies used include but are not limited to Haskell,
+        Nix, reflex, yesod, dependant types a la the Hasochism paper.
+education:
+  - qualification: AA
+    name: General Studies
+    institution: Florida SouthWestern
+    years: 2016 - 2018
+    description:
