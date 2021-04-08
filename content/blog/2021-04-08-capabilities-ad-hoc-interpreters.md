@@ -1,5 +1,6 @@
 ---
 title: "Ad-hoc interpreters with capability"
+description: "Define effect interpreters dynamically using reflection"
 author: Gaël Deest, Andreas Herrmann
 tags: [haskell, capability]
 ---
