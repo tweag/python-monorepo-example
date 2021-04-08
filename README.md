@@ -191,7 +191,7 @@ to answer are:
 - Is this well-written?
 - Is this exciting / Does this make a good read?
 
-Make suggestion as a regular pull request review. If either question
+Make suggestions as a regular pull request review. If either question
 above is answered by the negative, your review ought to point out why,
 and suggest improvements to the post's author.
 
@@ -211,7 +211,7 @@ The phases of the reviewing process are roughly the following:
 
 - Content review:
   - Comments on meaning and phrasing of sentences and code
-  - add links to other Tweag's post on related subjects.
+  - add links to Tweag's other posts on related subjects.
   - _Responsibles_: author, editor and volunteer proofreaders.
 - Grammar and spelling check:
   - _Responsibles_: author, editor and volunteer proofreaders.
