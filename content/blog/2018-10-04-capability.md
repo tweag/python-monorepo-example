@@ -18,7 +18,7 @@ excellent [blog post][three-layer-cake] from Matt Parsons which takes
 this aspect to heart.
 
 [Capability][capability] is a library to replace [the MTL][mtl] with
-capabilities. In this post, we'll argue why capabalities are
+capabilities. In this post, we'll argue why capabilities are
 important, why you should use them, and tell you about what it took to
 design a library of capabilities with good ergonomics. It turns out
 that a brand new language extension that shipped with GHC 8.6,
@@ -72,7 +72,7 @@ implemented.
 
 Irrespective of whether you are willing to twist the arm of the MTL
 with `{-# OVERLAPPING #-}` instances, when programming with
-capabilities you will run into two kind of issues. The first is
+capabilities you will run into two kinds of issues. The first is
 probably the lesser of the two, but has been a known pain point with
 the MTL for a while: it's that the MTL uses types (e.g. the state
 type) to discriminate layers. In other words: **with the MTL, you
@@ -270,7 +270,7 @@ countWordsAndLettersInText text =
 ```
 
 In a production setting we might prefer to stream the input,
-instead of holding he whole text in memory.
+instead of holding the whole text in memory.
 For simplicity's sake we will omit this here.
 
 With that we have written a program that demands two `HasWriter` capabilities.
