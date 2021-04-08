@@ -7,7 +7,7 @@ description: "There has been recent online discussions about
   impredicative encoding (aka final encoding) of free
   monads. Capabilities-as-type-classes, as embodied by the
   capability library, are essentially the same thing."
-tags: [haskell]
+tags: [haskell, capability]
 ---
 
 The subject of free monads is [resurfacing of
