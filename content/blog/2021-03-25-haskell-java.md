@@ -60,7 +60,7 @@ But there is a severe limitation to this approach: no build system can
 track changes to files in the jurisdiction of the other build system.
 The `Cabal`-based build system is not going to notice if we change the
 `gradle` configuration to build a different version of
-`common-collections4`. Or if we change a source file on the Java side.
+`common-collections4`, or if we change a source file on the Java side.
 Easy enough, we could run `gradle` every time we want to rebuild our
 program, just in case something changed in the Java side. But then,
 should the Haskell build system rebuild the Haskell side? Or should it
@@ -183,7 +183,7 @@ appropriate location. But nothing, so far, tells the Haskell
 program where to find this file. This is where the `runfiles` library
 comes into play. Bazel lays out runtime dependencies, such as
 `jar_deploy.jar` following known rules; the `runfiles` library
-abstract over these rules. To complete our example, we need the `main`
+abstracts over these rules. To complete our example, we need the `main`
 function to call to the `runfiles` library and discover the `jar`
 file's location.
 
