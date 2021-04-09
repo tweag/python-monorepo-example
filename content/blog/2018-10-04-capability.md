@@ -31,7 +31,7 @@ that a brand new language extension that shipped with GHC 8.6,
 
 ## The difference with the MTL
 
-How is using capabilities, like in Snoyman's and Parsons's blog posts
+How is using capabilities, like in Snoyman's and Parsons's blog posts,
 any different from using the well-trodden MTL? Quite a bit! The MTL's
 classes, like `MonadReader`, `MonadState` and their close relatives,
 are _intensional_: they reflect _how_ the monad has been constructed.
