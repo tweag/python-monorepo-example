@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title, pathname }) => {
+const SEO = ({ description, lang, meta = {}, title, pathname, image }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,6 +30,34 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+  // This url may be changed for SEO tests on PRs.
+  // const url = `https://62e137a14014f4137dd2580e--tweag-www.netlify.app`
+  const url = site.siteMetadata.siteUrl
+  const ogImg = `${url}${image}` || `${url}/logo.png`
+
+  const baseMetaObj = {
+    "og:title": [title, { selector: `property` }],
+    "twitter:title": [title, { selector: `name` }],
+    description: [metaDescription, { selector: `name` }],
+    "og:description": [description, { selector: `property` }],
+    "twitter:description": [description, { selector: `name` }],
+    "og:type": [`website`, { selector: `name` }],
+    "twitter:card": [`summary_large_image`, { selector: `name` }],
+    "og:image": [ogImg, { selector: `property` }],
+    "twitter:image:src": [ogImg, { selector: `name` }],
+    "twitter:site": [site.siteMetadata.social.twitter, { selector: `name` }],
+    "twitter:creator": [site.siteMetadata.social.twitter, { selector: `name` }],
+  }
+
+  const allMetaObj = { ...baseMetaObj, ...meta }
+
+  const metaTags = Object.keys(allMetaObj).map(k => {
+    const [value, { selector = `name` } = {}] = allMetaObj[k]
+    return {
+      [selector]: k,
+      content: value,
+    }
+  })
 
   return (
     <Helmet
@@ -48,48 +76,7 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
             ]
           : []
       }
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: `${site.siteMetadata.siteUrl}/logo.png`,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:site`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      meta={metaTags}
     />
   )
 }

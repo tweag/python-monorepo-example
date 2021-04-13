@@ -21,11 +21,18 @@ const BlogPostTemplate = ({ data, pageContext }) => {
     link: `/blog/tags/${tag}`,
   }))
 
+  const seoImg = post.frontmatter.seo_image
+    ? post.frontmatter.seo_image.childImageSharp.fixed.src
+    : null
+
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        // Only add the image parameter if there is a path. When not set, a
+        // default image will be used.
+        {...(seoImg ? { image: seoImg } : {})}
       />
       <div
         className="section s_white transition-section viewport-section"
@@ -152,6 +159,13 @@ export const pageQuery = graphql`
         author
         description
         tags
+        seo_image {
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
     }
   }
