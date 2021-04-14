@@ -2,13 +2,13 @@
 import { jsx } from "theme-ui"
 import { Fragment } from "react"
 
+import { DefaulLayout as Layout } from "../../layouts"
+import { CallToActionFooter, SEO } from "../../components"
 import {
   TemplateFirstSection,
   TemplateExamples,
   TemplateCaseStudies,
 } from "./components"
-
-import { CallToActionFooter, Layout, SEO } from "../../components"
 
 const content = {
   title: `BIOTECH`,

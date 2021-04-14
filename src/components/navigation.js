@@ -305,9 +305,9 @@ function Header({ inverted, fullpage = false }) {
         </ClickAwayListener>
         {[
           [`Open source`, `/opensource`],
-          [`Contact`, `contact`],
+          [`Contact`, `/contact`],
           [`Careers`, `//boards.greenhouse.io/tweag`, true],
-          [`Blog`, `blog`],
+          [`Blog`, `/blog`],
         ].map(([t, route, isExternal], i) => (
           <NavLink
             customClassName={navLinkClassName}

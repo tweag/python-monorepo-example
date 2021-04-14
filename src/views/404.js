@@ -2,7 +2,8 @@
 import { jsx, Grid, Text } from "theme-ui"
 import { Link } from "gatsby"
 
-import { Layout, SEO } from "../components"
+import { DefaulLayout as Layout } from "../layouts"
+import { SEO } from "../components"
 
 const NotFoundPage = () => {
   return (

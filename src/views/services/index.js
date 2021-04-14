@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui"
-import { CallToActionFooter, Divider, Layout, SEO } from "../../components"
+
+import { DefaulLayout as Layout } from "../../layouts"
+import { CallToActionFooter, Divider, SEO } from "../../components"
 import { Services, Quote, WhatWeDo, KeyIndustries } from "./components"
 
 const ServicesPage = () => {

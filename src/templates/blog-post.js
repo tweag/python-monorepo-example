@@ -3,13 +3,8 @@ import { Link, graphql } from "gatsby"
 import { jsx, Flex, Text, Box } from "theme-ui"
 import "katex/dist/katex.min.css"
 
-import {
-  Layout,
-  SEO,
-  SectionHeading,
-  Tags,
-  BlogPostContent,
-} from "../components"
+import { DefaulLayout as Layout } from "../layouts"
+import { SEO, SectionHeading, Tags, BlogPostContent } from "../components"
 import cc from "../images/cc.svg"
 import ccBy from "../images/cc-by.svg"
 

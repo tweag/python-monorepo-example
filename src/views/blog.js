@@ -5,10 +5,8 @@ import { Grid, Box, Flex } from "theme-ui"
 
 import { useAllTags } from "../hooks"
 
-import { Layout, SectionHeading } from "../components"
-import BlogCard from "../components/blog-card"
-import SEO from "../components/seo"
-import Tags from "../components/tags"
+import { DefaulLayout as Layout } from "../layouts"
+import { SEO, Tags, SectionHeading, BlogCard } from "../components"
 
 import pattern1 from "../images/post_pattern1.png"
 import pattern2 from "../images/post_pattern2.png"

@@ -2,7 +2,8 @@
 import { jsx } from "theme-ui"
 import { Fragment } from "react"
 
-import { CallToActionFooter, Layout, SEO } from "../../components"
+import { DefaulLayout as Layout } from "../../layouts"
+import { CallToActionFooter, SEO } from "../../components"
 
 import {
   TemplateFirstSection,

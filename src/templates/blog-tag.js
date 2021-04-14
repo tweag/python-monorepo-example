@@ -3,8 +3,8 @@ import { jsx } from "theme-ui"
 import { Grid } from "theme-ui"
 import { graphql } from "gatsby"
 
-import { Layout, SectionHeading, Tags, SEO } from "../components"
-import BlogCard from "../components/blog-card"
+import { DefaulLayout as Layout } from "../layouts"
+import { SectionHeading, Tags, SEO, BlogCard } from "../components"
 
 import { useAllTags } from "../hooks"
 

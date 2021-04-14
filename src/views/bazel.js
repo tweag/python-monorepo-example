@@ -2,7 +2,9 @@
 import { jsx } from "theme-ui"
 import { Fragment } from "react"
 import { Grid, Box, Text, Flex } from "theme-ui"
-import { Layout, SectionHeading, CallToActionFooter, SEO } from "../components"
+
+import { DefaulLayout as Layout } from "../layouts"
+import { SectionHeading, CallToActionFooter, SEO } from "../components"
 
 import img12 from "../images/img12.svg"
 

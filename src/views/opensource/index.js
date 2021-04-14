@@ -3,7 +3,8 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { Box, Text } from "theme-ui"
 
-import { CallToActionFooter, Layout, SEO } from "../../components"
+import { DefaulLayout as Layout } from "../../layouts"
+import { CallToActionFooter, SEO } from "../../components"
 
 import { Manifesto, Communities } from "./components"
 

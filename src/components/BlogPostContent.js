@@ -78,7 +78,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
         }
 
         pre {
-          overflow-x: visible;
+          overflow: auto;
 
           ::-webkit-scrollbar {
             -webkit-appearance: none;
@@ -97,6 +97,18 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           ::-webkit-scrollbar-track {
             border-radius: 10px;
             background-color: #ffffff;
+          }
+
+          background-color: #ecece9;
+          font-size: ${t.fontSizes[2]};
+          border-left: 15px solid ${t.colors.orange};
+          margin-bottom: 30px;
+          margin-top: 30px;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+
+          @media (min-width: ${t.breakpoints[1]}) {
+            padding: 0 0 0 50px;
           }
 
           code {
@@ -320,17 +332,6 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           @media (min-width: ${t.breakpoints[5]}) {
             padding: 0 0 0 120px;
           }
-        }
-        pre {
-          background-color: #ecece9;
-          font-size: ${t.fontSizes[2]};
-          border-left: 15px solid ${t.colors.orange};
-          margin-bottom: 30px;
-          margin-top: 30px;
-          padding-left: 50px;
-          // overflow: hidden;
-          white-space: pre-wrap;
-          word-wrap: break-word;
         }
         .operator,
         .constant,

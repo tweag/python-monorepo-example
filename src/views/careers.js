@@ -8,7 +8,8 @@ import img16 from "../images/img16.svg"
 import img7 from "../images/img7.svg"
 import img8 from "../images/img8.svg"
 
-import { Layout, SEO, SectionHeading, Divider } from "../components"
+import { DefaulLayout as Layout } from "../layouts"
+import { SEO, SectionHeading, Divider } from "../components"
 
 const content = {
   title: `Jobs`,

@@ -27,6 +27,7 @@ export default function Section1() {
           ],
           textAlign: [`center`, `center`, `start`],
           maxWidth: [`100%`, `100%`, `740px`, `100%`],
+          py: [`50px`, `50px`, 0],
         }}
         gap={[`50px`, `50px`, 5, `10%`]}
       >
@@ -73,7 +74,7 @@ export default function Section1() {
             }}
           >
             <Typed
-              strings={[`SCALE YOUR ENGINEERING POWER.`]}
+              strings={[`SCALE YOUR <br/>ENGINEERING <br/>POWER.`]}
               typeSpeed={50}
               showCursor={false}
             />

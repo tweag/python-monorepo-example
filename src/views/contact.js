@@ -2,7 +2,8 @@
 import { jsx, Grid, Box, Text, Label, Input, Textarea, Flex } from "theme-ui"
 import { useState, Fragment } from "react"
 
-import { Layout, SEO } from "../components"
+import { DefaulLayout as Layout } from "../layouts"
+import { SEO } from "../components"
 
 const content = {
   locations: [

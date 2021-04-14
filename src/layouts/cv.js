@@ -1,7 +1,7 @@
 import React from "react"
 import { Global } from "@emotion/core"
 
-import JQuery from "../components/jquery"
+import JQuery from "./jquery"
 import { globalStyles } from "../styles/global"
 
 import "normalize.css"

@@ -1,15 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import LayoutFullPage from "../components/layout-fullpage"
-import Footer from "../components/footer"
-import { SEO, CallToActionFooter } from "../components"
+import { FullPageLayout } from "../layouts"
+import { SEO, CallToActionFooter, Footer } from "../components"
 
 import { Section1, Section2, Section3, Section4, Section5 } from "./components"
 
 const IndexPage = () => {
   return (
-    <LayoutFullPage>
+    <FullPageLayout>
       <SEO title="Software innovation lab" />
       <div className="section s_white">
         <Section1 />
@@ -36,7 +35,7 @@ const IndexPage = () => {
         </div>
         <Footer />
       </div>
-    </LayoutFullPage>
+    </FullPageLayout>
   )
 }
 

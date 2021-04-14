@@ -1,6 +1,7 @@
 import React from "react"
 
-import { Layout, SEO, CallToActionFooter } from "../../components"
+import { DefaulLayout as Layout } from "../../layouts"
+import { SEO, CallToActionFooter } from "../../components"
 
 import imgVertical1 from "../../images/use_case_vertical1.svg"
 import imgVertical2 from "../../images/use_case_vertical2.svg"
