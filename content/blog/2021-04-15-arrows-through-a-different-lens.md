@@ -83,7 +83,7 @@ The `lens` library now includes a [module][profunctor-module] containing functio
 In the following sections, we will go through the use and the intuition of the most common optics: `Lens`, `Prism` and `Traversal`.
 But first, let's import the compatibility module for profunctor optics:
 
-```
+```haskell
 -- PL for Profunctor Lenses
 import Control.Lens.Profunctor as PL
 ```
@@ -92,7 +92,7 @@ import Control.Lens.Profunctor as PL
 
 Standard lenses are all about products -- `view`, for example, is used to deconstruct records:
 
-```
+```haskell
 view _fst :: (a, b) -> a
 ```
 
@@ -144,7 +144,7 @@ Since every `Arrow` is also a `Strong` profunctor, one can use `Lens`es with the
 
 Standard prisms are all about sums -- `preview`, for example, is used to deconstruct sum-types:
 
-```
+```haskell
 view _Left :: Either a b -> Maybe a
 ```
 
