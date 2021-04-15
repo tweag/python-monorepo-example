@@ -7,10 +7,10 @@ description: "How to use lenses and other optics within an Arrow-based framework
 
 Our previous posts on computational pipelines, such as those introducing [Funflow][funflow] and [Porcupine][porcupine], show that Arrows are very useful for data science workflows.
 They allow the construction of effectful and composable pipelines whose structure is known at compile time, which is not possible when using `Monad`s.
-However Arrows may seems awkward to work with at first. For instance,
+However, Arrows may seem awkward to work with at first. For instance,
 it's not obvious how to use _lenses_ to access record fields in Arrows.
 
-My goal in this post is to show how lenses and other optics can be used in an Arrow-based workflows.
+My goal in this post is to show how lenses and other optics can be used in Arrow-based workflows.
 Doing so is greatly simplified thanks to [Profunctor
 optics][profunctor-optics] and some utilities that I helped add to the latest version of the [lens][lens] library.
 
@@ -66,7 +66,7 @@ The answer is yes, and the solution is lenses -- but lenses of a different type.
 
 ## Profunctor optics
 
-There is an alternative and equivalent formulation of optics, called [Profunctor optics][profunctor-optics] that works very well with `Arrows`.
+There is an alternative and equivalent formulation of optics, called [Profunctor optics][profunctor-optics], that works very well with `Arrows`.
 Optics in the `Profunctor` framework have the following shape:
 
 ```haskell
@@ -90,7 +90,7 @@ import Control.Lens.Profunctor as PL
 
 ## Lenses
 
-Standard lenses are all about products -- `view` for example, is used to deconstruct records:
+Standard lenses are all about products -- `view`, for example, is used to deconstruct records:
 
 ```
 view _fst :: (a, b) -> a
@@ -138,11 +138,11 @@ PL.fromLens _1 :: Task a b -> Task (a,x,y) (b,x,y)
 ```
 
 Summarizing, a `Strong` profunctor is one we can apply lenses to.
-Since every `Arrow` is also a `Strong` profunctor, one can uses `Lens`es with them.
+Since every `Arrow` is also a `Strong` profunctor, one can use `Lens`es with them.
 
 ## Prisms
 
-Standard lenses are all about sums -- `preview` for example, is used to deconstruct sum-types:
+Standard prisms are all about sums -- `preview`, for example, is used to deconstruct sum-types:
 
 ```
 view _Left :: Either a b -> Maybe a
@@ -192,13 +192,13 @@ Since every `ArrowChoice` can be a `Choice` profunctor, one can uses prisms with
 
 ## Traversals
 
-Standard traversals are all about `Traversable` structures -- `mapMOf` for example, is used to execute effectful functions:
+Standard traversals are all about `Traversable` structures -- `mapMOf`, for example, is used to execute effectful functions:
 
 ```haskell
 mapMOf traverse readFile :: [FilePath] -> IO [String]
 ```
 
-Therefore, it makes sense for Profunctor prisms to also talk about these traversable structures.
+Therefore, it makes sense for Profunctor traversals to also talk about these traversable structures.
 Indeed, that is exactly what happens, through the `Traversing` type class:
 
 ```haskell
@@ -229,7 +229,7 @@ We can also use any `Traversal` from `lens` with a simple conversion:
 PL.fromTraversal :: VL.Traversal s t a b -> Traversal s t a b
 ```
 
-For example, one can have task and apply it to a list of inputs:
+For example, one can have a task and apply it to a list of inputs:
 
 ```haskell
 PL.fromTraversal traverse :: Action a b -> Action [a] [b]
@@ -239,7 +239,7 @@ PL.fromTraversal traverse :: Action a b -> Action [a] [b]
 
 Using Arrows does not stop us from taking advantage of the Haskell ecosystem.
 In particular, optics interact very naturally with Arrows, both in their classical and profunctor formulations.
-For the moment the ecosystem is still lacking a standard library for Profunctor optics, but this is not a show stopper — the `lens` library itself has most the tools we need.
+For the moment, the ecosystem is still lacking a standard library for Profunctor optics, but this is not a show stopper — the `lens` library itself has most of the tools we need.
 So the next time you are trying out [Funflow][funflow] or [Porcupine][porcupine], don't shy away from using `lens`!
 
 [funflow]: ./2018-04-25-funflow.html
