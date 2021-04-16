@@ -2,8 +2,12 @@
 title: "Nickel: better configuration for less"
 shortTitle: "Nickel: better configuration for less"
 author: Yann Hamdaoui
-tags: [nix]
+tags: [nix, nickel]
 ---
+
+1. Presenting Nickel: better configuration for less
+2. [Programming with contracts in Nickel][nickel-contracts]
+3. [Types à la carte in Nickel][nickel-gradual-typing]
 
 We are making the [Nickel][nickel] repository public. Nickel is an experimental configuration
 language developed at Tweag. While this is not the time for the first
@@ -239,3 +243,5 @@ share of the design presented here is implemented. If you are curious about it,
 [kubernetes]: https://kubernetes.io/
 [nix-ops]: https://github.com/NixOS/nixops
 [gradual-typing]: https://en.wikipedia.org/wiki/Gradual_typing
+[nickel-contracts]: https://www.tweag.io/blog/2021-01-22-nickel-contracts/
+[nickel-gradual-typing]: https://www.tweag.io/blog/2021-03-18-nickel-gradual-typing/

@@ -2,8 +2,12 @@
 title: "Programming with contracts in Nickel"
 shortTitle: "Programming with contracts in Nickel"
 author: Yann Hamdaoui
-tags: [nix]
+tags: [nix, nickel]
 ---
+
+1. [Presenting Nickel: better configuration for less][nickel-1]
+2. Programming with contracts in Nickel
+3. [Types à la carte in Nickel][nickel-gradual-typing]
 
 In a [previous post][nickel-1], I gave a taste of [Nickel][nickel-repo], a configuration
 language we are developing at Tweag. One cool feature of Nickel is the ability
@@ -282,3 +286,4 @@ configurations.
 [laziness]: https://en.wikipedia.org/wiki/Lazy_evaluation
 [gradual-typing]: https://wphomes.soic.indiana.edu/jsiek/what-is-gradual-typing/
 [nickel-repo]: https://github.com/tweag/nickel/
+[nickel-gradual-typing]: https://www.tweag.io/blog/2021-03-18-nickel-gradual-typing/

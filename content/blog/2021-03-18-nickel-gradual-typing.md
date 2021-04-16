@@ -4,7 +4,7 @@ shortTitle: "Types à la carte in Nickel"
 author: Yann Hamdaoui
 description: "A dive into Nickel's gradual type system, which mixes dynamic and
 static typing"
-tags: [nix]
+tags: [nix, nickel]
 ---
 
 This post is the third one of a series on [Nickel][nickel-repo], a new
