@@ -242,8 +242,8 @@ In particular, optics interact very naturally with Arrows, both in their classic
 For the moment, the ecosystem is still lacking a standard library for Profunctor optics, but this is not a show stopper — the `lens` library itself has most of the tools we need.
 So the next time you are trying out [Funflow][funflow] or [Porcupine][porcupine], don't shy away from using `lens`!
 
-[funflow]: ./2018-04-25-funflow.html
-[porcupine]: ./2019-10-30-porcupine.html
+[funflow]: https://www.tweag.io/blog/2018-04-25-funflow.html
+[porcupine]: https://www.tweag.io/blog/2019-10-30-porcupine.html
 [funflow-src]: https://github.com/tweag/funflow/
 [porcupine-src]: https://github.com/tweag/porcupine
 [arrow]: https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Arrow.html
