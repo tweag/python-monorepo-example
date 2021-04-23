@@ -25,12 +25,12 @@ const IndexPage = () => {
       <div className="section s_white">
         <Section5 />
       </div>
-      <div className="section s_red">
+      <div className="section s_red viewport-section transition-section">
         <div className="s_red">
           <CallToActionFooter
             title={`Ready to achieve your big vision?`}
             backdropVariant={2}
-            transitionClass={`transition--slide-fade-in`}
+            transitionClass={`transition-section__transition--slide-fade-in`}
           />
         </div>
         <Footer />
