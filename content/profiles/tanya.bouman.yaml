@@ -1,0 +1,47 @@
+slug: tanya.bouman
+name: Tanya Bouman
+github: tanyabouman
+bio: |
+  Tanya is a software engineer.  She has enjoyed using Haskell in a variety of software research applications ranging from code generation, MRI sequences, to education and cryptography.  She has also taught Elm and basic computer science concepts to children.
+  Outside of work, Tanya plays the organ and occasionally a bit of piano and melodica.
+
+skills:
+  - Haskell
+  - Elm
+  - Swift
+  - cryptography
+  - medical imaging
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2021 - present
+  - employer: McMaster University
+    role: Teaching Assistant
+    years: 2015 - 2019
+    description:
+      - Teaching assistant for computer science courses, including discrete mathematics and correct-by-construction programming.
+  - employer: McMaster University
+    role: Research Assistant
+    years: 2015 - 2017
+    description:
+      - |
+        optimization problems: various applications including code generation and MRI sequences
+        computing education apps: collaborative design and development of iOS and Elm apps for children
+        outreach: teaching basic computer science concepts and programming in Elm to elementary students
+
+education:
+  - qualification: MSc
+    name: Computer Science
+    institution: McMaster University
+    years: 2018 - 2021
+    description:
+      - |
+        thesis title: Parallel Windowed Method for Ellipic Curve Cryptography
+  - qualification: BASc
+    name: Computer Science
+    institution: McMaster University
+    years: 2014 - 2018
+  - name: Level 10 Organ
+    institution: Royal Conservatory of Music
+    years: 2014
