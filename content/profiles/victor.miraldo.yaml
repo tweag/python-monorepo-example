@@ -1,0 +1,44 @@
+slug: victor.miraldo
+name: Victor Miraldo
+github: VictorCMiraldo
+bio: |
+  Victor works on Formal Methods and Functional Programming consulting,
+  research and development for Tweag. He has received his PhD in Computer
+  Science from Utrecht University, where he studied and developed correct-by-construction
+  structural differencing tools in Haskell and Agda. Prior to joining Tweag, Victor
+  has worked at Oracle Labs and the DFINITY Foundation on the development,
+  formalization and testing of byzantine fault tolerant distributed systems.
+skills:
+  - Haskell
+  - Agda
+  - Rust
+speaks:
+  - English
+  - Portuguese
+experience:
+  - employer: Tweag
+    role: Research Software Engineer
+    years: May 2021-present
+  - employer: DFINITY Foundation
+    role: Software Testing and Verification Engineer
+    years: October 2020 - April 2021
+  - employer: Oracle Labs
+    role: Research Assistant and Software Engineer
+    years: 2017 - 2020
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Utrecht University
+    years: 2015 - 2020
+    description:
+      - |
+        thesis title: “Type-Safe Generic Differencing of Mutually Recursive Families”
+  - qualification: Masters
+    name: Computer Science
+    institution: University of Minho
+    years: 2012 - 2015
+    description:
+      - |
+        thesis title: “Proof by Rewriting in Agda”
+publications:
+  - Please refer to victorcmiraldo.github.io/research.html for an up-to-date list of publications.
