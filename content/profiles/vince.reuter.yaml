@@ -1,0 +1,70 @@
+slug: vince.reuter
+name: Vince Reuter
+github: vreuter
+bio: |
+  Vince has training in math and statistics and software experience across a range of institutional settings. 
+  He's been a primary contributor to a variety of open-source bioinformatics packages in Python. Always drawn 
+  to designing for composability, he moved into strong, static typing through Scala. and is now enjoying 
+  learning Haskell. Aside from software, Vince likes mountain scrambling, museum visits, and urban parks 
+  and architecture.
+skills:
+  - Scala
+  - Python
+  - R
+  - Genomics
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: May 2021 - present
+    description:
+      - Software development
+  - employer: University of Pennsylvania
+    role: Graduate Fellow
+    years: August 2019 - May 2021
+    description:
+      - Single-cell and single-organelle mitochondrial DNA variation research
+  - employer: University of Virginia
+    role: Software Engineer
+    years: November 2018 - July 2019
+    description:
+      - Software develoment for several open-source bioinformatics Python packages
+  - employer: Sloan-Kettering Institute
+    role: Computational Biologist
+    years: January 2018 - November 2018
+    description:
+      - Bioinformatics analysis of sequencing data from epigenomics and transcriptomics experiments
+  - employer: University of Virginia
+    role: Scientific Programmer
+    years: January 2017 - December 2017
+    description:
+      - Software develoment for several open-source bioinformatics Python packages
+      - Analysis of sequencing data from epigenomics experiments
+  - employer: Institute for Health Metrics and Evaluation
+    role: Research Engineer
+    years: June 2016 - January 2017
+    description:
+      - Software development in Python to support forecasting projects
+  - employer: ArcherDx, Inc.
+    role: Biostatistician
+    years: April 2015 - May 2016
+    description:
+      - Internal R&D software development and experimental consultation
+  - employer: Level 3 Communications, LLC
+    role: Data Scientist
+    years: September 2014 - April 2015
+    description:
+      - Internet threat detection research
+education:
+  - qualification: MS
+    name: Genomics and Computational Biology
+    institution: University of Pennsylvania
+    years: 2019 - 2021 (expected)
+    description:
+      - |
+        project title: Variability of mtDNA between and within cells: tools and analysis
+  - qualification: BA
+    name: Mathematics-Statistics
+    institution: Columbia University
+    years: 2010 - 2014
