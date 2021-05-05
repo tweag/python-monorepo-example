@@ -28,11 +28,11 @@ experience:
   - employer: Platonic Systems
     role: Software Engineer Contractor
     years: Nov 2020 - May 2021
-    description: |
-      Worked on a small team developing a full stack Haskell web application, with Nix, and PostgreSQL.
+    description:
+      - Worked on a small team developing a full stack Haskell web application, with Nix, and PostgreSQL.
 
   - employer: Tweag
     role: Open Source Fellow
     years: Jun 2020 - Aug 2020
-    description: |
-      Researched and developed Sundial-GC, a concurrent copying garbage collector embedded as a Rust library.
+    description:
+      - Researched and developed Sundial-GC, a concurrent copying garbage collector embedded as a Rust library.
