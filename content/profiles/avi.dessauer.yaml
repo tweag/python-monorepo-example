@@ -8,7 +8,6 @@ bio: |
   Avi spent years contributing to dozens of open source projects including Haskell-Language-Server, Rustc, and NodeJS.
   Outside of work he enjoys, making espresso, reading, and playing chess.
 
-  TODO
 skills:
   - Rust
   - Haskell
@@ -32,7 +31,6 @@ experience:
     description: |
       Worked on a small team developing a full stack Haskell web application, with Nix, and PostgreSQL.
 
-experience:
   - employer: Tweag
     role: Open Source Fellow
     years: Jun 2020 - Aug 2020
