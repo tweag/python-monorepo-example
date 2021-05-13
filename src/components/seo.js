@@ -37,7 +37,7 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
         lang,
       }}
       title={title}
-      titleTemplate={`${site.siteMetadata.title} - %s`}
+      titleTemplate={`%s - ${site.siteMetadata.title}`}
       link={
         canonical
           ? [
