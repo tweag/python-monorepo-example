@@ -44,7 +44,7 @@ education:
     name: Computer Science
     institution: Paris-Saclay University
     years: 2017-2020
-    description: 
+    description:
       - |
         Thesis title: "Dependently-Typed Termination and Embedding of Extensional Universe-Polymorphic Type Theory using Rewriting"
         Under supervision of Frédéric Blanqui (Inria, ENS Paris-Saclay) and Olivier Hermant (Mines ParisTech).
