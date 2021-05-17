@@ -2,7 +2,7 @@ slug: guillaume.genestier
 name: Guillaume Genestier
 github: GuillaumeGen
 bio: |
-  TODO
+  After an engineering degree in Polytechnique, I was mainly interested in logic and proof theory. I did my PhD in the development team of Dedukti, a logical framework relying on the possibility for the user to encode the logic they want to work with using rewriting rules. Dedukti is designed to enhance interoperability between proof assistants and allow the creation of an encyclopedia of system-independent mechanized proofs. My main subject was to design termination techniques for higher-order rewriting with dependent types, and more specifically for encoding of logics in Dedukti. I also initiated the integration of the Agda proof-assistant into the encyclopedia, by developping Agda2Dedukti, a transpiler of Agda programs into Dedukti.
 skills:
   - OCaml
   - Haskell
@@ -44,13 +44,13 @@ education:
     name: Computer Science
     institution: Paris-Saclay University
     years: 2017-2020
-    description:
+    description: 
       - |
         Thesis title: "Dependently-Typed Termination and Embedding of Extensional Universe-Polymorphic Type Theory using Rewriting"
         Under supervision of Frédéric Blanqui (Inria, ENS Paris-Saclay) and Olivier Hermant (Mines ParisTech).
   - qualification: Masters
     name: Engineering
-    institution: École polytechnique
+    institution: École polytechnique, Paris
     years: 2013-2017
   - qualification: Masters
     name: Mathematical Logic and Foundations of Computer Science
