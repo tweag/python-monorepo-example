@@ -5,7 +5,7 @@ import { Grid, Text, Box, Flex } from "theme-ui"
 
 import img10 from "../../../images/img10.svg"
 
-function TemplateExamples({ examples }) {
+function TemplateExamples({ title, examples }) {
   return (
     <Grid
       className="viewport-section transition-section"
@@ -40,7 +40,7 @@ function TemplateExamples({ examples }) {
               mb: [0, 0, `30px`],
             }}
           >
-            Examples of Tweag&rsquo;s work in biotech includes:
+            Examples of Tweag&rsquo;s work in {title.toLowerCase()} includes:
           </Text>
           {examples.map((example, i) => (
             <Flex

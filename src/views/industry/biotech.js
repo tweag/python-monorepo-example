@@ -102,7 +102,7 @@ const BiotechPage = () => {
         <TemplateFirstSection title={title} headline={headline} paras={paras} />
       </div>
       <div className="section s_beige">
-        <TemplateExamples examples={examples} />
+        <TemplateExamples title={title} examples={examples} />
       </div>
       <div className="section s_green">
         <TemplateCaseStudies caseStudies={caseStudies} />
