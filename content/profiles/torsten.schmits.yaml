@@ -1,0 +1,41 @@
+slug: torsten.schmits
+name: Torsten Schmits
+github: tek
+bio: |
+  Torsten is a Haskell and Nix enthusiast working on Polysemy and Neovim-Haskell with an obsession for way too many side
+  projects.
+skills:
+  - Haskell
+  - Scala
+  - Nix
+  - NixOS
+  - Python
+  - Ruby
+  - C++
+  - JS/HTML/CSS
+speaks:
+  - English
+  - German
+  - French
+  - Italian
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2021
+  - employer: SpringerNature
+    role: Computer Scientist
+    years: 2017 - 2020
+  - employer: FriendScout24
+    role: QA
+    years: 2012 - 2014
+  - employer: Technical University of Berlin
+    role: Research Assistant
+    years: 2009 - 2012
+education:
+  - qualification: Masters
+    name: Computer Science
+    institution: Technical University of Berlin
+    years: 2016
+    description:
+      - |
+        thesis title: Content Relevance-Based Semantic Sentence Retrieval
