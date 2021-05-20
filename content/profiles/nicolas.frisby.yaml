@@ -1,5 +1,6 @@
 slug: nicolas.frisby
 name: Nicolas Frisby
+pronouns: He/Him
 github: nfrisby
 bio: |
   Nick is a software architect dedicated to assuring correctness by discovering
@@ -26,7 +27,7 @@ experience:
     description:
       - GHC typechecker plugin development
       - technical writing
-      - full-time client assignments
+      - full-time client assignment
       - team lead
       - testing distributed consensus systems
       - statistical property testing
@@ -38,19 +39,20 @@ experience:
       - prototyping via collaboration with domain experts
       - mathematical model of patient treatment and physiology
   - employer: Amgen
-    role: Principal Algorithm Scientist,
+    role: Principal Software Design Architect & Principal Algorithm Scientist
     years: November 2014-May 2018
     description:
-      - formerly Principal Software Design Architect
-      - member on multi-disciplinary team
-      - network of dynamical systems as a performant cloud-based Haskell
       - custom data science analysis of noisy wearable ECG recordings
+      - member on multi-disciplinary team
+      - prototyping via collaboration with domain experts
+      - mathematical model of patient treatment and physiology
+      - network of dynamical systems as a performant cloud-based Haskell
   - employer: FP Complete
     role: Haskell Consultant
     years: October 2013-November 2014
     description:
       - full-time client assignment, subsequently hired
-      - see Amgen position for details
+      - see subsequent Amgen position for details
   - employer: The University of Kansas
     role: Research Staff
     years: June 2013-October 2013
@@ -63,7 +65,7 @@ experience:
     years: January 2013-April 2013
     description:
       - refreshed the ticky-ticky profiling in GHC
-      - investigated late lambda lift, precursor join-points
+      - investigated late lambda lift, a precursor to join-points
 education:
   - qualification: PhD
     name: Computer Science
