@@ -1,0 +1,267 @@
+slug: dominic.steinitz
+name: Dominic Steinitz
+github: idontgetoutmuch
+bio: |
+  Dominic is an Applied Mathematician and statistician specializing in Haskell.
+  Since joining Tweag, he has worked on modelling physiological systems using the differential equation solving suite SUNDIALS, and enhancing the shopping experience using Hidden Markov Models.
+  Dominic is vastly experienced and, prior to his time with Tweag, held roles in physiological/pharmacological modelling, qualitative analytics, computer security, economics forecasting, and medical statistics across the airline, banking, and pharmaceutical industries.
+  He has an M.A. in Maths and a Diploma in Mathematical Statistics from the University of Cambridge, and a PhD in Computer Science from Kingston University.
+  Away from work, Dominic plays the fiddle in ceilidh band and local orchestra, cycles, and maintains quite a few Haskell libraries.
+skills:
+  - Haskell
+  - Stochastic Processes
+  - Dynamical Systems
+  - Bayesian Inference
+  - Some Python / R / Julia / C
+  - Programme Management ($5M+ / 60+ engineers)
+  - Security
+  - Random Number Generators
+speaks:
+  - English
+  - German
+  - Rusty French
+experience:
+  - employer: Tweag
+    role: Applied Mathematician / Modeller
+    years: Oct 2019 - Feb 2020
+    description:
+      - |
+        Modelling for an AI system using Hidden Markov Models and
+        fitting parameters via Hamiltonian Monte Carlo (Stan).
+
+  - employer: NAVICAN GENOMICS INC.
+    role: Functional Numerical Programmer
+    years: Sep 2018 - Sep 2019
+    description:
+      - |
+        Modelling physiological systems e.g. liver damage via
+        paracetamol / acetaminophen using differential equations via the
+        Python interface (scikits-odes) to the LLNL SUNDIALS ode
+        solving suite. Relating probabilistic models to partial
+        differential equation models (Fokker-Planck). Applying
+        stochastic, derivative-free methods for numerical optimization
+        also for parameter estimation.
+
+  - employer: Tweag (Novadiscovery)
+    role: Functional Numerical Programmer
+    years: Aug 2017 - Aug 2018
+    description:
+      - |
+        Modelling physiological systems using differential equations in
+        Haskell. Authored the Haskell interface to the LLNL SUNDIALS ode
+        solving suite. Applying Kalman and particle filtering to
+        estimate parameters in physiological systems. Applying
+        stochastic, derivative-free methods for numerical optimization
+        also for parameter estimation.
+
+  - employer: FP Complete (Amgen)
+    role: Quant Developer
+    years: May 2014 - Jul 2017
+    description:
+      - |
+        Data analysis / statistical inference of for models of
+        physiological processes e.g. chemotherapy induced anaemia using
+        Kalman and particle filter methods. Authored the Haskell library
+        for Kalman, extended Kalman, unscented Kalman and particle
+        filtering.
+
+  - employer: Barclays Capital
+    role: Quantitative Analyst / Developer
+    years: Dec 2008 - Jun 2013
+    description:
+      - |
+        Over 4 years experience in exotic equity derivatives working
+        closely with traders in the front office developing pricing
+        models using Stochastic Calculus, Monte Carlo and Partial
+        Differential Equations.
+
+        Developed an EDSL (embedded domain specific language) to express
+        exotic financial options, price them, display them in user
+        friendly way and analyse them through their lifecycle. Trades
+        that once took months to develop can now be written in hours.
+
+        - Priced exotic options via Monte Carlo and partial differential equations
+
+        - Improved the handling of systematic trading strategies using
+          techniques such as fold / map fusion.
+
+        - Improved/refactored the compilation of the EDSL into
+          mathematical notation (in pdf format) to optimise expressions
+          and improve readability
+
+        - Wrote tools to collect and analyse usage data (about
+          1GB/month) to identify and retire redundant trades
+
+        - Improved support in the EDSL for overhedging to handle discontinuities in exotic options
+
+        - Added support for settlement dates in the compilation of the
+          EDSL into C; the C can then be run to give prices.
+
+        - Implemented a language enhancement to allow one trade to be
+          expressed in terms of others.
+
+        - Managed the global release of a new version of the EDSL
+
+  - employer: Royal Bank of Scotland (RBSG)
+    role: Head of Security Architecture & Strategy
+    years: Aug 2002 - Nov 2008
+    description:
+      - |
+        Delivered many security projects including a two factor
+        authentication (2FA) and transaction signature for Retail
+        Internet Banking for millions of customers using a triple DES key
+        on the debit card chip which was acceptable to customers and was
+        highly effective against the then new internet frauds that were
+        causing problems for other banks.
+
+        Determined group-wide IT security challenges, and managed a team
+        to set/deliver security strategy for the global group via a set
+        of group-wide security programmes.  These provided better
+        security (done once rigorously and re-used many times), faster
+        time to market, lower costs and an enhanced customer/user
+        experience, and won a number of awards.
+
+        Key projects included:
+
+        - Two Factor Authentication (2FA) for Retail Internet
+           Banking. Defined and delivered an innovative, effective and
+           efficient mechanism for Internet Banking which was acceptable
+           to customers and was effective against the then-new internet
+           frauds that were causing problems for other banks.
+
+        - Core Web Security. Defined and delivered a £5m programme to
+          implement common logical access for 19 projects in a
+          Group-wide programme which secured 40+applications with
+          100,000+ users. It was the single biggest change to RBS' IT
+          infrastructure in 15 years and won a British Computer Society
+          award in 2007.
+
+        - Systems Access. Developed/delivered a programme to address
+          systemic weaknesses in controlling access for 100,000 users
+          and 500 high risk systems.  Won the Financial Services
+          Technology Award 2008 for “the security strategy of the year”
+          and a European Identity Award in 2008.
+
+        - Two Factor Authentication for Corporate Banking: Developed a
+          new cost-effective method for securing corporate customer
+          transactions using a smart card and a hand held reader which
+          reduced costs from £40/user to £5-10.
+
+  - employer: British Airways
+    role: Manager Information Security
+    years: Feb 1989 - Jun 2002
+    description:
+      - |
+        Manager Information Security: Responsible for developing
+        information security architecture, strategy and policy for the
+        British Airways group and for initiating/delivering projects to
+        implement them. (BA operated 400+ computer applications running
+        on a multi-platform environment including high volume
+        transaction processing systems, traditional IBM mainframes,
+        UNIX and e-business systems which needed to be available 24/7
+        over a world-wide network.  Reservations and check-in were used
+        by 50,000 users in 80 countries). Presented regularly both
+        internally (including CEO/Board level), and at international
+        conferences on information security (e.g. Gartner).  Key
+        deliveries included
+
+      - |
+        A web “single sign on” infrastructure which built on the
+        centralised authentication service.
+
+      - |
+        A firewall architecture and policy
+
+      - |
+        Software and processes to ensure that the 300+ UNIX systems
+        are kept secure.
+
+      - |
+        A computer application to manage the granting and revocation
+        of access to computer systems. Prior to this, British Airways
+        processed 120,000 paper forms and 25,000 telephone calls a
+        year.
+
+      - |
+        A £3m programme to implement BA's information security policy
+        in all businesses/subsidiaries.
+
+  - employer: British Airways
+    role: Manager Airport and Cabin Crew Logistics IT
+    years: Feb 1989 - Jun 2002
+    description:
+      - |
+        Manager Airport and Cabin Crew Logistics IT: Managed a
+        department of 50 systems developers and external software
+        development spend of £2m, (total budget £4m pa). Responsible for
+        delivering business focussed products and systems to a wide
+        range of internal customers. Worked closely with the senior
+        management of these departments to develop system strategies and
+        then deliver whole programmes of inter-related projects to help
+        drive the forward the business objectives. Key projects included
+
+      - |
+        A £5m system development to plan, roster and allocate the
+        5,000 BA staff at Heathrow
+
+      - |
+        A high availability real-time mission critical system to
+        track and display the status of aircraft at 600+
+        displays. Airport activity is almost totally dependent on
+        this information being available at all times.
+
+  - employer: British Airways
+    role: Systems and Communications Software Manager
+    years: Feb 1989 - Jun 2002
+    description:
+      - |
+        Responsible for developing and maintaining all communications
+        and system software for the British Airways’ reservations and
+        check-in computer systems. Key projects included
+
+      - |
+        A major upgrade to the British Airways key computer systems
+        (reservations and check-in), a complex multi-processor system
+        handling 500 transactions a second, 50,000+ terminals
+        worldwide and a multitude of system links.
+
+      - |
+        A 25% improvement in system availability (essential for good
+        customer service) by implementing a faster database
+        re-organisation tool.
+
+      - |
+        The role involved many management tasks including
+
+      - |
+        Delivering culture change through a merger of two development
+        groups (each of 25 staff) - Improving the success rate of
+        delivering projects on time/on budget through the introduction
+        of structured methods for system development.
+
+      - |
+        Improving the quality of systems developments by introducing a
+        peer review process
+
+      - |
+        Improving customer satisfaction by introducing a process by
+        which my internal customers and I jointly managed the entire
+        portfolio of work as a whole.
+
+      - |
+        Separating development from support to give staff clear
+        responsibility and accountability
+
+education:
+  - qualification: Bachelor of Arts (BA)
+    name: Mathematics
+    institution: University of Cambridge
+    years: 1975 - 1978
+  - qualification: Diploma (now Part III of the Tripos)
+    name: Mathematical Statistics and Probability
+    institution: University of Cambridge
+    years: 1978 - 1979
+  - qualification: Ph.D.
+    name: Computer Science
+    institution: Kingston University
+    years: 1993 - 2000
