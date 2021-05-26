@@ -46,6 +46,7 @@ function Community({ title, bgColor, children, bgImage, description }) {
       </Box>
       <img
         src={bgImage}
+        alt=""
         style={{
           position: `absolute`,
           top: `10px`,
