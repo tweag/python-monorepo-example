@@ -42,7 +42,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
                   width: [`50%`, `40%`, `100%`, `70%`, `70%`, `50%`],
                 }}
                 src={src}
-                alt={h}
+                alt=""
               />
             </Box>
             <Text
