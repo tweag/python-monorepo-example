@@ -2,7 +2,6 @@
 redirect_from: [/posts/2016-02-25-hello-sparkle.html]
 title: Haskell meets large scale distributed analytics
 author: Alp Mestanogullari, Mathieu Boespflug
-preview_image: /images/2016-02-25-hello-sparkle/preview_image.png
 featured: yes
 tags: [haskell, data-science]
 ---
