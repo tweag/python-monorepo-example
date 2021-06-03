@@ -120,6 +120,9 @@ const Footer = () => (
             <a href="https://www.linkedin.com/company/tweag-i-o/">LinkedIn</a>
           </NavItem>
           <NavItem>
+            <a href="https://www.compositional.fm/">Podcast</a>
+          </NavItem>
+          <NavItem>
             <a href="/rss.xml">RSS</a>
           </NavItem>
         </NavList>
