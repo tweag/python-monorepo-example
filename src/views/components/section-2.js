@@ -43,7 +43,7 @@ function Section2() {
               width: [`auto`, `auto`, `auto`, `auto`, `auto`, `70%`],
             }}
             src={visionaries}
-            alt="Partnering with visionaries"
+            alt=""
           />
         </Box>
       </Grid>
