@@ -13,6 +13,7 @@ skills:
   - Ruby
   - C++
   - JS/HTML/CSS
+  - Bazel
 speaks:
   - English
   - German
@@ -23,10 +24,10 @@ experience:
     role: Software Engineer
     years: 2021
   - employer: SpringerNature
-    role: Computer Scientist
+    role: Software Engineer
     years: 2017 - 2020
   - employer: FriendScout24
-    role: QA
+    role: QA Engineer
     years: 2012 - 2014
   - employer: Technical University of Berlin
     role: Research Assistant
