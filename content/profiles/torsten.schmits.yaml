@@ -2,8 +2,7 @@ slug: torsten.schmits
 name: Torsten Schmits
 github: tek
 bio: |
-  Torsten is a Haskell and Nix enthusiast working on Polysemy and Neovim-Haskell with an obsession for way too many side
-  projects.
+  Torsten is a Haskell and Nix enthusiast working on Polysemy and Neovim-Haskell, with an obsession for way too many side projects.
 skills:
   - Haskell
   - Scala
@@ -26,6 +25,14 @@ experience:
   - employer: SpringerNature
     role: Software Engineer
     years: 2017 - 2020
+    description:
+      - Development on an environment of Scala microservices running in CloudFoundry hosted on Google Cloud Platform as well as self-hosted legacy infrastructure running a Java monolith in OpenStack provisioned with Chef.
+      - Web app development with Play, akka-http, http4s, GraphQL and the Typelevel ecosystem.
+      - Frontend development with mostly custom Javascript and Typescript setups, some AngularJS.
+      - Scrumban process with various team sizes, autonomous and self-organized.
+      - Mentoring and Workshops.
+      - Built streaming distributed systems on the basis of RabbitMQ.
+      - Executed a comprehensive QSA security audit according to the PCI Security Standards [9] of credit card payment systems, including multiple web applications and diverse infrastructure.
   - employer: FriendScout24
     role: QA Engineer
     years: 2012 - 2014
