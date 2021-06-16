@@ -2,6 +2,8 @@ repository:
   has_wiki: false
 
 labels:
+  - name: "blog post idea"
+    color: 008f7a
   - name: "duplicate"
     color: cfd3d7
   - name: "good first issue"

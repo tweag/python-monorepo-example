@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Blog post idea
+    about: Describe a new blog post idea to document it or to request feedback
+    url: https://github.com/tweag/www/issues/new?template=blog_post_idea.md&projects=tweag/Blog/Ideas&labels=blog_post_idea
