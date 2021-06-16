@@ -1,0 +1,134 @@
+slug: artur.stachecki
+name: Artur Stachecki
+github: r2r-dev
+bio: |
+  Jack of all trades, quite good at some - passionate about software development
+  focused on development productivity, he learns and implements whatever it takes
+  to enable others to excel at their work. Naturally, he embraces flexible and generic
+  tools and languages, which he uses to produce elegant, reproducible solutions.
+
+  In his spare time, Artur likes to reverse engineer hardware and tinker with his 3D printer.
+skills:
+  - Bazel
+  - Nix / NixOS
+  - Python
+  - Kubernetes
+  - Distributed systems
+  - DevOps / GitOps / SRE
+  - Virtualisation
+speaks:
+  - English
+  - Polish
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: Jun 2021 -- present
+    location: Remote
+  - employer: SwissBorg
+    role: Release Engineer
+    years: Mar 2021 -- Jun 2021
+    description:
+      - |
+        Technologies: Kubernetes, Python, EKS, Terraform, Jenkins, Helm, ArgoCD, GitLab, Prometheus
+      - |
+        - Defined and implemented a roadmap for release process improvement
+      - |
+        - Acted as L2 support, ensuring platform stability for both internal and external customers
+  - employer: Nike
+    role: Senior DevOps Engineer
+    years: Aug 2020 -- Feb 2021
+    description:
+      - |
+        Technologies: Python, Terraform, Kubernetes Operators, AWS, EKS, Maven, Jenkins, Helm, Prometheus
+      - |
+        - Developed and maintained self-service Apache NiFi platform based on EKS
+      - |
+        - Worked directly with customers as an L1 support
+  - employer: Nordea Bank
+    role: Expert IT Developer, Chief IT Developer
+    years: Aug 2017 -- Aug 2020
+    description:
+      - |
+        - Successfully developed event-driven, Prow-alike workflow system allowing engineering teams to coordinate workloads using pull request comments using **Argo, Argo Events, Nix, Bazel, CUE
+      - |
+        - Led department-wide process of migration from OpenShift to Docker EE, including the development of Service Catalogue
+      - |
+        - Reverse engineered Hyper-V, vpnkit, linuxkit, Docker Desktop, and developed HVKit: a suite of Hyper-V extensions, which enabled high-performance network access, slirp proxy, shared filesystem, Windows-Linux IPC. This solution addresses Hyper-V, WSL, WSL2 shortcomings. Technologies used: Hyper-V, GO, C, PowerShell, MSYS2, socket engineering
+      - |
+        - Conducted training sessions for development teams on ways of working and engineering culture, based on best practices from open source communities
+      - |
+        - Led onboarding and security governance process for IBM CP4D solution using VMWare ESXi, CoreOS, OpenShift, Terraform, Ansible, CIS Benchmark
+      - |
+        - Developed and integrated Ansible modules tailored for deployments within the Hadoop ecosystem
+      - |
+        - Designed and developed software release process for Hadoop based applications using Jenkins, Ansible
+      - |
+        - Set-up, deployed and administered numerous, Highly-Available OpenShift clusters.
+      - |
+        - Designed processes and created ecosystem for reproducible, microservices application development, testing, deployment, continuous integration using Bazel, Kubernetes, Nix, jsonnet, Argo, sops, gitops, monorepo, distroless containers, BitBucket
+      - |
+        - Researched & Developed tools for Engineers to aid day-to-day work in restricted (network and policy-wise) corporate environment.
+      - |
+        - Successfully rolled out fully reproducible development environments for engineers using nix-shell, customized NixOS distribution, offline NixOS installer, and containerized static nix for cluster deployments.
+      - |
+        - Conducted training and workshops for engineers on containerization, container platforms, build engineering, release engineering, programmable infrastructure.
+      - |
+        - Developed a framework for reproducible training environments based on NixOS, IPXE, Jupyter.
+      - |
+        - Provided tooling and training, enabling teams to convey build & release activities without DevOps engineers.
+      - |
+        - Continuously involved himself in promoting DevOps culture, which played a significant role in developing self-sustainable, cross-functional teams and individuals
+      - |
+        - Started work on Variability Modelling and Software Production Lines in the context of software delivery and deployment. The expected result is an expert system further aiding the generation of customized workflows and deployments without a DevOps engineer.
+  - employer: Adva Optical Networking
+    role: Student R&D Software Production, R&D Engineer Software
+    years: Mar 2012 -- Aug 2017
+    description:
+      - |
+        - Took an active part in a development process of a modular integration and delivery pipeline architecture for a major company project, utilizing technologies such as Jenkins, Phabricator, Maven, Ant, CMake, Artifactory, AWS EC2
+      - |
+        - Designed and implemented an original, highly generic, and extensible framework for completely automated software promotion, releasing, delivering, packaging, and documenting any product and its parts on a binary and source code level
+      - |
+        - Development of a set of software libraries streamlining communication with all of the internally used applications, at the same time enabling rapid development of new tools for automation
+      - |
+        - Construction of a tool that allows state visualization of commits across hundreds of repositories in a context of multiple shared releases - combining metadata related gathered from external software life-cycle management systems
+      - |
+        - Created multiple extensions and plugins for internally used build systems such as Maven or Jenkins
+      - |
+        - Undertook responsibility in processes related to designing, creating, and monitoring local and cloud-based infrastructure concerning infrastructure as code principles
+      - |
+        - Provisioned and administered Unix-based systems
+      - |
+        - Development of processes and tools used in a waterfall-based software production cycle
+      - |
+        - Management of version control systems Subversion, GIT, and serving support and training for development teams
+      - |
+        - Co-creation and deployment of the internal release documentation system
+      - |
+        - Implemented and integrated tools and processes supplying three major project teams with means for code review and static code analysis
+      - |
+        - Developed extensions and plugins for internally deployed systems, such as Jenkins or Phabricator, to suit company-specific workflows and processes
+      - |
+        - Creation of a self-contained, installable development environment based on Cygwin, which eases the code review process for developers using Windows machines
+      - |
+        - Development of fully versioned, streamlined, and reproducible development environment used by developers, testers, and automated continuous integration systems based on Docker, Vagrant, and VirtualBox systems
+      - |
+        - Created and utilized tools monolithic Subversion repository conversion into a set of small Git repositories, representing components of an entire project
+education:
+  - qualification: Master of Engineering
+    name: Computer Science
+    institution: Gdansk University of Technology
+    years: 2017 -- 2020
+    description:
+      - "Note: Studies completed without defending the degree"
+      - "Specialization: Computer Systems and Networks"
+      - >
+        Thesis title: "Evaluation and analysis of modern solutions for automated deployment, scaling and management of containerized applications"
+  - qualification: Bachelor of Engineering
+    name: Computer Science
+    institution: Gdansk University of Technology
+    years: 2012 -- 2017
+    description:
+      - "Specialization: Computer Systems and Networks"
+      - >
+        Thesis title: "Graphical representation system of the physical and logical Local Area Network structure"
