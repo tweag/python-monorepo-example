@@ -61,7 +61,7 @@ pieces which may then be used together. Haskell has various flavours of
 modularity: its module system for one, and the natural composability of pure
 functions as an extremely powerful other. What we refer to here is something
 more akin to OCaml's modules, or something like the classes of object-oriented languages --
-to whit, a class allows us to group a set of definitions (including type
+to wit, a class allows us to group a set of definitions (including type
 definitions, with associated type families) and refer to them together. In this
 way, each class instance acts as a module whose interface is given by the class
 definition.
