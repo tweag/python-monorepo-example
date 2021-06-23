@@ -156,8 +156,8 @@ semantics (or, depending on one's perspective, encoding a semantics it might
 platonically possess).
 
 Many languages have a concept of global scoping more generally. In Bash and
-older versions of Perl, for example, all variables are global (albeit Perl has
-packages which do provide some namespace division). It's hard to see why we
+older versions of Perl, for example, all variables are global (although Perl has
+packages, which do provide some namespace division). It's hard to see why we
 might want such a thing in Haskell, but could we acquire it? Well, yes - the
 above implementation of implicit parameters shows us how:
 
