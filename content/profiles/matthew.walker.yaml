@@ -1,0 +1,49 @@
+slug: matthew.walker
+name: Matthew Walker
+github: Fizzixnerd
+
+bio: |
+  Matthew is a software engineer focused on developer productivity and
+  consulting at Tweag. He has a wide variety of interests in mathematical topics
+  including machine learning, differential geometry, and category theory. Prior
+  to joining Tweag, he was a software developer working on cloud-connected IoT
+  projects, with a focus on Kubernetes-based infrastructure. He is a graduate of
+  the University of Toronto's Mathematics and Physics Specialist (H.BSc)
+  program, and has some research experience in the fields of quantum information
+  and quantum computing.
+
+  In his spare time Matthew enjoys listening to mash-ups and playing trading
+  card games.
+
+skills:
+  - Haskell / Functional Programming
+  - Kubernetes / DevOps
+  - Mathematics
+  - Physics
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: June 2021 - Present
+  - employer: Prolucid Technologies Inc
+    role: Software Developer
+    years: March 2019 - June 2021
+    description:
+      - |
+        Technologies: Kubernetes, Helm 3, Cassandra, Storm, Vault, F#, .NET/.NET Core, IdentityServer, GitLab, Prometheus, Kibana, Fluentd
+      - |
+        - Migrated large Kubernetes-based apps from multi-tenant to single-tenant and rebuilt them using more modern tools (Helm 3, etc)
+      - |
+        - Created full-stack applications in F# for a wide variety of clients
+  - employer: University of Toronto
+    role: Teaching Assistant
+    years: 2018
+
+education:
+  - qualification: H.BSc
+    name: Mathematics and Physics
+    institution: University of Toronto
+    years: 2018
