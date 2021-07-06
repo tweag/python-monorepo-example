@@ -1,0 +1,93 @@
+slug: evgenii.akentev
+name: Evgenii Akentev
+github: ak3n
+
+bio: >
+  I’m a software engineer interested in functional programming and formal verification.
+  I value the importance of soft-skills in communication and the ability to make tradeoffs in software development.
+
+  In my free time, I help to create educational materials on functional programming and teaching
+  undergraduate students at Ural Federal University.
+
+skills:
+  - Python
+  - C#
+  - Standard ML
+  - OCaml
+  - Agda
+  - Twelf
+  - Haskell
+  - Nix
+  - Functional programming
+
+speaks:
+  - English
+  - Russian
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: April 2021 - present
+    description:
+      - Helping IOHK with Plutus Pioneer Program by answering Plutus users' questions, fixing bugs in Plutus's infrastructure, and developing new functionality.
+
+  - employer: Typeable
+    role: Team Lead
+    years: February 2020 - March 2021
+    description:
+      - Development of B2B web application for booking hotels in Haskell using Servant, PostgreSQL and Nix.
+      - Designed, developed and released a product from scratch.
+      - Managing and mentoring a team of 5 software engineers.
+      - Distribution of tasks between team members to maintain team's performance.
+      - Participation in regular discussions on the project's tasks, milestones, and the architecture of client's products ecosystem.
+      - Integrated the product with a single sign-on system in the products ecosystem.
+      - Set up CI using GitHub Actions and Nix.
+      - Helping with developer relations at the company.
+
+  - employer: Typeable
+    role: Software Engineer
+    years: August 2018 - January 2020
+    description:
+      - Developed web applications in Haskell using Servant, PostgreSQL and Nix.
+      - Migrated a big code base from GHC 8.2 to 8.6.
+      - Integrated Sirena — a global distribution system to the booking engine.
+      - Interviewed software engineers and mentored new hires.
+
+  - employer: SKB Kontur
+    role: Software Engineer
+    years: July 2017 - July 2018
+    description:
+      - Developed a business logic in C# created tests and reviewed pull requests.
+      - Developed XSL transformations and extended API methods for generation, parsing and validation of documents.
+      - Improved counters of unread messages by replacing polling with WebSockets.
+
+  - employer: Multiclet
+    role: Software Engineering Intern
+    years: June 2016 - July 2016
+    description:
+      - Implemented `memcpy`, `memset` and `memmove` in C and Assembler for standard library.
+      - Implemented a special case of inlining of `memcpy` for Multiclet's LLVM backend (improved speed in some cases).
+      - Fixed bugs in assembler and linker.
+
+  - employer: FEFELOVGROUP
+    role: Software Engineer (part time)
+    years: June 2011 - July 2014
+    description:
+      - Developed web applications in Python (Django) and Ruby (Rails).
+      - Created data crawlers in Python.
+
+  - employer: Naumen
+    role: Software Engineering Intern
+    years: July 2012 - October 2012
+    description:
+      - Created automated tests in Java and Groovy (Selenium).
+
+education:
+  - qualification: Bachelor's Degree
+    name: Computer Science
+    institution: Innopolis University
+    years: 2015 - 2017
+  - qualification: Bachelor's Degree [unfinished, transferred]
+    name: Mathematics
+    institution: Ural Federal University
+    years: 2013 - 2015
