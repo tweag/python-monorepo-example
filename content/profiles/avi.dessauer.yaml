@@ -1,0 +1,38 @@
+slug: avi.dessauer
+name: Avi Dessauer
+github: avi-d-coder
+bio: |
+  Avi is a Software Engineer with a passion for optimizing functional programs.
+  He has expertises in garbage collection, low level parallelism, and development of language server protocol compliant tooling.
+  Before joining Tweag, Avi worked for another Haskell consultancy, and developed a concurrent garbage collector in Rust as a Tweag Open Source Fellow.
+  Avi spent years contributing to dozens of open source projects including Haskell-Language-Server, Rustc, and NodeJS.
+  Outside of work he enjoys, making espresso, reading, and playing chess.
+
+skills:
+  - Rust
+  - Haskell
+  - JavaScript / TypeScript
+  - PostgreSQL
+  - Nix
+  - Garbage Collection
+  - C11 Atomics
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: May 2021 - present
+
+  - employer: Platonic Systems
+    role: Software Engineer Contractor
+    years: Nov 2020 - May 2021
+    description:
+      - Worked on a small team developing a full stack Haskell web application, with Nix, and PostgreSQL.
+
+  - employer: Tweag
+    role: Open Source Fellow
+    years: Jun 2020 - Aug 2020
+    description:
+      - Researched and developed Sundial-GC, a concurrent copying garbage collector embedded as a Rust library.
