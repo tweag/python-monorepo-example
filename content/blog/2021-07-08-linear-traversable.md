@@ -216,7 +216,7 @@ One final thought (and you might have been wondering about this) now that we hav
 `to1` and `from1` methods from the `Generic1` class that are needed are not linear! They should be in principle, since
 instances are not supposed to throw stuff out nor duplicate anything either. But we can't be sure, so for now we can
 only provide generic instances using [`Unsafe.toLinear`][unsafe-linear] with a big fat warning sign.
-(We're still [working out](linear-base-pr) the best way to do so.)
+(We're still [working out][linear-base-pr] the best way to do so.)
 
 I hope you enjoyed this exploration of linear traversals over the zoo of `GHC.Generics` datatypes as much as I did.
 I encourage you to play with linear types a bit, it can be really surprising what works and what doesn't work linearly!
