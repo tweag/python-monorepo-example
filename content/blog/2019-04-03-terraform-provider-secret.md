@@ -65,7 +65,7 @@ resource "secret_resource" "datadog_api_key" {}
 
 To actually import the secret, run:
 
-```sh
+```bash
 terraform import secret_resource.datadog_api_key TOKEN
 ```
 
@@ -86,7 +86,7 @@ That's it!
 
 In case where the secret gets leaked or an employee leaves the company, rotating the secret is also quite simple.
 
-```sh
+```bash
 terraform state rm secret_resource.datadog_api_key
 terraform import secret_resource.datadog_api_key NEW_TOKEN
 ```
@@ -97,19 +97,19 @@ _Note_: This operation is unfortunately not atomic.
 
 To import multi-line secrets, make sure to escape them properly:
 
-```sh
+```bash
 terraform import secret_resource.my_cert "$(cat my_cert.pem)"
 ```
 
 If the secret contains binary data, use `base64` to store the information:
 
-```sh
+```bash
 terraform import secret_resource.gce_service_account_key "$(base64 service_account.key)"
 ```
 
 and use the `base64decode()` interpolation function in the Terraform code to get back the binary value:
 
-```sh
+```bash
 locals {
   gce_service_account_key = "${base64decode(secret_resource.gce_service_account_key.value)}"
 }

@@ -29,7 +29,7 @@ _post-build hooks_ that solves these security issues and more.
 Let's walk through the standard procedure for setting up such a Nix cache.
 First, create a signing keypair:
 
-```sh
+```bash
 nix-store --generate-binary-cache-key example-nix-cache-1 ./nix-cache-key.sec ./nix-cache-key.pub
 ```
 
@@ -64,7 +64,7 @@ upload to that cache? Assuming your project contains a `default.nix` with an
 attribute `deps`, a naive solution to upload build artifacts would be something
 like the following:
 
-```sh
+```bash
 for o in $(nix-build --no-out-link -A deps); do
   nix copy --to s3://example-nix-cache?secret-key=/run/keys/nix-signing-key $o
 done
@@ -136,7 +136,7 @@ post-build-hook = /etc/nix/upload-to-cache.sh
 
 where a trivial implementation of `upload-to-cache.sh` could be[^1]:
 
-```sh
+```bash
 set -eu
 set -f # disable globbing
 export IFS=' '
