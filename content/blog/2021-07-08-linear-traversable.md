@@ -86,7 +86,7 @@ instance Traversable V1 where
 ### `U1`
 
 Next is `U1`, which represents constructors with no fields. We get a value of type `U1 a` and need to produce a value of type `f (U1 b)`.
-We can produce values of type `U1 b` for any `b` out of thin air by applying `pure`, linear or not.
+We can produce values of type `U1 b` for any `b` out of thin air, and by applying `pure`, linear or not, we get the desired `f (U1 b)`.
 So this works for all 3 `Applicative`s. But note that the linearity forces us to pattern match on the input
 to prove that we completely consume it. Just `traverse _ _ = pure U1` does not work.
 
