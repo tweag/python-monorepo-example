@@ -333,14 +333,108 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             padding: 0 0 0 120px;
           }
         }
-        .operator,
-        .constant,
-        .namespace,
-        .string {
-          color: ${t.colors.orange};
+
+        // These are the styles used for code highlighting. The classes below
+        // are defined by PrismJS, with the highlighting below being based on
+        // prism-vs.
+        //
+        // Some colors were modified to pass most tests from here:
+        //
+        //     https://wave.webaim.org/
+        //
+        // using this tools as a helper:
+        //
+        //     https://contrastchecker.com
+        //
+
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+          color: #763333;
+          font-style: italic;
         }
-        .comment {
-          color: #898a8c;
+
+        .token.namespace {
+          opacity: 0.7;
+        }
+
+        .token.string {
+          color: #a31515;
+        }
+
+        .token.punctuation,
+        .token.operator {
+          color: #393a34; /* no highlight */
+        }
+
+        .token.url,
+        .token.symbol,
+        .token.number,
+        .token.boolean,
+        .token.variable,
+        .token.constant,
+        .token.inserted {
+          color: #037708;
+        }
+
+        .token.atrule,
+        .token.keyword,
+        .token.attr-value,
+        .language-autohotkey .token.selector,
+        .language-json .token.boolean,
+        .language-json .token.number,
+        code[class*="language-css"] {
+          color: #0000ff;
+        }
+
+        .token.function {
+          color: #393a34;
+        }
+
+        .token.deleted,
+        .language-autohotkey .token.tag {
+          color: #9a050f;
+        }
+
+        .token.selector,
+        .language-autohotkey .token.keyword {
+          color: #00009f;
+        }
+
+        .token.important {
+          color: #e90;
+        }
+
+        .token.important,
+        .token.bold {
+          font-weight: bold;
+        }
+
+        .token.italic {
+          font-style: italic;
+        }
+
+        .token.class-name,
+        .language-json .token.property {
+          color: #2b91af;
+        }
+
+        .token.tag,
+        .token.selector {
+          color: #800000;
+        }
+
+        .token.attr-name,
+        .token.property,
+        .token.regex,
+        .token.entity {
+          color: #ff0000;
+        }
+
+        .token.directive.tag .tag {
+          background: #ffff00;
+          color: #393a34;
         }
       `}
     />
