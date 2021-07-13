@@ -24,7 +24,7 @@ experience:
       - I was responsible for the development of the control unit, the homemade touchscreen and the mobile application
       - |
         Tech used: C++, Qt5, Python, Yocto
-  - empolyer: Sailsense Analytics
+  - employer: Sailsense Analytics
     role: Embedded Linux developer
     years: 2018-2020
     description:
@@ -39,7 +39,7 @@ education:
     institution: Université Libre de Bruxelles
     years: 2016 - 2018
     description:
-      - dropped du to employment by Sailsense Analytics at the end of second year.
+      - dropped due to employment by Sailsense Analytics at the end of second year.
   - qualification: Bachelor
     name: Computer Science
     institution: Université Libre de Bruxelles
