@@ -1,0 +1,47 @@
+slug: taeer.bar-yam
+name: Taeer Bar-Yam
+github: Radvendii
+bio: |
+  Taeer is a software engineer with a strong background in math, theory, and
+  abstraction. He is comfortable in a range of paradigms, from low-level C
+  networking code to high-level Haskell abstractions. He likes to tinker and
+  solve problems creatively, and he takes great joy in refactoring and finding
+  just the right conceptual model. He cares about effective teamwork and
+  building strong relationships.
+
+skills:
+  - Nix
+  - NixOS
+  - Haskell
+  - C
+  - OCaml
+  - Perl
+  - TCP/IP
+  - Web Dev
+
+speaks:
+  - English (native)
+  - Hebrew (conversational)
+  - Spanish (many years ago)
+
+experience:
+  - employer: Tweag
+    location: remote
+    role: Developer Productivity Software Engineer
+    years: May 2021 - Present
+  - employer: Check Point
+    location: San Carlos, CA
+    role: Networking Software Engineer
+    years: Aug 2019 - Feb 2021
+    description:
+      - Worked independently and on a small team to implement new routing
+        features, update and maintain legacy code to comply with technical
+        RFCs, and support customers with new and existing features.
+      - |
+        Tech: C, Javascript, and Tcl script.
+
+education:
+  - qualification: Bachelors
+    name: Mathematics (Minor in Linguistics)
+    institution: Cornell University
+    years: 2014 - 2018
