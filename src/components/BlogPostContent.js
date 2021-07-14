@@ -46,6 +46,20 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           }
         }
 
+        iframe {
+          max-height: 90%;
+          width: 100%;
+
+          @media (min-width: ${t.breakpoints[1]}) {
+            margin-left: 60px;
+            width: 60%;
+          }
+
+          @media (min-width: ${t.breakpoints[5]}) {
+            margin-left: 120px;
+          }
+        }
+
         table {
           margin: 0px 15px;
           margin-bottom: 20px;
