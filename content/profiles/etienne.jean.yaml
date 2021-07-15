@@ -1,0 +1,47 @@
+slug: etienne.jean
+name: Etienne Jean
+github: Etjean
+bio: |
+  Etienne is a Data Scientist with a Bioinformatics background. 
+  Before joining Tweag, he worked as an engineer in academic research, where he developed data pipelines and models for the study of DNA replication.
+skills:
+  - R
+  - Python
+  - Bioinformatics
+  - Data pipelines
+  - Data science
+  - Machine learning
+  - Haskell, Rust, Java
+speaks:
+  - English
+  - French
+experience:
+  - employer: Tweag
+    role: Data Scientist
+    years: July 2021-present
+    location: Paris, France
+  - employer: IBENS (Biology Institute of the École Normale Supérieure)
+    role: Bioinformatics Engineer
+    years: January 2019 - February 2021
+    location: Paris, France
+    description:
+      - Development of tools, data pipelines & models for the study of DNA replication.
+  - employer: Pasteur Institute
+    role: Bioinformatics Intern
+    years: April 2018 - July 2018
+    location: Paris, France
+    description:
+      - Data mining on chromosome conformation data.
+education:
+  - qualification: Msc
+    name: Bioinformatics
+    institution: Paris University
+    years: September 2017 - August 2019
+  - qualification: Bsc
+    name: Cellular Biology, Genetics
+    institution: Paris University
+    years: September 2015 - July 2017
+  - qualification: Engineering studies
+    name: Mathematics, Physics, Engineering
+    institution: Lycée Michelet (Paris, France) + ENAC (Toulouse, France)
+    years: September 2012 - July 2015
