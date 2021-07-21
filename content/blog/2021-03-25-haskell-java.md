@@ -1,7 +1,7 @@
 ---
 title: "How to build hybrid Haskell and Java programs"
 shortTitle: "Haskell and Java built with Bazel"
-author: Facundo Domínguez, Andreas Hermann
+author: Facundo Domínguez, Andreas Herrmann
 tags: [haskell, inline-java, bazel]
 description: "Discussion on using Bazel with inline-java"
 ---
