@@ -1,0 +1,103 @@
+slug: shea.levy
+name: Shea Levy
+github: shlevy
+bio: |
+  Shea is a software engineer and engineering manager with a very wide background.
+  He has worked in a variety of application domains with a tendency to focus on
+  infrastructure engineering, developer enablement, and inter-system protocols and
+  interfaces. He is passionate about finding the right conceptual framework to understand,
+  communicate about, and solve the problem at hand. He has been an active contributor to the
+  Nix ecosystem since 2011.
+
+skills:
+  - Haskell
+  - Systems and kernel programming (C, C++, Rust)
+  - Nix ecosystem
+  - DevOps (terraform, kubernetes, ansible, prometheus, grafana, honeycomb)
+  - Scripting and systems administration (Bash, Python)
+  - Engineering leadership
+  - Architecture
+  - And more...
+
+speaks:
+  - English (native)
+  - Hebrew (formerly conversational)
+  - Spanish (formerly conversational)
+
+experience:
+  - employer: Self
+    location: remote
+    role: Independent contractor
+    years: July 2021 - Present
+  - employer: Scarf
+    location: remote
+    role: VP of Engineering
+    years: December 2020 - July 2021
+    description:
+      - Spearheaded design and basic prototype of Scarf's end-user open source software management system
+      - Led day-to-day operation of engineering team
+      - Initial backend service monitoring
+      - Initial user API implementation
+      - Streaming analytical data export
+  - employer: Target
+    location: remote
+    role: Director AI Engineering
+    years: October 2018  - December 2020
+    description:
+      - Leading the engineering team of the advanced algorithms group supporting the automation of Target’s supply chain
+      - Team implemented and operated distributed computation pipelines to run supply chain management algorithms automatically and at scale
+      - Team responsible for high level architecture between our systems and upstream and downstream components
+      - Team responsible for high level language for business power users to configure and run our system.
+      - Team responsible for developer enablement across the group
+  - employer: Target
+    location: remote
+    role: Lead Data Engineer
+    years: October 2017  - October 2018
+    description:
+      - Member of the engineering team of the advanced algorithms group supporting the automation of Target’s supply chain.
+      - Developing our software build pipeline
+      - Local environments for development and integration testing
+      - Developing, maintaining and debugging production pipelines
+      - Supporting the team lead in hiring, team member development, and planning
+  - employer: Takt
+    location: remote
+    role: Sr. Software Engineer
+    years: February 2017 - October 2017
+    description:
+      - Member and then leader of the infrastructure engineering team supporting machine learning pipelines and a microservice suite for personalized, gamified marketing.
+      - Developer enablement, including a novel pull-based system for continuous deployment
+      - Best practices, libraries, and initial implementations of application-level monitoring
+      - Working toward SOC-2 compliance and managing a cross-team security audit
+      - Operating our AWS infrastructure and migrating from Elastic Beanstalk to kubernetes
+      - Hiring, team direction, and team member development
+  - employer: Zalora
+    location: remote
+    role: Devops Engineer
+    years: February 2014 - February 2015
+    description:
+      - Supporting developer operations for this southeast Asia online fashion retailer.
+      - Led the team for several months while the team lead was unavailable.
+      - Point of contact for system architecture
+      - Developing build and deployment infrastructure for long-term stability and performance
+  - employer: LogicBlox
+    location: remote
+    role: Software Engineer
+    years: July 2012 - January 2014
+    description:
+      - Infrastructure and deployment supporting a novel datalog-inspired analytical database.
+      - Developing automated deployment tooling, including a high-level deployment web UI
+      - Release engineering
+      - Integrating with AWS to expose applications as web services, focusing on security
+  - employer: Self
+    location: remote
+    role: Independent contractor
+    years: November 2010 - June 2017
+    description:
+      - Wide variety of contract-oriented work
+      - Built libraries and UIs for analyzing accelerometer data from handgun sensors
+      - Integrated the Pocketsphinx speech system into an in-car entertainment system.
+      - Developed a cross-platform C library for encrypted interaction with a serial dongle
+      - Adapted and stripped down Android to run on a custom low-power device
+      - A network protocol and implementation for real-time decoding of rat neural recordings
+      - A continuous monitoring service for FreeBSD
+      - Improvements to cross-compilation for the Glasgow Haskell Compiler, especially for iOS
