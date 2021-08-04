@@ -1,0 +1,81 @@
+slug: michal.suwara
+name: Michał Suwara
+github: pl-misuw
+bio: |
+  DevOps oriented software engineer, with a long experience in software
+  development and passion for his work, he seeks to bring expertise to 
+  any endeavour he has currently embarked upon.
+  He has extensive experience in introducing automation, composability,
+  immutability and horizontal scalability to any Kubernetes-related solution.
+
+  In his spare time, Michał likes to play {role playing, video, board}-games
+  do some photography and historical reenactment.
+skills:
+  - Kubernetes
+  - Bazel
+  - DevOps / GitOps
+  - Nix / NixOS
+  - Monorepo
+speaks:
+  - English
+  - Polish
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: August 2021 -- present
+    location: Remote
+  - employer: Branch Metrics
+    role: Software Engineer
+    years: Sep 2020 -- July 2021
+    description:
+      - >
+        Technologies: Kubernetes, Python, Nix, Bazel, AKS/EKS, Kafka, Airflow
+      - >
+        Work on and with monorepo, maintenance help for developers productivity,
+         R&D for new technologies and improvements in monorepo setup.
+         Mainly work with bazel, AWS stack, help with new and old projects
+         migrating into monorepo, monitoring of processes and process architecture.
+  - employer: Nordea Bank
+    role: DevOps Engineer
+    years: Nov 2018 -- Oct 2020
+    description:
+      - >
+        Technologies: Nix, Bazel, Kubernetes, OpenShift, On-premise cloud 
+         infrastructure
+      - >
+        Work with multiple teams in cross-team DevOps team, concentrating 
+         on maintenance of our internal cloud solution. Help and work on 
+         CI/CD processes.
+  - employer: Accenture
+    role: DevOps Consultant
+    years: Jun 2017 -- Oct 2018
+    description:
+      - >
+        Technologies: Ansible, Kubernetes, Grafana, AWS
+      - >
+        Consultancy work with Accenture clients, emphasis on containerisation
+         automation and delivery of client applications.
+  - employer: ABB
+    role: DevOps Engineer
+    years: May 2014 -- May 2017
+    description:
+      - >
+        Technologies: AWS, Docker, Windows stack, Powershell, Python
+      - >
+        Part of DevOps silo responsible for automation and deployment 
+         of web systems at ABB, CI and monitoring and recovery.
+      - >
+        Worked in fully cross-functional manner, delivering improvements in
+         infrastructure, web, backend and database layers of the system.
+  - employer: Various companies
+    role: Various roles
+    years: 2012 -- 2014
+    description:
+      - >
+        Some graphic design, front-end and IT support work done during
+         and around the studies.
+education:
+  - qualification: Master of Engineering
+    name: Computer Science
+    institution: AGH University of Science and Technology
+    years: 2008 -- 2013
