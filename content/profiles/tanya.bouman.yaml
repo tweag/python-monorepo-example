@@ -2,13 +2,14 @@ slug: tanya.bouman
 name: Tanya Bouman
 github: tanyabouman
 bio: |
-  Tanya is a software engineer.  She has enjoyed using Haskell in a variety of software research applications ranging from code generation, MRI sequences, to education and cryptography.  She has also taught Elm and basic computer science concepts to children.
+  Tanya is a software engineer.  She has enjoyed using Haskell in a variety of software research applications ranging from code generation and MRI sequences to education and cryptography.  She has also taught Elm and basic computer science concepts to children.
   Outside of work, Tanya plays the organ and occasionally a bit of piano and melodica.
 
 skills:
   - Haskell
   - Elm
   - Swift
+  - Bazel
   - cryptography
   - medical imaging
 
