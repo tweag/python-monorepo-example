@@ -1,0 +1,49 @@
+slug: jamie.bertram
+name: Jamie Bertram
+pronouns: he/him/his
+github: jhbertra
+bio: |
+  Jamie is a web developer specializing in applying functional programming and
+  static types to interactive n-tier web-based systems. Before joining Tweag,
+  he worked in several companies and industries, building web and mobile
+  applications. He received a BSc in Software Engineering from the University
+  of Calgary in 2014. Jamie is passionate about software architecture,
+  functional programming, developer productivity, and decentralized
+  organizational structures.
+skills:
+  - Web technologies (HTML, CSS, JavaScript)
+  - Haskell
+  - PureScript
+  - Elm
+  - Android
+  - iOS
+  - C# and .NET
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Functional Engineer
+    years: August 2021 - present
+  - employer: Pagecloud
+    role: Frontend developer
+    years: November 2020 - August 2021
+    description: |
+      - Maintained and developed front-end WYSIWYG webpage editor
+      - Domain modelling and schema design for new features
+  - employer: Acadium
+    role: Software Developer
+    years: August 2019 - October 2020
+    description: |
+      - Project lead for React Native mobile application
+      - Full stack architecture and domain modelling
+  - employer: Pandell
+    role: Software Developer
+    years: January 2017 - August 2019
+    description: |
+      - Full stack web development in C#, .NET and TypeScript
+      - Schema design, domain modelling, immutable architecture
+education:
+  - qualification: BSc
+    name: Software Engineering
+    institution: University of Calgary
+    years: 2009 - 2014
