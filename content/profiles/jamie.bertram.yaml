@@ -27,19 +27,19 @@ experience:
   - employer: Pagecloud
     role: Frontend developer
     years: November 2020 - August 2021
-    description: |
+    description:
       - Maintained and developed front-end WYSIWYG webpage editor
       - Domain modelling and schema design for new features
   - employer: Acadium
     role: Software Developer
     years: August 2019 - October 2020
-    description: |
+    description:
       - Project lead for React Native mobile application
       - Full stack architecture and domain modelling
   - employer: Pandell
     role: Software Developer
     years: January 2017 - August 2019
-    description: |
+    description:
       - Full stack web development in C#, .NET and TypeScript
       - Schema design, domain modelling, immutable architecture
 education:
