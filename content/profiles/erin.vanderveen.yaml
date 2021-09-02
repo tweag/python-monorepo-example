@@ -1,0 +1,57 @@
+slug: erin.vanderveen
+name: Erin van der Veen
+pronouns: He/Him
+github: Erin van der Veen
+website: https://erinvanderveen.nl/
+bio: |
+  I am a software engineer with experience in creating web-based functional
+  programs, maintaining a functional programming language and designing and
+  implementing tools enhancing developer productivity. My personal goal is to
+  get as many people as possible working with functional programming languages
+  in a reproducible way.
+
+skills:
+  - Clean
+  - Haskell
+  - Nix
+
+speaks:
+  - Dutch
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software engineer
+    years: 2021 - Present
+    description:
+
+  - employer: TOP Software
+    role: Scientific programmer and software architect
+    years: 2020 - 2021
+    description:
+      - Worked on a web-based application for the Dutch Royal Coastguard.
+      - Maintained the core libraries of the Clean programming language.
+      - Created the Clean language server and nix-compatible build system.
+
+  - employer: Radboud University Nijmegen
+    role: Scientific programmer
+    years: 2019 - 2020
+    description:
+      - Ported the Clean programming language to ARM64.
+
+education:
+  - qualification: MSc
+    name: Masters of Software Science
+    institution: Radboud University Nijmegen
+    years: 2017-2020
+    description:
+      - Focus on functional programming
+      - |
+        thesis: "Mutable Collection Types in Shallow Embedded DSLs"
+
+  - qualification: BSc
+    name: Bachelor of Computing Science
+    institution: Radboud University Nijmegen
+    years: 2014-2017
+    description:
+      - Focus on Cyber Security
