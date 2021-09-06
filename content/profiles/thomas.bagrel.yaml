@@ -1,0 +1,42 @@
+slug: thomas.bagrel
+name: Thomas BAGREL
+github: tbagrel1
+bio: |
+  Newly graduate CS engineer, and (future) doctoral student under the supervision of A. Spiwack. Working on linear types and destination-passing programming style with applications to the Haskell programming language. Prior to joining the Tweag team, Thomas followed an apprenticeship program allowing him to work as a software developer in the R&D team of TRACIP, a French digital forensic company.
+skills:
+  - Rust
+  - Python
+  - LaTeX
+  - FP languages
+speaks:
+  - French
+  - English
+experience:
+  - employer: Tweag
+    role: FP Software Engineer
+    years: September 2021-present
+    description:
+      - Multiple projects around GHC
+      - Linear types and destination-passing research
+  - employer: TRACIP SAS
+    role: Software developer
+    years: September 2018 - August 2021
+    description:
+      - Scripting and web app development using Rust, Python, Java
+      - Course redaction (using LaTeX) and teaching on Python and Linux (Debian)
+      - Digital forensics and incident response
+education:
+  - qualification: PhD (ongoing)
+    name: Computer Science
+    institution: LORIA (Université de Lorraine, France) & Tweag
+    years: 2021-2024
+    description:
+      - |
+        thesis title: TBD
+  - qualification: Masters
+    name: Computer Science
+    institution: TELECOM Nancy (Université de Lorraine, France)
+    years: 2018-2021
+    description:
+      - |
+        thesis title: “CPAM platform study & Creation of a deep-learning model serving infrastructure”
