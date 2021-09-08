@@ -1,0 +1,68 @@
+slug: ilya.polyakovskiy
+name: Ilya Polyakovskiy
+github: k1nkreet
+website: https://git.sr.ht/~k1nkreet
+bio: |
+  Ilya is a software engineer with a broad and diverse experience from
+  telecommunication devices firmware and billing systems to tools for developers
+  and scientists and package management systems. Before joining Tweag he was working at JetBrains,
+  creating tools for reproducible research in data science and machine learning.
+  He specializes on system programming, and has a huge interest in functional programming
+
+skills:
+  - C/C++
+  - Rust
+  - Python
+  - Bazel
+  - Bash
+  - Linux
+  - Machine Learning
+speaks:
+  - Russian
+  - English
+experience:
+  - employer: Tweag
+    role: Rust Engineer
+    years: 2021 - Present
+  - employer: JetBrains
+    role: Senior Software Developer
+    years: 2016 - 2020
+    description:
+      - Worked on incremenal Python notebook kernel for Datalore.
+	  - Created fast and memory-efficient embedded log-structured storage for python objects.
+	  - Designed and developed algorithms for tracking dependencies between python objects
+	  - Was maintaining an internal fork of the standard python serialization library
+	  - Participated in transitioning Datalore into the Bazel build system, was responsible for build and test C++/Python
+part of the project
+	  - Designed system for managing python packages attached to the user’s workspace
+      - Led a small team, organized and led internships
+  - employer: Telum LLC
+    role: Lead Developer
+    years: 2012 - 2016
+    description:
+      - Was creating a firmware of LTE smallcell device.
+	  - Extended LTE protocol stack with self-organization protocols
+	  - Created smallcell configuration and monitoring software
+      - Created test suite for smallcell firmware testing
+  - employer: Skylink, mobile operator
+    role: Software Developer
+    years: 2010 - 2012
+    description:
+      - Participated development of new Mediation system.
+      - Created set of C-programs to parse and load data from telecommunication equipment.
+      - Developed Mediation database architecture.
+      - Maintained old Mediation system.
+  - employer: Institute of Numerical Mathematics of Russian Academy of Science
+    role: Engineer
+    years: 2008 - 2010
+    description:
+      - Was creating parallel calculation of World Ocean model on supercomputers using MPI/OpenMP.
+education:
+  - qualification: M.S.
+    name: Applied Mathematics, Computer Science
+    institution: Lomonosov Moscow State University, Faculty of Computational Mathematics and Cybernetics
+    years: 2005 - 2010
+talks:
+  - "Integrating shared memory in Python, Datalore Meetup, 08.09.2017"
+  - "Python-notebook for reproducible analysis, Higher School of Economics, Computer Science Day 2019"
+  - "Reproducible analysis and reactive Python notebook, Moscow Data Science Major - Spring 2019"
