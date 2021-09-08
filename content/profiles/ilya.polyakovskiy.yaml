@@ -32,8 +32,7 @@ experience:
       - Created fast and memory-efficient embedded log-structured storage for python objects.
       - Designed and developed algorithms for tracking dependencies between python objects
       - Was maintaining an internal fork of the standard python serialization library
-      - Participated in transitioning Datalore into the Bazel build system, was responsible for build and test C++/Python
-part of the project
+      - Participated in transitioning Datalore into the Bazel build system, was responsible for build and test C++/Python part of the project
       - Designed system for managing python packages attached to the user’s workspace
       - Led a small team, organized and led internships
   - employer: Telum LLC
