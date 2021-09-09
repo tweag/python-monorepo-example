@@ -1,0 +1,113 @@
+slug: nour.elmawass
+name: Nour El Mawass
+github: Nour-Mws
+
+bio: |
+  Nour is a data scientist/engineer with many years of experience in Academia. She has previously worked on Machine Learning, Natural Language Processing and Data Science problems in a myriad of domains including: online social networks, cybersecurity, software management and wearable biosensors. She has a PhD in Computer Science from the university of Rouen in France.
+
+skills:
+  - Machine learning
+  - Python
+  - Data science
+  - Amazon Web Services (AWS)
+  - Apache Spark
+  - Natural Language Processing
+  - R (not actively using)
+
+experience:
+  - employer: Tweag
+    role: Data Scientist/Engineer
+    years: Sep 2021-present
+    location: Paris, France
+    description:
+      - |
+        Pfizer: creating an automated pipeline for generating internal
+        genes reports.
+
+  - employer: Université de Technologie de Troyes (UTT)
+    role: Postdoctoral researcher
+    years: Nov 2020 – Jul 2021
+    location: Troyes, France
+    description:
+      - |
+        ANR DISCRET (Alerting platform for identifying critical public
+        situations using mobile and social data).
+        Designed and built NLP pipelines to track sentiment and topics
+        in Twitter's stream.
+        Used Python, Spark, TensorFlow, HuggingFace, spaCy, gensim, NLTK.
+      - |
+        Data Lab (data science project for a leading insulation manufacturer).
+        Used Python, Pandas, numpy, Scikit-learn.
+        Mathematically modeled client's questions.
+        Provided structured and clear answers using statistical tests and
+        regression models.
+        Proposed and implemented algorithms to match chemicals and products and
+        automatically identify duplicates and errors in the database.
+
+  - employer: Université de Rouen Normandie
+    role: PhD candidate
+    years: Jan 2017-Oct 2020
+    location: Rouen, France
+    description:
+      - |
+        Developed methods to exploit weak and biased ML classifiers in
+        adversarial environments using probabilistic graphical models.
+        Application in detecting spammers and platform abusers on Twitter.
+        Used Python, Scikit-learn, AWS, Hadoop, MapReduce, Matlab.
+
+  - employer: Google
+    role: Software Engineering Intern
+    years: Jul 2019-Sep 2019
+    location: Munich, Germany
+    description:
+      - |
+        Built a Machine Learning pipeline to predict the complexity of the
+        launch review process in Google's internal launch review system.
+        Used Apache flume and beam, Python, Scikit-learn.
+
+  - employer: King Saud University
+    role: Research Assistant
+    years: 2012-2016
+    location: Riyadh, KSA
+    description:
+      - |
+        Developed a system to monitor and detect spam in Saudi trending topics
+        on Twitter.
+      - |
+        Developed prototypes for assessing emotions and public mood in urban
+        settings (through mobile phone data and wearable sensors).
+      - Used Python, R, Weka, Android and ASP.NET.
+
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Université de Rouen Normandie
+    years: 2017-2020
+  - qualification: MSc
+    name: Information & Communication Systems
+    institution: Lebanese University
+    years: 2011-2012
+  - qualification: Diplôme d'Ingénieur
+    name: Electrical and Telecom Engineering
+    institution: Lebanese University
+    years: 2007-2012
+
+speaks:
+  - Arabic (Levantine and literary/MSA)
+  - English
+  - French
+
+publications:
+  - "Nour El-Mawass, Paul Honeine, and Laurent Vercouter. SimilCatch: Enhanced social spammers detection on Twitter using Markov Random Fields. Elsevier Information Processing & Management,57(6), 2020."
+  - "Nour El-Mawass and Saad Alaboodi.  Data quality challenges in social spam research. ACMJournal of Data and Information Quality (JDIQ), 9(1):4, 2017."
+  - "Nour El-Mawass, Paul Honeine, and Laurent Vercouter.  Supervised classification of social spammers using a similarity-based markov random field approach. In  the 5th Multidisciplinary International Social Networks Conference (MISNC 2018), Saint-Etienne, France, 2018. ACM."
+  - "Nour El-Mawass and Saad Alaboodi.  Detecting arabic spammers and content polluters on Twitter. In Digital Information Processing and Communications (ICDIPC), 2016 Sixth International Conference on, pages 53–58, Beirut, Lebanon, 2016. IEEE."
+  - "Nouf Alajmi, Eiman Kanjo, Nour El-Mawass, and Alan Chamberlain. Shopmobia: An emotion-based shop rating system. In Affective Computing and Intelligent Interaction (ACII), 2013 Humaine Association Conference on, pages 745–750, Geneva, Switzerland, 2013. IEEE."
+  - "Nour El-Mawass and Eiman Kanjo. A supermarket stress map. In 2nd Workshop on Pervasive Technologies in Retail Environments (PeTRE), Ubicomp’13, Zurich, Switzerland, 2013."
+  - "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Robust self-organized wireless sensor network: A gene regulatory network bio-inspired approach. In 7th International Conference on Genetic and Evolutionary Computing (ICGEC 2013), Prague, Czech Republic, 2013. Springer."
+  - "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Resilient bio-inspired wireless sensor network based on genes regulatory network. In 2nd International Conference on Advances in Biomedical Engineering 2013 (ICABME’13), Tripoli, Lebanon, 2013."
+  - "Eiman Kanjo,Nour El-Mawass, João Craveiro, and Fernandos Ramos. Social, disconnected or in between: Mobile data reveals urban mood. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, Cambridge, USA, MIT, USA, 2013."
+  - "João Craveiro, Fernandos Ramos, Eiman Kanjo, and Nour El-Mawass. Towards an early warning system: the effect of weather on mobile phone usage a case study in Abidjan. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, USA, 2013."
+
+talks:
+  - "Scaling Up Data-Driven Cybersecurity Systems, 1st workshop on New Generations of Networks (NGN'16), Doctoral School of Science and Technology, Lebanon, June 2016."
