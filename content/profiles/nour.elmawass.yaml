@@ -32,7 +32,7 @@ experience:
         ANR DISCRET (Alerting platform for identifying critical public situations using
         mobile and social data).
         Designed and built NLP pipelines to track sentiment and topics in Twitter's stream.
-        Used Python, Spark, TensorFlow, HuggingFace, spaCy, gensim, NLTK. 
+        Used Python, Spark, TensorFlow, HuggingFace, spaCy, gensim, NLTK.
       - |
         Data Lab (data science project for a leading insulation manufacturer).
         Used Python, Pandas, numpy, Scikit-learn.
@@ -73,7 +73,7 @@ experience:
         Developed prototypes for assessing emotions and public mood in urban settings (through
         mobile phone data and wearable sensors).
       - Used Python, R, Weka, Android and ASP.NET.
-    
+
 education:
   - qualification: PhD
     name: Computer Science
@@ -82,7 +82,7 @@ education:
   - qualification: MSc
     name: Information & Communication Systems
     institution: Lebanese University
-    years: 2011-2012  
+    years: 2011-2012
   - qualification: Diplôme d'Ingénieur
     name: Electrical and Telecom Engineering
     institution: Lebanese University
