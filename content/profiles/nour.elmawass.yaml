@@ -2,7 +2,8 @@ slug: nour.elmawass
 name: Nour El Mawass
 github: Nour-Mws
 
-bio:
+bio: |
+     Nour is a data scientist/engineer with many years of experience in Academia. She has previously worked on Machine Learning, Natural Language Processing and Data Science problems in a myriad of domains including: online social networks, cybersecurity, software management and wearable biosensors. She has a PhD in Computer Science from the university of Rouen in France.
 
 skills:
   - Machine learning
@@ -29,18 +30,19 @@ experience:
     location: Troyes, France
     description:
       - |
-        ANR DISCRET (Alerting platform for identifying critical public situations using
-        mobile and social data).
-        Designed and built NLP pipelines to track sentiment and topics in Twitter's stream.
+        ANR DISCRET (Alerting platform for identifying critical public
+        situations using mobile and social data).
+        Designed and built NLP pipelines to track sentiment and topics
+        in Twitter's stream.
         Used Python, Spark, TensorFlow, HuggingFace, spaCy, gensim, NLTK.
       - |
         Data Lab (data science project for a leading insulation manufacturer).
         Used Python, Pandas, numpy, Scikit-learn.
-        Mathematically modeled client's process and formulation-related questions.
-        Provided structured and clear answers using statistical tests and regression
-        models.
-        Proposed and implemented algorithms to match chemicals and products and automatically
-        identify duplicates and errors in the database.
+        Mathematically modeled client's questions.
+        Provided structured and clear answers using statistical tests and
+        regression models.
+        Proposed and implemented algorithms to match chemicals and products and
+        automatically identify duplicates and errors in the database.
 
   - employer: Université de Rouen Normandie
     role: PhD candidate
@@ -48,8 +50,8 @@ experience:
     location: Rouen, France
     description:
       - |
-        Developed methods to exploit weak and biased ML classifiers in adversarial
-        environments using probabilistic graphical models.
+        Developed methods to exploit weak and biased ML classifiers in
+        adversarial environments using probabilistic graphical models.
         Application in detecting spammers and platform abusers on Twitter.
         Used Python, Scikit-learn, AWS, Hadoop, MapReduce, Matlab.
 
@@ -59,8 +61,8 @@ experience:
     location: Munich, Germany
     description:
       - |
-        Built a Machine Learning pipeline to predict the complexity of the launch review
-        process in Google's internal launch review system.
+        Built a Machine Learning pipeline to predict the complexity of the
+        launch review process in Google's internal launch review system.
         Used Apache flume and beam, Python, Scikit-learn.
 
   - employer: King Saud University
@@ -68,10 +70,12 @@ experience:
     years: 2012-2016
     location: Riyadh, KSA
     description:
-      - Developed a system to monitor and detect spam in Saudi trending topics on Twitter.
       - |
-        Developed prototypes for assessing emotions and public mood in urban settings (through
-        mobile phone data and wearable sensors).
+        Developed a system to monitor and detect spam in Saudi trending topics
+        on Twitter.
+      - |
+        Developed prototypes for assessing emotions and public mood in urban
+        settings (through mobile phone data and wearable sensors).
       - Used Python, R, Weka, Android and ASP.NET.
 
 education:
