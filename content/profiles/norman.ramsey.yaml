@@ -1,0 +1,196 @@
+slug: norman.ramsey
+name: Norman Ramsey
+pronouns: He/Him
+github: nrnrnr
+twitter: "@nrnrnr"
+website: https://www.cs.tufts.edu/~nr/
+bio: |
+  Norman is visiting Tweag on sabbatical from Tufts University.
+  He is a longtime teacher and researcher who works by
+  building interesting software and then writing papers about it.
+  His best-known work is on machine-level software:
+  compilers, assemblers, linkers, and debuggers, including code
+  generators for both Standard ML of New Jersey and the Glasgow
+  Haskell Compiler.  He is also the designer and developer of the
+  Noweb tool for literate programming.  In his day job, Norman has
+  developed new university courses in programming languages,
+  machine-level programming, programming-language implementation, and
+  technical writing, as well as various special-topics courses.
+  He is also the author of the forthcoming textbook *Programming Languages:
+  Build, Prove, and Compare.*
+skills:
+  - Functional programming (Standard ML, Haskell, OCaml)
+  - Engineering leadership
+  - Programming-language design and implementation
+  - Technical writing
+  - Machine-level programming
+  - Scripting (Lua, Awk, Icon)
+speaks:
+  - English
+  - French (minimal)
+experience:
+  - employer: Tufts University
+    role: Associate Professor, Computer Science
+    years: Since 2008
+    description:
+      - New courses in machine-level programming, programming languages, technical writing
+      - Research in programming-language design and implementation
+  - employer: Chalmers University of Technology
+    role: Guest Researcher
+    years: Summer 2012
+    description:
+      - Domain-specific languages
+  - employer: Harvard University
+    role: Assistant and Associate Professor, Computer Science
+    years: 1999-2008
+    description:
+      - The C-- project for reusable code generation
+      - Other research in programming-language design and implementation
+      - Graduate and undergraduate courses
+  - employer: Microsoft Research
+    role: Visiting Researcher
+    years: Summer 2007
+    description:
+      - The "new code generator" for the Glasgow Haskell Compiler (GHC)
+  - employer: University of Virginia
+    role: Research Assistant Professor, Computer Science
+    years: 1996-1999
+    description:
+      - The Zephyr project for National Compiler Infrastructure
+      - Other research in programming-language design and implementation
+  - employer: Bell Laboratories
+    role: Research Intern
+    years: Summer 1996
+    description:
+      - Standard ML of New Jersey group
+  - employer: Purdue University
+    role: Visiting Assistant Professor, Computer Science
+    years: 1995-1996
+    description:
+      - Courses in programming languages and operating systems
+      - Relocation of machine instructions by currying assembly functions
+      - Binary translation (with the University of Queensland)
+      - Other research in programming-language design and implementation
+  - employer: Bell Communications Research (Bellcore)
+    role: Member of Technical Staff
+    years: 1992-1995
+    description:
+      - SLED machine-description language for encoding and decoding instructions
+      - Addition of exceptions to internal domain-specific language
+  - employer: Computer Science Laboratory, Xerox PARC
+    role: Research Intern
+    years: Summer 1991
+    description:
+      - Source-level debugging of high-level languages
+  - employer: DEC Systems Research Center
+    role: Research Intern
+    years: Summer 1990
+    description:
+      - Serialization (pickling) into readable, editable on-disk data
+  - employer: Odyssey Research Associates
+    role: Computer Scientist
+    years: 1986-1988
+    description:
+      - Formal verification of Ada programs
+
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Princeton University
+    years: 1988-1992
+    description:
+      - Wrote MIPS code generator for Standard ML of New Jersey
+      - Created Noweb system for literate programming
+      - Completed dissertation on retargetable debugging
+  - qualification: MA
+    name: Physics
+    institution: Cornell University
+    years: 1983-1986
+    description:
+      - Capacitance fluctuations in tunnel capacitors
+  - qualification: BA summa cum laude
+    name: Physics
+    institution: Princeton University
+    years: 1979-1983
+    description:
+      - Awarded Kusaka Memorial Prize for independent research
+
+professional_activities:
+  - organization: International Conference on Functional Programming (ICFP)
+    role: Member of Program Committee
+    years: 2002, 2005, 2021
+  - organization: International Conference on Functional Programming (ICFP)
+    role: Program Chair Committee
+    years: 2007
+  - organization: International Conference on Functional Programming (ICFP)
+    role: Programing Contest Chair
+    years: 1999
+  - organization: ACM Symposium on Haskell
+    role: Program Committee
+    years: 2013, 2019, and 2020
+  - organization: ACM Symposium on the Principles of Programming Languages (POPL)
+    role: Program Committee
+    years: 2012
+  - organization: ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)
+    role: Program Committee
+    years: 1998 and 2002
+
+honors:
+  - organization: Tufts University
+    honor: Lerman-Neubauer Prize
+    date: 2015
+    description: |
+      Awarded annually to one member of the faculty of Arts, Sciences,
+      and Engineering who has had a profound intellectual impact on
+      his or her students, both inside and outside the classroom.
+  - organization: Alfred P. Sloan Foundation
+    honor: Alfred P. Sloan Research Fellow
+    date: 2001
+  - organization: National Science Foundation
+    honor: Faculty Early Career Development Award
+    date: 1998
+  - organization: Fannie and John Hertz Foundation
+    honor: Hertz Fellow
+    date: 1983-1986 and 1989-1991
+
+publications:
+  #  - "Symbolic Bayesian Inference by Lazy Partial Evaluation. 2015 (with Chung-Chieh Shan)."
+  #  - "On Teaching How to Design Programs: Observations from a Newcomer. In Proceedings of the Nineteenth ACM SIGPLAN International Conference on Functional Programming (ICFP'14), pages 153–166, 2014."
+  #  - "MRFy: Remote Homology Detection for Beta-Structural Proteins Using Markov Random Fields and Stochastic Search. IEEE/ACM Transactions on Computational Biology and Bioinformatics, 12(1):4–16, 2015 (with Noah M.  Daniels, Andrew Gallant, Norman Ramsey, and Lenore J. Cowen). A preliminary version of this paper appeared in the Fourth ACM International Conference on Bioinformatics, Computational Biology, and Biomedical Informatics (ACM BCB 2013), where it was recognized as a Best Student Paper."
+  - "Engineering Definitional Interpreters. In Proceedings of the 15th International Symposium on Principles and Practice of Declarative Programming (PPDP'13), pages 121–132, September 2013 (with Jan Midtgaard and Bradford Larsen)."
+  #  - "Experience Report: Haskell in Computational Biology. In Proceedings of the Seventeenth ACM SIGPLAN International Conference on Functional Programming (ICFP'12), pages 227–234, September 2012 (with Noah M.  Daniels and Andrew Gallant). Selected as one of the best papers of ICFP 2012."
+  - "Embedding an Interpreted Language Using Higher-Order Functions and Types. Journal of Functional Programming, 21(6):585–615, November 2011.  (A previous version appeared in ACM SIGPLAN 2003 Workshop on Interpreters, Virtual Machines and Emulators.)."
+  #  - "Resourceable, Retargetable, Modular Instruction Selection Using a Machine-Independent, Type-Based Tiling of Low-Level Intermediate Code.  In Proceedings of the 38th ACM Symposium on the Principles of Programming Languages, pages 575–586, January 2011 (with João Dias)."
+  - "Hoopl: A Modular, Reusable Library for Dataflow Analysis and Transformation. In Proceedings of the 3rd ACM SIGPLAN Symposium on Haskell (Haskell 2010), September 2010 (with João Dias and Simon L.  Peyton Jones)."
+  - "Automatically Generating Instruction Selectors Using Declarative Machine Descriptions. In Proceedings of the 37th ACM Symposium on the Principles of Programming Languages, pages 403–416, January 2010 (with João Dias)."
+  #  - "Converting Intermediate Code to Assembly Code Using Declarative Machine Descriptions. In 15th International Conference on Compiler Construction (CC 2006), LNCS volume 3923, pages 217–231, March 2006 (with João Dias)."
+  - "Staged Allocation: A Compositional Technique for Specifying and Implementing Procedure Calling Conventions. In Proceedings of the 33rd ACM Symposium on the Principles of Programming Languages, pages 409–421, January 2006 (with Reuben Olinsky and Christian Lindig)."
+  - "An Expressive Language of Signatures. In Proceedings of the Tenth ACM SIGPLAN International Conference on Functional Programming (ICFP'05), pages 27–40, September 2005 (with Kathleen Fisher and Paul Govereau).  Selected as one of the best papers of ICFP 2005."
+  #  - "ML Module Mania: A Type-Safe, Separately Compiled, Extensible Interpreter. In ACM SIGPLAN Workshop on ML, pages 172–202, September 2005."
+  #  - "An Applicative Control-Flow Graph Based on Huet's Zipper. In ACM SIGPLAN Workshop on ML, pages 101–122, September 2005 (with João Dias)."
+  #  - "Source-level Debugging for Multiple Languages With Modest Programming Effort. In 14th International Conference on Compiler Construction (CC 2005), pages 10–26, April 2005 (with Sukyoung Ryu)."
+  #  - "A Generalized Algorithm for Graph-Coloring Register Allocation. ACM SIGPLAN '04 Conference on Programming Language Design and Implementation, in SIGPLAN Notices, 39(6):277–288, June 2004 (with Michael D. Smith and Glenn Holloway)."
+  #  - "Declarative Composition of Stack Frames. In 13th International Conference on Compiler Construction (CC 2004), LNCS volume 2985, pages 298–312, April 2004 (with Christian Lindig)."
+  #  - "Widening Integer Arithmetic. In 13th International Conference on Compiler Construction (CC 2004), LNCS volume 2985, pages 232–249, April 2004 (with Kevin Redwine)."
+  #  - "Pragmatic Aspects of Reusable Program Generators. Journal of Functional Programming, 13(3):601–646, May 2003. A preliminary version of this paper appeared in \emph{Semantics, Application, and Implementation of Program Generation}, LNCS 1924, pages 149–171."
+  #  - "A Transformational Approach to Binary Translation of Delayed Branches.  ACM Transactions on Programming Languages and Systems, 25(2):210–224, March 2003 (with Cristina Cifuentes)."
+  - "Stochastic Lambda Calculus and Monads of Probability Distributions.  Proceedings of the 29th ACM Symposium on the Principles of Programming Languages, in SIGPLAN Notices, 37(1):154–165, January 2002 (with Avi Pfeffer)."
+  - "An Algebraic Approach to File Synchronization. In Proceedings of the 8th European Software Engineering Conference (ESEC) and 9th ACM SIGSOFT Symposium on the Foundations of Software Engineering (FSE-9), pages 175–185, September 2001 (with Elöd Csirmaz)."
+  - "A Single Intermediate Language That Supports Multiple Implementations of Exceptions. Proceedings of the ACM SIGPLAN '00 Conference on Programming Language Design and Implementation, in SIGPLAN Notices, 35(5):285–298, May 2000 (with Simon L. Peyton Jones)."
+  #  - "Eliminating Spurious Error Messages Using Exceptions, Polymorphism, and Higher-Order Functions. Computer Journal, 42(5):360–372, 1999."
+  #  - "The Design of a Resourceable and Retargetable Binary Translator. In Proceedings of the Sixth Working Conference on Reverse Engineering (WCRE'99), pages 280–291, October 1999 (with Cristina Cifuentes and Mike Van Emmerik)."
+  #  - "C--: A portable assembly language that supports garbage collection. In International Conference on Principles and Practice of Declarative Programming, LNCS volume 1702, pages 1–28. Springer Verlag, September 1999 (with Simon L. Peyton Jones and Fermin Reig). Invited paper."
+  #  - "Unparsing Expressions With Prefix and Postfix Operators.  Software—Practice &Experience, 28(12):1327–1356, October 1998."
+  #  - "Machine Descriptions to Build Tools for Embedded Systems. In ACM SIGPLAN Workshop on Languages, Compilers, and Tools for Embedded Systems (LCTES'98), LNCS volume 1474, pages 172–188. Springer Verlag, June 1998 (with Jack W. Davidson)."
+  #  - "Automatic Checking of Instruction Specifications. In Proceedings of the International Conference on Software Engineering, pages 326–336, May 1997 (with Mary F. Fernández)."
+  - "Specifying Representations of Machine Instructions. ACM Transactions on Programming Languages and Systems, 19(3):492–524, May 1997 (with Mary F.  Fernández)."
+  - "Relocating Machine Instructions by Currying. Proceedings of the ACM SIGPLAN '96 Conference on Programming Language Design and Implementation, in SIGPLAN Notices, 31(5):226–236, May 1996."
+  #  - "A Simple Solver for Linear Equations Containing Nonlinear Operators.  Software—Practice & Experience, 26(4):467–487, April 1996. (An earlier version appeared as Technical Report 95-068, Purdue University, Dept of Computer Sciences, November 1995.)."
+  #  - "The New Jersey Machine-Code Toolkit. In Proceedings of the 1995 USENIX Technical Conference, pages 289–302, January 1995 (with Mary F.  Fernández)."
+  - "Literate Programming Simplified. IEEE Software, 11(5):97–105, September 1994."
+  #  - "Correctness of Trap-Based Breakpoint Implementations. In Proceedings of the 21st ACM Symposium on the Principles of Programming Languages, pages 15–24, Portland, OR, January 1994."
+  #  - "A Retargetable Debugger. ACM SIGPLAN '92 Conference on Programming Language Design and Implementation, in SIGPLAN Notices, 27(7):22–31, July 1992 (with David R. Hanson)."
+  #  - "Literate Programming on a Team Project. Software—Practice &Experience, 21(7):677–683, July 1991 (with Carla Marceau)."
+  #  - "Literate Programming: Weaving a Language-Independent WEB. Communications of the ACM, 32(9):1051–1055, September 1989."
+  #  - "Developing Formally Verified Ada Programs. In Proceedings of the 5th International Workshop on Software Specification and Design, pages 257–265, Pittsburgh, PA, May 1989."
+  #  - "Formation and Breakup Rates of RbXe van der Waals Molecules in He and N₂ Gas. Chemical Physics Letters, 102:340, 1983 (with Eli Miron, X. Zeng, and William Happer)."
