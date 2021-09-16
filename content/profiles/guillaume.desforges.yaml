@@ -1,0 +1,44 @@
+slug: guillaume.desforges
+name: Guillaume Desforges
+github: GuillaumeDesforges
+
+bio: |
+  Recently graduated from Institut Polytechnique de Paris (Saclay) in Data Sciences.
+  Before joining Tweag, Guillaume worked at a startup, which successfully launched their first post-seed release while maintaining a fast growth.
+skills:
+  - Machine Learning
+  - Data pipelines
+  - Data engineering
+  - Python
+  - Haskell
+  - Java
+  - Nix
+
+speaks:
+  - French (native)
+  - English (professional)
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: September 2021 - present
+  - employer: Ecole des Ponts ParisTech
+    role: Stand-in teacher
+    years: September 2021 - present
+  - employer: Polar Analytics
+    role: Data & Backend Engineer
+    years: November 2020 - August 2021
+
+education:
+  - qualification: Master of Science
+    name: Engineering
+    institution: Ecole des Ponts
+    years: September 2016 - July 2021
+    description:
+  - qualification: Master 2
+    name: Data Sciences
+    institution: Paris-Saclay University & Institut Polytechnique de Paris (IPP)
+    years: 2019-2020
+    description:
+
+publications: []
