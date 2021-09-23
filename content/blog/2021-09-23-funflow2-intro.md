@@ -10,7 +10,7 @@ As the data science and machine learning fields have grown over the past decade,
 so has the number of data pipelining frameworks. What started out largely as a
 set of tools for extract-transform-load (ETL) processes has expanded into a
 diverse ecosystem of libraries, all of which aim to provide data teams with the
-ability to move and process their data. Apache Airflow, Beam, Luigi, Azkaban - the list [goes on and
+ability to move and process their data. Apache Airflow, Beam, Luigi, Azkaban -- the list [goes on and
 on](https://github.com/pditommaso/awesome-pipeline).
 
 As users of several of the above frameworks, Tweag has a special interest in
