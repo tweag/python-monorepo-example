@@ -1,0 +1,156 @@
+---
+slug: nicolas.jeannerod
+name: Nicolas Jeannerod
+github: Niols
+website: http://nicolas.jeannerod.fr/
+
+bio: |
+  Nicolas is a Software Engineer. Before joining Tweag, he worked in academia on
+  verification of Shell scripts and Unix filesystems. He strongly believes in
+  verification and formal methods to provide high quality software. Outside of
+  work, he enjoys playing (video, card, board) games, cycling, music (listening
+  and creating) and scottish dancing.
+
+skills:
+  - OCaml
+  - LaTeX
+  - algorithmics
+  - Unix systems
+  - formal verification
+  - techincal writing and communication
+
+speaks:
+  - English (fluent)
+  - French (native speaker)
+
+experience:
+  - employer: Tweag I/O
+    role: Software Engineer
+    years: September 2021 - Present
+
+  - employer: IRIF (Université de Paris, France)
+    role: Ph.D. Student
+    years: September 2017 -- March 2021
+    description:
+      - Ph.D. in Computer Science with Ralf Treinen and Yann Régis-Gianas on the
+        “Verification of Shell Scripts Performing File Hierarchy
+        Transformations”.
+
+  - employer: UFR d'Informatique (Université de Paris, France)
+    role: Teacher
+    years: September 2016 -- June 2020
+    description:
+      - Teaching including both practical and written exercises sessions for
+        bachelor students.
+
+  - employer: Google
+    role: Google Summer of Code Student
+    years: June 2017 -- August 2017
+    description:
+      - |
+        Google Summer of Code with Aymeric Fromherz and Nikos Gorogiannis:
+        “Verification and Testing of Heap-based Programs with Symbolic
+        PathFinder”.
+
+  - employer: IRIF (Université de Paris, France)
+    role: Research Intern
+    years: September 2016 -- August 2017
+    description:
+      - |
+        Research Internship with Ralf Treinen and Mihaela Sighireanu:
+        “Correctness of Linux Scripts”.
+
+  - employer: IRIF (Université de Paris, France)
+    role: Research Intern
+    years: March 2016 -- August 2016
+    description:
+      - |
+        Research Internship with Ralf Treinen and Mihaela Sighireanu:
+        “Towards Verification of Shell Scripts”.
+
+  - employer: McGill University (Montréal, Canada)
+    role: Research Intern
+    years: April 2015 -- August 2015
+    description:
+      - Research Internship in the Complogic team with Brigitte Pientka in order
+        to help with the development of the proof assistant Beluga.
+
+  - employer: Institut de Mathématiques de Marseille (France)
+    role: Research Intern
+    years: May 2014 -- July 2014
+    description:
+      - |
+        Research Internship with Lionel Vaulx Auclair and Emmanuel Beffara:
+        “On a logical counterpart of local non-determinism in classical
+        realisability”.
+
+education:
+  - qualification: Ph.D.
+    name: Computer Science
+    institution: Université de Paris
+    years: 2017 -- 2021
+    description:
+      - Verification of Shell Scripts Performing File Hierarchy Transformations
+
+  - qualification: ENS Graduate Degree
+    name: Computer Science
+    institution: École normale supérieure
+    years: 2013 -- 2017
+    description:
+      - This is a research-oriented four-year program including the third year
+        of bachelor, the two years of master and an extra year — in my case, a
+        one year-long internship. The degree requires the validation of extra
+        courses in addition to the bachelor and master.
+
+  - qualification: Master's Degree
+    name: Computer Science
+    institution: Université de Paris
+    years: 2014 -- 2016
+    description:
+      - The “Master Parisien de Recherche en Informatique” is a
+        research-oriented master program in computer science whose purpose is to
+        train future scientists through intensive exposure to contemporary
+        research.
+
+  - qualification: Bachelor's Degree
+    name: Computer Science
+    years: 2013
+    institution: École normale supérieure
+
+publications:
+  - "Nicolas Jeannerod. Verification of Shell Scripts Performing File Hierarchy
+    Transformations. Ph.D. thesis. 2021"
+  - "Benedikt Becker, Nicolas Jeannerod, Claude Marché, Yann Régis-Gianas,
+    Mihaela Sighireanu and Ralf Treinen. Analysing installation scenarios of
+    Debian packages. TACAS 2020"
+  - "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
+    parser for POSIX shell. In Journal of Computer Languages, April 2020."
+  - "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
+    Parser for POSIX Shell. SLE 2018."
+  - "Nicolas Jeannerod and Ralf Treinen. Deciding the First-Order Theory of an
+    Algebra of Feature Trees with Updates IJCAR 2018."
+  - "Nicolas Jeannerod, Claude Marché and Ralf Treinen. A Formally Verified
+    Interpreter for a Shell-like Programming Language. VSTTE 2017."
+  - "Nicolas Jeannerod. Le coquillage dans le CoLiS-mateur. JFLA 2017."
+
+talks:
+  - "Verification of Shell Scripts Performing File Hierarchy Transformations.
+    Ph.D. Thesis Defence. March 2021."
+  - "Analysing installation scenarios of Debian Packages. At IRIF's
+    Verification Seminar. December 2020."
+  - "Symbolic Execution of Debian Packages. At AVM'19. September 2019."
+  - "Symbolic Execution of Maintainer Scripts. With Ralf Treinen.
+    At DebConf'19. July 2019."
+  - "Mining Debian Maintainer Scripts. With Ralf Treinen. At DebConf'18.
+    July 2018."
+  - "Deciding the First-Order Theory of an Algebra of Feature Trees with
+    Updates. At IJCAR'18. July 2018."
+  - "Deciding the First-Order Theory of an Algebra of Feature Trees with
+    Updates. At IRIF's Verification Seminar. June 2018."
+  - "Formalising an Intermediate Language for POSIX Shell. With Yann
+    Régis-Gianas. At Seminar Gallium. September 2017."
+  - "A Formally Verified Interpreter for a Shell-like Programming Language.
+    At VSTTE'17. July 2017."
+  - "A Formally Verified Interpreter for a Shell-like Programming Language.
+    At Seminar VALS. July 2017."
+  - "Le coquillage dans le CoLiS-mateur. At JFLA'17. January 2017."
