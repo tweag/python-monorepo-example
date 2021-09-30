@@ -11,7 +11,7 @@ description: "A discussion and benchmark of an alternative integrator for Hamilt
 
 Hamiltonian Monte Carlo (HMC) is a MCMC sampling algorithm which proposes new states based on the simulation of Hamilton's equations of motion.
 One of the main ingredients of this algorithm is its integration scheme -- how the equations are discretized and its solutions found.
-The standard choice for this is the [classical leapfrog].
+The standard choice for this is the [classical leapfrog](https://en.wikipedia.org/wiki/Leapfrog_integration).
 In this blog post we present our empirical investigation of $U_7$ -- an algorithm that is computationally more expensive, but also more accurate.
 This trade-off is not a simple one (after all, more precision implies less tries), but our explorations show that this is a promising algorithm, which can outperform leapfrog in some cases.
 
