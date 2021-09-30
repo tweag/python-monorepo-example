@@ -10,7 +10,6 @@ import ccBy from "../images/cc-by.svg"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
-  console.log(data)
   const { previous, next } = pageContext
   const prevTitle =
     previous && (previous.frontmatter.shortTitle || previous.frontmatter.title)
