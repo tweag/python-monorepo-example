@@ -1,0 +1,49 @@
+slug: timothee.cercueil
+name: Timothee Cercueil
+github: litchipi
+pronouns: He/Him
+website: https://litchipi.github.io/
+bio: |
+  Timothee is an engineer who specializes in embedded systems
+  development, software security and the Linux kernel.
+  He learnt Python as a hobby, then did a lot of embedded programming in C
+  during his studies, and later fell in love with Rust.
+  Before becoming a Tweager, he did an internship at ST Microelectronics
+  where he worked on a secure bootchain using ARM TrustZone, and
+  contributed to several open source projects including U-boot, Linux and OP-TEE.
+  When not working on his own projects, he mostly spends his time playing
+  musical instruments, composing music and rediscovering retrogaming gems.
+skills:
+  - Rust
+  - Python
+  - C
+  - Embedded Linux
+  - Bootchain
+speaks:
+  - English
+  - French
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: October 2021-present
+    description:
+  - employer: ST Microelectronics
+    role: Intern
+    location: Le Mans
+    years: Feb - Aug 2021
+    description:
+      - |
+        Implementation of features of the Trusted Substrate project from Linaro
+        into a STM32MP1 board, including the implementation of a secure bootchain
+        UEFI-compatible using ARM TrustZone for the Secureboot Secure-UEFI protocol.
+education:
+  - qualification: MEng
+    name: Generalist Engineer
+    institution: ESEO Angers
+    years: 2015 - 2021
+    description:
+      - |
+        Generalist engineering school, general skills in analog electronics,
+        RF, system on chips (SoC), FPGA, embedded devices, computer networks,
+        network security, DevOps and web development.
+        Specialisation in programming embedded devices.
