@@ -1,0 +1,59 @@
+slug: michael.gale
+name: Michael Gale
+pronouns: He/Him
+github: mbg
+website: https://www.michael-gale.co.uk
+bio: |
+  I am a Software Engineer at Tweag, specialising in the design and implementation of programming languages, development tools, and automation. Prior to joining Tweag, I worked as a Senior Teaching Fellow (equivalent to Assistant Professor, teaching-only) at the University of Warwick during 2017-2021 where I taught modules on Functional Programming (in Haskell) and Cyber Security. During that time, I taught functional programming to close to one thousand students, making extensive use of property-based testing and emphasising the benefits of reusable and strongly typed code. I have a BSc (Hons) Computer Science from the University of Nottingham (2010-2013) where my final year project was about the implementation of a compiler for a Haskell-like language. From 2013, I studied towards a PhD at the University of Cambridge where I worked on encoding an object system in Haskell - which I hope to wrap up in the near future. During my last year at Warwick, I won two departmental teaching awards, one for each of my taught modules, and was a finalist for the university-wide teaching award. Aside from software engineering, I enjoy teaching, cooking, video and board games, walking, ducks, seals, the colour purple (#3D3051 to be exact), and punting.
+
+skills:
+  - Haskell/Functional Programming
+  - Object-Oriented Programming
+  - Teaching
+  - Design and implementation of programming languages
+  - Technical writing
+speaks:
+  - English
+  - German (reading/listening)
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2021 - present
+    location: remote
+    description:
+
+  - employer: University of Warwick
+    role: Senior Teaching Fellow
+    years: 2017 - 2021
+    location: Coventry, United Kingdom
+    description:
+      - Taught modules on Functional Programming and Cyber Security
+      - Supervised student projects in functional programming and adjacent areas
+      - Implemented a large departmental system using Haskell, TypeScript/React, Docker, PostgreSQL, and Logstash/Elasticsearch
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: University of Cambridge
+    years: 2013 - current
+    description:
+      - |
+        thesis title: "HOOP: Object-oriented programming in Haskell"
+  - qualification: BSc (Hons)
+    name: Computer Science
+    institution: University of Nottingham
+    years: 2010 - 2013
+    description:
+      - |
+        dissertation title: "A compiler for Cada"
+publications:
+  - "Keating, F. and Gale, M.B., 2021, August. Graded monads and type-level programming for dependence analysis. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 27-40)."
+  - "Bailey, T. and Gale, M.B., 2021, August. Chesskell: a two-player game at the type level. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 110-121)."
+  - "Szamozvancev, D. and Gale, M.B., 2017, September. Well-typed music does not sound wrong (experience report). In Proceedings of the 10th ACM SIGPLAN International Symposium on Haskell (pp. 99-104)."
+  - "Greensmith, J. and Gale, M.B., 2017, June. The functional dendritic cell algorithm: a formal specification with Haskell. In 2017 IEEE Congress on Evolutionary Computation (CEC) (pp. 1787-1794). IEEE."
+research-community-service:
+  - venue: Functional Art and Music (FARM)
+    role: Member of Program Committee
+    year: 2021
+  - venue: International Conference on Functional Programming (ICFP)
+    role: Member of Artifact Evaluation Committee
+    year: 2018
