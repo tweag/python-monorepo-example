@@ -1,0 +1,126 @@
+slug: karol.czulkowski
+name: Karol Czułkowski
+github: kczulko
+bio: |
+  Karol is a software developer with over 10 years of experience. He is passionate about the functional programming. In the software world he likes composition, reproducibility, immutability, purity and harmony in general.
+skills:
+  - Scala
+  - C/C++/C#
+  - Java
+  - SQL
+  - Cassandra
+  - Kafka
+  - bit of Nix/NixOS
+speaks:
+  - English
+  - Polish
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: May 2021 -- present
+    location: Remote
+  - employer: UBS
+    role: Scala developer
+    years: 2020 -- 2021
+    description:
+      - >
+        Technologies: Scala, Akka-http, Cats, Akka-streams, Kafka
+      - >
+        Member of Next Generation Archive solution team.
+        Delivering a system designed to store banking documents.
+  - employer: Nordea
+    role: Scala developer
+    years: 2019 -- 2020
+    description:
+      - >
+        Technologies: Scala, ElasticSearch, Python, Kafka, Nix, Cue, Sbt
+      - >
+        Development of HDFS metadata indexing hub with microservice oriented
+        architecture. Apart from development activities, he has introduced and taught
+        internal workers functional programming concepts and architecture.
+  - employer: Intel
+    role: Scala developer
+    years: 2018 -- 2019
+    description:
+      - >
+        Technologies: Scala, Lenses/Monocle, Fs2, Sbt, Antlr4
+      - >
+        Karol worked for pre-silicon group under Intel Network Division, where he's developed
+        Scala based simulation model for next generation ethernet switch. His second activity
+        was about implementing SystemRDL 1.0 compiler for better and faster processing of
+        pre-silicon memory model.
+  - employer: Nordea
+    role: Senior Java engineer
+    years: march 2018 -- june 2018
+    description:
+      - >
+        Technologies: Java, Oracle, Spark, Docker
+      - >
+        Market Liquidity Credit Risk (MLQR) application development. It was an
+        internal, proprietary product, responsible for calculating daily credit
+        risk coefficient values.
+  - employer: ScalaC
+    role: Scala developer
+    years: 2017 -- 2018
+    description:
+      - >
+        Technologies: Scala, Cassandra, Kafka, GraphQL
+      - >
+        Developed several of services for a Finnish business solutions systems
+        provider for telco companies.
+  - employer: Intel
+    role: Software engineer
+    years: 2014 -- 2017
+    description:
+      - >
+        Technologies: Java, C#, C++11, Docker
+      - >
+        Development of Intel's Rackscale Design solution. Through those three year
+        worked on every subsystem of this product, starting from system validation
+        through firmware and major composition component development.
+  - employer: Finastra (former Misys)
+    role: Software engineer
+    years: 2012 -- 2014
+    description:
+      - >
+        Technologies: C++, C
+      - >
+        Development of Kondor+, a market-leading trade and risk management platform,
+        allowing users to manage global trading activities. Kondor+ has the broadest
+        installed base worldwide with more than 450 sites in 67 countries.
+  - employer: Intel
+    role: Software engineer
+    years: 2011 -- 2012
+    description:
+      - >
+        Technologies: C#, TCL, Bash
+      - >
+        Worked for Datacenter Software Division, where he was responsible
+        for validation of mdadm - tool for managing RAID arrays.
+  - employer: Micromade
+    role: Software engineer
+    years: 2010 -- 2011
+    description:
+      - >
+        Technologies: C++, C, Visual Component Library
+      - >
+        Development of time tracking and access control application.
+  - employer: Voicelab
+    role: Intern
+    years: 2009 -- 2010
+    description:
+      - >
+        Technologies: Matlab, C, Php
+      - >
+        Worked for speech-to-text company. Created couple of Matlab
+        scripts together with noise reduction web service.
+education:
+  - qualification: MSc
+    name: Control Engineering & Robotics
+    institution: Gdańsk University of Technology
+    years: 2006 -- 2011
+    description:
+      - >
+        Thesis title: "Lattice adaptive filters on the CUDA platform."
+      - >
+        Award: Dean's distinction for "Anti-collision system for industrial robots."
