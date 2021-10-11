@@ -188,5 +188,19 @@ their vision, from research to product delivery.
         name: `profiles`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/articles`,
+        name: `articles`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/articles/pdf`,
+        name: `articlePDFs`,
+      },
+    },
   ],
 }

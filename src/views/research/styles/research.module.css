@@ -1,0 +1,41 @@
+.introductionSection {
+  display: grid;
+  width: 100%;
+  grid-template:
+    "title picture"
+    "lead picture"
+    "papers picture" / 6fr 4fr;
+}
+
+.title {
+  grid-area: title;
+}
+
+.lead {
+  grid-area: lead;
+}
+
+.papers {
+  grid-area: papers;
+}
+
+.picture {
+  display: block;
+  grid-area: picture;
+  aspect-ratio: 1/1;
+  height: 100%;
+  justify-self: end;
+}
+
+@media screen and (max-width: 767px) {
+  .introductionSection {
+    grid-template:
+      "title"
+      "lead"
+      "papers" / 1fr;
+  }
+
+  .picture {
+    display: none;
+  }
+}

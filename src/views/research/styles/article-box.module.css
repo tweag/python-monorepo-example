@@ -1,0 +1,50 @@
+.articleBox {
+  display: grid;
+  grid-template: "tagBox" "articles" / 1fr;
+  gap: 2rem;
+}
+
+.articles {
+  grid-area: articles;
+}
+
+.tagBox {
+  grid-area: tagBox;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-self: end;
+  justify-content: end;
+}
+
+.active {
+  display: block;
+}
+
+.tag {
+  border: solid black 0.1rem;
+  color: black;
+  background-color: white;
+  border-radius: 80rem;
+  padding: 0.5rem 1.2rem;
+  margin: 0.3rem;
+  transition: transform 0.3s;
+}
+
+.tag:hover {
+  cursor: pointer;
+}
+
+.tag.active {
+  color: white;
+  background-color: black;
+}
+
+.tagName {
+  font-weight: 300;
+}
+
+.tagNumber {
+  font-weight: 100;
+  margin-left: 1ch;
+}
