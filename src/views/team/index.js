@@ -5,9 +5,10 @@ import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
 
+import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
 
-const introText = ``
+const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
 
 const IntroductionSection = () => {
   return (
@@ -23,7 +24,7 @@ const IntroductionSection = () => {
           mt: [`20px`, `20px`, `50px`],
         }}
       >
-        {`Tweag's Academic Research`}
+        {`Meet The People Behind Tweag`}
       </Text>
       <Text
         sx={{
@@ -34,7 +35,7 @@ const IntroductionSection = () => {
       >
         {introText}
       </Text>
-      {/* <img src={introImage} className={styles.picture} /> */}
+      <img src={introImage} className={styles.picture} />
     </div>
   )
 }
@@ -42,7 +43,7 @@ const IntroductionSection = () => {
 const Team = () => {
   return (
     <Layout>
-      <SEO title="Research" pathname="/research" />
+      <SEO title="Team" pathname="/team" />
       <div
         className="section s_white viewport-section transition-section"
         sx={{
@@ -68,7 +69,7 @@ const Team = () => {
               alignSelf: `start`,
             }}
           >
-            Research
+            Our Team
           </SectionHeading>
           <IntroductionSection />
           {/* Content Goes Here */}

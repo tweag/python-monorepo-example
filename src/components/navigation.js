@@ -307,6 +307,7 @@ function Header({ inverted, fullpage = false }) {
           [`Open source`, `/opensource`],
           [`Contact`, `/contact`],
           [`Careers`, `//boards.greenhouse.io/tweag`, true],
+          [`Team`, `/team`],
           [`Blog`, `/blog`],
         ].map(([t, route, isExternal], i) => (
           <NavLink
