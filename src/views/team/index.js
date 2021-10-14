@@ -6,6 +6,7 @@ import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
 import MagicGrid from "./components/magic-grid"
 import { ColorTile } from "./components/tiles"
+import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
@@ -45,7 +46,11 @@ const IntroductionSection = () => {
   )
 }
 
-const Team = () => {
+const Team = ({ data }) => {
+  const photos = parsePhotos(data)
+  const profiles = parseProfiles(data)
+  console.log(JSON.stringify(photos))
+  console.log(JSON.stringify(profiles))
   return (
     <Layout>
       <SEO title="Team" pathname="/team" />
