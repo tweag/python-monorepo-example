@@ -11,7 +11,7 @@ links:
   - ["Link", "https://doi.org/10.1145/3471874.3472985"]
   # - ["Arxiv", "https://arxiv.org/abs/2103.06127"]
 tags: ["haskell", "ghc", "inference"]
-date: "2021"
+date: "2021-08"
 abstract: >
   Designing a language feature often requires a choice between several,
   similarly expressive possibilities. Given that user studies are generally
