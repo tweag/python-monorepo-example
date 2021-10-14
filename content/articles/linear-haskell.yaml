@@ -1,0 +1,38 @@
+title: "Linear Haskell: practical linearity in a higher-order polymorphic language"
+authors:
+  - name: Jean-Philippe Bernardy
+    tweag: true
+  - name: Mathieu Boespflug
+    tweag: true
+  - name: Ryan R. Newton
+    tweag: false
+  - name: Simon Peyton Jones
+    tweag: false
+  - name: Arnaud Spiwack
+    tweag: true
+status: "Published"
+links:
+  - ["Link", "https://dl.acm.org/doi/abs/10.1145/3158093"]
+  - ["Arxiv", "https://arxiv.org/abs/1710.09756"]
+# pdf: "linear-haskell"
+tags: ["haskell", "linear types", "ghc"]
+date: "2018-01"
+abstract: >
+  Linear type systems have a long and storied history, but not a clear
+  path forward to integrate with existing languages such as OCaml or
+  Haskell. In this paper, we study a linear type system designed with
+  two crucial properties in mind: backwards-compatibility and code
+  reuse across linear and non-linear users of a library. Only then can
+  the benefits of linear types permeate conventional functional
+  programming. Rather than bifurcate types into linear and non-linear
+  counterparts, we instead attach linearity to function arrows. Linear
+  functions can receive inputs from linearly-bound values, but can
+  also operate over unrestricted, regular values.
+
+  To demonstrate the efficacy of our linear type system - both how
+  easy it can be integrated in an existing language implementation and
+  how streamlined it makes it to write programs with linear types - we
+  implemented our type system in GHC, the leading Haskell compiler,
+  and demonstrate two kinds of applications of linear types: mutable
+  data with pure interfaces; and enforcing protocols in I/O-performing
+  functions.
