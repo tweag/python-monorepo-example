@@ -169,7 +169,7 @@ the axiomatic specification that we were reaching for at the beginning
 of the post.
 
 Now, there's an interesting remark to make here. Our axiomatic system had axioms
-that all began with an accessor. The accessors' denotations consume
+that all began with an accessor. The accessors' denotations
 only have `toList` on the right-hand side, removing the need for injectivity
 of the semantic function.
 For instance, `member (insert s x) x = elem x (toList (insert s x))`
