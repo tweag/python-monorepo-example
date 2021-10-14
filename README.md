@@ -295,3 +295,38 @@ UI][gatsby-theme-ui] for this.
 [gatsby-css-in-js]: https://www.gatsbyjs.org/docs/css-in-js/
 [gatsby-emotion]: https://www.gatsbyjs.org/docs/emotion/
 [gatsby-theme-ui]: https://www.gatsbyjs.org/docs/theme-ui/
+
+## How to add an article to the page
+
+​	This is how you add an article to the research page.
+
+### Step 1: Write a YAML file
+
+​	The YAML file used for the articles contains the following mandatory fields:
+
+- `title: string` - A title that will be shown at the top of the article, always visible even when the article is collapsed.
+- `authors: Array<{ tweag: boolean, name: string, ref?: string }>` -  An array of authors, each author is an object with the following properties:
+  - `tweag: boolean` - Whether the author is from tweag or not.
+  - `name: string`
+  - `ref?: string` - This field is optional and not used for now, It's meant to be used as a way to connect the article with links from the author, only for tweag researchers.
+- `status: string` - A small string bellow the title of the article, it can contain things like "Under Review" or where the article was first published.
+- `links: Array<[string, string]>` - An array of tuples to indicate what links should be present at the bottom of the article. The first string of each tuple is the name present on the button itself, the second string must be a valid URL to where the link will lead the user. The buttons are only shown when the article is expanded.
+- `tags: string[]` - A list of tags, this is used to filter the articles. Let's try to keep consistency here, only use lower-case letters, and don't use things like snake case or camel case. If more than one word is necessary use spaces: `a very long tag`.
+- `date: string` - An approximated date of publication. The string on this field must follow javascript `dateString` standard ([look here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)). Internally I throw this at a `Date` object to sort the articles.
+- `abstract: string` - This part is only shown when the article is expanded.
+
+### Step 2: Where do I put this file?
+
+​	All YAML files must be put inside the `content/articles` folder.
+
+### Step 2.5: I have this PDF, where should I put it?
+
+​	In order to add a PDF file to your article you need to do two things.
+
+​	First you need to add a `pdf: string` field to the root of your YAML file. This field must contain the name of your PDF file (without the `.pdf` part).
+
+​	Then you need to copy your PDF file to the `/content/articles/pdf` folder.
+
+### Step 3: What now?
+
+​	There's no step 3. Just push it to the repo.
