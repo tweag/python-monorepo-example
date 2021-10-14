@@ -1,0 +1,21 @@
+title: "Stitch: The Sound Type-Indexed Type Checker, a Functional Pearl"
+authors:
+  - name: Richard A. Eisenberg
+    tweag: true
+status: "Haskell Symposium 2020"
+links:
+  - ["Link", "https://doi.org/10.1145/3406088.3409015"]
+  # - ["Arxiv", "https://arxiv.org/abs/1710.09756"]
+tags: ["haskell", "ghc", "dependent types"]
+date: "2020-08"
+abstract: >
+  A classic example of the power of generalized algebraic datatypes (GADTs) to
+  verify a delicate implementation is the type-indexed expression AST. This
+  functional pearl refreshes this example, casting it in modern Haskell using
+  many of GHC's bells and whistles. The Stitch interpreter is a full
+  executable interpreter, with a parser, type checker, common-subexpression
+  elimination, and a REPL. Making heavy use of GADTs and type indices, the
+  Stitch implementation is clean Haskell code and serves as an existence proof
+  that Haskell's type system is advanced enough for the use of fancy types in
+  a practical setting. The paper focuses on guiding the reader through these
+  advanced topics, enabling them to adopt the techniques demonstrated here.

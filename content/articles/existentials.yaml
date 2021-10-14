@@ -1,0 +1,29 @@
+title: "An Existential Crisis Resolved: Type inference for first-class existential types"
+authors:
+  - name: Richard A. Eisenberg
+    tweag: true
+  - name: Guillaume Duboc
+    tweag: true
+    # Guillaume was an intern. Is this "tweag"?
+  - name: Stephanie Weirich
+    tweag: false
+  - name: Daniel Lee
+    tweag: false
+status: "ICFP 2021 (Distinguished Paper)"
+links:
+  - ["Link", "https://doi.org/10.1145/3473569"]
+  # - ["Arxiv", "https://arxiv.org/abs/1710.09756"]
+tags: ["haskell", "ghc", "inference", "dependent types"]
+date: "2021-08"
+abstract: >
+  Despite the great success of inferring and programming with universal types,
+  their dual—existential types—are much harder to work with. Existential types
+  are useful in building abstract types, working with indexed types, and
+  providing first-class support for refinement types. This paper, set in the
+  context of Haskell, presents a bidirectional type-inference algorithm that
+  infers where to introduce and eliminate existentials without any annotations
+  in terms, along with an explicitly typed, type-safe core language usable as
+  a compilation target. This approach is backward compatible. The key
+  ingredient is to use strong existentials, which support (lazily) projecting
+  out the encapsulated data, not weak existentials accessible only by
+  pattern-matching.

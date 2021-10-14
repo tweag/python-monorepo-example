@@ -1,0 +1,33 @@
+title: "Composing Effects into Tasks and Workflows"
+authors:
+  - name: Yves Parès
+    tweag: true
+  # is Yves Tweag? He was at the time of writing, but is no longer.
+  # check that accented character renders correctly
+  - name: Jean-Philippe Bernardy
+    tweag: true
+    # Jean-Philippe was not tweag at the time of writing, but he was tweag before that
+  - name: Richard A. Eisenberg
+    tweag: true
+status: "Haskell Symposium 2020"
+links:
+  - ["Link", "https://doi.org/10.1145/3406088.3409023"]
+  # - ["Arxiv", "https://arxiv.org/abs/1710.09756"]
+tags: ["haskell", "ghc", "data science"]
+date: "2020-08"
+abstract: >
+  Data science applications tend to be built by composing tasks: discrete
+  manipulations of data. These tasks are arranged in directed acyclic graphs,
+  and many frameworks exist within the data science community supporting such
+  a structure, which is called a workflow. In realistic applications, we want
+  to be able to both analyze a workflow in the absence of data, and to execute
+  the workflow with data.
+
+  This paper combines effect handlers with arrow-like structures to abstract
+  out data science tasks. This combination of techniques enables a modular
+  design of workflows. Additionally, these workflows can both be analyzed
+  prior to running (e.g., to provide early failure) and run conveniently. Our
+  work is directly motivated by real-world scenarios, and we believe that our
+  approach is applicable to new data science and machine learning applications
+  and frameworks.
+

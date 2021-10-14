@@ -1,0 +1,28 @@
+title: "Provably Correct, Asymptotically Efficient, Higher-Order Reverse-Mode Automatic Differentiation"
+authors:
+  - name: Faustyna Krawiec
+    tweag: false
+  - name: Neel Krishnaswami
+    tweag: false
+  - name: Simon Peyton-Jones
+    tweag: false
+  - name: Tom Ellis
+    tweag: false
+  - name: Andrew Fitzgibbon
+    tweag: false
+  - name: Richard A. Eisenberg
+    tweag: true
+status: "conditionally accepted at POPL 2022"
+links:
+  # - ["Link", "https://doi.org/10.1145/3473569"]
+  # - ["Arxiv", "https://arxiv.org/abs/1710.09756"]
+  # This is still in formulation. I could link to a draft, but we have no official copy.
+tags: ["haskell"]
+date: "2022-01"
+abstract: >
+  In this paper, we give a simple and efficient implementation of reverse-mode
+  automatic differentiation, which both extends easily to higher-order
+  functions, and has run time and memory consumption linear in the run time of
+  the original program. In addition to a formal description of the
+  translation, we also describe an implementation of this algorithm, and prove
+  its correctness by means of a logical relations argument.
