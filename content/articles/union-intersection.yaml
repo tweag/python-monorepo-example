@@ -1,0 +1,28 @@
+title: "Union and intersection contracts are hard, actually"
+authors:
+  - name: Teodoro Freund
+    tweag: true
+  - name: Yann Hamdaoui
+    tweag: true
+  - name: Arnaud Spiwack
+    tweag: true
+status: "To be published"
+links:
+  # - ["Link", "https://dl.acm.org/doi/10.1145/?????"]
+  - ["Arxiv", "https://arxiv.org/abs/2106.06278"]
+# pdf: "union-intersection"
+tags: ["nickel", "contracts", "union", "intersection", "gradual typing"]
+date: "2021-10"
+abstract: >
+  Union and intersection types are a staple of gradually typed
+  language such as TypeScript. While it's long been recognized that
+  union and intersection types are difficult to verify statically, it
+  may appear at first that the dynamic part of gradual typing is
+  actually pretty simple.
+
+  It turns out however, that in presence of higher-order contracts
+  union and intersection are deceptively difficult. The literature on
+  higher-order contracts with union and intersection, while keenly
+  aware of the fact, doesn't really explain why. We point and
+  illustrate the problems and trade-offs inherent to union and
+  intersection contracts, via example and a survey of the literature.
