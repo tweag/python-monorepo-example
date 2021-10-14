@@ -4,7 +4,7 @@
 }
 
 .coloredTile {
-  background-color: var(--tile-color, #30C179);
+  background-color: var(--tile-color, #30c179);
 }
 
 .tile {
