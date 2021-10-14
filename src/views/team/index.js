@@ -4,11 +4,16 @@ import { jsx, Grid, Text } from "theme-ui"
 import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
+import MagicGrid from "./components/magic-grid"
+import { ColorTile } from "./components/tiles"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
 
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
+
+const magicGridColumns = 7 // Don't use values below 3
+const magicSmallSquares = 60
 
 const IntroductionSection = () => {
   return (
@@ -74,6 +79,12 @@ const Team = () => {
           <IntroductionSection />
           {/* Content Goes Here */}
         </Grid>
+        <MagicGrid columns={magicGridColumns}>
+          {[...Array(magicSmallSquares).keys()].map(key => (
+            <ColorTile key={key} />
+          ))}
+          <ColorTile start={{ x: 2, y: 2 }} height={2} width={2} />
+        </MagicGrid>
       </div>
     </Layout>
   )

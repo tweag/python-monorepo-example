@@ -1,0 +1,17 @@
+.magicGrid {
+  display: grid;
+  margin: var(--magic-grid-margin, 1rem);
+  gap: var(--magic-grid-gap, 1rem);
+  grid-template-columns: repeat(var(--magic-grid-columns, 7), 1fr);
+  grid-auto-rows: calc(
+    calc(
+      100vw - calc(
+        calc(
+          var(--magic-grid-margin, 1rem) * 2
+        ) + calc(
+          var(--magic-grid-gap, 1rem) * (var(--magic-grid-columns, 7) - 1)
+        )
+      )
+    ) / var(--magic-grid-columns, 7)
+  );
+}

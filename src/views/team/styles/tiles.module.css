@@ -1,0 +1,21 @@
+.positionedTile {
+  grid-column: var(--start-column, auto) / var(--end-column, auto);
+  grid-row: var(--start-row, auto) / var(--end-row, auto);
+}
+
+.coloredTile {
+  background-color: var(--tile-color, #30C179);
+}
+
+.tile {
+  width: 100%;
+  height: 100%;
+}
+
+.roundLeftCorner {
+  border-top-left-radius: 2rem;
+}
+
+.roundRightCorner {
+  border-top-right-radius: 2rem;
+}
