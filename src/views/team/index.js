@@ -5,15 +5,15 @@ import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
 import MagicGrid from "./components/magic-grid"
-import { ColorTile } from "./components/tiles"
 import { parsePhotos, parseProfiles } from "./utils/query"
+import { spawnTiles } from "./components/tileset"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
 
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
 
-const magicGridColumns = 7 // Don't use values below 3
+const magicGridColumns = 6 // Don't use values below 3
 const magicSmallSquares = 60
 
 const IntroductionSection = () => {
@@ -49,8 +49,8 @@ const IntroductionSection = () => {
 const Team = ({ data }) => {
   const photos = parsePhotos(data)
   const profiles = parseProfiles(data)
-  console.log(JSON.stringify(photos))
-  console.log(JSON.stringify(profiles))
+  console.log(`Number of photos: ${Object.keys(photos).length}`)
+  console.log(JSON.stringify(`Number of profiles: ${profiles.length}`))
   return (
     <Layout>
       <SEO title="Team" pathname="/team" />
@@ -85,10 +85,7 @@ const Team = ({ data }) => {
           {/* Content Goes Here */}
         </Grid>
         <MagicGrid columns={magicGridColumns}>
-          {[...Array(magicSmallSquares).keys()].map(key => (
-            <ColorTile key={key} />
-          ))}
-          <ColorTile start={{ x: 2, y: 2 }} height={2} width={2} />
+          {spawnTiles([], [], [`haskell`, `Nix`])}
         </MagicGrid>
       </div>
     </Layout>

@@ -67,3 +67,93 @@ export const ColorTile = ({
     />
   )
 }
+
+/**
+ * @param {{
+ *  person: {
+ *    name: string
+ *    bio: string,
+ *    role: string,
+ *    tags: string[],
+ *    slug: string
+ *  },
+ *  photo: string,
+ *  rounding?: 0 | 1 | 2,
+ *  start?: {x: number, y: number},
+ *  height?: number,
+ *  width?: number,
+ *  key?: number | string
+ * }} props
+ */
+export const ProfileTile = ({
+  person,
+  photo,
+  rounding = Math.floor((Math.random() * 3) % 3),
+  start,
+  height,
+  width,
+  key,
+}) => {
+  const positionalStyles = parsePositionalStyles(start, width, height)
+
+  return (
+    <div
+      className={[
+        styles.tile,
+        styles.positionedTile,
+        styles.profileTile,
+        ROUNDINGS[rounding],
+      ].join(` `)}
+      style={{
+        ...positionalStyles,
+      }}
+      key={key}
+    >
+      <div
+        className={styles.profilePhoto}
+        style={{
+          "--profile-picture": `url(${photo ?? `#`})`,
+        }}
+      />
+      <div className={styles.profileName}>{person.name}</div>
+    </div>
+  )
+}
+
+/**
+ * @param {{
+ *  tag: string,
+ *  rounding?: 0 | 1 | 2,
+ *  start?: {x: number, y: number},
+ *  height?: number,
+ *  width?: number,
+ *  key?: number | string
+ * }} props
+ */
+export const TagTile = ({
+  tag,
+  rounding = Math.floor((Math.random() * 3) % 3),
+  start,
+  height,
+  width,
+  key,
+}) => {
+  const positionalStyles = parsePositionalStyles(start, width, height)
+
+  return (
+    <div
+      className={[
+        styles.tile,
+        styles.positionedTile,
+        styles.tagTile,
+        ROUNDINGS[rounding],
+      ].join(` `)}
+      style={{
+        ...positionalStyles,
+      }}
+      key={key}
+    >
+      {tag}
+    </div>
+  )
+}
