@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 
 import Article from "../components/article"
-import { classifyArray, getFullMonth } from "../utils"
+import { getFullMonth } from "../utils"
 
 import styles from "../styles/yearly-layout.module.css"
 
@@ -42,40 +42,23 @@ export const Month = ({ articles, month, year, key }) => {
  * @param {{
  *  articles: {
  *    title: string,
- *    authors: { tweag: boolean, name: string, ref?: string }
+ *    authors: { tweag: boolean, name: string}
  *    date: Date,
  *    status: string,
  *    tags: Set<string>,
- *    link: string,
- *    pdf: string,
+ *    links: Array<[string, string]>,
  *  }[],
  *  year: string,
  *  key: string | number
  * }} props
  */
 export const Year = ({ articles, year, key }) => {
-  const articlesByMonth = Object.entries(
-    classifyArray(articles, article => String(article.date.getMonth()))
-  )
-
-  articlesByMonth.sort(
-    ([month1], [month2]) => (Number(month1) - Number(month2)) * -1
-  )
-
-  console.log(
-    `Months this year: ${articlesByMonth.map(([month]) => month).join(` `)}`
-  )
   return (
     <div className={styles.yearBox} key={key}>
       <div className={styles.yearString}>{year}</div>
       <div className={styles.articlesByYear}>
-        {articlesByMonth.map(([month, articles]) => (
-          <Month
-            articles={articles}
-            year={year}
-            month={month}
-            key={getFullMonth(month) + year}
-          />
+        {articles.map(article => (
+          <Article {...article} key={article.title} />
         ))}
       </div>
     </div>

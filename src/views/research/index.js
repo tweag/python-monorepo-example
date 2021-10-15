@@ -7,7 +7,8 @@ import { SEO } from "../../components"
 
 import { Accordion } from "./components/Accordion"
 import ArticleBox from "./components/article-box"
-import { parseArticles } from "./utils"
+import { parsePapers } from "./utils"
+import { parseData } from "./utils/query"
 
 import introImage from "../../images/img17.svg"
 import styles from "./styles/research.module.css"
@@ -57,10 +58,9 @@ const IntroductionSection = ({ papers }) => {
 }
 
 const Research = ({ data }) => {
-  const articles = data.allArticlesYaml.edges.map(({ node }) => node)
-  const pdfFiles = data.allFile.edges.map(({ node }) => node)
+  const { papers, tweagers, files } = parseData(data)
 
-  const articleBoxProps = parseArticles(articles, pdfFiles)
+  const articleBoxProps = parsePapers(papers, tweagers, files)
 
   return (
     <Layout>
@@ -92,7 +92,7 @@ const Research = ({ data }) => {
           >
             Research
           </SectionHeading>
-          <IntroductionSection papers={articles.length} />
+          <IntroductionSection papers={papers.length} />
           {/* Content Goes Here */}
           <Accordion>
             <ArticleBox {...articleBoxProps} />

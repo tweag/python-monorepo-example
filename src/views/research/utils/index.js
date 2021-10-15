@@ -1,37 +1,50 @@
 /**
  * @param {{
- *  title: string,
- *  authors: { tweag: boolean, name: string, ref?: string }
- *  date: string,
- *  status: string,
- *  tags: string[],
- *  links: Array<Array<[string, string]>>,
- *  pdf: string,
- * }[]} articles
- * @param {{ name: string, publicURL: string }[]} pdfFiles
+ *    title: string,
+ *    status: string,
+ *    date: number | string,
+ *    abstract: string,
+ *    tags: string[],
+ *    links: Array<[string, string]>
+ *    authors: string[]
+ *  }[]} papers
+ * @param {string[]} tweagers
+ * @param {{ name: string, publicURL: string }[]} files
  * @returns {{
  *  articles: {
  *    title: string,
- *    authors: { tweag: boolean, name: string, ref?: string }
+ *    authors: { tweag: boolean, name: string }
  *    date: Date,
  *    status: string,
  *    tags: Set<string>,
- *    links: Array<Array<[string, string]>>,
- *    pdf: string,
+ *    links: Array<[string, string]>,
  *  }[],
  *  tags: {name: string, articles: number}[]
  * }}
  */
-export function parseArticles(articles, pdfFiles) {
+export function parsePapers(papers, tweagers, files) {
   const result = { articles: [], tags: [] }
   const tags = {}
 
-  for (const article of articles) {
-    const toAdd = { ...article }
-    toAdd.date = new Date(toAdd.date)
-    toAdd.pdf = pdfFiles.find(item => item.name === toAdd.pdf)?.publicURL ?? ``
-    toAdd.tags = new Set(toAdd.tags)
+  for (const paper of papers) {
+    const toAdd = { ...paper }
 
+    // Parse date
+    toAdd.date = new Date(String(toAdd.date))
+
+    // Replace links
+    for (const link of toAdd.links ?? []) {
+      link[1] = files[link[1]]?.publicURL ?? link[1]
+    }
+
+    // Parse authors
+    toAdd.authors = toAdd.authors.map(author => ({
+      name: author,
+      tweag: tweagers.includes(author),
+    }))
+
+    // Process and count tags
+    toAdd.tags = new Set(toAdd.tags)
     toAdd.tags.forEach(tag => {
       if (Object.keys(tags).includes(tag)) {
         tags[tag] += 1
@@ -63,7 +76,6 @@ export function parseArticles(articles, pdfFiles) {
  *    status: string,
  *    tags: Set<string>,
  *    links: Array<Array<[string, string]>>,
- *    pdf: string,
  *  }[]} articles
  * @param {{name: string, articles: number}[]} tags
  * @returns {{name: string, articles: number}[]}

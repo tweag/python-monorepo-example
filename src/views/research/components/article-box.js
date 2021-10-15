@@ -50,12 +50,11 @@ const TagButton = ({ tagName, articles, key }) => {
  * @param {{
  *  articles: {
  *    title: string,
- *    authors: { tweag: boolean, name: string, ref?: string }
+ *    authors: { tweag: boolean, name: string}
  *    date: Date,
  *    status: string,
  *    tags: Set<string>,
- *    links: Array<Array<[string, string]>>,
- *    pdf: string,
+ *    links: Array<[string, string]>,
  *  }[],
  *  tags: {name: string, articles: number}[]
  * }} props

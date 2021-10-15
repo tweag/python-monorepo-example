@@ -1,8 +1,0 @@
-title: "Another Article this month, but look! No date on the top"
-authors:
-  [{ tweag: true, name: "Dave Smith" }, { tweag: false, name: "Mr. Anderson" }]
-status: "Under Review"
-links: [["Link 1", "#"], ["Link 2", "#"], ["Link 3", "#"]]
-tags: ["test", "lorem", "odd articles"]
-date: "2021-8-11"
-abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Leo vel orci porta non pulvinar neque laoreet suspendisse. Non tellus orci ac auctor. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Amet dictum sit amet justo donec enim. Vitae tempus quam pellentesque nec nam aliquam sem et. Nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi. Tempor orci eu lobortis elementum nibh tellus molestie nunc. Ac tortor vitae purus faucibus ornare suspendisse. Semper risus in hendrerit gravida rutrum quisque."

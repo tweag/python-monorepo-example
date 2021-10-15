@@ -48,15 +48,14 @@ const ArticleButton = ({ url, name, key }) => {
 
 /**
  * @param {{
- *  title: string,
- *  authors: {tweag: boolean, name: string, ref?: string}[],
- *  status: string,
- *  links: Array<Array<[string, string]>>,
- *  pdf: string,
- *  abstract: string,
- *  key: string | number,
- *  topString?: string
- * }} props
+ *    title: string,
+ *    authors: { tweag: boolean, name: string}
+ *    date: Date,
+ *    status: string,
+ *    tags: Set<string>,
+ *    links: Array<[string, string]>,
+ *    topString?: string
+ *  }} props
  */
 const Article = ({
   title,
@@ -88,7 +87,6 @@ const Article = ({
     <Box>
       <Text sx={{ mt: `2rem` }}>{abstract}</Text>
       <div className={styles.buttonBox}>
-        <ArticleButton url={pdf} name="PDF" />
         {(links ?? []).map(([name, url]) => (
           <ArticleButton url={url} name={name} key={name + url} />
         ))}

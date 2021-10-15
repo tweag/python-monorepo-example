@@ -191,15 +191,8 @@ their vision, from research to product delivery.
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/articles`,
-        name: `articles`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/articles/pdf`,
-        name: `articlePDFs`,
+        path: `${__dirname}/content/papers`,
+        name: `papers`,
       },
     },
   ],

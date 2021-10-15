@@ -2,33 +2,39 @@ import { graphql } from "gatsby"
 import Research from "./../views/research"
 
 export const query = graphql`
-  query QueryArticles {
-    allArticlesYaml {
-      edges {
-        node {
-          abstract
-          authors {
-            name
-            tweag
-          }
-          date
-          links
-          pdf
-          status
-          tags
+  query QueryPapers {
+    file(
+      sourceInstanceName: { eq: "papers" }
+      name: { eq: "index" }
+      extension: { eq: "yaml" }
+    ) {
+      childPapersYaml {
+        tweagers
+        papers {
           title
+          status
+          date
+          abstract
+          tags
+          links
+          authors
         }
       }
     }
-    allFile(filter: { extension: { eq: "pdf" } }) {
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "papers" }
+        extension: { ne: "yaml" }
+      }
+    ) {
       edges {
         node {
-          name
           publicURL
+          name
+          extension
         }
       }
     }
   }
 `
-
 export default Research
