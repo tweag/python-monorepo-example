@@ -30,7 +30,6 @@ function parseAuthors(authors) {
 
 const ArticleButton = ({ url, name, key }) => {
   if (url.length < 1) {
-    console.log(`Absent PDF for this article`)
     return <></>
   }
   return (
@@ -67,7 +66,6 @@ const Article = ({
   key,
   topString,
 }) => {
-  console.log(`Info reveived: ${JSON.stringify({ links, pdf })}`)
   const visiblePart = (
     <Box className={styles.visiblePartContainer}>
       {topString ? (

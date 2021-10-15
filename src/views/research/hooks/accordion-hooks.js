@@ -16,5 +16,4 @@ export function useToggleEventMonitor(accordionRef, handler) {
       accordion.removeEventListener(`accordion-item-toggle-folding`, handler)
     }
   }, [])
-  console.log(`Accordion listening toogle event`)
 }

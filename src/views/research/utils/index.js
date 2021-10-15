@@ -34,7 +34,7 @@ export function parsePapers(papers, tweagers, files) {
 
     // Replace links
     for (const link of toAdd.links ?? []) {
-      link[1] = files[link[1]]?.publicURL ?? link[1]
+      link[1] = files[link[1]] ?? link[1]
     }
 
     // Parse authors
