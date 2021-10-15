@@ -1,12 +1,12 @@
 title: "Efficient Compilation of Algebraic Effect Handlers"
 authors:
-  - Georgios Karachalias
+  - name: Georgios Karachalias
     tweag: true
-  - Filip Koprivec
+  - name: Filip Koprivec
     tweag: false
-  - Matija Pretnar
+  - name: Matija Pretnar
     tweag: false
-  - Tom Schrijvers
+  - name: Tom Schrijvers
     tweag: false
 status: "OOPSLA 2021"
 links:
