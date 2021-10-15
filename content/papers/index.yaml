@@ -1,69 +1,69 @@
 tweagers:
- - Researcher1
- - Researcher2
- - Researcher3
- - Researcher4
+  - Researcher1
+  - Researcher2
+  - Researcher3
+  - Researcher4
 papers:
- - title: Article1
-   status: Under review
-   authors:
-    - Researcher1
-    - Sus Guy
-    - Researcher3
-   links:
-    - ['pdf', 'article1.pdf']
-    - ['link1', '#link1']
-    - ['link2', '#link2']
-   date: 2020
-   tags:
-    - test article
-    - Odd article
-    - Specific to Article1
-   abstract: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
- - title: Article2
-   status: Published
-   authors:
-    - Researcher2
-    - Super Sus Guy
-    - Researcher4
-   links:
-    - ['pdf', 'article2.pdf']
-    - ['link1', '#link1']
-    - ['link2', '#link2']
-   date: 2021
-   tags:
-    - test article
-    - even article
-    - Specific to Article2
-   abstract: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
- - title: Article3
-   status: Under review
-   authors:
-    - Researcher1
-    - Mega Sus Guy
-    - Researcher3
-   links:
-    - ['link1', '#link1']
-    - ['link2', '#link2']
-   date: 2020
-   tags:
-    - test article
-    - Odd article
-    - Specific to Article3
-   abstract: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
- - title: Article4
-   authors:
-    - Researcher2
-    - Ultra Sus Guy
-    - Researcher4
-   status: Under review
-   date: 2021
-   tags:
-    - test article
-    - even article
-    - Specific to Article1
-   abstract: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
+  - title: Article1
+    status: Under review
+    authors:
+      - Researcher1
+      - Sus Guy
+      - Researcher3
+    links:
+      - ["pdf", "article1.pdf"]
+      - ["link1", "#link1"]
+      - ["link2", "#link2"]
+    date: 2020
+    tags:
+      - test article
+      - Odd article
+      - Specific to Article1
+    abstract: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
+  - title: Article2
+    status: Published
+    authors:
+      - Researcher2
+      - Super Sus Guy
+      - Researcher4
+    links:
+      - ["pdf", "article2.pdf"]
+      - ["link1", "#link1"]
+      - ["link2", "#link2"]
+    date: 2021
+    tags:
+      - test article
+      - even article
+      - Specific to Article2
+    abstract: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
+  - title: Article3
+    status: Under review
+    authors:
+      - Researcher1
+      - Mega Sus Guy
+      - Researcher3
+    links:
+      - ["link1", "#link1"]
+      - ["link2", "#link2"]
+    date: 2020
+    tags:
+      - test article
+      - Odd article
+      - Specific to Article3
+    abstract: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
+  - title: Article4
+    authors:
+      - Researcher2
+      - Ultra Sus Guy
+      - Researcher4
+    status: Under review
+    date: 2021
+    tags:
+      - test article
+      - even article
+      - Specific to Article1
+    abstract: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
