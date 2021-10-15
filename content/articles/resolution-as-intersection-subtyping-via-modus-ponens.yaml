@@ -14,7 +14,15 @@ links:
   - ["Arxiv", "https://arxiv.org/abs/2010.06216"]
   - ["Zenodo", "https://zenodo.org/record/4043646"]
 # pdf: "resolution-as-intersection-subtyping-via-modus-ponens"
-tags: ["coherence", "modus ponens", "family polymorphism", "resolution", "nested composition", "intersection types"]
+tags:
+  [
+    "coherence",
+    "modus ponens",
+    "family polymorphism",
+    "resolution",
+    "nested composition",
+    "intersection types",
+  ]
 date: "2020-11"
 abstract: >
   Resolution and subtyping are two common mechanisms in programming languages.
