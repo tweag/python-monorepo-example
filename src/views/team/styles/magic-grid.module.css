@@ -15,3 +15,9 @@
       ) / var(--magic-grid-columns, 7)
   );
 }
+
+@media screen and (min-width: 768px) {
+  .magicGrid {
+    --magic-grid-margin: 2rem;
+  }
+}

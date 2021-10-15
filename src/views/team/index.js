@@ -14,7 +14,6 @@ import styles from "./styles/team.module.css"
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
 
 const magicGridColumns = 6 // Don't use values below 3
-const magicSmallSquares = 60
 
 const IntroductionSection = () => {
   return (
@@ -49,8 +48,6 @@ const IntroductionSection = () => {
 const Team = ({ data }) => {
   const photos = parsePhotos(data)
   const profiles = parseProfiles(data)
-  console.log(`Number of photos: ${Object.keys(photos).length}`)
-  console.log(JSON.stringify(`Number of profiles: ${profiles.length}`))
   return (
     <Layout>
       <SEO title="Team" pathname="/team" />
@@ -71,6 +68,7 @@ const Team = ({ data }) => {
             gridColumnEnd: [`auto`, `auto`, 4],
             gridAutoRows: [`max-content`],
             width: `100%`,
+            mb: [`0px`, `0px`, `3rem`],
           }}
         >
           <SectionHeading
@@ -85,7 +83,7 @@ const Team = ({ data }) => {
           {/* Content Goes Here */}
         </Grid>
         <MagicGrid columns={magicGridColumns}>
-          {spawnTiles([], [], [`haskell`, `Nix`])}
+          {spawnTiles(profiles, photos, [`haskell`, `Nix`, `Rust`])}
         </MagicGrid>
       </div>
     </Layout>
