@@ -13,6 +13,14 @@ export const query = graphql`
         node {
           name
           publicURL
+          children {
+            ... on ImageSharp {
+              id
+              fluid {
+                srcWebp
+              }
+            }
+          }
         }
       }
     }

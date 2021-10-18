@@ -10,6 +10,7 @@
 .profileTile {
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 
 .profileTile::after {
@@ -44,11 +45,20 @@
   bottom: 0px;
   color: white;
   padding: 1rem;
+  transition: all 0.3s;
 }
 
 @media screen and (hover: hover) {
   .profileTile:hover .profilePhoto {
     transform: scale(1.15);
+  }
+
+  .profileTile:hover .profileName {
+    opacity: 0;
+  }
+
+  .profileTile:hover::after {
+    box-shadow: 0px 0px 30px 0em black;
   }
 }
 
