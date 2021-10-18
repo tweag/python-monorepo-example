@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import { allocateTiles } from "../utils/randomizers"
 import { gridify } from "../utils/ajustments"
-import { ProfileTile, TagTile, ColorTile } from "./tiles"
+import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
 
 /**
  * @param {{
@@ -23,16 +23,18 @@ export function spawnTiles(people, photos, tags) {
   const validProfiles = [...peopleWithPhotos]
 
   // Step 2: Define tiles proportions for each type
-  const smallProfiles = Math.floor(peopleWithPhotos.length * 0.7)
+  const smallProfiles = Math.floor(validProfiles.length * 0.7)
   const bigProfiles = peopleWithPhotos.length - smallProfiles
 
   // Step 3: Randomly distribute tiles
-  const tiles = allocateTiles({
-    color: smallProfiles + bigProfiles + tags.length,
+  const tileAllocation = {
+    color: bigProfiles + tags.length,
     profile: smallProfiles,
     bigProfile: bigProfiles,
     tag: tags.length,
-  })
+    blank: smallProfiles,
+  }
+  const tiles = allocateTiles(tileAllocation)
 
   // Step 4: Add information about each tile size on the random distribution
   let personToAdd
@@ -69,6 +71,8 @@ export function spawnTiles(people, photos, tags) {
           type: `tag`,
           id: `tag:${tags.pop()}`,
         }
+      case `blank`:
+        return { height: 1, width: 1, type: `blank`, id: `blank:${index}` }
     }
   })
 
@@ -80,6 +84,7 @@ export function spawnTiles(people, photos, tags) {
   let personSlug
   let currentColor = 0
   let currentTag = ``
+  let currentBlank = 0
 
   for (const tile of gridifiedTiles) {
     if (tile.type === `bigProfile`) {
@@ -132,6 +137,10 @@ export function spawnTiles(people, photos, tags) {
       case `tag`:
         currentTag = tile.id.match(/:(.+)/)[1]
         result.push(<TagTile tag={currentTag} key={`tag:${currentTag}`} />)
+        break
+      case `blank`:
+        result.push(<BlankTile key={`color:${currentBlank}`} />)
+        currentBlank++
         break
     }
   }

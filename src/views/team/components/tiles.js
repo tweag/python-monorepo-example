@@ -42,7 +42,7 @@ function parsePositionalStyles(start, width, height) {
  * @returns {JSX.Element}
  */
 export const ColorTile = ({
-  colorIndex = Math.floor((Math.random() * 4) % 4),
+  colorIndex = Math.floor((Math.random() * 3) % 3),
   rounding = Math.floor((Math.random() * 3) % 3),
   start,
   height,
@@ -66,6 +66,36 @@ export const ColorTile = ({
       key={key}
     />
   )
+}
+
+/**
+ * @param {{
+ *  colorIndex?: 0 | 1 | 2 | 3,
+ *  rounding?: 0 | 1 | 2,
+ *  start?: {x: number, y: number},
+ *  height?: number,
+ *  width?: number,
+ *  key?: number | string
+ * }} props
+ * @returns {JSX.Element}
+ */
+export const BlankTile = ({
+  rounding = Math.floor((Math.random() * 3) % 3),
+  start,
+  height,
+  width,
+  key,
+}) => {
+  const colorTileProps = {
+    rounding,
+    start,
+    height,
+    width,
+    key,
+    colorIndex: 3,
+  }
+
+  return <ColorTile {...colorTileProps} />
 }
 
 /**
