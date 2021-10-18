@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { v4 as uuid } from "uuid"
+
 import { allocateTiles } from "../utils/randomizers"
 import { gridify } from "../utils/ajustments"
 import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
@@ -82,9 +84,7 @@ export function spawnTiles(people, photos, tags) {
   // Step 6: Add Big profiles to result
   let personToGenerateTile
   let personSlug
-  let currentColor = 0
   let currentTag = ``
-  let currentBlank = 0
 
   for (const tile of gridifiedTiles) {
     if (tile.type === `bigProfile`) {
@@ -131,16 +131,14 @@ export function spawnTiles(people, photos, tags) {
         }
         break
       case `color`:
-        result.push(<ColorTile key={`color:${currentColor}`} />)
-        currentColor++
+        result.push(<ColorTile key={`color:${uuid()}`} />)
         break
       case `tag`:
         currentTag = tile.id.match(/:(.+)/)[1]
         result.push(<TagTile tag={currentTag} key={`tag:${currentTag}`} />)
         break
       case `blank`:
-        result.push(<BlankTile key={`color:${currentBlank}`} />)
-        currentBlank++
+        result.push(<BlankTile key={`color:${uuid()}`} />)
         break
     }
   }
