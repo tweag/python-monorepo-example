@@ -1,3 +1,5 @@
+import YAML from "yaml"
+
 /**
  * @returns {{
  *  tweagers: string[],
@@ -8,14 +10,15 @@
  *    date: number | string,
  *    abstract: string,
  *    tags: string[],
- *    links: Array<[string, string]>
+ *    links: {[linkName: string]: string},
  *    authors: string[]
  *  }[]
  * }}
  */
 export function parseData(data) {
-  const tweagers = data.file.childPapersYaml.tweagers
-  const papers = data.file.childPapersYaml.papers
+  const index = YAML.parse(data.file.internal.content)
+  const tweagers = index.tweagers
+  const papers = index.papers
 
   const files = {}
   for (const { node } of data.allFile.edges) {

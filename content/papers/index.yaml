@@ -13,10 +13,8 @@ papers:
   - title: Efficient Compilation of Algebraic Effect Handlers
     status: OOPSLA 2021
     links:
-      - - Link
-        - https://doi.org/10.1145/3485479
-      - - Zenodo
-        - https://zenodo.org/record/5497862
+      Link: https://doi.org/10.1145/3485479
+      Zenodo: https://zenodo.org/record/5497862
     tags:
       - algebraic effect handlers
       - optimising compilation
@@ -40,8 +38,7 @@ papers:
       existential types"
     status: ICFP 2021 (Distinguished Paper)
     links:
-      - - Link
-        - https://doi.org/10.1145/3473569
+      Link: https://doi.org/10.1145/3473569
     tags:
       - haskell
       - ghc
@@ -68,10 +65,8 @@ papers:
   - title: A Graded Dependent Type System with a Usage-Aware Semantics
     status: POPL 2021
     links:
-      - - Link
-        - https://doi.org/10.1145/3434331
-      - - Arxiv
-        - https://arxiv.org/abs/2011.04070
+      Link: https://doi.org/10.1145/3434331
+      Arxiv: https://arxiv.org/abs/2011.04070
     tags:
       - haskell
       - ghc
@@ -99,7 +94,7 @@ papers:
   - title: Provably Correct, Asymptotically Efficient, Higher-Order Reverse-Mode
       Automatic Differentiation
     status: conditionally accepted at POPL 2022
-    links: null
+    links: {}
     tags:
       - haskell
     date: 2022-01
@@ -120,8 +115,7 @@ papers:
   - title: Kind Inference for Datatypes
     status: POPL 2020 (Distinguished Paper)
     links:
-      - - Link
-        - https://doi.org/10.1145/3371121
+      Link: https://doi.org/10.1145/3371121
     tags:
       - haskell
       - ghc
@@ -152,8 +146,7 @@ papers:
   - title: Kinds are Calling Conventions
     status: ICFP 2020
     links:
-      - - Link
-        - https://doi.org/10.1145/3408986
+      Link: https://doi.org/10.1145/3408986
     tags:
       - haskell
       - unboxed types
@@ -173,8 +166,7 @@ papers:
   - title: Linear Constraints
     status: Submitted
     links:
-      - - Arxiv
-        - https://arxiv.org/abs/2103.06127
+      Arxiv: https://arxiv.org/abs/2103.06127
     tags:
       - haskell
       - linear types
@@ -204,10 +196,8 @@ papers:
       language"
     status: Published
     links:
-      - - Link
-        - https://dl.acm.org/doi/abs/10.1145/3158093
-      - - Arxiv
-        - https://arxiv.org/abs/1710.09756
+      Link: https://dl.acm.org/doi/abs/10.1145/3158093
+      Arxiv: https://arxiv.org/abs/1710.09756
     tags:
       - haskell
       - linear types
@@ -235,10 +225,8 @@ papers:
   - title: Evaluating Linear Functions to Symmetric Monoidal Categories
     status: Published
     links:
-      - - Link
-        - https://dl.acm.org/doi/10.1145/3471874.3472980
-      - - Arxiv
-        - https://arxiv.org/abs/2103.06195
+      Link: https://dl.acm.org/doi/10.1145/3471874.3472980
+      Arxiv: https://arxiv.org/abs/2103.06195
     tags:
       - haskell
       - linear types
@@ -258,8 +246,7 @@ papers:
   - title: Partial Type Constructors; Or, Making ad hoc datatypes less ad hoc
     status: POPL 2020
     links:
-      - - Link
-        - https://doi.org/10.1145/3371108
+      Link: https://doi.org/10.1145/3371108
     tags:
       - haskell
       - dependent types
@@ -289,12 +276,9 @@ papers:
   - title: Resolution as Intersection Subtyping via Modus Ponens
     status: OOPSLA 2020
     links:
-      - - Link
-        - https://doi.org/10.1145/3428274
-      - - Arxiv
-        - https://arxiv.org/abs/2010.06216
-      - - Zenodo
-        - https://zenodo.org/record/4043646
+      Link: https://doi.org/10.1145/3428274
+      Arxiv: https://arxiv.org/abs/2010.06216
+      Zenodo: https://zenodo.org/record/4043646
     tags:
       - coherence
       - modus ponens
@@ -332,8 +316,7 @@ papers:
       instantiation is user friendly"
     status: Haskell Symposium 2021
     links:
-      - - Link
-        - https://doi.org/10.1145/3471874.3472985
+      Link: https://doi.org/10.1145/3471874.3472985
     tags:
       - haskell
       - ghc
@@ -353,8 +336,7 @@ papers:
   - title: "Stitch: The Sound Type-Indexed Type Checker, a Functional Pearl"
     status: Haskell Symposium 2020
     links:
-      - - Link
-        - https://doi.org/10.1145/3406088.3409015
+      Link: https://doi.org/10.1145/3406088.3409015
     tags:
       - haskell
       - ghc
@@ -377,8 +359,7 @@ papers:
   - title: Composing Effects into Tasks and Workflows
     status: Haskell Symposium 2020
     links:
-      - - Link
-        - https://doi.org/10.1145/3406088.3409023
+      Link: https://doi.org/10.1145/3406088.3409023
     tags:
       - haskell
       - ghc
@@ -400,8 +381,7 @@ papers:
   - title: Union and intersection contracts are hard, actually
     status: To be published
     links:
-      - - Arxiv
-        - https://arxiv.org/abs/2106.06278
+      Arxiv: https://arxiv.org/abs/2106.06278
     tags:
       - nickel
       - contracts

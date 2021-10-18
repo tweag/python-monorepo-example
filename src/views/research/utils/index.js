@@ -5,7 +5,7 @@
  *    date: number | string,
  *    abstract: string,
  *    tags: string[],
- *    links: Array<[string, string]>
+ *    links: {[linkName: string]: string},
  *    authors: string[]
  *  }[]} papers
  * @param {string[]} tweagers
@@ -31,6 +31,7 @@ export function parsePapers(papers, tweagers, files) {
 
     // Parse date
     toAdd.date = new Date(String(toAdd.date))
+    toAdd.links = Object.entries(toAdd.links)
 
     // Replace links
     for (const link of toAdd.links ?? []) {

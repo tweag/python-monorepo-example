@@ -8,17 +8,8 @@ export const query = graphql`
       name: { eq: "index" }
       extension: { eq: "yaml" }
     ) {
-      childPapersYaml {
-        tweagers
-        papers {
-          title
-          status
-          date
-          abstract
-          tags
-          links
-          authors
-        }
+      internal {
+        content
       }
     }
     allFile(
