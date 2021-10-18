@@ -21,10 +21,10 @@ function parsePositionalStyles(start, width, height) {
   const result = {}
 
   if (!!start && !!height && !!width) {
-    result[`--start-column`] = start.x
-    result[`--end-column`] = start.x + width
-    result[`--start-row`] = start.y
-    result[`--end-row`] = start.y + height
+    result[`--start-column`] = start.y
+    result[`--end-column`] = start.y + width
+    result[`--start-row`] = start.x
+    result[`--end-row`] = start.x + height
   }
 
   return result

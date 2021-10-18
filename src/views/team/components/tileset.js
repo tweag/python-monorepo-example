@@ -18,10 +18,15 @@ import { ProfileTile, TagTile, ColorTile } from "./tiles"
 export function spawnTiles(people, photos, tags) {
   const result = []
 
+  // Step 1: Extract valid profiles
   const peopleWithPhotos = people.filter(person => !!photos[person.slug])
+  const validProfiles = [...peopleWithPhotos]
 
+  // Step 2: Define tiles proportions for each type
   const smallProfiles = Math.floor(peopleWithPhotos.length * 0.7)
   const bigProfiles = peopleWithPhotos.length - smallProfiles
+
+  // Step 3: Randomly distribute tiles
   const tiles = allocateTiles({
     color: 20,
     profile: smallProfiles,
@@ -29,38 +34,9 @@ export function spawnTiles(people, photos, tags) {
     tag: tags.length,
   })
 
-  let currentPerson = 0
-  let currentTag = 0
-  let currentColor = 0
-
-  for (const tile of tiles) {
-    switch (tile.tileType) {
-      case `color`:
-        result.push(<ColorTile key={`tag:${currentColor}`} />)
-        currentColor++
-        break
-      case `profile`:
-        result.push(
-          <ProfileTile
-            person={peopleWithPhotos[currentPerson]}
-            photo={photos[peopleWithPhotos[currentPerson].slug]}
-            key={`profile:${peopleWithPhotos[currentPerson].slug}`}
-          />
-        )
-        currentPerson++
-        break
-      case `tag`:
-        result.push(
-          <TagTile tag={tags[currentTag]} key={`tag:${tags[currentTag]}`} />
-        )
-        currentTag++
-    }
-  }
-
-  const randomAllocation = allocateTiles(tiles)
+  // Step 4: Add information about each tile size on the random distribution
   let personToAdd
-
-  const toGridify = randomAllocation.map(({ tileType }, index) => {
+  const toGridify = tiles.map(({ tileType }, index) => {
     switch (tileType) {
       case `color`:
         return { height: 1, width: 1, type: `color`, id: `color:${index}` }
@@ -96,57 +72,68 @@ export function spawnTiles(people, photos, tags) {
     }
   })
 
+  // Step 5: Run gridify to allocate each file according to its size
   const gridifiedTiles = gridify(toGridify)
+  console.log(JSON.stringify(gridifiedTiles, null, 2))
 
+  // Step 6: Add Big profiles to result
   let personToGenerateTile
   let personSlug
-  currentColor = 0
-  currentTag = 0
+  let currentColor = 0
+  let currentTag = ``
 
   for (const tile of gridifiedTiles) {
     if (tile.type === `bigProfile`) {
-      personSlug = tile.id.match(/:(\w+)/)[1]
-      personToGenerateTile = peopleWithPhotos.find(
+      personSlug = tile.id.match(/:(.+)/)[1]
+      console.log(`person slug: ${personSlug}`)
+      personToGenerateTile = validProfiles.find(
         person => person.slug === personSlug
       )
-      result.push(
-        <ProfileTile
-          person={personToGenerateTile}
-          photo={photos[personSlug]}
-          key={`profile:${personSlug}`}
-          height={2}
-          width={2}
-          start={{
-            x: tile.x,
-            y: tile.y,
-          }}
-        />
-      )
-    }
-  }
 
-  for (const tile of gridifiedTiles) {
-    switch (tile.type) {
-      case `profile`:
-        personSlug = tile.id.match(/:(\w+)/)[1]
-        personToGenerateTile = peopleWithPhotos.find(
-          person => person.slug === personSlug
-        )
+      if (personToGenerateTile) {
         result.push(
           <ProfileTile
             person={personToGenerateTile}
             photo={photos[personSlug]}
             key={`profile:${personSlug}`}
+            height={2}
+            width={2}
+            start={{
+              x: tile.x,
+              y: tile.y,
+            }}
           />
         )
+      }
+    }
+  }
+
+  // Step 7: Add all other profiles to the result
+  for (const tile of gridifiedTiles) {
+    switch (tile.type) {
+      case `profile`:
+        personSlug = tile.id.match(/:(.+)/)[1]
+        personToGenerateTile = validProfiles.find(
+          person => person.slug === personSlug
+        )
+
+        if (personToGenerateTile) {
+          result.push(
+            <ProfileTile
+              person={personToGenerateTile}
+              photo={photos[personSlug]}
+              key={`profile:${personSlug}`}
+            />
+          )
+        }
         break
       case `color`:
         result.push(<ColorTile key={`color:${currentColor}`} />)
         currentColor++
         break
       case `tag`:
-        result.push(<TagTile key={`tag:${currentTag}`} />)
-        currentTag++
+        currentTag = tile.id.match(/:(.+)/)[1]
+        result.push(<TagTile tag={currentTag} key={`tag:${currentTag}`} />)
         break
     }
   }

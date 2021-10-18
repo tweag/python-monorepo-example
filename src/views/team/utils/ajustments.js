@@ -46,7 +46,7 @@ class VirtualGrid {
   }
 
   getNextVacantPosition(x = 0, y = -1) {
-    for (let column = y + 1; column < this.internalGrid[x].length; column++) {
+    for (let column = y + 1; column < this.limitColumns; column++) {
       if (!this.internalGrid[x][column]) {
         return { x, y: column }
       }
@@ -77,12 +77,8 @@ class VirtualGrid {
       if (!this.internalGrid[line]) {
         this.internalGrid[line] = []
       }
-      for (
-        let column = y;
-        column < column + width && column < this.limitColumns;
-        column++
-      ) {
-        if (this.internalGrid[line][column]) {
+      for (let column = y; column < y + width; column++) {
+        if (this.internalGrid[line][column] || column >= this.limitColumns) {
           return false
         }
       }
@@ -105,18 +101,22 @@ class VirtualGrid {
   }
 
   dumpOrder() {
-    let lastItem
+    const counted = []
     const result = []
 
     for (let line = 0; line < this.internalGrid.length; line++) {
       for (let column = 0; column < this.internalGrid[line].length; column++) {
-        if (!(this.internalGrid[line][column] === lastItem)) {
+        if (
+          !!this.internalGrid[line][column] &&
+          !counted.includes(this.internalGrid[line][column])
+        ) {
           result.push({
             type: this.internalGrid[line][column].match(/(\w+):/)[1],
             id: this.internalGrid[line][column],
-            x: line,
-            y: column,
+            x: line + 1,
+            y: column + 1,
           })
+          counted.push(this.internalGrid[line][column])
         }
       }
     }
@@ -139,7 +139,7 @@ class VirtualGrid {
  *  type: string,
  * }[]}
  */
-export function gridify(tiles, columns) {
+export function gridify(tiles, columns = 6) {
   const virtualGrid = new VirtualGrid(columns)
   for (const tile of tiles) {
     virtualGrid.addItem(tile)
