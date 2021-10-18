@@ -1,15 +1,18 @@
 /** @jsx jsx */
 import { jsx, Grid, Text } from "theme-ui"
+import loadable from "@loadable/component"
 
 import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
-import MagicGrid from "./components/magic-grid"
+// import MagicGrid from "./components/magic-grid"
 import { parsePhotos, parseProfiles } from "./utils/query"
 import { spawnTiles } from "./components/tileset"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
+
+const MagicGrid = loadable(() => import(`./components/magic-grid`))
 
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
 
