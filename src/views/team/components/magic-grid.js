@@ -76,44 +76,33 @@ const SearchBar = ({ placeholder, filterCallback }) => {
   )
 }
 
+const filterReducer = (state, action) => {
+  const result = { ...state }
+  const searchRegExp = new RegExp(action, `i`)
+
+  result.profiles = result.initialProfiles.filter(profile => {
+    const userTagMatches =
+      profile.tags.filter(tag => searchRegExp.test(tag)).length > 0
+    const nameMatches = searchRegExp.test(profile.name)
+    const roleMatches = searchRegExp.test(profile.role)
+
+    return userTagMatches || nameMatches || roleMatches
+  })
+
+  result.tags = result.initialTags.filter(tag => searchRegExp.test(tag))
+  console.log(`Initial Tags: ${JSON.stringify(result.initialTags)}`)
+  console.log(`Received filter: ${action}`)
+  console.log(`Filtered tags: ${JSON.stringify(result.tags)}`)
+  return result
+}
+
 const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
-  /**
-   * @param {{
-   *  profiles: {
-   *    name: string,
-   *    tags: [],
-   *    role: string,
-   *  }[],
-   *  tags: string[]
-   * }} state
-   * @param {string} action - string introduced in search
-   * @returns {{
-   *  profiles: {
-   *    name: string,
-   *    tags: [],
-   *    role: string,
-   *  }[],
-   *  tags: string[]
-   * }}
-   */
-  function filterReducer(state, action) {
-    const result = { profiles, tags }
-    const searchRegExp = new RegExp(action, `i`)
-
-    result.profiles = result.profiles.filter(profile => {
-      const userTagMatches =
-        profile.tags.filter(tag => searchRegExp.test(tag)).length > 0
-      const nameMatches = searchRegExp.test(profile.name)
-      const roleMatches = searchRegExp.test(profile.role)
-
-      return userTagMatches || nameMatches || roleMatches
-    })
-
-    result.tags = result.tags.filter(tag => searchRegExp.test(tag))
-    return result
-  }
-
-  const [toRender, filter] = useReducer(filterReducer, { profiles, tags })
+  const [toRender, filter] = useReducer(filterReducer, {
+    profiles,
+    tags,
+    initialProfiles: [...profiles],
+    initialTags: [...tags],
+  })
   const filterHandler = event => {
     const filterString = event.target.value
     filter(filterString)

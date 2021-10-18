@@ -74,7 +74,6 @@ export function spawnTiles(people, photos, tags) {
 
   // Step 5: Run gridify to allocate each file according to its size
   const gridifiedTiles = gridify(toGridify)
-  console.log(JSON.stringify(gridifiedTiles, null, 2))
 
   // Step 6: Add Big profiles to result
   let personToGenerateTile
@@ -85,7 +84,6 @@ export function spawnTiles(people, photos, tags) {
   for (const tile of gridifiedTiles) {
     if (tile.type === `bigProfile`) {
       personSlug = tile.id.match(/:(.+)/)[1]
-      console.log(`person slug: ${personSlug}`)
       personToGenerateTile = validProfiles.find(
         person => person.slug === personSlug
       )
