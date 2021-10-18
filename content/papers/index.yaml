@@ -121,7 +121,7 @@ papers:
       - ghc
       - inference
       - dependent types
-    date: "2022"
+    date: 2020-01
     abstract: >
       In recent years, languages like Haskell have seen a dramatic surge of new
       features that significantly extends the expressive power of their type
