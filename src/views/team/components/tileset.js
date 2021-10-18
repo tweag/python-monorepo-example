@@ -28,7 +28,7 @@ export function spawnTiles(people, photos, tags) {
 
   // Step 3: Randomly distribute tiles
   const tiles = allocateTiles({
-    color: 20,
+    color: smallProfiles + bigProfiles + tags.length,
     profile: smallProfiles,
     bigProfile: bigProfiles,
     tag: tags.length,
