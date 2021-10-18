@@ -1,69 +1,422 @@
 tweagers:
-  - Researcher1
-  - Researcher2
-  - Researcher3
-  - Researcher4
+  - Georgios Karachalias
+  - Richard A. Eisenberg
+  - Guillaume Duboc
+  - Arnaud Spiwack
+  - Jean-Philippe Bernardy
+  - Mathieu Boespflug
+  - Gert-Jan Bottu
+  - Yves Parès
+  - Teodoro Freund
+  - Yann Hamdaoui
 papers:
-  - title: Article1
-    status: Under review
-    authors:
-      - Researcher1
-      - Sus Guy
-      - Researcher3
+  - title: Efficient Compilation of Algebraic Effect Handlers
+    status: OOPSLA 2021
     links:
-      - ["pdf", "article1.pdf"]
-      - ["link1", "#link1"]
-      - ["link2", "#link2"]
-    date: 2020
+      - - Link
+        - https://doi.org/10.1145/3485479
+      - - Zenodo
+        - https://zenodo.org/record/5497862
     tags:
-      - test article
-      - Odd article
-      - Specific to Article1
-    abstract: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
-  - title: Article2
+      - algebraic effect handlers
+      - optimising compilation
+      - ocaml
+    date: 2021-10
+    abstract: >
+      The popularity of algebraic effect handlers as a programming language
+      feature for user-defined computational effects is steadily growing. Yet,
+      even though efficient runtime representations have already been studied,
+      most handler-based programs are still much slower than hand-written code.
+
+      This paper shows that the performance gap can be drastically narrowed (in some cases even closed) by means of type-and-effect directed optimising compilation. Our approach consists of source-to-source transformations in two phases of the compilation pipeline. Firstly, elementary rewrites, aided by judicious function specialisation, exploit the explicit type and effect information of the compiler's core language to aggressively reduce handler applications. Secondly, after erasing the effect information further rewrites in the backend of the compiler emit tight code.
+
+      This work comes with a practical implementation: an optimising compiler from Eff, an ML style language with algebraic effect handlers, to OCaml. Experimental evaluation with this implementation demonstrates that in a number of benchmarks, our approach eliminates much of the overhead of handlers, outperforms capability-passing style compilation and yields competitive performance compared to hand-written OCaml code as well Multicore OCaml's dedicated runtime support.
+    authors:
+      - Georgios Karachalias
+      - Filip Koprivec
+      - Matija Pretnar
+      - Tom Schrijvers
+  - title: "An Existential Crisis Resolved: Type inference for first-class
+      existential types"
+    status: ICFP 2021 (Distinguished Paper)
+    links:
+      - - Link
+        - https://doi.org/10.1145/3473569
+    tags:
+      - haskell
+      - ghc
+      - inference
+      - dependent types
+    date: 2021-08
+    abstract: >
+      Despite the great success of inferring and programming with universal
+      types, their dual—existential types—are much harder to work with.
+      Existential types are useful in building abstract types, working with
+      indexed types, and providing first-class support for refinement types.
+      This paper, set in the context of Haskell, presents a bidirectional
+      type-inference algorithm that infers where to introduce and eliminate
+      existentials without any annotations in terms, along with an explicitly
+      typed, type-safe core language usable as a compilation target. This
+      approach is backward compatible. The key ingredient is to use strong
+      existentials, which support (lazily) projecting out the encapsulated data,
+      not weak existentials accessible only by pattern-matching.
+    authors:
+      - Richard A. Eisenberg
+      - Guillaume Duboc
+      - Stephanie Weirich
+      - Daniel Lee
+  - title: A Graded Dependent Type System with a Usage-Aware Semantics
+    status: POPL 2021
+    links:
+      - - Link
+        - https://doi.org/10.1145/3434331
+      - - Arxiv
+        - https://arxiv.org/abs/2011.04070
+    tags:
+      - haskell
+      - ghc
+      - dependent types
+      - linear types
+    date: 2021-01
+    abstract: >
+      Graded Type Theory provides a mechanism to track and reason about resource
+      usage in type systems. In this paper, we develop GraD, a novel version of
+      such a graded dependent type system that includes functions, tensor
+      products, additive sums, and a unit type. Since standard operational
+      semantics is resource-agnostic, we develop a heap-based operational
+      semantics and prove a soundness theorem that shows correct accounting of
+      resource usage. Several useful properties, including the standard type
+      soundness theorem, non-interference of irrelevant resources in computation
+      and single pointer property for linear resources, can be derived from this
+      theorem. We hope that our work will provide a base for integrating
+      linearity, irrelevance and dependent types in practical programming
+      languages like Haskell.
+    authors:
+      - Pritam Choudhury
+      - Harley Eades III
+      - Richard A. Eisenberg
+      - Stephanie Weirich
+  - title: Provably Correct, Asymptotically Efficient, Higher-Order Reverse-Mode
+      Automatic Differentiation
+    status: conditionally accepted at POPL 2022
+    links: null
+    tags:
+      - haskell
+    date: 2022-01
+    abstract: >
+      In this paper, we give a simple and efficient implementation of
+      reverse-mode automatic differentiation, which both extends easily to
+      higher-order functions, and has run time and memory consumption linear in
+      the run time of the original program. In addition to a formal description
+      of the translation, we also describe an implementation of this algorithm,
+      and prove its correctness by means of a logical relations argument.
+    authors:
+      - Faustyna Krawiec
+      - Neel Krishnaswami
+      - Simon Peyton-Jones
+      - Tom Ellis
+      - Andrew Fitzgibbon
+      - Richard A. Eisenberg
+  - title: Kind Inference for Datatypes
+    status: POPL 2020 (Distinguished Paper)
+    links:
+      - - Link
+        - https://doi.org/10.1145/3371121
+    tags:
+      - haskell
+      - ghc
+      - inference
+      - dependent types
+    date: "2022"
+    abstract: >
+      In recent years, languages like Haskell have seen a dramatic surge of new
+      features that significantly extends the expressive power of their type
+      systems. With these features, the challenge of kind inference for datatype
+      declarations has presented itself and become a worthy research problem on
+      its own. This paper studies kind inference for datatypes. Inspired by
+      previous research on type-inference, we offer declarative specifications
+      for what datatype declarations should be accepted, both for Haskell98 and
+      for a more advanced system we call PolyKinds, based on the extensions in
+      modern Haskell, including a limited form of dependent types. We believe
+      these formulations to be novel and without precedent, even for Haskell98.
+      These specifications are complemented with implementable algorithmic
+      versions. We study soundness, completeness and the existence of principal
+      kinds in these systems, proving the properties where they hold. This work
+      can serve as a guide both to language designers who wish to formalize
+      their datatype declarations and also to implementors keen to have
+      principled inference of principal types.
+    authors:
+      - Ningning Xie
+      - Richard A. Eisenberg
+      - Bruno C. d. S. Oliveira
+  - title: Kinds are Calling Conventions
+    status: ICFP 2020
+    links:
+      - - Link
+        - https://doi.org/10.1145/3408986
+    tags:
+      - haskell
+      - unboxed types
+    date: 2020-08
+    abstract: >
+      A language supporting polymorphism is a boon to programmers: they can
+      express complex ideas once and reuse functions in a variety of situations.
+      However, polymorphism is pain for compilers tasked with producing
+      efficient code that manipulates concrete values.
+
+      This paper presents a new intermediate language that allows for efficient static compilation, while still supporting flexible polymorphism. Specifically, it permits polymorphism over not only the types of values, but also the representation of values, the arity of primitive machine functions, and the evaluation order of arguments---all three of which are useful in practice. The key insight is to encode information about a value's calling convention in the kind of its type, rather than in the type itself.
+    authors:
+      - Paul Downen
+      - Zena M. Ariola
+      - Simon Peyton Jones
+      - Richard A. Eisenberg
+  - title: Linear Constraints
+    status: Submitted
+    links:
+      - - Arxiv
+        - https://arxiv.org/abs/2103.06127
+    tags:
+      - haskell
+      - linear types
+      - ghc
+      - inference
+    date: "2022"
+    abstract: >
+      A linear parameter must be consumed exactly once in the body of its
+      function. When declaring resources such as file handles and manually
+      managed memory as linear arguments, a linear type system can verify that
+      these resources are used safely. However, writing code with explicit
+      linear arguments requires bureaucracy. This paper presents linear
+      constraints, a front-end feature for linear typing that decreases the
+      bureaucracy of working with linear types. Linear constraints are implicit
+      linear arguments that are filled in automatically by the compiler. We
+      present linear constraints as a qualified type system, together with an
+      inference algorithm which extends GHC's existing constraint solver
+      algorithm. Soundness of linear constraints is ensured by the fact that
+      they desugar into Linear Haskell.
+    authors:
+      - Arnaud Spiwack
+      - Csongor Kiss
+      - Jean-Philippe Bernardy
+      - Nicolas Wu
+      - Richard A. Eisenberg
+  - title: "Linear Haskell: practical linearity in a higher-order polymorphic
+      language"
     status: Published
-    authors:
-      - Researcher2
-      - Super Sus Guy
-      - Researcher4
     links:
-      - ["pdf", "article2.pdf"]
-      - ["link1", "#link1"]
-      - ["link2", "#link2"]
-    date: 2021
+      - - Link
+        - https://dl.acm.org/doi/abs/10.1145/3158093
+      - - Arxiv
+        - https://arxiv.org/abs/1710.09756
     tags:
-      - test article
-      - even article
-      - Specific to Article2
-    abstract: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
-  - title: Article3
-    status: Under review
+      - haskell
+      - linear types
+      - ghc
+    date: 2018-01
+    abstract: >
+      Linear type systems have a long and storied history, but not a clear path
+      forward to integrate with existing languages such as OCaml or Haskell. In
+      this paper, we study a linear type system designed with two crucial
+      properties in mind: backwards-compatibility and code reuse across linear
+      and non-linear users of a library. Only then can the benefits of linear
+      types permeate conventional functional programming. Rather than bifurcate
+      types into linear and non-linear counterparts, we instead attach linearity
+      to function arrows. Linear functions can receive inputs from
+      linearly-bound values, but can also operate over unrestricted, regular
+      values.
+
+      To demonstrate the efficacy of our linear type system - both how easy it can be integrated in an existing language implementation and how streamlined it makes it to write programs with linear types - we implemented our type system in GHC, the leading Haskell compiler, and demonstrate two kinds of applications of linear types: mutable data with pure interfaces; and enforcing protocols in I/O-performing functions.
     authors:
-      - Researcher1
-      - Mega Sus Guy
-      - Researcher3
+      - Jean-Philippe Bernardy
+      - Mathieu Boespflug
+      - Ryan R. Newton
+      - Simon Peyton Jones
+      - Arnaud Spiwack
+  - title: Evaluating Linear Functions to Symmetric Monoidal Categories
+    status: Published
     links:
-      - ["link1", "#link1"]
-      - ["link2", "#link2"]
-    date: 2020
+      - - Link
+        - https://dl.acm.org/doi/10.1145/3471874.3472980
+      - - Arxiv
+        - https://arxiv.org/abs/2103.06195
     tags:
-      - test article
-      - Odd article
-      - Specific to Article3
-    abstract: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
-  - title: Article4
+      - haskell
+      - linear types
+      - symmetric monoidal categories
+    date: 2021-08
+    abstract: >
+      A number of domain specific languages, such as circuits or data-science
+      workflows, are best expressed as diagrams of boxes connected by wires.
+      Unfortunately, functional languages have traditionally been ill-equipped
+      to embed this sort of languages. The Arrow abstraction is an
+      approximation, but we argue that it does not capture the right properties.
+
+      A faithful abstraction is Symmetric Monoidal Categories (SMCs), but,so far,it hasn't been convenient to use. We show how the advent of linear typing in Haskell lets us bridge this gap. We provide a library which lets us program in SMCs with linear functions instead of SMC combinators. This considerably lowers the syntactic overhead of the EDSL to be on par with that of monadic DSLs. A remarkable feature of our library is that, contrary to previously known methods for categories, it does not use any metaprogramming.
     authors:
-      - Researcher2
-      - Ultra Sus Guy
-      - Researcher4
-    status: Under review
-    date: 2021
+      - Jean-Philippe Bernardy
+      - Arnaud Spiwack
+  - title: Partial Type Constructors; Or, Making ad hoc datatypes less ad hoc
+    status: POPL 2020
+    links:
+      - - Link
+        - https://doi.org/10.1145/3371108
     tags:
-      - test article
-      - even article
-      - Specific to Article1
-    abstract: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum a arcu cursus vitae congue mauris. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Morbi tristique senectus et netus et malesuada fames ac. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Netus et malesuada fames ac turpis egestas. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Donec pretium vulputate sapien nec sagittis. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. Gravida in fermentum et sollicitudin ac. Tincidunt arcu non sodales neque sodales ut etiam.
+      - haskell
+      - dependent types
+    date: 2021-01
+    abstract: >
+      Functional programming languages assume that type constructors are total.
+      Yet functional programmers know better: counterexamples range from
+      container types that make limiting assumptions about their contents (e.g.,
+      requiring computable equality or ordering functions) to type families with
+      defining equations only over certain choices of arguments. We present a
+      language design and formal theory of partial type constructors, capturing
+      the domains of type constructors using qualified types. Our design is both
+      simple and expressive: we support partial datatypes as first-class
+      citizens (including as instances of parametric abstractions, such as the
+      Haskell Functor and Monad classes), and show a simple type elaboration
+      algorithm that avoids placing undue annotation burden on programmers. We
+      show that our type system rejects ill-defined types and can be compiled to
+      a semantic model based on System F. Finally, we have conducted an
+      experimental analysis of a body of Haskell code, using a proof-of-concept
+      implementation of our system; while there are cases where our system
+      requires additional annotations, these cases are rarely encountered in
+      practical Haskell code.
+    authors:
+      - Mark P. Jones
+      - J. Garrett Morris
+      - Richard A. Eisenberg
+  - title: Resolution as Intersection Subtyping via Modus Ponens
+    status: OOPSLA 2020
+    links:
+      - - Link
+        - https://doi.org/10.1145/3428274
+      - - Arxiv
+        - https://arxiv.org/abs/2010.06216
+      - - Zenodo
+        - https://zenodo.org/record/4043646
+    tags:
+      - coherence
+      - modus ponens
+      - family polymorphism
+      - resolution
+      - nested composition
+      - intersection types
+    date: 2020-11
+    abstract: >
+      Resolution and subtyping are two common mechanisms in programming
+      languages. Resolution is used by features such as type classes or
+      Scala-style implicits to synthesize values automatically from contextual
+      type information. Subtyping is commonly used to automatically convert the
+      type of a value into another compatible type. So far the two mechanisms
+      have been considered independently of each other. This paper shows that,
+      with a small extension, subtyping with intersection types can subsume
+      resolution. This has three main consequences. Firstly, resolution does not
+      need to be implemented as a separate mechanism. Secondly, the interaction
+      between resolution and subtyping becomes apparent. Finally, the
+      integration of resolution into subtyping enables first-class (implicit)
+      environments. The extension that recovers the power of resolution via
+      subtyping is the modus ponens rule of propositional logic. While it is
+      easily added to declarative subtyping, significant care needs to be taken
+      to retain desirable properties, such as transitivity and decidability of
+      algorithmic subtyping, and coherence. To materialize these ideas we
+      develop \lambda_i^{MP}, a calculus that extends a previous calculus with
+      disjoint intersection types, and develop its metatheory in the Coq theorem
+      prover.
+    authors:
+      - Koar Marntirosian
+      - Tom Schrijvers
+      - Bruno C. d. S. Oliveira
+      - Georgios Karachalias
+  - title: "Seeking Stability by being Lazy and Shallow: Lazy and shallow
+      instantiation is user friendly"
+    status: Haskell Symposium 2021
+    links:
+      - - Link
+        - https://doi.org/10.1145/3471874.3472985
+    tags:
+      - haskell
+      - ghc
+      - inference
+    date: 2021-08
+    abstract: >
+      Designing a language feature often requires a choice between several,
+      similarly expressive possibilities. Given that user studies are generally
+      impractical, we propose using stability as a way of making such decisions.
+      Stability is a measure of whether the meaning of a program alters under
+      small, seemingly innocuous changes in the code (e.g., inlining).
+
+      Directly motivated by a need to pin down a feature in GHC/Haskell, we apply this notion of stability to analyse four approaches to the instantiation of polymorphic types, concluding that the most stable approach is lazy (instantiate a polytype only when absolutely necessary) and shallow (instantiate only top-level type variables, not variables that appear after explicit arguments).
+    authors:
+      - Gert-Jan Bottu
+      - Richard A. Eisenberg
+  - title: "Stitch: The Sound Type-Indexed Type Checker, a Functional Pearl"
+    status: Haskell Symposium 2020
+    links:
+      - - Link
+        - https://doi.org/10.1145/3406088.3409015
+    tags:
+      - haskell
+      - ghc
+      - dependent types
+    date: 2020-08
+    abstract: >
+      A classic example of the power of generalized algebraic datatypes (GADTs)
+      to verify a delicate implementation is the type-indexed expression AST.
+      This functional pearl refreshes this example, casting it in modern Haskell
+      using many of GHC's bells and whistles. The Stitch interpreter is a full
+      executable interpreter, with a parser, type checker, common-subexpression
+      elimination, and a REPL. Making heavy use of GADTs and type indices, the
+      Stitch implementation is clean Haskell code and serves as an existence
+      proof that Haskell's type system is advanced enough for the use of fancy
+      types in a practical setting. The paper focuses on guiding the reader
+      through these advanced topics, enabling them to adopt the techniques
+      demonstrated here.
+    authors:
+      - Richard A. Eisenberg
+  - title: Composing Effects into Tasks and Workflows
+    status: Haskell Symposium 2020
+    links:
+      - - Link
+        - https://doi.org/10.1145/3406088.3409023
+    tags:
+      - haskell
+      - ghc
+      - data science
+    date: 2020-08
+    abstract: >
+      Data science applications tend to be built by composing tasks: discrete
+      manipulations of data. These tasks are arranged in directed acyclic
+      graphs, and many frameworks exist within the data science community
+      supporting such a structure, which is called a workflow. In realistic
+      applications, we want to be able to both analyze a workflow in the absence
+      of data, and to execute the workflow with data.
+
+      This paper combines effect handlers with arrow-like structures to abstract out data science tasks. This combination of techniques enables a modular design of workflows. Additionally, these workflows can both be analyzed prior to running (e.g., to provide early failure) and run conveniently. Our work is directly motivated by real-world scenarios, and we believe that our approach is applicable to new data science and machine learning applications and frameworks.
+    authors:
+      - Yves Parès
+      - Jean-Philippe Bernardy
+      - Richard A. Eisenberg
+  - title: Union and intersection contracts are hard, actually
+    status: To be published
+    links:
+      - - Arxiv
+        - https://arxiv.org/abs/2106.06278
+    tags:
+      - nickel
+      - contracts
+      - union
+      - intersection
+      - gradual typing
+    date: 2021-10
+    abstract: >
+      Union and intersection types are a staple of gradually typed language such
+      as TypeScript. While it's long been recognized that union and intersection
+      types are difficult to verify statically, it may appear at first that the
+      dynamic part of gradual typing is actually pretty simple.
+
+      It turns out however, that in presence of higher-order contracts union and intersection are deceptively difficult. The literature on higher-order contracts with union and intersection, while keenly aware of the fact, doesn't really explain why. We point and illustrate the problems and trade-offs inherent to union and intersection contracts, via example and a survey of the literature.
+    authors:
+      - Teodoro Freund
+      - Yann Hamdaoui
+      - Arnaud Spiwack
