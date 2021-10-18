@@ -7,7 +7,6 @@ import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
 // import MagicGrid from "./components/magic-grid"
 import { parsePhotos, parseProfiles } from "./utils/query"
-import { spawnTiles } from "./components/tileset"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
@@ -15,8 +14,6 @@ import styles from "./styles/team.module.css"
 const MagicGrid = loadable(() => import(`./components/magic-grid`))
 
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
-
-const magicGridColumns = 6 // Don't use values below 3
 
 const IntroductionSection = () => {
   return (
@@ -51,6 +48,9 @@ const IntroductionSection = () => {
 const Team = ({ data }) => {
   const photos = parsePhotos(data)
   const profiles = parseProfiles(data)
+  const tags = [`haskell`, `Nix`, `Rust`]
+
+  const magicGridProps = { profiles, photos, tags, columns: 6 }
   return (
     <Layout>
       <SEO title="Team" pathname="/team" />
@@ -85,9 +85,7 @@ const Team = ({ data }) => {
           <IntroductionSection />
           {/* Content Goes Here */}
         </Grid>
-        <MagicGrid columns={magicGridColumns}>
-          {spawnTiles(profiles, photos, [`haskell`, `Nix`, `Rust`])}
-        </MagicGrid>
+        <MagicGrid {...magicGridProps} />
       </div>
     </Layout>
   )

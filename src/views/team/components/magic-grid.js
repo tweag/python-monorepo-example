@@ -1,5 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { useState, useReducer } from "react"
+
+import { spawnTiles } from "./tileset"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -46,15 +49,21 @@ function shuffleButtonAnimationHandler(event) {
   )
 }
 
-const ShuffleButton = () => {
+const ShuffleButton = ({ onClick }) => {
+  const clickEventHandler = event => {
+    if (onClick) {
+      onClick(event)
+    }
+    shuffleButtonAnimationHandler(event)
+  }
   return (
-    <a className={styles.shuffleButton} onClick={shuffleButtonAnimationHandler}>
+    <a className={styles.shuffleButton} onClick={clickEventHandler}>
       Roll again
     </a>
   )
 }
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({ placeholder, filterCallback }) => {
   return (
     <input
       name="search"
@@ -62,11 +71,56 @@ const SearchBar = ({ placeholder }) => {
       type="text"
       className={styles.searchBar}
       placeholder={placeholder}
+      onInput={filterCallback}
     />
   )
 }
 
-const MagicGrid = ({ children, gap, margin, columns }) => {
+const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
+  /**
+   * @param {{
+   *  profiles: {
+   *    name: string,
+   *    tags: [],
+   *    role: string,
+   *  }[],
+   *  tags: string[]
+   * }} state
+   * @param {string} action - string introduced in search
+   * @returns {{
+   *  profiles: {
+   *    name: string,
+   *    tags: [],
+   *    role: string,
+   *  }[],
+   *  tags: string[]
+   * }}
+   */
+  function filterReducer(state, action) {
+    const result = { profiles, tags }
+    const searchRegExp = new RegExp(action, `i`)
+
+    result.profiles = result.profiles.filter(profile => {
+      const userTagMatches =
+        profile.tags.filter(tag => searchRegExp.test(tag)).length > 0
+      const nameMatches = searchRegExp.test(profile.name)
+      const roleMatches = searchRegExp.test(profile.role)
+
+      return userTagMatches || nameMatches || roleMatches
+    })
+
+    result.tags = result.tags.filter(tag => searchRegExp.test(tag))
+    return result
+  }
+
+  const [toRender, filter] = useReducer(filterReducer, { profiles, tags })
+  const filterHandler = event => {
+    const filterString = event.target.value
+    filter(filterString)
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  const [shuffleState, reShuffle] = useState({})
   const sizingVariables = parseCssVariables({ gap, margin, columns })
   return (
     <div className={styles.magicGridContainer}>
@@ -77,11 +131,14 @@ const MagicGrid = ({ children, gap, margin, columns }) => {
           pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
         }}
       >
-        <SearchBar placeholder={`Search for a name or a skill`} />
-        <ShuffleButton />
+        <SearchBar
+          placeholder={`Search for a name or a skill`}
+          filterCallback={filterHandler}
+        />
+        <ShuffleButton onClick={() => reShuffle({})} />
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
-        {children}
+        {spawnTiles(toRender.profiles, photos, toRender.tags)}
       </div>
     </div>
   )
