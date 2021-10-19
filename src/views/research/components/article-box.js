@@ -130,8 +130,12 @@ const ArticleBox = ({ articles, tags }) => {
   useFirstArticleToggler(mainRef)
 
   const articlesByYear = Object.entries(
-    classifyArray(state.articles, article => String(article.date.getFullYear()))
+    classifyArray(state.articles, article =>
+      String(article.date.getUTCFullYear())
+    )
   )
+
+  console.log(JSON.stringify(articlesByYear, null, 2))
 
   articlesByYear.sort(
     ([year1], [year2]) => (Number(year1) - Number(year2)) * -1
