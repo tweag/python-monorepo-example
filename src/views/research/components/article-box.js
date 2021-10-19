@@ -135,8 +135,6 @@ const ArticleBox = ({ articles, tags }) => {
     )
   )
 
-  console.log(JSON.stringify(articlesByYear, null, 2))
-
   articlesByYear.sort(
     ([year1], [year2]) => (Number(year1) - Number(year2)) * -1
   )
