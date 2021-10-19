@@ -212,8 +212,13 @@ export const TagTile = ({
     generateTagFilterEventIssuer(!state ? tag : ``)(event)
     setState(!state)
   }
+  const filter = filterString => {
+    const filterRegExp = new RegExp(filterString, `i`)
+    return filterRegExp.test(tag)
+  }
+  const show = useFilteredMode(filter)
 
-  return (
+  return show ? (
     <div
       className={[
         styles.tile,
@@ -230,5 +235,7 @@ export const TagTile = ({
     >
       {tag}
     </div>
+  ) : (
+    <ColorTile key={key} start={start} width={width} height={height} />
   )
 }
