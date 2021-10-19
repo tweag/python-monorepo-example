@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 import { useState } from "react"
 
+import { useFilteredMode } from "../hooks/tiles-hooks"
 import styles from "../styles/tiles.module.css"
 
 const TILE_COLORS = [`#005642`, `#30C179`, `#FBCEB4`, `#FFFFFF`]
@@ -26,6 +27,21 @@ function parsePositionalStyles(start, width, height) {
     result[`--end-column`] = start.y + width
     result[`--start-row`] = start.x
     result[`--end-row`] = start.x + height
+  }
+
+  return result
+}
+
+/**
+ * @param {string[]} tags
+ * @param {RegExp} filterRegExp
+ * @returns {boolean}
+ */
+function testTags(tags, filterRegExp) {
+  let result = false
+
+  for (const tag of tags) {
+    result = result || filterRegExp.test(tag)
   }
 
   return result
@@ -135,8 +151,18 @@ export const ProfileTile = ({
   key,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
+  const filter = filterString => {
+    const filterRegExp = new RegExp(filterString, `i`)
+    const nameCompatible = filterRegExp.test(person.name)
+    const roleCompatible = filterRegExp.test(person.role)
+    const tagCompatible = testTags(person.tags, filterRegExp)
 
-  return (
+    return nameCompatible || roleCompatible || tagCompatible
+  }
+
+  const show = useFilteredMode(filter)
+
+  return show ? (
     <div
       className={[
         styles.tile,
@@ -157,6 +183,8 @@ export const ProfileTile = ({
       />
       <div className={styles.profileName}>{person.name}</div>
     </div>
+  ) : (
+    <ColorTile key={key} start={start} width={width} height={height} />
   )
 }
 

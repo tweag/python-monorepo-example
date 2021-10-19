@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useReducer, useRef } from "react"
-import {
-  useFilterEventWatcher,
-  useResponsiveCallbacks,
-} from "../hooks/magic-grid-hooks"
+import { useState, useReducer } from "react"
+import { useResponsiveCallbacks } from "../hooks/magic-grid-hooks"
+import ShuffleButton from "./shuffle-button"
+import SearchBar from "./search-bar"
 
 import { spawnTiles } from "./tileset"
 
@@ -40,46 +39,6 @@ function parseCssVariables({ gap, margin, columns }) {
   return result
 }
 
-/**
- * @param {MouseEvent} event
- */
-function shuffleButtonAnimationHandler(event) {
-  const button = event.target
-  button.classList.add(styles.rotateShuffleButton)
-  button.addEventListener(
-    `animationend`,
-    () => button.classList.remove(styles.rotateShuffleButton),
-    { once: true }
-  )
-}
-
-const ShuffleButton = ({ onClick }) => {
-  const clickEventHandler = event => {
-    if (onClick) {
-      onClick(event)
-    }
-    shuffleButtonAnimationHandler(event)
-  }
-  return (
-    <a className={styles.shuffleButton} onClick={clickEventHandler}>
-      Roll again
-    </a>
-  )
-}
-
-const SearchBar = ({ placeholder, filterCallback }) => {
-  return (
-    <input
-      name="search"
-      id="searchFilter"
-      type="text"
-      className={styles.searchBar}
-      placeholder={placeholder}
-      onInput={filterCallback}
-    />
-  )
-}
-
 const filterReducer = (state, action) => {
   const result = { ...state }
   const searchRegExp = new RegExp(action, `i`)
@@ -108,14 +67,10 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
     initialProfiles: [...profiles],
     initialTags: [...tags],
   })
-  const filterHandler = event => {
-    const filterString = event.target.value
-    filter(filterString)
-  }
 
   // Setting up filter event handler
-  const mainRef = useRef()
-  useFilterEventWatcher(mainRef, filter)
+  // const mainRef = useRef()
+  // useFilterEventWatcher(mainRef, filter)
 
   // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
@@ -186,7 +141,7 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
     columns: renderParameters.columns,
   })
   return (
-    <div className={styles.magicGridContainer} ref={mainRef}>
+    <div className={styles.magicGridContainer}>
       <div
         className={styles.actionBar}
         sx={{
@@ -194,10 +149,7 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
           pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
         }}
       >
-        <SearchBar
-          placeholder={`Search for a name or a skill`}
-          filterCallback={filterHandler}
-        />
+        <SearchBar placeholder={`Search for a name or a skill`} />
         <ShuffleButton onClick={() => reShuffle({})} />
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
