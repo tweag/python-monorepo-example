@@ -61,6 +61,7 @@ const filterReducer = (state, action) => {
 
 const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
   // Setting up the filter
+  // eslint-disable-next-line no-unused-vars
   const [toRender, filter] = useReducer(filterReducer, {
     profiles,
     tags,
