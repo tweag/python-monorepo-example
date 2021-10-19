@@ -1,0 +1,86 @@
+slug: guillaume.maudoux
+name: Guillaume Maudoux
+github: layus
+
+bio: |
+  Guillaume has a background in computer science, engineering and applied mathematics.
+  Concerning software systems, his main concern is correctness, reliability, and trustworthiness.
+  He is passionate about understanding complex systems and untangling intricate issues.
+
+  In academia, Guillaume built a solid knowledge of build systems and formal methods.
+  There, he also got fond of teaching and sharing ideas.
+
+  In his spare time, Guillaume likes to go cycling (while listening to eclectic podcasts)
+  and playing indie video games (like factorio, the ultimate build system).
+
+skills:
+  - Build systems expertise
+  - Complexity management
+  - Teaching
+
+speaks:
+  - French
+  - English
+  - Dutch (written)
+
+experience:
+  - employer: Tweag
+    role: Software Engineer, Developer Productivity
+    years: 2021 - present
+  - employer: UCLouvain
+    role: Teaching assistant
+    years: 2014 - 2021
+    description: Teaching and helping to teach a wide variety of CS and engineering courses.
+  - employer: Escaux
+    role: Developer
+    years: 2013 - 2014
+    description: Keep 2k+ realtime VoIP servers running, up-to-date, and tailored to the client needs.
+  - employer: Belgian Institute for Space Aeronomy
+    role: Intern
+    years: 2012
+    description: Deploy on-premises LTSP services for company thin clients.
+education:
+  - qualification: PhD Student
+    name: Engineering & Computer Science
+    institution: UCLouvain
+    years: 2017 - 2021
+    description: "Thesis theme: Build Systems & Continuous Integration"
+  - qualification: PhD Student
+    name: Engineering & Computer Science
+    institution: UCLouvain
+    years: 2014 - 2016
+    description: "Thesis theme: Formal Methods for Human Machine Interaction Analysis"
+  - qualification: Master
+    name: Engineering
+    institution: UCLouvain
+    years: 2008 - 2013
+    description: Majors in computer science and applied mathematics
+publications:
+  - >-
+    G. Maudoux.
+    "Reproducibility killed the frankenbuild", "A Tour of the Build Systems Galaxy", "Am I a build system ?", "How to Digest Nix Hashes ?", "Monads vs. Waterfalls", and "Nix overlays: the fixpoint and the (over)layer cake".
+    Available at https://blog.layus.be/. 2020-2021.
+  - >-
+    G. Maudoux, K. Mens.
+    Lessons and Pitfalls in Building Firefox with Tup.
+    In: Proceedings of the 12th Seminar on Advanced Techniques Tools for Software Evolution, CEUR Workshop Proceedings, Vol. 2510, 2019.
+  - >-
+    G. Maudoux.
+    Build outside of the (sand)box.
+    NixCon 2019.
+  - >-
+    G. Maudoux, K. Mens.
+    Correct, Efficient and Tailored: The Future of Build Systems.
+    In: IEEE Software, Vol. 35, p. 10, 2018.
+  - >-
+    G. Maudoux.
+    Incremental Package Builds.
+    NixCon 2017.
+  #- >-
+  #  G. Maudoux.
+  #  Bringing Incremental Builds to Continuous Integration.
+  #  Seminar Series on Advanced Techniques & Tools for Software Evolution, Madrid (Spain), 2017.
+  - >-
+    G. Maudoux, C. Pecheur, S. Combéfis.
+    Learning Safe Interactions and Full-Control.
+    In: Benjamin Weyers, Philippe Palanque, Judy Bowen et Alan Dix, Formal Methods in Human Computer Interactions, 2017.
