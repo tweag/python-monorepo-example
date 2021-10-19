@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useReducer } from "react"
+import { useState } from "react"
 import { useResponsiveCallbacks } from "../hooks/magic-grid-hooks"
 import ShuffleButton from "./shuffle-button"
 import SearchBar from "./search-bar"
@@ -39,40 +39,7 @@ function parseCssVariables({ gap, margin, columns }) {
   return result
 }
 
-const filterReducer = (state, action) => {
-  const result = { ...state }
-  const searchRegExp = new RegExp(action, `i`)
-
-  result.profiles = result.initialProfiles.filter(profile => {
-    const userTagMatches =
-      profile.tags.filter(tag => searchRegExp.test(tag)).length > 0
-    const nameMatches = searchRegExp.test(profile.name)
-    const roleMatches = searchRegExp.test(profile.role)
-
-    return userTagMatches || nameMatches || roleMatches
-  })
-
-  result.tags = result.initialTags.filter(tag => searchRegExp.test(tag))
-  console.log(`Initial Tags: ${JSON.stringify(result.initialTags)}`)
-  console.log(`Received filter: ${action}`)
-  console.log(`Filtered tags: ${JSON.stringify(result.tags)}`)
-  return result
-}
-
-const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
-  // Setting up the filter
-  // eslint-disable-next-line no-unused-vars
-  const [toRender, filter] = useReducer(filterReducer, {
-    profiles,
-    tags,
-    initialProfiles: [...profiles],
-    initialTags: [...tags],
-  })
-
-  // Setting up filter event handler
-  // const mainRef = useRef()
-  // useFilterEventWatcher(mainRef, filter)
-
+const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
   const [shuffleState, reShuffle] = useState({})
@@ -155,9 +122,8 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
         {spawnTiles({
-          // toRender.profiles, photos, toRender.tags
-          people: toRender.profiles,
-          tags: toRender.tags,
+          people: profiles,
+          tags: tags,
           columns: renderParameters.columns,
           arbitraryAllocations: {
             color: renderParameters.color,

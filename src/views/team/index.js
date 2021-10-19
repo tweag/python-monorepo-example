@@ -50,7 +50,7 @@ const Team = ({ data }) => {
   const profiles = parseProfiles(data)
   const tags = [`haskell`, `Nix`, `Rust`]
 
-  const magicGridProps = { profiles, photos, tags, columns: 6 }
+  const magicGridProps = { profiles, photos, tags }
   return (
     <Layout>
       <SEO title="Team" pathname="/team" />
