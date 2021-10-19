@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useState, useReducer, useRef } from "react"
-import { useFilterEventWatcher } from "../hooks/magic-grid-hooks"
+import {
+  useFilterEventWatcher,
+  useResponsiveCallbacks,
+} from "../hooks/magic-grid-hooks"
 
 import { spawnTiles } from "./tileset"
 
@@ -118,8 +121,70 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
   // eslint-disable-next-line no-unused-vars
   const [shuffleState, reShuffle] = useState({})
 
+  // Render parameters
+  const [renderParameters, setParameters] = useState({
+    color: Math.floor(profiles.length * 0.11),
+    blank: Math.floor(profiles.length * 0.41),
+    columns: 6,
+  })
+
+  useResponsiveCallbacks({
+    xs: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: 0,
+          columns: 3,
+        }),
+    ],
+    sm: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: 0,
+          columns: 3,
+        }),
+    ],
+    md: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    lg: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    xl: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    xxl: [
+      () =>
+        setParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+  })
+
   // Parsing some CSS variables
-  const sizingVariables = parseCssVariables({ gap, margin, columns })
+  const sizingVariables = parseCssVariables({
+    gap,
+    margin,
+    columns: renderParameters.columns,
+  })
   return (
     <div className={styles.magicGridContainer} ref={mainRef}>
       <div
@@ -136,7 +201,17 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
         <ShuffleButton onClick={() => reShuffle({})} />
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
-        {spawnTiles(toRender.profiles, photos, toRender.tags)}
+        {spawnTiles({
+          // toRender.profiles, photos, toRender.tags
+          people: toRender.profiles,
+          tags: toRender.tags,
+          columns: renderParameters.columns,
+          arbitraryAllocations: {
+            color: renderParameters.color,
+            blank: renderParameters.blank,
+          },
+          photos,
+        })}
       </div>
     </div>
   )

@@ -8,16 +8,29 @@ import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
 
 /**
  * @param {{
+ *  people: {
  *    name: string
  *    bio: string,
  *    role: string,
  *    tags: string[],
  *    slug: string
- *  }[]} people
- * @param {{[person: string]: string}} photos
- * @param {string[]} tags
+ *  }[];
+ *  photos: {[person: string]: string};
+ *  tags: string[];
+ *  columns: number;
+ *  arbitraryAllocations?: {
+ *    color?: number,
+ *    blank?: number,
+ *  };
+ * }} options
  */
-export function spawnTiles(people, photos, tags) {
+export function spawnTiles({
+  people,
+  photos,
+  tags,
+  columns,
+  arbitraryAllocations,
+}) {
   const result = []
 
   // Step 1: Extract valid profiles
@@ -30,16 +43,17 @@ export function spawnTiles(people, photos, tags) {
 
   // Step 3: Randomly distribute tiles
   const tileAllocation = {
-    color: bigProfiles + tags.length,
+    color: arbitraryAllocations?.color ?? bigProfiles + tags.length,
     profile: smallProfiles,
     bigProfile: bigProfiles,
     tag: tags.length,
-    blank: smallProfiles,
+    blank: arbitraryAllocations?.blank ?? smallProfiles,
   }
   const tiles = allocateTiles(tileAllocation)
 
   // Step 4: Add information about each tile size on the random distribution
   let personToAdd
+  const disposableTags = [...tags]
   const toGridify = tiles.map(({ tileType }, index) => {
     switch (tileType) {
       case `color`:
@@ -71,7 +85,7 @@ export function spawnTiles(people, photos, tags) {
           height: 1,
           width: 1,
           type: `tag`,
-          id: `tag:${tags.pop()}`,
+          id: `tag:${disposableTags.pop()}`,
         }
       case `blank`:
         return { height: 1, width: 1, type: `blank`, id: `blank:${index}` }
@@ -79,7 +93,7 @@ export function spawnTiles(people, photos, tags) {
   })
 
   // Step 5: Run gridify to allocate each file according to its size
-  const gridifiedTiles = gridify(toGridify)
+  const gridifiedTiles = gridify(toGridify, columns)
 
   // Step 6: Add Big profiles to result
   let personToGenerateTile
