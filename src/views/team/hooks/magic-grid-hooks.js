@@ -12,13 +12,12 @@ const BREAKPOINTS_RANGES = {
 
 /**
  * @param {MutableRefObject<HTMLElement>} mainRef
- * @param {(filterString: string) => void} filterCallback
+ * @param {Function} eventHandler
  */
-export function useFilterEventWatcher(mainRef, filterCallback) {
-  const onFilter = event => filterCallback(event.filterString)
+export function useBioEventWatcher(mainRef, eventHandler) {
   useEffect(() => {
-    mainRef.current.addEventListener(`filter`, onFilter)
-    return () => mainRef.current.removeEventListener(`filter`, onFilter)
+    mainRef.current.addEventListener(`bio`, eventHandler)
+    return () => mainRef.current.removeEventListener(`bio`, eventHandler)
   }, [])
 }
 

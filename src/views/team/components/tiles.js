@@ -1,36 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState } from "react"
+// eslint-disable-next-line no-unused-vars
+import { useState, MutableRefObject } from "react"
 
 import { useFilteredMode } from "../hooks/tiles-hooks"
+import { parsePositionalStyles } from "../utils/ajustments"
 import styles from "../styles/tiles.module.css"
 
 const TILE_COLORS = [`#005642`, `#30C179`, `#FBCEB4`, `#FFFFFF`]
 const ROUNDINGS = [``, styles.roundLeftCorner, styles.roundRightCorner]
-
-/**
- * @param {{x: number, y: number}} start
- * @param {number} height
- * @param {number} width
- * @returns {{
- *  "--start-column": number,
- *  "--end-column": number,
- *  "--start-row": number,
- *  "--end-row": number
- * } | {}}
- */
-function parsePositionalStyles(start, width, height) {
-  const result = {}
-
-  if (!!start && !!height && !!width) {
-    result[`--start-column`] = start.y
-    result[`--end-column`] = start.y + width
-    result[`--start-row`] = start.x
-    result[`--end-row`] = start.x + height
-  }
-
-  return result
-}
 
 /**
  * @param {string[]} tags
@@ -53,6 +31,35 @@ function generateTagFilterEventIssuer(tag) {
     const currentEvent = new Event(`filter`, { bubbles: true })
     currentEvent.filterString = tag
     eventSource.dispatchEvent(currentEvent)
+  }
+}
+
+/**
+ * @param {{
+ *  person: {
+ *    name: string
+ *    bio: string,
+ *    role: string,
+ *    tags: string[],
+ *    slug: string
+ *  },
+ *  rounding: 0 | 1 | 2,
+ *  start: {x: number, y: number},
+ *  height: number,
+ *  width: number,
+ * }} options
+ */
+function generateShowBioEventIssuer({
+  person,
+  start,
+  height,
+  width,
+  rounding,
+}) {
+  return event => {
+    const eventToFire = new Event(`bio`, { bubbles: true })
+    eventToFire.tileInfo = { person, start, height, width, rounding }
+    event.target.dispatchEvent(eventToFire)
   }
 }
 
@@ -150,7 +157,19 @@ export const ProfileTile = ({
   width,
   key,
 }) => {
+  // Invoke bio
+  const clickHandler = generateShowBioEventIssuer({
+    person,
+    rounding,
+    start,
+    height,
+    width,
+  })
+
+  // Positional styles
   const positionalStyles = parsePositionalStyles(start, width, height)
+
+  // Auto-filter stuff
   const filter = filterString => {
     const filterRegExp = new RegExp(filterString, `i`)
     const nameCompatible = filterRegExp.test(person.name)
@@ -174,6 +193,7 @@ export const ProfileTile = ({
         ...positionalStyles,
       }}
       key={key}
+      onClick={clickHandler}
     >
       <div
         className={styles.profilePhoto}

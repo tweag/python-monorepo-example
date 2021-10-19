@@ -1,0 +1,15 @@
+.roundTopLeftCorner {
+  border-top-left-radius: 40%;
+}
+
+.roundTopRightCorner {
+  border-top-right-radius: 40%;
+}
+
+.roundBottomLeftCorner {
+  border-bottom-left-radius: 40%;
+}
+
+.roundBottomRightCorner {
+  border-bottom-right-radius: 40%;
+}

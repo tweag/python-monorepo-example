@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState } from "react"
-import { useResponsiveCallbacks } from "../hooks/magic-grid-hooks"
+import { useState, useRef } from "react"
+import {
+  useResponsiveCallbacks,
+  useBioEventWatcher,
+} from "../hooks/magic-grid-hooks"
 import ShuffleButton from "./shuffle-button"
 import SearchBar from "./search-bar"
 
@@ -43,6 +46,12 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
   const [shuffleState, reShuffle] = useState({})
+
+  // Bio Event
+  const mainRef = useRef()
+  useBioEventWatcher(mainRef, event =>
+    console.log(JSON.stringify(event.tileInfo, null, 2))
+  )
 
   // Render parameters
   const [renderParameters, setParameters] = useState({
@@ -109,7 +118,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     columns: renderParameters.columns,
   })
   return (
-    <div className={styles.magicGridContainer}>
+    <div className={styles.magicGridContainer} ref={mainRef}>
       <div
         className={styles.actionBar}
         sx={{

@@ -146,3 +146,27 @@ export function gridify(tiles, columns = 6) {
   }
   return virtualGrid.dumpOrder()
 }
+
+/**
+ * @param {{x: number, y: number}} start
+ * @param {number} height
+ * @param {number} width
+ * @returns {{
+ *  "--start-column": number,
+ *  "--end-column": number,
+ *  "--start-row": number,
+ *  "--end-row": number
+ * } | {}}
+ */
+export function parsePositionalStyles(start, width, height) {
+  const result = {}
+
+  if (!!start && !!height && !!width) {
+    result[`--start-column`] = start.y
+    result[`--end-column`] = start.y + width
+    result[`--start-row`] = start.x
+    result[`--end-row`] = start.x + height
+  }
+
+  return result
+}
