@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useReducer } from "react"
+import { useState, useReducer, useRef } from "react"
+import { useFilterEventWatcher } from "../hooks/magic-grid-hooks"
 
 import { spawnTiles } from "./tileset"
 
@@ -97,6 +98,7 @@ const filterReducer = (state, action) => {
 }
 
 const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
+  // Setting up the filter
   const [toRender, filter] = useReducer(filterReducer, {
     profiles,
     tags,
@@ -108,11 +110,18 @@ const MagicGrid = ({ gap, margin, columns, profiles, photos, tags }) => {
     filter(filterString)
   }
 
+  // Setting up filter event handler
+  const mainRef = useRef()
+  useFilterEventWatcher(mainRef, filter)
+
+  // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
   const [shuffleState, reShuffle] = useState({})
+
+  // Parsing some CSS variables
   const sizingVariables = parseCssVariables({ gap, margin, columns })
   return (
-    <div className={styles.magicGridContainer}>
+    <div className={styles.magicGridContainer} ref={mainRef}>
       <div
         className={styles.actionBar}
         sx={{

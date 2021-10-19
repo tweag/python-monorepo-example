@@ -86,6 +86,11 @@
   cursor: pointer;
 }
 
+.tagTile.active {
+  background-color: black;
+  color: white;
+}
+
 @media screen and (hover: hover) {
   .tagTile:hover {
     background-color: black;

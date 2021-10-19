@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { useState } from "react"
 
 import styles from "../styles/tiles.module.css"
 
@@ -28,6 +29,15 @@ function parsePositionalStyles(start, width, height) {
   }
 
   return result
+}
+
+function generateTagFilterEventIssuer(tag) {
+  return event => {
+    const eventSource = event.target
+    const currentEvent = new Event(`filter`, { bubbles: true })
+    currentEvent.filterString = tag
+    eventSource.dispatchEvent(currentEvent)
+  }
 }
 
 /**
@@ -169,6 +179,11 @@ export const TagTile = ({
   key,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
+  const [state, setState] = useState(false)
+  const onClick = event => {
+    generateTagFilterEventIssuer(!state ? tag : ``)(event)
+    setState(!state)
+  }
 
   return (
     <div
@@ -176,12 +191,14 @@ export const TagTile = ({
         styles.tile,
         styles.positionedTile,
         styles.tagTile,
+        state ? styles.active : ``,
         ROUNDINGS[rounding],
       ].join(` `)}
       style={{
         ...positionalStyles,
       }}
       key={key}
+      onClick={onClick}
     >
       {tag}
     </div>
