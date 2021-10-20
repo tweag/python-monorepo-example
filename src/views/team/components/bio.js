@@ -3,6 +3,7 @@ import React from "react"
 
 import { parsePositionalStyles } from "../utils/ajustments"
 import styles from "../styles/bio.module.css"
+import { positionedTile } from "../styles/tiles.module.css"
 
 const RIGHT_ROUNDINGS = [
   styles.roundTopRightCorner,
@@ -14,6 +15,13 @@ const LEFT_ROUNDINGS = [
   styles.roundBottomLeftCorner,
   styles.roundBottomRightCorner,
 ]
+
+const CloseButton = () => {
+  const onClick = event => {
+    event.target.dispatchEvent(new Event(`close-bio`, { bubbles: true }))
+  }
+  return <div className={styles.closeButton} onClick={onClick} />
+}
 
 /**
  * @param {{
@@ -51,9 +59,33 @@ const Bio = ({
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
 
+  console.log(JSON.stringify({ height, width, start }, null, 2))
   const positionalStyles = parsePositionalStyles(start, width, height)
+  console.log(JSON.stringify(positionalStyles, null, 2))
   return (
-    <div className={[roundingToUse, ...positionalStyles].join(` `)} key={key} />
+    <div
+      className={[roundingToUse, styles.bio, positionedTile].join(` `)}
+      style={{ ...positionalStyles }}
+      key={key}
+    >
+      <div className={styles.header}>
+        <div className={styles.personName}>{person.name}</div>
+        <div className={styles.personRole}>{person.role}</div>
+        <CloseButton />
+      </div>
+      <div className={styles.tags}>
+        {person.tags.map(tag => (
+          <div className={styles.tag} key={tag}>
+            {tag}
+          </div>
+        ))}
+      </div>
+      <div className={styles.shortDescription}></div>
+      <div className={styles.longTextContainer}>
+        <div className={styles.longTextScrollable}>{person.bio}</div>
+      </div>
+      <div className={styles.links}></div>
+    </div>
   )
 }
 

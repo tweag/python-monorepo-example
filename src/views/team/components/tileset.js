@@ -5,6 +5,90 @@ import { v4 as uuid } from "uuid"
 import { allocateTiles } from "../utils/randomizers"
 import { gridify } from "../utils/ajustments"
 import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
+import Bio from "./bio"
+
+/**
+ * @param {{
+ *    person: {
+ *      name: string,
+ *      bio: string,
+ *      role: string,
+ *      tags: string[],
+ *      slug: string,
+ *    },
+ *    start: {
+ *      x: number,
+ *      y: number,
+ *    },
+ *    height: number,
+ *    width: number,
+ *    rounding: number,
+ *  }} activeBioProfile
+ * @param {number} columns
+ * @returns {{
+ *  id: string,
+ *  start: {
+ *    x: number,
+ *    y: number
+ *  },
+ *  height: number,
+ *  width: number,
+ * }[]}
+ */
+function parseActiveBioProfile(activeBioProfile, columns) {
+  if (!activeBioProfile) {
+    return []
+  }
+
+  const tileType =
+    activeBioProfile.height == 1 && activeBioProfile.width == 1
+      ? `profile`
+      : `bigProfile`
+  const id = `${tileType}:${activeBioProfile.person.slug}`
+  const resultProfile = {
+    id,
+    start: activeBioProfile.start,
+    height: activeBioProfile.height,
+    width: activeBioProfile.width,
+  }
+
+  // Calculate profile position and size
+  let profilePosition = `right`
+  let profileHeight = 5
+  let profileWidth = 3
+
+  const spaceToTheLeft = activeBioProfile.start.y - 1
+  const spaceToTheRight =
+    columns - (activeBioProfile.start.y - 1 + activeBioProfile.width)
+
+  if (spaceToTheRight < profileWidth && spaceToTheLeft >= profileWidth) {
+    profilePosition = `left`
+  } else if (spaceToTheLeft < profileWidth && spaceToTheRight < profileWidth) {
+    profileHeight = 8
+    profileWidth = 2
+    profilePosition = spaceToTheLeft < spaceToTheRight ? `right` : `left`
+  }
+
+  const profileStart =
+    profilePosition === `right`
+      ? {
+          x: activeBioProfile.start.x,
+          y: activeBioProfile.start.y + activeBioProfile.width,
+        }
+      : {
+          x: activeBioProfile.start.x,
+          y: activeBioProfile.start.y - profileWidth,
+        }
+
+  const resultBio = {
+    id: `bio:${activeBioProfile.person.slug}`,
+    start: profileStart,
+    height: profileHeight,
+    width: profileWidth,
+  }
+
+  return [resultBio, resultProfile]
+}
 
 /**
  * @param {{
@@ -18,10 +102,27 @@ import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
  *  photos: {[person: string]: string};
  *  tags: string[];
  *  columns: number;
+ *  breakpoint: string;
  *  arbitraryAllocations?: {
  *    color?: number,
  *    blank?: number,
  *  };
+ *  activeBioProfile?: {
+ *    person: {
+ *      name: string,
+ *      bio: string,
+ *      role: string,
+ *      tags: string[],
+ *      slug: string,
+ *    },
+ *    start: {
+ *      x: number,
+ *      y: number,
+ *    },
+ *    height: number,
+ *    width: number,
+ *    rounding: number,
+ *  }
  * }} options
  */
 export function spawnTiles({
@@ -29,9 +130,33 @@ export function spawnTiles({
   photos,
   tags,
   columns,
+  breakpoint,
   arbitraryAllocations,
+  activeBioProfile,
 }) {
   const result = []
+
+  // Step 0: Pre-parse Active Profile
+  const prePositionedStuff = parseActiveBioProfile(activeBioProfile, columns)
+
+  // Step 0.5: Bio on mobile
+  if (!!activeBioProfile && (breakpoint === `sm` || breakpoint === `xs`)) {
+    return [
+      <Bio
+        relativePosition={
+          prePositionedStuff[0].start.y < prePositionedStuff[1].start.y
+            ? `left`
+            : `right`
+        }
+        start={{ x: 1, y: 1 }}
+        height={5}
+        width={3}
+        key={prePositionedStuff[0].id}
+        rounding={activeBioProfile.rounding}
+        person={activeBioProfile.person}
+      />,
+    ]
+  }
 
   // Step 1: Extract valid profiles
   const peopleWithPhotos = people.filter(person => !!photos[person.slug])
@@ -93,9 +218,17 @@ export function spawnTiles({
   })
 
   // Step 5: Run gridify to allocate each file according to its size
-  const gridifiedTiles = gridify(toGridify, columns)
+  if (activeBioProfile) {
+    toGridify.splice(
+      toGridify.findIndex(item =>
+        new RegExp(`:${activeBioProfile.person.slug}`).test(item.id)
+      ),
+      1
+    )
+  }
+  const gridifiedTiles = gridify(toGridify, prePositionedStuff, columns)
 
-  // Step 6: Add Big profiles to result
+  // Step 6: Adding things with fixed position like bio and big profiles
   let personToGenerateTile
   let personSlug
   let currentTag = ``
@@ -122,6 +255,23 @@ export function spawnTiles({
           />
         )
       }
+    } else if (tile.type === `bio`) {
+      const bioRelativePosition =
+        prePositionedStuff[0].start.y < prePositionedStuff[1].start.y
+          ? `left`
+          : `right`
+
+      result.push(
+        <Bio
+          relativePosition={bioRelativePosition}
+          start={prePositionedStuff[0].start}
+          height={prePositionedStuff[0].height}
+          width={prePositionedStuff[0].width}
+          key={prePositionedStuff[0].id}
+          rounding={activeBioProfile.rounding}
+          person={activeBioProfile.person}
+        />
+      )
     }
   }
 
@@ -140,6 +290,12 @@ export function spawnTiles({
               person={personToGenerateTile}
               photo={photos[personSlug]}
               key={`profile:${personSlug}`}
+              height={1}
+              width={1}
+              start={{
+                x: tile.x,
+                y: tile.y,
+              }}
             />
           )
         }

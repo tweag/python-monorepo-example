@@ -10,17 +10,6 @@ const BREAKPOINTS_RANGES = {
   xxl: [1400, Infinity],
 }
 
-/**
- * @param {MutableRefObject<HTMLElement>} mainRef
- * @param {Function} eventHandler
- */
-export function useBioEventWatcher(mainRef, eventHandler) {
-  useEffect(() => {
-    mainRef.current.addEventListener(`bio`, eventHandler)
-    return () => mainRef.current.removeEventListener(`bio`, eventHandler)
-  }, [])
-}
-
 function findBreakpoint() {
   // Testing xs breakpoint
   let breakpoint = `xs`
@@ -92,6 +81,18 @@ function findBreakpoint() {
 }
 
 /**
+ * @param {MutableRefObject<HTMLElement>} mainRef
+ * @param {string} eventName
+ * @param {Function} eventHandler
+ */
+export function useAddEventListener(mainRef, eventName, eventHandler) {
+  useEffect(() => {
+    mainRef.current.addEventListener(eventName, eventHandler)
+    return () => mainRef.current.removeEventListener(eventName, eventHandler)
+  }, [])
+}
+
+/**
  * @param {
  *  xs?: (() => Function | void)[],
  *  sm?: (() => Function | void)[],
@@ -125,4 +126,6 @@ export function useResponsiveCallbacks(callbacks) {
 
     return () => cleanCallbacks.forEach(callback => callback())
   }, [breakpointRef.current])
+
+  return breakpointRef.current
 }

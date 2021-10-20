@@ -16,6 +16,19 @@
       ) / var(--magic-grid-columns, 7)
   );
   grid-auto-flow: row;
+  --bio-rounding-amount: calc(
+    calc(
+      calc(
+          100vw -
+            calc(
+              calc(var(--magic-grid-margin, 1rem) * 2) +
+                calc(
+                  var(--magic-grid-gap, 1rem) * (var(--magic-grid-columns, 7) - 1)
+                )
+            )
+        ) / var(--magic-grid-columns, 7)
+    ) * 0.4
+  );
 }
 
 @media screen and (min-width: 768px) {

@@ -1,10 +1,28 @@
 class VirtualGrid {
   /**
    * @param {number} columns
+   * @param {{
+   *  id: string,
+   *  start: {
+   *    x: number,
+   *    y: number
+   *  },
+   *  height: number,
+   *  width: number,
+   * }[]} prePositioned
    */
-  constructor(columns) {
+  constructor(columns, prePositioned = []) {
     this.internalGrid = [[]]
     this.limitColumns = columns
+    prePositioned.forEach(item =>
+      this.addPrePositionedItem({
+        x: item.start.x,
+        y: item.start.y,
+        width: item.width,
+        height: item.height,
+        id: item.id,
+      })
+    )
   }
 
   /**
@@ -45,6 +63,16 @@ class VirtualGrid {
     }
   }
 
+  addPrePositionedItem({ x, y, height, width, id }) {
+    for (let line = x - 1; line < x - 1 + height; line++) {
+      if (!this.internalGrid[line]) {
+        this.internalGrid[line] = []
+      }
+      for (let column = y - 1; column < y - 1 + width; column++)
+        this.internalGrid[line][column] = id
+    }
+  }
+
   getNextVacantPosition(x = 0, y = -1) {
     for (let column = y + 1; column < this.limitColumns; column++) {
       if (!this.internalGrid[x][column]) {
@@ -56,6 +84,9 @@ class VirtualGrid {
       return { x: x + 1, y: 0 }
     } else {
       for (let line = x + 1; line < this.internalGrid.length; line++) {
+        if (!this.internalGrid[line]) {
+          this.internalGrid[line] = []
+        }
         for (let column = 0; column < this.limitColumns; column++) {
           if (!this.internalGrid[line][column]) {
             return { x: line, y: column }
@@ -105,6 +136,9 @@ class VirtualGrid {
     const result = []
 
     for (let line = 0; line < this.internalGrid.length; line++) {
+      if (!this.internalGrid[line]) {
+        this.internalGrid[line] = []
+      }
       for (let column = 0; column < this.internalGrid[line].length; column++) {
         if (
           !!this.internalGrid[line][column] &&
@@ -132,6 +166,16 @@ class VirtualGrid {
  *  id: string,
  *  type: string,
  * }[]} tiles
+ * @param {{
+ *  id: string,
+ *  start: {
+ *    x: number,
+ *    y: number
+ *  },
+ *  height: number,
+ *  width: number,
+ * }[]} prePositioned
+ * @param {number} columns
  * @returns {{
  *  x: number,
  *  y: number,
@@ -139,8 +183,8 @@ class VirtualGrid {
  *  type: string,
  * }[]}
  */
-export function gridify(tiles, columns = 6) {
-  const virtualGrid = new VirtualGrid(columns)
+export function gridify(tiles, prePositioned = [], columns = 6) {
+  const virtualGrid = new VirtualGrid(columns, prePositioned)
   for (const tile of tiles) {
     virtualGrid.addItem(tile)
   }

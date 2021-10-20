@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 import { useState, useRef } from "react"
 import {
   useResponsiveCallbacks,
-  useBioEventWatcher,
+  useAddEventListener,
 } from "../hooks/magic-grid-hooks"
 import ShuffleButton from "./shuffle-button"
 import SearchBar from "./search-bar"
@@ -46,12 +46,16 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
   const [shuffleState, reShuffle] = useState({})
+  const [activeProfile, setActiveProfile] = useState(null)
 
-  // Bio Event
+  // Bio Events
   const mainRef = useRef()
-  useBioEventWatcher(mainRef, event =>
-    console.log(JSON.stringify(event.tileInfo, null, 2))
-  )
+  useAddEventListener(mainRef, `bio`, event => {
+    const toActivate = event.tileInfo
+    setActiveProfile(toActivate)
+  })
+  useAddEventListener(mainRef, `close-bio`, () => setActiveProfile(null))
+  useAddEventListener(mainRef, `filter`, () => setActiveProfile(null))
 
   // Render parameters
   const [renderParameters, setParameters] = useState({
@@ -60,7 +64,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     columns: 6,
   })
 
-  useResponsiveCallbacks({
+  const breakpoint = useResponsiveCallbacks({
     xs: [
       () =>
         setParameters({
@@ -138,7 +142,9 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
             color: renderParameters.color,
             blank: renderParameters.blank,
           },
+          activeBioProfile: activeProfile,
           photos,
+          breakpoint,
         })}
       </div>
     </div>
