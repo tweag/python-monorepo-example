@@ -18,16 +18,17 @@
   grid-auto-flow: row;
   --bio-rounding-amount: calc(
     calc(
-      calc(
-          100vw -
-            calc(
-              calc(var(--magic-grid-margin, 1rem) * 2) +
-                calc(
-                  var(--magic-grid-gap, 1rem) * (var(--magic-grid-columns, 7) - 1)
-                )
-            )
-        ) / var(--magic-grid-columns, 7)
-    ) * 0.4
+        calc(
+            100vw -
+              calc(
+                calc(var(--magic-grid-margin, 1rem) * 2) +
+                  calc(
+                    var(--magic-grid-gap, 1rem) *
+                      (var(--magic-grid-columns, 7) - 1)
+                  )
+              )
+          ) / var(--magic-grid-columns, 7)
+      ) * 0.4
   );
 }
 
@@ -49,7 +50,6 @@
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-
 
 @media screen and (max-width: 767px) {
   .actionBar {
