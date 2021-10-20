@@ -30,31 +30,37 @@ experience:
   - employer: UCLouvain
     role: Teaching assistant
     years: 2014 - 2021
-    description: Teaching and helping to teach a wide variety of CS and engineering courses.
+    description:
+      - Teaching and helping to teach a wide variety of CS and engineering courses.
   - employer: Escaux
     role: Developer
     years: 2013 - 2014
-    description: Keep 2k+ realtime VoIP servers running, up-to-date, and tailored to the client needs.
+    description:
+      - Keep 2k+ realtime VoIP servers running, up-to-date, and tailored to the client needs.
   - employer: Belgian Institute for Space Aeronomy
     role: Intern
     years: 2012
-    description: Deploy on-premises LTSP services for company thin clients.
+    description:
+      - Deploy on-premises LTSP services for company thin clients.
 education:
   - qualification: PhD Student
     name: Engineering & Computer Science
     institution: UCLouvain
     years: 2017 - 2021
-    description: "Thesis theme: Build Systems & Continuous Integration"
+    description:
+     - "Thesis theme: Build Systems & Continuous Integration"
   - qualification: PhD Student
     name: Engineering & Computer Science
     institution: UCLouvain
     years: 2014 - 2016
-    description: "Thesis theme: Formal Methods for Human Machine Interaction Analysis"
+    description:
+      - "Thesis theme: Formal Methods for Human Machine Interaction Analysis"
   - qualification: Master
     name: Engineering
     institution: UCLouvain
     years: 2008 - 2013
-    description: Majors in computer science and applied mathematics
+    description:
+      - Majors in computer science and applied mathematics
 publications:
   - >-
     G. Maudoux.
