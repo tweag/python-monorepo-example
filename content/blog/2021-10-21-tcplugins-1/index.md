@@ -11,8 +11,8 @@ inject domain-specific knowledge into GHC's type-checker. In this
 series of posts, we will explore why you might want to write your own plugin, and how to do so.
 
 - **I: Why write a type-checking plugin?**
-- [II: GHC's constraint solver](https://www.tweag.io/posts/2021-09-10-tcplugins-2.html)
-- [III: Writing a type-checking plugin](https://www.tweag.io/posts/2021-09-10-tcplugins-3.html)
+- II: GHC's constraint solver
+- III: Writing a type-checking plugin
 
 In this first blog post of the series, I'll be outlining a few
 examples that showcase some limitations in GHC's instance resolution
@@ -91,7 +91,7 @@ This property of typeclasses comes with a fundamental limitation: we can't know 
 A typeclass constraint that was insoluble at some point might become solvable in another context
 (e.g. a user could define a `Show (Bool -> Int)` instance).
 
-As a result, GHC does not offer any mechanism for determining whether a constraint is satisfied, as this could result in incoherent behaviour.[^1]  
+As a result, GHC does not offer any mechanism for determining whether a constraint is satisfied, as this could result in incoherent behaviour.[^1]
 This is unfortunate, as this can be quite useful: for example, one might want to implement an arithmetic computation differently for integral vs floating-point numbers, to ensure numerical stability:
 
 ```haskell
@@ -209,7 +209,7 @@ Given a type such as `F (F Bool)`, we can proceed in two ways:
 
 1. Reduce the outer type family application first, using the first equation (written `F[0]`).
    This yields the reduction `F (F Bool) ~~> Bool`.
-2. Reduce the argument first, using the second equation, `F[1]`, and following up with `F[2]`:  
+2. Reduce the argument first, using the second equation, `F[1]`, and following up with `F[2]`:
    `F (F Bool) ~~> F Float ~~> Maybe Float`.
 
 We obtained different results depending on the order in which reductions were performed.
