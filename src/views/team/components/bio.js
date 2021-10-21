@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react"
+import React, { createContext } from "react"
 
 import { parsePositionalStyles } from "../utils/ajustments"
 import styles from "../styles/bio.module.css"
@@ -22,6 +22,8 @@ const CloseButton = () => {
   }
   return <div className={styles.closeButton} onClick={onClick} />
 }
+
+export const BioContext = createContext(null)
 
 /**
  * @param {{
@@ -59,9 +61,7 @@ const Bio = ({
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
 
-  console.log(JSON.stringify({ height, width, start }, null, 2))
   const positionalStyles = parsePositionalStyles(start, width, height)
-  console.log(JSON.stringify(positionalStyles, null, 2))
   return (
     <div
       className={[roundingToUse, styles.bio, positionedTile].join(` `)}

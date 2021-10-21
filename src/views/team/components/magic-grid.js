@@ -9,6 +9,7 @@ import ShuffleButton from "./shuffle-button"
 import SearchBar from "./search-bar"
 
 import { TileSet } from "./tileset"
+import { BioContext } from "./bio"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -161,9 +162,13 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         <SearchBar placeholder={`Search for a name or a skill`} />
         <ShuffleButton onClick={() => reShuffle({})} />
       </div>
-      <div className={styles.magicGrid} style={sizingVariables}>
-        {tileSetRef.current.finalTiles}
-      </div>
+      <BioContext.Provider
+        value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
+      >
+        <div className={styles.magicGrid} style={sizingVariables}>
+          {tileSetRef.current.finalTiles}
+        </div>
+      </BioContext.Provider>
     </div>
   )
 }

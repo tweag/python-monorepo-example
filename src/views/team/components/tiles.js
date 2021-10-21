@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 // eslint-disable-next-line no-unused-vars
 import { useState, MutableRefObject } from "react"
 
+import { BioContext } from "./bio"
 import { useFilteredMode } from "../hooks/tiles-hooks"
 import { parsePositionalStyles } from "../utils/ajustments"
 import styles from "../styles/tiles.module.css"
@@ -181,30 +182,36 @@ export const ProfileTile = ({
 
   const show = useFilteredMode(filter)
 
-  return show ? (
-    <div
-      className={[
-        styles.tile,
-        styles.positionedTile,
-        styles.profileTile,
-        ROUNDINGS[rounding],
-      ].join(` `)}
-      style={{
-        ...positionalStyles,
+  return (
+    <BioContext.Consumer>
+      {value => {
+        return !show || (!!value && value !== person.slug) ? (
+          <ColorTile key={key} start={start} width={width} height={height} />
+        ) : (
+          <div
+            className={[
+              styles.tile,
+              styles.positionedTile,
+              styles.profileTile,
+              ROUNDINGS[rounding],
+            ].join(` `)}
+            style={{
+              ...positionalStyles,
+            }}
+            key={key}
+            onClick={clickHandler}
+          >
+            <div
+              className={styles.profilePhoto}
+              style={{
+                "--profile-picture": `url(${photo ?? `#`})`,
+              }}
+            />
+            <div className={styles.profileName}>{person.name}</div>
+          </div>
+        )
       }}
-      key={key}
-      onClick={clickHandler}
-    >
-      <div
-        className={styles.profilePhoto}
-        style={{
-          "--profile-picture": `url(${photo ?? `#`})`,
-        }}
-      />
-      <div className={styles.profileName}>{person.name}</div>
-    </div>
-  ) : (
-    <ColorTile key={key} start={start} width={width} height={height} />
+    </BioContext.Consumer>
   )
 }
 
