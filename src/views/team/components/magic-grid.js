@@ -8,7 +8,7 @@ import {
 import ShuffleButton from "./shuffle-button"
 import SearchBar from "./search-bar"
 
-import { spawnTiles } from "./tileset"
+import { TileSet } from "./tileset"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -121,6 +121,20 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     margin,
     columns: renderParameters.columns,
   })
+
+  // tile set
+  const tileSet = new TileSet({
+    people: profiles,
+    tags: tags,
+    columns: renderParameters.columns,
+    arbitraryAllocations: {
+      color: renderParameters.color,
+      blank: renderParameters.blank,
+    },
+    activeBioProfile: activeProfile,
+    photos,
+    breakpoint,
+  })
   return (
     <div className={styles.magicGridContainer} ref={mainRef}>
       <div
@@ -134,18 +148,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         <ShuffleButton onClick={() => reShuffle({})} />
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
-        {spawnTiles({
-          people: profiles,
-          tags: tags,
-          columns: renderParameters.columns,
-          arbitraryAllocations: {
-            color: renderParameters.color,
-            blank: renderParameters.blank,
-          },
-          activeBioProfile: activeProfile,
-          photos,
-          breakpoint,
-        })}
+        {tileSet.finalTiles}
       </div>
     </div>
   )

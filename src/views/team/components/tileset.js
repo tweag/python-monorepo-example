@@ -374,6 +374,32 @@ export class TileSet {
     this.tilesOrder = this.generateRandomTilesOrder()
     this.tilesSkeletons = this.generateSkeletons()
     this.tilesGrid = this.generateGrid()
+    this.generateTiles()
+  }
+
+  /**
+   * @param {{
+   *  person: {
+   *    name: string,
+   *    bio: string,
+   *    role: string,
+   *    tags: string[],
+   *    slug: string,
+   *  },
+   *  start: {
+   *    x: number,
+   *    y: number,
+   *  },
+   *  height: number,
+   *  width: number,
+   *  rounding: number,
+   * }} newProfile
+   */
+  setActiveProfile(newProfile) {
+    this.activeBioProfile = newProfile
+    this.prePositionedStuff = this.parseActiveBioProfile()
+    this.tilesGrid = this.generateGrid()
+    this.generateTiles()
   }
 
   /**
@@ -386,8 +412,9 @@ export class TileSet {
    */
   generateSkeletons() {
     let personToAdd
-    const disposableTags = [...tags]
-    const skeletons = tiles.map(({ tileType }, index) => {
+    const peopleWithPhotos = [...this.validProfiles]
+    const disposableTags = [...this.tags]
+    const skeletons = this.tilesOrder.map(({ tileType }, index) => {
       switch (tileType) {
         case `color`:
           return { height: 1, width: 1, type: `color`, id: `color:${index}` }
@@ -435,10 +462,10 @@ export class TileSet {
 
     // Step 3: Randomly distribute tiles
     const tileAllocation = {
-      color: this.arbitraryAllocations?.color ?? bigProfiles + tags.length,
+      color: this.arbitraryAllocations?.color ?? bigProfiles + this.tags.length,
       profile: smallProfiles,
       bigProfile: bigProfiles,
-      tag: tags.length,
+      tag: this.tags.length,
       blank: this.arbitraryAllocations?.blank ?? smallProfiles,
     }
     return allocateTiles(tileAllocation)
@@ -453,11 +480,15 @@ export class TileSet {
     }
 
     const toGridify = this.tilesSkeletons.filter(item => item.id !== idToIgnore)
-    const gridifiedTiles = gridify(
-      toGridify,
-      this.prePositionedStuff,
-      this.columns
-    )
+    const prePositionedItems =
+      !!this.prePositionedStuff.activeBio &&
+      !!this.prePositionedStuff.activeProfile
+        ? [
+            this.prePositionedStuff.activeBio,
+            this.prePositionedStuff.activeProfile,
+          ]
+        : []
+    const gridifiedTiles = gridify(toGridify, prePositionedItems, this.columns)
     return gridifiedTiles
   }
 
@@ -501,7 +532,7 @@ export class TileSet {
    */
   parseActiveBioProfile() {
     if (!this.activeBioProfile) {
-      return []
+      return {}
     }
 
     const tileType =
