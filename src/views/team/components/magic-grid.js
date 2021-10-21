@@ -45,17 +45,7 @@ function parseCssVariables({ gap, margin, columns }) {
 const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   // Setting up shuffle button
   // eslint-disable-next-line no-unused-vars
-  const [shuffleState, reShuffle] = useState({})
-  const [activeProfile, setActiveProfile] = useState(null)
-
-  // Bio Events
-  const mainRef = useRef()
-  useAddEventListener(mainRef, `bio`, event => {
-    const toActivate = event.tileInfo
-    setActiveProfile(toActivate)
-  })
-  useAddEventListener(mainRef, `close-bio`, () => setActiveProfile(null))
-  useAddEventListener(mainRef, `filter`, () => setActiveProfile(null))
+  const [uselessState, reRender] = useState({})
 
   // Render parameters
   const [renderParameters, setParameters] = useState({
@@ -123,18 +113,42 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   })
 
   // tile set
-  const tileSet = new TileSet({
-    people: profiles,
-    tags: tags,
-    columns: renderParameters.columns,
-    arbitraryAllocations: {
-      color: renderParameters.color,
-      blank: renderParameters.blank,
-    },
-    activeBioProfile: activeProfile,
-    photos,
-    breakpoint,
+  const tileSetRef = useRef(
+    new TileSet({
+      people: profiles,
+      tags: tags,
+      columns: renderParameters.columns,
+      arbitraryAllocations: {
+        color: renderParameters.color,
+        blank: renderParameters.blank,
+      },
+      activeBioProfile: null,
+      photos,
+      breakpoint,
+    })
+  )
+
+  // Bio Events
+  const mainRef = useRef()
+  useAddEventListener(mainRef, `bio`, event => {
+    const toActivate = event.tileInfo
+    tileSetRef.current.setActiveProfile(toActivate)
+    reRender({})
   })
+  useAddEventListener(mainRef, `close-bio`, () => {
+    tileSetRef.current.setActiveProfile(null)
+    reRender({})
+  })
+  useAddEventListener(mainRef, `filter`, () => {
+    tileSetRef.current.setActiveProfile(null)
+    reRender({})
+  })
+
+  // Shuffle Button
+  const reShuffle = () => {
+    tileSetRef.current.shuffleTiles()
+    reRender({})
+  }
   return (
     <div className={styles.magicGridContainer} ref={mainRef}>
       <div
@@ -148,7 +162,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         <ShuffleButton onClick={() => reShuffle({})} />
       </div>
       <div className={styles.magicGrid} style={sizingVariables}>
-        {tileSet.finalTiles}
+        {tileSetRef.current.finalTiles}
       </div>
     </div>
   )

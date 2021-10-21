@@ -93,6 +93,13 @@ export class TileSet {
     this.generateTiles()
   }
 
+  shuffleTiles() {
+    this.tilesOrder = this.generateRandomTilesOrder()
+    this.tilesSkeletons = this.generateSkeletons()
+    this.tilesGrid = this.generateGrid()
+    this.generateTiles()
+  }
+
   /**
    * @returns {{
    *  height: number,
@@ -421,6 +428,7 @@ export class TileSet {
         />,
       ]
     } else {
+      this.finalTiles = []
       this.addPositionedTilesToFinalTiles()
       this.addUnpositionedTilesToFinalTiles()
     }
