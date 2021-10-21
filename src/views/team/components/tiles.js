@@ -186,7 +186,13 @@ export const ProfileTile = ({
     <BioContext.Consumer>
       {value => {
         return !show || (!!value && value !== person.slug) ? (
-          <ColorTile key={key} start={start} width={width} height={height} />
+          <ColorTile
+            key={key}
+            rounding={rounding}
+            start={start}
+            width={width}
+            height={height}
+          />
         ) : (
           <div
             className={[

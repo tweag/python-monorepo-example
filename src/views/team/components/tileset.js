@@ -59,6 +59,7 @@ export class TileSet {
     this.photos = photos
     this.activeBioProfile = activeBioProfile
     this.arbitraryAllocations = arbitraryAllocations
+    this.roundings = new Map()
 
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.validProfiles = people.filter(person => !!this.photos[person.slug])
@@ -118,6 +119,14 @@ export class TileSet {
     this.generateTiles()
   }
 
+  generateRoundings() {
+    for (const tile of this.tilesGrid) {
+      if (!this.roundings.has(tile.id)) {
+        this.roundings.set(tile.id, Math.floor(Math.random() * 3))
+      }
+    }
+  }
+
   /**
    * @returns {{
    *  height: number,
@@ -128,12 +137,19 @@ export class TileSet {
    */
   generateSkeletons() {
     let personToAdd
+    let currentColor = -1
     const peopleWithPhotos = [...this.validProfiles]
     const disposableTags = [...this.tags]
     const skeletons = this.tilesOrder.map(({ tileType }, index) => {
       switch (tileType) {
         case `color`:
-          return { height: 1, width: 1, type: `color`, id: `color:${index}` }
+          currentColor++
+          return {
+            height: 1,
+            width: 1,
+            type: `color`,
+            id: `color:${currentColor}`,
+          }
         case `profile`:
           personToAdd = peopleWithPhotos.splice(
             Math.floor(peopleWithPhotos.length * Math.random()),
@@ -319,6 +335,15 @@ export class TileSet {
   generateBigProfile(tile) {
     const slug = tile.id.match(/:(.+)/)[1]
     const target = this.validProfiles.find(person => person.slug === slug)
+    if (!this.roundings.has(tile.id)) {
+      console.log(
+        `Rounding not found for ${
+          tile.id
+        }, available roundings: ${JSON.stringify(
+          Array.from(this.roundings.keys())
+        )}`
+      )
+    }
     return (
       <ProfileTile
         person={target}
@@ -330,6 +355,7 @@ export class TileSet {
           x: tile.x,
           y: tile.y,
         }}
+        rounding={this.roundings.get(tile.id)}
       />
     )
   }
@@ -356,6 +382,7 @@ export class TileSet {
           x: tile.x,
           y: tile.y,
         }}
+        rounding={this.roundings.get(tile.id)}
       />
     )
   }
@@ -406,19 +433,35 @@ export class TileSet {
 
   addUnpositionedTilesToFinalTiles() {
     let currentTag = ``
+    let currentColor = ``
     for (const tile of this.tilesGrid) {
       switch (tile.type) {
         case `color`:
-          this.finalTiles.push(<ColorTile key={`color:${uuid()}`} />)
+          currentColor = tile.id.match(/:(.+)/)[1]
+          this.finalTiles.push(
+            <ColorTile
+              key={`color:${currentColor}`}
+              rounding={this.roundings.get(tile.id)}
+            />
+          )
           break
         case `tag`:
           currentTag = tile.id.match(/:(.+)/)[1]
           this.finalTiles.push(
-            <TagTile tag={currentTag} key={`tag:${currentTag}`} />
+            <TagTile
+              tag={currentTag}
+              key={`tag:${currentTag}`}
+              rounding={this.roundings.get(tile.id)}
+            />
           )
           break
         case `blank`:
-          this.finalTiles.push(<BlankTile key={`color:${uuid()}`} />)
+          this.finalTiles.push(
+            <BlankTile
+              key={`color:${uuid()}`}
+              rounding={this.roundings.get(tile.id)}
+            />
+          )
           break
       }
     }
@@ -446,6 +489,7 @@ export class TileSet {
         />,
       ]
     } else {
+      this.generateRoundings()
       this.finalTiles = []
       this.addPositionedTilesToFinalTiles()
       this.addUnpositionedTilesToFinalTiles()
