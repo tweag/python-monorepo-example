@@ -70,6 +70,22 @@ export class TileSet {
 
   /**
    * @param {{
+   *  color: number,
+   *  columns: number,
+   *  blank: number,
+   * }} options
+   */
+  updateResponsiveParameters({ color, columns, blank }) {
+    this.arbitraryAllocations.blank = blank ?? this.arbitraryAllocations.blank
+    this.arbitraryAllocations.color = color ?? this.arbitraryAllocations.color
+    this.columns = columns
+    this.tilesSkeletons = this.generateSkeletons()
+    this.tilesGrid = this.generateGrid()
+    this.generateTiles()
+  }
+
+  /**
+   * @param {{
    *  person: {
    *    name: string,
    *    bio: string,

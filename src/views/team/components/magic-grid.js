@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 import { useState, useRef } from "react"
 import {
   useResponsiveCallbacks,
+  findBreakpoint,
   useAddEventListener,
 } from "../hooks/magic-grid-hooks"
 import ShuffleButton from "./shuffle-button"
@@ -49,62 +50,18 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   const [uselessState, reRender] = useState({})
 
   // Render parameters
-  const [renderParameters, setParameters] = useState({
+  const renderParameters = {
     color: Math.floor(profiles.length * 0.11),
     blank: Math.floor(profiles.length * 0.41),
     columns: 6,
-  })
+  }
 
-  const breakpoint = useResponsiveCallbacks({
-    xs: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: 0,
-          columns: 3,
-        }),
-    ],
-    sm: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: 0,
-          columns: 3,
-        }),
-    ],
-    md: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
-        }),
-    ],
-    lg: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
-        }),
-    ],
-    xl: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
-        }),
-    ],
-    xxl: [
-      () =>
-        setParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
-        }),
-    ],
-  })
+  let breakpoint = findBreakpoint().breakpoint
+
+  if (breakpoint === `xs` || breakpoint === `sm`) {
+    renderParameters.blank = 0
+    renderParameters.columns = 3
+  }
 
   // Parsing some CSS variables
   const sizingVariables = parseCssVariables({
@@ -129,14 +86,69 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     })
   )
 
+  breakpoint = useResponsiveCallbacks({
+    xs: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: 0,
+          columns: 3,
+        }),
+    ],
+    sm: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: 0,
+          columns: 3,
+        }),
+    ],
+    md: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    lg: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    xl: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+    xxl: [
+      () =>
+        tileSetRef.current.updateResponsiveParameters({
+          color: Math.floor(profiles.length * 0.11),
+          blank: Math.floor(profiles.length * 0.41),
+          columns: 6,
+        }),
+    ],
+  })
+
   // Bio Events
   const mainRef = useRef()
+  const ajusterRef = useRef()
   useAddEventListener(mainRef, `toggle-bio`, event => {
     const toActivate = event.tileInfo
     if (tileSetRef.current.activeBioProfile) {
       tileSetRef.current.setActiveProfile(null)
     } else {
       tileSetRef.current.setActiveProfile(toActivate)
+      if (breakpoint === `sm` || breakpoint === `xs`) {
+        ajusterRef.current.scrollIntoView()
+      }
     }
     reRender({})
   })
@@ -158,6 +170,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
           pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
           pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
         }}
+        ref={ajusterRef}
       >
         <SearchBar placeholder={`Search for a name or a skill`} />
         <ShuffleButton onClick={() => reShuffle({})} />

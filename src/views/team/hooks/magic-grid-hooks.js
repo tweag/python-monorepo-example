@@ -10,7 +10,7 @@ const BREAKPOINTS_RANGES = {
   xxl: [1400, Infinity],
 }
 
-function findBreakpoint() {
+export function findBreakpoint() {
   // Testing xs breakpoint
   let breakpoint = `xs`
   let mediaQuery = window.matchMedia(
