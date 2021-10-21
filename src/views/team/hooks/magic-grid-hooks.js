@@ -84,12 +84,18 @@ export function findBreakpoint() {
  * @param {MutableRefObject<HTMLElement>} mainRef
  * @param {string} eventName
  * @param {Function} eventHandler
+ * @param {Array<any>} requirements
  */
-export function useAddEventListener(mainRef, eventName, eventHandler) {
+export function useAddEventListener(
+  mainRef,
+  eventName,
+  eventHandler,
+  requirements = []
+) {
   useEffect(() => {
     mainRef.current.addEventListener(eventName, eventHandler)
     return () => mainRef.current.removeEventListener(eventName, eventHandler)
-  }, [])
+  }, requirements)
 }
 
 /**
