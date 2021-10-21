@@ -130,13 +130,13 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
 
   // Bio Events
   const mainRef = useRef()
-  useAddEventListener(mainRef, `bio`, event => {
+  useAddEventListener(mainRef, `toggle-bio`, event => {
     const toActivate = event.tileInfo
-    tileSetRef.current.setActiveProfile(toActivate)
-    reRender({})
-  })
-  useAddEventListener(mainRef, `close-bio`, () => {
-    tileSetRef.current.setActiveProfile(null)
+    if (tileSetRef.current.activeBioProfile) {
+      tileSetRef.current.setActiveProfile(null)
+    } else {
+      tileSetRef.current.setActiveProfile(toActivate)
+    }
     reRender({})
   })
   useAddEventListener(mainRef, `filter`, () => {

@@ -18,7 +18,7 @@ const LEFT_ROUNDINGS = [
 
 const CloseButton = () => {
   const onClick = event => {
-    event.target.dispatchEvent(new Event(`close-bio`, { bubbles: true }))
+    event.target.dispatchEvent(new Event(`toggle-bio`, { bubbles: true }))
   }
   return <div className={styles.closeButton} onClick={onClick} />
 }

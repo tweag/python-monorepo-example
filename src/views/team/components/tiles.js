@@ -57,7 +57,7 @@ function generateShowBioEventIssuer({
   rounding,
 }) {
   return event => {
-    const eventToFire = new Event(`bio`, { bubbles: true })
+    const eventToFire = new Event(`toggle-bio`, { bubbles: true })
     eventToFire.tileInfo = { person, start, height, width, rounding }
     event.target.dispatchEvent(eventToFire)
   }
