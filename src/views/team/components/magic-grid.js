@@ -45,7 +45,7 @@ function parseCssVariables({ gap, margin, columns }) {
 }
 
 const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
-  // Setting up shuffle button
+  // Setting up re-render function
   // eslint-disable-next-line no-unused-vars
   const [uselessState, reRender] = useState({})
 
@@ -63,13 +63,6 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     renderParameters.columns = 3
   }
 
-  // Parsing some CSS variables
-  const sizingVariables = parseCssVariables({
-    gap,
-    margin,
-    columns: renderParameters.columns,
-  })
-
   // tile set
   const tileSetRef = useRef(
     new TileSet({
@@ -86,53 +79,82 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     })
   )
 
+  /**
+   * @param {{
+   *  color: number,
+   *  blank: number,
+   *  columns: number,
+   *  breakpoint: string,
+   * }} options
+   */
+  const updateResponsiveParameters = ({
+    color,
+    blank,
+    columns,
+    breakpoint,
+  }) => {
+    tileSetRef.current.updateResponsiveParameters({
+      color,
+      blank,
+      columns,
+      breakpoint,
+    })
+    reRender({})
+  }
+
   breakpoint = useResponsiveCallbacks({
     xs: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: 0,
           columns: 3,
+          breakpoint: `xs`,
         }),
     ],
     sm: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: 0,
           columns: 3,
+          breakpoint: `sm`,
         }),
     ],
     md: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
           columns: 6,
+          breakpoint: `md`,
         }),
     ],
     lg: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
           columns: 6,
+          breakpoint: `lg`,
         }),
     ],
     xl: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
           columns: 6,
+          breakpoint: `xl`,
         }),
     ],
     xxl: [
       () =>
-        tileSetRef.current.updateResponsiveParameters({
+        updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
           columns: 6,
+          breakpoint: `xxl`,
         }),
     ],
   })
@@ -140,6 +162,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   // Bio Events
   const mainRef = useRef()
   const ajusterRef = useRef()
+  const bioEventHandlerRef = useRef()
   const bioEventHandler = event => {
     const toActivate = event.tileInfo
     if (tileSetRef.current.activeBioProfile) {
@@ -152,10 +175,10 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     }
     reRender({})
   }
-  useAddEventListener(mainRef, `toggle-bio`, bioEventHandler, [
-    breakpoint,
-    bioEventHandler,
-  ])
+  bioEventHandlerRef.current = bioEventHandler
+  useAddEventListener(mainRef, `toggle-bio`, event =>
+    bioEventHandlerRef.current(event)
+  )
   useAddEventListener(mainRef, `filter`, () => {
     tileSetRef.current.setActiveProfile(null)
     reRender({})
@@ -166,6 +189,13 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     tileSetRef.current.shuffleTiles()
     reRender({})
   }
+
+  // Parsing some CSS variables
+  const sizingVariables = parseCssVariables({
+    gap,
+    margin,
+    columns: tileSetRef.current.columns,
+  })
   return (
     <div className={styles.magicGridContainer} ref={mainRef}>
       <div

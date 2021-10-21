@@ -73,12 +73,14 @@ export class TileSet {
    *  color: number,
    *  columns: number,
    *  blank: number,
+   *  breakpoint: string,
    * }} options
    */
-  updateResponsiveParameters({ color, columns, blank }) {
+  updateResponsiveParameters({ color, columns, blank, breakpoint }) {
     this.arbitraryAllocations.blank = blank ?? this.arbitraryAllocations.blank
     this.arbitraryAllocations.color = color ?? this.arbitraryAllocations.color
-    this.columns = columns
+    this.columns = columns ?? this.columns
+    this.breakpoint = breakpoint ?? this.breakpoint
     this.tilesSkeletons = this.generateSkeletons()
     this.tilesGrid = this.generateGrid()
     this.generateTiles()
