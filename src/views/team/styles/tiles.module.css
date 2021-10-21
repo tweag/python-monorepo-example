@@ -11,6 +11,7 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  --animations-duration: 0.4s;
 }
 
 .profileTile::after {
@@ -23,7 +24,8 @@
   background-color: red;
   bottom: -1rem;
   left: 0px;
-  box-shadow: 0px 0px 30px 2.5em black;
+  transition: box-shadow var(--animations-duration);
+  box-shadow: 0px 0px 30px 2.5em rgba(0, 0, 0, 0.7);
 }
 
 .profilePhoto {
@@ -34,7 +36,7 @@
   background-position: center top;
   background-color: black;
   background-size: cover;
-  transition: transform 0.3s;
+  transition: transform var(--animations-duration);
 }
 
 .profileName {
@@ -45,7 +47,7 @@
   bottom: 0px;
   color: white;
   padding: 1rem;
-  transition: all 0.3s;
+  transition: all var(--animations-duration);
 }
 
 @media screen and (hover: hover) {
@@ -54,11 +56,11 @@
   }
 
   .profileTile:hover .profileName {
-    opacity: 0;
+    transform: translateY(100%);
   }
 
   .profileTile:hover::after {
-    box-shadow: 0px 0px 30px 0em black;
+    box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
   }
 }
 
