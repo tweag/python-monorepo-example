@@ -1,7 +1,9 @@
+import YAML from "yaml"
+
 export function parsePhotos(data) {
   const result = {}
 
-  for (const { node } of data.allFile.edges) {
+  for (const { node } of data.profileImages.edges) {
     result[node.name] = node.children[0].fluid.srcWebp
   }
 
@@ -14,20 +16,26 @@ export function parsePhotos(data) {
  *  bio: string,
  *  role: string,
  *  tags: string[],
- *  slug: string
+ *  slug: string,
+ *  shortDescription: string,
+ *  links: {[linkName: string]: string}
  * }[]}
  */
 export function parseProfiles(data) {
   const profiles = []
 
-  for (const { node } of data.allProfilesYaml.edges) {
+  for (const { node } of data.profiles.edges) {
+    const queriedProfile = YAML.parse(node.internal.content)
     const profile = {
-      name: node.name,
-      bio: node.bio,
-      role: node.experience.find(experience => experience.employer === `Tweag`)
-        ?.role,
-      tags: node.skills ?? [],
-      slug: node.slug,
+      name: queriedProfile.name,
+      bio: queriedProfile.bio,
+      role: queriedProfile.experience.find(
+        experience => experience.employer === `Tweag`
+      )?.role,
+      tags: queriedProfile.skills ?? [],
+      slug: queriedProfile.slug,
+      shortDescription: queriedProfile.shortDescription ?? ``,
+      links: queriedProfile.links ?? {},
     }
 
     profiles.push(profile)

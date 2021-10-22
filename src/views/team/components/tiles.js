@@ -42,7 +42,9 @@ function generateTagFilterEventIssuer(tag) {
  *    bio: string,
  *    role: string,
  *    tags: string[],
- *    slug: string
+ *    slug: string,
+ *    shortDescription: string,
+ *    links: {[linkName: string]: string},
  *  },
  *  rounding: 0 | 1 | 2,
  *  start: {x: number, y: number},
@@ -139,7 +141,9 @@ export const BlankTile = ({
  *    bio: string,
  *    role: string,
  *    tags: string[],
- *    slug: string
+ *    slug: string,
+ *    shortDescription: string,
+ *    links: {[linkName: string]: string}
  *  },
  *  photo: string,
  *  rounding?: 0 | 1 | 2,

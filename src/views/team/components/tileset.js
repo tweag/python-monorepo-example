@@ -15,7 +15,9 @@ export class TileSet {
    *    bio: string,
    *    role: string,
    *    tags: string[],
-   *    slug: string
+   *    slug: string,
+   *    shortDescription: string,
+   *    links: {[linkName: string]: string}
    *  }[];
    *  photos: {[person: string]: string};
    *  tags: string[];

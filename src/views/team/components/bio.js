@@ -33,7 +33,9 @@ export const BioContext = createContext(null)
  *    bio: string,
  *    role: string,
  *    tags: string[],
- *    slug: string
+ *    slug: string,
+ *    shortDescription: string,
+ *    links: {[linkName: string]: string}
  *  },
  *  start: {x: number, y: number},
  *  height: number,
@@ -61,6 +63,8 @@ const Bio = ({
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
 
+  console.log(`Person Received: ${JSON.stringify(person, null, 2)}`)
+
   const positionalStyles = parsePositionalStyles(start, width, height)
   return (
     <div
@@ -80,11 +84,23 @@ const Bio = ({
           </div>
         ))}
       </div>
-      <div className={styles.shortDescription}></div>
+      <div className={styles.shortDescription}>{person.shortDescription}</div>
       <div className={styles.longTextContainer}>
         <div className={styles.longTextScrollable}>{person.bio}</div>
       </div>
-      <div className={styles.links}></div>
+      <div className={styles.links}>
+        {Object.entries(person.links).map(([linkName, url]) => (
+          <a
+            className={styles.link}
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            key={linkName + url}
+          >
+            {linkName}
+          </a>
+        ))}
+      </div>
     </div>
   )
 }
