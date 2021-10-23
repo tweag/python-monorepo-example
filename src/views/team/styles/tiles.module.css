@@ -14,7 +14,18 @@
   --animations-duration: 0.4s;
 }
 
-.profileTile::after {
+.profilePhoto {
+  width: 100%;
+  height: 100%;
+  background-image: var(--profile-picture);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: black;
+  background-size: cover;
+  transition: transform var(--animations-duration);
+}
+
+.profilePhoto::after {
   display: block;
   content: ".";
   z-index: 50;
@@ -26,17 +37,6 @@
   left: 0px;
   transition: box-shadow var(--animations-duration);
   box-shadow: 0px 0px 30px 2.5em rgba(0, 0, 0, 0.7);
-}
-
-.profilePhoto {
-  width: 100%;
-  height: 100%;
-  background-image: var(--profile-picture);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-color: black;
-  background-size: cover;
-  transition: transform var(--animations-duration);
 }
 
 .profileName {
@@ -51,7 +51,7 @@
 }
 
 @media screen and (hover: hover) {
-  .profileTile:hover .profilePhoto {
+  .profilePhoto:hover {
     transform: scale(1.15);
   }
 
@@ -59,7 +59,7 @@
     transform: translateY(100%);
   }
 
-  .profileTile:hover::after {
+  .profilePhoto:hover::after {
     box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
   }
 }
@@ -98,4 +98,44 @@
     background-color: black;
     color: white;
   }
+}
+
+@keyframes colorize {
+  to {
+    background-color: var(--tile-color, #30c179);
+  }
+}
+
+@keyframes decolorize {
+  to {
+    background-color: transparent;
+  }
+}
+
+.colorizeTile::after {
+  display: block;
+  content: ".";
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: transparent;
+  top: 0px;
+  left: 0px;
+  animation: colorize var(--animations-duration, 1s);
+  animation-fill-mode: forwards;
+}
+
+.decolorizeTile::after {
+  display: block;
+  content: ".";
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--tile-color, #30c179);
+  top: 0px;
+  left: 0px;
+  animation: decolorize var(--animations-duration, 1s);
+  animation-fill-mode: forwards;
 }

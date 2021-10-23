@@ -147,6 +147,7 @@ export const BlankTile = ({
  *  },
  *  photo: string,
  *  rounding?: 0 | 1 | 2,
+ *  colorIndex?: 0 | 1 | 2,
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
@@ -157,6 +158,7 @@ export const ProfileTile = ({
   person,
   photo,
   rounding = Math.floor((Math.random() * 3) % 3),
+  colorIndex = Math.floor((Math.random() * 3) % 3),
   start,
   height,
   width,
@@ -186,27 +188,23 @@ export const ProfileTile = ({
 
   const show = useFilteredMode(filter)
 
-  return (
+  const result = (
     <BioContext.Consumer>
       {value => {
-        return !show || (!!value && value !== person.slug) ? (
-          <ColorTile
-            key={key}
-            rounding={rounding}
-            start={start}
-            width={width}
-            height={height}
-          />
-        ) : (
+        return (
           <div
             className={[
               styles.tile,
               styles.positionedTile,
               styles.profileTile,
               ROUNDINGS[rounding],
+              !show || (!!value && value !== person.slug)
+                ? styles.colorizeTile
+                : styles.decolorizeTile,
             ].join(` `)}
             style={{
               ...positionalStyles,
+              "--tile-color": TILE_COLORS[colorIndex],
             }}
             key={key}
             onClick={clickHandler}
@@ -223,6 +221,46 @@ export const ProfileTile = ({
       }}
     </BioContext.Consumer>
   )
+
+  return result
+
+  // return (
+  //   <BioContext.Consumer>
+  //     {value => {
+  //       return !show || (!!value && value !== person.slug) ? (
+  //         <ColorTile
+  //           key={key}
+  //           rounding={rounding}
+  //           start={start}
+  //           width={width}
+  //           height={height}
+  //         />
+  //       ) : (
+  //         <div
+  //           className={[
+  //             styles.tile,
+  //             styles.positionedTile,
+  //             styles.profileTile,
+  //             ROUNDINGS[rounding],
+  //           ].join(` `)}
+  //           style={{
+  //             ...positionalStyles,
+  //           }}
+  //           key={key}
+  //           onClick={clickHandler}
+  //         >
+  //           <div
+  //             className={styles.profilePhoto}
+  //             style={{
+  //               "--profile-picture": `url(${photo ?? `#`})`,
+  //             }}
+  //           />
+  //           <div className={styles.profileName}>{person.name}</div>
+  //         </div>
+  //       )
+  //     }}
+  //   </BioContext.Consumer>
+  // )
 }
 
 /**

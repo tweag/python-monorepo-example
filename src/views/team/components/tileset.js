@@ -62,6 +62,7 @@ export class TileSet {
     this.activeBioProfile = activeBioProfile
     this.arbitraryAllocations = arbitraryAllocations
     this.roundings = new Map()
+    this.profileColors = new Map()
 
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.validProfiles = people.filter(person => !!this.photos[person.slug])
@@ -99,7 +100,7 @@ export class TileSet {
       case `sm`:
         return 11
       case `md`:
-        return 12
+        return 10
       case `lg`:
         return 8
       case `xl`:
@@ -145,6 +146,19 @@ export class TileSet {
     for (const tile of this.tilesGrid) {
       if (!this.roundings.has(tile.id)) {
         this.roundings.set(tile.id, Math.floor(Math.random() * 3))
+      }
+    }
+  }
+
+  generateColors() {
+    for (const tile of this.tilesGrid) {
+      if (
+        !this.profileColors.has(tile.id) &&
+        (tile.type == `profile` ||
+          tile.type == `colors` ||
+          tile.type == `bigProfile`)
+      ) {
+        this.profileColors.set(tile.id, Math.floor(Math.random() * 3))
       }
     }
   }
@@ -378,6 +392,7 @@ export class TileSet {
           y: tile.y,
         }}
         rounding={this.roundings.get(tile.id)}
+        colorIndex={this.profileColors.get(tile.id)}
       />
     )
   }
@@ -405,6 +420,7 @@ export class TileSet {
           y: tile.y,
         }}
         rounding={this.roundings.get(tile.id)}
+        colorIndex={this.profileColors.get(tile.id)}
       />
     )
   }
@@ -512,6 +528,7 @@ export class TileSet {
       ]
     } else {
       this.generateRoundings()
+      this.generateColors()
       this.finalTiles = []
       this.addPositionedTilesToFinalTiles()
       this.addUnpositionedTilesToFinalTiles()
