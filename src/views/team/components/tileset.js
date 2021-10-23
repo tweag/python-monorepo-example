@@ -90,6 +90,26 @@ export class TileSet {
   }
 
   /**
+   * @returns
+   */
+  getBioHeight() {
+    switch (this.breakpoint) {
+      case `xs`:
+        return 18
+      case `sm`:
+        return 11
+      case `md`:
+        return 12
+      case `lg`:
+        return 8
+      case `xl`:
+        return 5
+      case `xxl`:
+        return 3
+    }
+  }
+
+  /**
    * @param {{
    *  person: {
    *    name: string,
@@ -283,7 +303,7 @@ export class TileSet {
 
     // Calculate profile position and size
     let profilePosition = `right`
-    let profileHeight = 5
+    let profileHeight = this.getBioHeight()
     let profileWidth = 3
 
     const spaceToTheLeft = this.activeBioProfile.start.y - 1
@@ -297,8 +317,8 @@ export class TileSet {
       spaceToTheLeft < profileWidth &&
       spaceToTheRight < profileWidth
     ) {
-      profileHeight = 8
-      profileWidth = 2
+      profileHeight += 1
+      profileWidth -= 1
       profilePosition = spaceToTheLeft < spaceToTheRight ? `right` : `left`
     }
 
