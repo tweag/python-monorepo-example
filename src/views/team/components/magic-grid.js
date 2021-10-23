@@ -207,7 +207,12 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         ref={ajusterRef}
       >
         <SearchBar placeholder={`Search for a name or a skill`} />
-        <ShuffleButton onClick={() => reShuffle({})} />
+        <ShuffleButton
+          onClick={() => {
+            tileSetRef.current.setActiveProfile(null)
+            reShuffle({})
+          }}
+        />
       </div>
       <BioContext.Provider
         value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
