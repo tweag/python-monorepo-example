@@ -12,6 +12,41 @@ tweagers:
   - Yann Hamdaoui
   - Yves Parès
 papers:
+  - title: Programming R in Haskell
+    authors:
+      Mathieu Boespflug
+      Allen Brown
+      Facundo Domínguez
+      Alexander Vershilov
+    status: IFL 2014
+    links:
+      Link: https://ifl2014.github.io/submissions/ifl2014_submission_16.pdf
+      Homepage: https://tweag.github.io/HaskellR/
+    tags:
+      - haskell
+      - language interop
+    abstract: >
+      A standard method for augmenting the “native” set of libraries
+      available within any given programming environment is to extend
+      this set via a foreign function interface provided by the
+      programming language. In this way, by exporting the
+      functionality of external libraries via binding modules, one is
+      able to reuse libraries without having to reimplement them in
+      the language du jour.
+
+      However, a priori bindings of entire system libraries is
+      a tedious process that quickly creates an unbearable maintenance
+      burden. We demonstrate an alternative to monolithic and imposing
+      binding modules, even to make use of libraries implemented in
+      a special-purpose, dynamically typed, interpreted language. As
+      a case study, we present H, an R-to-Haskell interoperability
+      solution making it possible to program all of R, including all
+      library packages on CRAN, from Haskell, a general-purpose,
+      statically typed, compiled language. We demonstrate how to do so
+      efficiently, without marshalling costs when crossing language
+      boundaries and with static guarantees of well-formation of
+      expressions and safe acquisition of foreign language resources.
+
   - title: Efficient Compilation of Algebraic Effect Handlers
     status: OOPSLA 2021
     links:
