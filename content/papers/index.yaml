@@ -1,14 +1,16 @@
 tweagers:
-  - Georgios Karachalias
-  - Richard A. Eisenberg
-  - Guillaume Duboc
   - Arnaud Spiwack
+  - Alexander Vershilov
+  - Facundo Domínguez
+  - Georgios Karachalias
+  - Gert-Jan Bottu
+  - Guillaume Duboc
   - Jean-Philippe Bernardy
   - Mathieu Boespflug
-  - Gert-Jan Bottu
-  - Yves Parès
+  - Richard A. Eisenberg
   - Teodoro Freund
   - Yann Hamdaoui
+  - Yves Parès
 papers:
   - title: Efficient Compilation of Algebraic Effect Handlers
     status: OOPSLA 2021
