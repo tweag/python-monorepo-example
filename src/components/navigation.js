@@ -163,7 +163,7 @@ function Header({ inverted, fullpage = false }) {
         top: 0,
         right: 0,
         left: 0,
-        zIndex: 99,
+        zIndex: 999,
         mt: [0, 0, `-16px`, fullpage ? `-14px` : null],
         transition: `all 0.4s ease`,
       }}
