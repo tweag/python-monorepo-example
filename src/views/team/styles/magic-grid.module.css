@@ -19,6 +19,7 @@
       ) / var(--magic-grid-columns, 7)
   );
   grid-auto-rows: var(--magic-grid-cell-width);
+  grid-auto-columns: var(--magic-grid-cell-width);
   grid-auto-flow: row;
   --bio-rounding-amount: calc(var(--magic-grid-cell-width) * 0.4);
 }
