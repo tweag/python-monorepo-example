@@ -4,7 +4,8 @@
   margin: var(--magic-grid-margin, 1rem);
   gap: var(--magic-grid-gap, 1rem);
   grid-template-columns: repeat(var(--magic-grid-columns, 7), 1fr);
-  grid-auto-rows: calc(
+  transition: all 1s;
+  --magic-grid-cell-width: calc(
     calc(
         100vw -
           calc(
@@ -15,21 +16,9 @@
           )
       ) / var(--magic-grid-columns, 7)
   );
+  grid-auto-rows: var(--magic-grid-cell-width);
   grid-auto-flow: row;
-  --bio-rounding-amount: calc(
-    calc(
-        calc(
-            100vw -
-              calc(
-                calc(var(--magic-grid-margin, 1rem) * 2) +
-                  calc(
-                    var(--magic-grid-gap, 1rem) *
-                      (var(--magic-grid-columns, 7) - 1)
-                  )
-              )
-          ) / var(--magic-grid-columns, 7)
-      ) * 0.4
-  );
+  --bio-rounding-amount: calc(var(var(--magic-grid-cell-width)) * 0.4);
 }
 
 @media screen and (min-width: 768px) {
