@@ -1,5 +1,7 @@
 .magicGrid {
   grid-area: magic-grid;
+  justify-self: center;
+  max-width: 80rem;
   display: grid;
   margin: var(--magic-grid-margin, 1rem);
   gap: var(--magic-grid-gap, 1rem);
@@ -7,7 +9,7 @@
   transition: all 1s;
   --magic-grid-cell-width: calc(
     calc(
-        100vw -
+        min(80rem, 100vw) -
           calc(
             calc(var(--magic-grid-margin, 1rem) * 2) +
               calc(
