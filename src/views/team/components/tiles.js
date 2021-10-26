@@ -199,6 +199,7 @@ export const ProfileTile = ({
   const result = (
     <BioContext.Consumer>
       {value => {
+        const notShowingTile = !show || (!!value && value !== person.slug)
         return (
           <div
             className={[
@@ -206,16 +207,14 @@ export const ProfileTile = ({
               styles.positionedTile,
               styles.profileTile,
               ROUNDINGS[rounding],
-              !show || (!!value && value !== person.slug)
-                ? styles.colorizeTile
-                : styles.decolorizeTile,
+              notShowingTile ? styles.colorizeTile : styles.decolorizeTile,
             ].join(` `)}
             style={{
               ...positionalStyles,
               "--tile-color": TILE_COLORS[colorIndex],
             }}
             key={key}
-            onClick={clickHandler}
+            onClick={notShowingTile ? null : clickHandler}
             id={id}
           >
             <div

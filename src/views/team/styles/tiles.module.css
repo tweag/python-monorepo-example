@@ -146,6 +146,7 @@
   left: 0px;
   animation: colorize var(--animations-duration, 1s);
   animation-fill-mode: forwards;
+  cursor: auto;
 }
 
 .decolorizeTile::after {
