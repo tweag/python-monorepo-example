@@ -48,7 +48,18 @@ const IntroductionSection = () => {
 const Team = ({ data }) => {
   const photos = parsePhotos(data)
   const profiles = parseProfiles(data)
-  const tags = [`haskell`, `Nix`, `Rust`]
+  const tags = [
+    `haskell`,
+    `nix`,
+    `mathematics`,
+    `bazel`,
+    `python`,
+    `functional programming`,
+    `physics`,
+    `devops`,
+    `GHC`,
+    `purescript`,
+  ]
 
   const magicGridProps = { profiles, photos, tags }
   return (
