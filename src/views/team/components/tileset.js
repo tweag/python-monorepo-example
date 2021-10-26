@@ -55,6 +55,7 @@ export class TileSet {
     activeBioProfile,
   }) {
     this.finalTiles = []
+    this.lastActiveProfile = ``
     this.breakpoint = breakpoint
     this.tags = tags
     this.columns = columns
@@ -129,6 +130,7 @@ export class TileSet {
    * }} newProfile
    */
   setActiveProfile(newProfile) {
+    this.lastActiveProfile = this.activeBioProfile?.person?.slug ?? ``
     this.activeBioProfile = newProfile
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.tilesGrid = this.generateGrid()
@@ -396,6 +398,10 @@ export class TileSet {
         }}
         rounding={this.roundings.get(tile.id)}
         colorIndex={this.profileColors.get(tile.id)}
+        active={
+          this.lastActiveProfile === slug ||
+          this.activeBioProfile?.person?.slug === slug
+        }
       />
     )
   }
@@ -424,6 +430,10 @@ export class TileSet {
         }}
         rounding={this.roundings.get(tile.id)}
         colorIndex={this.profileColors.get(tile.id)}
+        active={
+          this.lastActiveProfile === slug ||
+          this.activeBioProfile?.person?.slug === slug
+        }
       />
     )
   }

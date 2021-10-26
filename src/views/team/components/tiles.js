@@ -159,6 +159,7 @@ export const BlankTile = ({
  *  width?: number,
  *  key?: number | string,
  *  id?: string
+ *  active: boolean = false
  * }} props
  */
 export const ProfileTile = ({
@@ -171,6 +172,7 @@ export const ProfileTile = ({
   width,
   key,
   id,
+  active = false,
 }) => {
   // Invoke bio
   const clickHandler = generateShowBioEventIssuer({
@@ -207,7 +209,11 @@ export const ProfileTile = ({
               styles.positionedTile,
               styles.profileTile,
               ROUNDINGS[rounding],
-              notShowingTile ? styles.colorizeTile : styles.decolorizeTile,
+              notShowingTile
+                ? styles.colorizeTile
+                : active
+                ? ``
+                : styles.decolorizeTile,
             ].join(` `)}
             style={{
               ...positionalStyles,
