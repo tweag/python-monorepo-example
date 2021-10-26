@@ -214,6 +214,7 @@ export const ProfileTile = ({
                 : active
                 ? ``
                 : styles.decolorizeTile,
+              active ? styles.forceActive : ``,
             ].join(` `)}
             style={{
               ...positionalStyles,
@@ -221,6 +222,10 @@ export const ProfileTile = ({
             }}
             key={key}
             onClick={notShowingTile ? null : clickHandler}
+            onPointerOut={event => {
+              const target = event.target
+              target.classList.remove(styles.forceActive)
+            }}
             id={id}
           >
             <div

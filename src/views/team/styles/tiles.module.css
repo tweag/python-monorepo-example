@@ -51,15 +51,15 @@
 }
 
 @media screen and (hover: hover) {
-  .profilePhoto:hover {
+  .profilePhoto:hover, .forceActive .profilePhoto {
     transform: scale(1.15);
   }
 
-  .profileTile:hover .profileName {
+  .profileTile:hover .profileName, .forceActive .profileName {
     transform: translateY(100%);
   }
 
-  .profilePhoto:hover::after {
+  .profilePhoto:hover::after, .forceActive::after {
     box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
   }
 }
