@@ -51,8 +51,8 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
 
   // Render parameters
   const renderParameters = {
-    color: Math.floor(profiles.length * 0.11),
-    blank: Math.floor(profiles.length * 0.41),
+    color: Math.floor(tags.length * 1.1),
+    blank: Math.floor(tags.length * 3.6),
     columns: 6,
   }
 

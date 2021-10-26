@@ -154,9 +154,7 @@ export class TileSet {
     for (const tile of this.tilesGrid) {
       if (
         !this.profileColors.has(tile.id) &&
-        (tile.type == `profile` ||
-          tile.type == `colors` ||
-          tile.type == `bigProfile`)
+        (tile.type == `profile` || tile.type == `bigProfile`)
       ) {
         this.profileColors.set(tile.id, Math.floor(Math.random() * 3))
       }
@@ -223,20 +221,25 @@ export class TileSet {
     return skeletons
   }
 
-  generateRandomTilesOrder() {
-    // Step 2: Define tiles proportions for each type
-    const smallProfiles = Math.floor(this.validProfiles.length * 0.7)
-    const bigProfiles = this.validProfiles.length - smallProfiles
+  calculateTileDistributions() {
+    const bigTiles = Math.floor((this.validProfiles.length * 15) / 56)
+    const smallTiles = this.validProfiles.length - bigTiles
+    const blankTiles =
+      this.breakpoint === `sm` || this.breakpoint === `xs` ? 0 : smallTiles
+    const colorTiles = Math.floor(smallTiles * 0.28)
+    const tagTiles = this.tags.length
 
-    // Step 3: Randomly distribute tiles
-    const tileAllocation = {
-      color: this.arbitraryAllocations?.color ?? bigProfiles + this.tags.length,
-      profile: smallProfiles,
-      bigProfile: bigProfiles,
-      tag: this.tags.length,
-      blank: this.arbitraryAllocations?.blank ?? smallProfiles,
+    return {
+      color: colorTiles,
+      profile: smallTiles,
+      bigProfile: bigTiles,
+      tag: tagTiles,
+      blank: blankTiles,
     }
-    return allocateTiles(tileAllocation)
+  }
+
+  generateRandomTilesOrder() {
+    return allocateTiles(this.calculateTileDistributions())
   }
 
   generateGrid() {
@@ -480,6 +483,7 @@ export class TileSet {
             <ColorTile
               key={`color:${currentColor}`}
               rounding={this.roundings.get(tile.id)}
+              colorIndex={Number(currentColor) % 3}
             />
           )
           break
