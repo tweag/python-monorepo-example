@@ -11,7 +11,7 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  --animations-duration: 0.4s;
+  --animations-duration: 1s;
 }
 
 .profilePhoto {
