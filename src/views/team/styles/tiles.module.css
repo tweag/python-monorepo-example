@@ -11,7 +11,7 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  --animations-duration: 1s;
+  --animations-duration: 0.8s;
 }
 
 .profilePhoto {
@@ -79,18 +79,40 @@
 
 .tagTile {
   border: solid black 0.2rem;
+  max-width: var(--magic-grid-cell-width);
   background-color: white;
   color: black;
   display: grid;
   place-items: center;
-  padding: 1rem;
-  font-size: 1.4rem;
   cursor: pointer;
 }
 
 .tagTile.active {
   background-color: black;
   color: white;
+}
+
+.tagText {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.tagText::before {
+  content: "#";
+}
+
+@media screen and (min-width: 992px) {
+  .tagText {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tagText {
+    font-size: 1.4rem;
+  }
 }
 
 @media screen and (hover: hover) {

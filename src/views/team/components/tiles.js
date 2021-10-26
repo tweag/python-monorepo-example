@@ -282,7 +282,7 @@ export const TagTile = ({
       onClick={onClick}
       id={id}
     >
-      {tag}
+      <span className={styles.tagText}>{tag}</span>
     </div>
   ) : (
     <ColorTile key={key} start={start} width={width} height={height} />
