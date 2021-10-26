@@ -73,7 +73,8 @@ function generateShowBioEventIssuer({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string
+ *  key?: number | string,
+ *  id?: string
  * }} props
  * @returns {JSX.Element}
  */
@@ -84,6 +85,7 @@ export const ColorTile = ({
   height,
   width,
   key,
+  id,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
 
@@ -100,6 +102,7 @@ export const ColorTile = ({
         ...positionalStyles,
       }}
       key={key}
+      id={id}
     />
   )
 }
@@ -111,7 +114,8 @@ export const ColorTile = ({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string
+ *  key?: number | string,
+ *  id?: string
  * }} props
  * @returns {JSX.Element}
  */
@@ -121,6 +125,7 @@ export const BlankTile = ({
   height,
   width,
   key,
+  id,
 }) => {
   const colorTileProps = {
     rounding,
@@ -129,6 +134,7 @@ export const BlankTile = ({
     width,
     key,
     colorIndex: 3,
+    id,
   }
 
   return <ColorTile {...colorTileProps} />
@@ -151,7 +157,8 @@ export const BlankTile = ({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string
+ *  key?: number | string,
+ *  id?: string
  * }} props
  */
 export const ProfileTile = ({
@@ -163,6 +170,7 @@ export const ProfileTile = ({
   height,
   width,
   key,
+  id,
 }) => {
   // Invoke bio
   const clickHandler = generateShowBioEventIssuer({
@@ -208,6 +216,7 @@ export const ProfileTile = ({
             }}
             key={key}
             onClick={clickHandler}
+            id={id}
           >
             <div
               className={styles.profilePhoto}
@@ -223,44 +232,6 @@ export const ProfileTile = ({
   )
 
   return result
-
-  // return (
-  //   <BioContext.Consumer>
-  //     {value => {
-  //       return !show || (!!value && value !== person.slug) ? (
-  //         <ColorTile
-  //           key={key}
-  //           rounding={rounding}
-  //           start={start}
-  //           width={width}
-  //           height={height}
-  //         />
-  //       ) : (
-  //         <div
-  //           className={[
-  //             styles.tile,
-  //             styles.positionedTile,
-  //             styles.profileTile,
-  //             ROUNDINGS[rounding],
-  //           ].join(` `)}
-  //           style={{
-  //             ...positionalStyles,
-  //           }}
-  //           key={key}
-  //           onClick={clickHandler}
-  //         >
-  //           <div
-  //             className={styles.profilePhoto}
-  //             style={{
-  //               "--profile-picture": `url(${photo ?? `#`})`,
-  //             }}
-  //           />
-  //           <div className={styles.profileName}>{person.name}</div>
-  //         </div>
-  //       )
-  //     }}
-  //   </BioContext.Consumer>
-  // )
 }
 
 /**
@@ -270,7 +241,8 @@ export const ProfileTile = ({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string
+ *  key?: number | string,
+ *  id?: string
  * }} props
  */
 export const TagTile = ({
@@ -280,6 +252,7 @@ export const TagTile = ({
   height,
   width,
   key,
+  id,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
   const [state, setState] = useState(false)
@@ -307,6 +280,7 @@ export const TagTile = ({
       }}
       key={key}
       onClick={onClick}
+      id={id}
     >
       {tag}
     </div>
