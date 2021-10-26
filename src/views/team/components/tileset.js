@@ -103,11 +103,11 @@ export class TileSet {
       case `md`:
         return 10
       case `lg`:
-        return 8
+        return 9
       case `xl`:
-        return 5
+        return 9
       case `xxl`:
-        return 5
+        return 9
     }
   }
 
