@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 // eslint-disable-next-line no-unused-vars
-import { useState, MutableRefObject } from "react"
+import { useState, MutableRefObject, useRef } from "react"
 
 import { BioContext } from "./bio"
 import { useFilteredMode } from "../hooks/tiles-hooks"
@@ -223,8 +223,15 @@ export const ProfileTile = ({
             key={key}
             onClick={notShowingTile ? null : clickHandler}
             onPointerOut={event => {
-              const target = event.target
-              target.classList.remove(styles.forceActive)
+              const target = event.currentTarget
+              const removeForceActive = () =>
+                target.classList.remove(styles.forceActive)
+              window.addEventListener(`pointermove`, removeForceActive, {
+                once: true,
+              })
+              setTimeout(() => {
+                window.removeEventListener(`pointermove`, removeForceActive)
+              }, 100)
             }}
             id={id}
           >
