@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid"
+
 class VirtualGrid {
   /**
    * @param {number} columns
@@ -139,7 +141,7 @@ class VirtualGrid {
       if (!this.internalGrid[line]) {
         this.internalGrid[line] = []
       }
-      for (let column = 0; column < this.internalGrid[line].length; column++) {
+      for (let column = 0; column < this.limitColumns; column++) {
         if (
           !!this.internalGrid[line][column] &&
           !counted.includes(this.internalGrid[line][column])
@@ -151,6 +153,15 @@ class VirtualGrid {
             y: column + 1,
           })
           counted.push(this.internalGrid[line][column])
+        }
+
+        if (!this.internalGrid[line][column]) {
+          result.push({
+            type: `empty`,
+            id: `empty:${uuid()}`,
+            x: line + 1,
+            y: column + 1,
+          })
         }
       }
     }

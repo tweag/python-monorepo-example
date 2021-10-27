@@ -310,8 +310,9 @@ export class TileSet {
       return {}
     }
 
-    const finalRow =
-      this.activeBioProfile?.start?.x >= 8 ? 1 : this.activeBioProfile?.start?.x
+    const finalRow = this.activeBioProfile?.start?.x
+      ? this.activeBioProfile?.start?.x
+      : 1
 
     const tileType =
       this.activeBioProfile.height == 1 && this.activeBioProfile.width == 1
@@ -520,6 +521,15 @@ export class TileSet {
             <BlankTile
               key={`color:${uuid()}`}
               rounding={this.roundings.get(tile.id)}
+            />
+          )
+          break
+        case `empty`:
+          this.finalTiles.push(
+            <ColorTile
+              key={`empty:${uuid()}`}
+              rounding={this.roundings.get(tile.id)}
+              colorIndex={Math.floor(Math.random() * 4)}
             />
           )
           break
