@@ -48,15 +48,18 @@
 }
 
 @media screen and (hover: hover) {
-  .profileTile:hover .profilePhoto, .forceActive .profilePhoto {
+  .profileTile:hover .profilePhoto,
+  .forceActive .profilePhoto {
     transform: scale(1.15);
   }
 
-  .profileTile:hover .profileName, .forceActive .profileName {
+  .profileTile:hover .profileName,
+  .forceActive .profileName {
     transform: translateY(100%);
   }
 
-  .profileTile:hover .shadowContainer::after, .forceActive .shadowContainer::after {
+  .profileTile:hover .shadowContainer::after,
+  .forceActive .shadowContainer::after {
     box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
   }
 }
