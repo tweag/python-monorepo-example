@@ -542,7 +542,7 @@ export class TileSet {
 
     console.log(`Bio size: ${bioSize}`)
 
-    for (let i = 0; i < 59 - bioSize; i++) {
+    for (let i = 0; i < 60 - bioSize; i++) {
       this.finalTiles.push(
         <ColorTile
           key={`empty:${uuid()}`}

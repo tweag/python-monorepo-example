@@ -79,7 +79,7 @@
 
 .tagTile {
   border: solid black 0.2rem;
-  width: var(--magic-grid-cell-width);
+  width: 100%;
   background-color: white;
   color: black;
   display: grid;

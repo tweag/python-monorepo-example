@@ -1,7 +1,7 @@
 .magicGrid {
   grid-area: magic-grid;
   justify-self: center;
-  --magic-grid-width: min(70rem, 100vh);
+  --magic-grid-width: min(70rem, 100vw);
   width: var(--magic-grid-width);
   display: grid;
   padding: var(--magic-grid-margin, 1rem);
