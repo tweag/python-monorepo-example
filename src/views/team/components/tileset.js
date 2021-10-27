@@ -127,7 +127,7 @@ export class TileSet {
    *  height: number,
    *  width: number,
    *  rounding: number,
-   * }} newProfile
+   * } | null} newProfile
    */
   setActiveProfile(newProfile) {
     this.lastActiveProfile = this.activeBioProfile?.person?.slug ?? ``
@@ -317,7 +317,10 @@ export class TileSet {
     const id = `${tileType}:${this.activeBioProfile.person.slug}`
     const resultProfile = {
       id,
-      start: this.activeBioProfile.start,
+      start: {
+        x: 1,
+        y: this.activeBioProfile.start.y,
+      },
       height: this.activeBioProfile.height,
       width: this.activeBioProfile.width,
     }
@@ -346,11 +349,11 @@ export class TileSet {
     const profileStart =
       profilePosition === `right`
         ? {
-            x: this.activeBioProfile.start.x,
+            x: 1,
             y: this.activeBioProfile.start.y + this.activeBioProfile.width,
           }
         : {
-            x: this.activeBioProfile.start.x,
+            x: 1,
             y: this.activeBioProfile.start.y - profileWidth,
           }
 
