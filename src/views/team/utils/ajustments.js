@@ -1,5 +1,3 @@
-import { v4 as uuid } from "uuid"
-
 class VirtualGrid {
   /**
    * @param {number} columns
@@ -153,15 +151,6 @@ class VirtualGrid {
             y: column + 1,
           })
           counted.push(this.internalGrid[line][column])
-        }
-
-        if (!this.internalGrid[line][column]) {
-          result.push({
-            type: `empty`,
-            id: `empty:${uuid()}`,
-            x: line + 1,
-            y: column + 1,
-          })
         }
       }
     }

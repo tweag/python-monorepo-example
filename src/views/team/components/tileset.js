@@ -455,7 +455,7 @@ export class TileSet {
    *  type: string;}} tile
    * @returns {JSX.Element}
    */
-  generateBio(tile) {
+  generateBio() {
     const bioRelativePosition =
       this.prePositionedStuff.activeBio.start.y <
       this.prePositionedStuff.activeProfile.start.y
@@ -534,6 +534,22 @@ export class TileSet {
           )
           break
       }
+    }
+
+    const bioSize =
+      (this.prePositionedStuff?.activeBio?.height ?? 0) *
+      (this.prePositionedStuff?.activeBio?.width ?? 0)
+
+    console.log(`Bio size: ${bioSize}`)
+
+    for (let i = 0; i < 59 - bioSize; i++) {
+      this.finalTiles.push(
+        <ColorTile
+          key={`empty:${uuid()}`}
+          rounding={Math.floor(Math.random() * 3)}
+          colorIndex={Math.floor(Math.random() * 4)}
+        />
+      )
     }
   }
 
