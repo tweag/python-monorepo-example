@@ -317,7 +317,7 @@ function Header({ inverted, fullpage = false }) {
             isExternal={isExternal}
             customSx={{
               mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
-              ...(i === 3 ? { mr: [0, 0, 0, 0, 0, 0, 0, 0] } : {}),
+              // ...(i === 3 ? { mr: [0, 0, 0, 0, 0, 0, 0, 0] } : {}),
               minWidth: [`fit-content`],
               mb: [`15px`, `15px`, 0],
             }}
