@@ -310,6 +310,9 @@ export class TileSet {
       return {}
     }
 
+    const finalRow =
+      this.activeBioProfile?.start?.x >= 8 ? 1 : this.activeBioProfile?.start?.x
+
     const tileType =
       this.activeBioProfile.height == 1 && this.activeBioProfile.width == 1
         ? `profile`
@@ -318,7 +321,7 @@ export class TileSet {
     const resultProfile = {
       id,
       start: {
-        x: 1,
+        x: finalRow,
         y: this.activeBioProfile.start.y,
       },
       height: this.activeBioProfile.height,
@@ -349,11 +352,11 @@ export class TileSet {
     const profileStart =
       profilePosition === `right`
         ? {
-            x: 1,
+            x: finalRow,
             y: this.activeBioProfile.start.y + this.activeBioProfile.width,
           }
         : {
-            x: 1,
+            x: finalRow,
             y: this.activeBioProfile.start.y - profileWidth,
           }
 
