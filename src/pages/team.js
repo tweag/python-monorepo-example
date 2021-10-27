@@ -13,8 +13,14 @@ export const query = graphql`
           children {
             ... on ImageSharp {
               id
-              fluid {
-                srcWebp
+              fixed(
+                height: 512
+                width: 512
+                cropFocus: NORTH
+                toFormat: WEBP
+                quality: 85
+              ) {
+                src
               }
             }
           }

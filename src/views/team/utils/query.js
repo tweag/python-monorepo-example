@@ -4,7 +4,7 @@ export function parsePhotos(data) {
   const result = {}
 
   for (const { node } of data.profileImages.edges) {
-    result[node.name] = node.children[0].fluid.srcWebp
+    result[node.name] = node.children[0].fixed.src
   }
 
   return result

@@ -228,12 +228,13 @@ export const ProfileTile = ({
             }}
             id={id}
           >
-            <div
-              className={styles.profilePhoto}
-              style={{
-                "--profile-picture": `url(${photo ?? `#`})`,
-              }}
-            />
+            <div className={styles.shadowContainer}>
+              <img
+                className={styles.profilePhoto}
+                src={photo}
+                alt={person.slug}
+              />
+            </div>
             <div className={styles.profileName}>{person.name}</div>
           </div>
         )

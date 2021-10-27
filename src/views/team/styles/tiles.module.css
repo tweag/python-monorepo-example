@@ -16,16 +16,13 @@
 
 .profilePhoto {
   width: 100%;
-  height: 100%;
-  background-image: var(--profile-picture);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-color: black;
-  background-size: cover;
+  height: auto;
+  overflow: hidden;
+  position: relative;
   transition: transform var(--animations-duration);
 }
 
-.profilePhoto::after {
+.shadowContainer::after {
   display: block;
   content: ".";
   z-index: 50;
@@ -51,7 +48,7 @@
 }
 
 @media screen and (hover: hover) {
-  .profilePhoto:hover, .forceActive .profilePhoto {
+  .profileTile:hover .profilePhoto, .forceActive .profilePhoto {
     transform: scale(1.15);
   }
 
@@ -59,7 +56,7 @@
     transform: translateY(100%);
   }
 
-  .profilePhoto:hover::after, .forceActive::after {
+  .profileTile:hover .shadowContainer::after, .forceActive .shadowContainer::after {
     box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
   }
 }
