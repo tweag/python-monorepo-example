@@ -13,6 +13,7 @@ tweagers:
   - Yves Parès
 papers:
   - title: Programming R in Haskell
+    date: 2014
     authors:
       - Mathieu Boespflug
       - Allen Brown
