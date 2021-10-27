@@ -227,8 +227,10 @@ export class TileSet {
     const bigTiles = Math.floor((this.validProfiles.length * 15) / 56)
     const smallTiles = this.validProfiles.length - bigTiles
     const blankTiles =
-      this.breakpoint === `sm` || this.breakpoint === `xs` ? 0 : smallTiles
-    const colorTiles = Math.floor(smallTiles * 0.28)
+      this.breakpoint === `sm` || this.breakpoint === `xs`
+        ? 0
+        : Math.floor(smallTiles * 0.28)
+    const colorTiles = smallTiles
     const tagTiles = this.tags.length
 
     return {
