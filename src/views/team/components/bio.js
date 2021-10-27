@@ -63,8 +63,6 @@ const Bio = ({
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
 
-  console.log(`Person Received: ${JSON.stringify(person, null, 2)}`)
-
   const positionalStyles = parsePositionalStyles(start, width, height)
   return (
     <div
