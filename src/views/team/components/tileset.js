@@ -97,17 +97,17 @@ export class TileSet {
   getBioHeight() {
     switch (this.breakpoint) {
       case `xs`:
-        return 18
+        return 12
       case `sm`:
         return 11
       case `md`:
         return 10
       case `lg`:
-        return 9
+        return 7
       case `xl`:
-        return 9
+        return 7
       case `xxl`:
-        return 9
+        return 7
     }
   }
 
@@ -536,20 +536,22 @@ export class TileSet {
       }
     }
 
-    const bioSize =
-      (this.prePositionedStuff?.activeBio?.height ?? 0) *
-      (this.prePositionedStuff?.activeBio?.width ?? 0)
+    if (this.breakpoint !== `sm` && this.breakpoint !== `xs`) {
+      const bioSize =
+        (this.prePositionedStuff?.activeBio?.height ?? 0) *
+        (this.prePositionedStuff?.activeBio?.width ?? 0)
 
-    console.log(`Bio size: ${bioSize}`)
+      console.log(`Bio size: ${bioSize}`)
 
-    for (let i = 0; i < 60 - bioSize; i++) {
-      this.finalTiles.push(
-        <ColorTile
-          key={`empty:${uuid()}`}
-          rounding={Math.floor(Math.random() * 3)}
-          colorIndex={Math.floor(Math.random() * 4)}
-        />
-      )
+      for (let i = 0; i < 60 - bioSize; i++) {
+        this.finalTiles.push(
+          <ColorTile
+            key={`empty:${uuid()}`}
+            rounding={Math.floor(Math.random() * 3)}
+            colorIndex={Math.floor(Math.random() * 4)}
+          />
+        )
+      }
     }
   }
 
@@ -567,7 +569,7 @@ export class TileSet {
               : `right`
           }
           start={{ x: 1, y: 1 }}
-          height={5}
+          height={this.getBioHeight()}
           width={3}
           key={this.prePositionedStuff.activeBio.id}
           rounding={this.activeBioProfile.rounding}
