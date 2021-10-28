@@ -21,7 +21,7 @@ One cool change in the GHC API which allowed me to simplify the code at several 
 -- A type with no inhabitants
 data Void
 
--- Ex falsum quodlibet
+-- Ex falso quodlibet
 absurd :: Void -> a
 absurd = \case {}
 
