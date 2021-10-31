@@ -54,9 +54,10 @@ papers:
       Link: https://doi.org/10.1145/3485479
       Zenodo: https://zenodo.org/record/5497862
     tags:
-      - algebraic effect handlers
-      - optimising compilation
+      # - algebraic effect handlers
+      # - optimising compilation
       - ocaml
+      - effects
     date: 2021-10
     abstract: >
       The popularity of algebraic effect handlers as a programming language
@@ -79,9 +80,10 @@ papers:
       Link: https://doi.org/10.1145/3473569
     tags:
       - haskell
-      - ghc
-      - inference
-      - dependent types
+      - type systems
+      # - ghc
+      # - inference
+      # - dependent types
     date: 2021-08
     abstract: >
       Despite the great success of inferring and programming with universal
@@ -107,9 +109,10 @@ papers:
       Arxiv: https://arxiv.org/abs/2011.04070
     tags:
       - haskell
-      - ghc
-      - dependent types
-      - linear types
+      - type systems
+      # - ghc
+      # - dependent types
+      # - linear types
     date: 2021-01
     abstract: >
       Graded Type Theory provides a mechanism to track and reason about resource
@@ -135,6 +138,7 @@ papers:
     links: {}
     tags:
       - haskell
+      - machine learning
     date: 2022-01
     abstract: >
       In this paper, we give a simple and efficient implementation of
@@ -156,9 +160,10 @@ papers:
       Link: https://doi.org/10.1145/3371121
     tags:
       - haskell
-      - ghc
-      - inference
-      - dependent types
+      - type systems
+      # - ghc
+      # - inference
+      # - dependent types
     date: 2020-01
     abstract: >
       In recent years, languages like Haskell have seen a dramatic surge of new
@@ -187,7 +192,8 @@ papers:
       Link: https://doi.org/10.1145/3408986
     tags:
       - haskell
-      - unboxed types
+      # - unboxed types
+      - performance
     date: 2020-08
     abstract: >
       A language supporting polymorphism is a boon to programmers: they can
@@ -207,9 +213,10 @@ papers:
       Arxiv: https://arxiv.org/abs/2103.06127
     tags:
       - haskell
-      - linear types
-      - ghc
-      - inference
+      # - linear types
+      # - ghc
+      # - inference
+      - type systems
     date: "2022"
     abstract: >
       A linear parameter must be consumed exactly once in the body of its
@@ -238,8 +245,9 @@ papers:
       Arxiv: https://arxiv.org/abs/1710.09756
     tags:
       - haskell
-      - linear types
-      - ghc
+      # - linear types
+      # - ghc
+      - type systems
     date: 2018-01
     abstract: >
       Linear type systems have a long and storied history, but not a clear path
@@ -267,8 +275,9 @@ papers:
       Arxiv: https://arxiv.org/abs/2103.06195
     tags:
       - haskell
-      - linear types
-      - symmetric monoidal categories
+      - types in practice
+      # - linear types
+      # - symmetric monoidal categories
     date: 2021-08
     abstract: >
       A number of domain specific languages, such as circuits or data-science
@@ -287,7 +296,8 @@ papers:
       Link: https://doi.org/10.1145/3371108
     tags:
       - haskell
-      - dependent types
+      - type systems
+      # - dependent types
     date: 2021-01
     abstract: >
       Functional programming languages assume that type constructors are total.
@@ -318,12 +328,13 @@ papers:
       Arxiv: https://arxiv.org/abs/2010.06216
       Zenodo: https://zenodo.org/record/4043646
     tags:
-      - coherence
-      - modus ponens
-      - family polymorphism
-      - resolution
-      - nested composition
-      - intersection types
+      # - coherence
+      # - modus ponens
+      # - family polymorphism
+      # - resolution
+      # - nested composition
+      # - intersection types
+      - type systems
     date: 2020-11
     abstract: >
       Resolution and subtyping are two common mechanisms in programming
@@ -357,8 +368,9 @@ papers:
       Link: https://doi.org/10.1145/3471874.3472985
     tags:
       - haskell
-      - ghc
-      - inference
+      # - ghc
+      # - inference
+      - type systems
     date: 2021-08
     abstract: >
       Designing a language feature often requires a choice between several,
@@ -377,8 +389,9 @@ papers:
       Link: https://doi.org/10.1145/3406088.3409015
     tags:
       - haskell
-      - ghc
-      - dependent types
+      - types in practice
+      # - ghc
+      # - dependent types
     date: 2020-08
     abstract: >
       A classic example of the power of generalized algebraic datatypes (GADTs)
@@ -400,8 +413,10 @@ papers:
       Link: https://doi.org/10.1145/3406088.3409023
     tags:
       - haskell
-      - ghc
-      - data science
+      - machine learning
+      - types in practice
+      # - ghc
+      # - data science
     date: 2020-08
     abstract: >
       Data science applications tend to be built by composing tasks: discrete
@@ -421,11 +436,12 @@ papers:
     links:
       Arxiv: https://arxiv.org/abs/2106.06278
     tags:
+      - type systems
       - nickel
-      - contracts
-      - union
-      - intersection
-      - gradual typing
+      # - contracts
+      # - union
+      # - intersection
+      # - gradual typing
     date: 2021-10
     abstract: >
       Union and intersection types are a staple of gradually typed language such
