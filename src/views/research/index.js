@@ -32,9 +32,10 @@ const introText = (
     <p>
       We employ researchers with strong academic backgrounds and ask them to
       keep pushing the envelope. Their sole focus is to identify future
-      directions for programming languages, and we bring research to production
-      faster than ever before. Tweagers are working on linear types, dependent
-      types, and other innovations to improve developer experience.
+      directions for automation and programming languages. Tweagers are working
+      on safety through linear types and dependent types, best practices,
+      application performance and other innovations to improve developer and
+      scientist experience.
     </p>
   </Text>
 )
