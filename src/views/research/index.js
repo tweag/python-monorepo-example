@@ -13,7 +13,31 @@ import { parseData } from "./utils/query"
 import introImage from "../../images/img17.svg"
 import styles from "./styles/research.module.css"
 
-const introText = `Tweag contribute regularly to scholarly research communities, publishing papers and attending research-oriented conferences.`
+const introText = (
+  <Text
+    sx={{
+      fontSize: [`18px`, `18px`, `27px`],
+      lineHeight: [1.2, 1.2, `35px`],
+    }}
+    className={styles.lead}
+  >
+    <p>
+      Engaging in scholarly research supports Tweag&apos;s mission to improve
+      the art of compositional software engineering. We at Tweag learn from the
+      best &#8212; and contribute our own new discoveries &#8212; by publishing
+      and participating in top-tier venues for computer science research.
+      Sharing knowledge is the way we build a world where software everywhere is
+      more correct, more maintainable, and more performant.
+    </p>
+    <p>
+      We employ researchers with strong academic backgrounds and ask them to
+      keep pushing the envelope. Their sole focus is to identify future
+      directions for programming languages, and we bring research to production
+      faster than ever before. Tweagers are working on linear types, dependent
+      types, and other innovations to improve developer experience.
+    </p>
+  </Text>
+)
 
 const IntroductionSection = ({ papers }) => {
   return (
@@ -31,15 +55,7 @@ const IntroductionSection = ({ papers }) => {
       >
         {`Tweag's Academic Research`}
       </Text>
-      <Text
-        sx={{
-          fontSize: [`18px`, `18px`, `27px`],
-          lineHeight: [1.2, 1.2, `35px`],
-        }}
-        className={styles.lead}
-      >
-        {introText}
-      </Text>
+      {introText}
       <Text
         className={`transition-section__transition--slide-fade-in bottom-in ${styles.papers}`}
         sx={{
