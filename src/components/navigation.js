@@ -309,7 +309,7 @@ function Header({ inverted, fullpage = false }) {
           [`Careers`, `//boards.greenhouse.io/tweag`, true],
           [`Research`, `/research`],
           [`Blog`, `/blog`],
-        ].map(([t, route, isExternal], i) => (
+        ].map(([t, route, isExternal], i, arr) => (
           <NavLink
             customClassName={navLinkClassName}
             key={t}
@@ -317,7 +317,7 @@ function Header({ inverted, fullpage = false }) {
             isExternal={isExternal}
             customSx={{
               mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
-              ...(i === 3 ? { mr: [0, 0, 0, 0, 0, 0, 0, 0] } : {}),
+              ...(i === arr.length - 1 ? { mr: [0, 0, 0, 0, 0, 0, 0, 0] } : {}),
               minWidth: [`fit-content`],
               mb: [`15px`, `15px`, 0],
             }}
