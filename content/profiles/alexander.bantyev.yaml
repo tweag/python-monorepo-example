@@ -41,3 +41,12 @@ education:
     name: Informatics and computer engineering
     institution: Moscow Polytechnic Universtity
     years: 2020-2025
+publications:
+  - >-
+    Alexander Bantyev.
+    "Nix Flakes in production".
+    NixCon 2020
+  - >-
+    Alexander Bantyev.
+    "What is Nix", "Practical Nix Flakes".
+    Available at https://blog.serokell.io
