@@ -1,0 +1,70 @@
+slug: yorick.vanpelt
+name: Yorick van Pelt
+github: yorickvp
+bio: |
+  Grew up on the internet. Still lives there most of the time. Has been on NixOS since 2014.
+  Passionate about making computers better for everyone, including programmers.
+
+  Current interests include juggling, drawing, running. Past interests include speedcubing and drumming. He's also very passionate about mechanical keyboards.
+
+skills:
+  - Computer networking with a security focus
+  - System design
+  - Electronics design and firmware
+  - Software build and delivery systems
+  - Security and cryptography
+  - Nix / NixOS / Linux / Bash
+  - PostgreSQL / SQLite / MongoDB
+  - Electron / ReScript / React / Javascript / Vue / Nodejs
+  - Rust / Java / C / C++ / assembly
+  - Haskell / Elixir / Emacs Lisp / Python
+
+speaks:
+  - English
+  - Dutch
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    location: Remote
+    years: October 2021-present
+    description:
+      - Developer Productivity focused on Nix.
+      - Software build systems, monitoring, deployment, delivery, and reliability.
+  - employer: Lumiguide
+    role: Software / Hardware Engineer
+    location: Nijmegen, The Netherlands
+    description:
+      - Designed, maintained and monitored software and hardware for ~60 remote system installations.
+      - Monitored, updated and maintained fleet of ~200 ARMv6 NixOS + FPGA-based embedded devices.
+      - Maintained ~80k line Haskell codebase running across all devices.
+      - Set up ML hardware and system, including data gathering.
+      - Designed and debugged custom PCB's and firmware.
+      - Managed fleet of cloud servers and wireguard VPN.
+      - Software project management.
+  - employer: Serokell
+    role: SRE Engineering Manager/Senior SRE Systems Engineer
+    location: Remote
+    years: February 2018-February 2020
+    description:
+      - Designed and deployed all internal infrastructure and services.
+      - Designed processes and protocols for build, deployment, monitoring, emergency response, and reliability assurance.
+      - Designed internal security protocols and guidelines.
+      - Internal and external DevOps and Nix/NixOS advocate.
+      - Managed build, assurance and delivery of many client projects.
+      - Large amounts of Nix/NixOS debugging, refactoring, improvements, contributions in general.
+
+education:
+  - qualification: Bachelor (DNF)
+    name: Computer Science
+    institution: Radboud University Nijmegen
+    years: 2014-2018
+    description:
+      - Cyber security focus
+      - Dropped out to work in industry
+  - qualification: Bachelor (DNF)
+    name: Computer Engineering
+    institution: Delft University of Technology
+    years: 2012-2013
+    description:
+      - Completed first year

@@ -1,0 +1,52 @@
+slug: alexander.bantyev
+name: Alexander Bantyev
+github: balsoft
+bio: |
+  Alexander is a passionate, perpetually learning software engineer
+  and hacker. Lives and breathes FOSS. Loves functional programming
+  and declarative approach to system configuration. He has worked as a
+  DevOps/SRE for typeable.io and serokell.io in the past, and is
+  currently working on improving Developer Productivity at tweag.io.
+skills:
+  - NixOS
+  - Nix
+  - Haskell
+  - Rust
+  - Linux
+speaks:
+  - Russian (native)
+  - English
+  - German (a bit)
+experience:
+  - employer: Tweag (https://tweag.io)
+    role: Developer Productivity
+    years: November 2021-present
+  - employer: Serokell (https://serokell.io)
+    role: DevOps/SRE
+    years: November 2019-October 2021
+    description:
+      - Multiple projects in Rust, Haskell, Nix
+      - A large array of NixOS servers
+      - Preached best practices to developers
+  - employer: Typeable (https://typeable.io)
+    role: DevOps
+    years: March 2019-October 2019
+    description:
+      - Maintained a Nix-based build infrastructure (Hydra/Nixops)
+  - employer: Various
+    role: Freelance web dev
+    years: 2018-2019
+education:
+  - qualification: BSc (in progress)
+    name: Informatics and computer engineering
+    institution: Moscow Polytechnic Universtity
+    years: 2020-2025
+publications:
+  - >-
+    Alexander Bantyev.
+    "Nix Flakes in production".
+    NixCon 2020
+  - >-
+    Alexander Bantyev.
+    "What is Nix", "Practical Nix Flakes".
+    Available at https://blog.serokell.io

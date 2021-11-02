@@ -1,0 +1,21 @@
+.yearBox {
+  display: grid;
+  gap: 1rem;
+  grid-template: "year articles" / 1fr 6fr;
+}
+
+@media screen and (max-width: 767px) {
+  .yearBox {
+    grid-template: "year" "articles" / 1fr;
+  }
+}
+
+.yearString {
+  grid-area: year;
+  font-size: 4rem;
+  font-weight: 1000;
+}
+
+.articlesByYear {
+  grid-area: articles;
+}

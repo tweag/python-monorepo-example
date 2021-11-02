@@ -3,5 +3,5 @@
 with pkgs;
 
 mkShell {
-  buildInputs = [ nodejs-12_x ];
+  buildInputs = [ nodejs autoconf automake nasm libtool libpng pkg-config ];
 }

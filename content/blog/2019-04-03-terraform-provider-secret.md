@@ -59,7 +59,7 @@ To add a new secret, first declare a `secret_resource` resource in the Terraform
 It has no configuration options.
 In this example we want to store the DataDog API key:
 
-```tf
+```hcl
 resource "secret_resource" "datadog_api_key" {}
 ```
 
@@ -74,7 +74,7 @@ where `TOKEN` is the value of the secret token.
 Now the secret is imported into the remote state and everybody with access to it can now read the value.
 The resource can also be accessed in the Terraform code with `secret_resource.datadog_api_key.value`.
 
-```tf
+```hcl
 locals {
   datadog_api_key = "${secret_resource.datadog_api_key.value}"
 }

@@ -205,7 +205,7 @@ jobs:
 With that, we can now generate the graph (locally for the sake of the
 demonstration):
 
-```sh
+```shell
 mkdir benchmarks
 aws s3 cp --recursive s3://my-benchmarks-output-bucket/ benchmarks/
 docker pull benchgraph/benchgraph

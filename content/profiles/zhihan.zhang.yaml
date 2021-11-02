@@ -1,0 +1,40 @@
+slug: zhihan.zhang
+name: Zhihan Zhang
+github: zz1874
+skills:
+  - Machine Learning
+  - Python
+bio: "Zhihan is a machine learning engineer. She finished a PhD in geometric topology and probabilities at Telecom Paris where she defined a random walk on simplicial complexes and applied machine learning algorithms on them. Her research interests are in machine learning, deep learning and NLP, and she also looks forward to learning new programming skills and putting theory into practice. During her free time, Zhihan enjoys music, arts, reading books (especially detective fiction), and cooking."
+speaks:
+  - English
+  - Chinese
+  - Basic French
+experience:
+  - employer: Tweag
+    role: Machine Learning Engineer
+    location: Paris, France
+    years: 2021 October - present
+education:
+  - qualification: PhD
+    name: Mathematics
+    institution: Telecom Paris
+    location: Paris, France
+    years: 2017 - 2020
+    description:
+      - |
+        thesis title: Random walk on simpicial complexes
+  - qualification: Master of Science
+    name: Probabilities and Random Models
+    institution: Sorbonne University (Paris VI)
+    location: Paris, France
+    years: 2016 - 2017
+    description:
+      - |
+        thesis title: Simulation of Determinantal Point Processes by coupling from the past
+  - qualification: Master of Science
+    name: Applied Mathematics
+    institution: Shanghai Jiao Tong University
+    location: Shanghai, China
+    years: 2015 - 2017
+publications:
+  - "Zhihan Zhang. Random walk on simplicial complexes. Algebraic Topology [math.AT]. Université Paris-Saclay, 2020. English. ffNNT : 2020UPASM010ff. fftel-03100126f"

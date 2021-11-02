@@ -73,6 +73,12 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             margin-left: 120px;
             margin-bottom: 20px;
           }
+          td {
+            max-width: 100%;
+            code {
+              white-space: nowrap;
+            }
+          }
         }
 
         code {
@@ -210,6 +216,19 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
         }
 
         h4 {
+          width: 65%;
+          max-width: 1000px;
+          margin: 0px 0px 30px;
+
+          @media (min-width: ${t.breakpoints[1]}) {
+            padding: 0 0 0 60px;
+          }
+          @media (min-width: ${t.breakpoints[5]}) {
+            padding: 0 0 0 120px;
+          }
+        }
+
+        h5 {
           width: 65%;
           max-width: 1000px;
           margin: 0px 0px 30px;

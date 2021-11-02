@@ -48,10 +48,16 @@ their vision, from research to product delivery.
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          `gatsby-remark-katex`,
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+            },
+          },
           `gatsby-remark-numbered-footnotes`,
         ],
       },
@@ -192,6 +198,13 @@ their vision, from research to product delivery.
       options: {
         path: `${__dirname}/content/profilePictures`,
         name: `profilePictures`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/papers`,
+        name: `papers`,
       },
     },
   ],

@@ -1,0 +1,48 @@
+slug: alex.shabalin
+name: Alex Shabalin
+github: mopleen
+
+bio: |
+  I'm a software engineer that grew up in trading, writing C++ with a Haskell accent.
+  Such approach made my customers (business side) happy and my colleagues (who prefer mutating objects) puzzled.
+
+  Now at Tweag, I'm looking forward to writing Haskell while drawing inspiration from my C++ background
+  and being surrounded with like-minded people.
+
+skills:
+  - C++
+  - Nix
+speaks:
+  - English
+  - Russian
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: October 2021 - present
+
+  - employer: Maverick Derivatives
+    role: Senior Software Engineer
+    years: July 2020 - September 2021
+    description:
+      - Connecting to crypto exchanges (design, implementation, deployment, support).
+      - Supporting build infrastructure (Nix, Hydra) for connectors and other applications.
+
+  - employer: Amazon
+    role: Software Development Engineer II
+    years: January 2019 - May 2020
+    description:
+      - Designing and implementing solutions to coordinate modules of Alexa Offline (Voice Assistant).
+
+  - employer: All Options
+    role: Senior Developer
+    years: November 2014 - September 2018
+    description:
+      - Building apps for a vendor-provided trading platform.
+      - Improving the trading platform with proprietary solutions.
+
+education:
+  - qualification: Masters
+    name: Computer Science & Engineering
+    institution: Mari State Technical University, Yoshkar-Ola, Russia
+    years: 2008 - 2013

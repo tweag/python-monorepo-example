@@ -1,0 +1,66 @@
+slug: florent.chevrou
+name: Florent Chevrou
+github: florentc
+bio: |
+  "Florent has a background in system modeling and verification with TLA+ and Event-B: he worked on the formal modeling and study of asynchronous communication models (message ordering policies) in his Ph.D. thesis. He then worked at CEA on a prototype engine to check that logs of personal data processing comply with the European Data Protection Regulation (GDPR). Among many parallel interests, he has grown a special liking for functional programming. He practiced some OCaml during his years in academia and then got hooked into Haskell in his personal time: following online classes, programming challenges, and small personal projects. He looks forward to developing these skills professionally, among other Tweagers! He is also into teaching and scientific popularization. Outside of work, he enjoys rollerblading, climbing, sciences, computer graphics, and point & click adventure games."
+skills:
+  - Haskell
+  - Ocaml
+  - TLA+
+  - Event-B
+speaks:
+  - French
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: October 2021-present
+  - employer: CEA (Commissariat à l'Énergie Atomique)
+    role: Research Engineer
+    years: November 2018 - November 2019
+    description:
+      - Design of a prototype to check that logs of personal data processing comply with the European Data Protection Regulation (GDPR).
+  - employer: Toulouse INP
+    role: ATER (Temporary Research and Teaching Assistant)
+    years: September 2017 - August 2018
+    description:
+      - Follow up of thesis.
+  - employer: NII (National Institute of Informatics), Tokyo
+    role: Intern
+    years: October 2015 - December 2015
+    description:
+      - Emphasis on teaching and continuation of thesis work focused on multicast communication.
+  - employer: IRIT (Institut de Recherche en Informatique de Toulouse)
+    role: Ph.D. student
+    years: October 2014 - August 2017
+    description:
+      - Formal modeling and study of asynchronous communication models (message ordering policies) and design of a TLA+ framework to check the compatibility of communicating peers. Teaching duties in parallel.
+  - employer: IRIT (Institut de Recherche en Informatique de Toulouse)
+    role: Intern
+    years: March 2014 - September 2014
+    description:
+      - Preliminary work to the thesis.
+  - employer: University of Bradford
+    role: Intern
+    years: June 2013 - August 2013
+    description:
+      - Implementation of a framework for the classification of fuzzy (as in fuzzy logic) objects based on ongoing research.
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Université de Toulouse
+    years: October 2014 - November 2017
+    description:
+      - |
+        thesis title: "Formalisation of Asynchronous Interactions"
+  - qualification: Masters
+    name: Computer Science and Applied Mathematics
+    institution: ENSEEIHT
+    years: September 2011 - October 2014
+publications:
+  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. Journal of Logical and Algebraic Methods in Programming, volume 108, 2019."
+  - "Florent Chevrou, Aurélie Hurault, Shin Nakajima, Philippe Quéinnec. A Map of Asynchronous Communication Models. FM Workshops 2019, volume 2, 2019."
+  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. HPCS 2018."
+  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. On the Diversity of Asynchronous Communication. Formal Aspects of Computing, volume 28, 2016."
+  - "Florent Chevrou, Aurélie Hurault, Philippe Mauran, Philippe Quéinnec. Mechanized Refinement of Communication Models with TLA+. ABZ 2016, 312-318, 2016."
+  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. Automated Verification of Asynchronous Communicating Systems with TLA+. In Electronic Communications of the EASST, volume 72, 2015."
