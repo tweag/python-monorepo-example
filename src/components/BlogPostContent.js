@@ -124,8 +124,6 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           border-left: 15px solid ${t.colors.orange};
           margin-bottom: 30px;
           margin-top: 30px;
-          white-space: pre-wrap;
-          word-wrap: break-word;
 
           @media (min-width: ${t.breakpoints[1]}) {
             padding: 0 0 0 50px;
