@@ -135,7 +135,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
+          columns: 8,
           breakpoint: `lg`,
         }),
     ],
@@ -144,7 +144,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
+          columns: 8,
           breakpoint: `xl`,
         }),
     ],
@@ -153,7 +153,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         updateResponsiveParameters({
           color: Math.floor(profiles.length * 0.11),
           blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
+          columns: 10,
           breakpoint: `xxl`,
         }),
     ],

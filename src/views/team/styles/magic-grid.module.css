@@ -1,7 +1,7 @@
 .magicGrid {
   grid-area: magic-grid;
   justify-self: center;
-  --magic-grid-width: min(70rem, 100vw);
+  --magic-grid-width: 100vw;
   width: var(--magic-grid-width);
   display: grid;
   padding: var(--magic-grid-margin, 1rem);
@@ -27,7 +27,13 @@
 
 @media screen and (min-width: 768px) {
   .magicGrid {
-    --magic-grid-margin: 2rem;
+    --magic-grid-margin: 60px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .magicGrid {
+    --magic-grid-margin: 120px;
   }
 }
 
