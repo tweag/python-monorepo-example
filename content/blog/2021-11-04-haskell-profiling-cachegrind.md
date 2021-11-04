@@ -33,7 +33,7 @@ profiling, which gives us allocations and entry counts for our functions.
 However, with valgrind we can get lower level details, such as the raw
 instruction counts _per function_ of our Haskell programs!
 
-So, if you're interested in low-level optimization of your Haskell programs than
+So, if you're interested in low-level optimization of your Haskell programs then
 this article is for you. I'll demonstrate the use of a valgrind tool,
 cachegrind, to inspect the behavior of the canonical leaky Haskell program: a
 lazy left fold. You'll get three things: (1) a step-by-step tutorial on running
@@ -45,7 +45,7 @@ cachegrind profile, and (3) some guidance on interpreting the results.
 Cachegrind is a cache profiling and branch prediction tool. It takes your
 program and inspects how the program interacts with your machine's cache
 hierarchy and branch predictor. Why does this matter? Well some data structures,
-such as the Hashed Mapped Array Tries
+such as the Hash Array Mapped Tries
 ([HAMTs](https://en.wikipedia.org/wiki/Hash_array_mapped_trie)) in the
 unordered-containers library greatly benefit from caching behavior in modern
 CPUs. Because HAMTs store arrays, modern CPUs will load the entire array into
@@ -394,7 +394,7 @@ Before a write occurs, we check to see if that operand is already in the cache.
 If it is then we have a cache hit; if it is not then we have a cache miss. So
 this should make sense: we know that `foo` is going to write to a `(Integer, Integer)` to the data cache. We should expect that `foo` will compute
 and then write the memory address containing the result to the cache _only
-once_. If it doesn't write only once, than it is storing intermediate data which
+once_. If it doesn't write only once, then it is storing intermediate data which
 is later read to finish the computation, i.e., it is allocating a thunk! So we
 see that the strict version has a single write miss for both the 1 and LL
 caches, most likely because the memory operand was not in the cache. It
@@ -423,7 +423,7 @@ message, however, is more difficult. So here are my recommendations:
    of your profiling.
 2. Try to use GHC's heap profiling tools first. If you have a memory leak it is
    likely that it will be more observable with a heap profile. Use a `ticky` or
-   `prof` profile to find functions with many allocations and entry points, than
+   `prof` profile to find functions with many allocations and entry points, then
    use cachegrind to dig deeper. You should be using cachegrind when you
    _really_ need fine-grained, line-by-line details, or if you know you are
    writing something that _should_ interact with CPU caches in a particular way,
