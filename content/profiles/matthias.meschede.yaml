@@ -1,25 +1,27 @@
 slug: matthias.meschede
 name: Matthias Meschede
 github: mmesch
-bio: |
-  Matthias coordinates and initiates new projects at Tweag.  He says he's a
+shortDescription: |
+  Matthias initiates and coordinates projects at Tweag. He says he's a
   generalist "half scientist, half musician, and a third half of other things"
-  but you'll have to ask him what that means exactly! He's living in Paris, and
-  is regularly in Tweag's Paris office where he most likely in a discussion,
-  writing long-form texts or reading and occasionally writing code.
-  
-  Matthias started off at university with physics, biophysics (evolutionary
-  theory, collective motion), got a phd and postdoc in geophysics (seismology,
-  wave propagation, tomography, signal processing), contributing to conferences
-  and open source software in the field, before switching to the software
-  industry and joining Tweag.
+  but you'll have to ask him what that means exactly! He lives in Paris, and
+  is regularly in Tweag's Paris office where you'll most likely find him in a
+  discussion, writing long-form texts in vim or reading and occasionally
+  writing code.
+bio: |
+  Matthias started at university with general physics, biophysics, and then got
+  a phd and postdoc in geophysics working in seismology on wave propagation,
+  tomography, and signal processing, contributing to conferences and open
+  source software in the field, before switching to the software industry and
+  joining Tweag.
 
   Matthias has experience with a variety of programming languages and
-  frameworks, from the Python data stack, frontend frameworks in Elm or
-  Pure/Java/Typescript, to Haskell and even large Fortran code bases. Working
-  at Tweag, Matthias discovered and learned to love and use Nix and NixOS. He
-  worked on modeling for a large part of his career and always had a taste for
-  nice data visualizations.
+  frameworks, from large acadmic numerical codes, the Python data stack,
+  frontend frameworks in Elm or Pure/Java/Typescript, to Haskell. Working at
+  Tweag, Matthias discovered and learned to love Nix and NixOS. He worked on
+  modeling for a large part of his career using approaches like Bayesian
+  statistics or data-driven machine learning and always enjoyed putting
+  together nice and effective visualizations to communicate the results.
 
   On the musical side, he plays multiple instruments (Cello, double bass,
   piano, didgeridoo), and lately concentrates a lot on improvisation,
@@ -29,6 +31,8 @@ bio: |
   large variety of projects accross domains, cultures, communities and
   technology is equally important to him than any specialization and probably
   one of the most useful skills in his current role.
+links:
+  Blog: https://mmesch.github.io
 skills:
   - Functional Programming
   - Project Management
