@@ -2,19 +2,37 @@ slug: matthias.meschede
 name: Matthias Meschede
 github: mmesch
 bio: |
-  Matthias coordinates projects and develops business at Tweag. Besides, he
-  writes code, discusses statistics, and implements machine learning
-  solutions. He is passionate about Tweag’s Open Source fellowship, project
-  development, and loves bringing Tweag’s expertise to new situations and
-  communities. A physicist by training, Matthias has a MSc in Physics from
-  LMU Munich, and received his PhD in Seismology from IPG Paris. He
-  contributed to international journals, conferences and open source codes in
-  the field. In his spare time he enjoys playing various musical instruments,
-  dance, as well as graphic design and illustration.
+  Matthias coordinates and initiates new projects at Tweag.  He says he's a
+  generalist "half scientist, half musician, and a third half of other things"
+  but you'll have to ask him what that means exactly! He's living in Paris, and
+  is regularly in Tweag's Paris office where he most likely in a discussion,
+  writing long-form texts or reading and occasionally writing code.
+  
+  Matthias started off at university with physics, biophysics (evolutionary
+  theory, collective motion), got a phd and postdoc in geophysics (seismology,
+  wave propagation, tomography, signal processing), contributing to conferences
+  and open source software in the field, before switching to the software
+  industry and joining Tweag.
+
+  Matthias has experience with a variety of programming languages and
+  frameworks, from the Python data stack, frontend frameworks in Elm or
+  Pure/Java/Typescript, to Haskell and even large Fortran code bases. Working
+  at Tweag, Matthias discovered and learned to love and use Nix and NixOS. He
+  worked on modeling for a large part of his career and always had a taste for
+  nice data visualizations.
+
+  On the musical side, he plays multiple instruments (Cello, double bass,
+  piano, didgeridoo), and lately concentrates a lot on improvisation,
+  composition and contemporary music (some call it noise).
+
+  But his experience living in different countries and experience working on a
+  large variety of projects accross domains, cultures, communities and
+  technology is equally important to him than any specialization and probably
+  one of the most useful skills in his current role.
 skills:
-  - Object Oriented Programming
   - Functional Programming
-  - Business Development
+  - Project Management
+  - Data Science
 speaks:
   - German (native)
   - English (fluent)
