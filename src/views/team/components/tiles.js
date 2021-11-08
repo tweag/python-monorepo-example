@@ -240,6 +240,9 @@ export const ProfileTile = ({
                 className={styles.profilePhoto}
                 src={photo}
                 alt={person.slug}
+                height={512}
+                width={512}
+                loading="lazy"
               />
             </div>
             <div className={styles.profileName}>{person.name}</div>
