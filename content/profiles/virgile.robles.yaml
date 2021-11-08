@@ -1,0 +1,83 @@
+slug: virgile.robles
+name: Virgile Robles
+github: Firobe
+shortDescription: |
+  Virgile is a French native with a background in formal methods and OCaml. He
+  loves everything functional and typed, but is also keenly interested in
+  efficient, low-level (or plain obscure) programming.
+bio: |
+  Virgile studied theoretical and practical computer science (algorithms, type
+  systems, program verification, ...) in Bordeaux, and is currently finishing up
+  his PhD at CEA and CentraleSupélec.
+
+  During his PhD, he developed an extension of ACSL — a specification language
+  for C programs — to enable the specification of high-level requirements. He
+  had the opportunity to apply these verification techniques to industrial-scale
+  use cases.
+
+  Already at high school Virgile began learning OCaml as a hobby and has been a
+  committed OCaml user ever since, but he is very keen to learn more of Haskell.
+  More broadly, his favorite topics include formal methods, type systems,
+  compilers, and efficient algorithms. 
+
+  Other than that, Virgile likes to create or play with obscure programming
+  languages (check out Boblang on his Github) and other random things (e.g., he
+  is currently trying to write a NES emulator in OCaml). In his free time he
+  enjoys good video games, meals, walks, rocks to climb, piano sessions and
+  nights out.
+links:
+  Blog: https://firobe.fr
+skills:
+  - Ocaml
+  - Formal methods
+  - Deductive verification
+  - C/C++
+speaks:
+  - French
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: November 2021 - Present
+  - employer: CEA (Commissariat à l'Énergie Atomique)
+    role: Ph.D. Student
+    years: October 2018 - October 2021
+    description:
+      - Design of a high-level specification language and verification pipeline for C programs, integrated in Frama-C (in OCaml). Application to verifying security requirements in a bootloader.
+  - employer: Various Universities and Engineering Schools
+    role: Teaching Assistance
+    years: October 2018 - October 2021
+    description:
+      - Taught computer science courses at various levels (from license to master) over hundreds of hours, both in class and remotely.
+  - employer: CEA (Commissariat à l'Énergie Atomique)
+    role: Intern
+    years: February 2018 - August 2021
+    description:
+      - Laying out foundations for the Ph.D. that followed.
+  - employer: Keio University
+    role: Visiting Research Intern
+    years: June 2917 - September 2017
+    description:
+      - Application of machine learning techniques to the classification of abstract art images according to their emotional impact.
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Paris-Saclay University
+    years: October 2018 - Present (defense in January 2022)
+    description:
+      - |
+        thesis title: "Specifying and verifying high-level requirements on large programs: application to security of C programs"
+  - qualification: Masters
+    name: Fundamental Computer Science
+    institution: Bordeaux University
+    years: September 2017 - July 2018
+  - qualification: Engineering
+    name: Computer Science / Algorithms and Formal Methods
+    institution: ENSEIRB-MATMECA
+    years: September 2015 - July 2018
+publications:
+  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Louis Rilling, Pascale Le Gall. Methodology for Specification and Verification of High-Level Properties with MetAcsl. International Conference on Formal Methods in Software Engineering, 2021"
+  - "Virgile Robles. Spécifier des propriétés de haut niveau pour apprivoiser un programme C avec MetAcsl. Rendez-vous de la Recherche et de l'Enseignement de la Sécurité des Systèmes d'Informations, 2020"
+  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. Tame Your Annotations with MetAcsl: Specifying, Testing, and Proving High-Level Properties. International Conference on Tests and Proofs, 2019"
+  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl : spécification et vérification de propriétés de haut niveau. Approches Formelles dans l'Assistance au Développement de Logiciels, 2019"
+  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl: Specification and Verification of High-Level Properties. International Conference on Tools and Algorithms for the Construction and Analysis of Systems, 2019"
