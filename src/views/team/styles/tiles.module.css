@@ -47,6 +47,14 @@
   transition: all var(--animations-duration);
 }
 
+@media screen and (max-width: 767px) {
+  .profileName {
+    padding: 0.3rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+}
+
 @media screen and (hover: hover) {
   .profileTile:hover .profilePhoto,
   .forceActive .profilePhoto {
