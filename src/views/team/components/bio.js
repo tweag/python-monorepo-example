@@ -23,6 +23,15 @@ const CloseButton = () => {
   return <div className={styles.closeButton} onClick={onClick} />
 }
 
+/**
+ * @param {string} longText
+ * @return {JSX.Element[]}
+ */
+function parseBioLongText(longText) {
+  const paragraphs = longText.split(`\n\n`)
+  return paragraphs.map(paragraph => <p>{paragraph}</p>)
+}
+
 export const BioContext = createContext(null)
 
 /**
@@ -62,7 +71,6 @@ const Bio = ({
   } else {
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
-
   const positionalStyles = parsePositionalStyles(start, width, height)
   return (
     <div
@@ -84,7 +92,9 @@ const Bio = ({
       </div>
       <div className={styles.shortDescription}>{person.shortDescription}</div>
       <div className={styles.longTextContainer}>
-        <div className={styles.longTextScrollable}>{person.bio}</div>
+        <div className={styles.longTextScrollable}>
+          {parseBioLongText(person.bio)}
+        </div>
       </div>
       <div className={styles.links}>
         {Object.entries(person.links).map(([linkName, url]) => (
