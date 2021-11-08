@@ -2,16 +2,19 @@ slug: guillaume.desforges
 name: Guillaume Desforges
 github: GuillaumeDesforges
 
+shortDescription: |
+  Guillaume is a versatile engineer, with fluency in Machine Learning, Data Engineering, Web development and functional programming.
 bio: |
-  Recently graduated from Institut Polytechnique de Paris (Saclay) in Data Sciences.
-  Before joining Tweag, Guillaume worked at a startup, which successfully launched their first post-seed release while maintaining a fast growth.
+  Guillaume graduated from the prestigious Ecole des Ponts ParisTech in Paris, as well as from the Master 2 of Data Science at Institut Polytechnique de Paris (IPP).
+
+  Although his academical background is centered around Mathematics (Probabilities, Statistics, Optimization, Machine Learning and Operational Research), Guillaume has developped a wide set of programming skills that makes him a versatile programmer.
 skills:
   - Machine Learning
-  - Data pipelines
-  - Data engineering
-  - Python
+  - Data Engineering
+  - TypeScript
   - Haskell
-  - Java
+  - Scala
+  - Python
   - Nix
 
 speaks:
@@ -20,7 +23,7 @@ speaks:
 
 experience:
   - employer: Tweag
-    role: Software Engineer
+    role: Software & Data Engineer
     years: September 2021 - present
   - employer: Ecole des Ponts ParisTech
     role: Stand-in teacher
