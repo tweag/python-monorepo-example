@@ -4,7 +4,8 @@ import { v4 as uuid } from "uuid"
 
 import { allocateTiles } from "../utils/randomizers"
 import { gridify } from "../utils/ajustments"
-import { ProfileTile, TagTile, ColorTile, BlankTile } from "./tiles"
+import { TagTile, ColorTile, BlankTile } from "./tiles"
+import { ProfileTile } from "./profile-tile"
 import Bio from "./bio"
 
 export class TileSet {
