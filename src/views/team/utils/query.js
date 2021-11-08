@@ -28,7 +28,7 @@ export function parseProfiles(data) {
     const queriedProfile = YAML.parse(node.internal.content)
     const profile = {
       name: queriedProfile.name,
-      bio: queriedProfile.bio,
+      bio: queriedProfile.bio ?? '',
       role: queriedProfile.experience.find(
         experience => experience.employer === `Tweag`
       )?.role,
