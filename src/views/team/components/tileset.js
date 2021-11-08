@@ -95,6 +95,26 @@ export class TileSet {
   /**
    * @returns
    */
+  getBioWidth() {
+    switch (this.breakpoint) {
+      case `xs`:
+        return 3
+      case `sm`:
+        return 3
+      case `md`:
+        return 3
+      case `lg`:
+        return 3
+      case `xl`:
+        return 3
+      case `xxl`:
+        return 4
+    }
+  }
+
+  /**
+   * @returns
+   */
   getBioHeight() {
     switch (this.breakpoint) {
       case `xs`:
@@ -333,7 +353,7 @@ export class TileSet {
     // Calculate profile position and size
     let profilePosition = `right`
     let profileHeight = this.getBioHeight()
-    let profileWidth = 3
+    let profileWidth = this.getBioWidth()
 
     const spaceToTheLeft = this.activeBioProfile.start.y - 1
     const spaceToTheRight =
