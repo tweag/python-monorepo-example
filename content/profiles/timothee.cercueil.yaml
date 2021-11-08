@@ -1,7 +1,6 @@
 slug: timothee.cercueil
 name: Timothee Cercueil
 github: litchipi
-pronouns: He/Him
 website: https://litchipi.github.io/
 shortDescription: |
   Timothee is an engineer who specializes in embedded systems
@@ -9,13 +8,15 @@ shortDescription: |
   He learnt Python as a hobby, using it as a tool to automate everything he wants on Linux,
   then did a lot of embedded programming in C during his studies, and later fell in love with Rust.
 bio: |
-  Timothee is an engineer who specializes in embedded systems
-  development, software security and the Linux kernel.
-  He learnt Python as a hobby, using it as a tool to automate everything he wants on Linux,
-  then did a lot of embedded programming in C during his studies, and later fell in love with Rust.
   Before becoming a Tweager, he did an internship at ST Microelectronics
   where he worked on a secure bootchain using ARM TrustZone, and
   contributed to several open source projects including U-boot, Linux and OP-TEE.
+
+  He grew up knowing the online forum communities, where age and origin doesn't matter and
+  everyone is treated equal, around the same center of interests.
+  Also interested in distributed systems, genetic algorithms, mathematics and finance, he tries to
+  learn everything, from everyone, at anytime.
+
   When not working on his own projects, he mostly spends his time playing
   musical instruments (guitar, jaw harp, his voice and multiple kinds of flutes),
   composing music and rediscovering retrogaming gems.
