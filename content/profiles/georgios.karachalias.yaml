@@ -2,20 +2,23 @@ slug: georgios.karachalias
 name: Georgios Karachalias
 pronouns: He/Him
 github: gkaracha
-website: https://gkaracha.github.io/
+website: https://things-and-stuff.art
+shortDescription: |
+  TODO
 bio: |
-  Georgios is a Software Engineer with expertise in the design and
+  George is a Software Engineer with expertise in the design and
   implementation of functional programming languages. Prior to joining Tweag,
   he was in academia; during that time he designed extensions to Haskell, made
   contributions to GHC, and published his research to top conferences, such as
-  ICFP and Haskell Symposium. He holds an MSc in Electrical and Computer
+  ICFP and Haskell Symposium. He holds an MEng in Electrical and Computer
   Engineering from the National Technical University of Athens, and a PhD and
-  postdoctorate from KU Leuven. Outside of work, Georgios enjoys reading books,
-  carving wooden pipes, and hiking in forests and mountains with his wife and
-  their dog.
+  postdoctorate from KU Leuven. Outside of work, George enjoys reading books,
+  carving wooden pipes, and hiking in forests and mountains with his partner
+  and their dog.
 skills:
   - Functional programming
   - Static typing
+  - Compilers
   - Haskell
   - OCaml
 speaks:
@@ -54,6 +57,7 @@ education:
       - |
         thesis title: "Pattern Matching Exhaustiveness for GADTs"
 publications:
+  - "Georgios Karachalias, Filip Koprivec, Matija Pretnar, and Tom Schrijvers. Efficient Compilation of Algebraic Effect Handlers. In Proc. ACM Program. Lang. 5, OOPSLA, Article 102 (Oct. 2021), 2021."
   - "Koar Marntirosian, Tom Schrijvers, Bruno C. d. S. Oliveira, and Georgios Karachalias. Resolution as Intersection Subtyping via Modus Ponens. In Proc. ACM Program. Lang. 4, OOPSLA, Article 206 (Nov. 2020), 2020."
   - "Georgios Karachalias, Matija Pretnar, Amr Hany Saleh, Stien Vanderhallen, and Tom Schrijvers. Explicit Effect Subtyping. In Journal of Functional Programming (JFP), 2020."
   - "Koen Pauwels, Georgios Karachalias, Michiel Derhaeg, and Tom Schrijvers. Bidirectional Type Class Instances. In Proceedings of the 12th ACM SIGPLAN International Haskell Symposium (Haskell '19), Berlin, Germany, 2019."
