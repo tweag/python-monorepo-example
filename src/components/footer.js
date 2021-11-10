@@ -221,7 +221,7 @@ const Footer = () => (
             margin: [`0 0 20px`, `0 0 20px`, 0],
           }}
         >
-          &copy; 2020 Tweag.&nbsp;All rights reserved
+          &copy; Tweag I/O Limited.&nbsp;All rights reserved
           <span>
             <br />
             <span>Privacy Policy</span>
