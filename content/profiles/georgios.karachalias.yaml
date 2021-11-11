@@ -4,17 +4,47 @@ pronouns: He/Him
 github: gkaracha
 website: https://things-and-stuff.art
 shortDescription: |
-  TODO
+  George is a Software Engineer with expertise in the design and
+  implementation of functional programming languages. Prior to
+  joining Tweag, he was in academia; during that time he designed
+  extensions to Haskell, made contributions to GHC, and published
+  his research to conferences such as ICFP and the Haskell
+  Symposium. He holds an MEng in Electrical and Computer
+  Engineering from the National Technical University of Athens,
+  and a PhD and postdoctorate from KU Leuven. Outside of work,
+  George enjoys reading (and occasionally writing) literature and
+  poetry, carving wooden pipes, and hiking in forests and
+  mountains with his partner and their dog.
 bio: |
   George is a Software Engineer with expertise in the design and
-  implementation of functional programming languages. Prior to joining Tweag,
-  he was in academia; during that time he designed extensions to Haskell, made
-  contributions to GHC, and published his research to top conferences, such as
-  ICFP and Haskell Symposium. He holds an MEng in Electrical and Computer
-  Engineering from the National Technical University of Athens, and a PhD and
-  postdoctorate from KU Leuven. Outside of work, George enjoys reading books,
-  carving wooden pipes, and hiking in forests and mountains with his partner
-  and their dog.
+  implementation of functional programming languages. He firmly
+  believes that functional programming does not pertain to
+  specific programming languages or technologies, but that it is
+  a methodology and a way of thinking that can be applied to
+  software independently of the programming language or tools of
+  choice.
+
+  He first discovered functional programming while doing his
+  MEng at the School of Electrical and Computer Engineering at
+  the National Technical University of Athens. After a brief
+  period in the world of algorithmic game theory, strategy-proof
+  algorithms, and mechanism design, he committed to his love for
+  functional programming and started researching ways to improve
+  the way GHC reports non-exhaustive pattern matches in the
+  presence of GADTs.
+
+  In 2018 he obtained his Ph.D. from KU Leuven, where he worked
+  on extensions to Haskell, improving upon the design of features
+  such as type classes and pattern match checking. After that, he
+  continued doing research on PL-related topics (type-and-effect
+  systems, disjoint intersection types, ...) as a postdoctoral
+  researcher, before finally joining Tweag with an aspiration to
+  apply his knowledge to real-life problems.
+
+  Outside of work, George enjoys reading (and occasionally
+  writing) literature and poetry, carving wooden pipes, and
+  hiking in forests and mountains with his partner and their
+  dog.
 skills:
   - Functional programming
   - Static typing
