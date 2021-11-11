@@ -85,6 +85,23 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // open source project redirects
+  createRedirect({
+    fromPath: `/rules_haskell`,
+    toPath: `https://github.com/tweag/rules_haskell`,
+    isPermanent: true,
+  })
+  createRedirect({
+    fromPath: `/rules_nixpkgs`,
+    toPath: `https://github.com/tweag/rules_nixpkgs`,
+    isPermanent: true,
+  })
+  createRedirect({
+    fromPath: `/rules_sh`,
+    toPath: `https://github.com/tweag/rules_sh`,
+    isPermanent: true,
+  })
+
   // main cvs list page;
   createPage({
     path: `/cv`,
