@@ -3,9 +3,13 @@ name: Michael Gale
 pronouns: He/Him
 github: mbg
 website: https://www.michael-gale.co.uk
+shortDescription: |
+  Michael is a Software Engineer at Tweag. He enjoys all things to do with programming languages: designing, implementing, using, teaching, and building tools for them. While Michael most enjoys working in Haskell, he also appreciates working with other languages such as Rust and even TypeScript.
 bio: |
-  I am a Software Engineer at Tweag, specialising in the design and implementation of programming languages, development tools, and automation. Prior to joining Tweag, I worked as a Senior Teaching Fellow (equivalent to Assistant Professor, teaching-only) at the University of Warwick during 2017-2021 where I taught modules on Functional Programming (in Haskell) and Cyber Security. During that time, I taught functional programming to close to one thousand students, making extensive use of property-based testing and emphasising the benefits of reusable and strongly typed code. I have a BSc (Hons) Computer Science from the University of Nottingham (2010-2013) where my final year project was about the implementation of a compiler for a Haskell-like language. From 2013, I studied towards a PhD at the University of Cambridge where I worked on encoding an object system in Haskell - which I hope to wrap up in the near future. During my last year at Warwick, I won two departmental teaching awards, one for each of my taught modules, and was a finalist for the university-wide teaching award. Aside from software engineering, I enjoy teaching, cooking, video and board games, walking, ducks, seals, the colour purple (#3D3051 to be exact), and punting.
-
+  Michael worked as a Senior Teaching Fellow (equivalent to Assistant Professor, teaching-only) at the University of Warwick during 2017-2021 where he taught modules on Functional Programming (in Haskell) and Cyber Security. During that time, he taught functional programming to close to a thousand students, making extensive use of property-based testing and emphasising the benefits of reusable and strongly typed code. Michael has a BSc (Hons) Computer Science from the University of Nottingham (2010-2013) where his final year project was about the implementation of a compiler for a Haskell-like language. From 2013, Michael studied towards a PhD at the University of Cambridge where he worked on encoding an object system in Haskell - which he hopes to wrap up in the near future. During his last year at Warwick, Michael won two departmental teaching awards, one for each of his taught modules, and was a finalist for the university-wide teaching award. Aside from software engineering, Michael enjoys teaching, cooking, video and board games, walking, ducks, seals, the colour purple (#3D3051 to be exact), and punting.
+links:
+  Website: https://www.michael-gale.co.uk
+  GitHub: https://github.com/mbg
 skills:
   - Haskell/Functional Programming
   - Object-Oriented Programming
