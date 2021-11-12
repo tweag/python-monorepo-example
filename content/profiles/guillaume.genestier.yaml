@@ -1,13 +1,34 @@
 slug: guillaume.genestier
 name: Guillaume Genestier
 github: GuillaumeGen
+shortDescription: |
+  My main interest is in logic.
+  After a PhD on rewriting and type theory,
+  I am currently working on applying formal methods to smart contract languages.
 bio: |
-  After an engineering degree in Polytechnique, I was mainly interested in logic and proof theory. I did my PhD in the development team of Dedukti, a logical framework relying on the possibility for the user to encode the logic they want to work with using rewriting rules. Dedukti is designed to enhance interoperability between proof assistants and allow the creation of an encyclopedia of system-independent mechanized proofs. My main subject was to design termination techniques for higher-order rewriting with dependent types, and more specifically for encoding of logics in Dedukti. I also initiated the integration of the Agda proof-assistant into the encyclopedia, by developping Agda2Dedukti, a transpiler of Agda programs into Dedukti.
+  After an engineering degree in Polytechnique,
+  where I discovered that the fun part of mathematics is the one teached in Computer Science courses,
+  I was mainly interested in logic and proof theory.
+
+  I did my PhD in the development team of Dedukti,
+  a logical framework relying on the possibility for the user to encode the logic they want to work with using rewriting rules.
+  Dedukti is designed to enhance interoperability between proof assistants
+  and allow the creation of an encyclopedia of system-independent mechanized proofs.
+  My main subject was to design termination techniques for higher-order rewriting with dependent types,
+  and more specifically for encoding of logics in Dedukti.
+  I also initiated the integration of the Agda proof-assistant into the encyclopedia, by developping Agda2Dedukti,
+  a transpiler of Agda programs into Dedukti.
+
+  Since I joined Tweag,
+  I have been working on Pirouette,
+  a transpiler from the smart contract language Plutus to program verification tools,
+  especially the model-checker TLA+.
 skills:
   - OCaml
   - Haskell
   - Coq
-  - Dedukti
+  - Proof Theory
+  - Formal Methods
 speaks:
   - French
   - English
