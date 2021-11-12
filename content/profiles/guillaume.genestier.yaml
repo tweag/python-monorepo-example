@@ -16,7 +16,7 @@ bio: |
   and allow the creation of an encyclopedia of system-independent mechanized proofs.
   My main subject was to design termination techniques for higher-order rewriting with dependent types,
   and more specifically for encoding of logics in Dedukti.
-  I also initiated the integration of the Agda proof-assistant into the encyclopedia, by developping Agda2Dedukti,
+  I also initiated the integration of the Agda proof-assistant into the encyclopedia, by developing Agda2Dedukti,
   a transpiler of Agda programs into Dedukti.
 
   Since I joined Tweag,
