@@ -1,19 +1,38 @@
 slug: karol.czulkowski
 name: Karol Czułkowski
 github: kczulko
+shortDescription: |
+  Karol is a software developer with overall 10 years of experience.
+
+  Passionate about the functional programming. In the software world he
+  likes composition, reproducibility, immutability, purity and harmony in general.
 bio: |
-  Karol is a software developer with over 10 years of experience. He is passionate about the functional programming. In the software world he likes composition, reproducibility, immutability, purity and harmony in general.
+  Karol graduated in control theory and robotics field but software development
+  was what he's found interesting for him.
+
+  Among his carrier he worked for various companies but the vast majority of
+  that time he has spend at Intel where he worked for Datacenter and Networking
+  divisions. Apart from that he also posses some experience working for financial
+  institutions.
+
+  At some point of time he has discovered functional programming which opened
+  new era in life. He begun with Scala but now targets Haskell.
+
+  Started from C/C++, then moved to C#/Java and finally ended up with Scala/Haskell.
+  Worked for huge, corporate-like organizations and now landed at Tweag.
+  Don't you see the pattern here? :)
 skills:
   - Scala
   - C/C++/C#
+  - Nix/NixOS
   - Java
   - SQL
   - Cassandra
   - Kafka
-  - bit of Nix/NixOS
+  - bit of Haskell
 speaks:
-  - English
-  - Polish
+  - English (fluent)
+  - Polish (native)
 experience:
   - employer: Tweag
     role: Software Engineer
@@ -22,6 +41,7 @@ experience:
   - employer: UBS
     role: Scala developer
     years: 2020 -- 2021
+    location: Remote
     description:
       - >
         Technologies: Scala, Akka-http, Cats, Akka-streams, Kafka
@@ -31,6 +51,7 @@ experience:
   - employer: Nordea
     role: Scala developer
     years: 2019 -- 2020
+    location: Remote && Gdynia, Poland
     description:
       - >
         Technologies: Scala, ElasticSearch, Python, Kafka, Nix, Cue, Sbt
@@ -41,6 +62,7 @@ experience:
   - employer: Intel
     role: Scala developer
     years: 2018 -- 2019
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: Scala, Lenses/Monocle, Fs2, Sbt, Antlr4
@@ -52,6 +74,7 @@ experience:
   - employer: Nordea
     role: Senior Java engineer
     years: march 2018 -- june 2018
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: Java, Oracle, Spark, Docker
@@ -62,6 +85,7 @@ experience:
   - employer: ScalaC
     role: Scala developer
     years: 2017 -- 2018
+    location: Remote && Gdańsk, Poland
     description:
       - >
         Technologies: Scala, Cassandra, Kafka, GraphQL
@@ -71,6 +95,7 @@ experience:
   - employer: Intel
     role: Software engineer
     years: 2014 -- 2017
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: Java, C#, C++11, Docker
@@ -81,6 +106,7 @@ experience:
   - employer: Finastra (former Misys)
     role: Software engineer
     years: 2012 -- 2014
+    location: Gdynia, Poland
     description:
       - >
         Technologies: C++, C
@@ -91,6 +117,7 @@ experience:
   - employer: Intel
     role: Software engineer
     years: 2011 -- 2012
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: C#, TCL, Bash
@@ -100,6 +127,7 @@ experience:
   - employer: Micromade
     role: Software engineer
     years: 2010 -- 2011
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: C++, C, Visual Component Library
@@ -108,6 +136,7 @@ experience:
   - employer: Voicelab
     role: Intern
     years: 2009 -- 2010
+    location: Gdańsk, Poland
     description:
       - >
         Technologies: Matlab, C, Php
