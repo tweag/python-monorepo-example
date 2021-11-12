@@ -1,17 +1,24 @@
 slug: adrian.robert
 name: Adrian Robert
 github: arobertn
+shortDescription: |
+  Formerly a software engineer, then team leader, then product owner, Adrian
+  has returned to his roots at Tweag and helps build functional integration
+  and development environments allowing faster creation of better-quality
+  software with greater enjoyment.
 bio: |
   Adrian hails originally from academia but left after a PhD to get hands-on
   with software in advanced visualization and informatics. But technological
   foundations were lacking and as efforts towards a brave new semantic web
   fizzled out, he focused increasingly on the drive towards seamless
-  computation: cloud and DevOps. After having fallen in love with Scala he
-  believes functional programming paradigms will play in an increasing role in
-  these major trends.
+  computation: Cloud and DevOps. After having fallen in love with Scala
+  (following an earlier fling with Mathematica) he believes functional
+  programming paradigms will play in an increasing role in these major trends.
 
   Outside the office, he enjoys the outdoors on foot or two wheels (motorized
   or not) and also plays with novel user interface ideas on his computer.
+links:
+  blog: https://naturaldesigns.software/blog
 skills:
   - Scala (+ Java, etc.)
   - DevOps (often glued together with Python)
@@ -21,7 +28,7 @@ speaks:
   - English
   - Finnish
   - Chinese, French (once fluent but disused, recoverable)
-  - Norwegian (soon)
+  - Norwegian (in-progress)
 experience:
   - employer: Tweag I/O
     role: Software Engineer
