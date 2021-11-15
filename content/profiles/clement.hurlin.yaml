@@ -1,17 +1,23 @@
 slug: clement.hurlin
 name: Clément Hurlin
 github: smelc
-bio: |
-  Clément is a Senior Software Engineer and prides himself
-  on applying programming language theory to write beautiful, maintainable,
-  and testable code. Prior to joining Tweag, he worked for over 8 years
-  writing compilers and provers for proving ARM microkernels.
-  Clément studied Computer Science at Telecom Nancy and received his PhD
+shortDescription: |
+  Clément is a Senior Software Engineer that straddles the management/engineer
+  boundary. Clément studied Computer Science at Telecom Nancy and received his PhD
   from Université Nice Sophia Antipolis, where he proved multithreaded
   programs using linear logic.
+bio: |
+  Clément prides himself
+  on applying programming language theory to write beautiful, maintainable,
+  and testable code. At Tweag, besides coding, Clément likes to develop and enhance
+  software engineering processes. For that, he promotes efficient communication,
+  robust testing, and continuous deployment; while focusing on delivering.
+
+  Prior to joining Tweag, he worked for over 8 years
+  writing compilers and provers for proving ARM microkernels.
 
   Away from the office, Clément can be found reading, developing games,
-  and having a good time with his wife and two kids.
+  and having a good time with family and friends.
 skills:
   - OCaml
   - Haskell
