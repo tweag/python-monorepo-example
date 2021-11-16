@@ -85,7 +85,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // open source project redirects
+  // redirects to Bazel rule sets
+  //
+  // Added for the following talk at BazelCon 2021:
+  // https://opensourcelive.withgoogle.com/events/bazelcon2021?talk=adding-cross-compilation-support-to-rules-haskell
+  //
+  // The slides for this talk contain links to these Bazel rule set
+  // repositories. The conference production team unfortunately mistook them
+  // for links to the Tweag website, e.g. `tweag.io/rules_haskell` instead of
+  // `github.com/tweag/rules_haskell`. These links are displayed on Google's
+  // conference platform next to the slides during playback.
+  //
+  // The following redirects ensure that these links are valid. They can be
+  // dropped again at some point in the future when we feel that the likelihood
+  // of someone encountering them on the BazelCon platform is low.
   createRedirect({
     fromPath: `/rules_haskell`,
     toPath: `https://github.com/tweag/rules_haskell`,
