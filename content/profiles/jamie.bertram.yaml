@@ -2,22 +2,31 @@ slug: jamie.bertram
 name: Jamie Bertram
 pronouns: he/him/his
 github: jhbertra
-bio: |
+shortDescription: |
   Jamie is a web developer specializing in applying functional programming and
   static types to interactive n-tier web-based systems. Before joining Tweag,
   he worked in several companies and industries, building web and mobile
-  applications. He received a BSc in Software Engineering from the University
-  of Calgary in 2014. Jamie is passionate about software architecture,
+  applications. Jamie is passionate about software architecture,
   functional programming, developer productivity, and decentralized
   organizational structures.
+bio: |
+  Jamie grew up in several countries, including Oman, Denmark, and Canada. For
+  as long as he can remember, he has had a passion for understanding complicated
+  and difficult ideas, and finding the right way to think about them that makes
+  them simple. This passion extends to the work he does as a software engineer,
+  where he endeavours to find the simple and pure forms of problems that lead
+  to natural and solid solutions.
+
+  In addition to this, he has an interest in organizational structures,
+  communication, and philosophy. In his free time, he likes to sing in choirs,
+  learn theory (of anything), cook, play chess, garden, and spend time with
+  friends and family.
 skills:
   - Web technologies (HTML, CSS, JavaScript)
   - Haskell
   - PureScript
-  - Elm
-  - Android
-  - iOS
-  - C# and .NET
+  - Nix
+  - Functional programming
 speaks:
   - English
 experience:
