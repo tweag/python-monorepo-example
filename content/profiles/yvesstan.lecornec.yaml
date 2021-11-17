@@ -1,28 +1,37 @@
-slug: yves.stan.lecornec
+slug: yvesstan.lecornec
 name: Yves-Stan Le Cornec
 pronouns: He/Him
 github: ylecornec
-bio: |
+shortDescription: |
   Yves-Stan is a Software Engineer and is especially interested in
-  automatic techniques and tooling that foster writing correct code.
-  Prior to joining the Tweag team, Yves-Stan worked as INRIA research
+  static analysis, modern programming languages, and others automatic
+  techniques and tooling that foster writing correct code.
+  He is currently living in Nantes, France.
+bio: |
+  Yves-Stan is currently working on rules_haskell, the Bazel rules for
+  compiling Haskell projects.
+
+  Prior to joining the Tweag team, he worked as INRIA research
   engineer at the Paris ENS, doing static analysis of C code by
-  abstract interpretation. Prior to that he had a postdoctoral
-  position at the Lyon ENS, working on a web application designed to
-  build models of biological systems. His PhD at the university of
-  Evry related to model checking, developing methods to analyse
-  modular systems using hierarchical abstractions.
+  abstract interpretation.
+
+  Prior to that he had a postdoctoral position at the Lyon ENS,
+  working on a web application designed to build models of biological
+  systems.
+
+  His PhD at the university of Evry related to model checking,
+  developing methods to analyse modular systems using hierarchical
+  abstractions.
+
+links:
+  GitHub: https://github.com/ylecornec
 
 skills:
-  - Abstract Interpretation
-  - Model Checking
-  - Web Development
+  - Static Analysis
   - OCaml
   - Haskell
+  - Bazel
   - Rust
-  - Python
-  - JavaScript
-  - ReScript
 
 speaks:
   - French
