@@ -239,7 +239,7 @@ papers:
       - Richard A. Eisenberg
   - title: "Linear Haskell: practical linearity in a higher-order polymorphic
       language"
-    status: Published
+    status: POPL 2018
     links:
       Link: https://dl.acm.org/doi/abs/10.1145/3158093
       Arxiv: https://arxiv.org/abs/1710.09756
@@ -269,7 +269,7 @@ papers:
       - Simon Peyton Jones
       - Arnaud Spiwack
   - title: Evaluating Linear Functions to Symmetric Monoidal Categories
-    status: Published
+    status: Haskell Symposium 2021
     links:
       Link: https://dl.acm.org/doi/10.1145/3471874.3472980
       Arxiv: https://arxiv.org/abs/2103.06195
@@ -432,7 +432,7 @@ papers:
       - Jean-Philippe Bernardy
       - Richard A. Eisenberg
   - title: Union and intersection contracts are hard, actually
-    status: To be published
+    status: Dynamic Language Symposium 2021
     links:
       Arxiv: https://arxiv.org/abs/2106.06278
     tags:
