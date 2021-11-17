@@ -2,16 +2,29 @@ slug: facundo.dominguez
 name: Facundo Domínguez
 github: facundominguez
 pronouns: He/Him
+shortDescription: |
+  Facundo is a software engineer supporting development and research
+  projects at Tweag. Prior to joining Tweag, he worked in academia
+  and in industry, on a varied assortment of domains, with an
+  overarching interest in programming languages.
 bio: |
-  Facundo is a Senior Software Engineer and supports design,
-  development and research projects at Tweag. He is also the
-  maintainer of inline-java and sparkle. Prior to joining Tweag,
-  Facundo worked as a computer engineer at Parallel Scientific, where
-  he wrote and verified distributed programs in Haskell, before using
-  them on high-speed networks. He received a MSc in Computer Science
-  at Universidad de la República in Montevideo, researching program
-  transformation techniques. Out of the office, Facundo reads, plays
-  guitar, and enjoys traveling and spending time with his family.
+  Currently, Facundo is leading our collaboration with the authors of
+  Liquid Haskell to integrate SMT solvers into the day-to-day practices
+  of the software industry. He is also the maintainer of inline-java
+  and sparkle, and has made multiple contributions to GHC, rules_haskell,
+  and the Haskell libraries. His everyday activities include
+  elaborating project proposals, development, software verification,
+  and mentoring.
+
+  He received a MSc in Computer Science at Universidad de la República
+  in Montevideo, researching program transformation techniques. Since
+  then he worked in software projects for education, entertainment,
+  finance, scientific computation, and government.
+
+  Round-the-clock parent, amateur gardener and guitar player,
+  Facundo spends most of his time out of the office with family and
+  friends.
+
 skills:
   - Functional Programming
   - Distributed systems
@@ -26,8 +39,8 @@ experience:
     role: Senior Software Engineer
     years: November 2013-present
     description:
-      - Language extensions for GHC, integration of Haskell with Java
-        and R, distributed algorithms, Cloud Haskell.
+      - Integration of Haskell with SMT solvers, Java and R, build systems,
+        language extensions for GHC, distributed algorithms, Cloud Haskell.
   - employer: Parallel Scientific
     role: Senior Software Engineer
     years: December 2011 - November 2013
