@@ -111,6 +111,9 @@ professional_activities:
     years: January 2017-present
 
 honors:
+  - organization: International Conference on Functional Programming (ICFP)
+    honor: Distinguished Paper Award
+    date: August 2021
   - organization: Symposium on Principles of Programming Languages (POPL)
     honor: Distinguished Paper Award
     date: January 2020
@@ -147,6 +150,9 @@ honors:
     description: Awarded to undergraduates in the top 10% of their class.
 
 publications:
+  - "F. Krawiec, S. Peyton-Jones, N. Krishnaswami, T. Ellis, R. A. Eisenberg, and A. Fitzgibbon. Provably Correct, Asymptotically Efficient, Higher-Order Reverse-Mode Automatic Differentiation. In Proceedings of the ACM on Programming Languages, Vol. 6, Issue POPL (POPL '22), ACM, 2022."
+  - "R. A. Eisenberg, G. Duboc, S. Weirich, and D. Lee. An Existential Crisis Resolved: Type inference for first-class existential types. In Proceedings of the ACM on Programming Languages, Vol. 5, Issue ICFP (ICFP '21), ACM, 2021. Article 64, 29 pages. (Recipient of the ICFP'21 Distinguished Paper Award, given to fewer than 10% of accepted articles.)"
+  - "G.-J. Bottu and R. A. Eisenberg. Seeking Stability by being Lazy and Shallow: Lazy and shallow instantiation is user friendly. In Proceedings of the 2021 ACM SIGPLAN Symposium on Haskell (Haskell '21), ACM, 2021, pp. 85-97."
   - "P. Choudhury, H. Eades III, R. A. Eisenberg, and S. Weirich. A Graded Dependent Type System with a Usage-Aware Semantics. In Proceedings of the ACM on Programming Languages, Vol. 5, Issue POPL (POPL '21), ACM, 2021. Article 50, 32 pages."
   - "P. Downen, Z. M. Ariola, S. Peyton Jones, R. A. Eisenberg. Kinds are Calling Conventions. In Proceedings of the ACM on Programming Languages, Vol. 4, Issue ICFP (ICFP '20), ACM, 2020. Article 104, 29 pages."
   - "R. A. Eisenberg. Stitch: The Sound Type-Indexed Type Checker (Functional Pearl). In Proceedings of the 2020 ACM SIGPLAN Symposium on Haskell (Haskell '20), ACM, 2020. pp. 39-53."
@@ -173,6 +179,8 @@ publications:
   - "R. A. Eisenberg and S. Weirich. Dependently Typed Programming with Singletons. In Proceedings of the 2012 Haskell Symposium (Haskell '12), ACM, 2012. pp. 117-130."
 
 talks:
+  - "An Existential Crisis Resolved: Type inference for first-class existential types. ICFP, Aug. 2021, online"
+  - "An Existential Crisis Resolved: Type inference for first-class existential types. IFIP Working Group 2.8, Feb. 2021, online"
   - "Simplifying Constraint Solving in GHC. Haskell eXchange, Nov. 2020, online"
   - "Stitch: the Type-Indexed Type Checker (Functional Pearl). Haskell Symposium, Aug. 2020, online"
   - "Parameters of Many Flavors. Invited talk, Haskell Love, Aug. 2020, online"
