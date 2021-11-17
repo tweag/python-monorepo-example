@@ -5,8 +5,23 @@ skills:
   - Programming languages theory & design
   - OCaml
   - Rust
+  - Nix
   - TypeScript/JavaScript
-bio:
+shortDescription: |
+  Yann is working at Tweag on the Nickel programming language, a
+  next-generation configuration language to manage the growing
+  complexity of Infrastructure-as-Code and a candidate successor for the
+  language Nix.
+bio: |
+  In his career, Yann worked as a freelance fullstack developer for some time,
+  developing internal web platforms for various clients. He received his PhD
+  in Computer Science from IRIF (Université Paris Diderot) where he worked on
+  the compilation of a shared-memory concurrent language into Linear Logic.
+
+  His technical interests include functional programming, programming languages
+  design, type theory and logic. He has also now dived in the wonderful world of
+  Nix and DevOps in general. Outside of work, Yann loves hiking, reading,
+  bouldering, cooking, petting dogs and drinking green tea.
 education:
   - description:
       - Concurrency, references and linear logic
@@ -41,5 +56,9 @@ speaks:
   - English
   - Japanese (basic)
 talks:
+  - "Typing in Nickel and Elsewhere - 2021, 1st Workshop on Configuration Languages (CONFLANG21)"
+  - "A tale of Nix and Nickel - 2021, Yow! LambdaJam"
   - "Multitoken Geometry of Interaction and Multimoves Games - 2015, GALOP workshop at European Joint Conferences on Theory & Practice of Software (ETAPS)."
   - "Geometry of interaction for an effectful concurrent lambda calculus - 2016, CRECOGI gathering at Computer Science Logic (CSL)"
+publications:
+  - "Teodoro Freund, Yann Hamdaoui, and Arnaud Spiwack. 2021. Union and intersection contracts are hard, actually. In Proceedings of the 17th ACM SIGPLAN International Symposium on Dynamic Languages (DLS 2021)"
