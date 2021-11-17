@@ -2,18 +2,22 @@ slug: torsten.schmits
 name: Torsten Schmits
 pronouns: They/He
 github: tek
+shortDescription: |
+  Torsten is a Haskell architect with a passion for creating complex tools and libraries with cutting-edge technologies, seamless user experience, and detailed, accessible documentation.
 bio: |
-  Torsten is a Haskell and Nix enthusiast working on Polysemy and Neovim-Haskell, with an obsession for way too many side projects.
+  Iron-clad reproducibility and zero-effort-setup for all possible components of the development workflow is a top priority for them, which is highly conducive for their work in developer productivity with Bazel and Nix at Tweag.
+
+  Torsten enjoys working on open source projects, spending a lot of time on the ecosystems of Polysemy, Neovim-Haskell, and Reflex-FRP.
+  Close to 20 years of experience with Linux and programming made them highly efficient at exploring and adapting to new environments and code bases.
+
+  Outside of work, Torsten enjoys playing the guitar, practicing Yoga and Wing Chun Kung Fu, wandering the city, reading about anthropology, economics and other scientific fields, playing video games and watching TV shows.
+
 skills:
   - Haskell
-  - Scala
+  - Effect Systems
   - Nix
-  - NixOS
-  - Python
-  - Ruby
-  - C++
-  - JS/HTML/CSS
   - Bazel
+  - Web
 speaks:
   - English
   - German
@@ -45,6 +49,3 @@ education:
     name: Computer Science
     institution: Technical University of Berlin
     years: 2016
-    description:
-      - |
-        thesis title: Content Relevance-Based Semantic Sentence Retrieval
