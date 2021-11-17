@@ -1,8 +1,10 @@
 slug: florent.chevrou
 name: Florent Chevrou
 github: florentc
+shortDescription: |
+  Florent is a software engineer with a background in formal system modeling and verification. He studied asynchronous communication models during his Ph.D. and worked on privacy (whether systems conform to data protection regulations) during his post-doc. He has grown a special liking for functional programming throughout his professional and personal work.
 bio: |
-  "Florent has a background in system modeling and verification with TLA+ and Event-B: he worked on the formal modeling and study of asynchronous communication models (message ordering policies) in his Ph.D. thesis. He then worked at CEA on a prototype engine to check that logs of personal data processing comply with the European Data Protection Regulation (GDPR). Among many parallel interests, he has grown a special liking for functional programming. He practiced some OCaml during his years in academia and then got hooked into Haskell in his personal time: following online classes, programming challenges, and small personal projects. He looks forward to developing these skills professionally, among other Tweagers! He is also into teaching and scientific popularization. Outside of work, he enjoys rollerblading, climbing, sciences, computer graphics, and point & click adventure games."
+  Florent is a functional software engineer based in Paris. He has a background in system modeling and verification with TLA+ and Event-B: he worked on the formal modeling and study of asynchronous communication models (message ordering policies) in his Ph.D. thesis. He then worked at CEA, alongside legal experts, on a prototype engine to check that logs of personal data processing comply with the European Data Protection Regulation (GDPR). Among many parallel interests, he has grown a special liking for functional programming. He practiced some OCaml during his years in academia and then got hooked into Haskell in his personal time: following online classes, programming challenges, and small personal projects. He looks forward to developing these skills professionally, among other Tweagers! He also likes teaching (and did so for 4 years at ENSEEIHT, a French engineering school) and scientific popularization.
 skills:
   - Haskell
   - Ocaml
@@ -15,6 +17,8 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: October 2021-present
+    description:
+      - Plutus smart contracts verification
   - employer: CEA (Commissariat à l'Énergie Atomique)
     role: Research Engineer
     years: November 2018 - November 2019
