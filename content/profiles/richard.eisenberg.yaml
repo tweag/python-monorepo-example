@@ -5,7 +5,7 @@ github: goldfirere
 twitter: "@RaeHaskell"
 
 website: https://richarde.dev/
-bio: |
+shortDescription: |
   Richard is Tweag’s Principal Researcher and joined the company to continue
   on his mission to shape the future of high-assurance programming. A core
   GHC contributor and Haskell Foundation board member, Richard has a BA
@@ -13,7 +13,35 @@ bio: |
   Computer Science at the University of Pennsylvania. Away from
   day-to-day-implementation efforts and publishing papers on the design of
   programming languages and type systems, Richard likes to travel, hike, ski,
-  and play board games with his wife and daughter.
+  and play board games with his wife and daughter. He lives just outside
+  of Philadelphia, Pennsylvania, USA -- though dreams of moving to
+  Cambridge, UK, some day.
+
+bio: |
+  As an undergraduate, Richard was a teaching assistant for Harvard's
+  introductory computer science course. This was great fun -- more fun
+  than coding during his summer jobs, in fact. So he decided on a career
+  in education, becoming a secondary school teacher. Richard taught
+  introductory computer science (in Java) and a little bit of math
+  in a boarding school in Massachusetts and then in an international day school
+  in London.
+
+  After attending a conference full of happy professors (but short on secondary school
+  teachers) and realizing that teaching alone would not satisfy his
+  intellectual hunger, Richard changed careers by enrolling for a PhD
+  in Computer Science. Five years later, he graduated deeply enmeshed
+  in the Haskell community and on a crusade to improve the art of
+  computer programming through better static analysis.
+
+  Richard then took a tenure-track job at Bryn Mawr College outside of
+  Philadelphia, but found that he could not adequately teach, implement,
+  and research. To his own surprise, he found that teaching was the best
+  component to jettison, and he thus joined Tweag to broaden his Haskell
+  leadership and research contributions.
+
+links:
+  Website: https://richarde.dev/
+  YouTube: https://richarde.dev/videos.html
 
 skills:
   - Haskell
