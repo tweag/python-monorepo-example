@@ -4,7 +4,7 @@ pronouns: He/Him
 github: nrnrnr
 twitter: "@nrnrnr"
 website: https://www.cs.tufts.edu/~nr/
-bio: |
+shortDescription: |
   Norman is visiting Tweag on sabbatical from Tufts University.
   He is a longtime teacher and researcher who works by
   building interesting software and then writing papers about it.
@@ -18,6 +18,27 @@ bio: |
   technical writing, as well as various special-topics courses.
   He is also the author of the forthcoming textbook *Programming Languages:
   Build, Prove, and Compare.*
+bio: |
+  Norman's first love is software, and he is thrilled to be working in
+  a context where the quality of the software matters.  Norman loves
+  to think about types, and an exhaustiveness check for pattern
+  matching is his best friend.  In his personal projects, Norman tends
+  to use a mix of Haskell and ML: Haskell to prototype interesting
+  ideas, and ML when performance has to be solid and predictable.
+  He favors Standard ML and the marvelous MLton compiler.  Norman has
+  also been known to write code in untyped languages; his Lua skills
+  are entirely too polished.
+
+  In addition to software, Norman likes to make physical objects,
+  usually out of wood.  His largest project to date is a set of bunk
+  beds with a twin bed on top and a double on the bottom; the frame is
+  a skewed A.
+
+  Outside of work Norman is a gamer, both video and tabletop.  Video
+  favorites include Ico, Portal, and Prince of Persia: Sands of Time.
+  On the tabletop, Norman and his wife are obsessed with Gloomhaven,
+  which has driven everything else off the table. And yet he keeps
+  buying new games.
 skills:
   - Functional programming (Standard ML, Haskell, OCaml)
   - Engineering leadership
@@ -152,6 +173,9 @@ honors:
   - organization: Fannie and John Hertz Foundation
     honor: Hertz Fellow
     date: 1983-1986 and 1989-1991
+
+links:
+  Personal web page: https://www.cs.tufts.edu/~nr/
 
 publications:
   #  - "Symbolic Bayesian Inference by Lazy Partial Evaluation. 2015 (with Chung-Chieh Shan)."
