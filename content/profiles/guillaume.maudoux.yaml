@@ -2,21 +2,40 @@ slug: guillaume.maudoux
 name: Guillaume Maudoux
 github: layus
 
-bio: |
+shortDescription: |
   Guillaume has a background in computer science, engineering and applied mathematics.
-  Concerning software systems, his main concern is correctness, reliability, and trustworthiness.
+  Regarding software systems, his main concern is correctness, reliability, and trustworthiness.
   He is passionate about understanding complex systems and untangling intricate issues.
 
-  In academia, Guillaume built a solid knowledge of build systems and formal methods.
-  There, he also got fond of teaching and sharing ideas.
+bio: |
+  In academia, Guillaume built a solid knowledge of build systems, with a focus
+  on understanding their peculiarities and what motivated their authors to
+  start umpteenth implementation.  He still hopes to find a way to combine
+  great ideas and make implementations converge to interoperable standards.
 
-  In his spare time, Guillaume likes to go cycling (while listening to eclectic podcasts)
-  and playing indie video games (like factorio, the ultimate build system).
+  His curiosity brought him through various other fields like formal methods
+  and human-computer interactions in a first attempt at a PhD, and a large,
+  eclectic set of taught courses amongst which numerical methods, databases,
+  programming languages concepts and software engineering.
+  There, he discovered a fondness for explaining concepts and sharing ideas.
+
+  Guillaume is a long-time Nix enthusiast and member of it's community. He
+  also enjoys fixing tricky bugs in the software he uses, with a record of
+  patches in various open-source projects. He likes to say that he prefers
+  reading code than writing it.
+
+  In his spare time, between taking care of two children, Guillaume likes to go
+  cycling while listening to eclectic podcasts.  He also like playing indie
+  video games, including Factorio as the game tugs at his heartstrings for build
+  systems.
 
 skills:
   - Build systems expertise
   - Complexity management
   - Teaching
+
+links:
+  Blog: https://blog.layus.be
 
 speaks:
   - French
