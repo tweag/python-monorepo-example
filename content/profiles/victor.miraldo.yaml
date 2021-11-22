@@ -1,23 +1,34 @@
 slug: victor.miraldo
 name: Victor Miraldo
 github: VictorCMiraldo
+shortDescription: |
+  Victor leads the smart contract auditing and verification team at Tweag,
+  where we develop tools and technques to build, audit or verify 
+  client contracts. We are also interested in more fundamental research
+  on the semantics of smart contracts and all that it entails.
+  He is based in Utrecht, the Netherlands.
 bio: |
-  Victor works on Formal Methods and Functional Programming consulting,
-  research and development for Tweag. He has received his PhD in Computer
+  Victor is interested in Formal Methods and Functional Programming.
+  He has received his PhD in Computer
   Science from Utrecht University, where he studied and developed correct-by-construction
   structural differencing tools in Haskell and Agda. Prior to joining Tweag, Victor
   has worked at Oracle Labs and the DFINITY Foundation on the development,
   formalization and testing of byzantine fault tolerant distributed systems.
+  On his free time, he is either playing the piano or customizing his emacs setup.
+links:
+  Website: https://victorcmiraldo.github.io
 skills:
   - Haskell
   - Agda
   - Rust
+  - Bash
+  - LaTeX
 speaks:
   - English
   - Portuguese
 experience:
   - employer: Tweag
-    role: Research Software Engineer
+    role: Software Engineer
     years: May 2021-present
   - employer: DFINITY Foundation
     role: Software Testing and Verification Engineer
@@ -30,15 +41,9 @@ education:
     name: Computer Science
     institution: Utrecht University
     years: 2015 - 2020
-    description:
-      - |
-        thesis title: “Type-Safe Generic Differencing of Mutually Recursive Families”
   - qualification: Masters
     name: Computer Science
     institution: University of Minho
     years: 2012 - 2015
-    description:
-      - |
-        thesis title: “Proof by Rewriting in Agda”
 publications:
   - Please refer to victorcmiraldo.github.io/research.html for an up-to-date list of publications.
