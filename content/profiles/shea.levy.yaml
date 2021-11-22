@@ -1,23 +1,49 @@
 slug: shea.levy
 name: Shea Levy
 github: shlevy
-bio: |
+shortDescription: |
   Shea is a software engineer and engineering manager with a very wide background.
   He has worked in a variety of application domains with a tendency to focus on
   infrastructure engineering, developer enablement, and inter-system protocols and
   interfaces. He is passionate about finding the right conceptual framework to understand,
   communicate about, and solve the problem at hand. He has been an active contributor to the
   Nix ecosystem since 2011.
+bio: |
+  Shea first learned to program as a kid at computer camp, but things really took
+  off when he wanted to get a new computer with his Bar Mitzvah money and
+  decided to save by building it himself and checking out this Linux thing to
+  avoid paying for Windows. He quickly found himself trying to figure out how it
+  all worked, within the first few months switching from SUSE to Gentoo for more
+  control over packaging and within a few years to Linux From Scratch to really
+  see the details. In college he studied neuroscience and electrical engineering,
+  on the side discovering NixOS and systems/kernel engineering and finally finding
+  the perfect level of detailed insight and power for how computers work.
 
+  His early career had him working on many different aspects of many domains, with
+  the common thread of trying to understand the basic primitives, how they do and
+  should work, and how to put them together effectively. This ultimately led to a
+  focus on specification, interfaces, and implementing the core components that bridge
+  from a pre-existing established domain (e.g. the operating system layer) to the
+  domain of the application. He also discovered a passion for quality organizational
+  structure and process and empowering others on his team to increase their effectiveness,
+  leading him first to working on developer enablement tools and later to team leadership.
+
+  Shea lives in New Hampshire with his wife, 2 kids, 2 cats, and 2 dogs. He likes
+  to study philosophy, especially epistemology and philosophy of mind, from the perspective
+  of Ayn Rand's Objectivism, as well as neuroscience and psychology; in his next life he
+  hopes to start a new kind of scientific research institute focused on bridging our
+  understanding of the brian and mind. He loves to ski and sing and is hoping to become a
+  certified hang glider soon.
 skills:
   - Haskell
   - Systems and kernel programming (C, C++, Rust)
   - Nix ecosystem
   - DevOps (terraform, kubernetes, ansible, prometheus, grafana, honeycomb)
   - Scripting and systems administration (Bash, Python)
-  - Engineering leadership
-  - Architecture
-  - And more...
+
+links:
+  Website: https://shealevy.com
+  Twitter: https://twitter.com/shlevy
 
 speaks:
   - English (native)
