@@ -1,18 +1,29 @@
 slug: vince.reuter
 name: Vince Reuter
 github: vreuter
+shortDescription: |
+  Vince works on software development projects, some internal and some for clients.
+  Initially self-taught in basic Java programming, Vince was led by course of study and general curiosity to programming in other languages. 
+  Eventually he was hooked on Scala and interested by Haskell, which of course naturally led him to Tweag.
+  At Tweag Vince enjoys interacting with colleagues who come from broad range of places of origin and current residence, and the array of perspectives that follow naturally from that.
 bio: |
-  Vince has training in math and statistics, and software experience across a range of organization types. 
-  He's been a primary contributor to a variety of open-source bioinformatics packages in Python. Always drawn 
-  to designing for composability, he moved into strong, static typing through Scala and is now enjoying 
-  learning Haskell. Aside from software, Vince likes mountain scrambling, museum visits, and urban parks 
-  and architecture.
+  Vince has education in math and statistics but moved into more software-focused work after university, initially in network security and then in public health and genomics / bioinformatics.
+  Besides interest in the domain switch itself, he was excited by the opportunity to have more of his work be available as open-source software, and he loves that Tweag holds open source availability as a core value.
+
+  After detouring for graduate school, Vince decided that he prefers the generality of problems and solutions in software development and returned to full-time focus on that.
+  Vince has worked in a range of settings, from three-person bioinformatics labs in nonprofit research to network security research in a large enterprise setting. 
+  From this experiential diversity both in application topic and in organization types, he has developed structural flexibility and honed the ability to quickly pick up new domain-specific information.
+
+  Vince is a primary contributor to a number of open-source bioinformatics packages in Python. 
+  Aside from software, he likes running, mountains, museums, linguistic nuance, learning about public policy, and wandering around any city to find new places.
+  Fortunately, some of these preferred activities are readily combined.
+
 skills:
   - Scala
   - Python
   - R
   - Test design
-  - Genomics
+  - Genomics / bioinformatics
 speaks:
   - English
 experience:
