@@ -1,14 +1,36 @@
 slug: taeer.bar-yam
 name: Taeer Bar-Yam
 github: Radvendii
-bio: |
+shortDescription: |
   Taeer is a software engineer with a strong background in math, theory, and
   abstraction. He is comfortable in a range of paradigms, from low-level C
   networking code to high-level Haskell abstractions. He likes to tinker and
   solve problems creatively, and he takes great joy in refactoring and finding
   just the right conceptual model. He cares about effective teamwork and
   building strong relationships.
+bio: |
+  Taeer first encountered Category Theory and Haskell at Mathcamp in 2013. After
+  that he got his Bachelors in Mathematics from Cornell University, during which
+  time he adopted and fell in love with Nix(OS).
 
+  Taeer enjoys programming in a wide variety of languages: C, perl, ruby, bash,
+  nix, and more. He likes thinking about the differences between those languages
+  and what makes them suited to different purposes.
+
+  In his previous job, Taeer programmed multicast protocols for routers /
+  firewalls, and remains fascinated by the technology and brilliant ideas that
+  have gone into the internet.
+
+  Taeer's tech stack includes: Astroid (Mail), Qutebrowser, Doom Emacs, XMonad,
+  and NixOS, running on a Thinkpad T430 with the T420 keyboard and heatsink.
+
+  Sometimes, Taeer spends his time on things unrelated to programming or math.
+  When it's safe to do so, he likes to go social dancing (mostly blues fusion
+  and contra), and rock climbing.
+
+links:
+  Website: https://taeer.bar-yam.me
+  Blog: https://taeer.bar-yam.me/blog
 skills:
   - Nix
   - NixOS
@@ -18,7 +40,6 @@ skills:
   - Perl
   - TCP/IP
   - Web Dev
-
 speaks:
   - English (native)
   - Hebrew (conversational)
