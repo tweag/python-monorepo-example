@@ -1,24 +1,38 @@
 slug: julien.debon
 name: Julien Debon
 github: Sir4ur0n
+shortDescription: |
+  Julien is a Software Engineer at Tweag. He has been working in
+  industry with a focus on writing quality code and applications
+  that humans understand.
 bio: |
-  Julien is a Software Engineer who has worked on several
-  applications, mainly in Java and Haskell, with a focus on quality.
-  He also likes to learn and share his knowledge through talks and
-  mentoring, and more generally enjoys helping others.
-  On his spare time, Julien plays squash and video games, and is fond
-  of various mountain sports like hiking and skiing.
+  Julien mostly works on client projects where he focuses on writing
+  and helping others write better code and applications.
+
+  He started developing with Java and later accidentally discovered
+  functional programming while trying to write better code.
+  This lead him down the path of Haskell and other functional
+  programming languages.
+
+  He enjoys learning and sharing his knowledge and experience
+  through talks and mentoring, and more generally loves helping others.
+
+  In his spare time, Julien plays squash and video games, and is fond
+  of everything mountain-related like food or hiking.
+links:
+  Blog: https://sir4ur0n.github.io/
 skills:
   - Haskell
   - OCaml
   - Java
+  - Mentoring
 speaks:
-  - English
-  - French
+  - French (native)
+  - English (fluent)
 experience:
   - employer: Tweag
     role: Software Engineer
-    years: 2021-present
+    years: January 2021-present
     description:
       - Contributor to the Mockup/Proxy/Light modes of Tezos.
   - employer: Decathlon
