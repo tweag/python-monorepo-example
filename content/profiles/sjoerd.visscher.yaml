@@ -1,6 +1,9 @@
 slug: sjoerd.visscher
 name: Sjoerd Visscher
+pronouns: He/Him
 github: sjoerdvisscher
+shortDescription: |
+  Sjoerd Visscher is a software engineer who loves beautiful code and making users happy.
 bio: |
   Sjoerd has been an active member of the Haskell community since about 2008
   and has created several packages, mainly in the area of generic programming.
@@ -12,12 +15,13 @@ bio: |
   enough natural boulders in the Netherlands) and sings in a choir. He also
   sometimes composes music and has designed his own isomorphic keyboard.
   Sjoerd lives currently in The Hague with his wife and 2 cats.
+links:
+  Personal website: https://sjoerdvisscher.glitch.me
 skills:
   - Haskell
   - PureScript
   - TypeScript
   - HTML/CSS
-  - Bazel
 speaks:
   - Dutch
   - English
