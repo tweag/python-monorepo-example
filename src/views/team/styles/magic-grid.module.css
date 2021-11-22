@@ -33,7 +33,7 @@
 
 @media screen and (min-width: 1500px) {
   .magicGrid {
-    --magic-grid-margin: 120px;
+    --magic-grid-margin: 180px;
   }
 }
 
