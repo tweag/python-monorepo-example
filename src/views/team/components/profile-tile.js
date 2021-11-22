@@ -81,7 +81,6 @@ export const ProfileTile = ({
   start,
   height,
   width,
-  key,
   id,
   active = false,
 }) => {
@@ -135,7 +134,6 @@ export const ProfileTile = ({
               ...positionalStyles,
               "--tile-color": TILE_COLORS[colorIndex],
             }}
-            key={key}
             onClick={notShowingTile ? null : clickHandler}
             onPointerOut={event => {
               const target = event.currentTarget

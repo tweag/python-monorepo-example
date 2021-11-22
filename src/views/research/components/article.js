@@ -63,7 +63,6 @@ const Article = ({
   links,
   pdf,
   abstract,
-  key,
   topString,
 }) => {
   const visiblePart = (
@@ -98,7 +97,6 @@ const Article = ({
       invisibleContent={invisiblePart}
       colorOnExpand={true}
       className={styles.article}
-      key={key}
     />
   )
 }

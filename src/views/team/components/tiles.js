@@ -26,7 +26,6 @@ function generateTagFilterEventIssuer(tag) {
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string,
  *  id?: string
  * }} props
  * @returns {JSX.Element}
@@ -37,7 +36,6 @@ export const ColorTile = ({
   start,
   height,
   width,
-  key,
   id,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
@@ -54,7 +52,6 @@ export const ColorTile = ({
         "--tile-color": TILE_COLORS[colorIndex],
         ...positionalStyles,
       }}
-      key={key}
       id={id}
     />
   )
@@ -67,7 +64,6 @@ export const ColorTile = ({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string,
  *  id?: string
  * }} props
  * @returns {JSX.Element}
@@ -77,7 +73,6 @@ export const BlankTile = ({
   start,
   height,
   width,
-  key,
   id,
 }) => {
   const colorTileProps = {
@@ -85,7 +80,6 @@ export const BlankTile = ({
     start,
     height,
     width,
-    key,
     colorIndex: 3,
     id,
   }
@@ -100,7 +94,6 @@ export const BlankTile = ({
  *  start?: {x: number, y: number},
  *  height?: number,
  *  width?: number,
- *  key?: number | string,
  *  id?: string
  * }} props
  */
@@ -110,7 +103,6 @@ export const TagTile = ({
   start,
   height,
   width,
-  key,
   id,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
@@ -137,13 +129,12 @@ export const TagTile = ({
       style={{
         ...positionalStyles,
       }}
-      key={key}
       onClick={onClick}
       id={id}
     >
       <span className={styles.tagText}>{tag}</span>
     </div>
   ) : (
-    <ColorTile key={key} start={start} width={width} height={height} />
+    <ColorTile start={start} width={width} height={height} />
   )
 }

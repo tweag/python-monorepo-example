@@ -55,15 +55,7 @@ export const BioContext = createContext(null)
  * }} props
  * @returns {JSX.Element}
  */
-const Bio = ({
-  person,
-  rounding,
-  start,
-  height,
-  width,
-  key,
-  relativePosition,
-}) => {
+const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
   let roundingToUse
   if (relativePosition === `left`) {
     roundingToUse = LEFT_ROUNDINGS[rounding]
@@ -77,7 +69,6 @@ const Bio = ({
     <div
       className={[roundingToUse, styles.bio, positionedTile].join(` `)}
       style={{ ...positionalStyles }}
-      key={key}
     >
       <div className={styles.header}>
         <div className={styles.personName}>{person.name}</div>

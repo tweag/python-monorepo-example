@@ -68,7 +68,6 @@ export const AccordionItem = ({
   colorOnExpand,
   className,
   style,
-  key,
 }) => {
   return (
     <div
@@ -77,7 +76,6 @@ export const AccordionItem = ({
       className={`${styles.accordionItem} ${className ?? ``}`}
       style={style ?? {}}
       onClick={accordionItemClickHandler}
-      key={key}
     >
       <div className={styles.visibleContent}>{visibleContent}</div>
       <div className={styles.invisibleContent}>{invisibleContent}</div>
