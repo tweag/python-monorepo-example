@@ -1,28 +1,39 @@
 slug: steve.purcell
 name: Steve Purcell
 github: purcell
-bio: |
+shortDescription: |
   Steve simplifies and optimises software and human systems. With 25
   years in the industry across many sectors and in roles extending to
   CTO level, he's still writing code (much of it open source) and
   excited about good teams delivering useful software products that
   make customers happy.
+bio: |
+  Beyond his eclectic software interests, Steve has a long and varied history
+  of obsessions including guitar, qigong, opera, mountain running, climbing
+  and photography.
+links:
+  blog: https://sanityinc.com
+  twitter: https://twitter.com/sanityinc
 skills:
-  - Haskell
-  - Linux
-  - SQL
-  - Ruby
-  - Python
+  - Software
+  - People
   - Products
-  - Many more
+  - Business
+  - Generalising
 speaks:
   - English
   - German
   - Rusty French
 experience:
   - employer: Tweag
+    role: Vice President of Engineering
+    years: Aug 2021-present
+    description:
+      - Helping the engineering team grow, learn, and select and deliver meaningful work.
+
+  - employer: Tweag
     role: Senior Software Engineer
-    years: Aug 2019-present
+    years: Aug 2019-Jul 2021
     description:
       - Working remotely with a global (but primarily European) team
         helping clients use and adapt advanced open source technologies
