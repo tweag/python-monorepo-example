@@ -120,15 +120,15 @@ export class TileSet {
       case `xs`:
         return 12
       case `sm`:
-        return 11
-      case `md`:
         return 10
+      case `md`:
+        return 8
       case `lg`:
-        return 7
+        return 4
       case `xl`:
-        return 7
+        return 4
       case `xxl`:
-        return 7
+        return 4
     }
   }
 
