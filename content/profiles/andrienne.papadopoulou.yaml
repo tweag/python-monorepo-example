@@ -1,0 +1,50 @@
+slug: andrienne.papadopoulou
+name: Andrienne Papadopoulou
+github:
+shortDescription: |
+  Andrienne is part of the operations at Tweag. You will most likely catch her
+  working on an excel spreadsheet at any given day.
+bio: |
+  She specialized in Finance during her time in the university, but once she
+  completed her studies, she chose to move in a different direction working as
+  a project manager in the field of clinical research in the UK as she wanted
+  to work in an environment where she could recognize how her work is
+  contributing to something bigger. Following a 10-year absence from her
+  homeland she returned only when conditions felt right and started working for
+  Tweag, where she felt she could still contribute with her own organizational
+  and analytical skills to a place that in its own rightful way is contributing
+  to developing great ideas.
+skills:
+ - Financial analysis
+ - Project Management
+ - Administration
+speaks:
+ - English (fluent)
+experience:
+ - employer: Tweag
+   role: Financial Analyst
+   years: September 2018-present
+   location: remote
+   description:
+     - |Supporting the monthly activity cycles of the business through financial reporting, invoincing, accounting and various admin activities.
+ - employer: NIHR Clinicnal Research Network
+   role: Specialty Cluster Coordinator
+   years: September 2016-August 2018
+   location: London,UK
+   description:
+     - |Project management of the initiatives involving 8 clinical specialties to boost the awareness of support available for clinical research in the UK and develop further initiatives for involving clinicians in research.
+ - employer: NIHR Clinicnal Research Network
+   role: Office Manager
+   location: London,UK
+   years: August 2015 – September 2016
+   description:
+    - |Operational management of the London office of the Coordinating center of the network and support in managing 5 other locations.
+education:
+ - qualification: MSc
+   name: Investment and Risk Finance
+   institution: University of Westminster
+   years: 2011-2012
+ - qualification: BA
+   name: Accounting and Finance
+   institution: University of Essex
+   years: 2008-2011

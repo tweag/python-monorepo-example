@@ -1,0 +1,30 @@
+slug: benjamin.robin
+name: Benjamin Robin
+github:
+shortDescription: |
+  Benjamin is Chief Financial Officer and ensures that Tweag’s admin, HR, legal
+  and finance processes work in synergy as the company grows and expands. He is
+  also managing operations for the French branch and leads Tweag's office in
+  Paris.
+bio: |
+  Before joining Tweag, Benjamin was a Financial Auditor at Deloitte,
+  Finance & Accounting Manager at Salt (formerly Orange Switzerland) and then
+  Head of Finance, Tax & Administration for EDP Renewables France and Belgium.
+  A fan of languages, Benjamin has studied English, Italian, Chinese, Japanese,
+  Latin and Greek. He also enjoys hiking, gaming, baking, and taking full
+  advantage of France’s rich culinary culture.
+skills:
+  - Finance
+  - Excel
+  - Baking 
+speaks:
+  - English (fluent)
+  - French (fluent)
+experience:
+  - employer: Tweag
+    role: Group CFO and France COO 
+    years:  2020-present
+    location: Paris, France
+education:
+  - name: DSCG (accounting and business management)
+    institution: ESSEC Business School (Paris, France)
