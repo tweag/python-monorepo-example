@@ -1,9 +1,13 @@
 slug: mariehelene.polloni
 name: marie-hélène polloni
 github:
-bio: |
+shortDescription: |
   Marie-Hélène leads the strategic direction and management of the people operations to successfully help Tweag meet its short and long term objectives.
-
+bio: |As the company is growing steadily, Marie-Hélène makes sure that we are recruiting the best talents and that we provide them with an outstanding experience working at Tweag.
+        When building people related procedures, she ensures they are embedded in our culture. 
+        Marie-Hélène has a double expertise in Marketing and HR. After spending several years in the publishing industry working her way up to various marketing director roles, she switched to talent management, and headed a number of initiatives ranging from leadership and learning (university partnerships, career development etc) to diversity and inclusion (women leadership programmes, gender equality, disability and more) in a company of 1,200 employees and then as a consultant running her own business..
+        Passionate about sustainability, Marie-Hélène is an administrator of the Jane Goodhall Institute. She's also an avid hiker, a hobby that has taken her to many parts of this world.
+  
 skills:
   - Talent management
   - Employer branding
@@ -13,15 +17,18 @@ speaks:
   - French
   - English
   - Italian
+  - German basics
 experience:
   - employer: Tweag
     role: Head of People and Culture
     years: August 2021-present
     location: Paris Office
     description:
-      - |
-        As the company is growing steadily, Marie-Hélène makes sure that we are recruiting the best talents and that we provide them with an outstanding experience working at Tweag.
-        When building people related procedures, she ensures they are embedded in our culture.
+      - |build up a steady pipeline of top candidates with more diverse profiles who are both highly skilled and aligned to Tweag's values.
+      - Design attractive career paths and benefits for Tweagers 
+      - Make Tweag's values alive
+
+    
 
   - employer: Le Levier d'Archimède
     role: Founder
