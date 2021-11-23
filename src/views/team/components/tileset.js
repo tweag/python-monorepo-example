@@ -106,7 +106,7 @@ export class TileSet {
       case `lg`:
         return 3
       case `xl`:
-        return 3
+        return 4
       case `xxl`:
         return 4
     }
@@ -118,17 +118,17 @@ export class TileSet {
   getBioHeight() {
     switch (this.breakpoint) {
       case `xs`:
-        return 12
-      case `sm`:
         return 10
+      case `sm`:
+        return 9
       case `md`:
         return 8
       case `lg`:
-        return 4
+        return 7
       case `xl`:
-        return 4
+        return 6
       case `xxl`:
-        return 4
+        return 3
     }
   }
 
