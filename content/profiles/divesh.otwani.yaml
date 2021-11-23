@@ -2,6 +2,11 @@ slug: divesh.otwani
 name: Divesh Otwani
 github: Divesh-Otwani
 
+shortDescription: |
+  Divesh is a Software Engineer and a Haskeller. He graduated from Haverford College
+  with a double major in Mathematics and Computer Science. He enjoys classic
+  literature, abstract math and martial arts.
+
 bio: |
   Divesh is a Software Engineer with a strong background in fancy type-level
   Haskell and rigorous mathematics. Before joining Tweag, Divesh worked on
@@ -13,8 +18,7 @@ bio: |
 skills:
   - Haskell
   - C
-  - Python
-  - Rigorous Mathematics
+  - Mathematics
 
 speaks:
   - English
