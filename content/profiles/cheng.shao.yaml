@@ -1,19 +1,44 @@
 slug: cheng.shao
 name: Cheng Shao
+pronouns: He/Him
 github: TerrorJack
+twitter: "@monadiccheng"
+shortDescription: |
+  Cheng is a Software Engineer who specializes in the implementation
+  of functional programming languages. He is the project lead and main
+  developer of Tweag's Haskell-to-WebAssembly compiler project
+  codenamed Asterius. He also maintains other Haskell projects and
+  makes contributions to GHC(Glasgow Haskell Compiler). Outside of
+  work, Cheng spends his time exploring Paris and watching anime.
 bio: |
   Cheng is a Software Engineer who specializes in the implementation
-  of functional programming languages, and he is also the project lead
-  on Tweag’s Haskell-to-WebAssembly compiler project named Asterius.
-  Before joining Tweag, Shao got his Bachelor's in Computer Science
-  from Tsinghua University, and in his spare time can be found
-  exploring Paris, listening to classical music, and watching anime.
+  of functional programming languages. He has been a late stage
+  Haskell addict ever since the first encounter in campus, and he's
+  commited to improving the Haskell toolchains and bringing new use
+  cases to this language.
+
+  Right before joining Tweag in 2018, Cheng has been following
+  developments in the WebAssembly ecosystem, and it looks like
+  "compile-once-run-everywhere" but done right in the 21st century,
+  bringing exciting use scenarios like web frontends and edge
+  computing to all WebAssembly-targetting languages. He started a
+  prototype GHC backend which emits WebAssembly, and brought that work
+  to Tweag. Since then, he has brought the project from a mere
+  prototype to something supporting large codebases. He also managed
+  to deepen understanding about internals of the Haskell runtime,
+  apply his Haskell expertise to other open source work, and learn
+  exciting new technology like Nix.
+
+  Outside of work, Cheng enjoys solitude and entertains through trips
+  & anime. Rest assured, conversations featuring either Haskell or
+  anime are sufficient to excite him and attract him out from his
+  natural habitat.
 skills:
-  - Haskell
-  - WebAssembly
-  - JavaScript
-  - Python
-  - DevOps
+  - Haskell (for regular projects & compiler backends)
+  - WebAssembly (implementing wasm-targetting toolchains)
+  - JavaScript for Web frontend
+  - Scripting (Python & Bash)
+  - Nix & NixOS
 speaks:
   - English
   - Mandarin
