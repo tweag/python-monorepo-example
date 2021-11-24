@@ -526,6 +526,10 @@ export class TileSet {
     }
   }
 
+  getPaddingBlocksNumber() {
+    return 30
+  }
+
   addUnpositionedTilesToFinalTiles() {
     let currentTag = ``
     let currentColor = ``
@@ -576,9 +580,7 @@ export class TileSet {
         (this.prePositionedStuff?.activeBio?.height ?? 0) *
         (this.prePositionedStuff?.activeBio?.width ?? 0)
 
-      console.log(`Bio size: ${bioSize}`)
-
-      for (let i = 0; i < 60 - bioSize; i++) {
+      for (let i = 0; i < this.getPaddingBlocksNumber() - bioSize; i++) {
         this.finalTiles.push(
           <ColorTile
             key={`empty:${uuid()}`}
