@@ -604,7 +604,7 @@ export class TileSet {
               : `right`
           }
           start={{ x: 1, y: 1 }}
-          height={this.getBioHeight()}
+          height={this.bioHeight}
           width={3}
           key={this.prePositionedStuff.activeBio.id}
           rounding={this.activeBioProfile.rounding}
