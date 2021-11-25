@@ -1,12 +1,14 @@
 slug: yorick.vanpelt
 name: Yorick van Pelt
 github: yorickvp
+shortDescription:
+  Yorick grew up on the internet and still lives there most of the time. He has
+  been on NixOS since 2014 and is passionate about making computers better for
+  everyone, including programmers.
 bio: |
-  Grew up on the internet. Still lives there most of the time. Has been on NixOS since 2014.
-  Passionate about making computers better for everyone, including programmers.
-
-  Current interests include juggling, drawing, running. Past interests include speedcubing and drumming. He's also very passionate about mechanical keyboards.
-
+  His current interests include juggling, drawing, running. Past interests
+  include speedcubing and drumming. He's also very passionate about mechanical
+  keyboards.
 skills:
   - Computer networking with a security focus
   - System design

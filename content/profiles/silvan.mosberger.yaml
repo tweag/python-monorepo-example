@@ -1,18 +1,36 @@
 slug: silvan.mosberger
 name: Silvan Mosberger
 github: infinisil
-bio: |
+shortDescription: |
   Silvan is an active member of the Nix community, specializing in NixOS
-  modules and deployment, Nix internals and state-of-the-art improvements.
-  His go-to language for programming is Haskell, which was also used for his
-  Thesis for the Bachelor in Computer Science at ETH in Zurich.
+  modules and deployment, Nix internals and state-of-the-art improvements. For
+  writing actual programs he preferably uses Haskell, but can also use Bash if
+  need be.
+bio: |
+  In 2017 he gained a personal interest in Nix, and promptly switched over from
+  macOS to NixOS in the same year. Since his previous go-to language for
+  writing programs, Swift, wasn't very usable on Linux, he used this
+  opportunity to become more acquainted with Haskell, which has since become
+  his new preferred language. From this he has developed a good intuition for
+  purely functional programming over the years.
+
+  Up to 2020, Silvan studied computer science at ETH in Zürich for his
+  bachelors degree. But exhausted from studying, he decided to leave university
+  in order to start his programming career with Nix and Haskell, leading him to
+  Tweag.
+
+  In his free time, Silvan has an interest in Japanese culture, ranging from
+  listening to Enka music, watching Anime, eating Japanese dishes, to studying
+  the language itself. Generally he can be found in his natural habitat at
+  home, but occasionally he leaves to meet with friends for a cozy movie night.
+  His main personality traits are patience, kindness and optimism, but also
+  laziness and perfectionism.
 skills:
   - Nix
   - NixOS
   - Haskell
   - Functional Programming
   - DevOps
-  - Docker
 speaks:
   - German
   - English
