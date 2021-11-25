@@ -183,6 +183,10 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     tileSetRef.current.setActiveProfile(null)
     reRender({})
   })
+  useAddEventListener(mainRef, `bio-overflow`, () => {
+    tileSetRef.current.updateBioHeight(tileSetRef.current.bioHeight + 1)
+    reRender({})
+  })
 
   // Shuffle Button
   const reShuffle = () => {

@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { createContext } from "react"
+import React, { createContext, useEffect, useRef } from "react"
 import { v4 as uuid } from "uuid"
 
 import { parsePositionalStyles } from "../utils/ajustments"
@@ -65,6 +65,17 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
     roundingToUse = `${LEFT_ROUNDINGS[0]} ${LEFT_ROUNDINGS[2]}`
   }
   const positionalStyles = parsePositionalStyles(start, width, height)
+
+  // Oveflow Detection Stuff
+  const longTextRef = useRef()
+  useEffect(() => {
+    const target = longTextRef.current
+    if (target.offsetHeight < target.scrollHeight) {
+      const overflowEvent = new Event(`bio-overflow`, { bubbles: true })
+      target.dispatchEvent(overflowEvent)
+    }
+  }, [height, width])
+
   return (
     <div
       className={[roundingToUse, styles.bio, positionedTile].join(` `)}
@@ -84,7 +95,7 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
       </div>
       <div className={styles.shortDescription}>{person.shortDescription}</div>
       <div className={styles.longTextContainer}>
-        <div className={styles.longTextScrollable}>
+        <div className={styles.longTextScrollable} ref={longTextRef}>
           {parseBioLongText(person.bio)}
         </div>
       </div>

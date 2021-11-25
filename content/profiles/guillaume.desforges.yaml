@@ -3,19 +3,21 @@ name: Guillaume Desforges
 github: GuillaumeDesforges
 
 shortDescription: |
-  Guillaume is a versatile engineer, with fluency in Machine Learning, Data Engineering, Web development and functional programming.
+  Guillaume is a versatile engineer based in Paris, with fluency in Machine Learning, Data Engineering, Web development and functional programming.
 bio: |
   Guillaume graduated from the prestigious Ecole des Ponts ParisTech in Paris, as well as from the Master 2 of Data Science at Institut Polytechnique de Paris (IPP).
 
-  Although his academical background is centered around Mathematics (Probabilities, Statistics, Optimization, Machine Learning and Operational Research), Guillaume has developped a wide set of programming skills that makes him a versatile programmer.
+  Although his academical background is centered around Mathematics (Probabilities, Statistics, Optimization, Machine Learning and Operational Research), he has developed a wide set of programming skills that makes him a versatile programmer.
+
+  At any step in a project, from prototyping to a full-blown application in production, Guillaume is a good pick to help you move forward.
 skills:
   - Machine Learning
   - Data Engineering
   - TypeScript
-  - Haskell
-  - Scala
   - Python
   - Nix
+  - Haskell
+  - Scala
 
 speaks:
   - French (native)

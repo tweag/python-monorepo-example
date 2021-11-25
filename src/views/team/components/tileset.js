@@ -65,6 +65,7 @@ export class TileSet {
     this.arbitraryAllocations = arbitraryAllocations
     this.roundings = new Map()
     this.profileColors = new Map()
+    this.bioHeight = 3
 
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.validProfiles = people.filter(person => !!this.photos[person.slug])
@@ -93,7 +94,7 @@ export class TileSet {
   }
 
   /**
-   * @returns
+   * @returns {number}
    */
   getBioWidth() {
     switch (this.breakpoint) {
@@ -113,7 +114,7 @@ export class TileSet {
   }
 
   /**
-   * @returns
+   * @returns {number}
    */
   getBioHeight() {
     switch (this.breakpoint) {
@@ -130,6 +131,16 @@ export class TileSet {
       case `xxl`:
         return 3
     }
+  }
+
+  /**
+   * @param {number} newHeight
+   */
+  updateBioHeight(newHeight) {
+    this.bioHeight = newHeight
+    this.prePositionedStuff = this.parseActiveBioProfile()
+    this.tilesGrid = this.generateGrid()
+    this.generateTiles()
   }
 
   /**
@@ -153,6 +164,9 @@ export class TileSet {
   setActiveProfile(newProfile) {
     this.lastActiveProfile = this.activeBioProfile?.person?.slug ?? ``
     this.activeBioProfile = newProfile
+    if (!newProfile) {
+      this.bioHeight = 3
+    }
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.tilesGrid = this.generateGrid()
     this.generateTiles()
@@ -352,7 +366,7 @@ export class TileSet {
 
     // Calculate profile position and size
     let profilePosition = `right`
-    let profileHeight = this.getBioHeight()
+    let profileHeight = this.bioHeight
     let profileWidth = this.getBioWidth()
 
     const spaceToTheLeft = this.activeBioProfile.start.y - 1
@@ -512,6 +526,10 @@ export class TileSet {
     }
   }
 
+  getPaddingBlocksNumber() {
+    return 30
+  }
+
   addUnpositionedTilesToFinalTiles() {
     let currentTag = ``
     let currentColor = ``
@@ -562,9 +580,7 @@ export class TileSet {
         (this.prePositionedStuff?.activeBio?.height ?? 0) *
         (this.prePositionedStuff?.activeBio?.width ?? 0)
 
-      console.log(`Bio size: ${bioSize}`)
-
-      for (let i = 0; i < 60 - bioSize; i++) {
+      for (let i = 0; i < this.getPaddingBlocksNumber() - bioSize; i++) {
         this.finalTiles.push(
           <ColorTile
             key={`empty:${uuid()}`}
@@ -590,7 +606,7 @@ export class TileSet {
               : `right`
           }
           start={{ x: 1, y: 1 }}
-          height={this.getBioHeight()}
+          height={this.bioHeight}
           width={3}
           key={this.prePositionedStuff.activeBio.id}
           rounding={this.activeBioProfile.rounding}
