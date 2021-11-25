@@ -1,8 +1,10 @@
 slug: robin.bate-boerop
 name: Robin Bate Boerop
 github: robinbb
+shortDescription: |
+  Robin provides engineering management help to companies who need leadership
+  as well as DevOps and Nix expertise.
 bio: |
-  Robin provides engineering management help to companies who need leadership as well as DevOps and Nix expertise.
   He has twenty years of experience as a software engineer, leading or managing development teams for the last nine at companies like LeapYear and Formation AI.
   Robin holds a B.Sc. in Computing & Information Science from Queen's University, Canada
   and co-founded a sold tech startup whose engine was initially built with Haskell.
