@@ -3,23 +3,7 @@ import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"
 import { SearchContext } from "../utils/search"
-// import { useFilteredMode } from "../hooks/tiles-hooks"
 import styles from "../styles/tiles.module.css"
-
-// /**
-//  * @param {string[]} tags
-//  * @param {RegExp} filterRegExp
-//  * @returns {boolean}
-//  */
-// function testTags(tags, filterRegExp) {
-//   let result = false
-
-//   for (const tag of tags) {
-//     result = result || filterRegExp.test(tag)
-//   }
-
-//   return result
-// }
 
 /**
  * @param {{
@@ -99,11 +83,6 @@ export const ProfileTile = ({
 
   // Positional styles
   const positionalStyles = parsePositionalStyles(start, width, height)
-
-  // // Auto-filter stuff
-  // const filter = filterString => {
-  //   return activeProfiles.includes(person.slug)
-  // }
 
   const show = activeProfiles.includes(person.slug)
 
