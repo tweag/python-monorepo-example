@@ -10,8 +10,8 @@ export function useFilteredMode(filteringHandler) {
   }
 
   useEffect(() => {
-    window.addEventListener(`filter`, filterHandler, { capture: true })
-    return window.removeEventListener(`filter`, filterHandler)
+    window.document.body.addEventListener(`filter`, filterHandler)
+    return window.document.body.removeEventListener(`filter`, filterHandler)
   }, [])
 
   return display

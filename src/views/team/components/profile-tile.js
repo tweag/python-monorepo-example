@@ -1,24 +1,25 @@
-import React from "react"
+import React, { useContext } from "react"
 import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"
-import { useFilteredMode } from "../hooks/tiles-hooks"
+import { SearchContext } from "../utils/search"
+// import { useFilteredMode } from "../hooks/tiles-hooks"
 import styles from "../styles/tiles.module.css"
 
-/**
- * @param {string[]} tags
- * @param {RegExp} filterRegExp
- * @returns {boolean}
- */
-function testTags(tags, filterRegExp) {
-  let result = false
+// /**
+//  * @param {string[]} tags
+//  * @param {RegExp} filterRegExp
+//  * @returns {boolean}
+//  */
+// function testTags(tags, filterRegExp) {
+//   let result = false
 
-  for (const tag of tags) {
-    result = result || filterRegExp.test(tag)
-  }
+//   for (const tag of tags) {
+//     result = result || filterRegExp.test(tag)
+//   }
 
-  return result
-}
+//   return result
+// }
 
 /**
  * @param {{
@@ -84,6 +85,9 @@ export const ProfileTile = ({
   id,
   active = false,
 }) => {
+  // Lunr search context
+  const activeProfiles = useContext(SearchContext)
+
   // Invoke bio
   const clickHandler = generateShowBioEventIssuer({
     person,
@@ -96,17 +100,12 @@ export const ProfileTile = ({
   // Positional styles
   const positionalStyles = parsePositionalStyles(start, width, height)
 
-  // Auto-filter stuff
-  const filter = filterString => {
-    const filterRegExp = new RegExp(filterString, `i`)
-    const nameCompatible = filterRegExp.test(person.name)
-    const roleCompatible = filterRegExp.test(person.role)
-    const tagCompatible = testTags(person.tags, filterRegExp)
+  // // Auto-filter stuff
+  // const filter = filterString => {
+  //   return activeProfiles.includes(person.slug)
+  // }
 
-    return nameCompatible || roleCompatible || tagCompatible
-  }
-
-  const show = useFilteredMode(filter)
+  const show = activeProfiles.includes(person.slug)
 
   /**
    * @param {string} imgDataUrl

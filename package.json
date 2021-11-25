@@ -40,6 +40,7 @@
     "gatsby-transformer-sharp": "^2.12.1",
     "gatsby-transformer-yaml": "^2.11.0",
     "katex": "^0.11.1",
+    "lunr": "^2.3.9",
     "netlify-cli": "^2.71.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.23.0",

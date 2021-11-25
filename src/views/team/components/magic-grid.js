@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
+
 import {
   useResponsiveCallbacks,
   findBreakpoint,
@@ -11,6 +12,7 @@ import SearchBar from "./search-bar"
 
 import { TileSet } from "./tileset"
 import { BioContext } from "./bio"
+import { SearchContext, generateLunrIndex } from "../utils/search"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -200,32 +202,54 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     margin,
     columns: tileSetRef.current.columns,
   })
+
+  // Search setup
+  const lunrIndex = useRef(generateLunrIndex(profiles))
+  const [activeProfiles, setActiveProfiles] = useState(
+    lunrIndex.current.search(``).map(result => result.ref)
+  )
+  useEffect(() => {
+    const reFilter = event => {
+      const searchString = event.filterString ?? ``
+      const newResults = lunrIndex.current
+        .search(searchString)
+        .map(result => result.ref)
+      console.log(newResults)
+      setActiveProfiles(newResults)
+    }
+
+    window.addEventListener(`filter`, reFilter, { capture: true })
+    return window.removeEventListener(`filter`, reFilter)
+  }, [])
+
   return (
-    <div className={styles.magicGridContainer} ref={mainRef}>
-      <div
-        className={styles.actionBar}
-        sx={{
-          pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-          pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-        }}
-        ref={ajusterRef}
-      >
-        <SearchBar placeholder={`Search for a name or a skill`} />
-        <ShuffleButton
-          onClick={() => {
-            tileSetRef.current.setActiveProfile(null)
-            reShuffle({})
+    <SearchContext.Provider value={activeProfiles}>
+      <div className={styles.magicGridContainer} ref={mainRef}>
+        <div
+          className={styles.actionBar}
+          sx={{
+            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
           }}
-        />
-      </div>
-      <BioContext.Provider
-        value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
-      >
-        <div className={styles.magicGrid} style={sizingVariables}>
-          {tileSetRef.current.finalTiles}
+          ref={ajusterRef}
+        >
+          <SearchBar placeholder={`Search for a name or a skill`} />
+          <ShuffleButton
+            onClick={() => {
+              tileSetRef.current.setActiveProfile(null)
+              reShuffle({})
+            }}
+          />
         </div>
-      </BioContext.Provider>
-    </div>
+        <BioContext.Provider
+          value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
+        >
+          <div className={styles.magicGrid} style={sizingVariables}>
+            {tileSetRef.current.finalTiles}
+          </div>
+        </BioContext.Provider>
+      </div>
+    </SearchContext.Provider>
   )
 }
 
