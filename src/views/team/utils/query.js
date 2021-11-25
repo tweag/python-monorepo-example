@@ -26,6 +26,8 @@ export function parseProfiles(data) {
 
   for (const { node } of data.profiles.edges) {
     const queriedProfile = YAML.parse(node.internal.content)
+    const links = queriedProfile.links ?? {}
+    links.CV = `/cv/${queriedProfile.slug}`
     const profile = {
       name: queriedProfile.name,
       bio: queriedProfile.bio ?? ``,
@@ -35,7 +37,7 @@ export function parseProfiles(data) {
       tags: queriedProfile.skills ?? [],
       slug: queriedProfile.slug,
       shortDescription: queriedProfile.shortDescription ?? ``,
-      links: queriedProfile.links ?? {},
+      links: links,
     }
 
     profiles.push(profile)
