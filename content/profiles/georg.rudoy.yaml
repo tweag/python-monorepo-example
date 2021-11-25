@@ -1,13 +1,35 @@
 slug: georg.rudoy
 name: Georg Rudoy
 github: 0xd34df00d
-bio: |
+shortDescription: |
   Georg is a Senior Software Engineer and Tweag’s resident C++ guru. Prior
   to going Tweag, Georg has had a long career in Financial Services at
   Bloomberg, Engineers Gate and Barzer; working across Core Trading
   Platforms, High Frequency Trading, Data and Machine Learning. Georg
   studied at the Moscow Institute of Physics and Technology and has been a
   prolific contributor to multiple publications.
+bio: |
+  Georg is a Software Engineer who started his programming adventure
+  with C++ and, later, with machine learning.
+  Later still, he fell down a slippery slope of
+  functional programming, as well as math other than statistics.
+
+  He first got acquainted with Haskell (and functional programming in general)
+  about a decade ago, in high school,
+  when this name started becoming somewhat well-known in his community.
+  That was love at first sight, fueled by the conciseness and safety of the language!
+
+  The road to the dark corners of math was somewhat similar,
+  sparked by a colleague's book recommendation.
+  Georg majored in applied math and worked as a machine learning researcher back then,
+  and he looked at broadening and deepening his knowledge and intuition of linear algebra in particular.
+  A teammate recommended Axler's "Linear Algebra Done Right,"
+  which is quite different from the rather more applied and matrix-oriented exposition Georg got at his university.
+  So started the journey towards abstract algebra, and then further down towards logic and type theory.
+
+  Outside of work, Georg enjoys reading what's new in other fields like physics or biology,
+  as well as reading in general.
+  He also does flight simming from time to time.
 skills:
   - Haskell
   - C++
