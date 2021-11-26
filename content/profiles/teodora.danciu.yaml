@@ -1,0 +1,29 @@
+slug: teodora.danciu
+name: Teodora Danciu
+github: teodanciu
+shortDescription: |
+  "Teodora is a software engineer with JVM background and a love for functional programming. 
+  At Tweag, she has started developing in Haskell, after having played with it for hobby projects and intellectual enjoyment."
+
+bio: |
+  "Teodora moved to the UK in 2012 in pursuit of transitioning from Java development to Scala - an interest which started as an intuition and ended up shaping her career path, 
+  as her understanding and appreciation of functional programming deepened.
+
+  Before joining Tweag, she worked as a Scala developer in various roles that built up her experience in programming and distributed systems.
+
+  She believes that it is possible, and indeed, a duty to reflect core life values in code and system design: clarity, simplicity, integrity, focus - and strives to harmoniously combine principles with pragmatism.
+
+  Teodora takes great joy in working with people and is always trying to find harmony in the team, as well as in the code."
+
+skills:
+  - Scala
+  - Java
+  - Haskell
+  - Bash
+  - Kafka
+  - Kubernetes
+
+speaks:
+  - English
+  - German
+  - Romanian
