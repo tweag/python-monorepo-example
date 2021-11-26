@@ -7,17 +7,20 @@ shortDescription: |
   from Université Nice Sophia Antipolis, where he proved multithreaded
   programs using linear logic.
 bio: |
-  Clément prides himself
-  on applying programming language theory to write beautiful, maintainable,
-  and testable code. At Tweag, besides coding, Clément likes to develop and enhance
-  software engineering processes. For that, he promotes efficient communication,
-  robust testing, and continuous deployment; while focusing on delivering.
+  Clément prides himself on applying programming language theory to write
+  beautiful, maintainable, and testable code. At Tweag, besides coding, Clément
+  likes to develop and enhance software engineering processes. For that, he
+  promotes efficient communication, robust testing, and continuous deployment;
+  while focusing on delivering.
 
-  Prior to joining Tweag, he worked for over 8 years
-  writing compilers and provers for proving ARM microkernels.
+  Prior to joining Tweag, he worked for over 8 years writing compilers and
+  provers for proving ARM microkernels. Away from the office, Clément can be
+  found reading, developing games, and having a good time with family and
+  friends.
 
-  Away from the office, Clément can be found reading, developing games,
-  and having a good time with family and friends.
+  Other Tweagers know that Clément is always excited about what he does, making
+  work with him *not* work and a lot of fun. He is a friendly open helper with
+  great technical abilities.
 skills:
   - OCaml
   - Haskell
