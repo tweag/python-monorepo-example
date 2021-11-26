@@ -3,28 +3,29 @@ name: Facundo Domínguez
 github: facundominguez
 pronouns: He/Him
 shortDescription: |
-  Facundo is a software engineer supporting development and research
-  projects at Tweag. Prior to joining Tweag, he worked in academia
-  and in industry, on a varied assortment of domains, with an
-  overarching interest in programming languages.
+  Facundo is a software engineer supporting development and research projects
+  at Tweag. Prior to joining Tweag, he worked in academia and in industry, on a
+  varied assortment of domains, with an overarching interest in programming
+  languages.
 bio: |
-  Currently, Facundo is leading our collaboration with the authors of
-  Liquid Haskell to integrate SMT solvers into the day-to-day practices
-  of the software industry. He is also the maintainer of inline-java
-  and sparkle, and has made multiple contributions to GHC, rules_haskell,
-  and the Haskell libraries. His everyday activities include
-  elaborating project proposals, development, software verification,
-  and mentoring.
+  Currently, Facundo is leading our collaboration with the authors of Liquid
+  Haskell to integrate SMT solvers into the day-to-day practices of the
+  software industry. He is also the maintainer of inline-java and sparkle, and
+  has made multiple contributions to GHC, rules_haskell, and the Haskell
+  libraries. His everyday activities include elaborating project proposals,
+  development, software verification, and mentoring.
 
-  He received a MSc in Computer Science at Universidad de la República
-  in Montevideo, researching program transformation techniques. Since
-  then he worked in software projects for education, entertainment,
-  finance, scientific computation, and government.
+  He received a MSc in Computer Science at Universidad de la República in
+  Montevideo, researching program transformation techniques. Since then he
+  worked in software projects for education, entertainment, finance, scientific
+  computation, and government.
 
-  Round-the-clock parent, amateur gardener and guitar player,
-  Facundo spends most of his time out of the office with family and
-  friends.
+  Round-the-clock parent, amateur gardener and guitar player, Facundo spends
+  most of his out-of-office time with family and friends.
 
+  Facundo is a known at Tweag as a highly knowledgable and skilled engineer
+  mastering a wide range of topics from GHC, Haskell, distributed systems, to
+  the JVM, alway open for a joyful, relaxed and insightful discussion.
 skills:
   - Functional Programming
   - Distributed systems
