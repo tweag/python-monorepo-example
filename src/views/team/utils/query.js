@@ -31,9 +31,11 @@ export function parseProfiles(data) {
     const profile = {
       name: queriedProfile.name,
       bio: queriedProfile.bio ?? ``,
-      role: queriedProfile.experience.find(
-        experience => experience.employer === `Tweag`
-      )?.role,
+      role: queriedProfile.experience
+        ? queriedProfile.experience.find(
+            experience => experience.employer === `Tweag`
+          )?.role
+        : ``,
       tags: queriedProfile.skills ?? [],
       slug: queriedProfile.slug,
       shortDescription: queriedProfile.shortDescription ?? ``,
