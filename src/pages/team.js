@@ -14,11 +14,11 @@ export const query = graphql`
             ... on ImageSharp {
               id
               fixed(
-                height: 512
-                width: 512
+                height: 300
+                width: 300
                 cropFocus: NORTH
                 toFormat: WEBP
-                quality: 85
+                webpQuality: 85
               ) {
                 src
               }

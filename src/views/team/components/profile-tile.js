@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"
@@ -72,6 +72,9 @@ export const ProfileTile = ({
   // Lunr search context
   const activeProfiles = useContext(SearchContext)
 
+  // Bio Context
+  const bioContextValue = useContext(BioContext)
+
   // Invoke bio
   const clickHandler = generateShowBioEventIssuer({
     person,
@@ -86,61 +89,62 @@ export const ProfileTile = ({
 
   const show = activeProfiles.includes(person.slug)
 
+  // Some flags
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const notShowingTile =
+    !show ||
+    (!!bioContextValue && bioContextValue !== person.slug) ||
+    !imageLoaded
+
   /**
    * @param {string} imgDataUrl
    * @returns {JSX.Element}
    */
   const result = (
-    <BioContext.Consumer>
-      {value => {
-        const notShowingTile = !show || (!!value && value !== person.slug)
-        return (
-          <div
-            className={[
-              styles.tile,
-              styles.positionedTile,
-              styles.profileTile,
-              ROUNDINGS[rounding],
-              notShowingTile
-                ? styles.colorizeTile
-                : active
-                ? ``
-                : styles.decolorizeTile,
-              active ? styles.forceActive : ``,
-            ].join(` `)}
-            style={{
-              ...positionalStyles,
-              "--tile-color": TILE_COLORS[colorIndex],
-            }}
-            onClick={notShowingTile ? null : clickHandler}
-            onPointerOut={event => {
-              const target = event.currentTarget
-              const removeForceActive = () =>
-                target.classList.remove(styles.forceActive)
-              window.addEventListener(`pointermove`, removeForceActive, {
-                once: true,
-              })
-              setTimeout(() => {
-                window.removeEventListener(`pointermove`, removeForceActive)
-              }, 100)
-            }}
-            id={id}
-          >
-            <div className={styles.shadowContainer}>
-              <img
-                className={styles.profilePhoto}
-                src={photo}
-                alt={person.slug}
-                height={512}
-                width={512}
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.profileName}>{person.name}</div>
-          </div>
-        )
+    <div
+      className={[
+        styles.tile,
+        styles.positionedTile,
+        styles.profileTile,
+        ROUNDINGS[rounding],
+        notShowingTile
+          ? styles.colorizeTile
+          : active
+          ? ``
+          : styles.decolorizeTile,
+        active ? styles.forceActive : ``,
+      ].join(` `)}
+      style={{
+        ...positionalStyles,
+        "--tile-color": TILE_COLORS[colorIndex],
       }}
-    </BioContext.Consumer>
+      onClick={notShowingTile ? null : clickHandler}
+      onPointerOut={event => {
+        const target = event.currentTarget
+        const removeForceActive = () =>
+          target.classList.remove(styles.forceActive)
+        window.addEventListener(`pointermove`, removeForceActive, {
+          once: true,
+        })
+        setTimeout(() => {
+          window.removeEventListener(`pointermove`, removeForceActive)
+        }, 100)
+      }}
+      id={id}
+    >
+      <div className={styles.shadowContainer}>
+        <img
+          className={styles.profilePhoto}
+          onLoad={() => setImageLoaded(true)}
+          src={photo}
+          alt={person.slug}
+          height={300}
+          width={300}
+          loading="lazy"
+        />
+      </div>
+      <div className={styles.profileName}>{person.name}</div>
+    </div>
   )
 
   return result
