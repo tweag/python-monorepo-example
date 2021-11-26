@@ -150,7 +150,7 @@ sortBy :: (a->a->Ordering) -> [a] -> [a]
 It is easy to define `sort` from `sortBy` (`sort = sortBy compare`). But
 we needed the type class for type safety of the `SortedList` interface.
 What to do? We would need to use a value as a type class instance. Ooh!
-What may have sounded excentric when I first brought it up is now
+What may have sounded eccentric when I first brought it up is now
 exactly what we need!
 
 As I said when I discussed the type of `merge`: one property of type

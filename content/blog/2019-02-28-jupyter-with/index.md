@@ -113,7 +113,7 @@ This guarantees a high degree of reproducibility.
 The final JupyterLab environment is complete to a point that we can simply copy it into a base docker Alpine image to run it.
 No further installation or configuration is required.
 
-## Behind the scences: packaging Jupyterlab
+## Behind the scenes: packaging Jupyterlab
 
 Let's look in more detail into the packaging process of JupyterLab.
 A JupyterLab environment is composed of three parts:
