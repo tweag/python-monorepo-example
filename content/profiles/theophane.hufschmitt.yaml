@@ -2,22 +2,27 @@ slug: theophane.hufschmitt
 name: Théophane Hufschmitt
 github: regnat
 shortDescription: |
-  Théophane is a Software Engineer and self-proclaimed Nix guru.
-  He lives in a small house surrounded by awesome castles in the Loire Valley.
-  When he’s not taking care of his three sons or playing some music, you might find him working.
+  Théophane is a Software Engineer and self-proclaimed Nix guru. He lives in a
+  small house surrounded by awesome castles in the Loire Valley. When he’s not
+  taking care of his three sons or playing some music, you might find him
+  working.
 bio: |
   Théophane doesn’t remember when he first started programming, but he
   apparently didn’t stop.
 
   After a MSc at École Polytechnique and a MSc in Computer Science from the
   MPRI, he began his professional career as an Tweag intern working on adding a
-  type-system for Nix.
-  He then decided to settle here, and has since been working on different
-  projects, but always coming back to his one (second) true love: Nix
+  type-system for Nix. He then decided to settle here, and has since been
+  working on different projects, but always coming back to his one (second)
+  true love Nix.
 
   He spends the rest of his time with his wife and kids, and the rest of the
   rest of his time playing the organ or conducting a local choir (or fighting
   bureaucratic daemons to get a small vocal music company going).
+
+  At Tweag, Théophane is known to work on the most daunting challenges in the
+  Nix world, such as the implementation of a content-addressable store,
+  and to spread great attitude and good mood where he works.
 skills:
   - Haskell
   - Nix
