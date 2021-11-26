@@ -138,8 +138,8 @@ export const ProfileTile = ({
           onLoad={() => setImageLoaded(true)}
           src={photo}
           alt={person.slug}
-          height={300}
-          width={300}
+          height={500}
+          width={500}
           loading="lazy"
         />
       </div>
