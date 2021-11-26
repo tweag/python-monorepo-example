@@ -3,21 +3,21 @@ name: Krzysztof Gogolewski
 pronouns: he/him
 twitter: "@monoidal_"
 github: monoidal
-shortDescription: Krzysztof is a software engineer and a regular contributor to GHC.
-bio: Krzysztof is a GHC contributor since 2013.
+shortDescription: |
+  Krzysztof is a software engineer and a regular contributor to GHC since 2013.
+  He enjoys many areas of theoretical computer science - algorithms,
+  computational complexity, compilers, category theory etc.
+bio: |
+  Krzysztof is interested in implementatation and application of techniques
+  such as dependent types, linear types, modal logic, parametericity, automatic
+  differentiation, program transformations. He likes to press for fast feedback
+  loops and advertises NixOS. Krzysztof runs, learns foreign languages and
+  reads non- and science fiction.
 
-  He enjoys many areas of theoretical computer science -
-  algorithms, computational complexity, compilers, category theory etc.
-
-  He is interested in implementatation and application of techniques
-  such as dependent types, linear types, modal logic, parametericity,
-  automatic differentiation, program transformations.
-
-  He likes to press for fast feedback loops and advertises NixOS.
-
-  Outside of Tweag, Krzysztof runs, learns foreign languages
-  and reads nonfiction and science fiction.
-
+  Tweagers describe Krzysztof as brilliant and pragmatic mind, known for
+  hilarious and mad debugging runs. If you work with Krzysztof you can expect a
+  fun session full of life wisdom, mathematics, jokes, and piercingly
+  accurate questions that get to the heart of a problem in no time.
 skills:
   - Haskell
   - Python
