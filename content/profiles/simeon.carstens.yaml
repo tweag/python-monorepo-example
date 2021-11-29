@@ -2,15 +2,14 @@ slug: simeon.carstens
 name: Simeon Carstens
 github: simeoncarstens
 shortDescription: |
-  Simeon is a theoretical physicist who has undergone several
-  transformations. A journey through Markov chain Monte Carlo
-  methods, computational structural biology, a wet lab and
-  renowned research institutions in Germany, Paris and New York
-  finally led him back to Paris and to Tweag, where he currently
-  leads the data science / engineering team. He is actively
-  working on client projects and manages the data team's
-  internal projects. During pre-meeting smalltalk, ask him about
-  rock climbing, Argentinian tango or playing the piano!
+  Simeon is a theoretical physicist who has undergone several transformations.
+  A journey through Markov chain Monte Carlo methods, computational structural
+  biology, a wet lab and renowned research institutions in Germany, Paris and
+  New York finally led him back to Paris and to Tweag, where he currently leads
+  the data science / engineering team. He is actively working on client
+  projects and manages the data team's internal projects. During pre-meeting
+  smalltalk, ask him about rock climbing, Argentinian tango or playing the
+  piano!
 bio: |
   Simeon spent most of his scientific career on doing research
   on Bayesian statistics methods to determine the
@@ -20,24 +19,26 @@ bio: |
   into the fascinating world of Markov chain Monte Carlo and
   molecular simulation.
 
-  At Tweag, he is profiting from his biology domain knowledge
-  in projects for a big pharma company and has honed his
-  statistics and software engineering skills in both client
-  and internal projects.
-  He is also leading the data team which involves managing
-  engineers' internal time, supporting the sales team in
-  meetings with potential clients and helping with hiring fresh
-  talents for the data team.
+  At Tweag, he is profiting from his biology domain knowledge in projects for a
+  big pharma company and has honed his statistics and software engineering
+  skills in both client and internal projects.  He is also leading the data
+  team which involves managing engineers' internal time, supporting the sales
+  team in meetings with potential clients and helping with hiring fresh talents
+  for the data team.
 
-  His personal interests are probabilistic programming, Bayesian
-  statistics and the tooling around it. He also dabbles in Nix
-  and thinks this is a technology (data) scientists should try
-  out! For the occasional extra brain tickle, he tries to deepen
-  his understanding of Haskell and functional programming concepts.
+  His personal interests are probabilistic programming, Bayesian statistics and
+  the tooling around it. He also dabbles in Nix and thinks this is a technology
+  (data) scientists should try out! For the occasional extra brain tickle, he
+  tries to deepen his understanding of Haskell and functional programming
+  concepts.
 
-  Outside work, Simeon enjoys climbing steep and high rocks all
-  over Europe, dancing Argentinian tango and improvising on the
-  piano.
+  Outside work, Simeon enjoys climbing steep and high rocks all over Europe,
+  dancing Argentinian tango and improvising on the piano.
+
+  Tweagers appreciate Simeon's enthusiasm for life and his ability to be very
+  direct while being thoughtful at the same time! Simeon has a strong
+  background in mathematical modelisations and a knack for breaking complex
+  problems down and explaining them in a way that is easy to understand.
 links:
   Personal website: https://simeoncarstens.github.io
   Google Scholar profile: https://scholar.google.com/citations?user=peo8zFMAAAAJ
