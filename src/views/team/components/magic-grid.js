@@ -12,7 +12,7 @@ import SearchBar from "./search-bar"
 
 import { TileSet } from "./tileset"
 import { BioContext } from "./bio"
-import { SearchContext, generateLunrIndex } from "../utils/search"
+import { SearchContext, useSearchManager } from "../utils/search"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -190,12 +190,6 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     reRender({})
   })
 
-  // Shuffle Button
-  const reShuffle = () => {
-    tileSetRef.current.shuffleTiles()
-    reRender({})
-  }
-
   // Parsing some CSS variables
   const sizingVariables = parseCssVariables({
     gap,
@@ -204,26 +198,27 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
   })
 
   // Search setup
-  const lunrIndex = useRef(generateLunrIndex(profiles))
-  const [activeProfiles, setActiveProfiles] = useState(
-    lunrIndex.current.search(``).map(result => result.ref)
-  )
+  const searchManager = useSearchManager(profiles)
+
   useEffect(() => {
     const reFilter = event => {
       const searchString = event.filterString ?? ``
-      const newResults = lunrIndex.current
-        .search(searchString)
-        .map(result => result.ref)
-      console.log(newResults)
-      setActiveProfiles(newResults)
+      searchManager.filter(searchString)
     }
 
     window.addEventListener(`filter`, reFilter, { capture: true })
     return window.removeEventListener(`filter`, reFilter)
   }, [])
 
+  // Shuffle Button
+  const reShuffle = () => {
+    searchManager.clear()
+    tileSetRef.current.shuffleTiles()
+    reRender({})
+  }
+
   return (
-    <SearchContext.Provider value={activeProfiles}>
+    <SearchContext.Provider value={searchManager}>
       <div className={styles.magicGridContainer} ref={mainRef}>
         <div
           className={styles.actionBar}

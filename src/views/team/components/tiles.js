@@ -3,20 +3,31 @@ import { jsx } from "theme-ui"
 // eslint-disable-next-line no-unused-vars
 import { useState, MutableRefObject, useRef } from "react"
 
-import { useFilteredMode } from "../hooks/tiles-hooks"
 import { parsePositionalStyles } from "../utils/ajustments"
+import { useSearchContext } from "../utils/search"
 import styles from "../styles/tiles.module.css"
 
 export const TILE_COLORS = [`#005642`, `#30C179`, `#FBCEB4`, `#FFFFFF`]
 export const ROUNDINGS = [``, styles.roundLeftCorner, styles.roundRightCorner]
 
-function generateTagFilterEventIssuer(tag) {
+function generateTagFilterEventIssuer(searchString) {
   return event => {
     const eventSource = event.target
     const currentEvent = new Event(`filter`, { bubbles: true })
-    currentEvent.filterString = tag
+    currentEvent.filterString = searchString
     eventSource.dispatchEvent(currentEvent)
   }
+}
+
+/**
+ * @param {MutableRefObject<HTMLElement>} eventSource
+ * @param {string} searchString
+ */
+function emmitFilterEvent(eventSource, searchString) {
+  const source = eventSource.current
+  const event = new Event(`filter`, { bubbles: true })
+  event.filterString = searchString
+  source.dispatchEvent(event)
 }
 
 /**
@@ -106,24 +117,26 @@ export const TagTile = ({
   id,
 }) => {
   const positionalStyles = parsePositionalStyles(start, width, height)
-  const [state, setState] = useState(false)
-  const onClick = event => {
-    generateTagFilterEventIssuer(!state ? tag : ``)(event)
-    setState(!state)
+  const mainRef = useRef(null)
+  const searchManager = useSearchContext()
+  const active = searchManager.containsTag(tag)
+  const onClick = () => {
+    if (active) {
+      searchManager.removeTag(tag)
+      emmitFilterEvent(mainRef, searchManager.searchString)
+    } else {
+      searchManager.addTag(tag)
+      emmitFilterEvent(mainRef, searchManager.searchString)
+    }
   }
-  const filter = filterString => {
-    const filterRegExp = new RegExp(filterString, `i`)
-    return filterRegExp.test(tag)
-  }
-  const show = useFilteredMode(filter)
 
-  return show ? (
+  return (
     <div
       className={[
         styles.tile,
         styles.positionedTile,
         styles.tagTile,
-        state ? styles.active : ``,
+        active ? styles.active : ``,
         ROUNDINGS[rounding],
       ].join(` `)}
       style={{
@@ -131,10 +144,9 @@ export const TagTile = ({
       }}
       onClick={onClick}
       id={id}
+      ref={mainRef}
     >
       <span className={styles.tagText}>{tag}</span>
     </div>
-  ) : (
-    <ColorTile start={start} width={width} height={height} />
   )
 }

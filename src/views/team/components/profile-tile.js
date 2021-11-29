@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"
-import { SearchContext } from "../utils/search"
+import { useSearchContext } from "../utils/search"
 import styles from "../styles/tiles.module.css"
 
 /**
@@ -70,7 +70,7 @@ export const ProfileTile = ({
   active = false,
 }) => {
   // Lunr search context
-  const activeProfiles = useContext(SearchContext)
+  const searchManager = useSearchContext()
 
   // Bio Context
   const bioContextValue = useContext(BioContext)
@@ -87,7 +87,7 @@ export const ProfileTile = ({
   // Positional styles
   const positionalStyles = parsePositionalStyles(start, width, height)
 
-  const show = activeProfiles.includes(person.slug)
+  const show = searchManager.activeProfiles.includes(person.slug)
 
   // Some flags
   const [imageLoaded, setImageLoaded] = useState(false)

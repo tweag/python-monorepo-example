@@ -65,7 +65,8 @@ export class TileSet {
     this.arbitraryAllocations = arbitraryAllocations
     this.roundings = new Map()
     this.profileColors = new Map()
-    this.bioHeight = 3
+    this.bioHeight =
+      this.breakpoint === `sm` || this.breakpoint === `xs` ? 4 : 3
 
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.validProfiles = people.filter(person => !!this.photos[person.slug])
@@ -165,7 +166,8 @@ export class TileSet {
     this.lastActiveProfile = this.activeBioProfile?.person?.slug ?? ``
     this.activeBioProfile = newProfile
     if (!newProfile) {
-      this.bioHeight = 3
+      this.bioHeight =
+        this.breakpoint === `sm` || this.breakpoint === `xs` ? 4 : 3
     }
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.tilesGrid = this.generateGrid()
