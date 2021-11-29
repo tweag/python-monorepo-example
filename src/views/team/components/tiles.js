@@ -10,15 +10,6 @@ import styles from "../styles/tiles.module.css"
 export const TILE_COLORS = [`#005642`, `#30C179`, `#FBCEB4`, `#FFFFFF`]
 export const ROUNDINGS = [``, styles.roundLeftCorner, styles.roundRightCorner]
 
-function generateTagFilterEventIssuer(searchString) {
-  return event => {
-    const eventSource = event.target
-    const currentEvent = new Event(`filter`, { bubbles: true })
-    currentEvent.filterString = searchString
-    eventSource.dispatchEvent(currentEvent)
-  }
-}
-
 /**
  * @param {MutableRefObject<HTMLElement>} eventSource
  * @param {string} searchString
