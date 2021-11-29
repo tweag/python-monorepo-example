@@ -2,20 +2,25 @@ slug: nicolas.bacquey
 name: Nicolas Bacquey
 github: nbacquey
 shortDescription: |
-  Nicolas is a Software Engineer who works on design, implementation
-  and maintenance of micro-services. Before joining Tweag, he worked
-  in academia, where he studied automata of many sorts (be they cellular,
-  graph-, or tree-). He has a PhD and a MSc in computer science,
-  from Université de Caen Normandie
+  Nicolas is a Software Engineer who works on design, implementation and
+  maintenance of micro-services. Before joining Tweag, he worked in academia,
+  where he studied automata of many sorts (be they cellular, graph-, or tree-).
+  He has a PhD and a MSc in computer science, from Université de Caen Normandie
 bio: |
   Nicolas enjoys his automata, as they define notions of computation globally,
-  rather than with a moving code pointer (so uncivilised!). If you want to learn about
-  a variety of exotic, yet Turing-complete collection of computational models, don't
-  hesitate to ask him.
-  Away from the office, Nicolas is often seen playing {role playing, video, board}-games,
-  collecting trivia about law and biology, reading or (tentatively) writing fiction,
-  or playing with his cats. But that's the limit of his eclecticism because, when it comes
-  to comic books, he only cares about the Franco-Belgian variety.
+  rather than with a moving code pointer (so uncivilised!). If you want to
+  learn about a variety of exotic, yet Turing-complete collection of
+  computational models, don't hesitate to ask him.
+
+  Away from the office, Nicolas is often seen playing {role playing, video,
+  board}-games, collecting trivia about law and biology, reading or
+  (tentatively) writing fiction, or playing with his cats. But that's the limit
+  of his eclecticism because, when it comes to comic books, he only cares about
+  the Franco-Belgian variety.
+
+  Tweagers say that it is very hard to be stressed close to Nicolas. He always
+  helps out when a problem pops up with a calm, focused and detail-oriented
+  approach.
 skills:
   - Functional Programming
   - Algorithmics

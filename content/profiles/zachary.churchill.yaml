@@ -58,7 +58,7 @@ experience:
         skills here as a Senior Software Developer.
       - |
         technologies used include but are not limited to Haskell,
-        Nix, reflex, yesod, dependant types a la the Hasochism paper.
+        Nix, reflex, yesod, dependent types a la the Hasochism paper.
 education:
   - qualification: AA
     name: General Studies

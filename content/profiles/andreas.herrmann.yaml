@@ -11,7 +11,7 @@ bio: |
   physics for his PhD at University of Fribourg on strongly correlated
   materials in non-equilibrium.
 
-  While computational physics is heavy on C++, Fortan, and Python, it was this
+  While computational physics is heavy on C++, Fortran, and Python, it was this
   time where he found his passion for Haskell and Nix. Software has been a
   strong interest for Andreas from early on and after his time in academia he
   decided to work in the industry as a software engineer.
@@ -25,6 +25,10 @@ bio: |
   now as the president of the Zurich Friends of Haskell which organizes
   ZuriHac. He enjoys learning about programming languages, travelling, hiking,
   and spending time with his family.
+
+  Other Tweagers appreciate Andreas as an excellent, friendly engineer with a
+  sense of diligence and great attention to detail. Talking to Andreas will
+  likely solve your problems but also lift your mood!
 skills:
   - Bazel
   - C++

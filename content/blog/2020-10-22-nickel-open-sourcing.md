@@ -78,7 +78,7 @@ Perhaps the most important difference with other configuration languages is
 Nickel's approach to typing.
 
 Some languages, such as [Jsonnet][jsonnet] or [Starlark][starlark], are not
-statically typed. Indeed, static types can be seen as superflous in a configuration
+statically typed. Indeed, static types can be seen as superfluous in a configuration
 language: if your program is only run once on fixed inputs, any type error will
 be reported at run-time anyway. Why bother with a static type system?
 

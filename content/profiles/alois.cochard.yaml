@@ -1,0 +1,19 @@
+slug: alois.cochard
+name: Aloïs Cochard
+github: aloiscochard
+shortDescription: |
+  "Aloïs is a software engineer with a strong passion for functional programming languages, type theory, and distributed computing.
+  At Tweag, he gets to dive into Nix internals and their usage for large-scale deployment, after having used it for Haskell development since its early days."
+bio: |
+  "Aloïs started coding at an early age in Switzerland and got interested in functional programming by following the development happening at the Scala laboratory in Lausanne.
+  It's only later while working in the UK that he had the opportunity to put this programming style into practice and he never looked back since then!
+  Lately, he's been interested in applying those practices in the domain of DevOps and helping Tweag clients with their usage of Nix."
+skills:
+  - Haskell
+  - Rust
+  - Scala
+  - Nix
+  - Terraform
+speaks:
+  - French
+  - English
