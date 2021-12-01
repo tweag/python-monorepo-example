@@ -551,11 +551,18 @@ export class TileSet {
         case `tag`:
           currentTag = tile.id.match(/:(.+)/)[1]
           this.finalTiles.push(
-            <TagTile
-              tag={currentTag}
-              key={`tag:${currentTag}`}
-              rounding={this.roundings.get(tile.id)}
-            />
+            this.activeBioProfile ? (
+              <BlankTile
+                key={`tag:${currentTag}`}
+                rounding={this.roundings.get(tile.id)}
+              />
+            ) : (
+              <TagTile
+                tag={currentTag}
+                key={`tag:${currentTag}`}
+                rounding={this.roundings.get(tile.id)}
+              />
+            )
           )
           break
         case `blank`:
