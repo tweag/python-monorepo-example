@@ -84,7 +84,9 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
     >
       <div className={styles.header}>
         <div className={styles.personName}>{person.name}</div>
-        <div className={styles.personRole}>{[person.role, person.pronouns].filter(Boolean).join(', ')}</div>
+        <div className={styles.personRole}>
+          {[person.role, person.pronouns].filter(Boolean).join(`, `)}
+        </div>
         <CloseButton />
       </div>
       <div className={styles.tags}>
