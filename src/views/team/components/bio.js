@@ -85,7 +85,7 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
     >
       <div className={styles.header}>
         <div className={styles.personName}>{person.name}
-        <span className={styles.pronouns}> {person.pronouns ? `(` + person.pronouns + `)` : ``}</span></div> : 
+        <span className={styles.pronouns}> {person.pronouns ? `(` + person.pronouns + `)` : ``}</span></div>
         <div className={styles.personRole}>{person.role}</div>
         <CloseButton />
       </div>
