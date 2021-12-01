@@ -19,6 +19,7 @@ import {
 } from "../utils/search"
 
 import styles from "../styles/magic-grid.module.css"
+import { hide } from "../styles/shuffle-button.module.css"
 
 /**
  * @param {{
@@ -237,7 +238,15 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
           ref={ajusterRef}
         >
           <SearchBar placeholder={`Search for a name or a skill`} />
-          <ShuffleButton onClick={reShuffle} />
+          <ShuffleButton
+            className={
+              (breakpoint === `xs` || breakpoint === `sm`) &&
+              tileSetRef.current.activeBioProfile
+                ? hide
+                : ``
+            }
+            onClick={reShuffle}
+          />
         </div>
         <BioContext.Provider
           value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}

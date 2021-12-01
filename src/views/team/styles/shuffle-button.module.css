@@ -56,3 +56,7 @@
     align-self: flex-end;
   }
 }
+
+.hide {
+  visibility: hidden;
+}

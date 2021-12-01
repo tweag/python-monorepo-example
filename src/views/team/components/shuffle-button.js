@@ -14,7 +14,7 @@ function shuffleButtonAnimationHandler(event) {
   )
 }
 
-const ShuffleButton = ({ onClick, ref }) => {
+const ShuffleButton = ({ onClick, ref, className }) => {
   const clickEventHandler = event => {
     if (onClick) {
       onClick(event)
@@ -22,7 +22,11 @@ const ShuffleButton = ({ onClick, ref }) => {
     shuffleButtonAnimationHandler(event)
   }
   return (
-    <a className={styles.shuffleButton} ref={ref} onClick={clickEventHandler}>
+    <a
+      className={[styles.shuffleButton, className].join(` `)}
+      ref={ref}
+      onClick={clickEventHandler}
+    >
       Roll again
     </a>
   )
