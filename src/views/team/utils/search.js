@@ -46,6 +46,10 @@ class SearchManager {
       .join(` `)
   }
 
+  get currentSearchString() {
+    return [this.tags, this.searchString].join(` `)
+  }
+
   /**
    * @param {string} tag
    * @returns {boolean}

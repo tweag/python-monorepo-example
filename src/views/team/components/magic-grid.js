@@ -12,7 +12,11 @@ import SearchBar from "./search-bar"
 
 import { TileSet } from "./tileset"
 import { BioContext } from "./bio"
-import { SearchContext, useSearchManager } from "../utils/search"
+import {
+  SearchContext,
+  useSearchManager,
+  dispatchFilterEvent,
+} from "../utils/search"
 
 import styles from "../styles/magic-grid.module.css"
 
@@ -210,10 +214,14 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     return window.removeEventListener(`filter`, reFilter)
   }, [])
 
-  // Shuffle Button
-  const reShuffle = () => {
-    searchManager.clear()
+  // Shuffle Button click event handler
+  const reShuffle = event => {
+    const source = event.currentTarget
+    tileSetRef.current.setActiveProfile(null)
     tileSetRef.current.shuffleTiles()
+
+    searchManager.clear()
+    dispatchFilterEvent(source, ``)
     reRender({})
   }
 
@@ -229,12 +237,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
           ref={ajusterRef}
         >
           <SearchBar placeholder={`Search for a name or a skill`} />
-          <ShuffleButton
-            onClick={() => {
-              tileSetRef.current.setActiveProfile(null)
-              reShuffle({})
-            }}
-          />
+          <ShuffleButton onClick={reShuffle} />
         </div>
         <BioContext.Provider
           value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
