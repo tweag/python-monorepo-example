@@ -1,15 +1,19 @@
 slug: nicholas.clarke
 name: Nicholas Clarke
 github: nc6
+shortDescription: |
+  Nicholas is a lapsed mathematician and senior software engineer at Tweag,
+  where he generally works as a jack of all trades. He has a focus on clean,
+  aesthetic code and strong abstraction boundaries. 
 bio: |
-  Nicholas is a lapsed mathematician and senior software engineer at Tweag, where
-  he generally works as a jack of all trades. He has a focus on clean, aesthetic
-  code and strong abstraction boundaries. He worked in various roles before
-  joining Tweag, from distributed systems to genome informatics and machine
-  learning research.
+  Nicholas worked in various roles before joining Tweag, from distributed
+  systems to genome informatics and machine learning research. When outside the
+  office, he can often be found somewhere up a climbing wall, on a sailboat, or
+  throwing other people into the air.
 
-  When outside the office, he can often be found somewhere up a climbing wall,
-  on a sailboat, or throwing other people into the air.
+  Nicholas provides the total package, guidance, execution, team building, and
+  fun. Nick is able to carefully keep a whole project software architecture
+  sane while helping and mentoring the rest of the team.
 skills:
   - Haskell
   - Linux
