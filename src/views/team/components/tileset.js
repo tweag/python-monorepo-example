@@ -13,6 +13,7 @@ export class TileSet {
    * @param {{
    *  people: {
    *    name: string
+   *    pronouns: string
    *    bio: string,
    *    role: string,
    *    tags: string[],
