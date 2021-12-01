@@ -1,3 +1,12 @@
+@keyframes slowFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .magicGrid {
   grid-area: magic-grid;
   justify-self: center;
@@ -23,6 +32,8 @@
   grid-auto-columns: var(--magic-grid-cell-width);
   grid-auto-flow: row;
   --bio-rounding-amount: calc(var(--magic-grid-cell-width) * 0.4);
+  animation: slowFadeIn 2s linear;
+  animation-fill-mode: backwards;
 }
 
 @media screen and (min-width: 768px) {

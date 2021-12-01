@@ -10,8 +10,11 @@ import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
+import { LoadingAnimation } from "./components/loading-animation"
 
-const MagicGrid = loadable(() => import(`./components/magic-grid`))
+const MagicGrid = loadable(() => import(`./components/magic-grid`), {
+  fallback: <LoadingAnimation />,
+})
 
 const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
 
