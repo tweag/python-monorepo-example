@@ -2,20 +2,36 @@ slug: noon.vandersilk
 name: Noon van der Silk
 pronouns: He/Him
 github: silky
-website: https://silky.github.io/
-bio: |
+links:
+  Website: https://silky.github.io/
+  BetweenBooks: https://betweenbooks.com.au/
+  SciRate: https://scirate.com/
+  Ideas: https://github.com/silky/ideas/issues
+  Jokes: https://github.com/silky/jokes/issues
+
+shortDescription: |
   Noon is a software engineer with a broad range of experience across AI,
-  quantum computing, functional programming and creative projects. He is
-  passionate about learning new things, empathetic and trust-based leadership
-  and supporting companies to achieve their aims through thoughtful and
-  flexible technology. In his spare time Noon likes to explore, read, and
-  collaborate on creative projects!
+  quantum computing, functional programming, teaching and creative projects.
+  He is passionate about learning new things, empathetic and trust-based
+  leadership and supporting people to achieve their aims through thoughtful,
+  inclusive, and flexible technology.
+
+bio: |
+  In the technology area Noon is passionate about working in diverse and
+  caring environments, bringing new people into programming, working on
+  projects that have a positive social impact and collaborating with others
+  on creative projects.
+
+  Outside of technology, Noon enjoys reading, travelling to new places,
+  meeting new people, organising community events, coming up with wacky ideas,
+  and making jokes (The fastest way to his heart is to make and enjoy a good
+  joke).
 
 skills:
   - Quantum computing
   - Deep learning
   - Haskell
-  - Python
+  - Empathy
   - Teaching
   - Leadership & Strategy
 
@@ -24,7 +40,7 @@ speaks:
 
 experience:
   - employer: Tweag
-    role: Senior software engineer
+    role: Senior Software Engineer
     years: 2021 - Present
     description:
 
@@ -118,3 +134,34 @@ education:
     institution: RMIT
     years: 2001-2003
     description:
+
+talks:
+  - "Quantum Computing and Haskell - A Linear Love Story?, Haskell Love, 2021"
+  - "The Quantum AI Landscape - 2019"
+  - "How much data do you _really_ need to for deep learning? YOW Data 2019"
+  - "Deep learning in the Browser, The Web Meetup, 2019"
+  - "Mindful Neural Networks, Creative AI Meetup, 2019"
+  - "Getting started with TensorFlow.js, Creative AI Meetup, 2019"
+  - "Designing functional clothes with Haskell, linuxconf 2019"
+  - "AI fashion designer, Melbourne Knowledge Week, 2018"
+  - "AI dance booth, National Science Week, 2018"
+  - "AI, decision making, and design, 2018"
+  - "Deep learning dance t-shirt pipeline, 2017"
+  - "Gentle introductiona to TensorFlow, Creative AI Meetup, 2017"
+  - "Quantum gradient descent, 2017"
+  - "The Internet High-5 Machine, MHUG, 2017"
+  - "Surface code quantum computing, 2016"
+  - "Compose conference, 2016"
+  - "An IHaskell Dashboard using Jupyter, Docker and the BitBucket API, 2016"
+  - "Reference management in Haskell, 2015"
+  - "Public or perish - A vision for open science research, 2014"
+  - "Open Science Workshop, 2014"
+  - "Daniel J. Bernstein, Laborastory, 2014"
+  - "The Church-Turing thesis and the power of quantum computing, 2014"
+  - "The firewall problem (of quantum physics), 2014"
+  - "Graphical approaches to quantum computing, 2012"
+  - "Quantum programming, 2011"
+  - "Complexity theory and P vs NP, 2010"
+  - "Upgradable hashing in cryptography, 2009"
+  - "OWASP and the SCAN project, 2007"
+  - "SHA/MD5 breakings - Overview and implications, 2005"

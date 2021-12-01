@@ -18,7 +18,7 @@ was working with; see PR [#263][263]. How shall we test a specification of a sim
 implementation shown below?
 
 ```haskell
--- Constructors / Modifers
+-- Constructors / Modifiers
 empty :: Set a
 insert :: Keyed a => a -> Set a -> Set a
 delete :: Keyed a => a -> Set a -> Set a

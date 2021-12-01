@@ -221,7 +221,7 @@ Et voilà! Thanks to coupling the replicas, we manage to sample correctly even a
 A nice way to think about what is happening in the course of a RE simulation is to look at what happens to the initial state of a replica.
 The initial state will be evolved through some "local" sampling algorithms for a few steps until an exchange is attempted.
 If the exchange is successful, the state moves up or down a step on the "temperature ladder" and is evolved on that step until at least the next attempted exchange.  
-We can visualize that by first detecting, for each pair of replicas, at which simulation time points a successful swap occured and then reconstructing the movement of a state from the list of swaps.
+We can visualize that by first detecting, for each pair of replicas, at which simulation time points a successful swap occurred and then reconstructing the movement of a state from the list of swaps.
 This yields, for each initial state, a trajectory across the temperature ladder.
 The code for reconstructing the trajectories is skipped here, but can be found in the [notebook](https://github.com/tweag/blog-resources/blob/master/mcmc-intro/mcmc_introduction.ipynb).
 For clarity, we only plot the trajectories of the initial states of the target and the flattest replica:

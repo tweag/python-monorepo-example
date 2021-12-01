@@ -1,14 +1,37 @@
 slug: virgile.robles
 name: Virgile Robles
 github: Firobe
+shortDescription: |
+  Virgile is a French native with a background in formal methods and OCaml. He
+  loves everything functional and typed, but is also keenly interested in
+  efficient, low-level (or plain obscure) programming.
 bio: |
-  "Virgile has a background in formal methods. A French native, he studied theoretical and practical computer science (algorithms, type systems, program verification, ...) in Bordeaux, and is currently finishing up his PhD at CEA and CentraleSupélec. During his PhD, he developed an extension of ACSL—a specification language for C programs—to enable the specification of high-level requirements.  Already at high school Virgile began learning OCaml as a hobby and has been a committed OCaml user ever since, but he is very keen to learn more of Haskell. More broadly, his favorite topics include formal methods, type systems, compilers, and efficient algorithms.  Other than that, Virgile likes to create or play with obscure programming languages (check out Boblang on his Github) and other random things (e.g., he is currently trying to write a NES emulator in OCaml). In his free time he enjoys good video games, meals, walks, rocks to climb, and nights out."
+  Virgile studied theoretical and practical computer science (algorithms, type
+  systems, program verification, ...) in Bordeaux, and is currently finishing up
+  his PhD at CEA and CentraleSupélec.
+
+  During his PhD, he developed an extension of ACSL — a specification language
+  for C programs — to enable the specification of high-level requirements. He
+  had the opportunity to apply these verification techniques to industrial-scale
+  use cases.
+
+  Already at high school Virgile began learning OCaml as a hobby and has been a
+  committed OCaml user ever since, but he is very keen to learn more of Haskell.
+  More broadly, his favorite topics include formal methods, type systems,
+  compilers, and efficient algorithms. 
+
+  Other than that, Virgile likes to create or play with obscure programming
+  languages (check out Boblang on his Github) and other random things (e.g., he
+  is currently trying to write a NES emulator in OCaml). In his free time he
+  enjoys good video games, meals, walks, rocks to climb, piano sessions and
+  nights out.
+links:
+  Blog: https://firobe.fr
 skills:
   - Ocaml
-  - Frama-C
+  - Formal methods
   - Deductive verification
   - C/C++
-  - Coq
 speaks:
   - French
   - English

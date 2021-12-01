@@ -1,12 +1,16 @@
 slug: roman.cheplyaka
 name: Roman Cheplyaka
 github: UnkindPartition
+shortDescription: >
+  Roman is a software engineer from Ukraine with over 10 years of experience in Haskell and
+  expertise in bioinformatics, mathematics, and statistics.
 bio: >
-  Roman is a Software Engineer with over 10 years of experience in Haskell and
-  expertise in bioinformatics, mathematics, and statistics. He is an active open
-  source contributor and the author of the Tasty testing framework.
-
-  Roman produces and hosts the podcasts Compositional and The Bioinformatics Chat.
+  Roman is the author of the Tasty testing framework and has contributed to many other open source Haskell projects.
+  He produces and hosts the podcasts Compositional and The Bioinformatics Chat.
+links:
+  Blog: https://ro-che.info/articles/
+  The Bioinformatics Chat podcast: https://bioinformatics.chat/
+  The Compositional podcast: https://www.compositional.fm/
 skills:
   - Haskell
   - C

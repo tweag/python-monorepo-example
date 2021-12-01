@@ -1,0 +1,68 @@
+.externalContainer {
+  display: grid;
+  place-items: start center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dotsContainer {
+  display: grid;
+  width: 15rem;
+  height: 4rem;
+  gap: 1rem;
+  place-items: center;
+  grid-auto-flow: column;
+  --dot-size: 1rem;
+  --animation-duration: 1s;
+}
+
+@keyframes grow-and-shrink {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  to {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.firstDot {
+  background-color: black;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+
+  animation-name: grow-and-shrink;
+  animation-iteration-count: infinite;
+  animation-duration: var(--animation-duration);
+  animation-delay: 0s;
+}
+
+.secondDot {
+  background-color: black;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+
+  animation-name: grow-and-shrink;
+  animation-iteration-count: infinite;
+  animation-duration: var(--animation-duration);
+  animation-delay: calc(var(--animation-duration) * 0.3);
+}
+
+.thirdDot {
+  background-color: black;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+
+  animation-name: grow-and-shrink;
+  animation-iteration-count: infinite;
+  animation-duration: var(--animation-duration);
+  animation-delay: calc(var(--animation-duration) * 0.6);
+}

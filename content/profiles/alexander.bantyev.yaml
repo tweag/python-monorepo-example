@@ -1,12 +1,27 @@
 slug: alexander.bantyev
 name: Alexander Bantyev
 github: balsoft
-bio: |
+shortDescription: |
   Alexander is a passionate, perpetually learning software engineer
   and hacker. Lives and breathes FOSS. Loves functional programming
   and declarative approach to system configuration. He has worked as a
   DevOps/SRE for typeable.io and serokell.io in the past, and is
   currently working on improving Developer Productivity at tweag.io.
+bio: |
+  Known online as balsoft, Alexander has contributed to many
+  open-source projects, mostly related to build systems (but also some
+  desktop applications and services). Runs NixOS on all his personal
+  machines, uses Emacs (but only as an editor).
+
+  Loves helping people get familiar with Linux, Nix and NixOS: runs a
+  russian-speaking NixOS group, is active in the official NixOS matrix
+  room, answers Linux-related questions on Reddit.
+
+  Hobbies include repairing broken electronics, jogging and hiking,
+  and dogs <3
+links:
+  Homepage: https://balsoft.ru
+  Russian NixOS Community: https://t.me/ru_nixos
 skills:
   - NixOS
   - Nix

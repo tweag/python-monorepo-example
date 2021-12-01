@@ -3,17 +3,43 @@ name: Erin van der Veen
 pronouns: He/Him
 github: Erin van der Veen
 website: https://erinvanderveen.nl/
-bio: |
-  I am a software engineer with experience in creating web-based functional
+shortDescription: |
+  Erin is a software engineer with experience in creating web-based functional
   programs, maintaining a functional programming language and designing and
-  implementing tools enhancing developer productivity. My personal goal is to
-  get as many people as possible working with functional programming languages
-  in a reproducible way.
+  implementing tools enhancing developer productivity. His personal goal is to
+  get as many people as possible working with functional programming languages.
+bio: |
+  Erin studied Computing Science at the Radboud University in Nijmegen. First a
+  bachelor specialising in Cyber Security and subsequently a Masters on
+  Software Science, focusing on Functional Programming. An Erasmus exchange to
+  Umeå University gave him the possibility to work with the Kebnekaise and
+  Abisko computers, writing highly optimised and parallel programs. He finished
+  his Master's degree with a thesis on integrating uniqueness typing with an
+  embedded DSL to allow mutable arrays.
+
+  While working on his thesis, Erin was also involved with a project to port
+  the Clean language to the ARM64 platform to allow the language to run on the
+  latest iteration of Raspberry Pis.
+
+  His work with the Clean programming language lead him to join TOP Software, a
+  spin-off company developing the iTasks framework. Here he was responsible for
+  creating the Clean language server, implementing an alternative build system,
+  maintaining the core libraries, and building software for the Dutch Royal
+  Coastguard.
+
+  Erin discovered Nix and NixOS in 2021 and implemented a prototype for an
+  alternative build system for Clean that could run on NixOS. He also designed
+  a further iteration of this build system that would leverage Nix itself to
+  build Clean programs.
+
+  He joined Tweag in late 2021, looking to apply his skills to a language and
+  ecosystem different from Clean's.
 
 skills:
   - Clean
   - Haskell
   - Nix
+  - Rust
 
 speaks:
   - Dutch

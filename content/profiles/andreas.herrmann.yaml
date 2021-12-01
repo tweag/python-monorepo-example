@@ -1,6 +1,34 @@
 slug: andreas.herrmann
 name: Andreas Herrmann
 github: aherrmann
+shortDescription: |
+  Andreas is a physicist turned software engineer. He leads the Bazel team, and
+  maintains Tweag's open source Bazel rule sets and the capability package. He
+  is passionate about functional programming, and hermetic and reproducible
+  builds. He lives in Zurich and is active in the local Haskell community.
+bio: |
+  Andreas studied physics at ETH Zurich and specialized on computational
+  physics for his PhD at University of Fribourg on strongly correlated
+  materials in non-equilibrium.
+
+  While computational physics is heavy on C++, Fortran, and Python, it was this
+  time where he found his passion for Haskell and Nix. Software has been a
+  strong interest for Andreas from early on and after his time in academia he
+  decided to work in the industry as a software engineer.
+
+  At Tweag Andreas has worked as a software engineer on various projects
+  involving Haskell, Scala, Nix, Bazel, and more. He now leads the Bazel team
+  and maintains several of Tweag's open source projects including its Bazel
+  rule sets.
+
+  Outside of work Andreas contributes to the Haskell community in Zurich, right
+  now as the president of the Zurich Friends of Haskell which organizes
+  ZuriHac. He enjoys learning about programming languages, travelling, hiking,
+  and spending time with his family.
+
+  Other Tweagers appreciate Andreas as an excellent, friendly engineer with a
+  sense of diligence and great attention to detail. Talking to Andreas will
+  likely solve your problems but also lift your mood!
 skills:
   - Bazel
   - C++
@@ -8,6 +36,8 @@ skills:
   - Nix
   - Python
   - Scala
+links:
+  GitHub: https://github.com/aherrmann
 speaks:
   - English
   - German

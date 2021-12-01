@@ -1,0 +1,38 @@
+slug: alexander.esgen
+name: Alexander Esgen
+pronouns: He/Him
+github: amesgen
+shortDescription: |
+  Alexander is a software engineer and active open source contributor. He likes to apply insights from functional programming to solve interesting problems in a efficient and maintainable manner.
+bio: |
+  Coming from a mathematical background, Alexander naturally got interested in functional programming languages and was quickly convinced by the features offered by Haskell, Scala or Rust in order to write reliable and expressive code. As studying publicly available projects was and is one of his main ways of learning, he likes to contribute back to the vast ecosystems of these languages.
+
+  Recently, Alexander got hooked on Nix for many of the same reasons, and retired his old pal Arch Linux.
+
+  Outside of work, Alexander enjoys playing the guitar, reading non-fiction and playing video games.
+skills:
+  - Haskell
+  - Scala
+  - Rust
+  - Category theory
+  - Discrete mathematics
+speaks:
+  - German
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: November 2021 - present
+  - employer: Tweag
+    role: Intern
+    years: July - October 2021
+    description:
+      - Extensive work on Ormolu, the Haskell source code formatter
+      - https://www.tweag.io/blog/2021-10-28-hacking-on-ormolu
+education:
+  - qualification: Bachelor
+    name: Mathematics
+    institution: Universität Bonn
+    years: 2017 - 2021
+    description:
+      - Thesis on ∞-categories and model categories

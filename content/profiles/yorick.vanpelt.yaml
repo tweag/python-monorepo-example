@@ -1,23 +1,23 @@
 slug: yorick.vanpelt
 name: Yorick van Pelt
 github: yorickvp
+shortDescription:
+  Yorick grew up on the internet and still lives there most of the time. He has
+  been on NixOS since 2014 and is passionate about making computers better for
+  everyone, including programmers.
 bio: |
-  Grew up on the internet. Still lives there most of the time. Has been on NixOS since 2014.
-  Passionate about making computers better for everyone, including programmers.
-
-  Current interests include juggling, drawing, running. Past interests include speedcubing and drumming. He's also very passionate about mechanical keyboards.
-
+  He has over a decade of experience as a software engineer, and has been working full-time in the Nix ecosystem since 2018, after a brief detour through the Radboud University, where he focused on cyber security and TA'd the Network Security course.
+  Over his career, he's worked on electronics, embedded systems, machine learning, distributed systems, and the infrastructure needed to build and deliver all of these correctly and reliably.
+  His current interests include juggling, drawing, running. Past interests
+  include speedcubing and drumming. He's also very passionate about mechanical
+  keyboards.
 skills:
   - Computer networking with a security focus
-  - System design
-  - Electronics design and firmware
-  - Software build and delivery systems
-  - Security and cryptography
-  - Nix / NixOS / Linux / Bash
-  - PostgreSQL / SQLite / MongoDB
-  - Electron / ReScript / React / Javascript / Vue / Nodejs
-  - Rust / Java / C / C++ / assembly
-  - Haskell / Elixir / Emacs Lisp / Python
+  - python
+  - nix
+  - functional programming
+  - haskell
+  - ocaml
 
 speaks:
   - English

@@ -1,6 +1,12 @@
 slug: juan-raphael.diaz-simoes
 name: Juan Raphael Diaz Simões
 github: guaraqe
+shortDescription: |
+  Juan is a pragmatic programmer with a clear preference for Haskell, but who
+  is not afraid of working with any kind of technology clients are willing to
+  use, from SQL to Python to Javascript. He is also an editor for Tweag's blog,
+  helping writers on both content and presentation. He holds a PhD in complex
+  systems science.
 bio: |
   Juan is a software engineer who supports mainly Haskell and Nix projects at
   Tweag, but is not afraid of working with any kind of technology clients are
@@ -11,6 +17,10 @@ bio: |
   animals, researching physical and computational problems. He has a PhD from
   the Université Paris-Saclay and a MSc from the École Polytechnique, both on
   complex systems science.
+
+  When you still think about the problem Juan has already implemented the
+  solution - that's a common situation at Tweag. Juan has a witty and funny
+  comment about almost any situation, no matter how dire.
 skills:
   - Haskell
   - Nix

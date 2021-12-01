@@ -1,15 +1,36 @@
 slug: mark.karpov
 name: Mark Karpov
 github: mrkkrp
+shortDescription: |
+  Mark applies the principles of functional programming to solve real-world
+  problems. He helps Tweag clients design and build correct, robust, and
+  maintainable software. His personal projects include high-profile Haskell
+  libraries, tutorials, and a technical blog.
 bio: |
-  Mark is a software engineer specializing in functional programming using
-  strong static type systems. As a consultant he helps clients design and
-  build correct, robust, and maintainable software. Having started in the
-  industry as a Haskell developer, he has gradually mastered many other
-  skills such as Nix, DevOps, and Bazel build system. His personal projects
-  include high-profile Haskell libraries, tutorials, and a technical blog.
+  Mark started with functional programming by chance when he discovered
+  Common Lisp in 2014. Soon afterward, his journey brought him to Haskell,
+  which he explored frenetically producing numerous popular Haskell
+  libraries, tools, tutorials, and blog posts. This attracted attention of
+  Tweag, which he joined in 2018.
+
+  At Tweag, rather than choosing to work only in Haskell, Mark sought to
+  diversify his toolkit by learning about Bazel, Nix, and other functional
+  programming languages like OCaml and Rust. These days Mark considers himself
+  a generalist who strives to be involved at all stages of consulting business
+  from hiring to sales. He also enjoys leading teams and figuring out how to
+  bring complex projects to completion. Born in Russia, Mark currently lives in
+  Paris, France. In his free time he is an avid reader, writer, photographer,
+  musician, and painter.
+
+  Mark is passionate about many topics, and known as a curious, fast learner at
+  Tweag who has a sharpeyed sense of observation. He is a fascinating and
+  reliable colleague striving for simplicity and good judgement day to day.
+links:
+  Personal website: https://markkarpov.com
 skills:
   - Haskell
+  - OCaml
+  - Rust
   - Nix
   - DevOps
   - Bazel
@@ -19,7 +40,7 @@ speaks:
   - Russian
 experience:
   - employer: Tweag
-    role: Software engineer
+    role: Senior software engineer
     years: 2018-present
     description:
   - employer: Stack Builders

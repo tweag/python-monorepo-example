@@ -1,17 +1,25 @@
 slug: etienne.jean
 name: Etienne Jean
+pronouns: He/Him
 github: Etjean
+shortDescription: |
+  Etienne is a data engineer at Tweag, with a bioinformatics background. As part of the data team at Tweag,
+  he acts on data engineering projects, both internal to Tweag and for clients in the pharmaceutical industry.
+  He lives in Paris, and is regularly in Tweag's Paris office, enjoying the direct view onto the train
+  station's 1901 "clock tower".
 bio: |
-  Etienne is a Data Scientist with a Bioinformatics background. 
-  Before joining Tweag, he worked as an engineer in academic research, where he developed data pipelines and models for the study of DNA replication.
+  Etienne started his higher education with mathematics, physics and aeronautical engineering, before switching 
+  to biology and finally specializing in bioinformatics. Before joining Tweag, he worked as an engineer in academic 
+  research, where he developed data pipelines and models for the study of DNA replication. Since then, he has 
+  continued to slowly evolve towards the data engineering world with the motivation to write better software.
+
+  Etienne has experience with several technologies, like the R and Python ecosystems for data science, 
+  the workflow-specific language Nextflow, and the Google cloud products for data engineering. He also nourishes 
+  interests in the programming languages Haskell and Rust.
 skills:
-  - R
-  - Python
   - Bioinformatics
-  - Data pipelines
   - Data science
-  - Machine learning
-  - Haskell, Rust, Java
+  - Data engineering
 speaks:
   - English
   - French
@@ -20,6 +28,8 @@ experience:
     role: Data Scientist
     years: July 2021-present
     location: Paris, France
+    description:
+      - Data engineering for internal projects and the pharmaceutical industry.
   - employer: IBENS (Biology Institute of the École Normale Supérieure)
     role: Bioinformatics Engineer
     years: January 2019 - February 2021
@@ -33,6 +43,9 @@ experience:
     description:
       - Data mining on chromosome conformation data.
 education:
+  - qualification: Google cloud certification
+    name: Professional Data Engineer
+    years: September 2021
   - qualification: Msc
     name: Bioinformatics
     institution: Paris University

@@ -1,18 +1,27 @@
 slug: tanya.bouman
 name: Tanya Bouman
 github: tanyabouman
+shortDescription: |
+  Tanya is a software engineer who loves learning and solving problems.
 bio: |
-  Tanya is a software engineer.  She has enjoyed using Haskell in a variety of software research applications ranging from code generation and MRI sequences to education and cryptography.  She has also taught Elm and basic computer science concepts to children.
-  Outside of work, Tanya plays the organ and occasionally a bit of piano and melodica.
+  Of all the interesting subjects to study in university, Tanya finally chose computer science because
+  of the many different possible applications for software.
+  Besides studying computer science, she took physics courses, worked as a teaching assistant,
+  taught Elm and basic computer science concepts to children, and worked on a few research projects at McMaster University.
+  Now at Tweag, she works on a web application project and finds interesting new things to learn every day,
+  with the community of passionate and helpful Tweagers.
 
+  Outside of work, Tanya enjoys playing the organ or other keyboard instruments, conversations about ethics
+  and human rights, sewing, salted licorice, and spending time outside, especially when there is snow.
 skills:
   - Haskell
   - Elm
-  - Swift
-  - Bazel
-  - cryptography
-  - medical imaging
-
+  - web development
+  - functional programming
+speaks:
+  - English (native)
+  - Dutch (basic)
+  - French (basic)
 experience:
   - employer: Tweag
     role: Software Engineer
@@ -27,22 +36,20 @@ experience:
     years: 2015 - 2017
     description:
       - |
-        optimization problems: various applications including code generation and MRI sequences
-        computing education apps: collaborative design and development of iOS and Elm apps for children
-        outreach: teaching basic computer science concepts and programming in Elm to elementary students
+        Optimization problems: various applications including code generation and MRI sequences.
+        Computing education apps: collaborative design and development of iOS and Elm apps for children.
+        Outreach: teaching basic computer science concepts and programming in Elm to elementary students.
 
 education:
   - qualification: MSc
     name: Computer Science
     institution: McMaster University
     years: 2018 - 2021
-    description:
-      - |
-        thesis title: Parallel Windowed Method for Ellipic Curve Cryptography
   - qualification: BASc
     name: Computer Science
     institution: McMaster University
     years: 2014 - 2018
-  - name: Level 10 Organ
+  - qualification: Level 10
+    name: Organ
     institution: Royal Conservatory of Music
     years: 2014

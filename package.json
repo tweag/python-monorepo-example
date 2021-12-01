@@ -10,6 +10,7 @@
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "@fullpage/react-fullpage": "^0.1.19",
+    "@loadable/component": "^5.15.0",
     "@theme-ui/match-media": "^0.3.5",
     "gatsby": "^2.32.12",
     "gatsby-cli": "^2.19.2",
@@ -39,6 +40,7 @@
     "gatsby-transformer-sharp": "^2.12.1",
     "gatsby-transformer-yaml": "^2.11.0",
     "katex": "^0.11.1",
+    "lunr": "^2.3.9",
     "netlify-cli": "^2.71.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.23.0",
@@ -48,6 +50,7 @@
     "react-helmet": "^6.1.0",
     "react-typed": "^1.2.0",
     "theme-ui": "^0.3.5",
+    "uuid": "^8.3.2",
     "yaml": "^1.10.2"
   },
   "devDependencies": {

@@ -1,0 +1,181 @@
+.positionedTile {
+  grid-column: var(--start-column, auto) / var(--end-column, auto);
+  grid-row: var(--start-row, auto) / var(--end-row, auto);
+}
+
+.coloredTile {
+  background-color: var(--tile-color, #30c179);
+}
+
+.profileTile {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  --animations-duration: 0.8s;
+}
+
+.profilePhoto {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  transition: transform var(--animations-duration);
+}
+
+.shadowContainer::after {
+  display: block;
+  content: ".";
+  z-index: 50;
+  width: 100%;
+  height: 1rem;
+  position: absolute;
+  background-color: red;
+  bottom: -1rem;
+  left: 0px;
+  transition: box-shadow var(--animations-duration);
+  box-shadow: 0px 0px 30px 2.5em rgba(0, 0, 0, 0.7);
+}
+
+.profileName {
+  position: absolute;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 0.8rem;
+  left: 0px;
+  bottom: 0px;
+  color: white;
+  padding: 0.3rem;
+  transition: all var(--animations-duration);
+}
+
+@media screen and (min-width: 767px) {
+  .profileName {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .profileName {
+    padding: 1rem;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profileName {
+    padding: 0.3rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (hover: hover) {
+  .profileTile:hover .profilePhoto,
+  .forceActive .profilePhoto {
+    transform: scale(1.15);
+  }
+
+  .profileTile:hover .profileName,
+  .forceActive .profileName {
+    transform: translateY(100%);
+  }
+
+  .profileTile:hover .shadowContainer::after,
+  .forceActive .shadowContainer::after {
+    box-shadow: 0px 0px 30px 0em rgba(0, 0, 0, 0.7);
+  }
+}
+
+.tile {
+  width: 100%;
+  height: 100%;
+}
+
+.roundLeftCorner {
+  border-top-left-radius: 40%;
+}
+
+.roundRightCorner {
+  border-top-right-radius: 40%;
+}
+
+.tagTile {
+  border: solid black 0.2rem;
+  width: 100%;
+  background-color: white;
+  color: black;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.tagTile.active {
+  background-color: black;
+  color: white;
+}
+
+.tagText {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.tagText::before {
+  content: "#";
+}
+
+@media screen and (min-width: 992px) {
+  .tagText {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (hover: hover) {
+  .tagTile:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+@keyframes colorize {
+  to {
+    background-color: var(--tile-color, #30c179);
+  }
+}
+
+@keyframes decolorize {
+  to {
+    background-color: transparent;
+  }
+}
+
+.colorizeTile::after {
+  display: block;
+  content: ".";
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: transparent;
+  top: 0px;
+  left: 0px;
+  animation: colorize var(--animations-duration, 1s);
+  animation-fill-mode: forwards;
+  cursor: auto;
+}
+
+.decolorizeTile::after {
+  display: block;
+  content: ".";
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--tile-color, #30c179);
+  top: 0px;
+  left: 0px;
+  animation: decolorize var(--animations-duration, 1s);
+  animation-fill-mode: forwards;
+}

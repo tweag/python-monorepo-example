@@ -1,8 +1,35 @@
 slug: arnaud.spiwack
 name: Arnaud Spiwack
 github: aspiwack
+shortDescription: |
+  Arnaud is Tweag's head of R&D. He described himself as a multi-classed
+  Software Engineer/Constructive Mathematician. He can regularly be seen in the
+  Paris office, but he doesn't live in Paris as he much prefers the calm and
+  fresh air of his suburban town.
 bio: |
-  TODO
+  Arnaud's career before Tweag was that of a researcher in formal methods and
+  programming language theory. He firmly believes that we don't know how to
+  write good software yet. In this context, he compares software to bridges a
+  lot; to chairs, as well.
+
+  Outside of programming and computer science, Arnaud's pastimes include
+  solving Rubik's cubes and speedrunning video games. Neither activity he is
+  pretty good at; nevertheless you can find him on his Twitch channel, where he
+  streams his speedrunning, as well as live coding sessions. He can also be
+  found on Twitter where, perhaps unsurprisingly, he does neither, but thinks
+  aloud about science.
+
+  Tweager's know that Arnaud always has a good anecdote ready for any situation
+  (sometimes also a good rant). Besides being an accomplished researcher, he is
+  highly valued as pragmatic engineer and a curious, passionate and kind person
+  who brings the "savoir-vivre" to computer sciences. Arnaud is also Tweag's
+  first-address for anyone wanting to learn to program better with types.
+links:
+  Page: http://assert-false.science/arnaud
+  Github: https://github.com/aspiwack/
+  Twitter: https://twitter.com/aspiwack
+  Twitch: https://twitch.tv/notnotarnaud
+  Youtube: https://www.youtube.com/c/ArnaudSpiwack
 skills:
   - Haskell
   - Ocaml

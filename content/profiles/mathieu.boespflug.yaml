@@ -1,12 +1,17 @@
 slug: mathieu.boespflug
 name: Mathieu Boespflug
+pronouns: he/him
 github: mboes
-bio: Mathieu has a background in formal methods, compiler design, and
-  programming language research. Prior to founding Tweag, Mathieu was
-  CTO and a Senior Software Architect at Parallel Scientific,
-  a consulting company in the area of data storage, distributed and
-  FPGA programming. Mathieu was a postdoctoral fellow at McGill
-  University and received his PhD from École Polytechnique.
+shortDescription: Mathieu is the CEO and founder of Tweag.
+bio: |
+  Mathieu was a scientist fancying himself as an engineer, then an
+  engineer fancying himself as a scientist, and now a leader fancying
+  himself as an engineer or a scientist. His background is in formal
+  methods, compiler design, and distributed systems. These days
+  developer experience is what makes him too excited to sleep at
+  night. Unless he's been cycling in sunny Greece, which is most days.
+
+  Mathieu holds a PhD in computer science from École Polytechnique.
 skills:
   - Engineering leadership
   - Architecture

@@ -2,14 +2,20 @@ slug: nicolas.frisby
 name: Nicolas Frisby
 pronouns: He/Him
 github: nfrisby
-bio: |
+shortDescription: |
   Nick is a software architect dedicated to assuring correctness by discovering
   and encoding the most useful domain abstractions. He enjoys close cooperation
   with experts to enable and support the re-expression of their knowledge as
-  semi-formal, formal, and even executable specifications. His most trusty tool
-  has been Haskell. Other interests include: consensus building, tutorial
-  writing, knowledge sharing presentations, professional development, all kinds
-  of games, speculative fiction, dogs, hiking, and culinary adventures!
+  semi-formal, formal, and even executable specifications.
+bio: |
+  His most trusty tool has been Haskell. Other interests include consensus
+  building, tutorial writing, knowledge sharing presentations, professional
+  development, all kinds of games, speculative fiction, dogs, hiking, and
+  culinary adventures!
+
+  At Tweag, Nick is known as a really strong and experienced Haskell engineer.
+  He's very good in translating research into actual software and can dive into
+  deep theoretical subjects to make his everyday code as correct as possible.
 skills:
   - Haskell
   - C, Python, Matlab, DHTML/JavaScript, LaTeX

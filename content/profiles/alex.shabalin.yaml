@@ -1,21 +1,35 @@
 slug: alex.shabalin
 name: Alex Shabalin
 github: mopleen
-
+shortDescription: |
+  Alex professionally grew up in the trading industry writing C++ with a strong
+  Haskell accent. Now he's enjoying his time at Tweag making good use of his
+  skills and being surrounded with like-minded people.
 bio: |
-  I'm a software engineer that grew up in trading, writing C++ with a Haskell accent.
-  Such approach made my customers (business side) happy and my colleagues (who prefer mutating objects) puzzled.
+  Alex is a software engineer that professionally grew up in the trading
+  industry writing C++ with a Haskell accent.  He claims such approach made the
+  business side happy and his previous colleagues (who preferred mutating
+  objects) puzzled.
 
-  Now at Tweag, I'm looking forward to writing Haskell while drawing inspiration from my C++ background
-  and being surrounded with like-minded people.
+  Alex has experience working for large and small companies. Over the years,
+  his responsibilities included developing apps for a trading platform,
+  managing processes around on-device voice recognition and providing reliable
+  gateways to cryptocurrency exchanges.
 
+  He has also lived and worked in different countries which fits well his
+  nomadic character.  Originally from Russia, he has lived in Amsterdam, then
+  moved to Toronto, came back to Amsterdam and next planning to settle in
+  France.
+
+  Now at Tweag, he's looking forward to making good use of his skills.
+  Especially, working with Haskell while drawing inspiration from his C++
+  background and being surrounded with like-minded people.
 skills:
   - C++
   - Nix
 speaks:
   - English
   - Russian
-
 experience:
   - employer: Tweag
     role: Software Engineer

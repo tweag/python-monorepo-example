@@ -1,27 +1,59 @@
 ---
 slug: nicolas.jeannerod
 name: Nicolas Jeannerod
+pronouns: He/His/Him
+
 github: Niols
 website: http://nicolas.jeannerod.fr/
 
+shortDescription: |
+  Nicolas is a software engineer at Tweag. He lives a busy life travelling
+  between Paris and Amsterdam with his cat and between theoretical and practical
+  aspects of computing with his work. Nicolas enjoys when theoretical notions
+  meet low-level objects to build automated verification tools. On the side, he
+  spends a lot of time playing and writing music, cycling, and dancing Scottish
+  country dances.
+
 bio: |
-  Nicolas is a Software Engineer. Before joining Tweag, he worked in academia on
-  verification of Shell scripts and Unix filesystems. He strongly believes in
-  verification and formal methods to provide high quality software. Outside of
-  work, he enjoys playing (video, card, board) games, cycling, music (listening
-  and creating) and scottish dancing.
+  Nicolas has been studying theoretical and foundational computer science since
+  university. Because he loved it but needed a more concrete dimension to his
+  work, he went to do a PhD on applying formal methods to real-world systems,
+  and the Debian GNU/Linux distribution in particular. He then wrote several
+  research articles and presented his work in various seminars and international
+  conferences, including technical ones such as the Debian conference. After his
+  PhD, he switched to the software industry and joined Tweag, hoping to increase
+  the impact of formal methods on the industrial world.
+
+  Nicolas has knowledge ranging from foundations of mathematics and logic to
+  low-level systems and networks, not forgetting programming in various
+  languages, both imperative and functional. His favourite approach is to
+  combine all of those, applying theoretical tools to reason about low-level
+  objects and writing code to do that automatically. For his implementations, he
+  favours strongly-typed functional languages such as OCaml, although he has a
+  guilty pleasure for interestingly-designed languages such as Shell or PHP. He
+  enjoys working in teams, meeting new people and communicating his work with
+  the world, whether through text or in person.
+
+  Outside of work, Nicolas alternates between his lives in Paris and Amsterdam.
+  He spends a considerable amount of time playing and writing music, playing
+  cards and board games, cycling, and dancing Scottish country dances. The
+  latter leads him to travel regularly all over the world to participate in
+  international events. He can prove to be very convincing and, who knows, maybe
+  you will find yourself dancing with him sooner than you think?
+
+links:
+  Website: http://nicolas.jeannerod.fr/
+  GitHub: http://github.com/Niols
 
 skills:
-  - OCaml
-  - LaTeX
-  - algorithmics
-  - Unix systems
-  - formal verification
-  - techincal writing and communication
+  - Functional Programming
+  - Formal Verification
+  - Unix Systems
+  - Technical Writing and Communication
 
 speaks:
   - English (fluent)
-  - French (native speaker)
+  - French (native)
 
 experience:
   - employer: Tweag I/O

@@ -2,11 +2,24 @@ slug: dorran.howell
 name: Dorran Howell
 github: dorranh
 
+shortDescription: |
+  Dorran is a data engineer with expertise in data pipelines and ML
+  engineering.
+
 bio: |
-  Dorran is a Data Engineer with expertise in data pipelines and ML engineering.
-  Before joining Tweag, Dorran worked at Enverus where he developed data pipelines and Python extensions
-  to the company’s geophysical modeling application. Outside of work, Dorran enjoys running and hiking in the Alps
-  with his wife and border collie.
+  Dorran studied geology at ETH Zürich where he applied Bayesian modeling
+  techniques to model subsurface geologic structures using
+  remote sensing and geochemical data.
+
+  Before joining Tweag, Dorran worked at Enverus where he
+  developed data pipelines and Python extensions to the company’s geophysical
+  modeling application. Outside of work, Dorran enjoys running and hiking in
+  the Alps with his wife and border collie.
+
+  Tweagers know that whatever Dorran does works! He's fun to work with, has
+  great skills, but is also considerate, humble and a good team player! He is
+  enthusiastic about everything, but particularly about making sense out of
+  data and tidying up code and databases.
 
 skills:
   - Python

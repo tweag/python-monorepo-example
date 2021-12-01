@@ -1,0 +1,70 @@
+@keyframes slowFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.magicGrid {
+  grid-area: magic-grid;
+  justify-self: center;
+  --magic-grid-width: min(100rem, 100vw);
+  width: var(--magic-grid-width);
+  display: grid;
+  padding: var(--magic-grid-margin, 1rem);
+  gap: var(--magic-grid-gap, 1rem);
+  grid-template-columns: repeat(var(--magic-grid-columns, 7), 1fr);
+  transition: all 1s;
+  --magic-grid-cell-width: calc(
+    calc(
+        var(--magic-grid-width) -
+          calc(
+            calc(var(--magic-grid-margin, 1rem) * 2) +
+              calc(
+                var(--magic-grid-gap, 1rem) * (var(--magic-grid-columns, 7) - 1)
+              )
+          )
+      ) / var(--magic-grid-columns, 7)
+  );
+  grid-auto-rows: var(--magic-grid-cell-width);
+  grid-auto-columns: var(--magic-grid-cell-width);
+  grid-auto-flow: row;
+  --bio-rounding-amount: calc(var(--magic-grid-cell-width) * 0.4);
+  animation: slowFadeIn 2s linear;
+  animation-fill-mode: backwards;
+}
+
+@media screen and (min-width: 768px) {
+  .magicGrid {
+    --magic-grid-margin: 60px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .magicGrid {
+    --magic-grid-margin: 120px;
+  }
+}
+
+.magicGridContainer {
+  display: grid;
+  grid-template: "action-bar" "magic-grid" / 1fr;
+}
+
+.actionBar {
+  grid-area: action-bar;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  .actionBar {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+}

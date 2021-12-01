@@ -2,8 +2,31 @@ slug: nour.elmawass
 name: Nour El Mawass
 github: Nour-Mws
 
+shortDescription: |
+  Nour is a data scientist/engineer that recently made the leap
+  of faith from Academia to Industry. She has worked on Machine
+  Learning, Data Science and Data Engineering problems in various
+  domains. She has a PhD in Computer Science and currently lives
+  in Paris, where she stubbornly tries to get her native lebanese
+  plants to live on her tiny parisian balcony.
+
 bio: |
-  Nour is a data scientist/engineer with many years of experience in Academia. She has previously worked on Machine Learning, Natural Language Processing and Data Science problems in a myriad of domains including: online social networks, cybersecurity, software management and wearable biosensors. She has a PhD in Computer Science from the university of Rouen in France.
+  Prior to joining Tweag, Nour spent many years in Academia, as a 
+  researcher, PhD candidate and Postdoc.
+
+  She completed her PhD at the University of Rouen in France, where 
+  she worked on developing Machine Learning models that adapt to 
+  evolving adversarial entities. Her prior research spanned multiple 
+  application domains, including online social networks, cybersecurity,
+  software management and wearable biosensors.
+
+  Nour is currently working on developing end-to-end data engineering 
+  solutions and enjoying the thrill of ramping up on technologies and 
+  tools.
+
+  Outside work, she enjoys wandering the aisles of public libraries,
+  plucking obscure books and incidentally sports the honorary title
+  of "certified bookworm".
 
 skills:
   - Machine learning
@@ -11,8 +34,9 @@ skills:
   - Data science
   - Amazon Web Services (AWS)
   - Apache Spark
+  - Data pipelines
   - Natural Language Processing
-  - R (not actively using)
+  - R
 
 experience:
   - employer: Tweag

@@ -1,16 +1,16 @@
 slug: aleksander.gondek
 name: Aleksander Gondek
 github: AleksanderGondek
-bio: |
+shortDescription: |
   Jack of all trades, master of at least one - having a broad software
   development experience and deep passion for work, Alex seeks to bring
   state-of-art solutions to any endeavour he has currently embarked upon.
-  He has extensive experience in introducing automation, composability,
+bio: |
+  Alex has extensive experience in introducing automation, composability,
   immutability and horizontal scalability to any Kubernetes-related solution.
-  Strong proponent of functional programming and the GitOps approach.
-
-  In his spare time, Alex likes to play {role playing, video, board}-games,
-  read speculative fiction and develop side-projects.
+  Strong proponent of functional programming and the GitOps approach. In his
+  spare time, he likes to play {role playing, video, board}-games, read
+  speculative fiction and develop side-projects.
 skills:
   - Python
   - Scala

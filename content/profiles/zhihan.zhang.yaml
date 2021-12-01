@@ -1,10 +1,23 @@
 slug: zhihan.zhang
 name: Zhihan Zhang
 github: zz1874
+shortDescription: |
+  Zhihan is a machine learning engineer, specialized in Machine Learning and
+  Natural Language Processing.
+bio: |
+  Zhihan has a MSc in probabilities and random models from Sorbonne University
+  (Paris VI), and finished a PhD in geometric topology and probabilities at
+  Telecom Paris where she defined a random walk on simplicial complexes and
+  applied machine learning algorithms on them. Her research interests are in data
+  science and data engineering, and she also looks forward to learning new
+  programming skills and putting theory into practice. During her free time,
+  Zhihan enjoys music, arts, reading books (especially detective fiction), and
+  cooking.
 skills:
   - Machine Learning
   - Python
-bio: "Zhihan is a machine learning engineer. She finished a PhD in geometric topology and probabilities at Telecom Paris where she defined a random walk on simplicial complexes and applied machine learning algorithms on them. Her research interests are in machine learning, deep learning and NLP, and she also looks forward to learning new programming skills and putting theory into practice. During her free time, Zhihan enjoys music, arts, reading books (especially detective fiction), and cooking."
+  - Data science
+  - Natural Language Processing
 speaks:
   - English
   - Chinese

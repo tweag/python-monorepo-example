@@ -1,9 +1,23 @@
 slug: krzysztof.gogolewski
 name: Krzysztof Gogolewski
+pronouns: He/Him
+twitter: "@monoidal_"
 github: monoidal
+shortDescription: |
+  Krzysztof is a software engineer and a regular contributor to GHC since 2013.
+  He enjoys many areas of theoretical computer science - algorithms,
+  computational complexity, compilers, category theory etc.
 bio: |
-  Krzysztof is a software engineer. He enjoys theoretical computer science,
-  functional programming in Haskell, fast feedback loops and foreign languages.
+  Krzysztof is interested in implementation and application of techniques
+  such as dependent types, linear types, modal logic, parametericity, automatic
+  differentiation, program transformations. He likes to press for fast feedback
+  loops and advertises NixOS. Krzysztof runs, learns foreign languages and
+  reads non- and science fiction.
+
+  Tweagers describe Krzysztof as brilliant and pragmatic mind, known for
+  hilarious and mad debugging runs. If you work with Krzysztof you can expect a
+  fun session full of life wisdom, mathematics, jokes, and piercingly
+  accurate questions that get to the heart of a problem in no time.
 skills:
   - Haskell
   - Python
@@ -18,17 +32,16 @@ speaks:
   - German (basic)
 experience:
   - employer: Tweag
-    role: senior software engineer
+    role: Senior Software Engineer
     years: October 2018 - present
     location: Paris, France
     description:
-      - I worked on adding linear types to GHC. This involved large-scale
-        merging work and accounting for many interactions of linear types
-        with existing features in the compiler - data constructors,
-        Template Haskell, Core and so on. The branch was merged in June 2020
-        and will be released in GHC 9.0.
+      - I am working on linear types to GHC - the first version released in
+        GHC 9.0. This involved large-scale merging work and accounting for many
+        interactions of linear types with existing features in the compiler -
+        data constructors, Template Haskell, Core and so on.
       - I am working with Zeus Logics on automatisation of supply chains.
-        The project uses Haskell, PureScript and Nix. It involves collection
+        The project uses Haskell, TypeScript and Nix. This includes collection
         of documents from freight forwarders, tracking location of containers,
         submission of declarations to US Customs.
   - employer: Codility
@@ -61,6 +74,7 @@ education:
     years: 2007-2010
 
 talks:
+  - "A conceptual introduction to Nix. Haskell Exchange 2021"
   - "Implementation of linear types. Haskell Implementors Workshop 2020"
   - "Introduction to linear types. Monadic Party 2018"
   - "Dependently typed programming in Agda. Monadic Party 2015"
