@@ -13,6 +13,7 @@ export function parsePhotos(data) {
 /**
  * @returns {{
  *  name: string,
+ *  pronouns: string,
  *  bio: string,
  *  role: string,
  *  tags: string[],
@@ -31,6 +32,7 @@ export function parseProfiles(data) {
     //    links.CV = `/cv/${queriedProfile.slug}`
     const profile = {
       name: queriedProfile.name,
+      pronouns: queriedProfile.pronouns ?? ``,
       bio: queriedProfile.bio ?? ``,
       role: queriedProfile.experience
         ? queriedProfile.experience.find(

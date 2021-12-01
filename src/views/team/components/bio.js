@@ -41,6 +41,7 @@ export const BioContext = createContext(null)
  *  rounding: 0 | 1 | 2,
  *  person: {
  *    name: string
+ *    pronouns: string
  *    bio: string,
  *    role: string,
  *    tags: string[],
@@ -84,7 +85,9 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
     >
       <div className={styles.header}>
         <div className={styles.personName}>{person.name}</div>
-        <div className={styles.personRole}>{person.role}</div>
+        <div className={styles.personRole}>
+          {[person.role, person.pronouns].filter(Boolean).join(`, `)}
+        </div>
         <CloseButton />
       </div>
       <div className={styles.tags}>
