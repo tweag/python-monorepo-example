@@ -39,12 +39,27 @@
 .profileName {
   position: absolute;
   z-index: 100;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.8rem;
   left: 0px;
   bottom: 0px;
   color: white;
-  padding: 1rem;
+  padding: 0.3rem;
   transition: all var(--animations-duration);
+}
+
+@media screen and (min-width: 767px) {
+  .profileName {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .profileName {
+    padding: 1rem;
+    font-weight: bold;
+  }
 }
 
 @media screen and (max-width: 767px) {
