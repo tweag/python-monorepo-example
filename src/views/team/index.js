@@ -16,7 +16,7 @@ const MagicGrid = loadable(() => import(`./components/magic-grid`), {
   fallback: <LoadingAnimation />,
 })
 
-const introText = `Tweag is a unique global team of over eighty engineers bringing tomorrow’s software techniques into today’s production systems, forming a network that connects our deep tech clients, Open Source communities and the research realm.`
+const introText = `Tweag is a global team working remotely from anywhere on earth or from hubs in Paris, Zürich, London and Utrecht. We sure love connecting science and engineering. Yet you'd be surprised to hear what else we wake up for every day. Check it out!`
 
 const IntroductionSection = () => {
   return (
