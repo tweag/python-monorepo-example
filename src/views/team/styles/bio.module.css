@@ -80,16 +80,6 @@
   overflow: hidden;
 }
 
-.longTextContainer::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0px;
-  height: 1px;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0px 0px 10px 1.5rem white;
-}
 .longTextContainer::after {
   content: " ";
   display: block;
@@ -104,8 +94,8 @@
 .longTextScrollable {
   display: block;
   height: 100%;
-  overflow: auto;
-  padding-top: 1.5rem;
+  overflow: hidden;
+  padding-top: 1em;
   padding-bottom: 1.5rem;
   scrollbar-width: none;
 }
