@@ -125,3 +125,13 @@ export function useSearchContext() {
   const manager = useContext(SearchContext)
   return manager
 }
+
+/**
+ * @param {HTMLElement} source
+ * @param {string} filterString
+ */
+export function dispatchFilterEvent(source, filterString) {
+  const event = new Event(`filter`, { bubbles: true })
+  event.filterString = filterString
+  source.dispatchEvent(event)
+}

@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid"
 import { parsePositionalStyles } from "../utils/ajustments"
 import styles from "../styles/bio.module.css"
 import { positionedTile } from "../styles/tiles.module.css"
+import { dispatchFilterEvent } from "../utils/search"
 
 const RIGHT_ROUNDINGS = [
   styles.roundTopRightCorner,
@@ -88,7 +89,14 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
       </div>
       <div className={styles.tags}>
         {person.tags.map(tag => (
-          <div className={styles.tag} key={tag}>
+          <div
+            className={styles.tag}
+            key={tag}
+            onClick={event => {
+              const source = event.currentTarget
+              dispatchFilterEvent(source, tag)
+            }}
+          >
             {tag}
           </div>
         ))}
