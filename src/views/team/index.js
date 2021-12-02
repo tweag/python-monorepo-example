@@ -16,7 +16,7 @@ const MagicGrid = loadable(() => import(`./components/magic-grid`), {
   fallback: <LoadingAnimation />,
 })
 
-const introText = `Tweag is a global team working remotely from anywhere on earth or from hubs in Paris, Zürich, London and Utrecht. We sure love connecting science and engineering. Yet you'd be surprised to hear what else we wake up for every day. Check it out!`
+const introText = `Tweag is a global team working remotely from anywhere on Earth or from hubs in Paris, Zürich, London and Utrecht. We sure love connecting science and engineering. Yet you'd be surprised to hear what else we wake up for every day. Check it out!`
 
 const IntroductionSection = () => {
   return (
