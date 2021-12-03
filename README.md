@@ -233,23 +233,6 @@ The phases of the reviewing process are roughly the following:
 When you are satisfied with the result, approve the PR (with Github's
 semantical review) and move the card to Staging (see the README card).
 
-## Adding yourself as a new team member
-
-TODO
-
-If you have a specific academic background, say so. Avoid writing down
-a skill that says just "Haskell" or "Nix". Write whatever you feel
-like. The idea is that visitors get to understand what specifics you
-bring to the team and perhaps even get an idea of the kind of person
-you are. Maybe you have a knack for technical writing, or are a bug
-sleuth that's pretty good at baking cookies too.
-
-Be sure to install [git lfs](https://git-lfs.github.com/) on your
-machine before adding your picture. Git lfs "replaces large files such
-as audio samples, videos, datasets, and graphics with text pointers
-inside Git.". If the picture is correctly tracked by git lfs, you
-_should not_ see an image preview in your PR.
-
 ## Implementation details
 
 ### Build process
