@@ -1,0 +1,90 @@
+slug: christopher.harrison
+name: Christopher Harrison
+github: Xophmeister
+
+shortDescription: |
+  Chris is a recovering mathematician and software engineer at Tweag. He
+  has spent much of his career working for academia, from both the
+  business and the research sides of the industry. He perceives a
+  universe where code and poetry exist in the same space, with all that
+  entails.
+
+bio: |
+  Outside his significant steeping in STEM, Chris enjoys analogue
+  pursuits (the more creative, the better), suffusion within the natural
+  world and any opportunity to broaden his horizons. This has manifested
+  itself in, amongst other things, reading, writing, cooking (he's a
+  trained chocolatier), birding and road cycling.
+
+# links:
+
+skills:
+  - Python
+  - C
+  - Terraform
+  - Bash
+  - SQL
+  - HPC and big-data
+
+speaks:
+  - English
+  - Rusty Italian
+
+experience:
+  - employer: Tweag
+    role: "Software Engineer: Developer Productivity"
+    years: November 2021 - Present
+    # description:
+
+  - employer: Wellcome Sanger Institute
+    role: Senior Software Developer
+    years: October 2014 - November 2021
+    description:
+      - Software design, development and maintenance to support human
+        genome researchers' use of high-performance compute facilities.
+      - Investigation and maintenance of novel data-processing
+        pipelines.
+      - Software and DevOps research to facilitate scientific or
+        operational needs.
+      - Operational support to scientists.
+      - Mentorship and coaching of junior software engineers and
+        interns.
+
+  - employer: University of the Arts London
+    role: "Information Analyst / Programmer"
+    years: June 2011 - October 2014
+    description:
+      - Design and implementation of reporting/data analytics software
+        to support student assessment and awarding of degrees.
+      - Spear-heading the development of web-based portals to allow
+        students to maintain their personal data and register for
+        graduation, integrating with the institution's EMS.
+      - API design and implementation, for the above, that ultimately
+        consolidated many of the institution's disparate systems.
+      - Headed up a nascent unit of engineers to continue this work.
+
+  - employer: "Allocate Software PLC (née Baum Hart and Partners)"
+    role: IT Consultant and Technician
+    years: November 2005 - September 2009
+    description:
+      - Testing and support of a financial appraisal tool for academic
+        research projects.
+      - Database and system administration.
+
+  - employer: University of Bath
+    role: Graduate Teaching Assistant
+    years: September 2004 - May 2005
+    description:
+      - Tutoring of first year undergraduates in applied calculus, logic
+        and the fundamentals of mathematical analysis.
+
+education:
+  - qualification: MA
+    name: Linguistics
+    institution: University College London
+    years: 2009 - 2010
+
+  - qualification: MMath
+    name: Mathematics
+    institution: University of Bath
+    years: 2000 - 2005
