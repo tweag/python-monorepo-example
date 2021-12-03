@@ -1,10 +1,16 @@
-slug: manual.chakravarty
+slug: manuel.chakravarty
 name: Manuel M. T. Chakravarty
 github: mchakravarty
+twitter: "@TacticalGrace"
+website: http://justtesting.org/
+shortDescription: |
+  Manuel M T Chakravarty is a researcher, architect, and engineer specialised in programming languages, compilers, blockchains, and high-performance computing.
 bio: |
-  Manuel M T Chakravarty is a researcher, architect, and engineer specialised in programming languages, compilers, blockchains, and high-performance computing. Before joining Tweag, he was an Associate Professor at UNSW Sydney publishing extensively on topics related to programming languages and high-performance computing. He also contributed to the design and implementation of the Haskell functional programming language, including by way of his award winning contributions to type families. Recently, he has been leading the research and design of the native asset and smart contract functionality of the Cardano blockchain.
+  Before joining Tweag, Manuel was an Associate Professor at UNSW Sydney publishing extensively on topics related to programming languages and high-performance computing. He also contributed to the design and implementation of the Haskell functional programming language, including by way of his award winning contributions to type families. Recently, he has been leading the research and design of the native asset and smart contract functionality of the Cardano blockchain.
+links:
+  Website: http://justtesting.org/
 skills:
-  - Research (programming languages, compilers, blockchain & high-performance computing)
+  - Research leadership
   - Engineering leadership
   - Language and system architecture
   - Functional programming (Haskell & Swift)
