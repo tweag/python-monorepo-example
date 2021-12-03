@@ -3,7 +3,7 @@ name: Mark Karpov
 github: mrkkrp
 shortDescription: |
   Mark applies the principles of functional programming to solve real-world
-  problems. He helps Tweag clients design and build correct, robust, and
+  problems. He helps Tweag's clients design and build correct, robust, and
   maintainable software. His personal projects include high-profile Haskell
   libraries, tutorials, and a technical blog.
 bio: |
@@ -22,8 +22,8 @@ bio: |
   Paris, France. In his free time he is an avid reader, writer, photographer,
   musician, and painter.
 
-  Mark is passionate about many topics, and known as a curious, fast learner at
-  Tweag who has a sharpeyed sense of observation. He is a fascinating and
+  Mark is passionate about many topics, and known as a curious, fast learner
+  who has a sharp-eyed sense of observation. He is a fascinating and
   reliable colleague striving for simplicity and good judgement day to day.
 links:
   Personal website: https://markkarpov.com
