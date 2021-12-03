@@ -1,0 +1,22 @@
+@keyframes SlideFromTheBottom {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slideAndFadeIn {
+  animation: SlideFromTheBottom 0.8s, FadeIn 4s;
+  animation-fill-mode: backwards;
+}
