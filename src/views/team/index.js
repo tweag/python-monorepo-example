@@ -10,6 +10,7 @@ import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
 import styles from "./styles/team.module.css"
+import animations from "./styles/animations.module.css"
 import { LoadingAnimation } from "./components/loading-animation"
 
 const MagicGrid = loadable(() => import(`./components/magic-grid`), {
@@ -22,7 +23,7 @@ const IntroductionSection = () => {
   return (
     <div className={styles.introductionSection} sx={{ gap: [`15px`, `40px`] }}>
       <Text
-        className={`transition-section__transition--slide-fade-in bottom-in ${styles.title}`}
+        className={`${animations.slideAndFadeIn} ${styles.title}`}
         sx={{
           // minHeight: `100px`,
           textTransform: `uppercase`,

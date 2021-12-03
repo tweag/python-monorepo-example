@@ -352,10 +352,7 @@ export class TileSet {
       ? this.activeBioProfile?.start?.x
       : 1
 
-    const tileType =
-      this.activeBioProfile.height == 1 && this.activeBioProfile.width == 1
-        ? `profile`
-        : `bigProfile`
+    const tileType = `bigProfile`
     const id = `${tileType}:${this.activeBioProfile.person.slug}`
     const resultProfile = {
       id,
@@ -363,8 +360,8 @@ export class TileSet {
         x: finalRow,
         y: this.activeBioProfile.start.y,
       },
-      height: this.activeBioProfile.height,
-      width: this.activeBioProfile.width,
+      height: 2,
+      width: 2,
     }
 
     // Calculate profile position and size
@@ -374,8 +371,7 @@ export class TileSet {
 
     const spaceToTheLeft = this.activeBioProfile.start.y - 1
     const spaceToTheRight =
-      this.columns -
-      (this.activeBioProfile.start.y - 1 + this.activeBioProfile.width)
+      this.columns - (this.activeBioProfile.start.y - 1 + 2)
 
     if (spaceToTheRight < profileWidth && spaceToTheLeft >= profileWidth) {
       profilePosition = `left`
@@ -392,7 +388,7 @@ export class TileSet {
       profilePosition === `right`
         ? {
             x: finalRow,
-            y: this.activeBioProfile.start.y + this.activeBioProfile.width,
+            y: this.activeBioProfile.start.y + 2,
           }
         : {
             x: finalRow,
