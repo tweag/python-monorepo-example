@@ -1,15 +1,20 @@
 slug: rok.garbas
 name: Rok Garbas
 github: garbas
-bio: |
+shortDescription: |
   Rok is a Senior Software Engineer and is passionate about improving Nix user
-  experience, and growing Nix adoption in the wider tech community. He is
-  vastly experienced as a front, back and DevOps engineer, and worked as a
-  Release Engineer at Mozilla and RhodeCode prior to joining Tweag. Rok is a
+  experience, and growing Nix adoption in the wider tech community.
+bio: |
+  Rok is vastly experienced as a front, back and DevOps engineer, and worked as
+  a Release Engineer at Mozilla and RhodeCode prior to joining Tweag. Rok is a
   longtime Nix contributor, founder and leader of the NixOS Marketing Team, and
   organizer of the first NixCon in Berlin, and away from engineering enjoys
   gardening, surfing, Brazilian Zouk dancing and spending time with his two
   sons.
+
+  Tweagers who worked with Rok experienced how he efficiently and pragmatically
+  solves problems keeping the larger vision in mind. His mysterious friendly
+  force has united people in many meetings.
 skills:
   - Nix
   - NixOS
