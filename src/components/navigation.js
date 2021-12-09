@@ -215,6 +215,8 @@ function Header({ inverted, fullpage = false }) {
             onMouseEnter={() => setDropDownVisible(`key-industries`)}
             onMouseLeave={() => hideDropDown(`key-industries`)}
             onClick={() => setDropDownVisible(`key-industries`)}
+            onFocus={() => setDropDownVisible(`key-industries`)}
+            onBlur={() => hideDropDown(`key-industries`)}
             sx={{
               mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
               mb: [`15px`, `15px`, 0],
@@ -255,6 +257,7 @@ function Header({ inverted, fullpage = false }) {
                 },
               }}
               className={navLinkClassName}
+              tabIndex={0}
             >
               Key industries
             </Text>
