@@ -3,22 +3,19 @@ name: Evgenii Akentev
 github: ak3n
 
 bio: >
-  I’m a software engineer interested in functional programming and formal verification.
-  I value the importance of soft-skills in communication and the ability to make tradeoffs in software development.
+  I’m a software engineer interested in functional programming, compilers, programming languages and teaching.
 
-  In my free time, I help to create educational materials on functional programming and teaching
-  undergraduate students at Ural Federal University.
+  I value the importance of soft-skills in every day work and the ability to make trade-offs in software development.
+
+  In my free time, I help to create educational materials on functional programming and to teach undergraduate students at Ural Federal University.
+  Also, love reading books, walking the streets, and travelling.
 
 skills:
-  - Python
-  - C#
-  - Standard ML
-  - OCaml
-  - Agda
-  - Twelf
   - Haskell
-  - Nix
   - Functional programming
+  - Compilers
+  - Web development
+  - Empathy
 
 speaks:
   - English
