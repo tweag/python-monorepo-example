@@ -34,7 +34,6 @@
   grid-area: person-name;
   font-weight: 700;
   font-size: 2rem;
-  text-transform: capitalize;
   margin-bottom: 0.5rem;
 }
 
