@@ -2,21 +2,24 @@ slug: ilya.polyakovskiy
 name: Ilya Polyakovskiy
 github: k1nkreet
 website: https://git.sr.ht/~k1nkreet
-bio: |
+shortDescription: |
   Ilya is a software engineer with a broad and diverse experience from
-  telecommunication devices firmware and billing systems to tools for developers
-  and scientists and package management systems. Before joining Tweag he was working at JetBrains,
-  creating tools for reproducible research in data science and machine learning.
+  embedded devices firmware to scientific tools and package management systems.
   He specializes on system programming, and has a huge interest in functional programming
+bio: |
+  He studied at Moscow State University and started his path as a scientist
+  working on mathematical model of World Ocean. After leaving academia he was
+  trying to get as much fun as could out of industry working on telecommunication
+  systems, embedded devices firmwares and ended up working on tools for scientists
+  and software developers at JetBrains. Besides programming he spend his time playing
+  on guitars and piano, snowboarding and playing beach volleyball
 
 skills:
   - C/C++
-  - Rust
   - Python
+  - Rust
   - Bazel
-  - Bash
   - Linux
-  - Machine Learning
 speaks:
   - Russian
   - English
