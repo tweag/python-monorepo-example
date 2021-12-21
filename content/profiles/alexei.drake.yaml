@@ -1,0 +1,73 @@
+slug: alexei.drake
+name: Alexei Drake
+github: AlexeiDrake
+shortDescription: |
+  Alexei is a generalist software engineer that is passionate about composable and
+  scalable approaches to all stages of software engineering, as well as open-source
+  advocacy.
+bio: |
+  Coming from a diverse background of full-stack web applications and nuclear
+  accelerator control systems, Alexei has a wide overview of the state of
+  affairs in the tech world. Displeased with this state, often tripping over
+  problems long solved, he found his way to Haskell, Rust, Nix, and NixOS,
+  which re-ignited his love for technology, especially open-source software.
+
+  In addition to tackling technical challenges, he is equally at home with
+  the sometimes even trickier challenge of building and maintaining happy
+  teams, with a focus on good communication and empathy. He feels happiest
+  in companies that value people above all else; and Tweag is such a company!
+
+  When not on the clock, Alexei enjoys applying his collaborative
+  problemsolving skills in the kitchen, likes to pester people with a camera,
+  and is a notorious board game hoarder.
+skills:
+  - C++
+  - Rust
+  - Haskell
+  - Embedded
+  - Functional Programming
+  - Nix
+  - NixOS
+  - DevOps
+  - Web
+speaks:
+  - English
+  - German
+  - Slovenian
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: October 2021 - present
+    description:
+      - Furthering the Bazel-on-Nix infrastructure
+      - Small contributions to Nickel project
+  - employer: Cosylab
+    role: Lead Software Engineer
+    years: September 2019 - October 2021
+    description:
+      - Technical lead for the design and implementation of control systems for components of nuclear accelerators and medical devices for use in proton therapy
+      - Introduced Nix and CMake to streamline development of complex, cross-platform codebases
+      - Mentored coworkers, prepared tech talks
+  - employer: Marand
+    role: Full-stack Software Engineer
+    years: June 2018 - September 2019
+    description:
+      - Worked on the full life-cycle of microservice-based medical infrastructure and end-user applications
+      - Initiated company-wide introduction of shared/reusable components on both backend and frontend, allowing us to start building the first turn-key product
+      - Introduced Docker to the company to help with reproducibile build and devops
+  - employer: Google
+    role: Software Engineering Intern
+    years: January 2017 - October 2017
+    description:
+      - Worked on the Public Events project for the i18n team
+      - Designed and implemented algorithmic and architectural solutions to improve performance and scalability, quality of data, and expand coverage to support new use cases
+  - employer: Microsoft
+    role: Software Engineering Intern
+    years: July 2016 - September 2016
+    description:
+      - Implemented distributed full-text indexing solution that allowed real-time querying of massive data sets, with load balancing and benchmarks
+education:
+  - qualification: Bachelor
+    name: Computer Science
+    institution: University of Ljubljana
+    years: 2017 - 2021
