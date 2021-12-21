@@ -10,8 +10,12 @@ bio: |
   Rennes II university. For 3 years he worked for Mazars' data lab as a data
   scientist/software engineer, tackling differents problems, ranging from statistical
   models implementation to writing ansible scripts for apps deployment.
-  He likes to tinker with different software tools. During the weekends,
-  Mo likes to spend time taking sunset pictures of the streets of Paris.
+  For one of his former client (a French car company), Mohamed created a MongoDB
+  datalake and data ingestion pipelines for a ML model that tracks rented car maintenance.
+
+  Mohamed likes to tinker with different software tools and during the weekends, he
+  likes to spend time taking sunset pictures of the streets of Paris.
+
 skills:
   - Python
   - R
@@ -28,15 +32,39 @@ experience:
     role: Data scientist / Software engineer
     location: Paris, France
     years: October 2018 - present
+    description:
+      - Create an ElasticSearch based datalake alongside data pipelines that ensure
+        data deserialization and full integraty migration using Protobuffer and Python
+      - Create APIs to deliver insights for data heath or business related KPI using
+        FastAPI or Flask
+      - Create tools to auto generate visual report with FPDF and various JS data
+        visualization libraries
+      - Use heuristic approaches to enhance fragrance scores, deploy the selected rules
+        within a web application.
+  - employer: Bouygues Telecom
+    role: Data scientist/analyst
+    location: Paris, France
+    years: February 2018 - September 2018
+    description:
+      - Understanding the objectives of the commercial task force at Bouygues Telecom
+      - Use Tableau to create valuable KPIs for the team while providing a data backed
+        argument on its usability
+      - Automatic generation of Excel reports for the head of the task force using
+        Teradata endpoints VBA and Python
+
 education:
   - qualification: Engineering degree
     name: Mathematical engineer
     institution: INSA de Rennes
     location: Rennes, France
     years: 2012 - 2018
+    description:
+      - Bayesian statistics, Martingales and Brownian motion
 
   - qualification: Master of Science
     name: Risk optimization and modelling
     institution: Rennes II university
     location: Rennes, France
     years: 2016 - 2018
+    description:
+      - ML modeling, Lifetime modeling, uncertainty analysis
