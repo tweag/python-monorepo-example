@@ -31,15 +31,15 @@ experience:
   - employer: Mazars
     role: Data scientist / Software engineer
     location: Paris, France
-    years: October 2018 - present
+    years: October 2018 - November 2021
     description:
-      - Create an ElasticSearch based datalake alongside data pipelines that ensure
+      - Created an ElasticSearch based datalake alongside data pipelines that ensure
         data deserialization and full integraty migration using Protobuffer and Python
-      - Create APIs to deliver insights for data heath or business related KPI using
+      - Created APIs to deliver insights for data heath or business related KPI using
         FastAPI or Flask
-      - Create tools to auto generate visual report with FPDF and various JS data
+      - Coded tools to auto generate visual report with FPDF and various JS data
         visualization libraries
-      - Use heuristic approaches to enhance fragrance scores, deploy the selected rules
+      - Used heuristic approaches to enhance fragrance scores, deploy the selected rules
         within a web application.
   - employer: Bouygues Telecom
     role: Data scientist/analyst
