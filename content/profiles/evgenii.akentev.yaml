@@ -32,8 +32,9 @@ experience:
     role: Software Engineer
     years: April 2021 - present
     description:
-      - Helping IOHK with Plutus Pioneer Program by answering Plutus users' questions, fixing bugs in Plutus's infrastructure, and developing new functionality. Also participating in the Plutus
-        to Haskell compiler, making it compile and run faster.
+      - Helping IOG with Plutus Pioneer Program by answering Plutus users' questions.
+      - Fixing bugs and developing new functionality in the Plutus Apps infrastructure.
+      - Improving the performance in Plutus compiler and GHC plugin.
 
   - employer: Typeable
     role: Team Lead
