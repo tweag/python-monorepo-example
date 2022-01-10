@@ -2,23 +2,26 @@ slug: evgenii.akentev
 name: Evgenii Akentev
 github: ak3n
 
-bio: >
-  I’m a software engineer interested in functional programming and formal verification.
-  I value the importance of soft-skills in communication and the ability to make tradeoffs in software development.
+bio: |
+  Evgenii is a software engineer interested in functional programming, compilers,
+  programming languages and teaching. Evgenii is always keen on learning
+  new things, applying his knowledge to help people solve their problems,
+  and share ideas and experiences.
 
-  In my free time, I help to create educational materials on functional programming and teaching
-  undergraduate students at Ural Federal University.
+  Evgenii values the importance of soft-skills in every day work and the ability to make trade-offs in software development.
 
+  In his free time, Evgenii helps create educational materials on functional programming
+  and teaches undergraduate students at Ural Federal University. This started when the
+  Haskell teacher had left, and Evgenii stepped up to create a team team to replace him!
+
+  Evgenii also loves reading books, walking the streets, discovering
+  new street art in the city he lives in, and travelling.
 skills:
-  - Python
-  - C#
-  - Standard ML
-  - OCaml
-  - Agda
-  - Twelf
   - Haskell
-  - Nix
   - Functional programming
+  - Compilers
+  - Web development
+  - Empathy
 
 speaks:
   - English
@@ -29,7 +32,9 @@ experience:
     role: Software Engineer
     years: April 2021 - present
     description:
-      - Helping IOHK with Plutus Pioneer Program by answering Plutus users' questions, fixing bugs in Plutus's infrastructure, and developing new functionality.
+      - Helping IOG with Plutus Pioneer Program by answering Plutus users' questions.
+      - Fixing bugs and developing new functionality in the Plutus Apps infrastructure.
+      - Improving the performance in Plutus compiler and GHC plugin.
 
   - employer: Typeable
     role: Team Lead
