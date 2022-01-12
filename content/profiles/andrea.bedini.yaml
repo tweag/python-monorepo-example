@@ -39,14 +39,10 @@ bio: |
 skills:
   - Haskell
   - Python
-  - C
-  - C++
-  - SQL
-  - Linux
+  - C/C++
   - AWS
-  - Agile
   - Data Science
-  - Product thinking
+  - Product Thinking
   - Teaching
 
 speaks:
