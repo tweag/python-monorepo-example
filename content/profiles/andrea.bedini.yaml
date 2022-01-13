@@ -1,0 +1,188 @@
+slug: andrea.bedini
+name: Andrea Bedini
+pronouns: He/Him
+github: andreabedini
+links:
+  Website: https://www.andreabedini.com
+  GitHub: https://github.com/andreabedini
+  ORCID: https://orcid.org/0000-0003-4881-1606
+  ResearcherID: https://www.researcherid.com/rid/B-8775-2009
+
+shortDescription: |
+  Andrea is a researcher and software engineer driven by the passion to
+  solve problems in a better way.
+
+  Before joining Tweag, Andrea has been a researcher, lecturer, software
+  engineer and data scientist.
+
+  He believes in empowering people and loves to find (or create) the
+  right tool for the right job for the right person.
+
+bio: |
+  Andrea's interestes lie at the intersection between physics, mathematics
+  and computer science. He has a PhD in Physics and years of research
+  experience across statistical mechanics, combinatorics, bioinformatics
+  and traffic modelling.
+
+  He first learnt to program on the Commodore 64 at the age of 10 and,
+  since then, he has always been curious about how to express his ideas to
+  a computer.
+
+  In industry, Andrea has worked in various roles such as data scientist,
+  software engineer and solution architect. He still loves to pile-up
+  research papers on his desk.
+
+  Andrea believes in empowering people and supports communities that
+  promote skills sharing, digital literacy and collaboration. He
+  partecipates in the Perth Functional Programmers meetup.
+
+skills:
+  - Haskell
+  - Python
+  - C/C++
+  - AWS
+  - Data Science
+  - Product Thinking
+  - Teaching
+
+speaks:
+  - Italian
+  - English
+  - Broken French
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 -- Present
+    location: Perth, Western Australia, Australia
+    description:
+
+  - employer: Fortescue Metals Group
+    role: Specialist Data Scientist
+    years: 2019 -- 2021
+    location: Perth, Western Australia, Australia
+    description:
+      - Ideated and delivered new algorithms for material tracking and
+        inventory management
+      - Contributed to the development of operational metrics
+      - Achitected and delivered solutions and platforms for data science
+        and visualisation
+      - Achitected and delivered data ingestion pipelines from sources
+        systems into a data-lake
+      - Supported data scientists and analysts across the company by
+        promoting skill-sharing and modern practices
+      - "Tech: AWS, Python, R, Haskell, SQL, GitHub"
+
+  - employer: Fortescue Metals Group
+    role: Autonomy Systems Architect
+    years: 2019
+    location: Perth, Western Australia, Australia
+    description:
+      - Worked on a real-time data processing system supporting pervasive
+        vehicle autonomy in an urban environment
+      - Lead a small team of developers working on a mission control
+        application for autonomous operations in a remote environment
+      - "Tech: AWS, Python, Javascript, React, GitHub"
+
+  - employer: KZN Group
+    role: Data Scientist
+    years: 2017 -- 2019
+    location: Perth, Western Australia, Australia
+    description:
+      - Data Science and Data Engineering consulting including project
+        discovery, pre-sales and delivery
+      - Backend and front-end software development
+      - Architected cloud-based solutions on AWS
+      - Community building and engagement through workshop organising and meetups
+      - "Tech: AWS, Python, Javascript, Typescript, Haskell, React, Docker, PyTorch, TensorFlow"
+
+  - employer: Curtin University
+    role: Business Computational Specialist
+    years: 2016 -- 2017
+    location: Perth, Western Australia, Australia
+    description:
+      - Supported Curtin academics with customised data science and
+        visualisation solutions.
+      - Wrote and developed training on deep learning
+      - Coordinated and delivered data science training
+      - Community building and engagement through conferences and workshops
+      - "Tech: Python, Jupyter, R, Javascript, AWS"
+
+  - employer: The University of Melbourne
+    role: Research Fellow
+    years: 2010 -- 2016
+    location: Melbourne, Victoria, Australia
+    description:
+      - Delivered lectures at undergraduate and postgraduate levels
+      - Developed monte-carlo simulations of polymer models.
+      - Developed agent-based models of vehicular traffic
+      - Developed algorithms for the exact sampling of random planar graphs
+      - Developed algorithms for the exact computation of graph polynomials
+      - Developed algorithms for the computation of DNA flexibility
+      - "Tech: C++, Haskell, Python, Jupyter"
+
+  - employer: Institut de Physique Theorique, CEA-Saclay
+    role: Visiting student
+    years: 2008
+    location: Paris, France
+    description:
+      - "Project: Evaluation of the Tutte polynomial by combining transfer matrices and tree decomposition"
+      - "Tech: C++, Java, Haskell"
+
+  - employer: Università di Pisa
+    role: Unix System Administrator (part-time)
+    years: 2005 -- 2006
+    location: Pisa, Italy
+    description:
+      - Managed the workstations and servers of the Space Mechanics Group
+      - Ensured tracking of near-Earth asteroids kept running
+      - "Tech: Linux, Fortran, C"
+
+  - employer: CERN
+    role: Summer Student
+    years: 2003
+    location: Geneva, Switzerland
+    description:
+      - "Project: Algorithm for the mass reconstruction and background rejection in the Higgs fully leptonic channel"
+      - "Tech: C++, ROOT"
+
+education:
+  - qualification: PhD
+    name: Physics
+    institution: Università degli Studi di Milano
+    years: 2007 -- 2010
+    location: Milan, Italy
+    description:
+      - "Thesis: The statistical mechanics of spanning forests"
+
+  - qualification: MSc
+    name: Master of Science (Physics)
+    institution: Università di Pisa
+    location: Pisa, Italy
+    years: 2004 -- 2006
+    description:
+      - "Thesis: A fermionic field theory of spanning hyperforests"
+
+  - qualification: BSc
+    name: Bachelor of Science (Physics)
+    institution: Università di Pisa
+    location: Pisa, Italy
+    years: 2000 -- 2004
+    description:
+      - "Thesis: Misura del bosone di Higgs nel decadimento in quattro lettoni carichi nell’esperimento ATLAS a LHC"
+
+publications:
+  - "L Morawska, P K Thai, X Liu, A Asumadu-Sakyi, G Ayoko, A Bartonova, A Bedini, F Chai, B Christensen, M Dunbabin, J Gao, G S W Hagler, R Jayaratne, P Kumar, A K H Lau, P K K Louie, M Mazaheri, Z Ning, N Motta, B Mullins, M M Rahman, Z Ristovski, M Shafiei, D Tjondronegoro, D Westerdahl, and R Williams. Applications of low-cost sensing technologies for air quality monitoring and exposure assessment: How far have they gone? Environment International, 116 (2018)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Self-attracting polymers in two dimensions with three low-temperature phases. J. Phys. A: Math. Theor., 50 (2017)"
+  - "A Bedini, A L Owczarek, and T Prellberg. The role of three-body interactions in two-dimensional polymer collapse. J. Phys. A: Math. Theor., 49 (2016)"
+  - "G Menconi, A Bedini, R Barale, and I Sbrana. Global Mapping of DNA Conformational Flexibility on Saccharomyces cerevisiae. PLOS Computational Biology, 11 (2015)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Lattice polymers with two competing collapse interactions. J. Phys. A: Math. Theor., 47 (2014)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Numerical simulation of a lattice polymer model at its integrable point. J. Phys. A: Math. Theor., 46 (2013)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Semi-flexible interacting self-avoiding trails on the square lattice. Physica A: Statistical Mechanics and its Applications, 392 (2013)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Self-avoiding trails with nearest-neighbour interactions on the square lattice. J. Phys. A: Math. Theor., 46 (2013)."
+  - "A Bedini, A Owczarek, and T Prellberg. Weighting of topologically different interactions in a model of two-dimensional polymer collapse. Phys. Rev. E, 87 (2013)."
+  - "A Bedini, A L Owczarek, and T Prellberg. Anomalous critical behavior in the polymer collapse transition of three-dimensional lattice trails. Phys. Rev. E, 86 (2012)."
+  - "A Bedini, and J L Jacobsen. A tree-decomposed transfer matrix for computing exact Potts model partition functions for arbitrary graphs, with applications to planar graph colourings. J. Phys. A: Math. Theor., 43 (2010)."
+  - "A Puliti, C Rizzato, V Conti, A Bedini, G Gimelli, R Barale, and I Sbrana. Low-copy repeats on chromosome 22q11.2 show replication timing switches, DNA flexibility peaks and stress inducible asynchrony, sharing instability features with fragile sites. Mutation Research - Fundamental and Molecular Mechanisms of Mutagenesis, 686 (2010)."
+  - "A Bedini, S Caracciolo, and A Sportiello. Phase transition in the spanning-hyperforest model on complete hypergraphs. Nuclear Physics B, 822 (2009)."
+  - "A Bedini, S Caracciolo, and A Sportiello. Hyperforests on the complete hypergraph by Grassmann integral representation. J. Phys. A: Math. Theor., 41 (2008)."
