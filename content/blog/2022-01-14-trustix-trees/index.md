@@ -107,7 +107,7 @@ In other words, the questions "is this (input hash, output hash) in the tree" an
 ### Sparse Merkle trees to the rescue!
 
 The [sparse Merkle tree][sparse-merkle] is a very clever _indexed_ variation on the standard Merkle tree.
-Suppose that our hashes are 256 bit long, we make a Merkle tree with $2^{256}$ leaves. Each leave is initially empty.
+Suppose that our hashes are 256 bit long, we make a Merkle tree with $2^{256}$ leaves. Each leaf is initially empty.
 To add an input-output pair, we compute $I$, the hash of the input, and we change the $I$-th leaf to contain the (hash of) the output.
 Effectively the leaves form an array of length $2^{256}$.
 
