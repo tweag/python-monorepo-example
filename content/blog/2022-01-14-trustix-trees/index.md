@@ -93,7 +93,7 @@ Let's say we want to verify that an output of the builder is indeed what that bu
 We get pointed to an entry in the build log (a leaf node in a Merkle tree) that has the derivation's input hash, and the build's output hash as its values.
 
 We need to verify that this is not a faked entry of the tree, so we take the path from the leaf node up to the root tree.
-We hash each node with it's sibling to calculate their parent's hash, and eventually we reach the root hash.
+We hash each node with its sibling to calculate their parent's hash, and eventually we reach the root hash.
 If the result we get is the same as the root hash in the tree, then this entry is indeed a part of the log.
 
 In addition, the root hash is signed with the log's [private key](https://en.wikipedia.org/wiki/Public-key_cryptography), which allows us to verify that the tree as a whole is correct according to its owner.
