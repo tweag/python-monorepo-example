@@ -149,7 +149,7 @@ Success! We can look up log entries, and prove that the log itself is append-onl
 ### Why blockchains are not fit for purpose
 
 Some astute readers may have noticed already that what we have described above is awfully close to a blockchain, and you may think that intuitively a blockchain would make sense as a foundation of trust. After all isn't this what blockchains are all about?
-The problem comes down to the consensus models. Blockchains are all about distributed consensus, but what Trustix aims to solve require a far more local idea of what consensus means, which makes all current blockchains unsuitable as a foundation.
+The problem comes down to the consensus models. Blockchains are all about distributed consensus, but what Trustix aims to solve requires a far more local idea of what consensus means, which makes all current blockchains unsuitable as a foundation.
 
 Consensus, and therefore blockchains, comes with required financial models such as Proof-of-Work and Proof-of-Stake. Our feeling is that neither of these models are applicable to something like Trustix. They might be great for financial transactions, but carry too much inherent cost for a system like Trustix where we want log operation to come at essentially zero extra costs (hosting aside).
 
