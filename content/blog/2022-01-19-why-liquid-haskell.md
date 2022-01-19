@@ -27,14 +27,14 @@ software has largely exceeded our capacity in the last several
 decades. But can we prove the correctness of our programs with a type-system
 that doesn't make them hard to read or change?
 
-In this post, I'm arguing that [Liquid Haskell](liquid-haskell) offers an alternative
+In this post, I'm arguing that [Liquid Haskell][liquid-haskell] offers an alternative
 angle to approach this question. Liquid Haskell is a tool that can analyse
 a program and calculate proof obligations that would ensure that the program
-meets some specification (not unlike [Dafny](dafny), [Why3](why3), or [F\*](fstar)).
+meets some specification (not unlike [Dafny][dafny], [Why3][why3], or [F\*][fstar]).
 The specification is included in the program
 as a special comment inserted by the programmer. The compiler ignores this
 comment, but Liquid Haskell can find it. Once the proof obligations are
-identified, they are given to a theorem prover (an [SMT](smt) solver specifically)
+identified, they are given to a theorem prover (an [SMT][smt] solver specifically)
 in an attempt to save the programmer the trouble of writing a proof.
 
 The conjecture that I pose is that many of the properties
@@ -317,7 +317,7 @@ from Haskell, which has been translated to the logic. This allows to
 reuse the understanding that the user has of `inferType` to express
 what being well-typed means. When verifying `e2` and `e3`, Liquid
 Haskell relies on the the SMT solver and other reasoning mechanisms
-[of its own](ple).
+[of its own][ple].
 
 ## Summing up
 
