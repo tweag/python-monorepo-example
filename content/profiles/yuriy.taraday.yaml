@@ -1,0 +1,92 @@
+slug: yuriy.taraday
+name: Yuriy Taraday
+github: YorikSar
+bio: |
+  Yuriy is a software engineer with 11 years of professional background in
+  different areas. He started working on Microsoft .Net and MSSQL based payment
+  system, suffered through Suse and weird open source CRM systems written in
+  Java, spent a big chunk of life fixing OpenStack in Python, and ended up
+  leading the creation and development of a Kubernetes as a Service system in
+  Go. He always thought that the functional programming paradigm is the right
+  one but didn't have a chance to properly apply it until finding out about Nix
+  several years ago and using it to finally achieve predictable OS
+  configuration. He then started diving into Bazel to get similar experience
+  during development. He is a big fan of making his own life as a developer
+  easier and inflicting these benefits on others.
+skills:
+  - Go
+  - Kubernetes
+  - Nix
+  - Python
+speaks:
+  - Russian
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 - present
+    description:
+      - Just getting settled in
+  - employer: Mirantis Inc.
+    role: Principal Software Engineer
+    location: Saratov, Russia
+    years: 2018 - 2021
+    description:
+      - Lead development of a Spinnaker-based CI/CD product
+      - Lead initial development of a Kubernetes-as-a-Service solution based on
+        Cluster API and kubeadm, later pivoted to Mirantis Container Cloud
+      - Formed and led a team for core development of MCC
+  - employer: Mirantis Inc.
+    role: Senior Software Engineer
+    location: Saratov, Russia
+    years: 2011 - 2018
+    description:
+      - Research and contribution to then-new OpenStack cloud software
+      - Developed integrations with LDAP, Dell Isilon, Nexenta and other
+        systems for OpenStack
+      - Participated in design and implementation of bare-metal provisioning
+        and Load Balancer as a Service for OpenStack
+      - Helped solving various scalability, speed and upgrade issues in
+        OpenStack
+      - Participated in the initiative to containerise OpenStack and run it on
+        top of Kubernetes (900 nodes deployed in 20 minutes)
+      - Developed Helm charts for open source software components and systems
+  - employer: SGM Technologies
+    role: System Architect
+    location: Moscow, Russia
+    years: 2010 - 2011
+    description:
+      - Adempiere system adaptation, enhancement and localization
+      - Managing adoption of tools for effective team collaboration
+      - Elaboration of internal and external team communications, information
+        and tasks interchange
+      - local IT infrastructure support
+  - employer: ESGP
+    role: Head of IT department
+    location: Moscow, Russia
+    years: 2009 - 2010
+    description:
+      - Oversight of the payment system development
+      - Growing team of developers
+      - Taking responsibility over all IT infrastructure
+  - employer: ESGP
+    role: Deputy head of IT department
+    location: Moscow, Russia
+    years: 2008 - 2009
+    description:
+      - Payment system development and expansion
+      - Task management for the growing team
+      - Integration with external payment systems
+  - employer: ESGP
+    role: Software developer
+    location: Moscow, Russia
+    years: 2007 - 2008
+    description:
+      - Studied and supported .Net-based legacy payment system written in C#
+      - Developed new automated reporting and reconciliation system
+education:
+  - qualification: M.S.
+    institution: Lomonosov Moscow State University, Faculty of Computational Mathematics and Cybernetics
+    years: 2005 - 2008
+    description:
+      - Did not finish
