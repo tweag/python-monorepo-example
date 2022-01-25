@@ -84,7 +84,8 @@ $ npm run build
 
 ## Submitting a change
 
-Before committing a change, make sure to run the code formatter and linter:
+Before committing a change, make sure to have installed
+the website before with `npm install`, then run the code formatter and linter:
 
 ```
 $ npm run format
