@@ -11,7 +11,7 @@ inject domain-specific knowledge into GHC's type-checker. In this
 series of posts, we will explore why you might want to write your own plugin, and how to do so.
 
 - **I: Why write a type-checking plugin?**
-- [II: GHC's constraint solver](https://www.tweag.io/blog/2021-10-29-tcplugins-2/)
+- [II: GHC's constraint solver](https://www.tweag.io/blog/2021-12-09-tcplugins-2/)
 - III: Writing a type-checking plugin
 
 In this first blog post of the series, I'll be outlining a few
