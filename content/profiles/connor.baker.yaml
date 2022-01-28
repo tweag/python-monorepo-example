@@ -29,7 +29,7 @@ bio: |
   solver-enabled languages (LiquidHaskell, Cryptol, Dafny, and F*), and
   dependently-typed languages, which double as interactive theorem-provers
   (Idris and Lean). Though he is not (yet!) proficient with them, Connor hopes
-  one day use these tools to reliably build software which is correct by
+  one day to use these tools to reliably build software which is correct by
   construction.
 skills:
   - Java
