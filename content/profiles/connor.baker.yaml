@@ -1,0 +1,133 @@
+name: Connor Baker
+slug: connor.baker
+pronouns: he/him
+shortDescription: |
+  Though a Data Engineer by trade, Connor is a vocal proponent of functional
+  programming, expressive type systems, formal methods, and proof engineering.
+  He strives to create correct, highly scalable, and performant systems.
+bio: |
+  Connor's career in software began while he was pursuing a Bachelor of Science
+  in Computer Science at George Mason University. During his first summer at
+  George Mason, he was hired as an intern by a defense contractor to help build
+  a dataflow and analytics platform to secure the government's cyber
+  infrastructure. Connor was so valuable, and his work so impactful, that he
+  was hired as a full employee despite not yet completing his degree.
+
+  In this role, Connor learned a great deal about architecting event-driven
+  systems and the benefits a cloud-native solution can provide when compared to
+  one created by composing COTS software. Having experienced developing,
+  operating, and maintaining a greenfield solution, Connor is acutely aware of
+  the impact that DevSecOps and best practices have not only code quality, but
+  also on team morale.
+
+  Now at Tweag, Connor is excited to apply all that he has learned to deliver
+  value frequently and reliably to the clients and projects he has the
+  opportunity to support. He enjoys using Nix to create and easily reproduce
+  environments and Haskell to write clean, minimally effectful code.
+
+  Outside of work, Connor spends most of his time learning about Nix, SMT
+  solver-enabled languages (LiquidHaskell, Cryptol, Dafny, and F*), and
+  dependently-typed languages, which double as interactive theorem-provers
+  (Idris and Lean). Though he is not (yet!) proficient with them, Connor hopes
+  one day use these tools to reliably build software which is correct by
+  construction.
+skills:
+  - Java
+  - Groovy
+  - Haskell
+  - Python
+  - SQL
+  - Kafka
+  - NiFi
+  - Spark
+  - Elasticsearch
+  - Kibana
+  - AWS Lambda
+  - AWS Glue
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Data Engineer
+    years: Jan 2022 -- present
+    location: Remote
+  - employer: Raytheon Intelligence & Space
+    role: Software Engineer
+    years: Jun 2021 -- Jan 2022
+    location: Dulles, VA, USA
+    description:
+      - Became an AWS Certified Cloud Practitioner
+      - Extended and maintained a cybersecurity analytics solution built with
+        Apache Kafka, Apache NiFi, Elasticsearch, Kibana, AWS Redshift, and AWS
+        S3
+      - Designed and implemented a continuous delivery solution for
+        Elasticsearch
+      - Researched and designed a continuous integration solution for NiFi
+  - employer: Raytheon Intelligence & Space
+    role: Cyber Design Engineer
+    years: May 2020 -- Jun 2021
+    location: Dulles, VA, USA
+    description:
+      - Extended and delivered a cybersecurity analytics solution built with
+        Apache Kafka, Apache NiFi, Elasticsearch, Kibana, AWS Redshift, and AWS
+        S3
+      - Researched, designed, and implemented a continuous delivery solution for
+        NiFi
+      - Researched a continuous delivery solution for Elasticsearch
+      - Wrote Groovy and Jython to extend NiFi functionality and rapidly meet
+        emergent requirements
+  - employer: Raytheon Intelligence & Space
+    role: Software Engineering Intern
+    years: May 2019 -- May 2020
+    location: Dulles, VA, USA
+    description:
+      - Helped develop a cybersecurity analytics solution built with Apache
+        Kafka, Apache NiFi, Elasticsearch, Kibana, AWS Redshift, and AWS S3
+      - Wrote Java to build a custom NiFi Processor to perform advanced data
+        transformation
+      - Wrote Groovy to provide NiFi bespoke functionality to persist to AWS
+        Redshift, yielding a 150x ingest speedup
+      - Wrote Elasticsearch pipelines to perform rapid, data-store specific
+        enrichment at the point of ingest
+      - Built Kibana dashboards providing actionable information about dataflow
+        health
+  - employer: Northern Virginia Community College
+    role: Mathematics Tutor
+    years: May 2016 -- May 2019
+    location: Sterling, VA, USA
+    description:
+      - Introduced and instructed colleagues and supervisors in the use of LaTeX
+      - Helped to create, proofread and edit, and typeset quizzes, tests, and
+        content reviews for colleagues and supervisors
+      - Tutored students in every mathematics course offered at the community
+        college level, in both a static, classroom environment and a dynamic,
+        recitation setting
+      - Gained experience in distilling and communicating complex concepts and
+        with working with students from a variety of backgrounds with varying
+        levels of ability
+education:
+  - qualification: Bachelor of Science
+    name: Computer Science
+    institution: George Mason University
+    years: 2018 -- 2021
+    description:
+      - Maintained a 3.98/4.0 GPA while working to pay for school and graduate
+        debt-free
+      - Dean's List, received Distinguished Academic Achievement Award
+  - qualification: Associate of Science
+    name: Computer Science, Mathematics
+    institution: Northern Virginia Community College
+    years: 2015 -- 2018
+    description:
+      - Maintained a 4.0/4.0 GPA while working to pay for school and graduated
+        debt-free
+      - Presidential Scholar, received Certificate of Merit
+      - Vice President, President of Math Club
+      - Nominated by a faculty member to conduct research and deliver a lecture
+        on the representation of numbers in algebraic, non-integer bases at the
+        Virginia American Mathematical Association of Two Year Colleges Spring
+        2017 Conference
+links:
+  GitHub: https://github.com/connorbaker
+  Twitter: https://twitter.com/connor13aker
+  LinkedIn: https://www.linkedin.com/in/connorbaker01
