@@ -363,6 +363,6 @@ code and techniques on both fronts.
 [smt]: https://en.wikipedia.org/wiki/Satisfiability_modulo_theories
 [stitch]: https://gitlab.com/goldfirere/stitch
 [stitch-lh]: https://github.com/facundominguez/stitch-lh
-[stitch-tutorial]: https://cs.brynmawr.edu/~rae/papers/2018/stitch/stitch.pdf
+[stitch-tutorial]: https://dl.acm.org/doi/abs/10.1145/3406088.3409015
 [why3]: http://why3.lri.fr
 [whylh-example]: https://github.com/ucsd-progsys/liquidhaskell/blob/361a6af39d54e1fbf5cc123a358e1add9d26c88a/tests/pos/WhyLH.hs
