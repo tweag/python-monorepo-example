@@ -196,46 +196,35 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
         }
 
         h3 {
+          padding: 0px;
           margin: 20px 15px;
-          padding: 0px 15px;
           width: 100%;
           max-width: 1000px;
 
           @media (min-width: ${t.breakpoints[1]}) {
-            margin: 0px;
-            margin-bottom: 30px;
-            padding: 0px;
+            margin: 0px 0px 30px;
             padding-left: 60px;
             width: 65%;
           }
+
           @media (min-width: ${t.breakpoints[5]}) {
             padding-left: 120px;
           }
         }
 
-        h4 {
-          width: 65%;
-          max-width: 1000px;
-          margin: 0px 0px 30px;
-
-          @media (min-width: ${t.breakpoints[1]}) {
-            padding: 0 0 0 60px;
-          }
-          @media (min-width: ${t.breakpoints[5]}) {
-            padding: 0 0 0 120px;
-          }
-        }
-
+        h4,
         h5 {
+          padding: 0px;
+          margin: 20px 15px;
           width: 65%;
           max-width: 1000px;
-          margin: 0px 0px 30px;
 
           @media (min-width: ${t.breakpoints[1]}) {
-            padding: 0 0 0 60px;
+            margin: 0px 0px 15px;
+            padding-left: 60px;
           }
           @media (min-width: ${t.breakpoints[5]}) {
-            padding: 0 0 0 120px;
+            padding-left: 120px;
           }
         }
 
