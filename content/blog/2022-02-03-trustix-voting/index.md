@@ -6,7 +6,7 @@ description: "We discuss existing consensus models and why no global consensus
   mode is well suited to Trustix, opting for a user-defined algorithm instead."
 ---
 
-In our last posts, we [introduced the general idea of Trustix](https://www.tweag.io/posts/2020-12-16-trustix-announcement) and its [log-based append-only data structure](https://www.tweag.io/posts/2021-01-13-trustix-trees).
+In our last posts, we [introduced the general idea of Trustix](https://www.tweag.io/blog/2020-12-16-trustix-announcement/) and its [log-based append-only data structure](https://www.tweag.io/blog/2022-01-14-trustix-trees/).
 In brief, Trustix is a verification system for binary cache providers, and a tool that allows you to compare those software binaries across independent providers to ensure you're getting the correct software, but without trusting a single binary cache.
 
 In this post we look at the situation where providers disagree on the correct binaries, and how to aggregate those opinions and decide which output to trust.
