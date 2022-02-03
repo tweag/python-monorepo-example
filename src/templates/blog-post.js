@@ -78,6 +78,16 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           sx={{
             mt: [`40px`],
             px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            fontWeight: 700,
+          }}
+        >
+          If you enjoyed this article, you might be interested in {` `}
+          <a href="/careers">joining the Tweag team</a>.
+        </Box>
+        <Box
+          sx={{
+            mt: [`40px`],
+            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
           }}
         >
           <img
