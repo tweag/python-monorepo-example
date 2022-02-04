@@ -129,7 +129,7 @@ In Trustix many global consensus models can't be made functional for various rea
 
 ---
 
-The development of [Trustix](https://github.com/tweag/gomod2nix) is funded by [NLnet](https://nlnet.nl/) through the [PET](https://nlnet.nl/PET/)(privacy and trust enhancing technologies) fund.
+The development of [Trustix](https://github.com/tweag/trustix) is funded by [NLnet](https://nlnet.nl/) through the [PET](https://nlnet.nl/PET/)(privacy and trust enhancing technologies) fund.
 
 <a href="https://nlnet.nl/" style="width=40%;margin=2%;">![NLNet](./nlnet-banner.png)</a>
 
