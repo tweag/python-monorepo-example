@@ -100,6 +100,7 @@ const TemplateCV1 = ({ data }) => {
   const {
     name,
     pronouns,
+    shortDescription,
     bio,
     skills,
     speaks,
@@ -134,6 +135,9 @@ const TemplateCV1 = ({ data }) => {
           </Grid>
           <Grid sx={{ gridAutoRows: `max-content` }}>
             <H1>bio</H1>
+            <Text as="p" sx={{ fontSize: `13px`, lineHeight: 1.3 }}>
+              {shortDescription}
+            </Text>
             <Text as="p" sx={{ fontSize: `13px`, lineHeight: 1.3 }}>
               {bio}
             </Text>
@@ -252,6 +256,7 @@ export const pageQuery = graphql`
       slug
       name
       pronouns
+      shortDescription
       bio
       skills
       speaks

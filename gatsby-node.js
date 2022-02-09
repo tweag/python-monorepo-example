@@ -184,8 +184,9 @@ exports.createSchemaCustomization = ({ actions }) => {
     name: String!
     pronouns: String
     github: String
-		bio: String
-		skills: [String]
+    shortDescription: String
+    bio: String
+    skills: [String]
     speaks: [String]
     publications: [String]
     experience: [ProfilesYamlExperience]
