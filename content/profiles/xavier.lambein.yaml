@@ -1,0 +1,68 @@
+slug: xavier.lambein
+name: Xavier Lambein
+pronouns: He/Him
+github: xlambein
+
+shortDescription: |
+  Xavier is a generalist software engineer with a background in data science.
+  He's worked on data processing pipelines, deep learning, signal processing,
+  and REST services.  He enjoys taking time to write good, maintainable code,
+  and constantly seeks to better his skills as a developer, as well as share
+  what he learnt with others.  His quest for thoughtful coding and
+  well-designed software is what lead him to Rust and functional programming.
+
+bio: |
+  Xavier worked a couple of years as a data scientist, but eventually realized
+  that his main interest is writing software.  He briefly transitioned into a
+  backend engineer role at the same company, before leaving to find a position
+  that suit him better, here at Tweag.
+
+  Software-wise, Xavier's passion revolves around Rust, but he's also well
+  versed in Python, C, and is becoming familiar with Haskell and Elm.  He's
+  also interested in teaching programming, as well as making programming more
+  accessible to the end-users.  His hope is that advances in PLT and HCI will
+  empower people to write more and better software, as well as make his own
+  job more fun and embodied.
+
+  In his spare time, Xavier likes to write and produce music, do yoga, and
+  make all sorts of programming projects, mainly in Rust.  He also enjoys
+  playing (video) games, listening to podcasts, and learning new skills.
+
+skills:
+  - Rust
+  - Python
+  - Data Science
+
+links:
+  Website: https://lambein.xyz/
+
+speaks:
+  - French
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer, Developer Productivity
+    years: 2022 - present
+  - employer: FibriCheck / ExtraHorizon
+    role: Backend developer
+    years: 2021 - 2021
+    description:
+      - Built a service for handling Play Store subscriptions
+  - employer: FibriCheck
+    role: Data Scientist
+    years: 2019 - 2021
+    description:
+      - Wrote a data processing and training pipeline in Python
+      - Taught Python and helped establish best practices within the Data
+        Science team
+      - Implemented, trained and validated deep learning models for signal
+        processing with TensorFlow 2
+education:
+  - qualification: Master
+    name: Engineering
+    institution: UCLouvain
+    years: 2016 - 2018
+    description:
+      - Majors in computer science and applied mathematics
+      - Thesis on direct imaging for exoplanet detection
