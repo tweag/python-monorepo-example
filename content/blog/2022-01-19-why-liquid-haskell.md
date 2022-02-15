@@ -171,7 +171,7 @@ The Liquid Haskell counterpart looks as follows.
 ```Haskell
 {-@
 data UExp
-  = UVar {i:Int | 0 <= i} // indices are specified to be non-negative
+  = UVar ({i:Int | 0 <= i}) // indices are specified to be non-negative
   | ULam UExp
   | UApp UExp UExp
 @-}
