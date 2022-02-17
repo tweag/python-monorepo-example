@@ -20,7 +20,7 @@ to read **Core** (and, in particular, **coercions**), etc.
 
 - [I: Why write a type-checking plugin?](https://www.tweag.io/blog/2021-10-21-tcplugins-1/)
 - **II: GHC's constraint solver**
-- III: Writing a type-checking plugin
+- [III: Writing a type-checking plugin](https://www.tweag.io/blog/2022-02-17-tcplugins-3/)
 
 ### Table of contents
 

@@ -12,7 +12,7 @@ series of posts, we will explore why you might want to write your own plugin, an
 
 - **I: Why write a type-checking plugin?**
 - [II: GHC's constraint solver](https://www.tweag.io/blog/2021-12-09-tcplugins-2/)
-- III: Writing a type-checking plugin
+- [III: Writing a type-checking plugin](https://www.tweag.io/blog/2022-02-17-tcplugins-3/)
 
 In this first blog post of the series, I'll be outlining a few
 examples that showcase some limitations in GHC's instance resolution
@@ -32,7 +32,7 @@ instance ctxt => Cls arg_1 ... arg_n
 To the left of `=>` is the instance **context**, and to the right the instance **head**.
 To solve a constraint like `Cls x_1 ... x_n`, GHC goes through all the class instance declarations for `Cls`,
 trying to match the arguments `x_1, ..., x_n` against the arguments `arg_1, ..., arg_n` appearing in the instance head.
-Once it finds such an instance (which should be unique, unless one is using [overlapping instances](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/instances.html#instance-overlap)), GHC commits to it, picking up the context as a Wanted constraint (we will cover Wanted and Given constraints in depth in [Part II: § Constraint solving](https://www.tweag.io/blog/2021-10-29-tcplugins-2.html#constraint-solving)).
+Once it finds such an instance (which should be unique, unless one is using [overlapping instances](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/instances.html#instance-overlap)), GHC commits to it, picking up the context as a Wanted constraint (we will cover Wanted and Given constraints in depth in [Part II: § Constraint solving](https://www.tweag.io/blog/2021-12-09-tcplugins-2.html#constraint-solving)).
 
 However, one might be interested in using a different method to resolve instances. Let's look at two simple examples.
 
@@ -236,7 +236,7 @@ type family a + b where
 ```
 
 The proof that `5 + 0` reduces to `5`, in the coercion language that will be explained
-in [Part II: § Constraint solving](https://www.tweag.io/posts/2021-10-29-tcplugins-2.html#constraint-solving),
+in [Part II: § Constraint solving](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#constraint-solving),
 is as follows:
 
 ```haskell
