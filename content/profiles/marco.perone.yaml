@@ -1,0 +1,100 @@
+slug: marco.perone
+name: Marco Perone
+github: marcosh
+shortDescription: |
+  Marco loves to learn, experiment and try new things. He is interested in ideas, patterns and software architectures,
+  with a definite preference for code quality and functional programming.
+bio: |
+  Marco is a mathematician turned into a software developer.
+
+  Lover of precision and formalism, he enjoys writing high quality software, constantly looking for ways to create
+  safer and more reliable code.
+
+  Particularly interested in functional programming, its links to domain modelling, and how to introduce and apply its
+  ideas in non-functional languages.
+
+  When he is away from the keyboard, you can probably find him hiking on a mountain or riding his bike around Europe,
+  or most probably eating some good dark chocolate.
+skills:
+  - Haskell
+  - PHP
+  - Domain driven design, Event sourcing and CQRS
+  - Category theory
+  - Abstract algebra
+speaks:
+  - Italian
+  - English
+experience:
+  - employer: Soisy
+    role: Senior Software Engineer
+    years: June 2020 - February 2022
+    description:
+      - |
+        Working in PHP on the evolution and maintenance of the platform, based on an Event Sourcing/CQRS architecture.
+        I introduced [Psalm](https://psalm.dev/), to get types in PHP through static analysis and I created the
+        [lamphpda](https://github.com/marcosh/lamphpda/) library to use Higher Kinded Types and functional programming
+        data structures in PHP.
+        I introduced Dhall for configuration management and Haskell for the new version of the company risk engine.
+  - employer: Statebox
+    role: Software Engineer
+    years: August 2018 - March 2020
+    description:
+      - |
+        Haskell implementation of [CQL](https://github.com/statebox/cql).
+        I lead the development of [idris-ct](https://github.com/statebox/idris-ct), a category theory library in Idris,
+        and of [purescript-firestore](https://github.com/statebox/purescript-firestore).
+  - employer: MVLabs
+    role: Senior Software Engineer
+    years: November 2014 - February 2019
+    description:
+      - |
+        Web development in PHP.
+        Experiment with DDD approach and EventSourcing/CQRS architecture.
+        Responsible for internal and external training.
+        Introduced Elm and Haskell in the company tech stack.
+  - employer: Formabilio
+    role: Software Engineer
+    years: March 2013 - October 2014
+    description:
+      - |
+        Web developer, working both on backend and frontend development on the platform.
+        I created a rating algorithm which respected users preferences, while preventing fraud attemps
+  - employer: MHT
+    role: Software Engineer
+    years: October 2011 - February 2013
+    description:
+      - The company was specialized in Microsoft enterprise products and I worked with the Microsoft Ax environment of several customers
+education:
+  - qualification: PhD
+    name: Mathematics
+    institution: University of Padova
+    years: 2007 - 2010
+    description:
+      - |
+        thesis title: Direct sum decomposition and weak Krull-Schmidt Theorems
+  - qualification: Masters
+    name: Mathematics
+    institution: University of Padova and Leiden
+    years: 2002 - 2007
+    description:
+      - |
+        thesis title: Finite monoids and actions on group ring units
+publications:
+  - Perone, M. (2009). On the Infinite Dual Goldie Dimension. Rendiconti Istituto Matematico Università Trieste, 41, 1-11.
+  - Facchini, A., & Perone, M. (2011). MAXIMAL IDEALS IN PREADDITIVE CATEGORIES AND SEMILOCAL CATEGORIES. Journal of Algebra and Its Applications, 10, 1-27.
+  - Perone, M. (2011). Direct sum decomposition and weak Krull-Schmidt Theorems. Lambert.
+  - Perone, M. (2012). The Infinite Krull–Schmidt Property in the Case 2. Communications in Algebra, 40, 4215 - 4239.
+  - Facchini, A., & Perone, M. (2014). On Some Noteworthy Pairs of Ideals in Mod-R. Applied Categorical Structures, 22, 147-167.
+  - Perone, M., & Puczyłowski, E.R. (2014). A note on the corank of abelian groups. Publicationes Mathematicae Debrecen, 85, 387-394.
+  - "Genovese, F., Gryzlov, A., Herold, J., Perone, M., Post, E., & Videla, A. (2019). Computational Petri Nets: Adjunctions Considered Harmful. ArXiv, abs/1904.12974."
+  - "Genovese, F., Gryzlov, A., Herold, J., Knispel, A., Perone, M., Post, E., & Videla, A. (2019). idris-ct: A Library to do Category Theory in Idris. ArXiv, abs/1912.06191."
+talks:
+  - "Elm or how I learned to love frontend development, Webcamp Zagreb, October 2016"
+  - "Introduction to type driven development in Idris, NoSlidesConf, November 2017"
+  - "Fun with categories, Lambda World, October 2019"
+  - "Algebraic Domain Modelling with Citadels, DDD Europe, February 2021"
+  - "PHP ❤️ types, PHPday, June 2021"
+links:
+  Blog: http://marcosh.github.io/
+  Github: https://github.com/marcosh
+  Twitter: https://twitter.com/marcoshuttle
