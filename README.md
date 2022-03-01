@@ -113,7 +113,7 @@ the URL to be operational.
 
 ## Blog post guidelines
 
-The management of blog post ideas and drafts are done through the
+The management of blog post ideas and drafts is done through the
 [board](https://github.com/tweag/www/projects/1). The general workflow
 is the following:
 
@@ -135,7 +135,7 @@ is the following:
   below.
 
 - When the review is done, the reviewer assigns the card to @guaraqe
-  and move the card to the staging section. It is @guaraqe's role to
+  and moves the card to the staging section. It is @guaraqe's role to
   merge the pull request. When the blog post lands on master, the card
   will be marked as accomplished.
 
@@ -204,7 +204,7 @@ Make suggestions as a regular pull request review. If either question
 above is answered by the negative, your review ought to point out why,
 and suggest improvements to the post's author.
 
-Don't hesitate to propose ask for many changes: writing is hard, and
+Don't hesitate to propose or ask for many changes: writing is hard, and
 there will often be unclear or boring bits in the first round. Think
 about what you would like being pointed out to you if you were the
 author. You don't need the author's expertise: if you don't understand
