@@ -62,6 +62,9 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
 
         table {
           margin: 0px 15px;
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
           margin-bottom: 20px;
           @media (min-width: ${t.breakpoints[1]}) {
             margin: 0px;
@@ -78,6 +81,9 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             code {
               white-space: nowrap;
             }
+          }
+          th {
+            max-width: 100%;
           }
         }
 
