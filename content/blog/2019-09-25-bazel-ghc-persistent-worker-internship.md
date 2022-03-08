@@ -143,7 +143,7 @@ I'm grateful to Tweag for giving me an exciting opportunity to work in an indust
 
 Here's a summary of my contributions and some pointers to possible future directions for improvement of the persistent worker mode in `rules_haskell`.
 
-1. Worker pull requests to `rules_haskell`: [[1]][rh-pr-1], [[2]][rh-pr-1]. The second one adds the worker sources and reworks good part of the first because the initial strategy to implement the switch between the regular and the worker modes forced the user to download worker dependencies anyway. The current strategy based on `config_setting`/`select` does not have the flaw. It can be improved when the [Bazel Custom keys][bazel-custom-keys] issue is resolved.
+1. Worker pull requests to `rules_haskell`: [[1]][rh-pr-1], [[2]][rh-pr-2]. The second one adds the worker sources and reworks good part of the first because the initial strategy to implement the switch between the regular and the worker modes forced the user to download worker dependencies anyway. The current strategy based on `config_setting`/`select` does not have the flaw. It can be improved when the [Bazel Custom keys][bazel-custom-keys] issue is resolved.
 
 2. [The initial worker repository][worker-repo]. Unlike its replica inside `rules_haskell`, which just holds static Protobuf descriptions in Haskell, the repository implements proper generation of those descriptions from a `.proto` file. Notably, the repository contains the [`reuse-ghc-session`][worker-repo-session-reuse] branch, which explores a warm startup of a GHC session. It is blocked because once all package databases are loaded into a session, they cannot be easily unloaded with just the utilities exported from GHC's `Packages.hs`.
 
