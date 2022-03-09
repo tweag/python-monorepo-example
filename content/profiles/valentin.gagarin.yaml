@@ -1,0 +1,68 @@
+slug: valentin.gagarin
+name: Valentin Gagarin
+github: fricklerhandwerk
+skills:
+  - Python
+  - Go
+  - Nix
+  - Web design and accessibility
+  - Technical writing
+shortDescription: |
+  After an artistic career in education, film making and graphics design, Valentin grew into informatics, where he quickly developed a mathematical and engineering mindset as well as a passion for functional programming, reproducibility, and effective communication.
+bio: |
+  Having worked as a freelancer in media for many years, his initiation to Mathematics and first experiences in the software industry convinced him that computer science has only accidentally to do with computers, but really is knowledge acquisition and change management - which in turn is fundamentally about people and their evolving needs. Dealing with an enormous amount of accidental complexity around the fact that we use the computer as a tool to extend our mental ability obviously requires deep technical understanding, experience, continuous learning, and good old tinkering. For him, all of this is a matter of course on the job.
+
+  Valentin got into Nix and NixOS on his never-ending endeavor of making computers work reliably in the long run. He had been an active member of the community before joining Tweag, helping newcomers, sharing knowledge, and contributing code fixes and clarifications to the documentation one pull request at a time.
+
+  He is interested and widely-read on the subjects of operating system architecture, communication protocols, digital archives and persistence, accessibility on the web, type theory and programming language design, and many more. At university he has gained solid theoretical and some hands-on experience with machine learning, computer vision, robotics, embedded systems, type theory, and differential privacy. He also draws draws upon years of experience with digital image processing, now supported by a formal background. Dealing with engineering-graduate-level Mathematics is an appealing challenge that does not scare him.
+
+  Recently he took interest in incremental compilers and projectional editing.
+
+  In his free time he rediscovers the world with his kids, reads non-fiction about human life and development, learns Lisp, and exchanges mind-bending ideas with friends.
+links:
+  homepage: https://gagarin.work
+education:
+  - institution: Technische Universität Hamburg (TUHH)
+    name: Computer Science
+    qualification: Master of Science (in progress)
+    years: 2020-present
+  - description:
+      - |
+        Thesis: Differentially Private Algorithms and an Improved Accuracy Estimate for the Sparse Vector Techique
+    institution: Technische Universität Hamburg (TUHH)
+    name: Computer Science
+    qualification: Bachelor of Science
+    years: 2014-2018
+  - institution: Hochschule für Bildende Künste (HfbK) Hamburg
+    name: Liberal Arts (film)
+    qualification: Bachelor of Fine Arts
+    years: 2003-2005
+  - institution: Hochschule für Musik und Theater (HfMT) Hamburg
+    name: Instrumental Music (violin)
+    qualification: Protegé student
+    years: 2003-2005
+experience:
+  - employer: Tweag
+    role: Software engineer
+    years: 2022-present
+  - employer: freiheit.com
+    role: Software engineer
+    years: 2018-2019
+    description:
+      - "Web backends at scale, for a large international customer"
+      - >
+        Technologies: Go, protobuf, Docker, kubernetes, Azure, CosmosDB
+  - employer: figo GmbH
+    role: Working student
+    years: "2017"
+    description:
+      - "REST APIs, legacy software, and testing"
+      - >
+        Technologies: Python, Flask, OpenAPI, SQLAlchemy, RabbitMQ
+  - employer: self-employed
+    role: arts instructor, film maker, graphics designer
+    years: 2010-2014
+speaks:
+  - German (native)
+  - English (fluent)
+  - Russian
