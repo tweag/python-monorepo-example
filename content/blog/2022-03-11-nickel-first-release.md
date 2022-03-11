@@ -353,6 +353,7 @@ know about it!
 [nickel-repo]: https://github.com/tweag/nickel/
 [user-manual]: https://nickel-lang.org/user-manual/
 [nickel-lsp]: https://github.com/tweag/nickel/tree/master/lsp
+[nickel-vscode]: https://github.com/tweag/nickel/tree/master/lsp#vs-code
 [nickel-nix]: https://github.com/nickel-lang/nickel-nix
 [nickel-website]: https://www.nickel-lang.org
 [release-notes]: https://github.com/tweag/nickel/blob/master/RELEASES.md
