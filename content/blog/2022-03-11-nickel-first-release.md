@@ -64,7 +64,7 @@ a single source of truth for your data. You can use functions to transform and
 describe dependencies between data. This example has several repetitions, and
 while it is fabricated, those repetitions are actually quite frequent in
 real-life configurations, for example in Kubernetes. Repetitions can lead to
-inconsistencies and make modifying data a burden. Let see we can get rid of them
+inconsistencies and make modifying data a burden. Let's see how we can get rid of them
 in Nickel:
 
 ```nickel
@@ -153,7 +153,7 @@ The end result of the evaluation of a Nickel program is typically a JSON file
 (or YAML, or TOML). This file is then fed to a system (e.g. Kubernetes). This
 file must certainly follow the requirements imposed by this system. Such
 requirements can usually be expressed as data schemas, specifying which fields
-are allowed, which are required and what kind of data can in each field.
+are allowed, which are required and what kind of data can go in each field.
 
 Part of such requirements can be enforced using types. However, a large number
 of them are out of reach of static typing. For example, take a [random field
