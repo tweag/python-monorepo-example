@@ -7,25 +7,25 @@ tags: [nix, nickel]
 
 I am excited to announce the first release of [Nickel][nickel-repo]! In the
 original introductory [blog post][nickel-1] blog post, I've written about why we, at
-Tweag, are developing yet a new configuration language. Our goal is to empower
+Tweag, are developing yet another configuration language. Our goal is to empower
 people to write correct, programmable and maintainable configurations. Nickel
 targets Nix, Infrastructure-as-Code, build systems, and more. We think such a
 tool would greatly help taming the growing complexity of configuring systems.
 
 Since the first blog post, we have made progress. We backed up and changed our
 mind sometimes. We had a lot of discussions, and we also experimented quite a
-bit. There is still a lot to do and many imperfect aspects of the language to
-improve.
+bit. There is still a lot to do and there are many imperfect aspects of the language
+to improve.
 
-Still, I think we reached a point where Nickel is consistent enough for people
+Still, I think we have reached a point where Nickel is consistent enough for people
 to try it more seriously. That way we can get our target users involved and not
 lose sight of their actual issues and wishes.
 
-Beware: this is a `0.1` release. There is no backward-compatibility guarantees
-for this time, because we don't want to tie our hands too early and be stuck
+Beware: this is a `0.1` release. We are making no backward-compatibility guarantees
+at this time, because we don't want to tie our hands too early and get stuck
 with retrospectively unfortunate decisions. Of course, we'll try to minimize
-breaking changes as much as possible. You shouldn't use this version in anything
-remotely in production yet, however, we encourage you to try Nickel wherever you
+breaking changes as much as possible. You shouldn't use this version in production yet,
+however, we encourage you to try Nickel wherever you
 think makes sense: personal projects, experimenting outside of the production
 environment, etc.
 
@@ -56,15 +56,15 @@ an example of a service configuration:
 }
 ```
 
-Nickel has the same primitive data types than JSON: numbers, string, lists and
+Nickel has the same primitive data types as JSON: numbers, string, lists and
 records (objects in JSON).
 
-At the difference of JSON, Nickel is programmable. You can use variables to have
+Unlike JSON, Nickel is programmable. You can use variables to have
 a single source of truth for your data. You can use functions to transform and
-describe dependencies between data. This example has several repetitions, and
-while it is fabricated, those repetitions are actually quite frequent in
-real-life configurations, for example in Kubernetes. Repetitions can lead to
-inconsistencies and make modifying data a burden. Let's see how we can get rid of them
+describe dependencies between data. The following example has some repetition, and
+while it is fabricated, such repetition is actually quite frequent in
+real-life configurations, for example in Kubernetes. Repetition can lead to
+inconsistencies and make modifying data a burden. Let's see how we can get rid of repetition
 in Nickel:
 
 ```nickel
@@ -115,14 +115,14 @@ In this new version,
 
 The previous code is dynamically typed, which is the default in Nickel. This
 makes it easy to write a configuration. However, dynamic type
-errors can be quickly hard to debug, especially when using functions.
+errors can quickly become hard to debug, especially when using functions.
 
 To help in writing bug free code, Nickel features a gradual type system. In
-practice, this means you have the possibility to leverage static typing by
+practice, this means you can leverage static typing by
 simply annotating a particular block, typically a function, with a type. The
 typechecker will then rigorously verify this block. Here is a tweak of our
-previous `protocol_from_port` (I changed the `""` for `null` on the last line)
-with a type annotation:
+previous `protocol_from_port`
+with a type annotation (I replaced the `""` with `null` on the last line):
 
 ```nickel
 # In file wrong.ncl
@@ -133,7 +133,7 @@ let protocol_from_port : Num -> Str = fun port =>
 ```
 
 If we try to evaluate this program, the typechecker will rightfully reject it.
-Indeed `null` is not a valid value for a string:
+Indeed, `null` is not a valid value for a string:
 
 ```
 $ nickel -f wrong.ncl
@@ -153,9 +153,9 @@ The end result of the evaluation of a Nickel program is typically a JSON file
 (or YAML, or TOML). This file is then fed to a system (e.g. Kubernetes). This
 file must certainly follow the requirements imposed by this system. Such
 requirements can usually be expressed as data schemas, specifying which fields
-are allowed, which are required and what kind of data can go in each field.
+are allowed, which are mandatory, and what kind of data can go in each field.
 
-Part of such requirements can be enforced using types. However, a large number
+Some such requirements can be enforced by using types. However, a large number
 of them are out of reach of static typing. For example, take a [random field
 from the kubernetes openAPI specification][kubernetes-openapi-serveraddr]:
 
@@ -225,9 +225,9 @@ note:
 
 ```
 
-I went for a simple example, but I could have used custom messages to make the
+This was a simple example, but I could have used custom messages to make the
 error even more helpful. Thanks to contracts, invalid configurations can be
-caught early, instead of downstream the pipeline when trying to deploy our
+caught early, instead of downstream in the pipeline when trying to deploy our
 services. Beyond just making our deployment work, we can even imagine using
 contracts for enforcing additional properties, such as security-related rules.
 
@@ -305,7 +305,7 @@ We've been mostly focusing on designing and implementing the core language.
 
 ### Tooling and documentation
 
-Tooling and documentation are here but not full-fledged yet. Still, check out
+Tooling and documentation are available, but not yet comprehensive. Still, check out
 the [vim plugin][vim-nickel] or the [VSCode][nickel-vscode] plugin, and the
 editor-agnostic [LSP server][nickel-lsp]. For documentation, you can look at the
 [website][nickel-website], and in particular the [user manual][user-manual].
@@ -318,18 +318,18 @@ This is a subject we plan to work on in the future.
 ### Nickel and Nix
 
 Although Nickel is at heart a generalist configuration language, Nix has been a
-distinguished application from day one and one of the original motivation. We
+target application from day one, and was one of the original motivations for Nickel. We
 think Nickel could make an impact there and really improve the user experience.
 
-There are several possible approaches to bring integration of Nickel within Nix,
+There are several possible approaches to integrate Nickel with Nix,
 with varying power, ergonomics and required effort. Some approaches would
-require to modify either Nix itself, Nickel, or both.
+require modifying either Nix itself, Nickel, or both.
 
 For the time being, we haven't yet worked out one robust, practical and powerful
 solution to use Nickel as a front-end for Nix development. However, we have been
 actively thinking about it. And now, Nix integration is the very next step on
-the roadmap, the aspect we want to fully focus on, in parallel to collecting
-feedbacks and usage reports to help building the future of Nickel.
+the roadmap, in parallel with collecting
+feedback and usage reports to help build the future of Nickel.
 
 In the meantime, we open-sourced the result of our experiments of writing a
 simple Nix shell in Nickel. The idea has been to find the more direct route,
@@ -341,11 +341,11 @@ basis for more Nickel in Nix, for the more adventurous among you:
 ## Conclusion
 
 We are happy to announce the first release of the Nickel configuration language.
-You can use it wherever you would use JSON, YAML or TOML, but felt the limit of
-using static text or ad-hoc and limited templating languages.
+You can use it wherever you would normally use JSON, YAML or TOML, but feel limited by
+using static text or ad-hoc templating languages.
 
-This release is both usable and not ready for production yet. We are seeking for
-feedbacks, ideas and opinions. Yours are invaluable: please use Nickel, break
+This release is both usable and not yet ready for production.
+Your feedback, ideas and opinions are invaluable: please use Nickel, break
 it, do cool things we haven't even imagined, and most importantly, please let us
 know about it!
 
