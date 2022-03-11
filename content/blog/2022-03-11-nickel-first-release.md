@@ -233,7 +233,7 @@ contracts for enforcing additional properties, such as security-related rules.
 
 ### Merging
 
-On last important aspect of Nickel is the merge operation, written `&`. Merging
+One last important aspect of Nickel is the merge operation, written `&`. Merging
 combines records recursively and provides a way of writing modular
 configurations:
 
