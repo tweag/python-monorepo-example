@@ -6,7 +6,7 @@ tags: [nix, nickel]
 ---
 
 I am excited to announce the first release of [Nickel][nickel-repo]! In the
-original introductory [blog post][nickel-1] blog post, I've written about why we, at
+original introductory [blog post][nickel-1], I've written about why we, at
 Tweag, are developing yet another configuration language. Our goal is to empower
 people to write correct, programmable and maintainable configurations. Nickel
 targets Nix, Infrastructure-as-Code, build systems, and more. We think such a
