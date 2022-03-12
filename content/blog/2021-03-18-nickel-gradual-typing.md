@@ -75,21 +75,22 @@ Typechecking is triggered by a type annotation, introduced by `:`. Annotations
 can either be apposed to a variable name or to an expression:
 
 ```
-let makePort : Str -> Num = fun protocol =>
+# file config.ncl
+let make_port : Str -> Num = fun protocol =>
   if protocol == "http" then
     80
   else if protocol == "ftp" then
     21
   else
     null in
-let unusedBad = 10 ++ "a" in
+let unused_bad = 10 ++ "a" in
 {
-  port = makePort protocol,
+  port = make_port protocol,
   protocol = ("ht" ++ "tp" : Str),
 }
 ```
 
-In this example, `makePort` is a function taking a string and returning a
+In this example, `make_port` is a function taking a string and returning a
 number. It is annotated, causing the typechecker to kick in. It makes sure that
 each sub-expression is well-typed. Notice that subterms don't need any other
 annotation: Nickel is able to guess most of the types using unification-based
@@ -98,14 +99,14 @@ type inference.
 Such a static type annotation is also called a **promise**, as you make a firm
 promise to the typechecker about the type of an expression.
 
-Static typechecking ends with `makePort`, and although `unusedBad` is clearly
+Static typechecking ends with `make_port`, and although `unused_bad` is clearly
 ill-typed (concatenating a number and a string), it won't cause any typechecking
 error.
 
 Can you guess the result of trying to run this program?
 
 ```
-error: Incompatible types
+error: incompatible types
   ┌─ repl-input-1:7:5
   │
 7 │     null in
@@ -120,14 +121,14 @@ The typechecker rightly complains than `null` is not a number. If we fix this
 (for now, substituting it with `-1`), the programs runs correctly:
 
 ```
-$nickel export <<< ...
+$ nickel export -f config.ncl
 {
   "port": 80,
   "protocol": "http"
 }
 ```
 
-`unusedBad` doesn't cause any error at run-time. Due to [laziness][laziness], it is never
+`unused_bad` doesn't cause any error at run-time. Due to [laziness][laziness], it is never
 evaluated. If we were to add a type annotation for it though, the typechecker
 would reject our program.
 
@@ -150,7 +151,7 @@ untyped chunk. Without an additional safety mechanism, one would get this
 runtime type error:
 
 ```
-error: Type error
+error: type error
   ┌─ repl-input-0:1:26
   │
 1 │ let add : Num -> Num -> Num = fun x y => x + y
@@ -186,7 +187,7 @@ message, but this one instead:
 nickel> let add : Num -> Num = fun x y => x + y in
 add 5 "a"
 
-error: Blame error: contract broken by the caller.
+error: contract broken by the caller
   ┌─ :1:8
   │
 1 │ Num -> Num -> Num
@@ -225,15 +226,15 @@ follow-up is to examine the dual case: how can one use definitions living in
 untyped code inside a statically typed context? Consider the following example:
 
 ```
-// this example does NOT typecheck
+# this example does NOT typecheck
 let f = fun x => if x then 10 else "a" in
-let doStuffToNum: Num -> Num = fun arg =>
+let do_stuff_to_num: Num -> Num = fun arg =>
   arg + (f true) in
 
-doStuffToNum 1
+do_stuff_to_num 1
 ```
 
-The typed function `doStuffToNum` calls to an untyped function `f`. `f true` turns out to be a
+The typed function `do_stuff_to_num` calls to an untyped function `f`. `f true` turns out to be a
 number indeed, but `f` itself is not well-typed, because the types of the `if`
 and the `else` branch don't match. No amount of additional type annotations can
 make this program accepted.
@@ -241,7 +242,7 @@ make this program accepted.
 See what happens in practice:
 
 ```
-error: Incompatible types
+error: incompatible types
   ┌─ repl-input-1:3:10
   │
 3 │   arg + (f true) in
@@ -262,7 +263,7 @@ Or are we? One more time, contracts come to the rescue. Going back to the [post 
 again, contracts are enforced similarly to types, but using `|` instead of `:`. Let us fix our example:
 
 ```
-let doStuffToNum: Num -> Num = fun arg =>
+let do_stuff_to_num: Num -> Num = fun arg =>
   arg + (f true | Num) in
 ```
 
