@@ -2,21 +2,25 @@ slug: robin.bate-boerop
 name: Robin Bate Boerop
 github: robinbb
 shortDescription: |
-  Robin provides engineering management help to companies who need leadership
-  as well as DevOps and Nix expertise.
+  Robin makes winning software teams by providing hands-on engineering leadership.
 bio: |
-  He has twenty years of experience as a software engineer, leading or managing
-  development teams for the last nine at companies like LeapYear and Formation
-  AI. Robin holds a B.Sc. in Computing & Information Science from Queen's
-  University, Canada and co-founded a sold tech startup whose engine was
-  initially built with Haskell. He lives in Canada having returned from San
-  Francisco and enjoys talking walks in nature and reading on IT subjects not
-  directly related to work.
+  He has 23 years of experience in software engineering, having led or managed
+  development teams for the last 11 years at companies like Formation and
+  Nomadic Labs.
+  Robin holds a B.Sc. in Computing & Information Science from Queen's
+  University, Canada.
+  He co-founded and sold a data engineering tech startup whose core technology
+  was developed with Haskell.
+  After 5 years in Silicon Valley, he has returned to Canada and lives in
+  Vancouver.
 
   Robin is described at Tweag as a person who cares about people and their
-  well-being in IT, a seasoned engineer and a leader with vision. Working
+  well-being, a seasoned engineer, and a leader with vision. Working
   with him feels positive and rewarding.
+
 skills:
+  - Leadership
+  - Engineering Management
   - Software Development
   - Haskell
   - Nix
@@ -28,8 +32,16 @@ experience:
     role: Global Software Leadership Consultant
     years: April 2020 - present
 
+  - employer: Mina Foundation
+    role: Interim Head of Engineering
+    years: February 2022 - present
+
+  - employer: Nomadic Labs
+    role: Interim Director of Engineering
+    years: January 2021 - January 2022
+
   - employer: Engine ML
-    role: Senior Software Engineer
+    role: Principal Infrastructure (DevOps) Engineer
     years: October 2018 - April 2020
     description:
       - |
@@ -56,34 +68,35 @@ experience:
 
   - employer: LeapYear Technologies
     role: Engineering Manager - Infrastructure
-    years: April 2017 - December 2017
+    years: October 2016 - December 2017
     description:
-      - |
-        LeapYear Technologies is a Berkeley-based software startup that develops a privacy enhancing data management platform.
-        LeapYear enables the world's largest enterprises to leverage their most sensitive data assets.
-        While at LeapYear, Robin: drove the planning, technical specification, code review, and documentation of all aspects of software development, with particular responsibility for platform infrastructure;
-        developed standards and practices for software engineering, recruiting, training, project monitoring, and product testing; interviewed, trained, supervised, and evaluated the work of software engineers;
-        chose fundamental technology for LeapYear's software;
-        conducted security reviews, internal audits, and vulnerability assessments;
-        directed the review of production costs; advocated for customer focused decision-making.
-
-  - employer: LeapYear Technologies
-    role: Software Engineer
-    years: October 2016 - April 2017
-    description:
-      - |
-        LeapYear Technologies is a Berkeley-based software startup that develops a privacy enhancing data management platform.
-        LeapYear's platform enables the world's largest enterprises to leverage their most sensitive data assets.
-        While a software engineer at LeapYear, Robin: planned, implemented, and optimized new features for LeapYear’s core platform;
-        designed, implemented, and debugged internal tools and software applications;
-        prepared LeapYear’s platform for delivery to customers and provided guidance on implementation;
-        ensured high quality and performance of complex analysis of large data sets;
-        provided technical expertise in Haskell, Nix, devops, software design, cloud computing, distributed computing, Java, computer security, Apache Spark;
-        and developed performance critical Haskell code.
+    - |
+      LeapYear Technologies is a Berkeley-based software startup that develops
+      a privacy enhancing data management platform.
+      LeapYear enables the world's largest enterprises to leverage their most
+      sensitive data assets.
+      While at LeapYear, Robin
+      drove the planning, technical specification, code review, and
+      documentation of all aspects of software development, with particular
+      responsibility for platform infrastructure;
+      developed standards and practices for software engineering, recruiting,
+      training, project monitoring, and product testing;
+      interviewed, trained, supervised, and evaluated the work of software
+      engineers;
+      chose fundamental technology for LeapYear's software;
+      conducted security reviews, internal audits, and vulnerability
+      assessments;
+      directed the review of production costs;
+      ensured high quality and performance of complex analysis of large data
+      sets;
+      provided technical expertise in Haskell, Nix, devops, software design,
+      cloud computing, distributed computing, Java, computer security, Apache Spark;
+      developed performance critical Haskell code;
+      advocated for customer focused decision-making.
 
   - employer: Spinzo
     role: VP Software Development
-    years: July 2015 - October 2016
+    years: July 2015 - April 2020
     description:
       - |
         Spinzo, a Ticketmaster certified partner, provides a white-labeled software platform that helps brands create promotions with a unique incentive:
@@ -92,12 +105,6 @@ experience:
         Augmented integration with Ticketmaster Archtics.
         Implemented Stripe Connect payments system, automated build system in AWS Elastic Beanstalk, team process for software development.
         Used Docker, PHP, Bash, MySQL, JavaScript, SQL, Bootstrap, jQuery, Node.js, HTML, CSS, Less, Apache, AWS services.
-
-  - employer: Karamaan Group, LLC
-    role: Software Analyst (Contractor)
-    years: February 2015 - June 2015
-    description:
-      - Karamaan Group is a principal investment firm based in New York.
 
   - employer: Blue Spurs Consulting, Inc.
     role: Senior Technical Team Lead
@@ -172,7 +179,7 @@ experience:
 
   - employer: IBM Canada Ltd.
     role: Software Analyst
-    years: May 2000 - November 2002
+    years: ??? - November 2002
     description:
       - |
         DB2 is IBM's premiere database product for Linux, Unix, and Windows.
@@ -181,20 +188,11 @@ experience:
         Maintained DB2 engine code related to memory management, custom concurrency control constructs, and other low level operating system services.
         Advised on performance issues. Formed part of "final stop" problem solving team.
 
-  - employer: Queen's University
-    role: Teaching Assistant
-    years: September 1998 - April 2000
-    description:
-      - |
-        Designed and presented tutorials, marked assignments, coordinated study groups, and devised sample exams.
-        Responsible for MATH 121 (calculus for math majors), CISC 121 (intro to computing with Java), and CISC 454 (compiler construction).
-
 education:
   - qualification: B.Sc.Hons
     name: Computing & Information Science
     institution: Queen's University
-    years: 1993 - 1999
     description:
       - |
-        Interests, performance programming, assembly language, compiler construction, type theory, Java.
-        Thesis, simplifying performance metrics for uniprocessors.
+        Interests: performance programming, assembly language, compiler construction, type theory, Java.
+        Thesis: simplifying performance metrics for uniprocessors.
