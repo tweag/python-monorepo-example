@@ -70,29 +70,29 @@ experience:
     role: Engineering Manager - Infrastructure
     years: October 2016 - December 2017
     description:
-    - |
-      LeapYear Technologies is a Berkeley-based software startup that develops
-      a privacy enhancing data management platform.
-      LeapYear enables the world's largest enterprises to leverage their most
-      sensitive data assets.
-      While at LeapYear, Robin
-      drove the planning, technical specification, code review, and
-      documentation of all aspects of software development, with particular
-      responsibility for platform infrastructure;
-      developed standards and practices for software engineering, recruiting,
-      training, project monitoring, and product testing;
-      interviewed, trained, supervised, and evaluated the work of software
-      engineers;
-      chose fundamental technology for LeapYear's software;
-      conducted security reviews, internal audits, and vulnerability
-      assessments;
-      directed the review of production costs;
-      ensured high quality and performance of complex analysis of large data
-      sets;
-      provided technical expertise in Haskell, Nix, devops, software design,
-      cloud computing, distributed computing, Java, computer security, Apache Spark;
-      developed performance critical Haskell code;
-      advocated for customer focused decision-making.
+      - |
+        LeapYear Technologies is a Berkeley-based software startup that develops
+        a privacy enhancing data management platform.
+        LeapYear enables the world's largest enterprises to leverage their most
+        sensitive data assets.
+        While at LeapYear, Robin
+        drove the planning, technical specification, code review, and
+        documentation of all aspects of software development, with particular
+        responsibility for platform infrastructure;
+        developed standards and practices for software engineering, recruiting,
+        training, project monitoring, and product testing;
+        interviewed, trained, supervised, and evaluated the work of software
+        engineers;
+        chose fundamental technology for LeapYear's software;
+        conducted security reviews, internal audits, and vulnerability
+        assessments;
+        directed the review of production costs;
+        ensured high quality and performance of complex analysis of large data
+        sets;
+        provided technical expertise in Haskell, Nix, devops, software design,
+        cloud computing, distributed computing, Java, computer security, Apache Spark;
+        developed performance critical Haskell code;
+        advocated for customer focused decision-making.
 
   - employer: Spinzo
     role: VP Software Development
