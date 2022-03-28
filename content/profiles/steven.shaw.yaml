@@ -1,0 +1,79 @@
+slug: steven.shaw
+name: Steven Shaw
+pronouns: he/him
+github: steshaw
+
+shortDescription: |
+  Steven is a software engineer who loves programming languages.
+
+bio: |
+  He has 30 years of hands-on industry experience across many domains,
+  including telecommunications and finance. He likes to apply functional
+  programming to create reliable, maintainable software.
+
+  He's currently working with Haskell and likes other contemporary languages
+  such as Rust, OCaml, Elm, and PureScript. He has high hopes that we will
+  see widespread industry adoption of programming languages with
+  full-spectrum dependent types.
+
+  He started programming at 11, mostly building computer games on a
+  Commodore 64. He's always been curious about how things work — to
+  demystify the magic. Much of his love of programming languages is
+  explained by his desire to understand how they are implemented.
+
+  Even though he likes fancy enlightened programming languages, he
+  doesn't mind a low-brow solution such as a Bash script when it makes
+  sense.
+
+  He comes with healthy doses of enthusiasm, openness, humour, and common
+  sense.
+
+links:
+  Homepage: https://steshaw.org/
+  Twitter: https://twitter.com/steshaw
+  GitHub: https://github.com/steshaw/
+
+skills:
+  - Software Development
+  - Haskell
+  - DevOps
+  - Nix
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 - present
+
+  - employer: TLC SRC
+    role: Senior Software Engineer
+    years: 2003 - 2022
+
+  - employer: Tiny
+    role: Principal Software Engineer
+    years: 2013 - 2014
+
+  - employer: ADC Telecommunications
+    role: Senior Technical Software Developer
+    years: 1999 - 2003
+
+  - employer: Dialog Information Technology
+    role: Senior Analyst Programmer
+    years: 1993 - 1998
+
+  - employer: CITEC
+    role: Analyst Programmer
+    years: 1991 - 1992
+
+education:
+  - qualification: Master's Degree
+    name: Master of Information Technology
+    institution: Queensland University of Technology
+    years: 2000 - 2004
+
+  - qualification: Bachelor's Degree
+    name: Bachelor of Applied Science (Computing)
+    institution: Queensland University of Technology
+    years: 1989 - 1992
