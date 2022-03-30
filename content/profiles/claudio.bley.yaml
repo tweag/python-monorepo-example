@@ -1,0 +1,71 @@
+slug: claudio.bley
+pronouns: He/Him
+name: Claudio Bley
+github: avdv
+skills:
+  - Scala
+  - Python
+  - Nix
+  - NixOS
+shortDescription: |
+  Claudio is a software engineer with a passion for functional programming,
+  striving for correctness and elegance.
+bio: |
+  He started with a bachelor’s degree in computer science but after that
+  diverged to working in the security industry, analyzing Malware samples in an
+  automatic fashion and putting anti-malware software to the test.
+
+  His experience includes a diverse set of frameworks and languages, ranging
+  from Common Lisp to LabVIEW and more common languages including Scala and
+  Python.
+
+  He began using NixOS in 2018 and started contributing to its tooling soon
+  thereafter in true open-source itch-scratching spirit.
+
+  Meanwhile, his former job led him to recognize the value of reproducible
+  builds and this triggered interest in Bazel as well.
+
+  When not working, he likes spending time with his family and friends, playing
+  table tennis with his kids and heading out on (preferably smooth) water for
+  rowing.
+
+education:
+  - qualification: Bachelor of Science
+    name: Computer Science
+    institution: Hochschule Anhalt
+    years: 2006-2009
+experience:
+  - employer: Tweag
+    role: Software engineer
+    years: 2022-present
+  - employer: eXa-online GmbH
+    role: Software engineer
+    years: 2014-2022
+    description:
+      - Backend and frontend for a headless CMS
+      - >
+        Tech: Akka, Play, cats, cats-effect, Ember.js, MongoDB, AWS, Kubernetes, Datadog, Splunk, GCP, Azure, Elasticsearch
+  - employer: AV-TEST GmbH
+    role: Principal Software Engineer
+    years: "2008-2014"
+    description:
+      - Scalable system for dynamic Malware analysis
+      - >
+        Tech: Akka, Redis, Netty, AMQP, Libvirt, Qemu, XMPP, Apache Avro
+  - employer: Siemens Enterprise Communications Manufacturing GmbH & Co. KG
+    role: Intern
+    years: "2007"
+    description:
+      - Tooling for calibration of Test-devices for QA
+      - >
+        Tech: LabVIEW
+  - employer: T-Systems  Enterprise Services GmbH
+    role: Software Engineer
+    years: "2006-2007"
+    description:
+      - Admin tool for Fileservice in Active Directory
+      - >
+        Tech: .NET, ASP.NET, Visual Basic, C#, MS SQL
+speaks:
+  - German (native)
+  - English (fluent)
