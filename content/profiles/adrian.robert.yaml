@@ -25,17 +25,18 @@ skills:
   - Infrastructure as code
   - Objective-C and iOS, Swift
 speaks:
-  - English
-  - Finnish
-  - Chinese, French (once fluent but disused, recoverable)
-  - Norwegian (in-progress)
+  - English (native)
+  - Finnish (serviceable / B2)
+  - Norwegian (in-progress / A2)
+  - Chinese, French (both formerly B1 but disused, recoverable)
 experience:
   - employer: Tweag I/O
     role: Software Engineer
     years: March 2021 - Present
     description:
-      - |
-        Benchmarking infrastructure for smart contract platform.
+      - Engineering and project management for benchmarking infrastructure for
+        a distributed trading application and bridging interfaces between smart
+        contract / blockchain ledgers.
   - employer: GE Healthcare
     role: Product Owner
     years: December 2018 - November 2020
