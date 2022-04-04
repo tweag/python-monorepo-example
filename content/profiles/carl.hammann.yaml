@@ -1,0 +1,47 @@
+slug: carl.hammann
+name: Carl Hammann
+github: carlhammann
+shortDescription: |
+  Carl is a mathematician who took a liking to computers. He enjoys when
+  foundations suddenly become applied; when the answer to some deep
+  question is actually implementable, useful, and, importantly, fun to
+  work with. If we strive for the ideal of "software correct by design",
+  the road towards that goal has to be enjoyable!
+
+bio: |
+  Carl was "awakened" when he stumbled upon the Homotopy Type Theory
+  book. Perhaps not surprisingly, he did not understand most of it on
+  the first reading, but his worldview was transformed and he began to
+  get interested in computer formalisations of mathematics. (Some would
+  say he neglected his curriculum over playing around in Coq.)
+
+  From this starting point, he began to explore all the clever ideas
+  that have already gone into making software more correct. This process
+  of learning is still going on, and Carl hopes to find many others who
+  are going to learn together with him.
+
+  Music has always played an important part in Carl's life, and away
+  from work he spends most of his time singing in an unreasonable
+  number of choirs, composing, or playing the piano.
+
+skills:
+  - Coq
+  - Scheme (GNU Guile)
+  - audio DSP
+  - Category Theory, (Ho)TT
+speaks:
+  - German (native)
+  - English (professional)
+experience:
+  - employer: Tweag
+    role: Software Verification and Audit Engineer
+    years: March 2022-present
+education:
+  - qualification: MSc
+    name: Mathematics
+    institution: Universität Bremen
+    years: 2016 - 2021
+  - qualification: BSc
+    name: Mathematics
+    institution: TU Dresden
+    years: 2012 - 2015
