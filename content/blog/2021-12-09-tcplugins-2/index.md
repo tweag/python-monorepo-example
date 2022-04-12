@@ -435,7 +435,7 @@ foo x = case x of
   MkG2 i j -> fromIntegral (i + j)
 ```
 
-When type-checking `foo`, GHC process the constraints, canonicalising them and
+When type-checking `foo`, GHC processes the constraints, canonicalising them and
 eventually generating the following nested implications:
 
 ```
