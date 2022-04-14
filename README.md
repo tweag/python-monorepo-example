@@ -55,6 +55,15 @@ commit:
 git lfs migrate import --no-rewrite -m "add to lfs" app/assets/img/team/someone.jpg
 ```
 
+If `migrate` doesn't work, [an issue on the Github LFS
+tracker](https://github.com/git-lfs/git-lfs/issues/1939#issuecomment-692292514)
+recommends
+
+```
+git add --renormalize .
+git commit -m "Fix broken LFS files"
+```
+
 ## Building the website
 
 For convenience, a [shell.nix](./shell.nix) file is provided to
