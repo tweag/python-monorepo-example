@@ -27,7 +27,7 @@ _post-build hooks_ that solves these security issues and more.
 ## The standard cache setup
 
 Let's walk through the standard procedure for setting up such a Nix cache.
-First, create a signing keypair:
+First, create a signing key pair:
 
 ```bash
 nix-store --generate-binary-cache-key example-nix-cache-1 ./nix-cache-key.sec ./nix-cache-key.pub

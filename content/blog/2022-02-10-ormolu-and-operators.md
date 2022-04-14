@@ -91,7 +91,7 @@ chain2 =
 
 Two general styles are often considered for multi-line constructs (their names are taken from the JetBrains IDEs' formatter):
 
-- The _wrap_ strategy, for which line breaks are introduced so as to meet a line length goal (for exemple, no more than 80 characters per line of code). As a result, the number of operands and operators on each line is variable, and the strategy is not really diff-friendly.
+- The _wrap_ strategy, for which line breaks are introduced so as to meet a line length goal (for example, no more than 80 characters per line of code). As a result, the number of operands and operators on each line is variable, and the strategy is not really diff-friendly.
 - The _chop down_ strategy, where every pair of operator and operand sits on its own line, without taking length into account.
 
 Ormolu has no line goal system, so the first strategy is definitely not applicable. But the second one, albeit being diff-friendly, has unwanted consequences for chains that mix operators with different precedence levels.

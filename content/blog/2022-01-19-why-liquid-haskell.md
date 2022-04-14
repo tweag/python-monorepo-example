@@ -153,7 +153,7 @@ data UExp (n :: Nat)
 
 Variables are represented with a de Bruijn index. That is, the variable
 `UVar i` refers to the variable bound by the i-th lambda abstraction surrounding
-the variable occurence. Thus, `ULam (ULam (UVar FZ))` stands for the lambda expression
+the variable occurrence. Thus, `ULam (ULam (UVar FZ))` stands for the lambda expression
 `\x . \y . y`, and `ULam (ULam (UVar (FS FZ)))` stands for `\x. \y. x`.
 
 The type index of `UExp` allows us to refer conveniently to closed expressions as

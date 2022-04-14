@@ -23,7 +23,7 @@ This ensures that the log isn't tampered with retroactively and if, for instance
 
 The way the append-only log works is somewhat similar to Git commits.
 In a Git repository, each commit is given a hash, which depends on its content and on the previous commits.
-If you modify an earlier commit X (and `push --force`) then all the commits after X see their hash change, and anybody who has a reference to one of theses commits will immediately notice that the branch has been modified.
+If you modify an earlier commit X (and `push --force`) then all the commits after X see their hash change, and anybody who has a reference to one of these commits will immediately notice that the branch has been modified.
 Therefore, a Git branch acts as a verifiably append only log of commits.
 
 Trustix logs are similar, except that they use a tree structure, called a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), instead of a chain.
@@ -82,7 +82,7 @@ Appending new branches thus doesn't require us to traverse the whole tree again.
 We can verify that nothing from the previous state was modified by seeing that `root0` is still in the tree; we have only appended to it.[^append_only]
 
 It is also possible to easily verify that a branch or a leaf node of the tree belongs there.
-For instance, if we want to check that `d2` is in the tree, the builder sends us the hashs `d`, `m`, and `o`: the hashes of the _siblings_ of the nodes on the path from `root1` to `d2`.
+For instance, if we want to check that `d2` is in the tree, the builder sends us the hashes `d`, `m`, and `o`: the hashes of the _siblings_ of the nodes on the path from `root1` to `d2`.
 With `d2`, we compute `c`, with `c` and `d`, we compute `n`, with `n` and `m` we compute `root0`, and `root0` and `o` we compute `root1`: if `root1` coincides with the root of the builder's log, then indeed, we have verified that `d2` belongs to the log.
 
 Let's explore this in more detail in the context of Trustix.
