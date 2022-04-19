@@ -5,9 +5,9 @@ author: Marco Perone
 tags: [haskell, optics]
 ---
 
-Optics are one of those concepts which always catches quite a lot of attention from the functional programming community, thanks to their composability. They provide a way to access and modify data structures in an immutable and composable way. Still, if someone tries to understand how they work, just by looking at some data declarations and type definitions, they will probably have a hard time understanding what is actually going on.
+Optics are one of those concepts which always catch quite a lot of attention from the functional programming community, thanks to their composability. They provide a way to access and modify data structures in an immutable and composable way. Still, if someone tries to understand how optics work just by looking at some data declarations and type definitions, they will probably have a hard time understanding what is actually going on.
 
-In this post, I present a way of encoding optics that is different from what you would find in common libraries. This different take on the implementation of optics may also be easier to understand for those who have had a hard time with the usual encoding. These ideas are not new and are well known in the category theory academic circles. Still, they do not seem to appear in libraries for languages like Haskell, Purescript, or Scala.
+In this post, I present a way of encoding optics that is different from what you would commonly find in libraries. This different take on the implementation of optics may also be easier to understand for those who have had a hard time with the usual encoding. These ideas are not new and are well known in the category theory academic circles. Still, they do not seem to appear in libraries for languages like Haskell, Purescript, or Scala.
 
 The most well-known type of optics are lenses, which were also the first to be analyzed and used. We will use them as our recurring example to compare the several ways we have to encode optics.
 
@@ -31,7 +31,7 @@ over streetLens toUpper (Address { street = "Baker Street", number = "221B" })
 -- Address { street = "BAKER STREET", number = "221B" }
 ```
 
-Optics generaize this pattern. Intuitively, while `Lens`es focus on a single value, `Prism`s focus on zero or one value and `Traversal`s focus on zero, one or multiple values.
+Optics generalize this pattern. Intuitively, while `Lens`es focus on a single value, `Prism`s focus on zero or one value and `Traversal`s focus on zero, one or multiple values.
 
 Lenses, and optics in general, compose extremely well. For example, if we also had a `User` record containing an `address` field of type `Address`, we could easily access and modify the `street` field of the address.
 
@@ -72,7 +72,7 @@ Also, it turns out that this encoding is very ad-hoc, and is not immediately cle
 
 ### Van Laarhoven encoding
 
-In 2009 Twan Van Laarhoven came up with a [new encoding for lenses](https://www.twanvl.nl/blog/haskell/cps-functional-references) which is quite commonly used, for example by the [`lens`](https://hackage.haskell.org/package/lens) library.
+In 2009 Twan Van Laarhoven came up with a [new encoding for lenses](https://www.twanvl.nl/blog/haskell/cps-functional-references) which is commonly used, for example by the [`lens`](https://hackage.haskell.org/package/lens) library.
 
 ```haskell
 data Lens s a
@@ -82,7 +82,7 @@ data Lens s a
 
 This says that a `Lens s a` allows us to lift a function `a -> f a` to a function `s -> f s` for any possible functor `f`.
 
-I would argue that it is harder to understand what the encoding is describing. The functionalities provided by the explicit encoding could be recovered with a wise choice of `f`. For example, when `f = Identity` we get a function `(a -> a) -> (s -> s)` which allows us to edit the content. Similarly, if we choose `f = Const a`, we get a function `(a -> a) -> s -> a`; applying this to the identity function, we get back our `get :: s -> a` function.
+I would argue that it is harder to understand what this encoding is describing. The key insight is that the explicit encoding can be recovered with a wise choice of `f`. For example, when `f = Identity` we get a function `(a -> a) -> (s -> s)` which allows us to edit the content. Similarly, if we choose `f = Const a`, we get a function `(a -> a) -> s -> a`; applying this to the identity function, we get back our `get :: s -> a` function.
 
 What we gain, though, is a massive improvement with respect to composability. Now, we can use just function composition, i.e. `.`, to compose lenses.
 
@@ -106,7 +106,7 @@ We are still dealing with simple functions, so we are still able to compose opti
 
 It also becomes extremely easy to generalize this encoding to other types of optics. The type of optic is determined by the constraint we have on the `p` type variable. In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso); if we use `Choice`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
 
-Now when we want to compose two optics of a different type, we just need to collect all the relevant constraint. For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
+Now when we want to compose two optics of a different type, we just need to collect all the relevant constraints. For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
 
 In short, the profunctor encoding works extremely well with regard to compositionality, but it constrains us with an encoding that is not easy to understand.
 
@@ -157,7 +157,7 @@ view :: Lens s a -> s -> a
 view (Lens f _) = snd . f
 ```
 
-Similarly, is we want to lift a function `h :: a -> a` to a function `s -> s`, we can decompose `s` into `(c, a)`, map `h` over the second component of the pair and then reconstruct a new `s` back.
+Similarly, if we want to lift a function `h :: a -> a` to a function `s -> s`, we can decompose `s` into `(c, a)`, map `h` over the second component of the pair and then construct a new `s` from the old `c` and the new `a`.
 
 ```haskell
 over :: Lens s a -> (a -> a) -> s -> s
@@ -166,11 +166,11 @@ over (Lens f g) h = g . fmap h . f
 
 ### Easy to generalize to other optics
 
-When it comes to generalizing the existential encoding to other optics, it turns out that it is enough to switch the `(,)` data type with another construct of the same kind.
+When it comes to generalizing the existential encoding to other optics, it turns out that it is enough to switch the `(,)` data type with another type constructor of the same kind.
 
 #### Prisms
 
-For example, if we use `Either` instead of `(,)` that we had in the definition of a `Lens`, what we get is a `Prism`:
+For example, if we use `Either` instead of `(,)` that we had in the definition of a `Lens`, we get a `Prism`:
 
 ```haskell
 data Prism s a
@@ -179,7 +179,7 @@ data Prism s a
 
 This definition tells us that a `Prism s a` is just a proof that there exists a `c` such that `s` is isomorphic to `Either c a`.
 
-With this definition it is easy to define the common operations used on a `Prism`:
+With this definition it is easy to define the common operations used on a `Prism`. `preview` allows to retrieve the focus if we are on the correct branch of the sum type; `review` instead allows to construct `s` from `a`.
 
 ```haskell
 preview :: Prism s a -> s -> Maybe a
