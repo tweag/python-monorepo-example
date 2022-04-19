@@ -157,7 +157,7 @@ such information can be a `CONTRIBUTING` file at the repository root.
 To make your code land, you need to find good reviewers. Here's what makes a good reviewer:
 
 1. Reviews fast when asked.
-1. Says no when he cannot review fast (for me fast means within one or two working days).
+1. Says no when they cannot review fast (for me fast means within one or two working days).
 
 The second point is important: good reviewers are usually very busy (because
 they get asked a lot) and so they happen not to always be able to review in a short
@@ -258,7 +258,7 @@ Your pull request has been picked up by reviewers? Great! Let's keep the
 grasp on the reviewers while they are at it. For this I recommend replying
 quickly to comments, to increase the chances of starting a discussion. If you
 answer to comments while the reviewer is still reviewing, there is a high
-chance he will reply right away to your answers, creating a virtuous conversation.
+chance they will reply right away to your answers, creating a virtuous conversation.
 
 ![png](https://i.imgur.com/nSz7PU8.png)
 
