@@ -229,6 +229,15 @@ merge your code fast — you should engage with them. Here are my recommendation
   include pinging authors of stalled pull requests, triaging issues,
   upgrading dependencies regularly, or maintaining documentation.
   (Don't underestimate the power of a few fixed typos!)
+- [Research shows that][cs-111] "women's pull requests tend to be accepted
+  more often than men's, yet women's acceptance rates are higher only when they
+  are not identifiable as women." Be aware of the systemic unconscious biases that
+  are at play in your process. If you notice that certain person's PRs are often
+  blocked, or debated more than others, you might want to consider stepping back
+  and involving others in the organisation dealing with making the workplace more
+  inclusive.
+
+[cs-111]: https://peerj.com/articles/cs-111/
 
 ## Submitting pull requests
 
@@ -337,3 +346,5 @@ have an helpful description of the changes. The social aspect has many subtletie
 1. Take on responsibility: it makes you both provide more value to the organization
    you are working for and it makes your life easier by gaining influence to
    deliver your contributions.
+
+
