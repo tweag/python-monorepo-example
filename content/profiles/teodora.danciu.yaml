@@ -27,3 +27,43 @@ speaks:
   - English
   - German
   - Romanian
+
+experience:
+  - employer: Tweag I/O
+    role: Software Engineer
+    years: May 2021 - Present
+    description:
+      - Built components and features of the performance benchmarking platform for a smart contract platform
+  - employer: Ovo Energy, London
+    role: Scala Developer
+    years: February 2019 - May 2021
+    description:
+      - Built Scala services as part of the Payments Platform of the new billing system
+        - both application and infrastructure code for AWS deployment, along with alerting
+        and monitoring mechanisms
+  - employer: Drivetribe, London
+    role: Scala Developer
+    years: May 2016 - November 2018
+    description:
+      - Built REST APIs underlying drivetribe.com social platform
+      - Implemented direct and group messaging on the platform
+      - Implemented data stream operations to compute and store core-data stats
+  - employer: On Track Retail, London
+    role: Scala Developer
+    years: February 2015 - February 2016
+    description:
+      - Built components of a microservice system, throughout its successful accreditation
+        and launch as atrain tickets retail system used now by major UK train companies
+      - Helped colleagues who were transitioning to Scala
+  - employer: Timeout, London
+    role: Scala Developer
+    years: November 2013 - February 2015
+    description:
+      - Built Scala components for indexing and searching within the platform
+      - Contributed to the REST APIs underlying the website
+  - employer: Nature Publishing Group, London
+    role: Java Developer
+    years: August 2012 - November 2013
+    description:
+      - Customized and extended the Java CMS sustaining a core part of the business
+      - Built a migration tool in Scala to transfer the comment archive to a commening hosting service
