@@ -1,0 +1,62 @@
+slug: alexis.king
+name: Alexis King
+github: lexi-lambda
+twitter: "@lexi_lambda"
+website: https://lexi-lambda.github.io/
+shortDescription: |
+  Programming languages researcher, engineer, and educator currently working on
+  Haskell and GHC at Tweag. Her background is primarily in software engineering,
+  but she is also an expert in algebraic effect systems and hygienic macros. She
+  currently lives in Chicago.
+bio: |
+  Alexis has been excited about programming since late elementary school, and
+  her early frustrations led to an interest in programming language design and
+  implementation when she was in high school. She began writing software
+  professionally soon after, and though she has never attended university, she
+  continued to explore her research interests in her free time. Eventually, she
+  taught herself enough to start contributing to open-source programming
+  language projects such as Racket and GHC.
+
+  Given her engineering-oriented background, she particularly enjoys working at
+  the intersection of theory and practice, and she likes building and extending
+  systems to apply new ideas in useful ways. She’s also passionate about finding
+  ways to make powerful but complex ideas more accessible, whether that means
+  developing better tools or creating more educational resources. Her work of
+  the former variety has led to an extensive list of GitHub projects, while her
+  efforts towards the latter can be seen in her blog posts and conference talks.
+
+  In recent years, Alexis has taken a particular interest in algebraic effect
+  systems, particularly in the context of Haskell. In her spare time, she has
+  also enjoyed tinkering with a new system for typesetting mathematics a la
+  LaTeX, but reimagined as a DSL embedded in a functional programming language.
+  When not programming, she enjoys taking photographs on the streets of Chicago,
+  where she lives.
+links:
+  Github: https://github.com/lexi-lambda
+  Twitter: https://twitter.com/lexi_lambda
+  Website: https://lexi-lambda.github.io/
+skills:
+  - Haskell
+  - compiler engineering
+  - programming language theory
+  - technical writing
+  - public speaking
+  - teaching
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: March 2022 - present
+  - employer: Hasura
+    role: Lead Engineer
+    years: July 2019 - February 2021
+  - employer: Northwestern University
+    role: Research Programmer
+    years: April 2018 - June 2019
+  - employer: CJ Affiliate
+    role: Software Engineer
+    years: February 2016 - February 2018
+publications:
+  - Michael Ballantyne, Alexis King, and Matthias Felleisen. Macros for domain-specific languages. Proc. ACM Program. Lang. 4, OOPSLA, Article 229 (November 2020), 29 pages. DOI:https://doi.org/10.1145/3428297
+  - Lukas Lazarek, Alexis King, Samanvitha Sundar, Robert Bruce Findler, and Christos Dimoulas. Does blame shifting work? Proc. ACM Program. Lang. 4, POPL, Article 65 (January 2020), 29 pages. DOI:https://doi.org/10.1145/3371133
