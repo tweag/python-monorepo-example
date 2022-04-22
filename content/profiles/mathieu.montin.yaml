@@ -69,11 +69,8 @@ education:
     description:
       - Engineer degree at ENSEEIHT, with various courses around programming
 publications:
-  - "LibNDT: Towards a formal library on spreadable properties over linked
-    nested datatypes"
-  - "Towards multi-layered temporal models: A proposal to integrate instant
-    refinement in CCSL"
-  - "Mechanizing the relational semantics of the Clock Constraint Specification
-    Language"
-  - "Ordering strict partial orders to model behavioural refinement"
-  - "Ordering strict partial orders to model instant refinement"
+  - description: "LibNDT: Towards a formal library on spreadable properties over linked nested datatypes"
+  - description: "Towards multi-layered temporal models: A proposal to integrate instant refinement in CCSL"
+  - description: "Mechanizing the relational semantics of the Clock Constraint Specification Language"
+  - description: "Ordering strict partial orders to model behavioural refinement"
+  - description: "Ordering strict partial orders to model instant refinement"

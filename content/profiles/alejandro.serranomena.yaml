@@ -66,4 +66,5 @@ education:
     institution: Universidad Autónoma de Madrid
     years: 2006 - 2012
 publications:
-  - Please refer to the DBLP page at https://dblp.uni-trier.de/pid/96/8524.html.
+  - description: Please refer to the DBLP page at https://dblp.uni-trier.de/pid/96/8524.html.
+    link: https://dblp.uni-trier.de/pid/96/8524.html

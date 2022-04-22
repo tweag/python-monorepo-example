@@ -58,5 +58,7 @@ experience:
     role: Software Engineer
     years: February 2016 - February 2018
 publications:
-  - Michael Ballantyne, Alexis King, and Matthias Felleisen. Macros for domain-specific languages. Proc. ACM Program. Lang. 4, OOPSLA, Article 229 (November 2020), 29 pages. DOI:https://doi.org/10.1145/3428297
-  - Lukas Lazarek, Alexis King, Samanvitha Sundar, Robert Bruce Findler, and Christos Dimoulas. Does blame shifting work? Proc. ACM Program. Lang. 4, POPL, Article 65 (January 2020), 29 pages. DOI:https://doi.org/10.1145/3371133
+  - description: Michael Ballantyne, Alexis King, and Matthias Felleisen. Macros for domain-specific languages. Proc. ACM Program. Lang. 4, OOPSLA, Article 229 (November 2020), 29 pages. DOI:https://doi.org/10.1145/3428297
+    link: https://doi.org/10.1145/3428297
+  - description: Lukas Lazarek, Alexis King, Samanvitha Sundar, Robert Bruce Findler, and Christos Dimoulas. Does blame shifting work? Proc. ACM Program. Lang. 4, POPL, Article 65 (January 2020), 29 pages. DOI:https://doi.org/10.1145/3371133
+    link: https://doi.org/10.1145/3371133
