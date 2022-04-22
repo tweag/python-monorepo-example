@@ -85,7 +85,7 @@ education:
         specialises in formal methods
 
 publications:
-  - "Russ Harmer, Yves-Stan Le Cornec, Sébastien Légaré, Ievgeniia Oshurko: Bio-Curation for Cellular Signalling: The KAMI Project. CMSB 2017: 3-19"
-  - "Yves-Stan Le Cornec: Analyse de systèmes modulaires à l'aide de techniques d'abstractions hiérarchiques. (Analysing modular systems with hierarchical abractions). University of Paris-Saclay, France, 2016"
-  - "Yves-Stan Le Cornec, Franck Pommereau: Modular µ-Calculus Model-Checking with Formula-Dependent Hierarchical Abstractions. ACSD 2014: 11-20"
-  - "Nuno D. Mendes, Frédéric Lang, Yves-Stan Le Cornec, Radu Mateescu, Grégory Batt, Claudine Chaouiya: Composition and abstraction of logical regulatory modules: application to multicellular systems. Bioinform. 29(6): 749-757 (2013)"
+  - description: "Russ Harmer, Yves-Stan Le Cornec, Sébastien Légaré, Ievgeniia Oshurko: Bio-Curation for Cellular Signalling: The KAMI Project. CMSB 2017: 3-19"
+  - description: "Yves-Stan Le Cornec: Analyse de systèmes modulaires à l'aide de techniques d'abstractions hiérarchiques. (Analysing modular systems with hierarchical abractions). University of Paris-Saclay, France, 2016"
+  - description: "Yves-Stan Le Cornec, Franck Pommereau: Modular µ-Calculus Model-Checking with Formula-Dependent Hierarchical Abstractions. ACSD 2014: 11-20"
+  - description: "Nuno D. Mendes, Frédéric Lang, Yves-Stan Le Cornec, Radu Mateescu, Grégory Batt, Claudine Chaouiya: Composition and abstraction of logical regulatory modules: application to multicellular systems. Bioinform. 29(6): 749-757 (2013)"

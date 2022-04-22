@@ -51,4 +51,5 @@ talks:
   - "Property-based tests: Write less tests, find more bugs, Devfest Lille 2019"
   - "Workshop on Property-based tests in Haskell, ReasonML, Java, Rust and Javascript (with Thomas Haessle), Agile Tour Lille 2019"
 publications:
-  - "Beginner-to-intermediary blog posts on Effect handling in Haskell using Polysemy"
+  - description: "Beginner-to-intermediary blog posts on Effect handling in Haskell using Polysemy"
+    link: https://sir4ur0n.github.io/

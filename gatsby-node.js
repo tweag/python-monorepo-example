@@ -179,6 +179,11 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   }
 
+  type PublicationYaml {
+    description: String
+    link: String
+  }
+
   type ProfilesYaml implements Node @dontInfer {
     slug: String!
     name: String!
@@ -188,7 +193,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     bio: String
     skills: [String]
     speaks: [String]
-    publications: [String]
+    publications: [PublicationYaml]
     experience: [ProfilesYamlExperience]
     education: [ProfilesYamlEducation]
   }

@@ -81,31 +81,32 @@ education:
     description:
       - Majors in computer science and applied mathematics
 publications:
-  - >-
-    G. Maudoux.
-    "Reproducibility killed the frankenbuild", "A Tour of the Build Systems Galaxy", "Am I a build system ?", "How to Digest Nix Hashes ?", "Monads vs. Waterfalls", and "Nix overlays: the fixpoint and the (over)layer cake".
-    Available at https://blog.layus.be/. 2020-2021.
-  - >-
-    G. Maudoux, K. Mens.
-    Lessons and Pitfalls in Building Firefox with Tup.
-    In: Proceedings of the 12th Seminar on Advanced Techniques Tools for Software Evolution, CEUR Workshop Proceedings, Vol. 2510, 2019.
-  - >-
-    G. Maudoux.
-    Build outside of the (sand)box.
-    NixCon 2019.
-  - >-
-    G. Maudoux, K. Mens.
-    Correct, Efficient and Tailored: The Future of Build Systems.
-    In: IEEE Software, Vol. 35, p. 10, 2018.
-  - >-
-    G. Maudoux.
-    Incremental Package Builds.
-    NixCon 2017.
-  #- >-
-  #  G. Maudoux.
-  #  Bringing Incremental Builds to Continuous Integration.
-  #  Seminar Series on Advanced Techniques & Tools for Software Evolution, Madrid (Spain), 2017.
-  - >-
-    G. Maudoux, C. Pecheur, S. Combéfis.
-    Learning Safe Interactions and Full-Control.
-    In: Benjamin Weyers, Philippe Palanque, Judy Bowen et Alan Dix, Formal Methods in Human Computer Interactions, 2017.
+  - description: |
+      G. Maudoux.
+      "Reproducibility killed the frankenbuild", "A Tour of the Build Systems Galaxy", "Am I a build system ?", "How to Digest Nix Hashes ?", "Monads vs. Waterfalls", and "Nix overlays: the fixpoint and the (over)layer cake".
+      2020-2021.
+    link: https://blog.layus.be/
+  - description: |
+      G. Maudoux, K. Mens.
+      Lessons and Pitfalls in Building Firefox with Tup.
+      In: Proceedings of the 12th Seminar on Advanced Techniques Tools for Software Evolution, CEUR Workshop Proceedings, Vol. 2510, 2019.
+  - description: |
+      G. Maudoux.
+      Build outside of the (sand)box.
+      NixCon 2019.
+  - description: |
+      G. Maudoux, K. Mens.
+      Correct, Efficient and Tailored: The Future of Build Systems.
+      In: IEEE Software, Vol. 35, p. 10, 2018.
+  - description: |
+      G. Maudoux.
+      Incremental Package Builds.
+      NixCon 2017.
+  #- description: !
+  #    G. Maudoux.
+  #    Bringing Incremental Builds to Continuous Integration.
+  #    Seminar Series on Advanced Techniques & Tools for Software Evolution, Madrid (Spain), 2017.
+  - description: |
+      G. Maudoux, C. Pecheur, S. Combéfis.
+      Learning Safe Interactions and Full-Control.
+      In: Benjamin Weyers, Philippe Palanque, Judy Bowen et Alan Dix, Formal Methods in Human Computer Interactions, 2017.

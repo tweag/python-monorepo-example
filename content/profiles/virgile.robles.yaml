@@ -76,8 +76,8 @@ education:
     institution: ENSEIRB-MATMECA
     years: September 2015 - July 2018
 publications:
-  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Louis Rilling, Pascale Le Gall. Methodology for Specification and Verification of High-Level Properties with MetAcsl. International Conference on Formal Methods in Software Engineering, 2021"
-  - "Virgile Robles. Spécifier des propriétés de haut niveau pour apprivoiser un programme C avec MetAcsl. Rendez-vous de la Recherche et de l'Enseignement de la Sécurité des Systèmes d'Informations, 2020"
-  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. Tame Your Annotations with MetAcsl: Specifying, Testing, and Proving High-Level Properties. International Conference on Tests and Proofs, 2019"
-  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl : spécification et vérification de propriétés de haut niveau. Approches Formelles dans l'Assistance au Développement de Logiciels, 2019"
-  - "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl: Specification and Verification of High-Level Properties. International Conference on Tools and Algorithms for the Construction and Analysis of Systems, 2019"
+  - description: "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Louis Rilling, Pascale Le Gall. Methodology for Specification and Verification of High-Level Properties with MetAcsl. International Conference on Formal Methods in Software Engineering, 2021"
+  - description: "Virgile Robles. Spécifier des propriétés de haut niveau pour apprivoiser un programme C avec MetAcsl. Rendez-vous de la Recherche et de l'Enseignement de la Sécurité des Systèmes d'Informations, 2020"
+  - description: "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. Tame Your Annotations with MetAcsl: Specifying, Testing, and Proving High-Level Properties. International Conference on Tests and Proofs, 2019"
+  - description: "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl : spécification et vérification de propriétés de haut niveau. Approches Formelles dans l'Assistance au Développement de Logiciels, 2019"
+  - description: "Virgile Robles, Nikolai Kosmatov, Virgile Prevosto, Pascale Le Gall. MetAcsl: Specification and Verification of High-Level Properties. International Conference on Tools and Algorithms for the Construction and Analysis of Systems, 2019"

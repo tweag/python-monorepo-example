@@ -150,20 +150,26 @@ education:
     institution: École normale supérieure
 
 publications:
-  - "Nicolas Jeannerod. Verification of Shell Scripts Performing File Hierarchy
-    Transformations. Ph.D. thesis. 2021"
-  - "Benedikt Becker, Nicolas Jeannerod, Claude Marché, Yann Régis-Gianas,
-    Mihaela Sighireanu and Ralf Treinen. Analysing installation scenarios of
-    Debian packages. TACAS 2020"
-  - "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
-    parser for POSIX shell. In Journal of Computer Languages, April 2020."
-  - "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
-    Parser for POSIX Shell. SLE 2018."
-  - "Nicolas Jeannerod and Ralf Treinen. Deciding the First-Order Theory of an
-    Algebra of Feature Trees with Updates IJCAR 2018."
-  - "Nicolas Jeannerod, Claude Marché and Ralf Treinen. A Formally Verified
-    Interpreter for a Shell-like Programming Language. VSTTE 2017."
-  - "Nicolas Jeannerod. Le coquillage dans le CoLiS-mateur. JFLA 2017."
+  - description: |
+      "Nicolas Jeannerod. Verification of Shell Scripts Performing File Hierarchy
+      Transformations. Ph.D. thesis. 2021"
+  - description: |
+      "Benedikt Becker, Nicolas Jeannerod, Claude Marché, Yann Régis-Gianas,
+      Mihaela Sighireanu and Ralf Treinen. Analysing installation scenarios of
+      Debian packages. TACAS 2020"
+  - description: |
+      "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
+      parser for POSIX shell. In Journal of Computer Languages, April 2020."
+  - description: |
+      "Yann Régis-Gianas, Nicolas Jeannerod and Ralf Treinen. Morbig: A Static
+      Parser for POSIX Shell. SLE 2018."
+  - description: |
+      "Nicolas Jeannerod and Ralf Treinen. Deciding the First-Order Theory of an
+      Algebra of Feature Trees with Updates IJCAR 2018."
+  - description: |
+      "Nicolas Jeannerod, Claude Marché and Ralf Treinen. A Formally Verified
+      Interpreter for a Shell-like Programming Language. VSTTE 2017."
+  - description: "Nicolas Jeannerod. Le coquillage dans le CoLiS-mateur. JFLA 2017."
 
 talks:
   - "Verification of Shell Scripts Performing File Hierarchy Transformations.

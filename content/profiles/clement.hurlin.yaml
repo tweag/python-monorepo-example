@@ -78,12 +78,12 @@ education:
       - |
         thesis title: Practical Proof Reconstruction for First-order Logic and Set-Theoretical Constructions
 publications:
-  - "Afshin Amighi, Christian Haack, Marieke Huisman, Clément Hurlin: Permission-Based Separation Logic for Multithreaded Java Programs. Log. Methods Comput. Sci. 11(1) (2015)"
-  - "Clément Hurlin, Hélène Kirchner: Semi-automatic Synthesis of Security Policies by Invariant-Guided Abduction. Formal Aspects in Security and Trust 2010: 157-175 (2010)"
-  - "Christian Haack, Clément Hurlin: Resource Usage Protocols for Iterators. J. Object Technol. 8(4): 55-83 (2009)"
-  - "Clément Hurlin: Specifying and checking protocols of multithreaded classes. SAC 2009: 587-592"
-  - "Clément Hurlin: Automatic Parallelization and Optimization of Programs by Proof Rewriting. SAS 2009: 52-68"
-  - "Christian Haack, Clément Hurlin: Separation Logic Contracts for a Java-Like Language with Fork/Join. AMAST 2008: 199-215"
-  - "Christian Haack, Marieke Huisman, Clément Hurlin: Reasoning about Java's Reentrant Locks. APLAS 2008: 171-187"
-  - "Clément Hurlin: Specifying Correct Protocols of Multithreaded Java-like Programs. Software Engineering Research and Practice 2008: 127-133"
-  - "Joseph R. Kiniry, Patrice Chalin, Clément Hurlin: Integrating Static Checking and Interactive Verification: Supporting Multiple Theories and Provers in Verification. VSTTE 2005: 153-160"
+  - description: "Afshin Amighi, Christian Haack, Marieke Huisman, Clément Hurlin: Permission-Based Separation Logic for Multithreaded Java Programs. Log. Methods Comput. Sci. 11(1) (2015)"
+  - description: "Clément Hurlin, Hélène Kirchner: Semi-automatic Synthesis of Security Policies by Invariant-Guided Abduction. Formal Aspects in Security and Trust 2010: 157-175 (2010)"
+  - description: "Christian Haack, Clément Hurlin: Resource Usage Protocols for Iterators. J. Object Technol. 8(4): 55-83 (2009)"
+  - description: "Clément Hurlin: Specifying and checking protocols of multithreaded classes. SAC 2009: 587-592"
+  - description: "Clément Hurlin: Automatic Parallelization and Optimization of Programs by Proof Rewriting. SAS 2009: 52-68"
+  - description: "Christian Haack, Clément Hurlin: Separation Logic Contracts for a Java-Like Language with Fork/Join. AMAST 2008: 199-215"
+  - description: "Christian Haack, Marieke Huisman, Clément Hurlin: Reasoning about Java's Reentrant Locks. APLAS 2008: 171-187"
+  - description: "Clément Hurlin: Specifying Correct Protocols of Multithreaded Java-like Programs. Software Engineering Research and Practice 2008: 127-133"
+  - description: "Joseph R. Kiniry, Patrice Chalin, Clément Hurlin: Integrating Static Checking and Interactive Verification: Supporting Multiple Theories and Provers in Verification. VSTTE 2005: 153-160"

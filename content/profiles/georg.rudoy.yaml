@@ -105,12 +105,12 @@ education:
     institution: Moscow Institute of Physics and Technology
     years: 2008 - 2012
 publications:
-  - "G. Rudoy. On modification of the MSE loss function for solving non-linear heteroscedastic errors-in- variables problems. // Informatics and Applications, 2017."
-  - "G. Rudoy. Stability analysis of non-linear regression models with respect to errors in measured data. // Pattern Recognition and Image Analysis, 26(3):608-616, 2016."
-  - "G. Rudoy. Applying Monte Carlo methods to analysis of nonlinear regression models. // Numerical Analysis and Applications, 4:344-350, 2015."
-  - "G. Rudoy. On optimization of non-linear regression models parameters with respect to errors in both dependent and independent variables. // In Proceeding of 57th Conference on Problems in Fundamental and Applied Sciences, 2014."
-  - "G. Rudoy, V. Strijov. Analysis of Error Tolerance in Non-Linear Models for Optical Dispersion Data. // In Proceeding of 56th Conference on Problems in Fundamental and Applied Sciences, 2013."
-  - "G. Rudoy, V. Strijov. Algorithms for Inductive Generation of Superpositions for experimental Data Approximation. // Informatics and Applications, 2013."
-  - "G. Rudoy, V. Strijov. Simplifying Non-linear Superpositions via Rule-Based Graph Rewriting. // In Proceeding of 9th International Conference on Intellectualization of Information Processing (IIP 2012)."
-  - "G. Rudoy, V. Strijov. Inductive Generation of Admissible Superpositions in Non-Linear Regression Problems. // Journal of Machine Learning and Data Analysis, 2011."
-  - "G. Rudoy, V. Strijov. Activation Function Selection in Deep Learning Networks. // Journal of Machine Learning and Data Analysis, 2011."
+  - description: "G. Rudoy. On modification of the MSE loss function for solving non-linear heteroscedastic errors-in- variables problems. // Informatics and Applications, 2017."
+  - description: "G. Rudoy. Stability analysis of non-linear regression models with respect to errors in measured data. // Pattern Recognition and Image Analysis, 26(3):608-616, 2016."
+  - description: "G. Rudoy. Applying Monte Carlo methods to analysis of nonlinear regression models. // Numerical Analysis and Applications, 4:344-350, 2015."
+  - description: "G. Rudoy. On optimization of non-linear regression models parameters with respect to errors in both dependent and independent variables. // In Proceeding of 57th Conference on Problems in Fundamental and Applied Sciences, 2014."
+  - description: "G. Rudoy, V. Strijov. Analysis of Error Tolerance in Non-Linear Models for Optical Dispersion Data. // In Proceeding of 56th Conference on Problems in Fundamental and Applied Sciences, 2013."
+  - description: "G. Rudoy, V. Strijov. Algorithms for Inductive Generation of Superpositions for experimental Data Approximation. // Informatics and Applications, 2013."
+  - description: "G. Rudoy, V. Strijov. Simplifying Non-linear Superpositions via Rule-Based Graph Rewriting. // In Proceeding of 9th International Conference on Intellectualization of Information Processing (IIP 2012)."
+  - description: "G. Rudoy, V. Strijov. Inductive Generation of Admissible Superpositions in Non-Linear Regression Problems. // Journal of Machine Learning and Data Analysis, 2011."
+  - description: "G. Rudoy, V. Strijov. Activation Function Selection in Deep Learning Networks. // Journal of Machine Learning and Data Analysis, 2011."

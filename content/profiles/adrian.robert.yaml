@@ -118,11 +118,14 @@ education:
     institution: Cornell University
     years: 1988 - 1993
 publications:
-  - "Robert, A. (1999): Lamination and Within-Area Integration in the Neocortex;
-    Doctoral Dissertation, University of California, San Diego, Cognitive
-    Science."
-  - "Robert, A. (1999); Pyramidal Arborizations and Activity Spread in
-    Neocortex; Neurocomputing 26-27:483-90."
-  - "Robert, A. (1998); Blending and Other Conceptual Operations in the
-    Interpretation of Mathematical Proofs; Koenig, J.P. (ed.), Discourse and
-    Cognition: Bridging the Gap, pp. 337-50."
+  - description: |
+      "Robert, A. (1999): Lamination and Within-Area Integration in the Neocortex;
+      Doctoral Dissertation, University of California, San Diego, Cognitive
+      Science."
+  - description: |
+      "Robert, A. (1999); Pyramidal Arborizations and Activity Spread in
+      Neocortex; Neurocomputing 26-27:483-90."
+  - description: |
+      "Robert, A. (1998); Blending and Other Conceptual Operations in the
+      Interpretation of Mathematical Proofs; Koenig, J.P. (ed.), Discourse and
+      Cognition: Bridging the Gap, pp. 337-50."

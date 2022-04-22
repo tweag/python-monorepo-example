@@ -122,16 +122,16 @@ speaks:
   - French
 
 publications:
-  - "Nour El-Mawass, Paul Honeine, and Laurent Vercouter. SimilCatch: Enhanced social spammers detection on Twitter using Markov Random Fields. Elsevier Information Processing & Management,57(6), 2020."
-  - "Nour El-Mawass and Saad Alaboodi.  Data quality challenges in social spam research. ACMJournal of Data and Information Quality (JDIQ), 9(1):4, 2017."
-  - "Nour El-Mawass, Paul Honeine, and Laurent Vercouter.  Supervised classification of social spammers using a similarity-based markov random field approach. In  the 5th Multidisciplinary International Social Networks Conference (MISNC 2018), Saint-Etienne, France, 2018. ACM."
-  - "Nour El-Mawass and Saad Alaboodi.  Detecting arabic spammers and content polluters on Twitter. In Digital Information Processing and Communications (ICDIPC), 2016 Sixth International Conference on, pages 53–58, Beirut, Lebanon, 2016. IEEE."
-  - "Nouf Alajmi, Eiman Kanjo, Nour El-Mawass, and Alan Chamberlain. Shopmobia: An emotion-based shop rating system. In Affective Computing and Intelligent Interaction (ACII), 2013 Humaine Association Conference on, pages 745–750, Geneva, Switzerland, 2013. IEEE."
-  - "Nour El-Mawass and Eiman Kanjo. A supermarket stress map. In 2nd Workshop on Pervasive Technologies in Retail Environments (PeTRE), Ubicomp’13, Zurich, Switzerland, 2013."
-  - "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Robust self-organized wireless sensor network: A gene regulatory network bio-inspired approach. In 7th International Conference on Genetic and Evolutionary Computing (ICGEC 2013), Prague, Czech Republic, 2013. Springer."
-  - "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Resilient bio-inspired wireless sensor network based on genes regulatory network. In 2nd International Conference on Advances in Biomedical Engineering 2013 (ICABME’13), Tripoli, Lebanon, 2013."
-  - "Eiman Kanjo,Nour El-Mawass, João Craveiro, and Fernandos Ramos. Social, disconnected or in between: Mobile data reveals urban mood. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, Cambridge, USA, MIT, USA, 2013."
-  - "João Craveiro, Fernandos Ramos, Eiman Kanjo, and Nour El-Mawass. Towards an early warning system: the effect of weather on mobile phone usage a case study in Abidjan. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, USA, 2013."
+  - description: "Nour El-Mawass, Paul Honeine, and Laurent Vercouter. SimilCatch: Enhanced social spammers detection on Twitter using Markov Random Fields. Elsevier Information Processing & Management,57(6), 2020."
+  - description: "Nour El-Mawass and Saad Alaboodi.  Data quality challenges in social spam research. ACMJournal of Data and Information Quality (JDIQ), 9(1):4, 2017."
+  - description: "Nour El-Mawass, Paul Honeine, and Laurent Vercouter.  Supervised classification of social spammers using a similarity-based markov random field approach. In  the 5th Multidisciplinary International Social Networks Conference (MISNC 2018), Saint-Etienne, France, 2018. ACM."
+  - description: "Nour El-Mawass and Saad Alaboodi.  Detecting arabic spammers and content polluters on Twitter. In Digital Information Processing and Communications (ICDIPC), 2016 Sixth International Conference on, pages 53–58, Beirut, Lebanon, 2016. IEEE."
+  - description: "Nouf Alajmi, Eiman Kanjo, Nour El-Mawass, and Alan Chamberlain. Shopmobia: An emotion-based shop rating system. In Affective Computing and Intelligent Interaction (ACII), 2013 Humaine Association Conference on, pages 745–750, Geneva, Switzerland, 2013. IEEE."
+  - description: "Nour El-Mawass and Eiman Kanjo. A supermarket stress map. In 2nd Workshop on Pervasive Technologies in Retail Environments (PeTRE), Ubicomp’13, Zurich, Switzerland, 2013."
+  - description: "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Robust self-organized wireless sensor network: A gene regulatory network bio-inspired approach. In 7th International Conference on Genetic and Evolutionary Computing (ICGEC 2013), Prague, Czech Republic, 2013. Springer."
+  - description: "Nour El-Mawass, Nada Chendeb, and Nazim Agoulmine. Resilient bio-inspired wireless sensor network based on genes regulatory network. In 2nd International Conference on Advances in Biomedical Engineering 2013 (ICABME’13), Tripoli, Lebanon, 2013."
+  - description: "Eiman Kanjo,Nour El-Mawass, João Craveiro, and Fernandos Ramos. Social, disconnected or in between: Mobile data reveals urban mood. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, Cambridge, USA, MIT, USA, 2013."
+  - description: "João Craveiro, Fernandos Ramos, Eiman Kanjo, and Nour El-Mawass. Towards an early warning system: the effect of weather on mobile phone usage a case study in Abidjan. In the 3rd International Conference on the Analysis of Mobile Phone Datasets (NetMob’13), MIT, USA, 2013."
 
 talks:
   - "Scaling Up Data-Driven Cybersecurity Systems, 1st workshop on New Generations of Networks (NGN'16), Doctoral School of Science and Technology, Lebanon, June 2016."

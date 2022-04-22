@@ -33,6 +33,7 @@ education:
     name: Computer Science
     institution: Technische Universität Berlin
 publications:
-  - Please refer to https://scholar.google.com/citations?user=w6XYY_EAAAAJ for publication and citation information.
+  - description: Please refer to https://scholar.google.com/citations?user=w6XYY_EAAAAJ for publication and citation information.
+    link: https://scholar.google.com/citations?user=w6XYY_EAAAAJ
 talks:
   - Please refer to https://speakerdeck.com/mchakravarty for a selection of talks.

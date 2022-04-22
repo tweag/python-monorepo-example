@@ -84,14 +84,14 @@ education:
       - |
         thesis title: "Pattern Matching Exhaustiveness for GADTs"
 publications:
-  - "Georgios Karachalias, Filip Koprivec, Matija Pretnar, and Tom Schrijvers. Efficient Compilation of Algebraic Effect Handlers. In Proc. ACM Program. Lang. 5, OOPSLA, Article 102 (Oct. 2021), 2021."
-  - "Koar Marntirosian, Tom Schrijvers, Bruno C. d. S. Oliveira, and Georgios Karachalias. Resolution as Intersection Subtyping via Modus Ponens. In Proc. ACM Program. Lang. 4, OOPSLA, Article 206 (Nov. 2020), 2020."
-  - "Georgios Karachalias, Matija Pretnar, Amr Hany Saleh, Stien Vanderhallen, and Tom Schrijvers. Explicit Effect Subtyping. In Journal of Functional Programming (JFP), 2020."
-  - "Koen Pauwels, Georgios Karachalias, Michiel Derhaeg, and Tom Schrijvers. Bidirectional Type Class Instances. In Proceedings of the 12th ACM SIGPLAN International Haskell Symposium (Haskell '19), Berlin, Germany, 2019."
-  - "Amr Hany Saleh, Georgios Karachalias, Matija Pretnar, and Tom Schrijvers. Explicit Effect Subtyping. In Proceedings of the 27th European Symposium on Programming (ESOP '18), Thessaloniki, Greece, 2018."
-  - "Georgios Karachalias and Tom Schrijvers. Elaboration on Functional Dependencies: Functional Dependencies Are Dead, Long Live Functional Dependencies! In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
-  - "Gert-Jan Bottu, Georgios Karachalias, Tom Schrijvers, Bruno C. d. S. Oliveira and Philip Wadler. Quantified Class Constraints. In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
-  - "Georgios Karachalias, Tom Schrijvers, Dimitrios Vytiniotis and Simon Peyton Jones. GADTs Meet Their Match: Pattern-matching Warnings That Account for GADTs, Guards, and Laziness. In Proceedings of the 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2015."
+  - description: "Georgios Karachalias, Filip Koprivec, Matija Pretnar, and Tom Schrijvers. Efficient Compilation of Algebraic Effect Handlers. In Proc. ACM Program. Lang. 5, OOPSLA, Article 102 (Oct. 2021), 2021."
+  - description: "Koar Marntirosian, Tom Schrijvers, Bruno C. d. S. Oliveira, and Georgios Karachalias. Resolution as Intersection Subtyping via Modus Ponens. In Proc. ACM Program. Lang. 4, OOPSLA, Article 206 (Nov. 2020), 2020."
+  - description: "Georgios Karachalias, Matija Pretnar, Amr Hany Saleh, Stien Vanderhallen, and Tom Schrijvers. Explicit Effect Subtyping. In Journal of Functional Programming (JFP), 2020."
+  - description: "Koen Pauwels, Georgios Karachalias, Michiel Derhaeg, and Tom Schrijvers. Bidirectional Type Class Instances. In Proceedings of the 12th ACM SIGPLAN International Haskell Symposium (Haskell '19), Berlin, Germany, 2019."
+  - description: "Amr Hany Saleh, Georgios Karachalias, Matija Pretnar, and Tom Schrijvers. Explicit Effect Subtyping. In Proceedings of the 27th European Symposium on Programming (ESOP '18), Thessaloniki, Greece, 2018."
+  - description: "Georgios Karachalias and Tom Schrijvers. Elaboration on Functional Dependencies: Functional Dependencies Are Dead, Long Live Functional Dependencies! In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
+  - description: "Gert-Jan Bottu, Georgios Karachalias, Tom Schrijvers, Bruno C. d. S. Oliveira and Philip Wadler. Quantified Class Constraints. In Proceedings of the 10th ACM SIGPLAN International Haskell Symposium (Haskell '17), Oxford, UK, 2017."
+  - description: "Georgios Karachalias, Tom Schrijvers, Dimitrios Vytiniotis and Simon Peyton Jones. GADTs Meet Their Match: Pattern-matching Warnings That Account for GADTs, Guards, and Laziness. In Proceedings of the 20th ACM SIGPLAN International Conference on Functional Programming (ICFP '15), Vancouver, BC, Canada, 2015."
 talks:
   - title: Functional Dependencies in Haskell
     venue: Leuven Haskell User Group Meeting

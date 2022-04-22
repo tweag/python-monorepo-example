@@ -66,5 +66,5 @@ education:
       - |
         Thesis: Generalized Langevin equations driven by fractional Brownian noise
 publications:
-  - "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Brownian-like deviation of neighboring cells in the early embryogenesis of the zebrafish. In Physical Biology, February 2019"
-  - "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Cell Trajectory Clustering: Towards the Automated Identification of Morphogenetic Fields in Animal Embryogenesis. In ICPRAM 2017 Proceedings – February 2017"
+  - description: "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Brownian-like deviation of neighboring cells in the early embryogenesis of the zebrafish. In Physical Biology, February 2019"
+  - description: "J. R. Diaz Simões, D. Grebenkov, P. Bourgine, N. Peyriéras. Cell Trajectory Clustering: Towards the Automated Identification of Morphogenetic Fields in Animal Embryogenesis. In ICPRAM 2017 Proceedings – February 2017"

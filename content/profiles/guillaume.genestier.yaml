@@ -78,7 +78,7 @@ education:
     institution: Paris 7 University (Paris-Diderot)
     years: 2016-2017
 publications:
-  - "G. Genestier. Encoding Agda Programs Using Rewriting. 5th International Conference on Formal Structures for Computation and Deduction. pp. 31:1-31:17. Virtual Conference, 2020."
-  - "F. Blanqui, G. Genestier, O. Hermant. Dependency Pairs Termination in Dependent Type Theory Modulo Rewriting. In 4th International Conference on Formal Structures for Computation and Deduction, pp. 9:1–9:21,Dortmund, Germany, 2019."
-  - "G. Genestier. SizeChangeTool: A Termination Checker for Rewriting Dependent Types. HOR 2019 - 10th International Workshop on Higher-Order Rewriting, pp. 14-19, Dortmund, Germany. 2019."
-  - "F. Blanqui, G. Genestier. Termination of λΠ modulo rewriting using the size-change principle (work in progress). 16th International Workshop on Termination, pp. 10-14, Oxford, United Kingdom. 2018."
+  - description: "G. Genestier. Encoding Agda Programs Using Rewriting. 5th International Conference on Formal Structures for Computation and Deduction. pp. 31:1-31:17. Virtual Conference, 2020."
+  - description: "F. Blanqui, G. Genestier, O. Hermant. Dependency Pairs Termination in Dependent Type Theory Modulo Rewriting. In 4th International Conference on Formal Structures for Computation and Deduction, pp. 9:1–9:21,Dortmund, Germany, 2019."
+  - description: "G. Genestier. SizeChangeTool: A Termination Checker for Rewriting Dependent Types. HOR 2019 - 10th International Workshop on Higher-Order Rewriting, pp. 14-19, Dortmund, Germany. 2019."
+  - description: "F. Blanqui, G. Genestier. Termination of λΠ modulo rewriting using the size-change principle (work in progress). 16th International Workshop on Termination, pp. 10-14, Oxford, United Kingdom. 2018."

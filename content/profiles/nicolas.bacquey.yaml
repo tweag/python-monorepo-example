@@ -65,11 +65,11 @@ education:
       - |
         Thesis: Cellular Automata: Algorithmics, Complexity, and Implementation
 publications:
-  - "Nicolas Bacquey. Leader election on two-dimensional periodic cellular automata. Theor. Comput. Sci., 659 :36–52, 2017"
-  - "Nicolas Bacquey. Complexity classes on spatially periodic cellular automata. In Ernst W. Mayr and Natacha Portier, editors, STACS, pages 112–124, 2014"
-  - "Nicolas Bacquey, Étienne Grandjean, and Frédéric Olive. Definability by horn formulas and linear time on cellular automata. In ICALP, 2017"
-  - "Nicolas Bacquey. The packing problem : A divide and conquer algorithm on cellular automata. In Automata & JAC 2012, Local proceedings, pages 1–10, 2012"
-  - "Nicolas Bacquey. Primitive roots of bi-periodic infinite pictures. In Dirk Nowotka Florin Manea, editor, Combinatorics on Words, 10th International Conference WORDS 2015. Local Proceedings, number 2015/5 in Kiel Computer Science Series, pages 1–16, 2015."
+  - description: "Nicolas Bacquey. Leader election on two-dimensional periodic cellular automata. Theor. Comput. Sci., 659 :36–52, 2017"
+  - description: "Nicolas Bacquey. Complexity classes on spatially periodic cellular automata. In Ernst W. Mayr and Natacha Portier, editors, STACS, pages 112–124, 2014"
+  - description: "Nicolas Bacquey, Étienne Grandjean, and Frédéric Olive. Definability by horn formulas and linear time on cellular automata. In ICALP, 2017"
+  - description: "Nicolas Bacquey. The packing problem : A divide and conquer algorithm on cellular automata. In Automata & JAC 2012, Local proceedings, pages 1–10, 2012"
+  - description: "Nicolas Bacquey. Primitive roots of bi-periodic infinite pictures. In Dirk Nowotka Florin Manea, editor, Combinatorics on Words, 10th International Conference WORDS 2015. Local Proceedings, number 2015/5 in Kiel Computer Science Series, pages 1–16, 2015."
 talks:
   - "Language recognition on cellular automata: Are boundaries mandatory ? In Journées Complexité Modèles Finis - EG’60, 2013"
   - "Introduction to uniform periodical computation: Leader election on periodical cellular automata. In LINKS seminar, Inria Lille, June 2016"

@@ -80,14 +80,17 @@ education:
       - |
         thesis title: Finite monoids and actions on group ring units
 publications:
-  - Perone, M. (2009). On the Infinite Dual Goldie Dimension. Rendiconti Istituto Matematico Università Trieste, 41, 1-11.
-  - Facchini, A., & Perone, M. (2011). MAXIMAL IDEALS IN PREADDITIVE CATEGORIES AND SEMILOCAL CATEGORIES. Journal of Algebra and Its Applications, 10, 1-27.
-  - Perone, M. (2011). Direct sum decomposition and weak Krull-Schmidt Theorems. Lambert.
-  - Perone, M. (2012). The Infinite Krull–Schmidt Property in the Case 2. Communications in Algebra, 40, 4215 - 4239.
-  - Facchini, A., & Perone, M. (2014). On Some Noteworthy Pairs of Ideals in Mod-R. Applied Categorical Structures, 22, 147-167.
-  - Perone, M., & Puczyłowski, E.R. (2014). A note on the corank of abelian groups. Publicationes Mathematicae Debrecen, 85, 387-394.
-  - "Genovese, F., Gryzlov, A., Herold, J., Perone, M., Post, E., & Videla, A. (2019). Computational Petri Nets: Adjunctions Considered Harmful. ArXiv, abs/1904.12974."
-  - "Genovese, F., Gryzlov, A., Herold, J., Knispel, A., Perone, M., Post, E., & Videla, A. (2019). idris-ct: A Library to do Category Theory in Idris. ArXiv, abs/1912.06191."
+  - description: Perone, M. (2009). On the Infinite Dual Goldie Dimension. Rendiconti Istituto Matematico Università Trieste, 41, 1-11.
+    link: https://rendiconti.dmi.units.it/volumi/41/01.pdf
+  - description: Facchini, A., & Perone, M. (2011). MAXIMAL IDEALS IN PREADDITIVE CATEGORIES AND SEMILOCAL CATEGORIES. Journal of Algebra and Its Applications, 10, 1-27.
+  - description: Perone, M. (2011). Direct sum decomposition and weak Krull-Schmidt Theorems. Lambert.
+  - description: Perone, M. (2012). The Infinite Krull–Schmidt Property in the Case 2. Communications in Algebra, 40, 4215 - 4239.
+  - description: Facchini, A., & Perone, M. (2014). On Some Noteworthy Pairs of Ideals in Mod-R. Applied Categorical Structures, 22, 147-167.
+  - description: Perone, M., & Puczyłowski, E.R. (2014). A note on the corank of abelian groups. Publicationes Mathematicae Debrecen, 85, 387-394.
+  - description: "Genovese, F., Gryzlov, A., Herold, J., Perone, M., Post, E., & Videla, A. (2019). Computational Petri Nets: Adjunctions Considered Harmful. ArXiv, abs/1904.12974."
+    link: https://arxiv.org/abs/1904.12974
+  - description: "Genovese, F., Gryzlov, A., Herold, J., Knispel, A., Perone, M., Post, E., & Videla, A. (2019). idris-ct: A Library to do Category Theory in Idris. ArXiv, abs/1912.06191."
+    link: https://arxiv.org/abs/1912.06191
 talks:
   - "Elm or how I learned to love frontend development, Webcamp Zagreb, October 2016"
   - "Introduction to type driven development in Idris, NoSlidesConf, November 2017"

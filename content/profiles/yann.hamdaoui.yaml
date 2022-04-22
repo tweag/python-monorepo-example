@@ -61,4 +61,4 @@ talks:
   - "Multitoken Geometry of Interaction and Multimoves Games - 2015, GALOP workshop at European Joint Conferences on Theory & Practice of Software (ETAPS)."
   - "Geometry of interaction for an effectful concurrent lambda calculus - 2016, CRECOGI gathering at Computer Science Logic (CSL)"
 publications:
-  - "Teodoro Freund, Yann Hamdaoui, and Arnaud Spiwack. 2021. Union and intersection contracts are hard, actually. In Proceedings of the 17th ACM SIGPLAN International Symposium on Dynamic Languages (DLS 2021)"
+  - description: "Teodoro Freund, Yann Hamdaoui, and Arnaud Spiwack. 2021. Union and intersection contracts are hard, actually. In Proceedings of the 17th ACM SIGPLAN International Symposium on Dynamic Languages (DLS 2021)"

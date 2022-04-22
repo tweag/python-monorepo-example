@@ -191,7 +191,11 @@ const TemplateCV1 = ({ data }) => {
                       }}
                     >
                       [{index + 1}]{` `}
-                      {publication}
+                      {publication.link ? (
+                        <a href={publication.link}>{publication.description}</a>
+                      ) : (
+                        publication.description
+                      )}
                     </Text>
                   ))}
                 </Grid>
@@ -260,7 +264,10 @@ export const pageQuery = graphql`
       bio
       skills
       speaks
-      publications
+      publications {
+        description
+        link
+      }
       experience {
         employer
         role

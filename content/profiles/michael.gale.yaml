@@ -50,10 +50,10 @@ education:
       - |
         dissertation title: "A compiler for Cada"
 publications:
-  - "Keating, F. and Gale, M.B., 2021, August. Graded monads and type-level programming for dependence analysis. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 27-40)."
-  - "Bailey, T. and Gale, M.B., 2021, August. Chesskell: a two-player game at the type level. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 110-121)."
-  - "Szamozvancev, D. and Gale, M.B., 2017, September. Well-typed music does not sound wrong (experience report). In Proceedings of the 10th ACM SIGPLAN International Symposium on Haskell (pp. 99-104)."
-  - "Greensmith, J. and Gale, M.B., 2017, June. The functional dendritic cell algorithm: a formal specification with Haskell. In 2017 IEEE Congress on Evolutionary Computation (CEC) (pp. 1787-1794). IEEE."
+  - description: "Keating, F. and Gale, M.B., 2021, August. Graded monads and type-level programming for dependence analysis. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 27-40)."
+  - description: "Bailey, T. and Gale, M.B., 2021, August. Chesskell: a two-player game at the type level. In Proceedings of the 14th ACM SIGPLAN International Symposium on Haskell (pp. 110-121)."
+  - description: "Szamozvancev, D. and Gale, M.B., 2017, September. Well-typed music does not sound wrong (experience report). In Proceedings of the 10th ACM SIGPLAN International Symposium on Haskell (pp. 99-104)."
+  - description: "Greensmith, J. and Gale, M.B., 2017, June. The functional dendritic cell algorithm: a formal specification with Haskell. In 2017 IEEE Congress on Evolutionary Computation (CEC) (pp. 1787-1794). IEEE."
 research-community-service:
   - venue: Functional Art and Music (FARM)
     role: Member of Program Committee

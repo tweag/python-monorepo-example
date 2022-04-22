@@ -97,11 +97,11 @@ education:
     institution: Universidad de la República - Uruguay
     years: 1999 - 2004
 publications:
-  - "M. Boespflug, F. Domínguez, A. Vershilov and A. Brown. Project H: Programming R in Haskell. In 26$^{th}$ Symposium on Implementation and Application of Functional Languages. October 2014. Boston, MA, USA."
-  - "F. Domínguez and A. Pardo. Exploiting algebra/coalgebra duality for program fusion extensions. In 11th Workshop on Language Descriptions, Tools and Applications, 2011. Saarbrücken, Germany. ACM New York. "
-  - "F. Domínguez. Hfusion: a fusion tool based on acid rain plus extensions. Tesis de maestría. Universidad de la República (Uruguay). Facultad de Ingeniería. Instituto de Computación. 2009"
-  - "F. Domínguez and A. Pardo. Automatización de leyes de fusión. In 32nd Conferencia Latinoamericana de Informática, 2006. Santiago, Chile."
-  - "F. Domínguez and A. Pardo. Program Fusion with Paramorphisms. Workshop on Mathematically Structured Functional Programming (MSFP’06) satellite event of the conference MPC/AMAST’06, Kuressaare, Estonia, 2006. Electronic Workshops in Computing (eWiC)."
+  - description: "M. Boespflug, F. Domínguez, A. Vershilov and A. Brown. Project H: Programming R in Haskell. In 26$^{th}$ Symposium on Implementation and Application of Functional Languages. October 2014. Boston, MA, USA."
+  - description: "F. Domínguez and A. Pardo. Exploiting algebra/coalgebra duality for program fusion extensions. In 11th Workshop on Language Descriptions, Tools and Applications, 2011. Saarbrücken, Germany. ACM New York. "
+  - description: "F. Domínguez. Hfusion: a fusion tool based on acid rain plus extensions. Tesis de maestría. Universidad de la República (Uruguay). Facultad de Ingeniería. Instituto de Computación. 2009"
+  - description: "F. Domínguez and A. Pardo. Automatización de leyes de fusión. In 32nd Conferencia Latinoamericana de Informática, 2006. Santiago, Chile."
+  - description: "F. Domínguez and A. Pardo. Program Fusion with Paramorphisms. Workshop on Mathematically Structured Functional Programming (MSFP’06) satellite event of the conference MPC/AMAST’06, Kuressaare, Estonia, 2006. Electronic Workshops in Computing (eWiC)."
 talks:
   - "Typecheck your memory management with linear types. Haskell eXchange 2020. Online."
   - "QualifiedDo - Customizable do-notation without fuss. Zurihac 2020. Online."

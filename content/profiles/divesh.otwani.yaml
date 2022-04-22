@@ -54,4 +54,4 @@ education:
         CS Thesis: Programmer-Controlled Readable Polyhedral Optimizations of syr2k.
 
 publications:
-  - "Divesh Otwani, Richard A. Eisenberg. The Thoralf plugin: for your fancy type needs. In Proceedings of the 11th ACM SIGPLAN International Symposium on Haskell, 2018."
+  - description: "Divesh Otwani, Richard A. Eisenberg. The Thoralf plugin: for your fancy type needs. In Proceedings of the 11th ACM SIGPLAN International Symposium on Haskell, 2018."

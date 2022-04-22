@@ -46,4 +46,5 @@ education:
     institution: University of Minho
     years: 2012 - 2015
 publications:
-  - Please refer to victorcmiraldo.github.io/research.html for an up-to-date list of publications.
+  - description: Please refer to victorcmiraldo.github.io/research.html for an up-to-date list of publications.
+    link: https://victorcmiraldo.github.io/research.html

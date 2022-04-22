@@ -81,11 +81,11 @@ education:
     institution: ETH Zurich
     years: 2007 - 2010
 publications:
-  - "M. Schüler, D. Golež, Y. Murakami, N. Bittner, A. Herrmann, H. U. R. Strand, P. Werner, and M. Eckstein, NESSi: The Non-Equilibrium Systems Simulation Package, Computer Physics Communications 257, 107484 (2020)."
-  - "A. J. Herrmann, A. E. Antipov, and P. Werner, Spreading of Correlations in the Falicov-Kimball Model, Phys. Rev. B 97, 165107 (2018)."
-  - "A. Herrmann, Y. Murakami, M. Eckstein, and P. Werner, Floquet Prethermalization in the Resonantly Driven Hubbard Model, EPL 120, 57001 (2017)."
-  - "A. J. Herrmann, N. Tsuji, M. Eckstein, and P. Werner, Nonequilibrium Dynamical Cluster Approximation Study of the Falicov-Kimball Model, Phys. Rev. B 94, 245114 (2016)."
-  - "T. T. Nguyen, A. J. Herrmann, M. Troyer, and S. Pilati, Critical Temperature of Interacting Bose Gases in Periodic Potentials, Phys. Rev. Lett. 112, 170402 (2014)."
+  - description: "M. Schüler, D. Golež, Y. Murakami, N. Bittner, A. Herrmann, H. U. R. Strand, P. Werner, and M. Eckstein, NESSi: The Non-Equilibrium Systems Simulation Package, Computer Physics Communications 257, 107484 (2020)."
+  - description: "A. J. Herrmann, A. E. Antipov, and P. Werner, Spreading of Correlations in the Falicov-Kimball Model, Phys. Rev. B 97, 165107 (2018)."
+  - description: "A. Herrmann, Y. Murakami, M. Eckstein, and P. Werner, Floquet Prethermalization in the Resonantly Driven Hubbard Model, EPL 120, 57001 (2017)."
+  - description: "A. J. Herrmann, N. Tsuji, M. Eckstein, and P. Werner, Nonequilibrium Dynamical Cluster Approximation Study of the Falicov-Kimball Model, Phys. Rev. B 94, 245114 (2016)."
+  - description: "T. T. Nguyen, A. J. Herrmann, M. Troyer, and S. Pilati, Critical Temperature of Interacting Bose Gases in Periodic Potentials, Phys. Rev. Lett. 112, 170402 (2014)."
 talks:
   - "Package Manager Integration with Bazel, BazelCon, December 2019"
   - "GHC Hacking Newcomers Tutorial, ZuriHac, June 2018"

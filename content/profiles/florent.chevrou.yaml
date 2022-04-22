@@ -62,9 +62,9 @@ education:
     institution: ENSEEIHT
     years: September 2011 - October 2014
 publications:
-  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. Journal of Logical and Algebraic Methods in Programming, volume 108, 2019."
-  - "Florent Chevrou, Aurélie Hurault, Shin Nakajima, Philippe Quéinnec. A Map of Asynchronous Communication Models. FM Workshops 2019, volume 2, 2019."
-  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. HPCS 2018."
-  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. On the Diversity of Asynchronous Communication. Formal Aspects of Computing, volume 28, 2016."
-  - "Florent Chevrou, Aurélie Hurault, Philippe Mauran, Philippe Quéinnec. Mechanized Refinement of Communication Models with TLA+. ABZ 2016, 312-318, 2016."
-  - "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. Automated Verification of Asynchronous Communicating Systems with TLA+. In Electronic Communications of the EASST, volume 72, 2015."
+  - description: "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. Journal of Logical and Algebraic Methods in Programming, volume 108, 2019."
+  - description: "Florent Chevrou, Aurélie Hurault, Shin Nakajima, Philippe Quéinnec. A Map of Asynchronous Communication Models. FM Workshops 2019, volume 2, 2019."
+  - description: "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. A Modular Framework for Verifying Versatile Distributed Systems. HPCS 2018."
+  - description: "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. On the Diversity of Asynchronous Communication. Formal Aspects of Computing, volume 28, 2016."
+  - description: "Florent Chevrou, Aurélie Hurault, Philippe Mauran, Philippe Quéinnec. Mechanized Refinement of Communication Models with TLA+. ABZ 2016, 312-318, 2016."
+  - description: "Florent Chevrou, Aurélie Hurault, Philippe Quéinnec. Automated Verification of Asynchronous Communicating Systems with TLA+. In Electronic Communications of the EASST, volume 72, 2015."
