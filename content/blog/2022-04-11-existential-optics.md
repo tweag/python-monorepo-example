@@ -5,17 +5,25 @@ author: Marco Perone
 tags: [haskell, optics]
 ---
 
-Optics are one of those concepts which always catch quite a lot of attention from the functional programming community, thanks to their composability. They provide a way to access and modify data structures in an immutable and composable way. Still, if someone tries to understand how optics work just by looking at some data declarations and type definitions, they will probably have a hard time understanding what is actually going on.
+Optics make it possible to conveniently access and modify data structures in an immutable, composable way.
+Thanks to that, they catch lots of attention from the functional programming community.
+Still, you can have a hard time understanding how they work just by looking at data declarations and type definitions.
 
-In this post, I present a way of encoding optics that is different from what you would commonly find in libraries. This different take on the implementation of optics may also be easier to understand for those who have had a hard time with the usual encoding. These ideas are not new and are well known in the category theory academic circles. Still, they do not seem to appear in libraries for languages like Haskell, Purescript, or Scala.
+In this post, I present a way of encoding optics that is different from usual.
+This encoding, called _existential optics_, is easier to understand than the other encodings, since it makes more explicit the _structure_ of each optic.
+This is not new and is well known in the category theory academic circles.
+Still, these ideas do not seem to appear in libraries for languages like Haskell, Purescript, or Scala.
 
-The most well-known type of optics are lenses, which were also the first to be analyzed and used. We will use them as our recurring example to compare the several ways we have to encode optics.
+The most well-known type of optics are lenses, which were also the first to be analyzed and used.
+We will use them as our recurring example to compare the several ways we have to encode optics.
 
 ## Lenses 101
 
-A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in ORMs. It allows _focusing_ a component of a container data type.
+A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in ORMs.
+It allows _focusing_ on a component of a container data type.
 
-For example, consider an `Address` record that contains a `street` field. A `Lens Address Street` allows us to retrieve the `Street` from an address.
+For example, consider an `Address` record that contains a `street` field.
+A `Lens Address Street` allows us to retrieve the `Street` from an address.
 
 ```haskell
 streetLens :: Lens Address Street
@@ -31,9 +39,11 @@ over streetLens toUpper (Address { street = "Baker Street", number = "221B" })
 -- Address { street = "BAKER STREET", number = "221B" }
 ```
 
-Optics generalize this pattern. Intuitively, while `Lens`es focus on a single value, `Prism`s focus on zero or one value and `Traversal`s focus on zero, one or multiple values.
+Optics generalize this pattern.
+Intuitively, while `Lens`es focus on a single value, `Prism`s focus on zero or one value and `Traversal`s focus on zero, one or multiple values.
 
-Lenses, and optics in general, compose extremely well. For example, if we also had a `User` record containing an `address` field of type `Address`, we could easily access and modify the `street` field of the address.
+Lenses, and optics in general, compose extremely well.
+For example, if we also had a `User` record containing an `address` field of type `Address`, we could easily access and modify the `street` field of the address.
 
 ```haskell
 addressLens :: Lens User Address
@@ -65,10 +75,8 @@ data Lens s a = Lens
 ```
 
 This encoding is extremely easy to grasp, packing together exactly the API we would like to use.
-
 On the other hand, it is not immediate to understand how a `Lens s a` and a `Lens a b` could compose to return a `Lens s b`.
-
-Also, it turns out that this encoding is very ad-hoc, and is not immediately clear how to generalize it to other optics.
+Also, it turns out that this encoding is very ad-hoc, and it is not immediately clear how to generalize it to other optics.
 
 ### Van Laarhoven encoding
 
@@ -82,15 +90,20 @@ data Lens s a
 
 This says that a `Lens s a` allows us to lift a function `a -> f a` to a function `s -> f s` for any possible functor `f`.
 
-I would argue that it is harder to understand what this encoding is describing. The key insight is that the explicit encoding can be recovered with a wise choice of `f`. For example, when `f = Identity` we get a function `(a -> a) -> (s -> s)` which allows us to edit the content. Similarly, if we choose `f = Const a`, we get a function `(a -> a) -> s -> a`; applying this to the identity function, we get back our `get :: s -> a` function.
+I would argue that it is harder to understand what the encoding is describing.
+The functionalities provided by the explicit encoding could be recovered with a wise choice of `f`.
+For example, when `f = Identity` we get a function `(a -> a) -> (s -> s)` which allows us to edit the content.
+Similarly, if we choose `f = Const a`, we get a function `(a -> a) -> s -> a`; applying this to the identity function, we get back our `get :: s -> a` function.
 
-What we gain, though, is a massive improvement with respect to composability. Now, we can use just function composition, i.e. `.`, to compose lenses.
+What we gain, though, is a massive improvement with respect to composability.
+Now, we can use just function composition, i.e. `.`, to compose lenses.
 
 It also generalizes quite well to some other types of optics, but not as well as one might hope; see for example how the definition of [`Prism`](https://hackage.haskell.org/package/lens-5.1/docs/Control-Lens-Prism.html#t:Prism) in the [`lens`](https://hackage.haskell.org/package/lens) library differs.
 
 ### Profunctor encoding
 
-The encoding which is commonly used for new optics libraries is the so-called profunctor encoding. The main idea is to quantify the encoding, not over functors, but profunctors instead.
+The encoding which is commonly used for new optics libraries is the so-called profunctor encoding.
+The main idea is to quantify the encoding, not over functors, but profunctors instead.
 
 ```haskell
 data Lens s a
@@ -101,15 +114,16 @@ data Lens s a
 In these terms, a `Lens` is a way to lift a value of type `p a a` to a value of type `p s s` for any [`Strong`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Strong) profunctor `p`.
 
 I would argue that this encoding is even less immediate to understand than Van Laarhoven's one, but, it turns out, it is even easier to compose!
+Since we are still dealing with simple functions, we are still able to compose optics just with function composition.
 
-We are still dealing with simple functions, so we are still able to compose optics just with function composition.
+It also becomes extremely easy to generalize this encoding to other types of optics.
+The type of optic is determined by the constraint we have on the `p` type variable.
+In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso); if we use `Choice`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
 
-It also becomes extremely easy to generalize this encoding to other types of optics. The type of optic is determined by the constraint we have on the `p` type variable. In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso); if we use `Choice`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
-
-Now when we want to compose two optics of a different type, we just need to collect all the relevant constraints. For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
+Now when we want to compose two optics of a different type, we just need to collect all the relevant constraints.
+For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
 
 In short, the profunctor encoding works extremely well with regard to compositionality, but it constrains us with an encoding that is not easy to understand.
-
 So the question now is: can we encode optics in another way, that is more expressive and easy to manipulate, possibly giving up a little bit of composability?
 
 ## Existential encoding
@@ -121,7 +135,8 @@ data Lens s a
   = forall c. Lens (s -> (c, a)) ((c, a) -> s)
 ```
 
-This says that a `Lens s a` is comprised of two functions: one from `s` to `(c, a)` and one back, where we can choose `c` arbitrarily. Since `c` appears only in the constructor and not as a parameter of the `Lens` type constructor, it is called _existential_.
+This says that a `Lens s a` is comprised of two functions: one from `s` to `(c, a)` and one back, where we can choose `c` arbitrarily.
+Since `c` appears only in the constructor and not as a parameter of the `Lens` type constructor, it is called _existential_.
 
 Coming back to the example used above, with the existential encoding we can implement `streetLens` as follows:
 
@@ -148,7 +163,8 @@ This is an extremely explicit way to think about a `Lens`; it says that whenever
 
 ### Easy to use
 
-Thanks to the fact that we can easily understand what a `Lens` is with the existential encoding, it is also easy to understand how to define combinators for it. The idea is that we can deconstruct `s` into a pair `(c, a)` and then build it back.
+Thanks to the fact that we can easily understand what a `Lens` is with the existential encoding, it is also easy to understand how to define combinators for it.
+The idea is that we can deconstruct `s` into a pair `(c, a)` and then build it back.
 
 For example, if we want to extract `a` from `s`, we simply deconstruct `s` into the pair `(c, a)`, and then we project it into the second component.
 
@@ -199,9 +215,7 @@ data Optic f s a
 ```
 
 This amounts to saying that `Optic f s a` is a proof that there exists a `c` such that `s` is isomorphic to `f c a`.
-
 I find this a really clear explanation of what an optic is and how to think about it.
-
 It is enough then to plug a concrete data type instead of `f` to get a concrete family of optics. For example:
 
 ```haskell
@@ -222,7 +236,8 @@ where [`Tagged`](https://hackage.haskell.org/package/tagged-0.8.6.1/docs/Data-Ta
 
 ## Composing existential optics
 
-Lenses and optics are well known for how well they compose. Let's see how the existential encoding behaves with respect to composition.
+Lenses and optics are well known for how well they compose.
+Let's see how the existential encoding behaves with respect to composition.
 
 We can immediately observe that function composition does not work with the existential encoding, since we are not dealing with functions anymore.
 
@@ -262,7 +277,10 @@ class ExistentiallyAssociative f where
   existentialAssociateR :: f (E f a b) c -> f a (f b c)
 ```
 
-We use an associated type family `E` to be able to choose what `c0` should be for the given `f`. Notice also how, when `E f = f`, this type class is saying that `f` is associative. And this is in fact what happens with data types as `(,)` and `Either`. You can find instances for other data types [here](https://github.com/marcosh/existential-optics/blob/e7b76c19fb4d75f5136c8b06601052dab5996529/src/Associativity.hs).
+We use an associated type family `E` to be able to choose what `c0` should be for the given `f`.
+Notice also how, when `E f = f`, this type class is saying that `f` is associative.
+And this is in fact what happens with data types as `(,)` and `Either`.
+You can find instances for other data types [here](https://github.com/marcosh/existential-optics/blob/e7b76c19fb4d75f5136c8b06601052dab5996529/src/Associativity.hs).
 
 Now, thanks to this new type class, we can fill the holes we left and conclude the definition of `compose`
 
@@ -275,10 +293,10 @@ compose
 
 ### Changing optic type
 
-To compose optics of different types (i.e. defined for different `f`s), we need first to be able to change the type of an optic. This makes sense because, for example, an `Iso` can always be seen both as a `Lens` and as a `Prism`, and `Lens`es and `Prism`s can be seen as `AffineTraversals`.
+To compose optics of different types (i.e. defined for different `f`s), we need first to be able to change the type of an optic.
+This makes sense because, for example, an `Iso` can always be seen both as a `Lens` and as a `Prism`, and `Lens`es and `Prism`s can be seen as `AffineTraversals`.
 
 What we would like to do is convert an `Optic f s a` into an `Optic g s a`.
-
 If we try to follow the types, we will probably end up with something like the following:
 
 ```haskell
@@ -293,7 +311,8 @@ where `_a` and `_b` are typed holes and `c0` is existential, meaning that we can
 
 ### Embedding
 
-As we did for `ExistentiallyAssociative`, we are going to fill the holes by introducing a type class that provides exactly what we need. Similar to the previous case, we will use an associated type family `M` to be able to choose `c0`.
+As we did for `ExistentiallyAssociative`, we are going to fill the holes by introducing a type class that provides exactly what we need.
+Similar to the previous case, we will use an associated type family `M` to be able to choose `c0`.
 
 ```haskell
 class Morph f g where
@@ -319,13 +338,15 @@ instance Morph Tagged (,) where
   g2f ((), a) = Tagged a
 ```
 
-Similarly, we can see `Id` as an `Either` choosing the left component to be `Void`. For more instances, take a look [here](https://github.com/marcosh/existential-optics/blob/e7b76c19fb4d75f5136c8b06601052dab5996529/src/Morph.hs).
+Similarly, we can see `Id` as an `Either` choosing the left component to be `Void`.
+For more instances, take a look [here](https://github.com/marcosh/existential-optics/blob/e7b76c19fb4d75f5136c8b06601052dab5996529/src/Morph.hs).
 
 This new type class allows us to complete the definition of `morph` we started above.
 
 ### Composing optics of different type
 
-To compose existential optics of different types, we now need to connect all the pieces we have. To compose an `Optic f s u` with an `Optic g u a` we first need to morph them both to a common optic type where we can compose them.
+To compose existential optics of different types, we now need to connect all the pieces we have.
+To compose an `Optic f s u` with an `Optic g u a` we first need to morph them both to a common optic type where we can compose them.
 
 ```haskell
 compose'
@@ -342,7 +363,9 @@ compose' opticF opticG
 
 ## Conclusion
 
-The existential encoding for optics can not compete with profunctor optics in terms of composability. On the other hand, it scores better on other aspects. In particular:
+The existential encoding for optics can not compete with profunctor optics in terms of composability.
+On the other hand, it scores better on other aspects.
+In particular:
 
 - the definition of optics is easy to understand. This is a two-fold perk. On one side, it makes teaching and learning optics easier. On the other hand, it makes the implementation of combinators and consuming the library easier, since the implementer is left to use simple data types.
 
@@ -350,6 +373,7 @@ The existential encoding for optics can not compete with profunctor optics in te
 
 - the hierarchy between optics is explicit. It is completely described by the `Morph` instances we described above, which can be understood in terms of embedding one data type into another.
 
-This blog post would not exist without the precious work of many other programmers and category theorists. Reading [Bartosz Milewski](https://bartoszmilewski.com/category/lens/)'s optics-related work was a particular inspiration.
+This blog post would not exist without the precious work of many other programmers and category theorists.
+Reading [Bartosz Milewski](https://bartoszmilewski.com/category/lens/)'s optics-related work was a particular inspiration.
 
 If you want to dive deeper into the code, you can find a sketch of the ideas explained in this post in [this repository](https://github.com/marcosh/existential-optics).
