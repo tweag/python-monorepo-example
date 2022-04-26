@@ -19,7 +19,7 @@ We will use them as our recurring example to compare the several ways we have to
 
 ## Lenses 101
 
-A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in ORMs.
+A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in Object-Relational mappers (ORMs).
 It allows _focusing_ on a component of a container data type.
 
 For example, consider an `Address` record that contains a `street` field.
@@ -40,7 +40,7 @@ over streetLens toUpper (Address { street = "Baker Street", number = "221B" })
 ```
 
 Optics generalize this pattern.
-Intuitively, while `Lens`es focus on a single value, `Prism`s focus on zero or one value and `Traversal`s focus on zero, one or multiple values.
+Intuitively, while `Lens`es generalize the notion of a field, `Prism`s generalize the notion of a constructor and `Traversal`s generalize both to to an arbitrary number of values.
 
 Lenses, and optics in general, compose extremely well.
 For example, if we also had a `User` record containing an `address` field of type `Address`, we could easily access and modify the `street` field of the address.
@@ -88,7 +88,7 @@ data Lens s a
   => (a -> f a) -> s -> f s
 ```
 
-This says that a `Lens s a` allows us to lift a function `a -> f a` to a function `s -> f s` for any possible functor `f`.
+This says that a `Lens s a` allows us to lift a function `a -> f a` to a function `s -> f s` for any possible functor `f`. For a more in-depth explanation of the Van Laarhoven encoding, please refer to [this talk](https://skillsmatter.com/skillscasts/4251-lenses-compositional-data-access-and-manipulation) by [Simon Peyton Jones](https://simon.peytonjones.org/).
 
 I would argue that it is harder to understand what the encoding is describing.
 The functionalities provided by the explicit encoding could be recovered with a wise choice of `f`.
@@ -98,11 +98,11 @@ Similarly, if we choose `f = Const a`, we get a function `(a -> a) -> s -> a`; a
 What we gain, though, is a massive improvement with respect to composability.
 Now, we can use just function composition, i.e. `.`, to compose lenses.
 
-It also generalizes quite well to some other types of optics, but not as well as one might hope; see for example how the definition of [`Prism`](https://hackage.haskell.org/package/lens-5.1/docs/Control-Lens-Prism.html#t:Prism) in the [`lens`](https://hackage.haskell.org/package/lens) library differs.
+It also generalizes quite well to traversals, but not so well to prisms; see for example how the definition of [`Prism`](https://hackage.haskell.org/package/lens-5.1/docs/Control-Lens-Prism.html#t:Prism) in the [`lens`](https://hackage.haskell.org/package/lens) library differs.
 
 ### Profunctor encoding
 
-The encoding which is commonly used for new optics libraries is the so-called profunctor encoding.
+An encoding which is commonly used for new optics libraries is the so-called profunctor encoding.
 The main idea is to quantify the encoding, not over functors, but profunctors instead.
 
 ```haskell
@@ -111,14 +111,15 @@ data Lens s a
   => p a a -> p s s
 ```
 
-In these terms, a `Lens` is a way to lift a value of type `p a a` to a value of type `p s s` for any [`Strong`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Strong) profunctor `p`.
+In these terms, a `Lens` is a way to lift a value of type `p a a` to a value of type `p s s` for any [`Strong`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Strong) profunctor `p` (i.e. a profunctor which respects the structure given by `(,)`).
 
-I would argue that this encoding is even less immediate to understand than Van Laarhoven's one, but, it turns out, it is even easier to compose!
-Since we are still dealing with simple functions, we are still able to compose optics just with function composition.
+I would argue that this encoding is even less immediate to understand than Van Laarhoven's one.
+On the other hand, since we are still dealing with simple functions, we are still able to compose optics just with function composition.
 
 It also becomes extremely easy to generalize this encoding to other types of optics.
 The type of optic is determined by the constraint we have on the `p` type variable.
-In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso); if we use `Choice`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
+In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso), another type of optic which describes isomorphisms.
+If we use [`Choice`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Choice), a typeclass which imposes a profunctor to respect the structure given by `Either`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
 
 Now when we want to compose two optics of a different type, we just need to collect all the relevant constraints.
 For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
@@ -128,7 +129,7 @@ So the question now is: can we encode optics in another way, that is more expres
 
 ## Existential encoding
 
-Another equivalent way of expressing what a `Lens` is, uses the so-called existential encoding.
+Another equivalent way of expressing what a `Lens` is, uses the so-called existential encoding, [first described](https://www.twanvl.nl/blog/haskell/isomorphism-lenses) by Van Laarhoven himself.
 
 ```haskell
 data Lens s a
@@ -224,15 +225,19 @@ type Lens = Optic (,)
 type Prism = Optic Either
 
 type Iso = Optic Tagged
+```
 
+where [`Tagged`](https://hackage.haskell.org/package/tagged-0.8.6.1/docs/Data-Tagged.html#t:Tagged) is the identity functor with an added phantom type.
+
+We could also use other data types with the correct kind, like `(->)`, [`Affine`](https://github.com/marcosh/existential-optics/blob/main/src/Affine.hs) and [`PowerSeries`](https://github.com/marcosh/existential-optics/blob/main/src/PowerSeries.hs), to obtain other optics like [`Grate`](https://hackage.haskell.org/package/lens-family-2.1.1/docs/Lens-Family2.html#t:Grate)s, [`AffineTraversal`](https://hackage.haskell.org/package/optics-core-0.4.1/docs/Optics-AffineTraversal.html)s and [`Traversal`](https://hackage.haskell.org/package/lens-5.1/docs/Control-Lens-Combinators.html#t:Traversal)s.
+
+```haskell
 type Grate = Optic (->)
 
 type AffineTraversal = Optic Affine
 
 type Traversal = Optic PowerSeries
 ```
-
-where [`Tagged`](https://hackage.haskell.org/package/tagged-0.8.6.1/docs/Data-Tagged.html#t:Tagged), [`Affine`](https://github.com/marcosh/existential-optics/blob/main/src/Affine.hs) and [`PowerSeries`](https://github.com/marcosh/existential-optics/blob/main/src/PowerSeries.hs) describe respectively the identity function, affine transformations and power series at the type level.
 
 ## Composing existential optics
 
