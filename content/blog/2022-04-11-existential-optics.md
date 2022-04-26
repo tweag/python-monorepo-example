@@ -19,7 +19,7 @@ We will use them as our recurring example to compare the several ways we have to
 
 ## Lenses 101
 
-A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in Object-Relational mappers (ORMs).
+A `Lens` is effectively the immutable version of a `getter`/`setter` pair you will often find in object-oriented programming, and especially in Object-Relational mappers.
 It allows _focusing_ on a component of a container data type.
 
 For example, consider an `Address` record that contains a `street` field.
@@ -111,7 +111,7 @@ data Lens s a
   => p a a -> p s s
 ```
 
-In these terms, a `Lens` is a way to lift a value of type `p a a` to a value of type `p s s` for any [`Strong`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Strong) profunctor `p` (i.e. a profunctor which respects the structure given by `(,)`).
+In these terms, a `Lens` is a way to lift a value of type `p a a` to a value of type `p s s` for any [`Strong`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Strong) profunctor `p` (i.e. a profunctor which allows lifting values with `(,)`).
 
 I would argue that this encoding is even less immediate to understand than Van Laarhoven's one.
 On the other hand, since we are still dealing with simple functions, we are still able to compose optics just with function composition.
@@ -119,7 +119,7 @@ On the other hand, since we are still dealing with simple functions, we are stil
 It also becomes extremely easy to generalize this encoding to other types of optics.
 The type of optic is determined by the constraint we have on the `p` type variable.
 In the case of `Lens`, we have `Strong`, but if we use just `Profunctor`, we get [`Iso`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Iso.html#t:Iso), another type of optic which describes isomorphisms.
-If we use [`Choice`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Choice), a typeclass which imposes a profunctor to respect the structure given by `Either`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
+If we use [`Choice`](https://hackage.haskell.org/package/profunctors-5.6.2/docs/Data-Profunctor.html#t:Choice), a typeclass which allows lifting values with `Either`, we get [`Prism`s](https://hackage.haskell.org/package/profunctor-optics-0.0.2/docs/Data-Profunctor-Optic-Prism.html#t:Prism).
 
 Now when we want to compose two optics of a different type, we just need to collect all the relevant constraints.
 For example, if we compose a `Lens`, which is constrained by `Strong p`, with a `Prism`, which is constrained by `Choice p`, we will get an optic constrained by `(Strong p, Choice p)`.
@@ -129,7 +129,7 @@ So the question now is: can we encode optics in another way, that is more expres
 
 ## Existential encoding
 
-Another equivalent way of expressing what a `Lens` is, uses the so-called existential encoding, [first described](https://www.twanvl.nl/blog/haskell/isomorphism-lenses) by Van Laarhoven himself.
+Another equivalent way of expressing what a `Lens` is, uses the so-called existential encoding, [described](https://www.twanvl.nl/blog/haskell/isomorphism-lenses) by Van Laarhoven himself.
 
 ```haskell
 data Lens s a
