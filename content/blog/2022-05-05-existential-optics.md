@@ -1,6 +1,6 @@
 ---
 title: "Existential optics"
-description: "Encoding optics with existential types"
+description: "A presentation of an alternative encoding for optics such as lenses and prisms using existential types."
 author: Marco Perone
 tags: [haskell, optics]
 ---
