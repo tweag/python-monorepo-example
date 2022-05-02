@@ -234,7 +234,7 @@ Unions are also complex to implement efficiently. Here, the union contract needs
 to maintain shared mutable state between all the use points of `data`. At each
 contract violation on `data.foo` or `data.bar`, we need to update the shared
 state, and use it to decide if we should actually raise an error. This also
-implies that not all contracts failure immediately stop the execution anymore,
+implies that not all contract failures immediately stop the execution anymore,
 which requires to turn the simple bail-out semantics of `contract.blame` into a
 recoverable exception-like mechanism.
 
