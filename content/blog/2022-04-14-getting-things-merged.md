@@ -157,7 +157,7 @@ such information can be a `CONTRIBUTING` file at the repository root.
 To make your code land, you need to find good reviewers. Here's what makes a good reviewer:
 
 1. Reviews fast when asked.
-1. Says no when he cannot review fast (for me fast means within one or two working days).
+1. Says no when they cannot review fast (for me fast means within one or two working days).
 
 The second point is important: good reviewers are usually very busy (because
 they get asked a lot) and so they happen not to always be able to review in a short
@@ -229,6 +229,15 @@ merge your code fast — you should engage with them. Here are my recommendation
   include pinging authors of stalled pull requests, triaging issues,
   upgrading dependencies regularly, or maintaining documentation.
   (Don't underestimate the power of a few fixed typos!)
+- [Research shows that][cs-111] "women's pull requests tend to be accepted
+  more often than men's, yet women's acceptance rates are higher only when they
+  are not identifiable as women." Be aware of the systemic unconscious biases that
+  are at play in your process. If you notice that a certain person's PRs are often
+  blocked, or debated more than others, you might want to consider stepping back
+  and involving others in the organisation dealing with making the workplace more
+  inclusive.
+
+[cs-111]: https://peerj.com/articles/cs-111/
 
 ## Submitting pull requests
 
@@ -258,7 +267,7 @@ Your pull request has been picked up by reviewers? Great! Let's keep the
 grasp on the reviewers while they are at it. For this I recommend replying
 quickly to comments, to increase the chances of starting a discussion. If you
 answer to comments while the reviewer is still reviewing, there is a high
-chance he will reply right away to your answers, creating a virtuous conversation.
+chance they will reply right away to your answers, creating a virtuous conversation.
 
 ![png](https://i.imgur.com/nSz7PU8.png)
 
