@@ -15,15 +15,15 @@ To make sure you see the real files, and not pointers in your
 checkout, please make sure to have git lfs installed and configured before cloning:
 
 ```nix
+# <home-manager> configuration
 programs.git = {
   enable = true;
   extraConfig = ''
-    "filter \"lfs\"" = {
-      process = "git-lfs filter-process";
-      required = true;
-      clean = "git-lfs clean -- %f";
-      smudge = "git-lfs smudge -- %f";
-    };
+    [filter "lfs"]
+      process = "git-lfs filter-process"
+      required = true
+      clean = "git-lfs clean -- %f"
+      smudge = "git-lfs smudge -- %f"
   '';
 };
 
