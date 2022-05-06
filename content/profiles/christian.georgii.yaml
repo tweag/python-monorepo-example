@@ -1,0 +1,44 @@
+slug: christian.georgii
+name: Christian Georgii
+github: cgeorgii
+shortDescription: |
+  Christian is a self-taught engineer interested in functional programming, domain-driven design and developer productivity. There is a better way to write software that will fit requirements as neatly as possible and he is constantly working towards this ever-moving target.
+bio: |
+  After becoming frustrated with repetitive tasks at a non-engineering job, Christian decided to automate himself out of it, and after successfully doing so and starting a business around the solution, realized that his passion truly lies in using computers to create value through programming. He has then worked in startups in the B2C E-commerce and FinTech sectors while expanding his knowledge of functional programming.
+
+  This knowledge eventually brought him to Tweag, an obvious next step in his career, where he aims to push the envelope of what's possible, practical and ergonomic to solve using tools like Haskell and Nix.
+
+  In his spare time, he is a drummer who loves music and hanging out with his friends and family.
+skills:
+  - Elm
+  - Haskell
+  - Ruby
+  - Domain-driven design
+  - Web
+speaks:
+  - English
+  - Portuguese
+  - German
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: May 2022 - Present
+    description:
+  - employer: Getsurance GmbH
+    role: Fullstack Software Engineer
+    years: October 2017 - April 2022
+  - employer: Bloomy Days GmbH
+    role: Backend Software Engineer
+    years: February 2017 - October 2017
+  - employer: Translation Goggles
+    role: Software Engineer
+    years: March 2016 - February 2017
+education:
+  - qualification: Bachelor (incomplete)
+    name: Computer Science
+    institution: Universidade de Brasilia
+    years: 2009 - 2011
+  - qualification: Bachelor (incomplete)
+    name: Business
+    institution: Universidade de Brasilia
+    years: 2011 - 2013
