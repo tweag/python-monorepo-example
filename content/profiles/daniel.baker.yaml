@@ -1,0 +1,82 @@
+slug: daniel.baker
+name: Daniel Baker
+pronouns: he/they
+github: djacu
+shortDescription: |
+  Daniel is a Data Engineer and new contributor to the Nix ecosystem.
+bio: |
+  Daniel studied Control Theory, Estimation Theory, and Signal Processing. He
+  spent many years, as a Systems Engineer, analyzing, building, and testing
+  gimbal stabilized platforms. Following that he spent a few years developing
+  Signal Processing and Signal Communications libraries. Now he is passionate
+  about creating clear, maintainable, and well tested code in reproducible
+  systems. He cares about mentoring, teaching, and making complicated software
+  accessible for the end user.
+skills:
+  - Python
+  - Java
+  - Javascript
+  - Signal Processing
+  - Control Theory
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Data Engineer
+    years: February 2022 -- present
+    location: Remote
+  - employer: The Aerospace Corporation
+    role: Senior Member of Technical Staff
+    years: July 2020 -- February 2022
+    location: El Segundo, CA, USA
+    description:
+      - Worked on a software team developing a distributed federated satellite
+        communications simulation tool in Java.
+      - Created scientific Signal Communications libraries for a distributed
+        federated satellite communications simulation tool.
+      - Create Radio Frequency Signal Processing and Analysis tools.
+      - Mentored and guided new developors in good software practices and
+        architecture.
+  - employer: Los Angeles County - Department of Public Health
+    role: Front End Developer
+    years: March 2021 -- November 2021
+    location: Remote
+    description:
+      - As a volunteer, created a public vaccination dashboard website for the
+        Vaccine Preventable Disease Control Program under LAC DPH that included
+        dynamic maps, time series charts and tables to display residential
+        vaccination data disaggregated by age group, ethnicity, gender, and
+        geographic boundaries.
+  - employer: Raytheon
+    role: Senior Systems Engineer
+    years: November 2014 -- July 2020
+    location: El Segundo, CA, USA
+    description:
+      - Created Radio Frequency Signal Processing libraries for a distributed
+        image processing pipeline.
+      - Modeled various dynamic systems including a high-friction, low-inertia
+        fluid rotary unit, an infrared laser auto-alignment system, and classic
+        gimbal stabilized platforms, and designed feedback control algorithms.
+      - Characterized and tested a high-performance, space-based, stabilized
+        platform.
+  - employer: DRS Sensors & Targeting Systems
+    role: Senior Systems Engineer
+    years: June 2008 -- November 2014
+    location: Cypress, CA, USA
+    description:
+      - Responsible for modeling, analysis, and design of gimbal stabilized
+        platforms and their respective feedback control algorithms.
+      - Responsible for first principles based synthetic imagery generation,
+        modeling, and analysis.
+      - Responsible for integrating and testing stabilized platforms.
+education:
+  - qualification: Masters of Science
+    name: Electrical Engineering - Controls
+    institution: University of Southern California
+    years: 2016 -- 2018
+  - qualification: Bachelors of Science
+    name: Eletrical Engineering, Applied Mathematics
+    institution: Rose-Hulman Institute of Technology
+    years: 2004 -- 2008
+links:
+  GitHub: https://github.com/djacu
