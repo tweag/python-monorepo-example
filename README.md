@@ -15,10 +15,10 @@ To make sure you see the real files, and not pointers in your
 checkout, please make sure to have git lfs enabled and configured before cloning:
 
 ```nix
-# <home-manager> configuration
-programs.git.lfs.enable = true;
-
-environment.systemPackages = [ pkgs.git-lfs ];
+programs.git = {
+ enable = true;
+ lfs.enable = true;
+};
 ```
 
 or if you're using something else than NixOS, follow their installation
