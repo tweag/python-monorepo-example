@@ -83,7 +83,7 @@ Also, it turns out that this encoding is very ad-hoc, and it is not immediately 
 In 2009 Twan Van Laarhoven came up with a [new encoding for lenses](https://www.twanvl.nl/blog/haskell/cps-functional-references) which is commonly used, for example by the [`lens`](https://hackage.haskell.org/package/lens) library.
 
 ```haskell
-data Lens s a
+type Lens s a
   =  forall f. Functor f
   => (a -> f a) -> s -> f s
 ```
@@ -106,7 +106,7 @@ An encoding which is commonly used for new optics libraries is the so-called pro
 The main idea is to quantify the encoding, not over functors, but profunctors instead.
 
 ```haskell
-data Lens s a
+type Lens s a
   =  forall p. Strong p
   => p a a -> p s s
 ```
