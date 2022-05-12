@@ -12,22 +12,13 @@ looking into `.gitattributes`, but this is mostly about large images
 from blog post, or team member images.
 
 To make sure you see the real files, and not pointers in your
-checkout, please make sure to have git lfs installed and configured before cloning:
+checkout, please make sure to have git lfs enabled and configured before cloning:
 
 ```nix
 programs.git = {
-  enable = true;
-  extraConfig = ''
-    "filter \"lfs\"" = {
-      process = "git-lfs filter-process";
-      required = true;
-      clean = "git-lfs clean -- %f";
-      smudge = "git-lfs smudge -- %f";
-    };
-  '';
+ enable = true;
+ lfs.enable = true;
 };
-
-environment.systemPackages = [ pkgs.git-lfs ];
 ```
 
 or if you're using something else than NixOS, follow their installation
