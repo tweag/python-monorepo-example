@@ -15,7 +15,7 @@ complicated than that.
      make it past the editors. I think it should, it gives this post
      a different flavor than our usual ones; but I'm fine either way. -->
 
-![png](https://imgur.com/bwBXVLg.png)
+![png](2022-getting-things-merged-images/boromir.png)
 
 In this post, I describe why it can get difficult to merge contributions
 and ways to circumvent these difficulties. My analysis applies
@@ -269,7 +269,7 @@ quickly to comments, to increase the chances of starting a discussion. If you
 answer to comments while the reviewer is still reviewing, there is a high
 chance they will reply right away to your answers, creating a virtuous conversation.
 
-![png](https://i.imgur.com/nSz7PU8.png)
+![png](2022-getting-things-merged-images/american-chopper.png)
 
 When replying to comments, stay constructive and flexible. Your goal
 is not to have the last word on everything, but to merge your code.
