@@ -1,0 +1,41 @@
+slug: lucas.pena
+name: Lucas Peña
+github: lucaspena
+shortDescription: |
+  Lucas is a software engineer on the verification and audits team at
+  Tweag. He is based in Chicago, Illinois.
+ 
+bio: |
+  Lucas received his Ph.D. in computer science from the
+  University of Illinois at Urbana-Champaign in 2022, with a focus on
+  formal verification and first-order logic. Lucas is a mathematician
+  at heart, and is fascinated by the many connections between
+  mathematics and computer science. He has a keen interest in
+  functional programming languages, namely Haskell and Coq, and has
+  done multiple research projects using Coq, including verifying
+  blockchain protocols.
+
+  Outside of work, Lucas enjoys reading, travelling, playing board
+  games, and playing pickleball. He is also a big baseball fan and
+  enjoys a challenging escape room.
+
+skills:
+  - Coq
+  - Mathematics
+  - Algorithms
+  - Python
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Verification and Audit Engineer
+    years: May 2022-present
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: University of Illinois at Urbana-Champaign
+    years: 2015 - 2022
+  - qualification: BSE
+    name: Computer Science, Mathematics
+    institution: University of Pennsylvania
+    years: 2011 - 2015
