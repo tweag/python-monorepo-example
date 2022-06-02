@@ -186,7 +186,7 @@ But in the process, Nix concerns have now leaked into the non-Nix file `stack.ya
 
 A less invasive alternative is to pass all those Nix flags in the command line: non-Nix users would not be impacted. But then Nix users would need to pass `--nix --no-nix-pure --nix-shell-file=nix/stack-integration.nix` options **on every `stack` command**! Not only is this inconvenient, but it is also easy to forget, and in that case, you would have weird or confusing errors.
 
-You can test for yourself that it does not work with the [full code of this section](https://github.com/tweag/haskell-stack-nix-example/tree/invasive-stack-nix-integration).
+You can test for yourself with the [full code of this section](https://github.com/tweag/haskell-stack-nix-example/tree/invasive-stack-nix-integration).
 
 **Key takeaways**:
 
