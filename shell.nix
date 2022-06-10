@@ -7,7 +7,7 @@
 with pkgs;
 
 mkShell {
-  buildInputs = [ nodejs autoconf automake nasm vips libtool libpng pkg-config ];
+  buildInputs = [ python3 nodejs autoconf automake nasm vips libtool libpng pkg-config ];
   shellHook = ''
    PATH="$PWD/node_modules/.bin:$PATH"
   '';
