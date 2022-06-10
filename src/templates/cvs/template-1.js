@@ -64,7 +64,7 @@ const TitleName = ({ fullname, pronouns }) => {
     >
       <H1>{fullname}</H1>
       <H2>TWEAGER</H2>
-      <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5>
+      {pronouns ? <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5> : ``}
     </Grid>
   )
 }
