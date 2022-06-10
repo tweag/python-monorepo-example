@@ -54,7 +54,7 @@ const H5 = ({ children, customSx, className }) => {
   )
 }
 
-const TitleName = ({ fullname, pronouns }) => {
+const TitleName = ({ fullname, pronouns, github }) => {
   return (
     <Grid
       sx={{
@@ -65,6 +65,13 @@ const TitleName = ({ fullname, pronouns }) => {
       <H1>{fullname}</H1>
       <H2>TWEAGER</H2>
       <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5>
+      {github ? (
+        <H5 customSx={{ lineHeight: 1.6 }}>
+          <a href={`https://github.com/` + github}>GitHub</a>
+        </H5>
+      ) : (
+        ``
+      )}
     </Grid>
   )
 }
@@ -100,6 +107,7 @@ const TemplateCV1 = ({ data }) => {
   const {
     name,
     pronouns,
+    github,
     shortDescription,
     bio,
     skills,
@@ -128,7 +136,7 @@ const TemplateCV1 = ({ data }) => {
             gridAutoRows: `max-content`,
           }}
         >
-          <TitleName fullname={name} pronouns={pronouns} />
+          <TitleName fullname={name} pronouns={pronouns} github={github} />
           <Grid columns={2}>
             <ListFeature title={`Key Skills`} features={skills || []} />
             <ListFeature title={`Languages`} features={speaks || []} />
@@ -260,6 +268,7 @@ export const pageQuery = graphql`
       slug
       name
       pronouns
+      github
       shortDescription
       bio
       skills
