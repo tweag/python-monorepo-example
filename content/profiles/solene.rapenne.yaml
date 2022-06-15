@@ -1,0 +1,93 @@
+slug: solene.rapenne
+name: Solène Rapenne
+pronouns: she/her
+github: rapenne-s
+website: https://dataswamp.org/~solene/
+shortDescription: |
+  Solène dedicates most of her time contributing to libre software and
+  experimenting with new ideas, publishing results on her blog.
+  She is working at Tweag as a Developer Productivity Software Engineer,
+  leveraging lessons from her experiments to help developers in their
+  daily tasks.
+bio: |
+  Solène got hooked into computer science when she tried a Slackware
+  Linux installation CD-ROM from a magazine in early 2000s.
+
+  After spending a few years on Linux learning by trials and errors, in
+  2007 she went to the University to follow a three years course of study
+  in computer science where she learned development theory and practice.
+
+  Her first position started as a system administrator but evolved
+  into a site reliability engineer. This was at a French company
+  gathering real-time traffic information and broadcasting results to
+  cars all over France. Meanwhile, she joined the open source project
+  OpenBSD, a free operating system with a strong emphasis on security
+  where software such as OpenSSH or LibreSSL are developed.
+
+  In quest of new challenges, she joined the research and development
+  team in a security oriented hosting company where she has brought many
+  ideas while learning about the new context.
+
+  Finally, Solène joined Tweag to exchange knowledge with other Tweagers,
+  attracted by Tweag strong focus on open source and functional software.
+
+skills:
+  - Security
+  - Networking
+  - Documentation
+  - DevOps
+  - OpenBSD, Linux
+
+speaks:
+  - French
+  - English
+
+experience:
+  - employer: Tweag
+    role: Developer Productivity
+    years: 2022
+  - employer: No Blue Screen System
+    role: DevOps
+    years: 2021 - 2022
+    description:
+      - Led the DevOps team
+      - Designed a SaaS Web Application Firewall product
+      - Contributed to the security defense team
+      - Supported the levels 2 and 3 system administrators
+  - employer: The OpenBSD project
+    role: Open source contributor
+    years: Since 2018
+    description:
+      - Designed and operate the automated package building
+        infrastructure providing packages updates to end users
+      - Contributing to the base system and ports tree code repositories
+      - Advocating and teaching about OpenBSD
+  - employer: Carte Blanche Conseil
+    role: Site Reliability Engineer
+    years: 2011 - 2021
+    description:
+      - Designed a high availability FreeBSD infrastructure
+        over 5 datacenters in France
+      - Operated critical real-time services
+      - Real-time infrastructure monitoring
+      - Management of cloud servers and hardware in co-location
+      - Advisor to the development teams about infrastructure and
+        security design principles
+      - Setup of VPN networks
+
+education:
+  - qualification: licence
+    name: IT systems and software
+    institution: University of Bourgogne, France
+    years: 2010
+  - qualification: two-year degree
+    name: Software engineering and embedded systems
+    institution: University of Bourgogne, France
+    years: 2007 - 2009
+
+publications:
+  - description: |
+      "Solene's technical blog about Unix systems, software and network"
+    link: https://dataswamp.org/~solene/
+  - description: "Interview by the podcast BSD Now"
+    link: https://www.bsdnow.tv/435

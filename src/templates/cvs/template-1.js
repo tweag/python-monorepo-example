@@ -64,7 +64,7 @@ const TitleName = ({ fullname, pronouns, github }) => {
     >
       <H1>{fullname}</H1>
       <H2>TWEAGER</H2>
-      <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5>
+      {pronouns ? <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5> : ``}
       {github ? (
         <H5 customSx={{ lineHeight: 1.6 }}>
           <a href={`https://github.com/` + github}>GitHub</a>
