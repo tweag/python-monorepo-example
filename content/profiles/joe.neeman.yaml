@@ -1,0 +1,86 @@
+---
+slug: joe.neeman
+name: Joe Neeman
+pronouns: he/him
+github: jneem
+shortDescription: |
+  Joe is a programmer and a mathematician. He loves getting lost in new topics
+  and is a fervent believer in clear documentation.
+bio: |
+  Having spending most of his career as an academic mathematician, Joe made
+  the leap to Tweag and full-time software development in 2022. An open-source
+  hobbyist for decades, he discovered Rust before it hit 1.0 and fell in love
+  (or, at least, infatuation). Although he is capable of getting things done,
+  Joe also likes to talk and learn about math, software, and the connections
+  between them. If you have an hour to spare, try asking him about the math
+  behind soap bubble clusters.
+
+  Joe spends most of his non-working hours shuttling his daughters around in
+  his bakfiets. People in Texas (where he lives) find this odd, but they seem
+  to understand when he points out that it's basically the bicycle equivalent
+  of an F-150.
+skills:
+  - C++
+  - Rust
+speaks:
+  - English
+  - Vietnamese (basic)
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: June 2022 - present
+  - employer: University of Texas, Austin
+    role: Assistant Professor, Mathematics
+    years: September 2017 - May 2022
+    description:
+      - Performed and disseminated (through publications and presentations)
+        research on geometry and probability. Taught graduate and undergraduate
+        courses.
+  - employer: Universität Bonn
+    role: Bonn Junior Fellow, Mathematics
+    years: September 2015 - August 2017
+    description:
+      - Performed and disseminated (through publications and presentations)
+        research on geometry and probability. Taught Masters courses and
+        seminars.
+  - employer: Google Australia
+    role: Software Engineering Intern
+    years: March 2007 - May 2007
+    description:
+      - Implemented an automatic testing harness for Google Maps API for Flash
+education:
+  - qualification: PhD
+    name: Statistics
+    institution: University of California, Berkeley
+    years: 2008-2013
+    description:
+      - |
+        Thesis: Isoperimetry and noise stability in Gaussian space
+  - qualification: Bachelors
+    name: Mathematics
+    institution: Australian National University
+    years: 2003-2007
+publications:
+  - description: E. Milman and J. Neeman. The Gaussian double-bubble and
+      multi-bubble conjectures. Annals of Mathematics, 2022
+  - description: A. De, E. Mossel, and J. Neeman. Is your function
+      low-dimensional? In COLT 2019 proceedings
+  - description: E. Mossel, J. Neeman, and A. Sly. A proof fo the block model
+      threshold conjecture. Combinatorica, 2018
+  - description: J. Banks, C. Moore, J. Neeman, and P. Netrapalli.
+      Information-theoretic thresholds for community detection in sparse
+      networks. In COLT 2016 proceedings
+  - description: E. Mossel, J. Neeman, and A. Sly. Consistency thresholds for
+      the planted bisection model. In STOC 2015 proceedings
+  - description: E. Mossel and J. Neeman. Robust dimension-free isoperimetry in
+      Gaussian space. Annals of Probability, 2015
+  - description: E. Mossel, J. Neeman, and A. Sly. Belief propagation, robust
+      reconstruction, and optimal recovery of block models.
+      In COLT 2014 proceedings
+  - description: J. Neeman. Testing surface area with arbitrary accuracy. In
+      STOC 2015 proceedings
+  - description: F. Krzakala, C. Moore, E. Mossel, J. Neeman, A. Sly,
+      L. Zdeborova, and P. Zhang. Spectral redemption in clustering sparse
+      networks. PNAS, 2013
+  - description: S. Mendelson and J. Neeman. Regularization in kernel learning.
+      Annals of Statistics, 2010
