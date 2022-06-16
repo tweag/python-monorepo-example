@@ -22,6 +22,7 @@ bio: |
   work with him *not* work and a lot of fun. He is a friendly open helper with
   great technical abilities.
 skills:
+  - Engineering Management
   - OCaml
   - Haskell
   - python
@@ -32,11 +33,20 @@ speaks:
   - Italian
 experience:
   - employer: Tweag
-    role: Senior Software Engineer
-    years: February 2020 - present
+    role: Principal Software Engineer
+    years: April 2022 - present
     description:
       - |
-        Working remotely for a French blockchain company, developing
+        Working remotely for a Healthcare company, providing company-wide guidance
+        on architecture, team management, and communication.
+        Making the company's software development team high performing.
+        Tech: python, Azure
+  - employer: Tweag
+    role: Senior Software Engineer
+    years: February 2020 - March 2022
+    description:
+      - |
+        Worked remotely for a French blockchain company, developing
         alternative client/server protocols, for enhanced performance
         and security. Core member of the Tezos blockchain.
         Tech: OCaml
