@@ -97,3 +97,7 @@ publications:
   - description: "Christian Haack, Marieke Huisman, Clément Hurlin: Reasoning about Java's Reentrant Locks. APLAS 2008: 171-187"
   - description: "Clément Hurlin: Specifying Correct Protocols of Multithreaded Java-like Programs. Software Engineering Research and Practice 2008: 127-133"
   - description: "Joseph R. Kiniry, Patrice Chalin, Clément Hurlin: Integrating Static Checking and Interactive Verification: Supporting Multiple Theories and Provers in Verification. VSTTE 2005: 153-160"
+links:
+  GitHub: https://github.com/smelc
+  LinkedIn: https://www.linkedin.com/in/cl%C3%A9ment-hurlin-641774190
+  Itch: https://smelc3.itch.io
