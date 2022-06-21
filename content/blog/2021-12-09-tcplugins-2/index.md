@@ -670,7 +670,6 @@ or a Core Lint error).
 ---
 
 [^1]: Core is a small functional language, based on [System F](https://en.wikipedia.org/wiki/System_F)
-
 with [added coercions](https://www.microsoft.com/en-us/research/publication/system-f-with-type-equality-coercions),
 which Haskell is desugared into after typechecking. Many of GHC's optimisations happen on the level of Core.
 To see the Core that GHC generates when compiling a Haskell program, use the `-ddump-simpl` GHC option;
@@ -678,9 +677,7 @@ additional flags such as `-dsuppress-uniques -dsuppress-idinfo -dsuppress-ticks 
 can make the Core easier to read.
 
 [^2]: This evidence must be passed at runtime: the types are erased, so we must use
-
 another mechanism to record which instance was selected (i.e. which implementation of the typeclass methods to use).
 
 [^3]: A homogeneous coercion is one that relates types of the same kind, while a heterogeneous
-
 coercion can relate two types of different kinds.
