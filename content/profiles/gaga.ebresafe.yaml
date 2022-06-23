@@ -1,0 +1,41 @@
+slug: gaga.ebresafe
+name: Oghenevwogaga Ebresafe
+github: ebresafegaga
+shortDescription: |
+  Gaga is a Software Engineer. He is passionate about creating software that
+  can improve the lives of everyone. He is also interested in functional 
+  programming, systems, compilers, data structures, algorithms, and 
+  programming language theory.
+bio: |
+  Gaga started out programming seriously after he left high school. During 
+  his time in university, he learnt about functional programming, and that 
+  made him curious to learn about programming languages and compilers. He 
+  has recently worked on a programming language with algebraic effects and 
+  handlers for his undergraduate thesis. 
+
+  He is passionate about writing correct software that can have impacts on 
+  a global scale. He has also made several open source contributions to .NET, 
+  and more recently OCaml. 
+
+  Outside work, he likes to watch football, play football and video games, 
+  go on walks, watch shows, and hang out with his friends.
+links:
+  Github: https://github.com/ebresafegaga
+skills:
+  - OCaml
+  - Racket
+  - "F#"
+  - Haskell
+  - "C#"
+  - .NET
+speaks:
+  - English
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: June 2022 - present
+education:
+  - qualification: Bachelor
+    name: Computer Science
+    institution: Covenant University
+    years: 2017 - 2021
