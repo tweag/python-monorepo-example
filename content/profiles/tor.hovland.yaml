@@ -1,0 +1,68 @@
+slug: tor.hovland
+name: Tor Hovland
+github: torhovland
+twitter: "@torhovland"
+shortDescription: |
+  Tor is a Rust developer at Tweag who lives in Trondheim, Norway with his wife
+  and two sons.
+bio: |
+  Tor has an M.Sc. in theoretical physics, and wrote a thesis on quantum 
+  computing 20 years before it became cool.
+
+  He has many years experience building software, both as a consultant and from
+  within a software company that does lots of interesting work within the
+  energy business.
+
+  Tor is particularly absorbed in the challenge of building software that can
+  be effectively maintained for many years. To that end, automated testing has
+  always been a helpful tool. So has advanced languages with strong type
+  systems and strict compilers. This is why he finds Rust so appealing.
+
+  Outside work, Tor can usually be found on one of his bikes. He does
+  long-distance cycling, and enjoys life to the fullest on events such as
+  Paris-Brest-Paris, London-Edinburgh-London, and 1001 Miglia Italia. Go and
+  see his YouTube channel!
+links:
+  Github: https://github.com/torhovland/
+  Twitter: https://twitter.com/torhovland
+  Youtube: https://www.youtube.com/channel/UCnMVt-vE4g0YYKBDb3t6J4Q
+skills:
+  - Rust
+  - DevOps
+  - Infrastructure as code
+  - Nix
+  - Cloud computing
+  - C++ and .NET
+  - Web and TypeScript
+speaks:
+  - Norwegian (native)
+  - English
+  - German (basic)
+experience:
+  - employer: Tweag
+    role: Rust Developer
+    years: June 2022 - present
+  - employer: Bekk
+    role: Software Developer
+    years: October 2018 - June 2022
+  - employer: Powel
+    role: Chief Architect, Business Manager, Cloud Engineer
+    years: January 2014 - September 2018
+  - employer: Programmator
+    role: Co-founder, Software Consultant
+    years: May 2010 - December 2013
+  - employer: Powel
+    role: Software Developer
+    years: June 2004 - June 2010
+  - employer: Proxycom
+    role: Software Consultant
+    years: July 2001 - June 2004
+education:
+  - qualification: Master
+    name: Theoretical physics
+    institution: Norwegian University of Science and Technology / National University of Ireland
+    years: 1995 - 2001
+talks:
+  - "Microservices, monoliths, and the golden mean. Trondheim Developer Conference 2019, Norway"
+  - "Taking a swim in the big data lake. 3CityNetConf 2016, Gdansk, Poland"
+  - "Let others take the risk of managing passwords. Trondheim Developer Conference 2014, Norway"
