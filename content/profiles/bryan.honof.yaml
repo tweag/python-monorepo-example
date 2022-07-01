@@ -36,7 +36,6 @@ experience:
     description:
       - |
         tech: Nix, Bazel
-experience:
   - employer: BRYAN HONOF GCV
     role: Software Engineer
     years: January 2019 - Present
@@ -44,7 +43,6 @@ experience:
     description:
       - |
         tech: C/C++, TCP/IP, RTOS (Zephyr), Embedded Systems
-experience:
   - employer: O11y
     role: Observability Engineer
     years: March 2022 - June 2022
@@ -52,7 +50,6 @@ experience:
     description:
       - |
         tech: Distributed Tracing, Prometheus, Grafana, Cloud Infrastructure
-experience:
   - employer: Inuits
     role: Open Source Consultant
     years: November 2021 - June 2022
@@ -60,7 +57,6 @@ experience:
     description:
       - |
         tech: Open-Source Software, Terraform, CI/CD, DevOps, IaC
-experience:
   - employer: NixOS Foundation
     role: Summer of Nix Participant
     years: August 2021 - October 2021
