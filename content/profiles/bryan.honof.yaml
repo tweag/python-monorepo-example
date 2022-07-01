@@ -1,0 +1,75 @@
+---
+slug: bryan.honof
+name: Bryan Honof
+pronouns: he/him
+github: bryanhonof
+shortDescription: |
+  Bryan is a Software Engineer at Tweag focussed on Developer
+  Productivity and automation. Passionate about good quality software,
+  and of the belief that you shouldn't stop learning until nature
+  forces you to do so.
+bio: |
+  Bryan has touched a few areas of the field already. Ranging from
+  embedded systems to full blown cloud platforms, but was always left
+  unsatisfied with the quality, and lack of automation. These days he
+  spends his time trying to get people to write better code, and teach
+  them about making their own work irrelevant, through automation.
+  When he's not playing guitar that is. Whilst also trying to keep up
+  with all the new cool toys being released in functional programming
+  land.
+links:
+  linkedin: https://www.linkedin.com/in/bryanhonof/
+skills:
+  - Nix
+  - Bazel
+  - C/C++
+  - DevOps
+  - Terraform
+speaks:
+  - Dutch (native)
+  - English (fluent)  
+experience:
+  - employer: Tweag
+    role: Software Engineer - Developer Productivity
+    years: June 2022 - Present
+    location: Remote
+    description:
+      - |
+        tech: Nix, Bazel
+experience:
+  - employer: BRYAN HONOF GCV
+    role: Software Engineer
+    years: January 2019 - Present
+    location: Belgium
+    description:
+      - |
+        tech: C/C++, TCP/IP, RTOS (Zephyr), Embedded Systems
+experience:
+  - employer: O11y
+    role: Observability Engineer
+    years: March 2022 - June 2022
+    location: Belgium
+    description:
+      - |
+        tech: Distributed Tracing, Prometheus, Grafana, Cloud Infrastructure
+experience:
+  - employer: Inuits
+    role: Open Source Consultant
+    years: November 2021 - June 2022
+    location: Belgium
+    description:
+      - |
+        tech: Open-Source Software, Terraform, CI/CD, DevOps, IaC
+experience:
+  - employer: NixOS Foundation
+    role: Summer of Nix Participant
+    years: August 2021 - October 2021
+    location: Remote
+    description:
+      - |
+        tech: Software Packaging, Nix{,,OS,Ops}, Distributed Teamwork
+education:
+  - qualification: Bachelor's
+    name: Electronics-ICT
+    institution: PXL University College
+    years: 2016-2020
