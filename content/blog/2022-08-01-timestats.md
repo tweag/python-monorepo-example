@@ -11,8 +11,10 @@ memory. This tool produces information that informs what parts of a
 program could use optimizations to speed it up.
 
 Unfortunately, the very definition of the GHC profiler makes it of
-[limited use][document-limitations] when measuring time on a large
-class of computations, namely, those that need to do blocking IO.
+[limited use][document-limitations] when measuring time on two
+classes of computations: firstly, those that need to do blocking IO;
+and secondly, some computations that invoke functions written in other
+programming languages.
 In these cases, one could just turn to a tool like
 [ghc-events-analyze][ghc-events-analyze], however, I also came
 across a use case where it is not available.
@@ -25,7 +27,7 @@ fails.
 ## The limitations of the GHC profiler
 
 Consider the following program from the description of
-[the GHC issue][document-limitations].
+[the GHC issue][document-limitations] discussing the limitations.
 
 ```Haskell
 main = g
@@ -45,6 +47,36 @@ It is not uncommon for programs to block when doing IO to communicate
 with a database, a remote server, a file system, or another local process.
 The larger the program is, the more likely many of these blocking IO
 calls are occurring during its lifetime.
+
+The other class of problematic computations could be exemplified with
+
+```Haskell
+{-# LANGUAGE CApiFFI #-}
+foreign import capi safe "stdio.h getchar" getchar :: IO Int
+main = g
+g = getchar >>= print
+```
+
+Much like in the previous case, the program will spend most of the
+time waiting for input. The important difference, though, is that the
+program is calling into C first via the
+[Foreign Function Interface][ffi], and only then blocking for input.
+As before, the GHC profiler won't account any time to function `g`,
+but the explanation is more nuanced.
+
+Haskell programs can call to functions written in other languages
+using the so called foreign functions. Foreign functions come
+in two flavors: safe and unsafe. The meaning of the flavors
+doesn't affect the discussion here, but it is necessary to note
+that the foreign function in our example is safe.
+
+It turns out that the GHC profiler measures CPU time for Haskell
+computations. But if a computation calls an unsafe foreign function,
+it will switch to measuring the wall-clock time of the foreign
+call (!) and attribute that time to the calling computation.
+At the time of this writing, if a call to a safe foreign function
+is done instead, the GHC profiler will just ignore the time spent
+on it.
 
 ## timestats
 
@@ -148,11 +180,12 @@ needs, and share your experience.
 
 In addition, I haven't found other resources yet that discuss the
 limitations of the GHC profiler. I hope this post helps to raise
-awareness so people can veer early for alternatives when their
-programs do a lot of blocking IO. Happy profiling!
+awareness so people can veer early for the alternatives whenever
+appropriate. Happy profiling!
 
 [clock]: https://hackage.haskell.org/package/clock
 [document-limitations]: https://gitlab.haskell.org/ghc/ghc/-/issues/21764
+[ffi]: https://downloads.haskell.org/ghc/9.2.3/docs/html/users_guide/exts/ffi.html
 [ghc-event-log]: https://downloads.haskell.org/~ghc/9.2.3/docs/html/users_guide/runtime_control.html#rts-eventlog
 [ghc-events-analyze]: https://github.com/well-typed/ghc-events-analyze
 [ghc-profiler]: https://downloads.haskell.org/~ghc/9.2.3/docs/html/users_guide/profiling.html
