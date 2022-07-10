@@ -82,7 +82,7 @@ is done instead, the GHC profiler will just ignore it.
 `timestats` is a library that measures the time it takes to execute
 selected fragments of a program. It requires the program to be instrumented
 with calls that identify these fragments, and then relies on the
-[`getMonotonicTimeNSec`][monotonic-time] function to measure the execution time.
+function [`getMonotonicTimeNSec`][monotonic-time] to measure the execution time.
 
 It features a `measureM` call.
 
@@ -123,7 +123,7 @@ measuring is enabled.
 another_task: 3.071s  count: 1
 ```
 
-By default, no measures are collected though. None of the calls coming
+By default, no measures are collected, though. None of the calls coming
 from `timestats` are meant to change the observable behavior of the
 program unless the environment variable `DEBUG_TIMESTATS_ENABLE` is set
 to any value.
