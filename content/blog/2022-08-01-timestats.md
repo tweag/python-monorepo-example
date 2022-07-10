@@ -82,7 +82,7 @@ is done instead, the GHC profiler will just ignore it.
 `timestats` is a library that measures the time it takes to execute
 selected fragments of a program. It requires the program to be instrumented
 with calls that identify these fragments, and then relies on the
-[`clock` package][clock] to measure the execution time.
+[`getMonotonicTimeNSec`][monotonic-time] function to measure the execution time.
 
 It features a `measureM` call.
 
@@ -182,13 +182,13 @@ limitations of the GHC profiler. I hope this post helps to raise
 awareness so people can veer early for the alternatives whenever
 appropriate. Happy profiling!
 
-[clock]: https://hackage.haskell.org/package/clock
 [document-limitations]: https://gitlab.haskell.org/ghc/ghc/-/issues/21764
 [ffi]: https://downloads.haskell.org/ghc/9.2.3/docs/html/users_guide/exts/ffi.html
 [ghc-event-log]: https://downloads.haskell.org/~ghc/9.2.3/docs/html/users_guide/runtime_control.html#rts-eventlog
 [ghc-events-analyze]: https://github.com/well-typed/ghc-events-analyze
 [ghc-profiler]: https://downloads.haskell.org/~ghc/9.2.3/docs/html/users_guide/profiling.html
 [liquidhaskell]: https://github.com/ucsd-progsys/liquidhaskell
+[monotonic-time]: https://hackage.haskell.org/package/base-4.16.2.0/docs/GHC-Clock.html#v:getMonotonicTimeNSec
 [optimization-plan]: https://github.com/ucsd-progsys/liquid-fixpoint/issues/500
 [smt-solver]: https://en.wikipedia.org/wiki/Satisfiability_modulo_theories
 [timestats]: https://github.com/tweag/timestats
