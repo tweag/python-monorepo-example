@@ -72,9 +72,9 @@ that the foreign function in our example is safe.
 
 It turns out that the GHC profiler measures CPU time for Haskell
 computations. But if a computation calls an unsafe foreign function,
-it will switch to measuring the wall-clock time of the foreign
+it will switch to estimating the wall-clock time of the foreign
 call (!) and attribute it to the calling computation.
-At the time of this writing, if a call to a safe foreign function
+At the time of this writing (`ghc-9.4`), if a call to a safe foreign function
 is done instead, the GHC profiler will just ignore it.
 
 ## timestats
