@@ -11,7 +11,7 @@ memory. This tool produces information that informs what parts of a
 program could use optimizations to speed it up.
 
 Unfortunately, the very definition of the GHC profiler makes it of
-[limited use][document-limitations] when measuring time on two
+[limited use][document-limitations] when estimating time on two
 classes of computations: firstly, those that need to do blocking IO;
 and secondly, some computations that invoke functions written in other
 programming languages.
@@ -37,7 +37,7 @@ g = getContents >>= print . length
 If a person interacts with this program in a terminal, the program
 is going to spend most of the time blocking while waiting for input.
 The GHC profiler, however, won't account any time to function `g`.
-This is because the profiler doesn't measure wall-clock time but
+This is because the profiler doesn't estimate wall-clock time but
 CPU time and, so far, only for the Haskell portion of a program. As
 function `g` uses little CPU, `g` gets little time attributed to it
 in the reports of the profiler.
@@ -70,7 +70,7 @@ in two flavors: safe and unsafe. The meaning of the flavors
 doesn't affect the discussion here, but it is necessary to note
 that the foreign function in our example is safe.
 
-It turns out that the GHC profiler measures CPU time for Haskell
+It turns out that the GHC profiler estimates CPU time for Haskell
 computations. But if a computation calls an unsafe foreign function,
 it will switch to estimating the wall-clock time of the foreign
 call (!) and attribute it to the calling computation.
