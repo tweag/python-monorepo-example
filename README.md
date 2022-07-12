@@ -1,5 +1,10 @@
 # The Tweag website
 
+If you find that watching this repository causes too many notifications,
+it might be useful to join the [#www-notifications](https://tweag.slack.com/archives/C03N56TKD7Z) channel on slack.
+A bot in that channel sends notifications only when PRs and issues are opened and closed,
+rather than for every message in a discussion.
+
 ## Cloning the website
 
 This repo uses [Git Large File Storage](https://git-lfs.github.com/)
