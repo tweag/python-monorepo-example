@@ -88,7 +88,7 @@ With Nix, he showed how to apply proven solutions, such as garbage collection or
 
 The following figure illustrates the analogy of memory structures in programs and operating systems down to single objects.
 
-<img src="memory-analogy.svg">
+![Memory Analogy](memory-analogy.svg)
 
 As an example of this equivalence, take the following shell script:
 
@@ -131,7 +131,7 @@ Again, proven solutions like memoization and self-adjusting computation offer th
 
 [bsalc]: https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf
 
-<img src="dataflow-analogy.svg">
+![Dataflow Analogy](dataflow-analogy.svg)
 
 Both building and deploying software components as if they were values in a program’s call graph clearly shows the benefits and power of [purely functional programming][pfup]: ensuring correctness while allowing flexible composition and automatic optimizations.
 
