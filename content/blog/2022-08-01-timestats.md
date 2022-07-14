@@ -7,7 +7,7 @@ description: "Limitations of the GHC profiler and announcement of the timestats 
 
 The [GHC profiler][ghc-profiler] is today one of the most advanced
 profiling tools for analyzing how Haskell programs use CPU time and
-memory. This tool produces information that informs what parts of a
+memory. It produces information on what parts of a
 program could use optimizations to speed it up.
 
 Unfortunately, the very definition of the GHC profiler makes it of
@@ -16,8 +16,8 @@ classes of computations: firstly, those that need to do blocking IO;
 and secondly, some computations that invoke functions written in other
 programming languages.
 In these cases, one could just turn to a tool like
-[ghc-events-analyze][ghc-events-analyze], however, I also came
-across a use case where it is not available.
+[ghc-events-analyze][ghc-events-analyze], however, it is not available
+to projects that are still attached to GHC 8, such as Liquid Haskell.
 
 In this post I'm discussing a bit the limitations of the GHC
 profiler, and I'm announcing [timestats][timestats], a simple
@@ -26,8 +26,7 @@ fails.
 
 ## The limitations of the GHC profiler
 
-Consider the following program from the description of
-[the GHC issue][document-limitations].
+Consider the following program from a [GHC issue][document-limitations]:
 
 ```Haskell
 main = g
@@ -48,7 +47,7 @@ with a database, a remote server, a file system, or another local process.
 The larger the program is, the more likely many of these blocking IO
 calls are occurring during its lifetime.
 
-The other class of problematic computations could be exemplified with
+The other class of problematic computations can be exemplified with:
 
 ```Haskell
 {-# LANGUAGE CApiFFI #-}
@@ -64,7 +63,7 @@ program is calling into C first via the
 As before, the GHC profiler won't account any time to function `g`,
 but the explanation is more nuanced.
 
-Haskell programs can call to functions written in other languages
+Haskell programs can call functions written in other languages
 using the so called foreign functions. Foreign functions come
 in two flavors: safe and unsafe. The meaning of the flavors
 doesn't affect the discussion here, but it is necessary to note
@@ -84,13 +83,13 @@ selected fragments of a program. It requires the program to be instrumented
 with calls that identify these fragments, and then relies on the
 function [`getMonotonicTimeNSec`][monotonic-time] to measure the execution time.
 
-It features a `measureM` call.
+It features a `measureM` function:
 
 ```Haskell
 measureM :: MonadIO m => String -> m a -> m a
 ```
 
-`measureM` associates a label with a monadic computation, measures
+which associates a label with a monadic computation, measures
 the time it takes to perform the computation, and records it in a hidden
 and globally available location. If multiple `measureM` calls use the
 same label, their time measures are added together.
