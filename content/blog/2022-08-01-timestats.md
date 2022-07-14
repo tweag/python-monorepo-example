@@ -17,7 +17,7 @@ and secondly, some computations that invoke functions written in other
 programming languages.
 In these cases, one could just turn to a tool like
 [ghc-events-analyze][ghc-events-analyze], however, it is not available
-to projects that are still attached to GHC 8, such as Liquid Haskell.
+to plugins loaded in GHC 8, such as Liquid Haskell.
 
 In this post I'm discussing a bit the limitations of the GHC
 profiler, and I'm announcing [timestats][timestats], a simple
