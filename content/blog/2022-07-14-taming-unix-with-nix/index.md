@@ -166,33 +166,8 @@ It uses files as function inputs, and outputs are files again.
 On the operating system, files can be run as processes, which, in turn, operate on files.
 A build function also amounts to an operating system process (not depicted).
 
-```
-+-----------------------------------------------------+
-| functional programming                              |
-|                                                     |
-|     [ input ] ---> [ function ] ---> [ output ]     |
-|         ^                                |          |
-+---------|--------------------------------|----------+
-          |                                V
-       +-------------------------------------+
-       |                                     |
-       |                 Nix                 |
-       |                                     |
-       +-------------------------------------+
-          ^                                |
-+---------|--------------------------------|----------+
-|         |         +------------+         |          |
-|         '-------- |            | <-------'          |
-|                   |    file    |                    |
-|               ,-- |            | <-,                |
-|               |   +------------+   |                |
-|    execute as |                    | read, write,   |
-|               |   +------------+   | execute        |
-|               '-> |  process   | --'                |
-|                   +------------+                    |
-| operating system                                    |
-+-----------------------------------------------------+
-```
+
+![Functional Mapping](functional-mapping.svg)
 
 Since its inception, Nix development has been primarily occupied with imposing the abstraction of functional programming onto the messy, real world of our Unix lineage:
 encoding and correctly dealing with object references in the file system, ensuring purity of function application, and working around built-in assumptions behind the mechanisms of different language ecosystems and build procedures — all while keeping performance acceptable.
