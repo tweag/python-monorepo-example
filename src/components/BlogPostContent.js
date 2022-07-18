@@ -157,6 +157,25 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           }
         }
 
+        blockquote {
+          border-left: 15px solid ${t.colors.orange};
+          padding-left: 20px;
+
+          @media (min-width: ${t.breakpoints[1]}) {
+            margin-left: 70px;
+            width: 65%;
+            max-width: 1000px;
+          }
+
+          @media (min-width: ${t.breakpoints[5]}) {
+            margin-left: 130px;
+          }
+
+          p {
+            padding: 0;
+          }
+        }
+
         h1 {
           padding: 0px;
           margin: 40px 15px 20px;
