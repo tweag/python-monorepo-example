@@ -166,7 +166,6 @@ It uses files as function inputs, and outputs are files again.
 On the operating system, files can be run as processes, which, in turn, operate on files.
 A build function also amounts to an operating system process (not depicted).
 
-
 ![Functional Mapping](functional-mapping.svg)
 
 Since its inception, Nix development has been primarily occupied with imposing the abstraction of functional programming onto the messy, real world of our Unix lineage:
