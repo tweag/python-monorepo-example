@@ -40,12 +40,12 @@ using multiple operating system.
 
 # How to use specialisations
 
-Here is a example, we will create two specialisations, one having the user
+As an example, we will create two specialisations, one having the user
 Chani using the desktop environment Plasma, and the other with the user
-Paul using the desktop environment Gnome, auto login at boot will be
+Paul using the desktop environment Gnome. Auto login at boot will be
 set for both users in their own specialisations. Our user Paul will need
-an extra system-wide package. As specialisation can receive any argument
-that would work in the top-level configuration, we are not limited in
+an extra system-wide package, for example `dune-release`. As specialisation can receive any argument
+that would work in the [top-level configuration](https://nixos.org/manual/nixos/stable/options.html), we are not limited in
 terms of what can be changed.
 
 If you want to try, add the following code to your `configuration.nix`
