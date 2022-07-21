@@ -2,16 +2,17 @@
 title: Introduction to NixOS specialisations
 shortitle: NixOS specialisations
 author: Solène Rapenne
-tags: [nixos, devops]
-description: "This article explains how to use the NixOS feature called specialisation to manage different boot environments and when to use it"
+tags: [nix, devops]
+description: "How to use the NixOS specialisations to manage different boot environments and when to use it"
 ---
 
-NixOS has an unique feature I would like to share with you as it solved
-in a clever way a problem I had with other Linux systems.
-Let me share about [NixOS specialisations](https://nixos.org/manual/nixos/stable/options.html#opt-specialisation).
+I often wished to be able to define different boot entries for different uses
+of my computer. Be it for separating professional and personal use, testing
+kernels or using special hardware. NixOS has a unique feature that solves
+this problem in a clever way -- [NixOS specialisations](https://nixos.org/manual/nixos/stable/options.html#opt-specialisation).
 
-To make it simple, a NixOS specialisation is a mechanism to describe an
-additional named boot entry when building your system, with specific
+To make it simple, a NixOS specialisation is a mechanism to describe
+additional boot entries when building your system, with specific
 changes applied on top of your non-specialised configuration.
 
 # When do you need specialisations
@@ -21,7 +22,7 @@ of these devices may require incompatible changes to your day-to-day
 configuration. Specialisations can create a new boot entry you can use
 when starting your computer with your specific hardware connected. This
 is common for people with external GPUs (Graphical Processing Unit),
-and this is why I used specialisations in the first place.
+and the reason why I first used specialisations.
 
 With NixOS, when I need my external GPU, I connect it to my computer
 and simply reboot my system, and then I choose the eGPU specialisation
@@ -29,8 +30,8 @@ in my boot menu, and it just works. My boot menu looks like the following:
 
 ![Picture showing a GRUB boot menu with many entries including egpu-with-external display and egpu-with-laptop-display](2022-nixos-specialisation-images/grub-boot-menu-screenshot.png)
 
-You can define a specialisation which will boot into a different kernel,
-this gives you a safe opportunity to try a new version while keeping a
+You can also define a specialisation which will boot into a different kernel,
+giving you a safe opportunity to try a new version while keeping a
 fallback environment with the regular kernel.
 
 We can push the idea further by using a single computer for professional
@@ -44,9 +45,9 @@ As an example, we will create two specialisations, one having the user
 Chani using the desktop environment Plasma, and the other with the user
 Paul using the desktop environment Gnome. Auto login at boot will be
 set for both users in their own specialisations. Our user Paul will need
-an extra system-wide package, for example `dune-release`. As specialisation can receive any argument
-that would work in the [top-level configuration](https://nixos.org/manual/nixos/stable/options.html), we are not limited in
-terms of what can be changed.
+an extra system-wide package, for example `dune-release`. Specialisations
+can use any argument that would work in the [top-level configuration](https://nixos.org/manual/nixos/stable/options.html),
+so we are not limited in terms of what can be changed.
 
 If you want to try, add the following code to your `configuration.nix`
 file.
