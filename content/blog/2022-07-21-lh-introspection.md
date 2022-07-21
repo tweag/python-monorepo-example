@@ -1,5 +1,5 @@
 ---
-title: A dialog with Liquid Haskell
+title: A dialogue with Liquid Haskell
 author: Facundo Domínguez
 tags: [haskell, liquidhaskell, formal-methods]
 description: "New features to understand old verification failures"
