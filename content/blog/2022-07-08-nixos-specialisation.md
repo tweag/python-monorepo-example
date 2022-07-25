@@ -37,7 +37,7 @@ fallback environment with the regular kernel.
 We can push the idea further by using a single computer for professional
 and personal use. Specialisations can have their own users, services,
 packages and requirements. This would create a hard separation without
-using multiple operating system.
+using multiple operating systems.
 
 # How to use specialisations
 
