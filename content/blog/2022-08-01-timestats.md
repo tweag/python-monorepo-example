@@ -51,7 +51,7 @@ The other class of problematic computations can be exemplified with:
 
 ```Haskell
 {-# LANGUAGE CApiFFI #-}
-foreign import capi safe "stdio.h getchar" getchar :: IO Int
+foreign import capi unsafe "stdio.h getchar" getchar :: IO Int
 main = g
 g = getchar >>= print
 ```
@@ -60,21 +60,25 @@ Much like in the previous case, the program will spend most of the
 time waiting for input. The important difference, though, is that the
 program is calling into C first via the
 [Foreign Function Interface][ffi], and only then blocking for input.
-As before, the GHC profiler won't account any time to function `g`,
-but the explanation is more nuanced.
+According to our assumptions this far, this shouldn't make a
+difference in the results. The program uses little CPU time, so `g`
+would not show any time attributed to it. This is not what happens
+though!
 
 Haskell programs can call functions written in other languages
 using the so called foreign functions. Foreign functions come
 in two flavors: safe and unsafe. The meaning of the flavors
 doesn't affect the discussion here, but it is necessary to note
-that the foreign function in our example is safe.
+that the foreign function in our example is unsafe.
 
 It turns out that the GHC profiler estimates CPU time for Haskell
 computations. But if a computation calls an unsafe foreign function,
 it will switch to estimating the wall-clock time of the foreign
-call (!) and attribute it to the calling computation.
-At the time of this writing (`ghc-9.4`), if a call to a safe foreign function
-is done instead, the GHC profiler will just ignore it.
+call (!) and attribute it to the calling computation. The main
+consequence of this behavior is that interpreting the results of
+profiling requires knowledge of the call graph to learn which of
+CPU or clock time is being measured at different places. The bigger
+the application, the harder that it becomes to interpret the results.
 
 ## timestats
 
