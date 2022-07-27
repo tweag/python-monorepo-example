@@ -35,26 +35,36 @@ const SEO = ({ description, lang, meta = {}, title, pathname, image }) => {
   const url = site.siteMetadata.siteUrl
   const ogImg = `${url}${image}` || `${url}/logo.png`
 
+  // This produces meta elements such as:
+  // <meta property="og:title" content="Mapping a Universe of Open Source Software">
+  // <meta name="twitter:title" content="Mapping a Universe of Open Source Software">
   const baseMetaObj = {
-    "og:title": [title, { selector: `property` }],
-    "twitter:title": [title, { selector: `name` }],
-    description: [metaDescription, { selector: `name` }],
-    "og:description": [description, { selector: `property` }],
-    "twitter:description": [description, { selector: `name` }],
-    "og:type": [`website`, { selector: `name` }],
-    "twitter:card": [`summary_large_image`, { selector: `name` }],
-    "og:image": [ogImg, { selector: `property` }],
-    "twitter:image:src": [ogImg, { selector: `name` }],
-    "twitter:site": [site.siteMetadata.social.twitter, { selector: `name` }],
-    "twitter:creator": [site.siteMetadata.social.twitter, { selector: `name` }],
+    "og:url": [canonical, { metaAttribute: `property` }],
+    "og:type": [`article`, { metaAttribute: `property` }],
+    "og:title": [title, { metaAttribute: `property` }],
+    "twitter:title": [title, { metaAttribute: `name` }],
+    description: [metaDescription, { metaAttribute: `name` }],
+    "og:description": [description, { metaAttribute: `property` }],
+    "twitter:description": [description, { metaAttribute: `name` }],
+    "twitter:card": [`summary_large_image`, { metaAttribute: `name` }],
+    "og:image": [ogImg, { metaAttribute: `property` }],
+    "twitter:image": [ogImg, { metaAttribute: `name` }],
+    "twitter:site": [
+      site.siteMetadata.social.twitter,
+      { metaAttribute: `name` },
+    ],
+    "twitter:creator": [
+      site.siteMetadata.social.twitter,
+      { metaAttribute: `name` },
+    ],
   }
 
   const allMetaObj = { ...baseMetaObj, ...meta }
 
   const metaTags = Object.keys(allMetaObj).map(k => {
-    const [value, { selector = `name` } = {}] = allMetaObj[k]
+    const [value, { metaAttribute = `name` } = {}] = allMetaObj[k]
     return {
-      [selector]: k,
+      [metaAttribute]: k,
       content: value,
     }
   })
