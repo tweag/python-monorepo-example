@@ -3,7 +3,7 @@ redirect_from: [/posts/2020-01-09-mcmc-intro2.html]
 title: "Introduction to Markov chain Monte Carlo (MCMC) Sampling, Part 2:  Gibbs Sampling"
 shortTitle: "Markov chain Monte Carlo Sampling (2)"
 author: Simeon Carstens
-image: "posts/mcmc-intro2-2Dsamples.png"
+seo_image: "./mcmc-intro2-2Dsamples.png"
 description: "In this second post of Tweag's four-part series, we discuss
   Gibbs sampling, an important MCMC-related algorithm which can be
   advantageous when sampling from multivariate distributions. Two

@@ -9,7 +9,7 @@ description: "Inspired by the Event Horizon Telescope images, we develop
   homing pigeon industry? How about using transportation means that are
   optimized to carry incredible amounts of weight? Or transportation means
   that are designed to be fast as a bullet?"
-image: "posts/sneakernet.png"
+seo_image: "./sneakernet.png"
 tags: [data-science]
 ---
 

@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title, pathname }) => {
+const SEO = ({ description, lang, meta = {}, title, pathname, image }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,6 +30,44 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+  // This url may be changed for SEO tests on PRs.
+  // const url = `https://62e137a14014f4137dd2580e--tweag-www.netlify.app`
+  const url = site.siteMetadata.siteUrl
+  const ogImg = `${url}${image}` || `${url}/logo.png`
+
+  // This produces meta elements such as:
+  // <meta property="og:title" content="Mapping a Universe of Open Source Software">
+  // <meta name="twitter:title" content="Mapping a Universe of Open Source Software">
+  const baseMetaObj = {
+    "og:url": [canonical, { metaAttribute: `property` }],
+    "og:type": [`article`, { metaAttribute: `property` }],
+    "og:title": [title, { metaAttribute: `property` }],
+    "twitter:title": [title, { metaAttribute: `name` }],
+    description: [metaDescription, { metaAttribute: `name` }],
+    "og:description": [description, { metaAttribute: `property` }],
+    "twitter:description": [description, { metaAttribute: `name` }],
+    "twitter:card": [`summary_large_image`, { metaAttribute: `name` }],
+    "og:image": [ogImg, { metaAttribute: `property` }],
+    "twitter:image": [ogImg, { metaAttribute: `name` }],
+    "twitter:site": [
+      site.siteMetadata.social.twitter,
+      { metaAttribute: `name` },
+    ],
+    "twitter:creator": [
+      site.siteMetadata.social.twitter,
+      { metaAttribute: `name` },
+    ],
+  }
+
+  const allMetaObj = { ...baseMetaObj, ...meta }
+
+  const metaTags = Object.keys(allMetaObj).map(k => {
+    const [value, { metaAttribute = `name` } = {}] = allMetaObj[k]
+    return {
+      [metaAttribute]: k,
+      content: value,
+    }
+  })
 
   return (
     <Helmet
@@ -48,48 +86,7 @@ const SEO = ({ description, lang, meta, title, pathname }) => {
             ]
           : []
       }
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: `${site.siteMetadata.siteUrl}/logo.png`,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:site`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      meta={metaTags}
     />
   )
 }
