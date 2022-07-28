@@ -78,7 +78,7 @@ call (!) and attribute it to the calling computation. The main
 consequence of this behavior is that interpreting the results of
 profiling requires knowledge of the call graph to learn which of
 CPU or clock time is being measured at different places. The bigger
-the application, the harder that it becomes to interpret the results.
+the application, the harder it becomes to interpret the results.
 
 ## timestats
 
