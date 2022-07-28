@@ -13,7 +13,7 @@ YOUR_DESCRIPTION_HERE
 
 - [ ] Markup
 - [ ] Capitalization
-- [ ] Meta tags (description, image)
+- [ ] Meta tags (a good description and relevant tags are required, and a seo_image is encouraged)
 - [ ] Correct date
 
 Responsible: Juan (@guaraqe)
