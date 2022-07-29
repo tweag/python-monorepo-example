@@ -205,7 +205,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           font-size: 700;
           text-transform: uppercase;
 
-          @media (min-width: 768px) {
+          @media (min-width: ${t.breakpoints[1]}) {
             padding: 0px;
             padding-left: 60px;
             margin: 60px 0px 30px;
