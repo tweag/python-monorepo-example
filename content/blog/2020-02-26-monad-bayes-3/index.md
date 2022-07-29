@@ -5,7 +5,6 @@ shortTitle: "Probabilistic Programming with monad‑bayes (3)"
 author: Siddharth Bhat, Simeon Carstens, Matthias Meschede
 tags: [data-science, haskell, statistics]
 description: "In this blog post series, we're going to lead you through Bayesian modeling in Haskell with the monad-bayes library. In the third part of the series, we setup a simple Bayesian neural network."
-seo_image: "./bayes3_preview.png"
 ---
 
 This post is the third instalment of Tweag's _**Probabilistic Programming with monad‑bayes Series**_.
