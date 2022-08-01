@@ -33,7 +33,7 @@ const SEO = ({ description, lang, meta = {}, title, pathname, image }) => {
   // This url may be changed for SEO tests on PRs.
   // const url = `https://62e137a14014f4137dd2580e--tweag-www.netlify.app`
   const url = site.siteMetadata.siteUrl
-  const ogImg = `${url}${image}` || `${url}/logo.png`
+  const ogImg = image ? `${url}${image}` : `${url}/logo.png`
 
   // This produces meta elements such as:
   // <meta property="og:title" content="Mapping a Universe of Open Source Software">
