@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Grid, Text } from "theme-ui"
+import { jsx, Grid, Text, useThemeUI } from "theme-ui"
 import loadable from "@loadable/component"
 
 import { SectionHeading } from "../../components"
@@ -19,6 +19,7 @@ const MagicGrid = loadable(() => import(`./components/magic-grid`), {
 const introText = `Tweag is a global team working remotely from anywhere on Earth or from hubs in Paris, Zürich, London and Utrecht. We sure love connecting science and engineering. Yet you'd be surprised to hear what else we wake up for every day. Check it out!`
 
 const IntroductionSection = () => {
+  const { theme: t } = useThemeUI()
   return (
     <div
       className="introductionSection"
@@ -33,7 +34,7 @@ const IntroductionSection = () => {
           "lead picture"
           "papers picture" / 6fr 4fr;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: ${t.breakpoints[1]}) {
           grid-template:
             "title"
             "lead"
@@ -75,7 +76,7 @@ const IntroductionSection = () => {
           height: 100%;
           justify-self: end;
 
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: ${t.breakpoints[1]}) {
             display: none;
           }
         `}

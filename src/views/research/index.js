@@ -45,10 +45,12 @@ const IntroductionSection = ({ papers }) => {
   return (
     <div
       className="introductionSection"
+      sx={{
+        gap: [`15px`, `40px`],
+      }}
       css={`
         display: grid;
         width: 100%;
-        gap: 15px 40px;
         grid-template:
           "title picture"
           "lead picture"
