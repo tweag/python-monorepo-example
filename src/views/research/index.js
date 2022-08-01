@@ -17,7 +17,7 @@ const introText = (
     sx={{
       fontSize: [`18px`, `18px`, `27px`],
       lineHeight: [1.2, 1.2, `35px`],
-      gridArea: "lead",
+      gridArea: `lead`,
     }}
     className="lead"
   >
@@ -65,9 +65,7 @@ const IntroductionSection = ({ papers }) => {
       `}
     >
       <Text
-        className={
-          "transition-section__transition--slide-fade-in bottom-in title"
-        }
+        className={`transition-section__transition--slide-fade-in bottom-in title`}
         sx={{
           // minHeight: `100px`,
           textTransform: `uppercase`,
@@ -81,9 +79,7 @@ const IntroductionSection = ({ papers }) => {
       </Text>
       {introText}
       <Text
-        className={
-          "transition-section__transition--slide-fade-in bottom-in papers"
-        }
+        className={`transition-section__transition--slide-fade-in bottom-in papers`}
         sx={{
           fontSize: [`16px`, `16px`, `27px`],
           lineHeight: [1.2],

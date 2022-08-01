@@ -256,7 +256,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
             className={
               (breakpoint === `xs` || breakpoint === `sm`) &&
               tileSetRef.current.activeBioProfile
-                ? "hide"
+                ? `hide`
                 : ``
             }
             onClick={reShuffle}

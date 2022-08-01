@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
-import React from "react"
 import { Global } from "@emotion/react"
 
 /**
@@ -8,10 +7,10 @@ import { Global } from "@emotion/react"
  */
 function shuffleButtonAnimationHandler(event) {
   const button = event.target
-  button.classList.add("rotateShuffleButton")
+  button.classList.add(`rotateShuffleButton`)
   button.addEventListener(
     `animationend`,
-    () => button.classList.remove("rotateShuffleButton"),
+    () => button.classList.remove(`rotateShuffleButton`),
     { once: true }
   )
 }
@@ -47,7 +46,7 @@ const ShuffleButton = ({ onClick, ref, className }) => {
         `}
       />
       <a
-        className={["shuffleButton", className].join(` `)}
+        className={[`shuffleButton`, className].join(` `)}
         ref={ref}
         onClick={clickEventHandler}
         css={`

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
-import React, { useContext, useState } from "react"
+import { useContext, useState } from "react"
 import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"

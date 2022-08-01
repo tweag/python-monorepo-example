@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 
 const filterEventIssuer = event => {
   const eventSource = event.target
