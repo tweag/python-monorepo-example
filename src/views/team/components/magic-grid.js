@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, useThemeUI } from "theme-ui"
 import { useState, useRef, useEffect } from "react"
 
 import {
@@ -18,7 +18,6 @@ import {
   dispatchFilterEvent,
 } from "../utils/search"
 
-import styles from "../styles/magic-grid.module.css"
 import { hide } from "../styles/shuffle-button.module.css"
 
 /**
@@ -226,14 +225,31 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     reRender({})
   }
 
+  const { theme: t } = useThemeUI()
   return (
     <SearchContext.Provider value={searchManager}>
-      <div className={styles.magicGridContainer} ref={mainRef}>
+      <div
+        className="magicGridContainer"
+        ref={mainRef}
+        css={`
+          display: grid;
+          place-items: center;
+          grid-template: "action-bar" "magic-grid" / 1fr;
+          --magic-grid-max-width: 100rem;
+        `}
+      >
         <div
-          className={styles.actionBar}
+          className="actionBar"
           sx={{
             pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
             pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            gridArea: `action-bar`,
+            display: `flex`,
+            flexDirection: [`column`, `column`, `row`],
+            flexWrap: `nowrap`,
+            justifyContent: `space-between`,
+            width: `100%`,
+            maxWidth: `var(--magic-grid-max-width)`,
           }}
           ref={ajusterRef}
         >
@@ -251,7 +267,56 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         <BioContext.Provider
           value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
         >
-          <div className={styles.magicGrid} style={sizingVariables}>
+          <div
+            className="magicGrid"
+            style={sizingVariables}
+            css={`
+              grid-area: magic-grid;
+              justify-self: center;
+              --magic-grid-width: min(var(--magic-grid-max-width), 100vw);
+              width: var(--magic-grid-width);
+              display: grid;
+              padding: var(--magic-grid-margin, 1rem);
+              gap: var(--magic-grid-gap, 1rem);
+              grid-template-columns: repeat(var(--magic-grid-columns, 7), 1fr);
+              transition: all 1s;
+              --magic-grid-cell-width: calc(
+                calc(
+                    var(--magic-grid-width) -
+                      calc(
+                        calc(var(--magic-grid-margin, 1rem) * 2) +
+                          calc(
+                            var(--magic-grid-gap, 1rem) *
+                              (var(--magic-grid-columns, 7) - 1)
+                          )
+                      )
+                  ) / var(--magic-grid-columns, 7)
+              );
+              grid-auto-rows: var(--magic-grid-cell-width);
+              grid-auto-columns: var(--magic-grid-cell-width);
+              grid-auto-flow: row;
+              --bio-rounding-amount: calc(var(--magic-grid-cell-width) * 0.4);
+              animation: slowFadeIn 2s linear;
+              animation-fill-mode: backwards;
+
+              @media screen and (min-width: ${t.breakpoints[1]}) {
+                --magic-grid-margin: 60px;
+              }
+
+              @media screen and (min-width: ${t.breakpoints[5]}) {
+                --magic-grid-margin: 120px;
+              }
+
+              @keyframes slowFadeIn {
+                from {
+                  opacity: 0;
+                }
+                to {
+                  opacity: 1;
+                }
+              }
+            `}
+          >
             {tileSetRef.current.finalTiles}
           </div>
         </BioContext.Provider>
