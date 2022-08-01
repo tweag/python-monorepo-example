@@ -1,6 +1,6 @@
-import { useThemeUI } from "theme-ui"
+/** @jsx jsx */
+import { jsx, useThemeUI } from "theme-ui"
 import React, { useState, useEffect } from "react"
-import { css } from "@emotion/react"
 
 const filterEventIssuer = event => {
   const eventSource = event.target
@@ -31,7 +31,7 @@ const SearchBar = ({ placeholder }) => {
       className="searchBar"
       placeholder={placeholder}
       onInput={filterEventIssuer}
-      css={css`
+      css={`
         border: none;
         border-bottom: solid darkgray 0.1rem;
         outline: none;

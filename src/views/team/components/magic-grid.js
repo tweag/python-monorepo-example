@@ -18,8 +18,6 @@ import {
   dispatchFilterEvent,
 } from "../utils/search"
 
-import { hide } from "../styles/shuffle-button.module.css"
-
 /**
  * @param {{
  *  gap?: string,
@@ -258,7 +256,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
             className={
               (breakpoint === `xs` || breakpoint === `sm`) &&
               tileSetRef.current.activeBioProfile
-                ? hide
+                ? "hide"
                 : ``
             }
             onClick={reShuffle}
