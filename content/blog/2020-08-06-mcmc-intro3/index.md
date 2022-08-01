@@ -3,7 +3,7 @@ title: "Introduction to Markov chain Monte Carlo (MCMC) Sampling, Part 3: Hamilt
 shortTitle: "Markov Chain Monte Carlo Sampling (3)"
 author: Simeon Carstens
 description: "Learn about Hamiltonian Monte Carlo, and how to implement it from scratch."
-tags: [data-science, python, statistics]
+tags: [data-science, python, statistics, MCMC]
 ---
 
 [^1]: The most general form of the kinetic energy of a physical object is $K(v)=\frac{|v|^2}{2m}$ with $m$ being the mass of the object. It turns out that HMC even permits a different "mass" (measure of inertia) for each dimension, which can even be position-dependent. This can be exploited to tune the algorithm.

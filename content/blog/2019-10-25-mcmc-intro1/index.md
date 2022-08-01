@@ -10,7 +10,7 @@ description: "In this first post of Tweag's four-part series on Markov chain
   and give an intuition on the choice of its free parameters. Interactive
   Python notebooks invite you to play around with MCMC yourself and thus
   deepen your understanding of the Metropolis-Hastings algorithm."
-tags: [data-science, statistics, python]
+tags: [data-science, statistics, python, MCMC]
 ---
 
 This is part 1 of a series of blog posts about MCMC techniques:

@@ -7,7 +7,7 @@ description: "In the final post of Tweag's four-part series, we discuss
   sampling from multimodal distributions. An illustrative example
   and, as always, an interactive Python notebook with easy-to-modify
   code lead to an intuitive understanding and invite experimentation."
-tags: [data-science, python, statistics]
+tags: [data-science, python, statistics, MCMC]
 ---
 
 [^1]: Strictly speaking, talking about separate Markov chains in each replica is not correct: when performing an exchange, the next state not only depends on the previous state in a given replica, but also on the previous state of the exchange partner replica, which violates the Markov property. Instead, the correct way to think about RE is that all replicas together make up one single "multi-state" Markov chain whose transitions are properly detailed-balanced.

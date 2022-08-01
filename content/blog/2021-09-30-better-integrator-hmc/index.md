@@ -1,7 +1,7 @@
 ---
 title: "A higher-order integrator for Hamiltonian Monte Carlo"
 author: Arne Tillmann, Simeon Carstens
-tags: [data-science, python, statistics]
+tags: [data-science, python, statistics, MCMC]
 description: "A discussion and benchmark of an alternative integrator for Hamiltonian Monte Carlo."
 ---
 

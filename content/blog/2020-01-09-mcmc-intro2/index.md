@@ -9,7 +9,7 @@ description: "In this second post of Tweag's four-part series, we discuss
   advantageous when sampling from multivariate distributions. Two
   different examples and, again, an interactive Python notebook
   illustrate use cases and the issue of heavily correlated samples."
-tags: [data-science, python, statistics]
+tags: [data-science, python, statistics, MCMC]
 ---
 
 [^1]: It's important to note, though, that the transition kernel given by the above procedure does _not_ define a detailed-balanced transition kernel for a Markov chain on the joint space of $x$ and $y$. One can show, though, that for each single variable, this procedure is a detailed-balanced transition kernel and the Gibbs sampler thus constitutes a composition of Metropolis-Hastings steps with acceptance probability 1. For details, see, for example, [this stats.stackexchange.com answer](https://stats.stackexchange.com/a/118453).
