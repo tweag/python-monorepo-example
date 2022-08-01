@@ -2,7 +2,7 @@
 title: "Trustix: Distributed trust and reproducibility tracking for binary caches"
 shortTitle: Announcing Trustix
 author: Adam Hoese
-tags: [nix]
+tags: [nix, trustix]
 description: Trustix aims at enhancing trust in software binaries and improve reproducibility tracking using distributed binary caches.
 ---
 
