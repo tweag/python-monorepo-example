@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx, useThemeUI } from "theme-ui"
 import React, { useContext, useState } from "react"
 import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
@@ -100,6 +102,7 @@ export const ProfileTile = ({
    * @param {string} imgDataUrl
    * @returns {JSX.Element}
    */
+  const { theme: t } = useThemeUI()
   const result = (
     <div
       className={[
@@ -143,7 +146,38 @@ export const ProfileTile = ({
           loading="lazy"
         />
       </div>
-      <div className={styles.profileName}>{person.name}</div>
+      <div
+        className="profileName"
+        css={`
+          position: absolute;
+          z-index: 100;
+          font-weight: 600;
+          font-size: 0.8rem;
+          left: 0px;
+          bottom: 0px;
+          color: white;
+          padding: 0.3rem;
+          transition: all var(--animations-duration);
+
+          @media screen and (min-width: ${t.breakpoints[1]}) {
+            padding: 0.5rem;
+            font-size: 1rem;
+          }
+
+          @media screen and (min-width: ${t.breakpoints[4]}) {
+            padding: 1rem;
+            font-weight: bold;
+          }
+
+          @media screen and (max-width: ${t.breakpoints[1]}) {
+            padding: 0.3rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+          }
+        `}
+      >
+        {person.name}
+      </div>
     </div>
   )
 
