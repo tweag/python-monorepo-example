@@ -32,9 +32,9 @@ speaks:
 
 experience:
   - employer: Tweag
-    role: Data engineer
+    role: Data scientist/engineer
     location: Paris, France
-    years: Current
+    years: December 2021 - Current
     description:
       - Participate in defining a solution for a git-like tools for data lineage
         to satisfy client requirements and constraints.
