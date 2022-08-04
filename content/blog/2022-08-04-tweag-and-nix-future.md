@@ -32,7 +32,7 @@ But real-life™ is also a thing, and despite my partiality towards Nix, I occas
 And if I have to admit that, it means that most people who don't care about the theoretical side of things will just give up on it, and rightfully so. Why should anyone use a tool that doesn't solve their problem?
 
 So we want Nix to provide a clear path towards solving clear problems.
-Identifying these problems is already a non-trivial part of the work, but from our past experience we can already sketch some rough axes as to where we'll want to be headed.
+Identifying these problems is already a non-trivial part of the work, but from our past experience we can sketch out some broad axes along which to improve.
 
 ### Development environments
 
