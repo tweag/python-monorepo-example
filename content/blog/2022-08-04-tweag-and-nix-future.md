@@ -80,7 +80,7 @@ This means in particular:
 - Fostering more efforts to keep nixpkgs healthy on MacOS. The [Nix
   community survey][2022_survey_report] reports that there's more than
   three time more Linux users than MacOS users in the
-  Nix community. Compare with developers in general: there are only [slightly less Mac users that Linux users](https://survey.stackoverflow.co/2022/#section-most-popular-technologies-operating-system) according to the Stack Overflow survey.
+  Nix community. Compare with developers in general: there are only [slightly fewer Mac users than Linux users](https://survey.stackoverflow.co/2022/#section-most-popular-technologies-operating-system) according to the Stack Overflow survey.
 - Allowing Nix to run in restricted corporate environments, for example with no or restricted root access, or using access-control systems like SELinux.
 
 [2022_survey_report]: https://discourse.nixos.org/t/2022-nix-survey-results/18983
