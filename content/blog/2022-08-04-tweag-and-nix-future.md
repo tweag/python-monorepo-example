@@ -26,7 +26,7 @@ In particular, we want to focus on making Nix a great developer tool.
 - work reliably everywhere,
 - be ubiquitous.
 
-# We want Nix to solve people's problems
+## We want Nix to solve people's problems
 
 I love the Nix model.
 Coming from a theoretical CS background, Nix is to me what the whole computing industry should have been, and I long for the day where it will be the standard.
@@ -68,7 +68,7 @@ Besides, there's only so much that they can do, and some problems (performance i
 
 Solving this issue in its full generality is a hard problem, however we can ensure that the simplest and most common use-cases are properly covered – as simple as possible and thoroughly documented.
 
-# We want Nix to work reliably everywhere
+## We want Nix to work reliably everywhere
 
 In the simplest scenarios, Nix works great. Nix on NixOS is a breeze, Nix on Ubuntu works well 99% of the time, and Debian even makes Nix available in its own repositories.
 The other scenarios range from OK to awful (any Mac users around? 👋).
@@ -87,7 +87,7 @@ This means in particular:
 
 [2022_survey_report]: https://discourse.nixos.org/t/2022-nix-survey-results/18983
 
-# We want Nix to be ubiquitous
+## We want Nix to be ubiquitous
 
 Being simple and reliable is great. But know what's better? Being everywhere.
 
