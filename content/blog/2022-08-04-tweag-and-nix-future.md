@@ -1,9 +1,11 @@
 ---
 title: "Our roadmap for Nix"
-author: "Théophane Hufschmitt, on behalf of Tweag's Nix team"
+author: "Théophane Hufschmitt"
 tags: [nix]
 description: "Tweag's Nix team plans for the coming years"
 ---
+
+I lead Tweag's Nix team.
 
 The Nix ecosystem is at a turning point in its evolution.
 
