@@ -21,7 +21,7 @@ Instead of getting lost in many exciting things that Nix _could_ do, we must tak
 In particular, we'd like to focus on making Nix a great developer tool. We think that requires Nix to:
 
 - solve people's problems,
-- work reliably everywhere,
+- work reliably everywhere, and
 - be ubiquitous.
 
 ## We want Nix to solve people's problems
