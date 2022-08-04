@@ -16,7 +16,7 @@ Some of them even decide to back off because of that, left with a nondescript fe
 We care about Nix, and we want it to thrive.
 
 The way to get there is to strengthen Nix's core as much as possible.
-Instead of getting lost in many exciting things that Nix _could_ do, we take a pragmatic approach in ensuring that the core functionality of Nix works well, and is available to everyone.
+Instead of getting lost in many exciting things that Nix _could_ do, we must take a pragmatic approach in ensuring that the core functionality of Nix works well, and is available to everyone.
 
 In particular, we'd like to focus on making Nix a great developer tool. We think that requires Nix to:
 
