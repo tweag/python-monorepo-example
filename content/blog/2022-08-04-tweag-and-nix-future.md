@@ -13,9 +13,7 @@ After more than a decade of slow but steady growth, Nix gained a lot of traction
 But this growth hasn't been without issue.
 
 As consultants, we see that nearly all of our clients that are using Nix are, at best, annoyed by the accidental complexity that comes with it.
-Some of them even decide to back off because of that, leaving with a nondescript feeling that Nix is not something to be used for solving real-world problems.
-
-It appears the Nix ecosystem has now reached a point where it can either become a credible player in the industry or get stuck with being labeled “research-quality”, a proof of concept, not suitable for serious use.
+Some of them even decide to back off because of that, left with a nondescript feeling that Nix is not ready for them.
 
 We care about Nix, and we want it to thrive.
 
