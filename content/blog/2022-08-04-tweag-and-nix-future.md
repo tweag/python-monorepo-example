@@ -42,7 +42,7 @@ And that's actually how `nix-shell` started -- a quick hack for debugging packag
 But the truth is that these developments environments are incredibly valuable by themselves.
 Even if you don't have a proper clean Nix packaging, you can just drop in a `shell.nix`/`flake.nix` somewhere and get all of your dependencies magically pulled-in for you.
 
-We want to rethink this functionality to build it from the needs of people rather than having it be a mere accidental nicety.
+We want to rethink this functionality to directly address the needs of people, rather than having its usefulness be a mere incidental nicety.
 This means:
 
 - Actually trying to understand why and how people are using it, and how they could benefit more from it – be it through principled user-studies or by listening to the feedback of the community and our clients.
