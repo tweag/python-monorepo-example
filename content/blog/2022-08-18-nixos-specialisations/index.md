@@ -28,7 +28,7 @@ With NixOS, when I need my external GPU, I connect it to my computer and
 simply reboot my system. I choose the eGPU specialisation in my boot menu,
 and it just works. My boot menu looks like the following:
 
-![Picture showing a GRUB boot menu with many entries including egpu-with-external display and egpu-with-laptop-display](2022-nixos-specialisation-images/grub-boot-menu-screenshot.png)
+![Picture showing a GRUB boot menu with many entries including egpu-with-external display and egpu-with-laptop-display](grub-boot-menu-screenshot.png)
 
 You can also define a specialisation which will boot into a different kernel,
 giving you a safe opportunity to try a new version while keeping a
