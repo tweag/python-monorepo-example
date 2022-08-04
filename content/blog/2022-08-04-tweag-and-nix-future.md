@@ -27,7 +27,7 @@ In particular, we'd like to focus on making Nix a great developer tool. We think
 ## We want Nix to solve people's problems
 
 I love the Nix model.
-Coming from a theoretical CS background, the principles behind Nix are the ones the whole computing industry should have adopted, and I long for the day where it will be the standard.
+Coming from a theoretical CS background, the principles behind Nix are those the whole computing industry should have adopted, and I long for the day when they become the standard.
 But real-life™ is also a thing, and despite my partiality towards Nix, I occasionally have to admit that, well, it's just not good-enough in practice for what I want to do.
 And if I have to admit that, it means that most people who don't care about the theoretical side of things will just give up on it, and rightfully so. Why should anyone use a tool that doesn't solve their problem?
 
