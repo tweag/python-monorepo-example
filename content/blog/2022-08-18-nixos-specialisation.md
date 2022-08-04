@@ -7,13 +7,13 @@ description: "How to use the NixOS specialisations to manage different boot envi
 ---
 
 I often wished to be able to define different boot entries for different uses
-of my computer. Be it for separating professional and personal use, testing
+of my computer, be it for separating professional and personal use, testing
 kernels or using special hardware. NixOS has a unique feature that solves
 this problem in a clever way -- [NixOS specialisations](https://nixos.org/manual/nixos/stable/options.html#opt-specialisation).
 
-To make it simple, a NixOS specialisation is a mechanism to describe
-additional boot entries when building your system, with specific
-changes applied on top of your non-specialised configuration.
+A NixOS specialisation is a mechanism to describe additional boot entries
+when building your system, with specific changes applied on top of your
+non-specialised configuration.
 
 # When do you need specialisations
 
@@ -24,9 +24,9 @@ when starting your computer with your specific hardware connected. This
 is common for people with external GPUs (Graphical Processing Unit),
 and the reason why I first used specialisations.
 
-With NixOS, when I need my external GPU, I connect it to my computer
-and simply reboot my system, and then I choose the eGPU specialisation
-in my boot menu, and it just works. My boot menu looks like the following:
+With NixOS, when I need my external GPU, I connect it to my computer and
+simply reboot my system. I choose the eGPU specialisation in my boot menu,
+and it just works. My boot menu looks like the following:
 
 ![Picture showing a GRUB boot menu with many entries including egpu-with-external display and egpu-with-laptop-display](2022-nixos-specialisation-images/grub-boot-menu-screenshot.png)
 
