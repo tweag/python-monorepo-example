@@ -39,7 +39,7 @@ and personal use. Specialisations can have their own users, services,
 packages and requirements. This would create a hard separation without
 using multiple operating systems. However, by default, such a setup would be
 more practical than secure. While your users would only exist in
-one specialisation at a time, both users data are stored on the same
+one specialisation at a time, both users' data are stored on the same
 partition, so one user could be exploited by an attacker to reach
 the other user's data. In a follow-up blog post, I will describe a secure
 setup using multiple encrypted partitions with different passphrases,
