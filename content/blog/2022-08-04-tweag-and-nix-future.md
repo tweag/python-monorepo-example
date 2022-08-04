@@ -109,7 +109,7 @@ To get there, we plan to:
 
 This is obviously a broad roadmap, and bound to evolve.
 Some of that, like the [marketing team efforts](https://discourse.nixos.org/t/marketing-team-can-we-present-nix-nixos-better/6249) or the work on the Nix package manager has already been going on for some time.
-Some like the [coordinated documentation effort](https://discourse.nixos.org/t/documentation-team-flattening-the-learning-curve/20003) or the [nixpkgs-architecture team](https://github.com/nixpkgs-architecture/) is just getting started.
+Undertakings like the [coordinated documentation effort](https://discourse.nixos.org/t/documentation-team-flattening-the-learning-curve/20003) or the [nixpkgs-architecture team](https://github.com/nixpkgs-architecture/) is just getting started.
 Some have yet to begin.
 However, we hope that it will help shed light on the work that Tweag does and intends to do for the Nix community, and maybe also serve as an inspiration both for a potential community-wide roadmap and for individual contributions.
 
