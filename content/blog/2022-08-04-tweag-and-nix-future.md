@@ -92,7 +92,7 @@ Being simple and reliable is great. But know what's better? Being everywhere.
 Take the good old shell script.
 It's not simple for anything beyond just sequencing a few commands.
 It's arguably not reliable either in that it has so many traps that most shell scripts in the wild are bound to blow up given anything as malicious as a filename with spaces or an empty parameter.
-Yet everyone -- myself included -- uses shell scripts for so many things, because it's just the de facto standard, so we know that it will be available and that people will understand what's going on.
+Yet everyone -- myself included -- uses shell script for so many things, because it's just the de facto standard, so we know that it will be available and that people will understand what's going on.
 Even when people try to replace it, they keep it as a point of reference or even try to stay compatible with it.
 
 Likewise, we want Nix to be everywhere.
