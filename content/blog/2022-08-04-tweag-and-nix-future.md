@@ -64,7 +64,7 @@ Besides, there's only so much that they can do, and some problems (performance i
 [cachix]: https://www.cachix.org/
 [nixbuild.net]: https://nixbuild.net/
 
-Solving this issue in its full generality is a hard problem, however we can ensure that the simplest and most common use cases are properly covered – as simple as possible and thoroughly documented.
+Solving this issue in its full generality is a hard problem, however we can ensure that the simplest and most common use cases are properly covered – as simply as possible and thoroughly documented.
 
 ## We want Nix to work reliably everywhere
 
