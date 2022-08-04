@@ -19,28 +19,41 @@ bio: |
 skills:
   - Python
   - R
+  - GCP
   - JavaScript
   - Data engineering
   - Data science
+
 speaks:
   - English
   - Arabic
   - French
   - Basic Spanish
+
 experience:
+  - employer: Tweag
+    role: Data scientist/engineer
+    location: Paris, France
+    years: December 2021 - Current
+    description:
+      - Participate in defining a solution for a git-like tools for data lineage
+        to satisfy client requirements and constraints.
+      - Use GCP to run a first PoC based on Openlineage API and Marquez.
+      - Write needed scripts to deploy a video scrubbing app on GCP Cloud run using
+        the client's CI/CD plan with Nix, Docker, Python and Jenkins.
   - employer: Mazars
     role: Data scientist / Software engineer
     location: Paris, France
     years: October 2018 - November 2021
     description:
       - Created an ElasticSearch based datalake alongside data pipelines that ensure
-        data deserialization and full integraty migration using Protobuffer and Python
+        data deserialization and full integrity migration using Protobuffer and Python.
       - Created APIs to deliver insights for data heath or business related KPI using
-        FastAPI or Flask
+        FastAPI and/or Flask.
       - Coded tools to auto generate visual report with FPDF and various JS data
         visualization libraries
       - Used heuristic approaches to enhance fragrance scores, deploy the selected rules
-        within a web application.
+        as an optimisation model within a web application.
   - employer: Bouygues Telecom
     role: Data scientist/analyst
     location: Paris, France
