@@ -22,7 +22,9 @@ Instead of getting lost in many exciting things that Nix _could_ do, we should t
 
 In particular, we want to focus on making Nix a great developer tool.
 
-To that extent, we want to focus on three main aspects:
+- solve people's problems,
+- work reliably everywhere,
+- be ubiquitous.
 
 # We want Nix to solve people's problems
 
