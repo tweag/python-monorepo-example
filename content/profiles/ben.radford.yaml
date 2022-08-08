@@ -1,0 +1,82 @@
+slug: ben.radford
+name: Ben Radford
+github: benradf
+
+shortDescription: |
+  A software engineer who is passionate about DevOps and automation.
+
+bio: |
+  Ben learned to program BASIC from a ZX Spectrum instruction manual and has
+  been fascinated by computers and programming ever since. In high school he
+  progressed to C++ and since starting his career has worked professionally in
+  many other languages, including C#, Go, Java, Kotlin and PureScript. These
+  days he prefers coding in Haskell.
+
+  Over the course of his career, Ben has worked across a variety of industries.
+  He began with a brief stint as a games developer before spending a few years
+  in finance. He then moved to the Windows division at Microsoft and most
+  recently worked for a cryptocurrency startup. This range of experience has
+  helped shape his views on how best to practice software engineering. He
+  believes that an expressive type system combined with a focus on robust and
+  composable abstractions is one of the most effective ways to build reliable
+  software at scale.
+
+  He has a long standing interest in build systems and (remembering the dark
+  days when Make was the standard) is enthused by recent developments in the
+  space. Now at Tweag, he gets to indulge this interest by working with Bazel
+  and Nix on the Scalable Build Systems team.
+
+  When not at the keyboard, Ben enjoys climbing, running and reading.
+
+links:
+  GitHub: https://github.com/benradf
+
+skills:
+  - C++
+  - DevOps
+  - Haskell
+  - Linux
+  - Nix
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer, Developer Productivity
+    years: 2022 - present
+    description:
+  - employer: Paxos
+    role: Senior Software Engineer
+    years: 2020 - 2022
+    description:
+      - Supporting and maintaining blockchain integrations.
+      - Deploying smart contracts on Ethereum.
+  - employer: Habito
+    role: Senior Software Engineer
+    years: 2018 - 2020
+    description:
+      - Web development in PureScript.
+      - Backend development in Haskell.
+  - employer: Microsoft
+    role: Senior Software Engineer
+    years: 2013 - 2018
+    description:
+      - Worked on the Windows build and packaging system while in Redmond.
+      - Later, DirectX and UWP app development while on the Paint 3D team.
+  - employer: Flextrade
+    role: Senior Software Engineer
+    years: 2010 - 2012
+    description:
+      - Connecting the bespoke trading platform to various exchanges and market data providers.
+  - employer: Exient
+    role: Games Programmer
+    years: 2008 - 2009
+    description:
+      - Wrote C++ code for the PS2 and Wii consoles.
+
+education:
+  - qualification: Bachelor of Arts
+    name: Computer Science
+    institution: University of Oxford
+    years: 2004 - 2007
