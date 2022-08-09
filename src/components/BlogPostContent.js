@@ -310,6 +310,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           li {
             margin-bottom: 10px;
             padding-left: 35px;
+            counter-increment: none;
             display: block;
             &::before {
               content: "";
