@@ -86,11 +86,10 @@ Let's find out how we can nicely sample this probability distribution with Chain
    def log_gaussian(x, mu, sigma):
        '''Log-probability of a Gaussian distribution'''
        [...]
-   ```
 
-class GaussianMixture(PDF):
-def **init**(self, means, sigmas, weights): # set attributes
-[...]
+   class GaussianMixture(PDF):
+       def __init__(self, means, sigmas, weights): # set attributes
+           [...]
 
        def log_prob(self, x):
            return logsumexp(
@@ -99,14 +98,11 @@ def **init**(self, means, sigmas, weights): # set attributes
        def log_prob_gradient(self, x):
            [...]
 
-```
+   # this module has to export objects "pdf" and "initial_states" to work
 
-# this module has to export objects "pdf" and "initial_states" to work
-
-pdf = GaussianMixture(some_means, some_sigmas, some_weights)
-initial_states = np.array([1.0])
-
-```
+   pdf = GaussianMixture(some_means, some_sigmas, some_weights)
+   initial_states = np.array([1.0])
+   ```
 
 For readability, this code is shortened, but the full code is available [here](https://github.com/tweag/chainsail-resources/tree/main/examples/mixture/probability_1D.py).
 
@@ -167,4 +163,5 @@ If you are interested in more details about the algorithms at work in Chainsail,
 ### Acknowledgements
 
 The Chainsail team would like to explicitly thank the academic mentor of one of us (Simeon). [Prof. Michael Habeck](https://www.mpinat.mpg.de/habeck) (University of Jena / Max Planck Institute for Multidisciplinary Sciences, Germany) introduced Simeon to many of the ideas and concepts that this project is based on.
+Most importantly, the [automatic temperature schedule optimization](https://github.com/tweag/chainsail-resources/blob/main/documentation/algorithms/schedule_tuning.md) is based on Prof. Habeck's work.
 He is also looking for post-doc and PhD students interested in applications of Bayesian statistics in computational biology!
