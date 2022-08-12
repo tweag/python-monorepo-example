@@ -129,7 +129,6 @@ Now that we have obtained, in `chainsail_samples.npy`, a nice set of Chainsail s
 
 Seems like that worked nicely!
 We hope this walkthrough gave you a good idea of the Chainsail workflow and usage.
-This was only a small toy example, but we also have a [blog post with a more detailed analysis](https://tweag.io/blog/TODO) of how multimodality can impact real-world problems and how Chainsail helps.
 
 ## Current limitations
 
@@ -157,7 +156,7 @@ We hope that this blog post gave you a good idea of what Chainsail is capable of
 Replica Exchange as an algorithm to enable sampling of multimodal distributions is not widely known in the probabilistic programming / Bayesian statistics community, but we believe that Chainsail has the potential to make this powerful method available and useful to a wider range of users.
 We rely on readers such as you and users of this early Chainsail version to confirm this assumption and steer future development efforts, so please get in touch and let us know what you think!
 
-For readers who would prefer a more real-world demonstration of Chainsail, stay tuned: on August 11th, 2022 we will publish a detailed blog post demonstrating how Chainsail helps to correctly analyze data using a soft k-means model.
+For readers who are interested in a real-world demonstration of Chainsail, we published a [detailed blog post](https://www.tweag.io/blog/2022-08-11-chainsail-soft-kmeans-clustering/) demonstrating how Chainsail helps to correctly analyze data using a soft k-means model.
 If you are interested in more details about the algorithms at work in Chainsail, or in additional documentation, our [additional resources repository](https://github.com/tweag/chainsail-resources) is what you are looking for.
 
 ### Acknowledgements
