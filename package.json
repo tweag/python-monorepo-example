@@ -62,7 +62,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "2.0.5"
+    "prettier": "2.7.1"
   },
   "scripts": {
     "build": "gatsby build",
@@ -72,7 +72,7 @@
     "format:other": "npm run prettier -- --write",
     "lint": "npm-run-all --continue-on-error -p lint:code lint:other",
     "lint:code": "eslint --cache --ext .js,.jsx,.ts,.tsx .",
-    "lint:other": "npm run prettier -- --check",
+    "lint:other": "npm run prettier -- --cache true --check",
     "prettier": "prettier \"**/*.{md,css,scss,yaml,yml}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
