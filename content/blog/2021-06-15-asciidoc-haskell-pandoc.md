@@ -308,54 +308,54 @@ I want to end by thanking Tweag IO for the funding, technical validation of the
 proposal and supervision in the initial phases of this project.
 
 [^1]:
-  There have been former attempts in the past, but they have been
-  abandoned. It is also possible to feed Pandoc with an AsciiDoc source by
-  first converting to Docbook.
+    There have been former attempts in the past, but they have been
+    abandoned. It is also possible to feed Pandoc with an AsciiDoc source by
+    first converting to Docbook.
 
 [^2]:
-  As a test, I have implemented full inline syntax storage in the AST
-  following a similar approach to what the [sv](http://hackage.haskell.org/package/sv)
-  package does for CSV. When more features are implemented I will evaluate if
-  extending the same pattern to block nodes.
+    As a test, I have implemented full inline syntax storage in the AST
+    following a similar approach to what the [sv](http://hackage.haskell.org/package/sv)
+    package does for CSV. When more features are implemented I will evaluate if
+    extending the same pattern to block nodes.
 
 [^3]:
-  Those are difficult to implement with major current AsciiDoc processors
-  because, to begin with, they do not generate a complete AST of the document,
-  as explained in the section about inline parsing.
+    Those are difficult to implement with major current AsciiDoc processors
+    because, to begin with, they do not generate a complete AST of the document,
+    as explained in the section about inline parsing.
 
 [^4]:
-  AsciiDoc inlines and blocks can be annotated with a number of attributes
-  for built-in and user-defined styles, behavior and metadata.
+    AsciiDoc inlines and blocks can be annotated with a number of attributes
+    for built-in and user-defined styles, behavior and metadata.
 
 [^5]:
-  Linters can try to find plausible formatting mistakes, but this is
-  another story.
+    Linters can try to find plausible formatting mistakes, but this is
+    another story.
 
 [^6]:
-  I.e., we need backtracking, or another technique to evaluate
-  different, arbitrarily long parsing alternatives.
+    I.e., we need backtracking, or another technique to evaluate
+    different, arbitrarily long parsing alternatives.
 
 [^7]:
-  As a consequence, processors like Asciidoctor sometimes generate invalid
-  HTML when different format styles are mixed.
+    As a consequence, processors like Asciidoctor sometimes generate invalid
+    HTML when different format styles are mixed.
 
 [^8]:
-  I explored all the grammars I could find on the Internet. All of them
-  were very incomplete with the exception of the one used by the project
-  [libasciidoc](https://github.com/bytesparadise/libasciidoc), which is a large
-  and difficult to extend PEG that mixes inline and block parsing.
+    I explored all the grammars I could find on the Internet. All of them
+    were very incomplete with the exception of the one used by the project
+    [libasciidoc](https://github.com/bytesparadise/libasciidoc), which is a large
+    and difficult to extend PEG that mixes inline and block parsing.
 
 [^9]:
-  Translating a PEG to an efficient Parsec parser is difficult, but this is
-  not the main reason why we have discarded PEGs.
+    Translating a PEG to an efficient Parsec parser is difficult, but this is
+    not the main reason why we have discarded PEGs.
 
 [^10]:
-  I find [this post](https://blog.reverberate.org/2013/09/ll-and-lr-in-context-why-parsing-tools.html)
-  very informative in this respect.
+    I find [this post](https://blog.reverberate.org/2013/09/ll-and-lr-in-context-why-parsing-tools.html)
+    very informative in this respect.
 
 [^11]:
-  A non-IO implementation would be possible with a parsing library that
-  supports online parsing, like attoparsec. It would need to interrupt parsing
-  when an include directive is found, take the continuation of the partial
-  parsing and pass the included file to it. Then, get another continuation in
-  return and pass it the lines following the include.
+    A non-IO implementation would be possible with a parsing library that
+    supports online parsing, like attoparsec. It would need to interrupt parsing
+    when an include directive is found, take the continuation of the partial
+    parsing and pass the included file to it. Then, get another continuation in
+    return and pass it the lines following the include.

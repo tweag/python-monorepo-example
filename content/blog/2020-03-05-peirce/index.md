@@ -219,8 +219,8 @@ different, yet complementary.
 [n-cat]: https://ncatlab.org/davidcorfield/show/deduction%2C+induction%2C+abduction
 
 [^1]:
-  Mathematical induction, the technique for proving theorems about integer
-  numbers, for example, is not an example of induction as written here. They
-  share the same name, but they are not related.
+    Mathematical induction, the technique for proving theorems about integer
+    numbers, for example, is not an example of induction as written here. They
+    share the same name, but they are not related.
 
 [^peirce]: _Benjamin S. Peirce_, Philosophical writings of Peirce, 1955

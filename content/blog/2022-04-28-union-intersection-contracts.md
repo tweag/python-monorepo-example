@@ -278,16 +278,16 @@ Having such a theoretically restricted but practically useful union constructor 
 the road we are going to take for Nickel.
 
 [^1]:
-  Contracts constructors are also helpful in the interaction with the static
-  side of the gradual type system of Nickel, but this is orthogonal to the
-  issues explored in this post.
+    Contracts constructors are also helpful in the interaction with the static
+    side of the gradual type system of Nickel, but this is orthogonal to the
+    issues explored in this post.
 
 [^2]:
-  One can actually attach several contract to a value, and this particular
-  example is already possible to write as `{port | Port | GreaterThan 1023}`.
-  However, this is only works for the `and` combinator, and such an `and` isn't
-  first class: we can't write a contract for an array of non reserved ports in a
-  simple way.
+    One can actually attach several contract to a value, and this particular
+    example is already possible to write as `{port | Port | GreaterThan 1023}`.
+    However, this is only works for the `and` combinator, and such an `and` isn't
+    first class: we can't write a contract for an array of non reserved ports in a
+    simple way.
 
 [nickel-repo]: https://github.com/tweag/nickel/
 [playground]: https://nickel-lang.org/playground/

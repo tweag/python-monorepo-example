@@ -157,9 +157,9 @@ negligible, turning the multi-language integration path into the ideal one.
 [wizzardo-inline]: https://github.com/TechEmpower/FrameworkBenchmarks/tree/master/frameworks/Haskell/wizzardo-inline
 
 [^addendum]:
-  Between the writing and publishing of this post, TechEmpower
-  published a [new round][round19] of benchmark results. The numbers
-  from TechEmpower are different, but still consistent with the claims
-  made here.
+    Between the writing and publishing of this post, TechEmpower
+    published a [new round][round19] of benchmark results. The numbers
+    from TechEmpower are different, but still consistent with the claims
+    made here.
 
 [round19]: https://www.techempower.com/blog/2020/05/28/framework-benchmarks-round-19/

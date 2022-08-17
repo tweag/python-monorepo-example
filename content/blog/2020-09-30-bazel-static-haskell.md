@@ -279,11 +279,11 @@ We thank Habito for their contributions to `rules_haskell`.
 [use-case-docs-docker]: https://rules-haskell.readthedocs.io/en/latest/haskell-use-cases.html#containerization-with-rules-docker
 
 [^1]:
-  [Habito][habito] is fixing mortgages and making homebuying fit for the
-  future. Habito gives people tools, jargon-free knowledge and expert support
-  to help them buy and finance their homes. Built on a rich foundation of
-  functional programming and other cutting-edge technology, Habito is a long
-  time user of and contributor to `rules_haskell`.
+    [Habito][habito] is fixing mortgages and making homebuying fit for the
+    future. Habito gives people tools, jargon-free knowledge and expert support
+    to help them buy and finance their homes. Built on a rich foundation of
+    functional programming and other cutting-edge technology, Habito is a long
+    time user of and contributor to `rules_haskell`.
 
 <!--
 [glibc_not_static]: https://stackoverflow.com/a/57478728/841562

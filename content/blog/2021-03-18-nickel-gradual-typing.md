@@ -41,8 +41,8 @@ typing sounds like the natural choice, bringing in all the usual benefits.
 How to get out of this dilemma?
 
 [^1]:
-  I will use typed to mean statically typed, and untyped to mean dynamically
-  typed.
+    I will use typed to mean statically typed, and untyped to mean dynamically
+    typed.
 
 ## Gradual typing
 
