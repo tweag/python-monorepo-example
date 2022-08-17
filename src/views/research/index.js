@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Grid, Text } from "theme-ui"
+import { jsx, Grid, Text, useThemeUI } from "theme-ui"
 
 import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
@@ -11,15 +11,15 @@ import { parsePapers } from "./utils"
 import { parseData } from "./utils/query"
 
 import introImage from "../../images/img17.svg"
-import styles from "./styles/research.module.css"
 
 const introText = (
   <Text
     sx={{
       fontSize: [`18px`, `18px`, `27px`],
       lineHeight: [1.2, 1.2, `35px`],
+      gridArea: `lead`,
     }}
-    className={styles.lead}
+    className="lead"
   >
     <p>
       Engaging in scholarly research supports Tweag&apos;s mission to improve
@@ -41,10 +41,31 @@ const introText = (
 )
 
 const IntroductionSection = ({ papers }) => {
+  const { theme: t } = useThemeUI()
   return (
-    <div className={styles.introductionSection} sx={{ gap: [`15px`, `40px`] }}>
+    <div
+      className="introductionSection"
+      sx={{
+        gap: [`15px`, `40px`],
+      }}
+      css={`
+        display: grid;
+        width: 100%;
+        grid-template:
+          "title picture"
+          "lead picture"
+          "papers picture" / 6fr 4fr;
+
+        @media screen and (max-width: ${t.breakpoints[1]}) {
+          grid-template:
+            "title"
+            "lead"
+            "papers" / 1fr;
+        }
+      `}
+    >
       <Text
-        className={`transition-section__transition--slide-fade-in bottom-in ${styles.title}`}
+        className={`transition-section__transition--slide-fade-in bottom-in title`}
         sx={{
           // minHeight: `100px`,
           textTransform: `uppercase`,
@@ -58,18 +79,32 @@ const IntroductionSection = ({ papers }) => {
       </Text>
       {introText}
       <Text
-        className={`transition-section__transition--slide-fade-in bottom-in ${styles.papers}`}
+        className={`transition-section__transition--slide-fade-in bottom-in papers`}
         sx={{
           fontSize: [`16px`, `16px`, `27px`],
           lineHeight: [1.2],
           fontWeight: [400],
         }}
       >
-        <p sx={{ fontWeight: 700 }} className={styles.papers}>
+        <p sx={{ fontWeight: 700 }} className="papers">
           TOTAL PAPERS: {papers}
         </p>
       </Text>
-      <img src={introImage} className={styles.picture} />
+      <img
+        src={introImage}
+        className="picture"
+        css={`
+          display: block;
+          grid-area: picture;
+          aspect-ratio: 1/1;
+          height: 100%;
+          justify-self: end;
+
+          @media screen and (max-width: ${t.breakpoints[1]}) {
+            display: none;
+          }
+        `}
+      />
     </div>
   )
 }

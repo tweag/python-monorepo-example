@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, useThemeUI } from "theme-ui"
 // eslint-disable-next-line no-unused-vars
 import { useState, MutableRefObject, useRef } from "react"
 
@@ -121,6 +121,7 @@ export const TagTile = ({
     }
   }
 
+  const { theme: t } = useThemeUI()
   return (
     <div
       className={[
@@ -137,7 +138,25 @@ export const TagTile = ({
       id={id}
       ref={mainRef}
     >
-      <span className={styles.tagText}>{tag}</span>
+      <span
+        className={styles.tagText}
+        css={`
+          display: block;
+          font-size: 0.8rem;
+          font-weight: bolder;
+          text-align: center;
+
+          &::before {
+            content: "#";
+          }
+
+          @media screen and (min-width: ${t.breakpoints[2]}) {
+            font-size: 1.15rem;
+          }
+        `}
+      >
+        {tag}
+      </span>
     </div>
   )
 }

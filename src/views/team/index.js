@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Grid, Text } from "theme-ui"
+import { jsx, Grid, Text, useThemeUI } from "theme-ui"
 import loadable from "@loadable/component"
 
 import { SectionHeading } from "../../components"
@@ -9,7 +9,6 @@ import { SEO } from "../../components"
 import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
-import styles from "./styles/team.module.css"
 import animations from "./styles/animations.module.css"
 import { LoadingAnimation } from "./components/loading-animation"
 
@@ -20,10 +19,31 @@ const MagicGrid = loadable(() => import(`./components/magic-grid`), {
 const introText = `Tweag is a global team working remotely from anywhere on Earth or from hubs in Paris, Zürich, London and Utrecht. We sure love connecting science and engineering. Yet you'd be surprised to hear what else we wake up for every day. Check it out!`
 
 const IntroductionSection = () => {
+  const { theme: t } = useThemeUI()
   return (
-    <div className={styles.introductionSection} sx={{ gap: [`15px`, `40px`] }}>
+    <div
+      className="introductionSection"
+      sx={{
+        gap: [`15px`, `40px`],
+      }}
+      css={`
+        display: grid;
+        width: 100%;
+        grid-template:
+          "title picture"
+          "lead picture"
+          "papers picture" / 6fr 4fr;
+
+        @media screen and (max-width: ${t.breakpoints[1]}) {
+          grid-template:
+            "title"
+            "lead"
+            "papers" / 1fr;
+        }
+      `}
+    >
       <Text
-        className={`${animations.slideAndFadeIn} ${styles.title}`}
+        className={`${animations.slideAndFadeIn} title`}
         sx={{
           // minHeight: `100px`,
           textTransform: `uppercase`,
@@ -31,6 +51,7 @@ const IntroductionSection = () => {
           fontWeight: 700,
           lineHeight: [1, 1],
           mt: [`20px`, `20px`, `50px`],
+          gridArea: `title`,
         }}
       >
         {`Meet The People Behind Tweag`}
@@ -39,12 +60,27 @@ const IntroductionSection = () => {
         sx={{
           fontSize: [`18px`, `18px`, `27px`],
           lineHeight: [1.2, 1.2, `35px`],
+          gridArea: `lead`,
         }}
-        className={styles.lead}
+        className="lead"
       >
         {introText}
       </Text>
-      <img src={introImage} className={styles.picture} />
+      <img
+        src={introImage}
+        className="picture"
+        css={`
+          display: block;
+          grid-area: picture;
+          aspect-ratio: 1/1;
+          height: 100%;
+          justify-self: end;
+
+          @media screen and (max-width: ${t.breakpoints[1]}) {
+            display: none;
+          }
+        `}
+      />
     </div>
   )
 }

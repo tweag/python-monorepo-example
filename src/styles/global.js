@@ -279,6 +279,7 @@ export const globalStyles = t => {
 
     /* New refactored css.  */
 
+    /* Used on blog tag buttons, in footer, etc. */
     .button {
       display: inline-block;
 
@@ -392,33 +393,11 @@ export const globalStyles = t => {
       height: auto;
       vertical-align: top;
     }
-    h1,
-    .h1,
-    h2,
-    .h2,
-    h3,
-    .h3,
-    h4,
-    .h4,
-    h5,
-    .h5,
-    h6,
-    .h6,
-    .h {
-      font-family: inherit;
-      font-weight: bold;
-      margin: 0 0 0.5em;
-    }
-    p {
-      margin: 0 0 1em;
-    }
     a:link {
       text-decoration: none;
     }
-    body.menu-active .menu a:after {
-      top: 45px;
-    }
 
+    /* Used for arrows before a customer name in testimonials, etc. */
     [class^="icon-"],
     [class*=" icon-"] {
       /* use !important to prevent issues with browser extensions that change fonts */
@@ -439,20 +418,12 @@ export const globalStyles = t => {
       content: "→";
     }
 
-    #wrapper {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-    a:link {
-      -webkit-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-    }
-
+    /* Needed for background logos on the open source categories, etc. */
     .section {
       position: relative;
     }
 
+    /* Various color definitions */
     .s_white {
       --bg-color: white;
       --fg-color: black;
@@ -514,97 +485,6 @@ export const globalStyles = t => {
       color: var(--fg-color);
     }
 
-    main > .fp-section:last-child .fp-tableCell {
-      vertical-align: top;
-      background: black; // Match the footer down to bottom of viewport
-    }
-
-    h1 {
-      font-size: ${t.fontSizes[8]};
-      line-height: 1;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    h2 {
-      font-size: ${t.fontSizes[7]};
-      line-height: 1;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    h3 {
-      font-size: ${t.fontSizes[5]};
-      line-height: 1.1;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    main nav ul li a {
-      color: var(--fg-color);
-    }
-    main nav ul li a:hover {
-      color: var(--fg-color);
-      text-decoration: underline;
-    }
-
-    /* code section overrides */
-    main nav {
-      width: 65%;
-      max-width: 1000px;
-      margin: 0 0 30px;
-      padding: 0 0 0 120px;
-    }
-
-    @media (min-width: 1400px) {
-      h2 {
-        font-size: ${t.fontSizes[6]};
-      }
-      h3 {
-        font-size: ${t.fontSizes[5]};
-      }
-    }
-    @media (max-width: 1499px) {
-      main nav {
-        padding: 0 0 0 60px;
-      }
-      h2 {
-        font-size: ${t.fontSizes[5]};
-      }
-      h3 {
-        font-size: ${t.fontSizes[4]};
-      }
-    }
-    @media (max-width: 767px) {
-      h1 {
-        font-size: ${t.fontSizes[5]};
-        min-height: 100px;
-      }
-      h2 {
-        font-size: ${t.fontSizes[3]};
-      }
-
-      h3 {
-        font-size: ${t.fontSizes[2]};
-      }
-      main nav {
-        margin: 30px 15px !important;
-        padding: 0;
-      }
-
-      main nav {
-        margin: 20px 15px;
-        padding: 0 15px;
-        width: 100%;
-      }
-      .section {
-        padding: 0;
-        margin-top: 0;
-      }
-      #___gatsby {
-        overflow: hidden;
-      }
-    }
     @media only percy {
       .hide-in-percy {
         visibility: hidden;

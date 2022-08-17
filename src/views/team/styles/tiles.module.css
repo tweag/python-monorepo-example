@@ -36,40 +36,6 @@
   box-shadow: 0px 0px 30px 2.5em rgba(0, 0, 0, 0.7);
 }
 
-.profileName {
-  position: absolute;
-  z-index: 100;
-  font-weight: 600;
-  font-size: 0.8rem;
-  left: 0px;
-  bottom: 0px;
-  color: white;
-  padding: 0.3rem;
-  transition: all var(--animations-duration);
-}
-
-@media screen and (min-width: 767px) {
-  .profileName {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .profileName {
-    padding: 1rem;
-    font-weight: bold;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .profileName {
-    padding: 0.3rem;
-    font-weight: 600;
-    font-size: 0.8rem;
-  }
-}
-
 @media screen and (hover: hover) {
   .profileTile:hover .profilePhoto,
   .forceActive .profilePhoto {
@@ -113,23 +79,6 @@
 .tagTile.active {
   background-color: black;
   color: white;
-}
-
-.tagText {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: bolder;
-  text-align: center;
-}
-
-.tagText::before {
-  content: "#";
-}
-
-@media screen and (min-width: 992px) {
-  .tagText {
-    font-size: 1.15rem;
-  }
 }
 
 @media screen and (hover: hover) {
