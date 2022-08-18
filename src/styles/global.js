@@ -244,8 +244,8 @@ export const globalStyles = t => {
         `
       })}
 
-      &.min-1--none {
-        @media only screen and (min-width: ${t.breakpoints[1]}) {
+      &.min-0--none {
+        @media only screen and (min-width: ${t.breakpoints[0]}) {
           transform: none;
           opacity: 1;
           visibility: visible;

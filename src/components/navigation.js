@@ -180,7 +180,7 @@ function Header({ inverted, fullpage = false }) {
         <Logo />
       </Box>
       <Flex
-        className={`transition-section__transition--slide-fade-in top-in duration-3 delayed-0 min-1--none`}
+        className={`transition-section__transition--slide-fade-in top-in duration-3 delayed-0 min-0--none`}
         sx={{
           flexDirection: [`column`, `row`],
           flexBasis: [`100%`, `auto`],
