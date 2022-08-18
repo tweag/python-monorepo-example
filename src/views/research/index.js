@@ -53,15 +53,15 @@ const IntroductionSection = ({ papers }) => {
         display: grid;
         width: 100%;
         grid-template:
-          "title picture"
-          "lead picture"
-          "papers picture" / 6fr 4fr;
+          "title"
+          "lead"
+          "papers" / 1fr;
 
-        @media screen and (max-width: ${t.breakpoints[1]}) {
+        @media screen and (min-width: ${t.breakpoints[1]}) {
           grid-template:
-            "title"
-            "lead"
-            "papers" / 1fr;
+            "title picture"
+            "lead picture"
+            "papers picture" / 6fr 4fr;
         }
       `}
     >
@@ -96,14 +96,14 @@ const IntroductionSection = ({ papers }) => {
         src={introImage}
         className="picture"
         css={`
-          display: block;
+          display: none;
           grid-area: picture;
           aspect-ratio: 1/1;
           height: 100%;
           justify-self: end;
 
-          @media screen and (max-width: ${t.breakpoints[1]}) {
-            display: none;
+          @media screen and (min-width: ${t.breakpoints[1]}) {
+            display: block;
           }
         `}
       />

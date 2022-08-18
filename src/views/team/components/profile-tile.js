@@ -175,12 +175,6 @@ export const ProfileTile = ({
             padding: 1rem;
             font-weight: bold;
           }
-
-          @media screen and (max-width: ${t.breakpoints[1]}) {
-            padding: 0.3rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-          }
         `}
       >
         {person.name}
