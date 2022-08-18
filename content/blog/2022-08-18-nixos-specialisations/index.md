@@ -3,7 +3,7 @@ title: Introduction to NixOS specialisations
 shortitle: NixOS specialisations
 author: Solène Rapenne
 tags: [nix, devops]
-description: "How to use the NixOS specialisations to manage different boot environments and when to use it"
+description: "How and when to use NixOS specialisations to manage different boot environments"
 ---
 
 I often wished to be able to define different boot entries for different uses
