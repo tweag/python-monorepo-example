@@ -206,7 +206,7 @@ const TemplateCV1 = ({ data }) => {
           </Grid>
           <Grid
             sx={{
-              gridRow: [6, 6, 3],
+              gridRow: [6, 3],
             }}
           >
             {publications && publications.length && (
@@ -234,7 +234,7 @@ const TemplateCV1 = ({ data }) => {
               </Grid>
             )}
           </Grid>
-          <Grid sx={{ gridRow: [5, 5, 3], pb: [0, 0, `180px`] }}>
+          <Grid sx={{ gridRow: [5, 3], pb: [0, `180px`] }}>
             {education && education.length && (
               <Grid sx={{ gridAutoRows: `max-content` }}>
                 <H1>Education</H1>

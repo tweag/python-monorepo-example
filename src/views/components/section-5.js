@@ -40,15 +40,10 @@ function Section5() {
   return (
     <Grid
       columns={[1]}
-      gap={[`30px`, `30px`, `60px`]}
+      gap={[`30px`, `60px`]}
       sx={{
-        px: [`15px`, `15px`, `15px`, `15px`, `15px`, `15px`, `15px`, `100px`],
+        px: [`15px`, `15px`, `100px`],
         maxWidth: [
-          `1440px`,
-          `1440px`,
-          `1440px`,
-          `1440px`,
-          `1440px`,
           `1440px`,
           `1440px`,
           `100%`,
@@ -61,8 +56,8 @@ function Section5() {
           as="div"
           sx={{
             textAlign: [`left`, `center`],
-            fontSize: [`24px`, `24px`, `34px`, `34px`, `34px`, `34px`, `42px`],
-            lineHeight: [1, 1],
+            fontSize: [`24px`, `34px`, `42px`],
+            lineHeight: [1],
             fontWeight: 700,
             textTransform: `uppercase`,
           }}
@@ -71,7 +66,7 @@ function Section5() {
           &amp; innovators
         </Text>
       </Box>
-      <Grid columns={[2, 3]} gap={[`20px`, `20px`, `60px`]}>
+      <Grid columns={[2]} gap={[`20px`, `60px`]}>
         {partners.map(({ src, name }, i) => (
           <Box
             key={name}
@@ -86,12 +81,8 @@ function Section5() {
           >
             <img
               sx={{
-                maxWidth: [`70%`, `70%`],
+                maxWidth: [`70%`],
                 width: [
-                  `100px`,
-                  `100px`,
-                  `100px`,
-                  `100px`,
                   `100px`,
                   `100px`,
                   `150px`,

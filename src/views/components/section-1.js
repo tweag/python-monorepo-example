@@ -17,18 +17,13 @@ export default function Section1() {
           margin: [
             `auto`,
             `auto`,
-            `auto`,
-            `0 10%`,
-            `0 10%`,
-            `0 10%`,
-            `0 10%`,
             `0 15%`,
           ],
-          textAlign: [`center`, `center`, `start`],
-          maxWidth: [`100%`, `100%`, `740px`, `100%`],
-          py: [`50px`, `50px`, 0],
+          textAlign: [`center`, `start`],
+          maxWidth: [`100%`, `740px`, `100%`],
+          py: [`50px`, 0],
         }}
-        gap={[`50px`, `50px`, 5, `10%`]}
+        gap={[`50px`, 5, `10%`]}
       >
         <Box className={`transition--slide-fade-in bottom-in only-above-1`}>
           <video
@@ -45,11 +40,7 @@ export default function Section1() {
               height: `auto`,
               maxWidth: [
                 `280px`,
-                `280px`,
                 `300px`,
-                `380px`,
-                `450px`,
-                `450px`,
                 `90%`,
               ],
             }}
@@ -59,8 +50,8 @@ export default function Section1() {
         </Box>
         <Box
           sx={{
-            px: [`15px`, `15px`],
-            fontSize: [`16px`, `16px`, `27px`],
+            px: [`15px`],
+            fontSize: [`16px`, `27px`],
           }}
           className="transition--slide-fade-in bottom-in delayed only-above-1"
         >
@@ -68,8 +59,8 @@ export default function Section1() {
             className="hide-in-percy"
             sx={{
               mb: [`10px`],
-              minHeight: [null, null, `200px`],
-              minWidth: [null, null, `400px`],
+              minHeight: [null, `200px`],
+              minWidth: [null, `400px`],
             }}
           >
             <div>
@@ -96,9 +87,9 @@ export default function Section1() {
         direction={`down`}
         customSx={{
           position: `relative`,
-          top: [0, 0, 0, `10%`],
+          top: [0, 0, `10%`],
           margin: [`0 auto`],
-          display: [`none`, `none`, `none`, `block`],
+          display: [`none`, `none`, `block`],
         }}
       />
     </React.Fragment>

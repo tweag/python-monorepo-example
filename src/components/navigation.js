@@ -50,8 +50,8 @@ const NavLink = ({
           },
         },
         transition: `all 0.4s ease`,
-        fontSize: [`27px`, `27px`, `16px`, null, null, null, `18px`],
-        lineHeight: [1.8, 1.8, 1.1],
+        fontSize: [`27px`, `16px`, `18px`],
+        lineHeight: [1.8, 1.1],
         "&:visited": {
           color: `black`,
         },
@@ -76,7 +76,7 @@ const MobileMenuOpener = ({ onClick }) => (
       transition: `all 0.4s ease`,
       width: `30px`,
       height: `20px`,
-      display: [`block`, `block`, `none`],
+      display: [`block`, `none`],
       cursor: `pointer`,
       ".menu-active &": {
         borderTop: `none`,
@@ -156,25 +156,25 @@ function Header({ inverted, fullpage = false }) {
       ref={headerRef}
       sx={{
         flexWrap: `wrap`,
-        p: [`15px`, `15px`, `25px`, null, null, null, `35px`],
+        p: [`15px`, `25px`, `35px`],
         justifyContent: [`space-between`],
-        alignItems: [`center`, null, `center`],
+        alignItems: `center`,
         position: `fixed`,
         top: 0,
         right: 0,
         left: 0,
         zIndex: 999,
-        mt: [0, 0, `-16px`, fullpage ? `-14px` : null],
+        mt: [0, `-16px`, fullpage ? `-14px` : null],
         transition: `all 0.4s ease`,
       }}
       className={`transition-section header ${inverted && `navbar-inverted`}`}
     >
       <Box
         sx={{
-          width: [`175px`, `175px`, `275px`, null, null, null, `300px`],
-          mt: [0, 0, `16px`, fullpage ? 0 : null],
-          pb: [0, 0, `7px`],
-          transform: [null, null, null, fullpage ? `scale(0.9)` : null],
+          width: [`175px`, `275px`, `300px`],
+          mt: [0, `16px`, fullpage ? 0 : null],
+          pb: [0, `7px`],
+          transform: [null, null, fullpage ? `scale(0.9)` : null],
         }}
       >
         <Logo />
@@ -182,29 +182,29 @@ function Header({ inverted, fullpage = false }) {
       <Flex
         className={`transition-section__transition--slide-fade-in top-in duration-3 delayed-0 min-1--none`}
         sx={{
-          flexDirection: [`column`, null, `row`],
-          flexBasis: [`100%`, `100%`, `auto`],
-          ml: [null, null, null, `auto`],
-          mt: [0, 0, `16px`, fullpage ? 0 : null],
-          alignItems: [`center`, `center`, `flex-end`],
-          height: [`100vh`, null, `auto`],
-          opacity: [navbarState ? 1 : 0, navbarState ? 1 : 0, 1],
-          zIndex: [navbarState ? 99 : -999, navbarState ? 99 : -999, 99],
-          position: [`absolute`, null, `unset`],
-          top: [`45px`, null, 0],
+          flexDirection: [`column`, `row`],
+          flexBasis: [`100%`, `auto`],
+          ml: [null, null, `auto`],
+          mt: [0, `16px`, fullpage ? 0 : null],
+          alignItems: [`center`, `flex-end`],
+          height: [`100vh`, `auto`],
+          opacity: [navbarState ? 1 : 0, 1],
+          zIndex: [navbarState ? 99 : -999, 99],
+          position: [`absolute`, `unset`],
+          top: [`45px`, 0],
           right: [0],
           left: [0],
-          pt: [`66px`, null, 0],
-          background: [`var(--bg-color)`, null, `inherit`],
+          pt: [`66px`, 0],
+          background: [`var(--bg-color)`, `inherit`],
         }}
       >
         <NavLink
           to="/services"
           customSx={{
-            mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
-            mr: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
+            mx: [0, `15px`, `25px`],
+            mr: [0, `15px`, `25px`],
             ml: [0],
-            mb: [`15px`, `15px`, 0],
+            mb: [`15px`, 0],
           }}
           customClassName={navLinkClassName}
         >
@@ -218,16 +218,15 @@ function Header({ inverted, fullpage = false }) {
             onFocus={() => setDropDownVisible(`key-industries`)}
             onBlur={() => hideDropDown(`key-industries`)}
             sx={{
-              mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
-              mb: [`15px`, `15px`, 0],
-              textAlign: [`center`, `center`, `start`],
+              mx: [0, `15px`, `25px`],
+              mb: [`15px`, 0],
+              textAlign: [`center`, `start`],
               bg: `inherit`,
               ".header-drop-down-transition__show-in": {
-                display: [`none`, `none`, `flex`],
+                display: [`none`, `flex`],
                 opacity: 0,
-                transform: [null, null, `translateY(-1000px)`],
+                transform: [null, `translateY(-1000px)`],
                 transition: [
-                  null,
                   null,
                   `opacity 0.4s ease, transform 0.1s ease 0.4s`,
                 ],
@@ -235,8 +234,8 @@ function Header({ inverted, fullpage = false }) {
               ".header-drop-down-transition__show-in--on": {
                 display: `flex`,
                 opacity: 1,
-                transform: [null, null, `translateY(0px)`],
-                transition: [null, null, `opacity 0.4s ease`],
+                transform: [null, `translateY(0px)`],
+                transition: [null, `opacity 0.4s ease`],
               },
             }}
           >
@@ -244,7 +243,7 @@ function Header({ inverted, fullpage = false }) {
               as="div"
               sx={{
                 minWidth: [`fit-content`],
-                fontSize: [`27px`, `27px`, `16px`, null, null, null, `18px`],
+                fontSize: [`27px`, `16px`, `18px`],
                 lineHeight: [1.1],
                 cursor: `pointer`,
                 userSelect: `none`,
@@ -270,13 +269,13 @@ function Header({ inverted, fullpage = false }) {
                 ".navbar-inverted &": {
                   bg: `transparent`,
                 },
-                position: [null, null, `absolute`],
+                position: [null, `absolute`],
                 flexDirection: `column`,
-                pt: [`15px`, `15px`, `10px`],
-                pb: [0, 0, `10px`],
+                pt: [`15px`, `10px`],
+                pb: [0, `10px`],
                 mx: [`-15px`],
                 px: [`15px`],
-                alignItems: [`center`, `center`, `start`],
+                alignItems: [`center`, `start`],
               }}
             >
               {[
@@ -289,15 +288,7 @@ function Header({ inverted, fullpage = false }) {
                   to={`/industry/${route}`}
                   customSx={{
                     mb: `10px`,
-                    fontSize: [
-                      `23px`,
-                      `23px`,
-                      `16px`,
-                      null,
-                      null,
-                      null,
-                      `18px`,
-                    ],
+                    fontSize: [`23px`, `16px`, `18px`],
                   }}
                   customClassName={navLinkClassName}
                 >
@@ -321,10 +312,10 @@ function Header({ inverted, fullpage = false }) {
             to={route}
             isExternal={isExternal}
             customSx={{
-              mx: [0, 0, `15px`, null, `15px`, null, null, null, `25px`],
-              ...(i === arr.length - 1 ? { mr: [0, 0, 0, 0, 0, 0, 0, 0] } : {}),
+              mx: [0, `15px`, `25px`],
+              ...(i === arr.length - 1 ? { mr: [0] } : {}),
               minWidth: [`fit-content`],
-              mb: [`15px`, `15px`, 0],
+              mb: [`15px`, 0],
             }}
           >
             {t}

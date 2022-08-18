@@ -8,7 +8,7 @@ export const TopCard = ({ node }) => {
   return (
     <Grid
       sx={{
-        borderTop: [`none`, `none`, `solid 1px black`],
+        borderTop: [`none`, `solid 1px black`],
       }}
       gap={0}
     >
@@ -22,7 +22,7 @@ export const TopCard = ({ node }) => {
           as="div"
           sx={{
             fontSize: [`14px`],
-            mt: [0, 0, `15px`],
+            mt: [0, `15px`],
           }}
         >
           {node.fields.date}
@@ -30,11 +30,11 @@ export const TopCard = ({ node }) => {
         <Text
           as="div"
           sx={{
-            fontSize: [`34px`, `34px`, `66px`],
+            fontSize: [`34px`, `66px`],
             lineHeight: [1],
             fontWeight: 700,
             textTransform: `uppercase`,
-            mt: [`20px`, `20px`, `30px`, `30px`, `30px`, `10px`],
+            mt: [`20px`, `30px`, `10px`],
             minHeight: [`100px`],
           }}
         >
@@ -43,8 +43,8 @@ export const TopCard = ({ node }) => {
         <Text
           as="div"
           sx={{
-            fontSize: [`27px`, `27px`, `27px`, `27px`, `27px`, `18px`],
-            mt: [`35px`, `35px`],
+            fontSize: [`27px`, `27px`, `18px`],
+            mt: [`35px`],
           }}
           dangerouslySetInnerHTML={{
             __html: node.frontmatter.description || node.excerpt,
@@ -88,7 +88,7 @@ const BlogCard = ({ node }) => {
         gridAutoRows: `max-content`,
         flexDirection: `column`,
         justifyContent: `space-between`,
-        minHeight: [`auto`, `auto`, `350px`],
+        minHeight: [`auto`, `350px`],
       }}
     >
       <Link to={node.fields.slug} sx={{ color: `#000` }}>
@@ -107,10 +107,6 @@ const BlogCard = ({ node }) => {
             sx={{
               fontSize: [
                 `24px`,
-                `24px`,
-                `34px`,
-                `34px`,
-                `34px`,
                 `34px`,
                 `42px`,
               ],

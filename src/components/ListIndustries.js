@@ -8,9 +8,9 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
     <Grid
       columns={[1, 1]}
       sx={{
-        px: [`15px`, `15px`, `100px`],
-        py: [`40px`, `40px`],
-        textAlign: [`start`, `start`, `center`],
+        px: [`15px`, `100px`],
+        py: [`40px`],
+        textAlign: [`start`, `center`],
         ...customWrapperSx,
       }}
       gap={[`40px`]}
@@ -19,7 +19,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
         <Text
           as="div"
           sx={{
-            fontSize: [`24px`, `24px`, `34px`, `34px`, `34px`, `34px`, `42px`],
+            fontSize: [`24px`, `34px`, `42px`],
             lineHeight: [1],
             fontWeight: [700],
             textTransform: `uppercase`,
@@ -28,7 +28,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
           KEY INDUSTRIES WE SERVE
         </Text>
       </Box>
-      <Grid gap={[`40px`, `40px`]} columns={[1, 1, 3]}>
+      <Grid gap={[`40px`]} columns={[1, 3]}>
         {industries.map(({ h, link, p, src }, i) => (
           <Grid
             key={i}
@@ -40,7 +40,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
             <Box>
               <img
                 sx={{
-                  width: [`50%`, `40%`, `100%`, `70%`, `70%`, `50%`],
+                  width: [`50%`, `100%`, `50%`],
                 }}
                 src={src}
                 alt=""
@@ -51,10 +51,6 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
               sx={{
                 fontSize: [
                   `18px`,
-                  `18px`,
-                  `27px`,
-                  `27px`,
-                  `27px`,
                   `27px`,
                   `34px`,
                 ],
@@ -67,7 +63,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
             <Text
               as="p"
               sx={{
-                fontSize: [`18px`, `18px`],
+                fontSize: [`18px`],
                 lineHeight: [`26px`],
               }}
             >
@@ -75,7 +71,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
             </Text>
             <Link
               sx={{
-                justifySelf: [`start`, `start`, `center`],
+                justifySelf: [`start`, `center`],
                 alignSelf: [`center`],
               }}
               to={link}

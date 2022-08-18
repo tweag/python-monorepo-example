@@ -37,15 +37,15 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       <div
         className="section s_white transition-section viewport-section"
         sx={{
-          pt: [`65px`, `65px`, `130px`, `130px`, `130px`, `130px`, `160px`],
+          pt: [`65px`, `130px`, `160px`],
         }}
       >
         <Flex
           className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed-0"
           sx={{
             flexDirection: `column`,
-            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            width: [`100%`, `100%`, `65%`, `55%`, `55%`, `55%`, `70%`],
+            px: [`15px`, `60px`, `120px`],
+            width: [`100%`, `65%`, `70%`],
           }}
         >
           <SectionHeading
@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             sx={{
               mt: [`45px`],
               mb: [`35px`],
-              fontSize: [`34px`, `34px`, `66px`],
+              fontSize: [`34px`, `66px`],
               lineHeight: [1],
               fontWeight: 700,
               textTransform: `uppercase`,
@@ -85,7 +85,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <Box
           sx={{
             mt: [`40px`],
-            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            px: [`15px`, `60px`, `120px`],
             fontWeight: 700,
           }}
         >
@@ -95,7 +95,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <Box
           sx={{
             mt: [`40px`],
-            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            px: [`15px`, `60px`, `120px`],
           }}
         >
           <img
@@ -119,11 +119,11 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           sx={{
             justifyContent: [`space-between`],
             flexWrap: `wrap`,
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            pr: [`15px`, `15px`, 0],
+            pl: [`15px`, `60px`, `120px`],
+            pr: [`15px`, 0],
             mt: [`30px`],
             mb: [`30px`],
-            width: [`100%`, `100%`, `65%`],
+            width: [`100%`, `65%`],
             maxWidth: `1000px`,
           }}
         >

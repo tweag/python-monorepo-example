@@ -239,11 +239,11 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         <div
           className="actionBar"
           sx={{
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
+            pl: [`15px`, `60px`, `120px`],
+            pr: [`15px`, `60px`, `120px`],
             gridArea: `action-bar`,
             display: `flex`,
-            flexDirection: [`column`, `column`, `row`],
+            flexDirection: [`column`, `row`],
             flexWrap: `nowrap`,
             justifyContent: `space-between`,
             width: `100%`,
@@ -301,7 +301,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
                 --magic-grid-margin: 60px;
               }
 
-              @media screen and (min-width: ${t.breakpoints[5]}) {
+              @media screen and (min-width: ${t.breakpoints[2]}) {
                 --magic-grid-margin: 120px;
               }
 

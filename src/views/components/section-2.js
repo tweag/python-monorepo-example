@@ -6,31 +6,31 @@ import visionaries from "../../images/img2.gif"
 function Section2() {
   return (
     <Grid
-      columns={[1, 1, 2]}
+      columns={[1, 2]}
       sx={{
-        margin: [`auto`, `auto`, `0`],
-        textAlign: [`start`, `start`],
-        maxWidth: [`100%`, `100%`, `100%`],
-        px: [`15px`, `15px`, `60px`, `60px`, `60px`, `120px`],
-        pt: [`0px`, `0px`, `90px`],
+        margin: [`auto`, `0`],
+        textAlign: [`start`],
+        maxWidth: [`100%`],
+        px: [`15px`, `60px`, `120px`],
+        pt: [`0px`, `90px`],
         pb: [`0px`],
-        mt: [`30px`, `30px`],
-        mb: [`40px`, `40px`],
+        mt: [`30px`],
+        mb: [`40px`],
       }}
-      gap={[`50px`, `50px`, `20%`, `20%`, `20%`, `5%`]}
+      gap={[`50px`, `20%`, `5%`]}
     >
       <Grid
-        gap={[`40px`, `40px`]}
+        gap={[`40px`]}
         sx={{
-          height: [`auto`, `auto`, `60%`],
-          gridAutoRows: [`auto`, `auto`, `max-content`],
+          height: [`auto`, `60%`],
+          gridAutoRows: [`auto`, `max-content`],
         }}
         className="transition--slide-fade-in bottom-in  only-above-1"
       >
         <h2
           sx={{
-            gridRow: [2, 2, 1],
-            maxWidth: [`100%`, `100%`, `100%`, `100%`, `100%`, `60%`, `400px`],
+            gridRow: [2, 1],
+            maxWidth: [`100%`, `100%`, `400px`],
           }}
         >
           PARTNERING WITH VISIONARIES TO ADVANCE TECHNOLOGY
@@ -39,8 +39,8 @@ function Section2() {
         <Box>
           <img
             sx={{
-              maxWidth: [`100%`, `100%`, `100%`, `100%`, `100%`, `80%`],
-              width: [`auto`, `auto`, `auto`, `auto`, `auto`, `70%`],
+              maxWidth: [`100%`, `100%`, `80%`],
+              width: [`auto`, `auto`, `70%`],
             }}
             src={visionaries}
             alt=""
@@ -49,9 +49,9 @@ function Section2() {
       </Grid>
       <Box className="transition--slide-fade-in bottom-in delayed  only-above-1">
         <Grid
-          gap={[`40px`, `40px`]}
+          gap={[`40px`]}
           sx={{
-            mb: [`60px`, `60px`],
+            mb: [`60px`],
           }}
         >
           {[
@@ -74,18 +74,13 @@ function Section2() {
           ].map(({ h, p }) => (
             <Grid
               key={h}
-              gap={[`12px`, `12px`, `12px`, `12px`, `12px`, `12px`, `18px`]}
+              gap={[`12px`, `12px`, `18px`]}
             >
               <Text
                 as="h3"
                 sx={{
-                  // mb: [`12px`, `12px`],
                   fontSize: [
                     `18px`,
-                    `18px`,
-                    `27px`,
-                    `27px`,
-                    `27px`,
                     `27px`,
                     `34px`,
                   ],
@@ -97,8 +92,8 @@ function Section2() {
                 as="p"
                 sx={{
                   m: 0,
-                  fontSize: [`14px`, `14px`, `18px`],
-                  lineHeight: [`26px`, `26px`],
+                  fontSize: [`14px`, `18px`],
+                  lineHeight: [`26px`],
                 }}
               >
                 {p}

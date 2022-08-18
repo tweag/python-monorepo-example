@@ -14,17 +14,17 @@ function Community({ title, bgColor, children, bgImage, description }) {
       className={`section s_${bgColor} viewport-section transition-section`}
       sx={{
         flexWrap: `wrap`,
-        pt: [`40px`, `40px`, `70px`],
-        pb: [`40px`, `40px`],
-        px: [`15px`, `15px`, `5%`],
+        pt: [`40px`, `70px`],
+        pb: [`40px`],
+        px: [`15px`, `5%`],
       }}
     >
       <Text
         as="div"
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
-          flexBasis: [`100%`, `100%`, `30%`],
-          fontSize: [`34px`, `34px`, `66px`],
+          flexBasis: [`100%`, `30%`],
+          fontSize: [`34px`, `66px`],
           fontWeight: [700],
           lineHeight: [1],
           minHeight: [`100px`],
@@ -37,10 +37,10 @@ function Community({ title, bgColor, children, bgImage, description }) {
       <Box
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
-          flexBasis: [`100%`, `100%`, `65%`, `65%`, `65%`, `65%`, `50%`],
-          fontSize: [`18px`, `18px`, `27px`],
-          lineHeight: [1, 1, 1.2],
-          pl: [`auto`, `auto`, `100px`],
+          flexBasis: [`100%`, `65%`, `50%`],
+          fontSize: [`18px`, `27px`],
+          lineHeight: [1, 1.2],
+          pl: [`auto`, `100px`],
         }}
       >
         {description}
@@ -64,7 +64,7 @@ export default function Communities() {
   return (
     <Box
       sx={{
-        pt: [`75px`, `75px`, `0px`],
+        pt: [`75px`, `0px`],
       }}
     >
       {[

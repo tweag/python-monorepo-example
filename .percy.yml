@@ -1,6 +1,6 @@
 version: 1
 snapshot:
-  widths: [767, 1023, 1199, 1399, 1499, 1599, 1601]
+  widths: [479, 767, 1199, 1599]
 static-snapshots:
   path: public/
   ignore-files: "blog/**/*.html,posts/**/*.html"

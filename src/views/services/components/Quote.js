@@ -24,8 +24,8 @@ export default function Quote() {
   return (
     <Grid
       className="section s_white transition-section viewport-section"
-      columns={[1, 1, 4]}
-      gap={[`30px`, `30px`]}
+      columns={[1, 4]}
+      gap={[`30px`]}
       sx={{
         pt: [`60px`],
       }}
@@ -33,8 +33,8 @@ export default function Quote() {
       <Box
         className="transition-section__transition--slide-fade-in left-in only-above-1"
         sx={{
-          width: [`200px`, `200px`, `100%`],
-          alignSelf: [`center`, `center`, `center`],
+          width: [`200px`, `100%`],
+          alignSelf: [`center`],
         }}
       >
         <img
@@ -48,14 +48,14 @@ export default function Quote() {
       <Grid
         className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed"
         sx={{
-          pr: [`15px`, `15px`, `0px`],
-          pl: [`15px`, `15px`, `0px`],
-          marginLeft: [`auto`, `auto`, `auto`, `auto`, `auto`, `auto`, `100px`],
-          marginRight: [`auto`, `auto`, `auto`],
-          my: [`0px`, `0px`, `0px`, `auto`],
-          maxWidth: [`100%`, `100%`, `75%`, `75%`, `75%`, `75%`, `50%`],
-          gridColumnStart: [`auto`, `auto`, 2],
-          gridColumnEnd: [`auto`, `auto`, 5],
+          pr: [`15px`, `0px`],
+          pl: [`15px`, `0px`],
+          marginLeft: [`auto`, `auto`, `100px`],
+          marginRight: [`auto`],
+          my: [`0px`, `0px`, `auto`],
+          maxWidth: [`100%`, `75%`, `50%`],
+          gridColumnStart: [`auto`, 2],
+          gridColumnEnd: [`auto`, 5],
           gridAutoRows: [`min-content`],
         }}
         gap={[`20px`]}
@@ -63,9 +63,9 @@ export default function Quote() {
         <Text
           as="div"
           sx={{
-            fontSize: [`34px`, `34px`],
-            lineHeight: [1.1, 1.1],
-            fontWeight: [700, 700],
+            fontSize: [`34px`],
+            lineHeight: [1.1],
+            fontWeight: [700],
           }}
         >
           {content.main.quotation}
@@ -80,8 +80,8 @@ export default function Quote() {
         <Text
           as="div"
           sx={{
-            fontSize: [`18px`, `18px`],
-            lineHeight: [1.3, 1.3],
+            fontSize: [`18px`],
+            lineHeight: [1.3],
           }}
         >
           <i className="icon-arrow-right1"></i> {content.main.from}

@@ -41,7 +41,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             max-width: 1000px;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
           }
         }
@@ -55,7 +55,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             width: 60%;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             margin-left: 120px;
           }
         }
@@ -72,7 +72,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             margin-left: 60px;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             margin-left: 120px;
             margin-bottom: 20px;
           }
@@ -151,7 +151,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
               max-width: none;
             }
 
-            @media (min-width: ${t.breakpoints[5]}) {
+            @media (min-width: ${t.breakpoints[2]}) {
               padding: 20px 55px;
             }
           }
@@ -167,7 +167,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             max-width: 1000px;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             margin-left: 130px;
           }
 
@@ -222,7 +222,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             width: 65%;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
           }
         }
@@ -245,7 +245,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             font-size: 34px;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
             font-size: 42px;
           }
@@ -263,7 +263,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             width: 65%;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
           }
         }
@@ -279,7 +279,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             margin: 0px 0px 15px;
             padding-left: 60px;
           }
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
           }
         }
@@ -300,7 +300,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             width: 65%;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding: 0 0 0 120px;
           }
 
@@ -347,7 +347,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             width: 65%;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding-left: 120px;
           }
 
@@ -415,7 +415,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
             margin: 0px 0px 30px;
           }
 
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding: 0 0 0 120px;
           }
         }
@@ -426,7 +426,7 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           @media (min-width: ${t.breakpoints[1]}) {
             padding: 0 0 0 60px;
           }
-          @media (min-width: ${t.breakpoints[5]}) {
+          @media (min-width: ${t.breakpoints[2]}) {
             padding: 0 0 0 120px;
           }
         }

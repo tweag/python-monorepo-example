@@ -15,43 +15,35 @@ function CallToActionFooter({
     <Grid
       columns={[1, 1, 2]}
       sx={{
-        pt: [`40px`, `40px`, `100px`, `60px`],
-        pb: [`40px`, `40px`, `50px`, `60px`],
+        pt: [`40px`, `100px`, `60px`],
+        pb: [`40px`, `50px`, `60px`],
         ...customWrapperSx,
       }}
-      gap={[`50px`, `50px`]}
+      gap={[`50px`]}
     >
       <Grid
-        columns={[1, 1, 1, 1, 3, 3, 1]}
+        columns={[1, 1, 3]}
         sx={{
-          gridRow: [2, 2, 1],
-          pr: [`15px`, `15px`, `0px`],
-          pl: [`15px`, `15px`, `50px`, `50px`, `50px`, `50px`, `100px`],
+          gridRow: [2, 1],
+          pr: [`15px`, `0px`],
+          pl: [`15px`, `50px`, `100px`],
           gridAutoRows: [`max-content`],
           alignSelf: `center`,
         }}
-        gap={[`30px`, `30px`]}
+        gap={[`30px`]}
         className={`${transitionClass} bottom-in  only-above-1`}
       >
         <Box
           sx={{
-            gridColumnStart: [`auto`, `auto`, `auto`, `auto`, 1, 1, `auto`],
-            gridColumnEnd: [`auto`, `auto`, `auto`, `auto`, 3, 3, `auto`],
+            gridColumnStart: [`auto`, `auto`, 1],
+            gridColumnEnd: [`auto`, `auto`, 3],
           }}
         >
           <Text
             as="div"
             sx={{
-              fontSize: [
-                `24px`,
-                `24px`,
-                `34px`,
-                `34px`,
-                `34px`,
-                `34px`,
-                `42px`,
-              ],
-              lineHeight: [1.2, 1.2],
+              fontSize: [`24px`, `34px`, `42px`],
+              lineHeight: [1.2],
               fontWeight: 700,
               textTransform: `uppercase`,
               maxWidth: `400px`,
@@ -72,32 +64,14 @@ function CallToActionFooter({
       <Box
         sx={{
           display: `flex`,
-          justifyContent: [
-            `center`,
-            `center`,
-            `center`,
-            `center`,
-            `center`,
-            `flex-end`,
-            `flex-end`,
-            `flex-end`,
-          ],
+          justifyContent: [`center`, `center`, `flex-end`],
         }}
         className={`${transitionClass} right-in delayed  only-above-1`}
       >
         <Backdrop
           variant={backdropVariant}
           customSx={{
-            width: [
-              `100%`,
-              `100%`,
-              `100%`,
-              `100%`,
-              `715px`,
-              `715px`,
-              `715px`,
-              `715px`,
-            ],
+            width: [`100%`, `100%`, `715px`],
           }}
         />
       </Box>

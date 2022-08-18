@@ -9,9 +9,9 @@ function TemplateExamples({ title, examples }) {
   return (
     <Grid
       className="viewport-section transition-section"
-      columns={[1, 1, 2]}
+      columns={[1, 2]}
       sx={{
-        py: [`60px`, `60px`, `100px`, `100px`, `100px`, `100px`, `150px`],
+        py: [`60px`, `100px`, `150px`],
       }}
     >
       <Grid
@@ -19,26 +19,22 @@ function TemplateExamples({ title, examples }) {
         columns={1}
         gap={[`50px`]}
         sx={{
-          px: [`15px`, `15px`, `0px`],
-          pl: [`15px`, `15px`, `120px`],
+          px: [`15px`, `0px`],
+          pl: [`15px`, `120px`],
         }}
       >
-        <Grid columns={1} gap={[`20px`, `20px`]}>
+        <Grid columns={1} gap={[`20px`]}>
           <Text
             as="div"
             sx={{
               fontSize: [
                 `18px`,
-                `18px`,
-                `27px`,
-                `27px`,
-                `27px`,
                 `27px`,
                 `34px`,
               ],
               lineHeight: [1.1],
               fontWeight: [700],
-              mb: [0, 0, `30px`],
+              mb: [0, `30px`],
             }}
           >
             Examples of Tweag&rsquo;s work in {title.toLowerCase()} includes:
@@ -47,7 +43,7 @@ function TemplateExamples({ title, examples }) {
             <Flex
               key={i}
               sx={{
-                fontSize: [`18px`, `18px`, `27px`, `27px`, `27px`, `27px`],
+                fontSize: [`18px`, `27px`],
               }}
             >
               <div
@@ -61,7 +57,7 @@ function TemplateExamples({ title, examples }) {
                 as="div"
                 sx={{
                   pl: [`20px`],
-                  lineHeight: [`22px`, `22px`, 1.1],
+                  lineHeight: [`22px`, 1.1],
                 }}
               >
                 {example}
@@ -82,7 +78,7 @@ function TemplateExamples({ title, examples }) {
       <Box
         className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
         sx={{
-          width: [`190px`, `190px`, `50%`],
+          width: [`190px`, `50%`],
           justifySelf: `end`,
           alignSelf: `center`,
         }}

@@ -19,7 +19,7 @@ const OpenSourcePage = () => {
             backdropVariant={5}
             transitionClass={`transition-section__transition--slide-fade-in`}
             customWrapperSx={{
-              py: [`40px`, `40px`, `60px`],
+              py: [`40px`, `60px`],
             }}
           />
         </Box>
@@ -31,16 +31,16 @@ const OpenSourcePage = () => {
       <Box
         className="section s_white viewport-section transition-section"
         sx={{
-          py: [`20px`, `20px`, `90px`],
-          px: [`15px`, `15px`, `60px`, `120px`],
+          py: [`20px`, `90px`],
+          px: [`15px`, `60px`, `120px`],
         }}
       >
         <Text
           as="div"
           className="check transition-section__transition--slide-fade-in bottom-in"
           sx={{
-            fontSize: [`16px`, `16px`, `27px`],
-            lineHeight: [1.15, 1.15, 1.2],
+            fontSize: [`16px`, `27px`],
+            lineHeight: [1.15, 1.2],
           }}
         >
           Check out our
@@ -48,25 +48,19 @@ const OpenSourcePage = () => {
             sx={{
               lineHeight: [
                 `0px !important`,
-                `0px !important`,
                 `1.2 !important`,
               ],
               padding: [
                 `8px !important`,
-                `8px !important`,
                 `9px 18px !important`,
               ],
-              height: [`20px`, `20px`, `44px`],
+              height: [`20px`, `44px`],
               fontSize: [
                 `18px !important`,
-                `18px !important`,
-                null,
-                null,
                 null,
                 `24px !important`,
               ],
               m: [
-                `0 10px !important`,
                 `0 10px !important`,
                 `-10px 15px !important`,
               ],
@@ -83,25 +77,19 @@ const OpenSourcePage = () => {
             sx={{
               lineHeight: [
                 `0px !important`,
-                `0px !important`,
                 `1.2 !important`,
               ],
               padding: [
                 `8px !important`,
-                `8px !important`,
                 `9px 18px !important`,
               ],
-              height: [`20px`, `20px`, `44px`],
+              height: [`20px`, `44px`],
               fontSize: [
                 `18px !important`,
-                `18px !important`,
-                null,
-                null,
                 null,
                 `24px !important`,
               ],
               m: [
-                `0 10px !important`,
                 `0 10px !important`,
                 `-10px 15px !important`,
               ],

@@ -40,7 +40,7 @@ const AutonomousPage = () => {
             backdropVariant={4}
             transitionClass={`transition-section__transition--slide-fade-in`}
             customWrapperSx={{
-              py: [`40px`, `40px`, `60px`],
+              py: [`40px`, `60px`],
             }}
           />
         </div>

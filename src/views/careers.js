@@ -107,22 +107,22 @@ export default function Careers() {
       <div className="section s_white">
         <Grid
           className="viewport-section transition-section"
-          columns={[1, 1, 4, 4, 4, 4, 4, 4]}
-          gap={[`15px`, `15px`, `30px`]}
+          columns={[1, 4]}
+          gap={[`15px`, `30px`]}
           sx={{
-            pt: [`60px`, `60px`, `130px`, `130px`, `130px`, `130px`, `160px`],
+            pt: [`60px`, `130px`, `160px`],
           }}
         >
           <Grid
             className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-            gap={[`35px`, `35px`]}
+            gap={[`35px`]}
             sx={{
-              px: [`15px`, `15px`, `0px`],
-              pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-              gridColumnStart: [`auto`, `auto`, 1],
-              gridColumnEnd: [`auto`, `auto`, 4],
+              px: [`15px`, `0px`],
+              pl: [`15px`, `60px`, `120px`],
+              gridColumnStart: [`auto`, 1],
+              gridColumnEnd: [`auto`, 4],
               gridAutoRows: [`max-content`],
-              width: [`100%`, `100%`, `100%`, `100%`, `100%`, `100%`, `80%`],
+              width: [`100%`, `100%`, `80%`],
             }}
           >
             <SectionHeading
@@ -136,21 +136,17 @@ export default function Careers() {
             <Text
               as="div"
               sx={{
-                fontSize: [`34px`, `34px`, `66px`],
+                fontSize: [`34px`, `66px`],
                 fontWeight: [700],
                 lineHeight: [1],
                 textTransform: `uppercase`,
                 minHeight: [
                   `100px`,
                   `100px`,
-                  `100px`,
-                  `100px`,
-                  `100px`,
-                  `100px`,
                   `auto`,
                 ],
-                mt: [`5px`, `5px`, `15px`],
-                width: [`100%`, `100%`, `90%`],
+                mt: [`5px`, `15px`],
+                width: [`100%`, `90%`],
               }}
             >
               {content.headline}
@@ -159,9 +155,9 @@ export default function Careers() {
               columns={1}
               gap={[`15px`]}
               sx={{
-                fontSize: [`18px`, `18px`, `27px`],
-                lineHeight: [1.2, 1.2, `35px`],
-                maxWidth: [`100%`, `100%`, `90%`, `90%`, `90%`, `90%`, `90%`],
+                fontSize: [`18px`, `27px`],
+                lineHeight: [1.2, `35px`],
+                maxWidth: [`100%`, `90%`],
               }}
             >
               {content.firstParas.map((para, idx) => (
@@ -175,18 +171,18 @@ export default function Careers() {
             className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
             sx={{
               alignSelf: `start`,
-              gridColumnStart: [`auto`, `auto`],
-              gridColumnEnd: [`auto`, `auto`],
-              marginTop: [`0px`, `0px`, `200px`, `200px`, `200px`],
+              gridColumnStart: [`auto`],
+              gridColumnEnd: [`auto`],
+              marginTop: [`0px`, `200px`],
               marginLeft: [`auto`],
-              width: [`100%`, `100%`, `100%`],
-              display: [`none`, `none`, `flex`],
+              width: [`100%`],
+              display: [`none`, `flex`],
               justifyContent: `flex-end`,
             }}
           >
             <img
               sx={{
-                width: [`100%`, `100%`, `87%`, `87%`, `87%`, `87%`, `80%`],
+                width: [`100%`, `87%`, `80%`],
               }}
               src={img16}
               alt=""
@@ -195,17 +191,17 @@ export default function Careers() {
         </Grid>
         <Grid
           className="section s_white transition-section viewport-section"
-          columns={[1, 1, 4]}
-          gap={[`30px`, `30px`]}
+          columns={[1, 4]}
+          gap={[`30px`]}
           sx={{
-            pt: [`60px`, `60px`, `40px`],
+            pt: [`60px`, `40px`],
           }}
         >
           <Box
             className="transition-section__transition--slide-fade-in left-in only-above-1"
             sx={{
-              width: [`200px`, `200px`, `100%`],
-              alignSelf: [`center`, `center`, `center`],
+              width: [`200px`, `100%`],
+              alignSelf: [`center`],
             }}
           >
             <img
@@ -219,25 +215,19 @@ export default function Careers() {
           <Grid
             className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed"
             sx={{
-              pr: [`15px`, `15px`, `0px`],
-              // pl: [`15px`, `15px`, `0px`],
-              pl: [`15px`, `15px`, `180px`],
-              // marginRight: [`auto`, `auto`, `auto`],
-              my: [`0px`, `0px`, `0px`, `auto`],
+              pr: [`15px`, `0px`],
+              pl: [`15px`, `180px`],
+              my: [`0px`, `0px`, `auto`],
               maxWidth: [
                 `100%`,
-                `100%`,
-                `93.3333333%`,
-                `93.3333333%`,
-                `93.3333333%`,
                 `93.3333333%`,
                 `65.5%`,
               ],
-              gridColumnStart: [`auto`, `auto`, 2],
-              gridColumnEnd: [`auto`, `auto`, 5],
+              gridColumnStart: [`auto`, 2],
+              gridColumnEnd: [`auto`, 5],
               gridAutoRows: [`min-content`],
-              fontSize: [`16px`, `16px`, `24px`],
-              lineHeight: [1.2, 1.2, `35px`],
+              fontSize: [`16px`, `24px`],
+              lineHeight: [1.2, `35px`],
             }}
             gap={[`20px`]}
           >
@@ -250,22 +240,17 @@ export default function Careers() {
         </Grid>
         <Grid
           className="transition-section viewport-section"
-          columns={[1, 1, 2]}
+          columns={[1, 2]}
           sx={{
-            pt: [`76px`, `76px`, `126px`],
+            pt: [`76px`, `126px`],
             pb: [`20px`],
           }}
         >
           <Grid
             sx={{
-              pr: [`15px`, `15px`, `0px`],
+              pr: [`15px`, `0px`],
               pl: [
                 `15px`,
-                `15px`,
-                `50px`,
-                `50px`,
-                `50px`,
-                `50px`,
                 `50px`,
                 `120px`,
               ],
@@ -276,10 +261,10 @@ export default function Careers() {
             <Text
               as="div"
               sx={{
-                fontSize: [`18px`, `18px`, `34px`],
-                lineHeight: [`22px`, `22px`, 1.1],
+                fontSize: [`18px`, `34px`],
+                lineHeight: [`22px`, 1.1],
                 fontWeight: [700],
-                mb: [0, 0, `25px`],
+                mb: [0, `25px`],
               }}
             >
               We are always keen to hear from people interested in the following
@@ -292,8 +277,8 @@ export default function Careers() {
                     as="div"
                     sx={{
                       fontWeight: [700],
-                      fontSize: [`18px`, `18px`, `34px`],
-                      lineHeight: [`22px`, `22px`, 1.1],
+                      fontSize: [`18px`, `34px`],
+                      lineHeight: [`22px`, 1.1],
                     }}
                   >
                     <i className="icon-arrow-right1"></i> {title}
@@ -302,8 +287,8 @@ export default function Careers() {
                     as="div"
                     sx={{
                       fontWeight: [400],
-                      fontSize: [`18px`, `18px`, `24px`],
-                      lineHeight: [`22px`, `22px`, 1.1],
+                      fontSize: [`18px`, `24px`],
+                      lineHeight: [`22px`, 1.1],
                       mx: [`6px`],
                     }}
                   >
@@ -317,7 +302,7 @@ export default function Careers() {
           <Box
             className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
             sx={{
-              width: [`200px`, `200px`, `100%`],
+              width: [`200px`, `100%`],
               justifySelf: `end`,
               alignSelf: `center`,
               display: `flex`,
@@ -326,7 +311,7 @@ export default function Careers() {
           >
             <img
               sx={{
-                width: [`100%`, `100%`, `75%`],
+                width: [`100%`, `75%`],
               }}
               src={img8}
               alt=""
@@ -335,7 +320,7 @@ export default function Careers() {
         </Grid>
         <Divider
           customSx={{
-            mx: [`20px`, `20p`, `60px`],
+            mx: [`20px`, `60px`],
             mt: [`60px`],
             mb: [`20px`],
           }}
@@ -345,22 +330,18 @@ export default function Careers() {
             as="div"
             className="transition-section__transition--slide-fade-in bottom-in only-above-1"
             sx={{
-              px: [`15px`, `15px`, `110px`, `110px`, `110px`, `110px`, `135px`],
-              pt: [0, 0, `110px`, `110px`, `110px`, `50px`],
-              pb: [`30px`, `30px`, `130px`, `130px`, `130px`, `70px`],
+              px: [`15px`, `110px`, `135px`],
+              pt: [0, `110px`, `50px`],
+              pb: [`30px`, `130px`, `70px`],
               fontSize: [
                 `24px`,
-                `24px`,
-                `34px`,
-                `34px`,
-                `34px`,
                 `34px`,
                 `42px`,
               ],
               fontWeight: 700,
-              lineHeight: [`1.5em`, `1.5em`],
+              lineHeight: [`1.5em`],
               textTransform: `uppercase`,
-              textAlign: [`start`, `start`, `center`],
+              textAlign: [`start`, `center`],
             }}
           >
             Interested in working together?

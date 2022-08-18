@@ -16,8 +16,8 @@ const introText = (
   <Text
     as="div"
     sx={{
-      fontSize: [`18px`, `18px`, `27px`],
-      lineHeight: [1.2, 1.2, `35px`],
+      fontSize: [`18px`, `27px`],
+      lineHeight: [1.2, `35px`],
       gridArea: `lead`,
     }}
     className="lead"
@@ -69,12 +69,11 @@ const IntroductionSection = ({ papers }) => {
         as="div"
         className={`transition-section__transition--slide-fade-in bottom-in title`}
         sx={{
-          // minHeight: `100px`,
           textTransform: `uppercase`,
-          fontSize: [`34px`, `34px`, `66px`],
+          fontSize: [`34px`, `66px`],
           fontWeight: 700,
-          lineHeight: [1, 1],
-          mt: [`20px`, `20px`, `50px`],
+          lineHeight: [1],
+          mt: [`20px`, `50px`],
         }}
       >
         {`Tweag's Academic Research`}
@@ -84,7 +83,7 @@ const IntroductionSection = ({ papers }) => {
         as="div"
         className={`transition-section__transition--slide-fade-in bottom-in papers`}
         sx={{
-          fontSize: [`16px`, `16px`, `27px`],
+          fontSize: [`16px`, `27px`],
           lineHeight: [1.2],
           fontWeight: [400],
         }}
@@ -123,18 +122,18 @@ const Research = ({ data }) => {
       <div
         className="section s_white viewport-section transition-section"
         sx={{
-          pt: [`65px`, `65px`, `135px`],
+          pt: [`65px`, `135px`],
         }}
       >
         <Grid
           className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-          gap={[`35px`, `35px`]}
+          gap={[`35px`]}
           sx={{
-            px: [`15px`, `15px`, `0px`],
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            pr: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            gridColumnStart: [`auto`, `auto`, 1],
-            gridColumnEnd: [`auto`, `auto`, 4],
+            px: [`15px`, `0px`],
+            pl: [`15px`, `60px`, `120px`],
+            pr: [`15px`, `60px`, `120px`],
+            gridColumnStart: [`auto`, 1],
+            gridColumnEnd: [`auto`, 4],
             gridAutoRows: [`max-content`],
             width: `100%`,
           }}

@@ -300,21 +300,10 @@ export const globalStyles = t => {
       }
 
       &.min-5__button-large {
-        @media (min-width: ${t.breakpoints[5]}) {
+        @media (min-width: ${t.breakpoints[2]}) {
           ${buttonSize.large}
         }
       }
-
-      ${[5].reduce(
-        (acc, breakpoint) => `${acc}
-            &.min-${breakpoint}__button-large {
-              @media (min-width: ${t.breakpoints[breakpoint]}) {
-                ${buttonSize.large}
-              }
-            }
-          `,
-        ``
-      )}
 
       &.button-link {
         transition: all 0.4s ease;

@@ -33,9 +33,9 @@ const Column = props => (
     {...props}
     sx={{
       position: `relative`,
-      width: [`50%`, `50%`, `15%`],
-      m: [`0 0 20px`, `0 0 20px`, `0 0 22px`],
-      p: [`0 10px`, `0 10px`, `0`],
+      width: [`50%`, `15%`],
+      m: [`0 0 20px`, `0 0 22px`],
+      p: [`0 10px`, `0`],
     }}
   />
 )
@@ -48,7 +48,7 @@ const ColumnTitle = props => (
       lineHeight: `24px`,
       fontWeight: `400`,
       display: `block`,
-      m: [`0 0 10px`, `0 0 10px`, `0 0 20px`],
+      m: [`0 0 10px`, `0 0 20px`],
     }}
   />
 )
@@ -56,22 +56,14 @@ const ColumnTitle = props => (
 const Footer = () => (
   <footer
     sx={{
-      fontSize: [0, 0, 1, null, null, null, 2],
-      lineHeight: [`18px`, `18px`, `24px`, null, null, null, `26px`],
+      fontSize: [0, 1, 2],
+      lineHeight: [`18px`, `24px`, `26px`],
       position: `relative`,
       bg: `black`,
       color: `white`,
       "--bg-color": `black`,
       "--fg-color": `white`,
-      p: [
-        `40px 0`,
-        `40px 0`,
-        `70px 50px 0`,
-        `90px 50px 0`,
-        `120px 50px 0`,
-        null,
-        `60px 120px`,
-      ],
+      p: [`40px 0`, `80px 50px 0`, `60px 120px`],
       width: `100%`,
     }}
   >
@@ -161,7 +153,7 @@ const Footer = () => (
           sx={{
             position: `relative`,
             display: `block`,
-            width: [`120px`, `120px`, `152px`],
+            width: [`120px`, `152px`],
           }}
         >
           <Link to="/" style={{ display: `block` }}>
@@ -182,34 +174,26 @@ const Footer = () => (
       sx={{
         fontSize: [0],
         position: `relative`,
-        display: [`block`, `block`, `flex`],
+        display: [`block`, `flex`],
         flexWrap: `wrap`,
         alignItems: `center`,
         justifyContent: `space-between`,
-        margin: [
-          `0px -15px 25px`,
-          `0px -15px 25px`,
-          0,
-          0,
-          0,
-          0,
-          `50px 0px 25px`,
-        ],
-        padding: [`25px`, `25px`, 0],
+        margin: [`0px -15px 25px`, 0, `50px 0px 25px`],
+        padding: [`25px`, 0],
       }}
     >
       <div
         sx={{
           margin: `0 0 22px`,
           position: `relative`,
-          width: [`100%`, `100%`, `60%`],
+          width: [`100%`, `60%`],
         }}
       >
         <span
           sx={{
             position: `relative`,
             display: `block`,
-            margin: [`0 0 20px`, `0 0 20px`, 0],
+            margin: [`0 0 20px`, 0],
           }}
         >
           Tweag HQ &rarr; 207 Rue de Bercy &mdash; 75012 Paris &mdash; France
@@ -223,15 +207,15 @@ const Footer = () => (
         sx={{
           margin: `0 0 22px`,
           position: `relative`,
-          width: [`100%`, `100%`, `40%`],
+          width: [`100%`, `40%`],
         }}
       >
         <span
           sx={{
             position: `relative`,
-            display: [`block`, `block`, `inline-block`],
-            float: [`none`, `none`, `right`],
-            margin: [`0 0 20px`, `0 0 20px`, 0],
+            display: [`block`, `inline-block`],
+            float: [`none`, `right`],
+            margin: [`0 0 20px`, 0],
           }}
         >
           &copy; Tweag I/O Limited.&nbsp;{` `}

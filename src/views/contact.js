@@ -66,7 +66,7 @@ const content = {
 }
 
 const CustomLabel = ({ children }) => (
-  <Label sx={{ fontWeight: [`bold`], fontSize: [`16px`, `16px`, `27px`] }}>
+  <Label sx={{ fontWeight: [`bold`], fontSize: [`16px`, `27px`] }}>
     {children}
   </Label>
 )
@@ -130,7 +130,7 @@ const ContactPage = () => {
       <div
         className="section s_white viewport-section transition-section"
         sx={{
-          pt: [`65px`, `65px`, `135px`],
+          pt: [`65px`, `135px`],
         }}
       >
         <Text
@@ -139,11 +139,11 @@ const ContactPage = () => {
           sx={{
             minHeight: `100px`,
             textTransform: `uppercase`,
-            fontSize: [`34px`, `34px`, `66px`],
+            fontSize: [`34px`, `66px`],
             fontWeight: 700,
-            lineHeight: [1, 1],
-            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            mt: [`20px`, `20px`, `50px`],
+            lineHeight: [1],
+            px: [`15px`, `60px`, `120px`],
+            mt: [`20px`, `50px`],
           }}
         >
           Contact us
@@ -152,7 +152,7 @@ const ContactPage = () => {
       <div
         className="section s_yellow viewport-section transition-section"
         sx={{
-          mt: [`75px`, `75px`, `40px`],
+          mt: [`75px`, `40px`],
         }}
       >
         <form
@@ -173,9 +173,9 @@ const ContactPage = () => {
           <Grid
             sx={{
               pt: [`60px`],
-              pb: [`75px`, `75px`, `55px`],
-              px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-              width: [`100%`, `100%`, `70%`, `70%`, `70%`, `70%`, `52%`],
+              pb: [`75px`, `55px`],
+              px: [`15px`, `60px`, `120px`],
+              width: [`100%`, `70%`, `52%`],
             }}
           >
             <Grid
@@ -227,7 +227,7 @@ const ContactPage = () => {
                   type="text"
                   placeholder="myemail@example.com"
                   sx={{
-                    fontSize: [`24px`, `24px`, `42px`],
+                    fontSize: [`24px`, `42px`],
                     border: [0],
                     padding: [`0 !important`],
                     "::placeholder": {
@@ -318,7 +318,7 @@ const ContactPage = () => {
                   name="message"
                   placeholder="Write your message"
                   sx={{
-                    fontSize: [`24px`, `24px`, `42px`],
+                    fontSize: [`24px`, `42px`],
                     border: [0],
                     padding: [`0 !important`],
                     minHeight: [`300px`],
@@ -338,7 +338,7 @@ const ContactPage = () => {
                 type="submit"
                 sx={{
                   justifySelf: `start`,
-                  fontSize: [`18px`, `18px`, `24px !important`],
+                  fontSize: [`18px`, `24px !important`],
                 }}
               >
                 Send message
@@ -349,7 +349,7 @@ const ContactPage = () => {
               className="transition-section__transition--slide-fade-in bottom-in"
               sx={{
                 minHeight: [`100px`],
-                fontSize: [`18px`, `18px`, `27px`],
+                fontSize: [`18px`, `27px`],
               }}
             >
               {formMessage}
@@ -358,7 +358,7 @@ const ContactPage = () => {
               as="div"
               className="transition-section__transition--slide-fade-in bottom-in"
               sx={{
-                fontSize: [`16px`, `16px`, `27px`],
+                fontSize: [`16px`, `27px`],
                 lineHeight: [1.2],
                 fontWeight: [400],
               }}
@@ -378,9 +378,9 @@ const ContactPage = () => {
         <Flex
           className="viewport-section transition-section"
           sx={{
-            pt: [`100px`, `100px`, `100px`, `100px`, `100px`, `80px`],
+            pt: [`100px`, `100px`, `80px`],
             pb: [`100px`],
-            pl: [`0px`, `0px`, `45px`, `45px`, `45px`, `45px`, `105px`],
+            pl: [`0px`, `45px`, `105px`],
             flexWrap: `wrap`,
             width: [`100%`],
           }}
@@ -394,8 +394,8 @@ const ContactPage = () => {
               sx={{
                 fontSize: [`18px`],
                 lineHeight: [`26px`],
-                mt: [`30px`, `30px`, `30px`, `30px`, `30px`, 0],
-                mb: [0, 0, `30px`],
+                mt: [`30px`, `30px`, 0],
+                mb: [0, `30px`],
                 pr: [`80px`],
                 pl: [`15px`],
               }}
@@ -405,9 +405,9 @@ const ContactPage = () => {
                 sx={{
                   textTransform: `uppercase`,
                   fontWeight: 700,
-                  fontSize: [`42px`, `42px`, `66px`],
+                  fontSize: [`42px`, `66px`],
                   lineHeight: [1.1],
-                  mb: [0, 0, 0, 0, 0, `15px`],
+                  mb: [0, 0, `15px`],
                 }}
               >
                 {city}

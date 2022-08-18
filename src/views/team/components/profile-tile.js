@@ -171,7 +171,7 @@ export const ProfileTile = ({
             font-size: 1rem;
           }
 
-          @media screen and (min-width: ${t.breakpoints[4]}) {
+          @media screen and (min-width: ${t.breakpoints[2]}) {
             padding: 1rem;
             font-weight: bold;
           }

@@ -11,22 +11,22 @@ const NotFoundPage = () => {
       <SEO title="Page not found" pathname="/404.html" />
       <Grid
         sx={{
-          pt: [`100px`, `100px`, `150px`],
-          pb: [`60px`, `60px`, `150px`],
-          px: [`15px`, `15px`],
+          pt: [`100px`, `150px`],
+          pb: [`60px`, `150px`],
+          px: [`15px`],
           maxWidth: `32em`,
           margin: `auto`,
           gridAutoRows: `max-content`,
-          height: [null, null, `60vh`],
+          height: [null, `60vh`],
         }}
-        gap={[`30px`, `30px`, `10px`]}
+        gap={[`30px`, `10px`]}
       >
         <Text
           as="div"
           sx={{
             textTransform: `uppercase`,
             fontWeight: 700,
-            fontSize: [5, 5, 8],
+            fontSize: [5, 8],
           }}
         >
           Page not found
@@ -34,7 +34,7 @@ const NotFoundPage = () => {
         <Text
           as="div"
           sx={{
-            fontSize: [2, 2, 2],
+            fontSize: [2],
           }}
         >
           Oops! The page you are looking for has been removed or relocated.
@@ -42,7 +42,7 @@ const NotFoundPage = () => {
         <Link
           sx={{
             justifySelf: `start`,
-            mt: [0, 0, `20px`],
+            mt: [0, `20px`],
           }}
           to="/"
           className="button button-medium button-secondary"
