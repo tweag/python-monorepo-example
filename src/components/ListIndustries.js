@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 function ListIndustries({ industries, customWrapperSx, transitionClass }) {
   return (
     <Grid
-      columns={[1, 1]}
+      columns={[1]}
       sx={{
         px: [`15px`, `100px`],
         py: [`40px`],
