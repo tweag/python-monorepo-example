@@ -13,7 +13,7 @@ function CallToActionFooter({
 }) {
   return (
     <Grid
-      columns={[1, 1, 2]}
+      columns={[1, 2]}
       sx={{
         pt: [`40px`, `100px`, `60px`],
         pb: [`40px`, `50px`, `60px`],
@@ -22,7 +22,7 @@ function CallToActionFooter({
       gap={[`50px`]}
     >
       <Grid
-        columns={[1, 1, 3]}
+        columns={[1]}
         sx={{
           gridRow: [2, 1],
           pr: [`15px`, `0px`],
