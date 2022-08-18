@@ -25,11 +25,7 @@ function Section4() {
           as="p"
           sx={{
             fontSize: [`24px`, `27px`, `38px`],
-            lineHeight: [
-              `30px`,
-              `40px`,
-              `46px`,
-            ],
+            lineHeight: [`30px`, `40px`, `46px`],
             fontWeight: [700],
           }}
         >
@@ -47,11 +43,7 @@ function Section4() {
       >
         <div
           sx={{
-            width: [
-              `100%`,
-              `100%`,
-              `715px`,
-            ],
+            width: [`100%`, `100%`, `715px`],
             minHeight: [`200px`, `500px`],
             background: `url(${friseJoinus})`,
             backgroundSize: [`contain`, null],

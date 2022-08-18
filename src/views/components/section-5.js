@@ -43,11 +43,7 @@ function Section5() {
       gap={[`30px`, `60px`]}
       sx={{
         px: [`15px`, `15px`, `100px`],
-        maxWidth: [
-          `1440px`,
-          `1440px`,
-          `100%`,
-        ],
+        maxWidth: [`1440px`, `1440px`, `100%`],
         margin: `auto`,
       }}
     >
@@ -82,11 +78,7 @@ function Section5() {
             <img
               sx={{
                 maxWidth: [`70%`],
-                width: [
-                  `100px`,
-                  `100px`,
-                  `150px`,
-                ],
+                width: [`100px`, `100px`, `150px`],
               }}
               src={src}
               alt={name}

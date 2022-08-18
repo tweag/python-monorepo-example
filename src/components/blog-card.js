@@ -105,11 +105,7 @@ const BlogCard = ({ node }) => {
           <Text
             as="div"
             sx={{
-              fontSize: [
-                `24px`,
-                `34px`,
-                `42px`,
-              ],
+              fontSize: [`24px`, `34px`, `42px`],
               lineHeight: [1],
               fontWeight: 700,
               textTransform: `uppercase`,

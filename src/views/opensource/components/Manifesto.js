@@ -93,11 +93,7 @@ export default function Manifesto() {
               fontWeight: [700],
               lineHeight: [1],
               textTransform: `uppercase`,
-              minHeight: [
-                `100px`,
-                `100px`,
-                `auto`,
-              ],
+              minHeight: [`100px`, `100px`, `auto`],
               mt: [`5px`, `15px`],
             }}
           >
@@ -132,11 +128,7 @@ export default function Manifesto() {
             justifyContent: `flex-end`,
           }}
         >
-          <img
-            sx={{ width: [`100%`, `87%`, `80%`] }}
-            src={img12}
-            alt=""
-          />
+          <img sx={{ width: [`100%`, `87%`, `80%`] }} src={img12} alt="" />
         </Box>
       </Grid>
       <Grid
@@ -168,9 +160,7 @@ export default function Manifesto() {
           className="transition-section__transition--slide-fade-in right-in only-above-1"
           sx={{
             pr: [`15px`, `0px`],
-            marginLeft: [
-              `auto`,
-            ],
+            marginLeft: [`auto`],
             marginRight: [`auto`],
             mb: [`0px`, `0px`, `auto`],
             mt: [0, `30px`, `80px`],

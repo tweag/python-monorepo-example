@@ -49,11 +49,7 @@ function ListIndustries({ industries, customWrapperSx, transitionClass }) {
             <Text
               as="div"
               sx={{
-                fontSize: [
-                  `18px`,
-                  `27px`,
-                  `34px`,
-                ],
+                fontSize: [`18px`, `27px`, `34px`],
                 lineHeight: [1.1],
                 fontWeight: [700],
               }}

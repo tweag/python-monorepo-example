@@ -14,11 +14,7 @@ export default function Section1() {
       <Grid
         columns={[1, 1, 2]}
         sx={{
-          margin: [
-            `auto`,
-            `auto`,
-            `0 15%`,
-          ],
+          margin: [`auto`, `auto`, `0 15%`],
           textAlign: [`center`, `start`],
           maxWidth: [`100%`, `740px`, `100%`],
           py: [`50px`, 0],
@@ -38,11 +34,7 @@ export default function Section1() {
             sx={{
               width: `100%`,
               height: `auto`,
-              maxWidth: [
-                `280px`,
-                `300px`,
-                `90%`,
-              ],
+              maxWidth: [`280px`, `300px`, `90%`],
             }}
           >
             <source src={homeVideo} type="video/mp4" />

@@ -106,11 +106,7 @@ function TemplateFirstSection({ title, headline, paras }) {
           sx={{
             pr: [`15px`, `0px`],
             pl: [`15px`, `0px`],
-            marginLeft: [
-              `auto`,
-              `auto`,
-              `100px`,
-            ],
+            marginLeft: [`auto`, `auto`, `100px`],
             marginRight: [`auto`],
             my: [`0px`, `0px`, `auto`],
             maxWidth: [`100%`, `75%`, `50%`],

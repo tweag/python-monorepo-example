@@ -47,11 +47,7 @@ const Manifesto = () => {
               fontWeight: [700],
               lineHeight: [1],
               textTransform: `uppercase`,
-              minHeight: [
-                `100px`,
-                `100px`,
-                `auto`,
-              ],
+              minHeight: [`100px`, `100px`, `auto`],
               mt: [`5px`, `15px`],
             }}
           >
@@ -100,11 +96,7 @@ const Manifesto = () => {
             justifyContent: `flex-end`,
           }}
         >
-          <img
-            sx={{ width: [`100%`, `87%`, `80%`] }}
-            src={img12}
-            alt=""
-          />
+          <img sx={{ width: [`100%`, `87%`, `80%`] }} src={img12} alt="" />
         </Box>
       </Grid>
     </div>

@@ -46,24 +46,11 @@ const OpenSourcePage = () => {
           Check out our
           <a
             sx={{
-              lineHeight: [
-                `0px !important`,
-                `1.2 !important`,
-              ],
-              padding: [
-                `8px !important`,
-                `9px 18px !important`,
-              ],
+              lineHeight: [`0px !important`, `1.2 !important`],
+              padding: [`8px !important`, `9px 18px !important`],
               height: [`20px`, `44px`],
-              fontSize: [
-                `18px !important`,
-                null,
-                `24px !important`,
-              ],
-              m: [
-                `0 10px !important`,
-                `-10px 15px !important`,
-              ],
+              fontSize: [`18px !important`, null, `24px !important`],
+              m: [`0 10px !important`, `-10px 15px !important`],
               verticalAlign: `top`,
             }}
             className="button button-secondary button-medium  min-5__button-large"
@@ -75,24 +62,11 @@ const OpenSourcePage = () => {
           <Link
             to="/blog"
             sx={{
-              lineHeight: [
-                `0px !important`,
-                `1.2 !important`,
-              ],
-              padding: [
-                `8px !important`,
-                `9px 18px !important`,
-              ],
+              lineHeight: [`0px !important`, `1.2 !important`],
+              padding: [`8px !important`, `9px 18px !important`],
               height: [`20px`, `44px`],
-              fontSize: [
-                `18px !important`,
-                null,
-                `24px !important`,
-              ],
-              m: [
-                `0 10px !important`,
-                `-10px 15px !important`,
-              ],
+              fontSize: [`18px !important`, null, `24px !important`],
+              m: [`0 10px !important`, `-10px 15px !important`],
               verticalAlign: `top`,
             }}
             className="button button-secondary button-medium  min-5__button-large"

@@ -72,18 +72,11 @@ function Section2() {
                   quickly and transform your ideas into products that work.`,
             },
           ].map(({ h, p }) => (
-            <Grid
-              key={h}
-              gap={[`12px`, `12px`, `18px`]}
-            >
+            <Grid key={h} gap={[`12px`, `12px`, `18px`]}>
               <Text
                 as="h3"
                 sx={{
-                  fontSize: [
-                    `18px`,
-                    `27px`,
-                    `34px`,
-                  ],
+                  fontSize: [`18px`, `27px`, `34px`],
                 }}
               >
                 {h}

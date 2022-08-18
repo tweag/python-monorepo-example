@@ -140,11 +140,7 @@ export default function Careers() {
                 fontWeight: [700],
                 lineHeight: [1],
                 textTransform: `uppercase`,
-                minHeight: [
-                  `100px`,
-                  `100px`,
-                  `auto`,
-                ],
+                minHeight: [`100px`, `100px`, `auto`],
                 mt: [`5px`, `15px`],
                 width: [`100%`, `90%`],
               }}
@@ -218,11 +214,7 @@ export default function Careers() {
               pr: [`15px`, `0px`],
               pl: [`15px`, `180px`],
               my: [`0px`, `0px`, `auto`],
-              maxWidth: [
-                `100%`,
-                `93.3333333%`,
-                `65.5%`,
-              ],
+              maxWidth: [`100%`, `93.3333333%`, `65.5%`],
               gridColumnStart: [`auto`, 2],
               gridColumnEnd: [`auto`, 5],
               gridAutoRows: [`min-content`],
@@ -249,11 +241,7 @@ export default function Careers() {
           <Grid
             sx={{
               pr: [`15px`, `0px`],
-              pl: [
-                `15px`,
-                `50px`,
-                `120px`,
-              ],
+              pl: [`15px`, `50px`, `120px`],
             }}
             gap={[`25px`]}
             className="transition-section__transition--slide-fade-in bottom-in only-above-1"
@@ -333,11 +321,7 @@ export default function Careers() {
               px: [`15px`, `110px`, `135px`],
               pt: [0, `110px`, `50px`],
               pb: [`30px`, `130px`, `70px`],
-              fontSize: [
-                `24px`,
-                `34px`,
-                `42px`,
-              ],
+              fontSize: [`24px`, `34px`, `42px`],
               fontWeight: 700,
               lineHeight: [`1.5em`],
               textTransform: `uppercase`,

@@ -59,11 +59,7 @@ const BlogIndex = ({ data }) => {
               pr: [`15px`, 0],
               pl: [`15px`, `60px`, `120px`],
               mb: [`20px`, 0],
-              flexBasis: [
-                `100%`,
-                `48%`,
-                `47%`,
-              ],
+              flexBasis: [`100%`, `48%`, `47%`],
             }}
           >
             <BlogCard.TopCard node={topPost.node} />
@@ -71,11 +67,7 @@ const BlogIndex = ({ data }) => {
           <Box
             className="transition-section__transition--slide-fade-in right-in only-above-1 delayed-3"
             sx={{
-              flexBasis: [
-                `100%`,
-                `45%`,
-                `47%`,
-              ],
+              flexBasis: [`100%`, `45%`, `47%`],
               pl: [0, `60px`],
               pr: [0, `60px`, `120px`],
             }}
