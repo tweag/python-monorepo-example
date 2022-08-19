@@ -423,6 +423,6 @@ with the GHC API.
 ---
 
 [^1]:
-  `UniqFM` stands for "unique finite map"; it's an `IntMap` in which we use
-  `Unique` as a key. (`Unique` is the type of unique identifiers used in GHC;
-  every `Name` has an associated `Unique`.)
+    `UniqFM` stands for "unique finite map"; it's an `IntMap` in which we use
+    `Unique` as a key. (`Unique` is the type of unique identifiers used in GHC;
+    every `Name` has an associated `Unique`.)

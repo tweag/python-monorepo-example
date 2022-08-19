@@ -286,5 +286,5 @@ This will be the topic of Part II of this series, before we dive into
 the practical aspects of actually writing and debugging a type-checking plugin in Part III.
 
 [^1]:
-  In this context, coherence is the property that the runtime behaviour of
-  programs does not depend on the specific way in which they are typechecked.
+    In this context, coherence is the property that the runtime behaviour of
+    programs does not depend on the specific way in which they are typechecked.

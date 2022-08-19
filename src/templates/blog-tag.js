@@ -68,7 +68,7 @@ const TagPage = ({ data, pageContext }) => {
 export default TagPage
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMarkdownRemark(
       sort: { fields: [fields___slug], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

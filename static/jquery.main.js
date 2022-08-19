@@ -7,17 +7,16 @@ function initInViewport() {
     // The default threshold of 0 causes premature triggering at page
     // boundaries when using the react fullpage plugin, so we use a
     // small non-zero threshold instead
-    threshold: [0.00001]
-  };
+    threshold: [0.00001],
+  }
   const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting)
-        entry.target.classList.add('in-viewport');
-    });
-  }, config);
-  document.querySelectorAll(".viewport-section").forEach(function(section) {
-    observer.observe(section);
-  });
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) entry.target.classList.add("in-viewport")
+    })
+  }, config)
+  document.querySelectorAll(".viewport-section").forEach(function (section) {
+    observer.observe(section)
+  })
 }
 
 // mobile menu init

@@ -107,9 +107,9 @@ the use of `-XTypeApplications` to make the choice of `inj` and `prj`
 unambiguous[^oneway].
 
 [^oneway]:
-  Certain type classes don't need both sides of the bijection. For example
-  `Show`, `Eq` and `Ord` could work with just the projection, while `Read` works
-  with just the injection. The iso-deriving package defines superclasses capturing this.
+    Certain type classes don't need both sides of the bijection. For example
+    `Show`, `Eq` and `Ord` could work with just the projection, while `Read` works
+    with just the injection. The iso-deriving package defines superclasses capturing this.
 
 The generation of these instances could be automated, but as we'll only ever need one
 instance per class, it suffices to put them into the library. Here are some of the instances

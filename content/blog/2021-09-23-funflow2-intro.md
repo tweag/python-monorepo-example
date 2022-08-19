@@ -360,7 +360,7 @@ interests you.
 Thanks for reading, and stay tuned for future updates on `funflow2`!
 
 [^a-la-carte]:
-  Refer to the paper ["Build Systems a la
-  Carte"](https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf)
-  for much more discussion of minimality, early cutoff, and other properties of
-  build systems and pipelines.
+    Refer to the paper ["Build Systems a la
+    Carte"](https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf)
+    for much more discussion of minimality, early cutoff, and other properties of
+    build systems and pipelines.

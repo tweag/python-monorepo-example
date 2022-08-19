@@ -59,13 +59,13 @@ Thus, a typical linear program would likely be one that
   of the programmer to ensure resource protocols are upheld.
 
 [^1]:
-  Of course, these are not the only uses, though many use-cases of
-  linear types can be seen as a combination of these two
-  aspects. Notably, [computations on serialized data][packed-post]
-  could be represented with an API similar to that of mutable arrays,
-  with a usage protocol layered on top;
-  the API ensures a legal and complete write to a memory block that
-  has a serialized representation of some data type.
+    Of course, these are not the only uses, though many use-cases of
+    linear types can be seen as a combination of these two
+    aspects. Notably, [computations on serialized data][packed-post]
+    could be represented with an API similar to that of mutable arrays,
+    with a usage protocol layered on top;
+    the API ensures a legal and complete write to a memory block that
+    has a serialized representation of some data type.
 
 With this in mind, we can envision a standard library as one that has the
 **linear gadgets we _want_**, like pure-interfaced mutable data structures and

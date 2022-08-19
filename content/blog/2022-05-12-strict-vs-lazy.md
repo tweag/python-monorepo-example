@@ -273,14 +273,14 @@ length = go 0
 ```
 
 [^faulty-length]:
-  As it happens, the faulty implementation of length
-  can be found in base. It's not exposed to the user but it's used
-  internally. It's saved by the fact that it uses `Int` rather than
-  `Integer`, and the strictness analysis automatically makes the
-  `go` function strict. I honestly have no idea whether the author
-  was conscious of the fact that they were leveraging the strictness
-  analysis this way, or whether it's another piece of evidence that
-  it's very easy to get wrong.
+    As it happens, the faulty implementation of length
+    can be found in base. It's not exposed to the user but it's used
+    internally. It's saved by the fact that it uses `Int` rather than
+    `Integer`, and the strictness analysis automatically makes the
+    `go` function strict. I honestly have no idea whether the author
+    was conscious of the fact that they were leveraging the strictness
+    analysis this way, or whether it's another piece of evidence that
+    it's very easy to get wrong.
 
 This is an instance of a bigger problem: it's often very difficult to
 reason about memory in lazy languages. The question “do these few

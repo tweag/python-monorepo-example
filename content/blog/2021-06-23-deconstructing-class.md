@@ -247,29 +247,29 @@ extent the various received wisdom around classes maps to these facets.
 
 <!-- prettier-ignore -->
 [^2]:
-  The interpretation of GADTs as arrows from Value to Type may not be
-  entirely obvious; consider the following types
-
-  ```haskell
-  data Even
-  data Odd
-
-  data SParity a where
-  ‎  SEven :: SParity Even
-  ‎  SOdd :: SParity Odd
-  ```
-
-  We can think of `SParity` as mapping each constructor name `SEven`
-  or `SOdd` to a type (`Even` and `Odd`). In this view, each
-  constructor declaration reads like a branch in a `case` expression.
+    The interpretation of GADTs as arrows from Value to Type may not be
+    entirely obvious; consider the following types
+  
+    ```haskell
+    data Even
+    data Odd
+  
+    data SParity a where
+    ‎  SEven :: SParity Even
+    ‎  SOdd :: SParity Odd
+    ```
+  
+    We can think of `SParity` as mapping each constructor name `SEven`
+    or `SOdd` to a type (`Even` and `Odd`). In this view, each
+    constructor declaration reads like a branch in a `case` expression.
 [^0]: Modulo `Overlapping` and similar pragmas.
 [^1]:
-  Though see [Winant 2018](https://lirias.kuleuven.be/retrieve/519822/) for
-  a discussion of how to differentiate cases requiring global uniqueness from
-  those not.
+    Though see [Winant 2018](https://lirias.kuleuven.be/retrieve/519822/) for
+    a discussion of how to differentiate cases requiring global uniqueness from
+    those not.
 
 [^3]:
-  Open functions - that is, functions whose body need not be defined in one
-  place but could be spread out amongst multiple modules. Consider a function
-  `foo :: Int -> String` whose value of even numbers is defined in `Evens.hs`
-  and whose value on odd numbers is defines in `Odds.hs`.
+    Open functions - that is, functions whose body need not be defined in one
+    place but could be spread out amongst multiple modules. Consider a function
+    `foo :: Int -> String` whose value of even numbers is defined in `Evens.hs`
+    and whose value on odd numbers is defines in `Odds.hs`.
