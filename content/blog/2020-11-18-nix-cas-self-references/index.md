@@ -134,7 +134,7 @@ Let's call them `lib0_a` and `lib1_a`.
 The binary cache contains builds of `lib0` and `lib2`.
 Let's call them `lib0_b` and `lib2_b`.
 Because the build of `lib0` is not deterministic, `lib0_a` and `lib0_b` are different -- and so have a different hash.
-In a content-addressed word, that means they will be stored in different paths.
+In a content-addressed world, that means they will be stored in different paths.
 
 A simple cache implementation would want to fetch `lib2_b` from the cache and use it to build `foo`.
 This would also pull `lib0_b`, because it's a dependency of `lib2_b`.
