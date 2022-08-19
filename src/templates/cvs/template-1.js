@@ -15,6 +15,7 @@ const H1 = ({ children }) => {
         fontSize: [`42px`],
         fontWeight: 700,
         lineHeight: 1,
+        marginTop: `2rem`,
       }}
     >
       {children}
@@ -30,6 +31,7 @@ const H2 = ({ children }) => {
         fontWeight: 700,
         textTransform: `uppercase`,
         lineHeight: 1,
+        marginTop: `1rem`,
       }}
     >
       {children}
@@ -62,7 +64,16 @@ const TitleName = ({ fullname, pronouns, github }) => {
       }}
       gap={`0px`}
     >
-      <H1>{fullname}</H1>
+      <div
+        sx={{
+          textTransform: `uppercase`,
+          fontSize: [`42px`],
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {fullname}
+      </div>
       <H2>TWEAGER</H2>
       {pronouns ? <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5> : ``}
       {github ? (
@@ -128,12 +139,10 @@ const TemplateCV1 = ({ data }) => {
           margin: `auto`,
         }}
       >
-        <Grid
-          columns={[1, 1, 2]}
+        <div
           sx={{
-            rowGap: [`40px`],
-            columnGap: [`60px`],
-            gridAutoRows: `max-content`,
+            columnCount: [1, 2],
+            columnGap: `2rem`,
           }}
         >
           <TitleName fullname={name} pronouns={pronouns} github={github} />
@@ -143,7 +152,10 @@ const TemplateCV1 = ({ data }) => {
           </Grid>
           <Grid sx={{ gridAutoRows: `max-content` }}>
             <H1>bio</H1>
-            <Text as="p" sx={{ fontSize: `13px`, lineHeight: 1.3 }}>
+            <Text
+              as="p"
+              sx={{ fontSize: `13px`, lineHeight: 1.3, breakInside: `avoid` }}
+            >
               {shortDescription}
             </Text>
             <Text as="p" sx={{ fontSize: `13px`, lineHeight: 1.3 }}>
@@ -155,7 +167,13 @@ const TemplateCV1 = ({ data }) => {
             {experience &&
               experience.length &&
               experience.map(({ employer, role, years, description }, i) => (
-                <Grid key={i} gap={`2px`}>
+                <div
+                  key={i}
+                  gap={`2px`}
+                  css={`
+                    display: inline-block;
+                  `}
+                >
                   <H5>
                     {employer} &#8212; {role}
                   </H5>
@@ -178,7 +196,7 @@ const TemplateCV1 = ({ data }) => {
                       {desc}
                     </Text>
                   ))}
-                </Grid>
+                </div>
               ))}
           </Grid>
           <Grid
@@ -242,19 +260,24 @@ const TemplateCV1 = ({ data }) => {
               </Grid>
             )}
           </Grid>
+        </div>
+        <div
+          sx={{
+            marginTop: `1rem`,
+            display: `flex`,
+            width: `100%`,
+            alignItems: `end`,
+            justifyContent: `space-between`,
+          }}
+        >
           <Image src={tweaglogo} alt="tweag logo" />
           <Image
             src={blackPattern}
             sx={{
-              display: [`none`, `none`, `block`],
-              alignSelf: `end`,
-              justifySelf: `end`,
-              mr: [0, 0, `-15px`],
-              mb: [0, 0, `-15px`],
-              mt: [0, 0, `-150px`],
+              display: [`none`, `block`],
             }}
           />
-        </Grid>
+        </div>
       </Box>
     </CV>
   )
