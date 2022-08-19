@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import Typed from "react-typed"
 import { Grid, Box } from "theme-ui"
 
 import homePreview from "../../images/home_preview.png"
@@ -73,11 +72,17 @@ export default function Section1() {
               minWidth: [null, null, `400px`],
             }}
           >
+            <div>
+              SCALE YOUR <br />
+              ENGINEERING <br />
+              POWER.
+            </div>
+            {/* TODO: react-typed is dead and needs replacement.
             <Typed
               strings={[`SCALE YOUR <br/>ENGINEERING <br/>POWER.`]}
               typeSpeed={50}
               showCursor={false}
-            />
+            /> */}
           </h1>
           <p>
             We enable deep-tech startups to achieve their vision, from research

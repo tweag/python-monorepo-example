@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui"
-import { Global } from "@emotion/core"
+import { Global } from "@emotion/react"
 
 import JQuery from "./jquery"
 import { Navigation, Footer } from "../components"
