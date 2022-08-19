@@ -64,7 +64,16 @@ const TitleName = ({ fullname, pronouns, github }) => {
       }}
       gap={`0px`}
     >
-      <H1>{fullname}</H1>
+      <div
+        sx={{
+          textTransform: `uppercase`,
+          fontSize: [`42px`],
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {fullname}
+      </div>
       <H2>TWEAGER</H2>
       {pronouns ? <H5 customSx={{ lineHeight: 1.6 }}>{pronouns}</H5> : ``}
       {github ? (
