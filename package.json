@@ -10,7 +10,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
-    "@fullpage/react-fullpage": "^0.1.27",
+    "@fullpage/react-fullpage": "0.1.19",
     "@loadable/component": "^5.15.2",
     "@mdx-js/react": "^1.6.22",
     "@theme-ui/match-media": "^0.14.7",
