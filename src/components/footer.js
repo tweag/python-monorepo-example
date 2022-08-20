@@ -67,7 +67,11 @@ const Footer = () => (
       width: `100%`,
     }}
   >
-    <ColumnArea>
+    <ColumnArea
+      sx={{
+        marginBottom: `40px`,
+      }}
+    >
       <Column>
         <div
           sx={{
@@ -190,7 +194,7 @@ const Footer = () => (
         sx={{
           margin: `0 0 22px`,
           position: `relative`,
-          width: [`100%`, `100%`, `80%`],
+          width: [`100%`, `100%`, `60%`],
         }}
       >
         <span
@@ -211,18 +215,30 @@ const Footer = () => (
         sx={{
           margin: `0 0 22px`,
           position: `relative`,
-          width: [`100%`, `100%`, `20%`],
+          width: [`100%`, `100%`, `40%`],
         }}
       >
         <span
           sx={{
             position: `relative`,
-            display: `block`,
+            display: [`block`, `block`, `inline-block`],
+            float: [`none`, `none`, `right`],
             margin: [`0 0 20px`, `0 0 20px`, 0],
           }}
         >
-          &copy; Tweag I/O Limited.&nbsp;All rights reserved
+          &copy; Tweag I/O Limited.&nbsp;{` `}
+          <a
+            href="https://moduscreate.com"
+            sx={{
+              color: `#f28a00`,
+            }}
+          >
+            A Modus Create Company
+          </a>
+          .
           <span>
+            <br />
+            <span>All rights reserved</span>
             <br />
             <span>Privacy Policy</span>
           </span>
