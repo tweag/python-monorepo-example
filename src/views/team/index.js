@@ -9,7 +9,7 @@ import { SEO } from "../../components"
 import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
-import animations from "./styles/animations.module.css"
+import * as animations from "./styles/animations.module.css"
 import { LoadingAnimation } from "./components/loading-animation"
 
 const MagicGrid = loadable(() => import(`./components/magic-grid`), {

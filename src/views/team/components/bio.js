@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useRef } from "react"
 import { v4 as uuid } from "uuid"
 
 import { parsePositionalStyles } from "../utils/ajustments"
-import styles from "../styles/bio.module.css"
+import * as styles from "../styles/bio.module.css"
 import { positionedTile } from "../styles/tiles.module.css"
 import { dispatchFilterEvent } from "../utils/search"
 

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import styles from "../styles/loading-animation.module.css"
+import * as styles from "../styles/loading-animation.module.css"
 
 const LoadingAnimation = () => {
   return (

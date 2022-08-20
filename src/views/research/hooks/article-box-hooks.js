@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { useEffect, MutableRefObject } from "react"
 
-import styles from "../styles/accordion.module.css"
+import * as styles from "../styles/accordion.module.css"
 
 /**
  * @param {MutableRefObject<HTMLElement>} ref

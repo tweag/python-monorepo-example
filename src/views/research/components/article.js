@@ -4,7 +4,7 @@ import React from "react"
 import { jsx, Text, Box } from "theme-ui"
 import { AccordionItem } from "./Accordion"
 
-import styles from "../styles/article.module.css"
+import * as styles from "../styles/article.module.css"
 
 /**
  * @param {{tweag: boolean, name: string, ref?: string}[]} authors
