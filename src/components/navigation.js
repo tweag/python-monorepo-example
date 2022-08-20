@@ -241,6 +241,7 @@ function Header({ inverted, fullpage = false }) {
             }}
           >
             <Text
+              as="div"
               sx={{
                 minWidth: [`fit-content`],
                 fontSize: [`27px`, `27px`, `16px`, null, null, null, `18px`],

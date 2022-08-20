@@ -73,16 +73,22 @@ const Article = ({
         <></>
       )}
       <Box sx={{ mb: `0.8rem` }}>
-        <Text className={styles.articleTitle}>{title}</Text>
-        <Text sx={{ mb: `0.8rem` }}>{status}</Text>
-        <Text>{parseAuthors(authors)}</Text>
+        <Text as="div" className={styles.articleTitle}>
+          {title}
+        </Text>
+        <Text as="div" sx={{ mb: `0.8rem` }}>
+          {status}
+        </Text>
+        <Text as="div">{parseAuthors(authors)}</Text>
       </Box>
     </Box>
   )
 
   const invisiblePart = (
     <Box>
-      <Text sx={{ mt: `2rem` }}>{abstract}</Text>
+      <Text as="div" sx={{ mt: `2rem` }}>
+        {abstract}
+      </Text>
       <div className={styles.buttonBox}>
         {(links ?? []).map(([name, url]) => (
           <ArticleButton url={url} name={name} key={name + url} />

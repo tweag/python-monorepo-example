@@ -134,6 +134,7 @@ export default function Careers() {
               {content.title}
             </SectionHeading>
             <Text
+              as="div"
               sx={{
                 fontSize: [`34px`, `34px`, `66px`],
                 fontWeight: [700],
@@ -164,7 +165,9 @@ export default function Careers() {
               }}
             >
               {content.firstParas.map((para, idx) => (
-                <Text key={idx}>{para}</Text>
+                <Text as="div" key={idx}>
+                  {para}
+                </Text>
               ))}
             </Grid>
           </Grid>
@@ -239,7 +242,9 @@ export default function Careers() {
             gap={[`20px`]}
           >
             {content.secondParas.map((para, idx) => (
-              <Text key={idx}>{para}</Text>
+              <Text as="div" key={idx}>
+                {para}
+              </Text>
             ))}
           </Grid>
         </Grid>
@@ -269,6 +274,7 @@ export default function Careers() {
             className="transition-section__transition--slide-fade-in bottom-in only-above-1"
           >
             <Text
+              as="div"
               sx={{
                 fontSize: [`18px`, `18px`, `34px`],
                 lineHeight: [`22px`, `22px`, 1.1],
@@ -283,6 +289,7 @@ export default function Careers() {
               {content.roles.map(({ title, description }) => (
                 <Grid key={title} gap={[`20px`]}>
                   <Text
+                    as="div"
                     sx={{
                       fontWeight: [700],
                       fontSize: [`18px`, `18px`, `34px`],
@@ -292,6 +299,7 @@ export default function Careers() {
                     <i className="icon-arrow-right1"></i> {title}
                   </Text>
                   <Text
+                    as="div"
                     sx={{
                       fontWeight: [400],
                       fontSize: [`18px`, `18px`, `24px`],
@@ -334,6 +342,7 @@ export default function Careers() {
         />
         <div className="transition-section viewport-section">
           <Text
+            as="div"
             className="transition-section__transition--slide-fade-in bottom-in only-above-1"
             sx={{
               px: [`15px`, `15px`, `110px`, `110px`, `110px`, `110px`, `135px`],

@@ -25,6 +25,7 @@ function TemplateExamples({ title, examples }) {
       >
         <Grid columns={1} gap={[`20px`, `20px`]}>
           <Text
+            as="div"
             sx={{
               fontSize: [
                 `18px`,
@@ -57,6 +58,7 @@ function TemplateExamples({ title, examples }) {
               />
               {` `}
               <Text
+                as="div"
                 sx={{
                   pl: [`20px`],
                   lineHeight: [`22px`, `22px`, 1.1],

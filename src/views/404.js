@@ -22,6 +22,7 @@ const NotFoundPage = () => {
         gap={[`30px`, `30px`, `10px`]}
       >
         <Text
+          as="div"
           sx={{
             textTransform: `uppercase`,
             fontWeight: 700,
@@ -31,6 +32,7 @@ const NotFoundPage = () => {
           Page not found
         </Text>
         <Text
+          as="div"
           sx={{
             fontSize: [2, 2, 2],
           }}

@@ -43,6 +43,7 @@ const IntroductionSection = () => {
       `}
     >
       <Text
+        as="div"
         className={`${animations.slideAndFadeIn} title`}
         sx={{
           // minHeight: `100px`,
@@ -57,6 +58,7 @@ const IntroductionSection = () => {
         {`Meet The People Behind Tweag`}
       </Text>
       <Text
+        as="div"
         sx={{
           fontSize: [`18px`, `18px`, `27px`],
           lineHeight: [1.2, 1.2, `35px`],

@@ -57,6 +57,7 @@ function Section3() {
     >
       <Box className="transition--slide-fade-in bottom-in  only-above-1">
         <Text
+          as="div"
           sx={{
             fontSize: [`24px`, `24px`, `34px`, `34px`, `34px`, `34px`, `42px`],
             lineHeight: [1],
@@ -86,6 +87,7 @@ function Section3() {
               />
             </Box>
             <Text
+              as="div"
               sx={{
                 fontSize: [
                   `18px`,

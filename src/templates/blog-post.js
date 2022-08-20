@@ -56,6 +56,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             {post.fields.date} — by {post.frontmatter.author}
           </SectionHeading>
           <Text
+            as="div"
             sx={{
               mt: [`45px`],
               mb: [`35px`],

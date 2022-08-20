@@ -20,6 +20,7 @@ function Community({ title, bgColor, children, bgImage, description }) {
       }}
     >
       <Text
+        as="div"
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
           flexBasis: [`100%`, `100%`, `30%`],
