@@ -741,4 +741,5 @@ function updateNavbarBg() {
 
 $(document).scroll(updateNavbarBg)
 
-// updateNavbarBg()
+// Set correct nav background on load and refresh.
+updateNavbarBg()
