@@ -4,7 +4,9 @@ import { useState, useEffect, useRef } from "react"
 import ClickAwayListener from "react-click-away-listener"
 import { Link } from "gatsby"
 import { globalHistory } from "@reach/router"
-import blackLogo from "../images/logo_tweag_black.svg"
+// import blackLogo from "../images/logo_tweag_black.svg"
+import blackLogo from "../images/logo_tweag_header.png"
+
 
 const Logo = () => (
   <Link to="/">
@@ -158,7 +160,7 @@ function Header({ inverted, fullpage = false }) {
         flexWrap: `wrap`,
         p: [`15px`, `15px`, `25px`, null, null, null, `35px`],
         justifyContent: [`space-between`],
-        alignItems: [`center`, null, `flex-end`],
+        alignItems: [`center`, null, `center`],
         position: `fixed`,
         top: 0,
         right: 0,
