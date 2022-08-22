@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react"
 import ClickAwayListener from "react-click-away-listener"
 import { Link } from "gatsby"
 import { globalHistory } from "@reach/router"
-// import blackLogo from "../images/logo_tweag_black.svg"
 import blackLogo from "../images/logo_tweag_header.png"
 
 const Logo = () => (
