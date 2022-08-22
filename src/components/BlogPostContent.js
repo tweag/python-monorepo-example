@@ -352,6 +352,13 @@ function BlogPostContent({ dangerouslySetInnerHTML }) {
           }
         }
 
+        img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+
         .katex-display {
           margin: 20px 15px;
           padding: 0px 15px;
