@@ -22,7 +22,18 @@ const CloseButton = () => {
   const onClick = event => {
     event.target.dispatchEvent(new Event(`toggle-bio`, { bubbles: true }))
   }
-  return <div className={styles.closeButton} onClick={onClick} />
+  const onKeyPress = event => {
+    if (event.key !== `Enter`) return
+    onClick(event)
+  }
+  return (
+    <div
+      className={styles.closeButton}
+      onClick={onClick}
+      onKeyPress={onKeyPress}
+      tabIndex="0"
+    />
+  )
 }
 
 /**
