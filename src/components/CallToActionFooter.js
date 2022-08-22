@@ -15,7 +15,8 @@ function CallToActionFooter({
     <Grid
       columns={[1, 1, 2]}
       sx={{
-        py: [`40px`, `40px`, `100px`, `60px`],
+        pt: [`40px`, `40px`, `100px`, `60px`],
+        pb: [`40px`, `40px`, `50px`, `60px`],
         ...customWrapperSx,
       }}
       gap={[`50px`, `50px`]}
