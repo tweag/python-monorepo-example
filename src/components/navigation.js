@@ -7,7 +7,6 @@ import { globalHistory } from "@reach/router"
 // import blackLogo from "../images/logo_tweag_black.svg"
 import blackLogo from "../images/logo_tweag_header.png"
 
-
 const Logo = () => (
   <Link to="/">
     <img
