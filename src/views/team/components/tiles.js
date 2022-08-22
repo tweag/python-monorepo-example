@@ -120,6 +120,10 @@ export const TagTile = ({
       emmitFilterEvent(mainRef, searchManager.searchString)
     }
   }
+  const onKeyPress = event => {
+    if (event.key !== `Enter`) return
+    onClick(event)
+  }
 
   const { theme: t } = useThemeUI()
   return (
@@ -135,8 +139,10 @@ export const TagTile = ({
         ...positionalStyles,
       }}
       onClick={onClick}
+      onKeyPress={onKeyPress}
       id={id}
       ref={mainRef}
+      tabIndex="0"
     >
       <span
         className={styles.tagText}
