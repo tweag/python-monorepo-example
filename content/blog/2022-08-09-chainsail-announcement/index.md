@@ -104,7 +104,7 @@ Let's find out how we can nicely sample this probability distribution with Chain
    initial_states = np.array([1.0])
    ```
 
-For readability, this code is shortened, but the full code is available [here](https://github.com/tweag/chainsail-resources/tree/main/examples/mixture/probability_1D.py).
+   For readability, this code is shortened, but the full code is available [here](https://github.com/tweag/chainsail-resources/tree/main/examples/mixture/probability_1D.py).
 
 3. Create a job on the Chainsail website:
    a. Upload a zip file with your probability distribution and possibly your data
