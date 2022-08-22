@@ -195,7 +195,7 @@ correctly typed. Of course, we're not actually creating types: but it is
 safe to reason just as if we were! For instance if you were to call
 `reifyOrd (reifyOrd x)` then `x` would have two distinct parameters `s1`
 and `s2`: `s1` and `s2` behave as names for two different types.
-Crucially for us, this makes `ReflectOrded s1 a` and `ReflectOrded s2 a`
+Crucially for us, this makes `ReflectedOrd s1 a` and `ReflectedOrd s2 a`
 two distinct types. Hence their `Ord` instance can be different. This is
 called a [rank 2 quantification](https://wiki.haskell.org/Rank-N_types).
 
