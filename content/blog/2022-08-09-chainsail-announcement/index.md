@@ -35,7 +35,7 @@ What then often happens is that the Markov chain exploring the probability distr
 ![A Markov chain getting stuck in a mode](./stuck_chain.png)
 
 This means that the samples you draw might not be representative of the full distribution and as a consequence you might be missing out on important new information, like an alternative cluster assignment or an interesting biomolecular structure.
-PPLs have some remedies for that, but they are heuristic and don't scale well to many modes.
+Some PPLs implement algorithms that help deal with multimodality, such as [adaptive path sampling](https://arxiv.org/pdf/2009.00471.pdf) and [stacking](https://www.jmlr.org/papers/v23/20-1426.html) in Stan, but these methods cannot profit from parallel computing power readily available on cloud platforms or do not provide exact samples and thus serve only specific use cases.
 
 ## A peek under the hood
 
@@ -45,7 +45,7 @@ This algorithm runs multiple Markov chains in parallel that each sample increasi
 If Replica Exchange is well configured, these exchanges help the Markov chain sampling the original distribution to escape from modes.
 But several facts can make Replica Exchange hard to use:
 
-- it is not implemented some of the most popular PPLs (Stan, PyMC3),
+- it is not implemented in some of the most popular PPLs (Stan, PyMC3),
 - for difficult sampling problems, it requires parallel computing resources,
 - its most important parameter (which determines "flatness") can be hard to tune.
 
