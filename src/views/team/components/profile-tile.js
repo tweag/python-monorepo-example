@@ -140,7 +140,7 @@ export const ProfileTile = ({
         }, 100)
       }}
       id={id}
-      tabIndex="0"
+      tabIndex={notShowingTile ? `-1` : `0`}
     >
       <div className={styles.shadowContainer}>
         <img
