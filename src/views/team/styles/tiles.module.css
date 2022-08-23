@@ -82,7 +82,8 @@
 }
 
 @media screen and (hover: hover) {
-  .tagTile:hover {
+  .tagTile:hover,
+  .tagTile:focus {
     background-color: black;
     color: white;
   }
