@@ -36,6 +36,7 @@ const OpenSourcePage = () => {
         }}
       >
         <Text
+          as="div"
           className="check transition-section__transition--slide-fade-in bottom-in"
           sx={{
             fontSize: [`16px`, `16px`, `27px`],

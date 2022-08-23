@@ -1,6 +1,6 @@
 import React from "react"
 import ReactFullpage from "@fullpage/react-fullpage"
-import { Global } from "@emotion/core"
+import { Global } from "@emotion/react"
 
 import JQuery from "./jquery"
 import { Navigation } from "../components"

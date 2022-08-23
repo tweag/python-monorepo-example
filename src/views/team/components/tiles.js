@@ -5,7 +5,7 @@ import { useState, MutableRefObject, useRef } from "react"
 
 import { parsePositionalStyles } from "../utils/ajustments"
 import { useSearchContext } from "../utils/search"
-import styles from "../styles/tiles.module.css"
+import * as styles from "../styles/tiles.module.css"
 
 export const TILE_COLORS = [`#005642`, `#30C179`, `#FBCEB4`, `#FFFFFF`]
 export const ROUNDINGS = [``, styles.roundLeftCorner, styles.roundRightCorner]

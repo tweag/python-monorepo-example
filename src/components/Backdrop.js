@@ -38,10 +38,7 @@ function Backdrop({ customSx, variant }) {
   return (
     <Box
       sx={{
-        animationName: scroll,
-        animationDuration: `10s`,
-        animationTimingFunction: `linear`,
-        animationIterationCount: `infinite`,
+        animation: `${scroll} 10s linear infinite`,
         background: `url(${imgVariants[variant]})`,
         backgroundSize: `400px 200px`,
         minHeight: `200px`,

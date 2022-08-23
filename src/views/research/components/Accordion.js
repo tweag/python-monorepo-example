@@ -4,7 +4,7 @@ import { useRef } from "react"
 
 import { useToggleEventMonitor } from "../hooks/accordion-hooks"
 
-import styles from "../styles/accordion.module.css"
+import * as styles from "../styles/accordion.module.css"
 
 /**
  * Event handler for click event that should toggle folding on accordion item

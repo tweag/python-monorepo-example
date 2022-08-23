@@ -39,6 +39,7 @@ function TemplateFirstSection({ title, headline, paras }) {
             Key industry
           </SectionHeading>
           <Text
+            as="div"
             sx={{
               fontSize: [`18px`, `18px`, `27px`],
               lineHeight: [1.1],
@@ -49,6 +50,7 @@ function TemplateFirstSection({ title, headline, paras }) {
             <i className="icon-arrow-right1"></i> {title}
           </Text>
           <Text
+            as="div"
             sx={{
               fontSize: [`34px`, `34px`, `66px`],
               fontWeight: [700],
@@ -69,7 +71,7 @@ function TemplateFirstSection({ title, headline, paras }) {
               marginTop: [`10px`],
             }}
           >
-            <Text>{firstPara}</Text>
+            <Text as="div">{firstPara}</Text>
           </Grid>
         </Grid>
         {/*  We can use this box for the left layout image like in the services page. */}
@@ -124,6 +126,7 @@ function TemplateFirstSection({ title, headline, paras }) {
         >
           {restParas.map((para, i) => (
             <Text
+              as="div"
               key={i}
               sx={{
                 fontSize: [`18px`, `18px`, `27px`],

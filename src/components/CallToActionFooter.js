@@ -39,6 +39,7 @@ function CallToActionFooter({
           }}
         >
           <Text
+            as="div"
             sx={{
               fontSize: [
                 `24px`,

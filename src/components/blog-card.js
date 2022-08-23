@@ -19,6 +19,7 @@ export const TopCard = ({ node }) => {
         to={node.fields.slug}
       >
         <Text
+          as="div"
           sx={{
             fontSize: [`14px`],
             mt: [0, 0, `15px`],
@@ -27,6 +28,7 @@ export const TopCard = ({ node }) => {
           {node.fields.date}
         </Text>
         <Text
+          as="div"
           sx={{
             fontSize: [`34px`, `34px`, `66px`],
             lineHeight: [1],
@@ -39,6 +41,7 @@ export const TopCard = ({ node }) => {
           {title}
         </Text>
         <Text
+          as="div"
           sx={{
             fontSize: [`27px`, `27px`, `27px`, `27px`, `27px`, `18px`],
             mt: [`35px`, `35px`],
@@ -91,6 +94,7 @@ const BlogCard = ({ node }) => {
       <Link to={node.fields.slug} sx={{ color: `#000` }}>
         <Flex sx={{ flexDirection: `column` }}>
           <Text
+            as="div"
             sx={{
               fontSize: [`16px`],
               mt: [`15px`],
@@ -99,6 +103,7 @@ const BlogCard = ({ node }) => {
             {node.fields.date}
           </Text>
           <Text
+            as="div"
             sx={{
               fontSize: [
                 `24px`,
@@ -122,6 +127,7 @@ const BlogCard = ({ node }) => {
             {title}
           </Text>
           <Text
+            as="div"
             sx={{
               fontSize: [`16px`],
               mt: [`20px`],

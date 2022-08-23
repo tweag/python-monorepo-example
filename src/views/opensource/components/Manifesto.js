@@ -87,6 +87,7 @@ export default function Manifesto() {
             Open source
           </SectionHeading>
           <Text
+            as="div"
             sx={{
               fontSize: [`34px`, `34px`, `66px`],
               fontWeight: [700],
@@ -116,7 +117,9 @@ export default function Manifesto() {
             }}
           >
             {content.firstParas.map((para, idx) => (
-              <Text key={idx}>{para}</Text>
+              <Text as="div" key={idx}>
+                {para}
+              </Text>
             ))}
           </Grid>
         </Grid>
@@ -199,7 +202,9 @@ export default function Manifesto() {
             }}
           >
             {content.secondParas.map((para, idx) => (
-              <Text key={idx}>{para}</Text>
+              <Text as="div" key={idx}>
+                {para}
+              </Text>
             ))}
           </Grid>
         </Grid>
@@ -235,7 +240,9 @@ export default function Manifesto() {
             }}
           >
             {content.thirdParas.map((para, idx) => (
-              <Text key={idx}>{para}</Text>
+              <Text as="div" key={idx}>
+                {para}
+              </Text>
             ))}
           </Grid>
         </Grid>

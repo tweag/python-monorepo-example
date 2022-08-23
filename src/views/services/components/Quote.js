@@ -61,6 +61,7 @@ export default function Quote() {
         gap={[`20px`]}
       >
         <Text
+          as="div"
           sx={{
             fontSize: [`34px`, `34px`],
             lineHeight: [1.1, 1.1],
@@ -77,6 +78,7 @@ export default function Quote() {
           }}
         />
         <Text
+          as="div"
           sx={{
             fontSize: [`18px`, `18px`],
             lineHeight: [1.3, 1.3],

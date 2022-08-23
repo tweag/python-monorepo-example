@@ -5,7 +5,7 @@ import { ROUNDINGS, TILE_COLORS } from "./tiles"
 import { parsePositionalStyles } from "../utils/ajustments"
 import { BioContext } from "./bio"
 import { useSearchContext } from "../utils/search"
-import styles from "../styles/tiles.module.css"
+import * as styles from "../styles/tiles.module.css"
 
 /**
  * @param {{

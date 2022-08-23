@@ -63,6 +63,7 @@ export default function WhatWeDo() {
           {content.map(({ heading, p }) => (
             <Grid key={heading} gap={[`20px`]}>
               <Text
+                as="div"
                 sx={{
                   fontWeight: [700],
                   fontSize: [`18px`, `18px`, `34px`],
@@ -72,6 +73,7 @@ export default function WhatWeDo() {
                 <i className="icon-arrow-right1"></i> {heading}
               </Text>
               <Text
+                as="div"
                 sx={{
                   fontWeight: [400],
                   fontSize: [`18px`, `18px`, `24px`],

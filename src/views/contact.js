@@ -124,6 +124,7 @@ const ContactPage = () => {
         }}
       >
         <Text
+          as="div"
           className="transition-section__transition--slide-fade-in bottom-in"
           sx={{
             minHeight: `100px`,
@@ -223,6 +224,7 @@ const ContactPage = () => {
               </button>
             </Grid>
             <Text
+              as="div"
               className="transition-section__transition--slide-fade-in bottom-in"
               sx={{
                 minHeight: [`100px`],
@@ -232,6 +234,7 @@ const ContactPage = () => {
               {formMessage}
             </Text>
             <Text
+              as="div"
               className="transition-section__transition--slide-fade-in bottom-in"
               sx={{
                 fontSize: [`16px`, `16px`, `27px`],
@@ -277,6 +280,7 @@ const ContactPage = () => {
               }}
             >
               <Text
+                as="div"
                 sx={{
                   textTransform: `uppercase`,
                   fontWeight: 700,

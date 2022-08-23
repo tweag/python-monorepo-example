@@ -10,6 +10,7 @@ import tweaglogo from "../../images/logo_tweag_black_cv_template.svg"
 const H1 = ({ children }) => {
   return (
     <Text
+      as="div"
       sx={{
         textTransform: `uppercase`,
         fontSize: [`42px`],
@@ -26,6 +27,7 @@ const H1 = ({ children }) => {
 const H2 = ({ children }) => {
   return (
     <Text
+      as="div"
       sx={{
         fontSize: [`24px`],
         fontWeight: 700,
@@ -42,6 +44,7 @@ const H2 = ({ children }) => {
 const H5 = ({ children, customSx, className }) => {
   return (
     <Text
+      as="div"
       className={className}
       sx={{
         textTransform: `uppercase`,
@@ -99,6 +102,7 @@ const ListFeature = ({ title, features }) => {
       >
         {features.map(feature => (
           <Text
+            as="div"
             key={feature}
             sx={{
               fontSize: [`13px`],
@@ -186,6 +190,7 @@ const TemplateCV1 = ({ data }) => {
                   </H5>
                   {(description || []).map((desc, i) => (
                     <Text
+                      as="div"
                       key={i}
                       sx={{
                         fontSize: `13px`,
@@ -210,6 +215,7 @@ const TemplateCV1 = ({ data }) => {
                 <Grid>
                   {publications.map((publication, index) => (
                     <Text
+                      as="div"
                       key={index}
                       sx={{
                         fontSize: `10px`,
@@ -244,6 +250,7 @@ const TemplateCV1 = ({ data }) => {
                       <H5>{years}</H5>
                       {(description || []).map((desc, i) => (
                         <Text
+                          as="div"
                           key={i}
                           sx={{
                             fontSize: `13px`,

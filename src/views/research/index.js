@@ -14,6 +14,7 @@ import introImage from "../../images/img17.svg"
 
 const introText = (
   <Text
+    as="div"
     sx={{
       fontSize: [`18px`, `18px`, `27px`],
       lineHeight: [1.2, 1.2, `35px`],
@@ -65,6 +66,7 @@ const IntroductionSection = ({ papers }) => {
       `}
     >
       <Text
+        as="div"
         className={`transition-section__transition--slide-fade-in bottom-in title`}
         sx={{
           // minHeight: `100px`,
@@ -79,6 +81,7 @@ const IntroductionSection = ({ papers }) => {
       </Text>
       {introText}
       <Text
+        as="div"
         className={`transition-section__transition--slide-fade-in bottom-in papers`}
         sx={{
           fontSize: [`16px`, `16px`, `27px`],

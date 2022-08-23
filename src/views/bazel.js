@@ -41,6 +41,7 @@ const Manifesto = () => {
             Bazel
           </SectionHeading>
           <Text
+            as="div"
             sx={{
               fontSize: [`34px`, `34px`, `66px`],
               fontWeight: [700],
@@ -84,7 +85,9 @@ const Manifesto = () => {
                 diverse environments.
               </Fragment>,
             ].map((para, idx) => (
-              <Text key={idx}>{para}</Text>
+              <Text as="div" key={idx}>
+                {para}
+              </Text>
             ))}
           </Grid>
         </Grid>
@@ -124,6 +127,7 @@ const Community = ({ title, bgColor, children, bgImage }) => {
       }}
     >
       <Text
+        as="div"
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
           flexBasis: [`100%`, `100%`, `30%`],

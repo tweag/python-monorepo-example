@@ -58,6 +58,7 @@ function Section5() {
     >
       <Box className="transition--slide-fade-in bottom-in  only-above-1">
         <Text
+          as="div"
           sx={{
             textAlign: [`left`, `center`],
             fontSize: [`24px`, `24px`, `34px`, `34px`, `34px`, `34px`, `42px`],

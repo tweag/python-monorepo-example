@@ -8,7 +8,7 @@ import {
 } from "../hooks/article-box-hooks"
 import { countTags, classifyArray } from "../utils"
 import { Year } from "./yearly-layout"
-import styles from "../styles/article-box.module.css"
+import * as styles from "../styles/article-box.module.css"
 
 /**
  * @param {string} tagName

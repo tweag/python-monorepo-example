@@ -94,7 +94,9 @@ export function useAddEventListener(
 ) {
   useEffect(() => {
     mainRef.current.addEventListener(eventName, eventHandler)
-    return () => mainRef.current.removeEventListener(eventName, eventHandler)
+    return () =>
+      mainRef?.current &&
+      mainRef.current.removeEventListener(eventName, eventHandler)
   }, requirements)
 }
 

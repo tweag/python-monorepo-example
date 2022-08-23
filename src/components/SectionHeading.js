@@ -14,6 +14,7 @@ import { Text } from "theme-ui"
 function SectionHeading({ customSx, children }) {
   return (
     <Text
+      as="div"
       sx={{
         fontSize: [`18px`, `18px`],
         lineHeight: [`22px`, `22px`],

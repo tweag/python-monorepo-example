@@ -1,6 +1,6 @@
 /* eslint camelcase: 0 */
 
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 
 const buttonSize = {
   small: `

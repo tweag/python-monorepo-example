@@ -50,6 +50,7 @@ function TemplateCaseStudies({ caseStudies }) {
           Case studies
         </SectionHeading>
         <Text
+          as="div"
           sx={{
             fontSize: [`34px`, `34px`, `66px`],
             fontWeight: [700],
@@ -70,6 +71,7 @@ function TemplateCaseStudies({ caseStudies }) {
           {projects.map(({ client, description }, i) => (
             <Grid key={i}>
               <Text
+                as="div"
                 sx={{
                   fontSize: [
                     `18px`,
@@ -85,12 +87,15 @@ function TemplateCaseStudies({ caseStudies }) {
               >
                 {client}
               </Text>
-              <Text sx={{ fontSize: [`18px`, `18px`] }}>{description}</Text>
+              <Text as="div" sx={{ fontSize: [`18px`, `18px`] }}>
+                {description}
+              </Text>
             </Grid>
           ))}
         </Grid>
         <Grid gap={[`20px`]}>
           <Text
+            as="div"
             sx={{
               fontSize: [
                 `18px`,
@@ -115,6 +120,7 @@ function TemplateCaseStudies({ caseStudies }) {
             }}
           />
           <Text
+            as="div"
             sx={{
               fontSize: [`18px`],
             }}
