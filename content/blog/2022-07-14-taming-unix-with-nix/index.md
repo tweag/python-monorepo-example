@@ -150,9 +150,93 @@ The following table shows equivalence in terminology between build systems and p
 
 What Nix has been doing successfully since 2004 is encoding the [place-oriented][plop] paradigm of files and processes in terms of a [dataflow-oriented][dfop] programming language, and hooking its evaluation results back into the operating system.
 
-Maybe surprisingly, that programming language is _not_ the Nix language, but what is called the _derivation language_ — a key mechanism in the Nix store.
-The purely functional, lazily evaluated Nix language is merely a user interface to declare objects and their relations (values and functions) as expressions in the derivation language.
-The Nix package manager’s command line tools in turn allow running operations on the store, such as deriving new values by evaluating these expressions, and exposing values to the Unix environment.
+Maybe surprisingly, that programming language is _not_ the Nix language, but what we could tentatively call the _derivation language_ for lack of a better term.
+The Nix language itself is merely a user interface to declare objects and their relations (i.e., values and functions) as expressions in that derivation language.
+
+The derivation language is a key mechanism in Nix, but not really visible as such, as it is deeply buried in implementation details.
+
+When you when run the programs declared in this language, it transforms build inputs into build results.
+The programs use part of the file system as memory, which Nix calls it the Nix store, and its memory objects are files.
+The language's evaluator is a build scheduler – the Nix package manager has one built-in; the [Hydra][hydra] build system, used to run continuous integration for `nixpkgs` and NixOS, is another.
+
+[hydra]: https://github.com/NixOS/hydra
+
+The following example is a most basic[^6] Nix language expression:
+
+```nix
+derivation {
+  name = "example";
+  builder = /bin/sh;
+  args = [ "-c" "echo hello > $out" ];
+  system = builtins.currentSystem;
+}
+```
+
+It declares what Nix calls a _derivation_:
+a precise description of how contents of existing files are used to derive new files.
+
+The build instructions encoded in this derivation create a file with contents `hello`.
+This does the same thing as capturing the output of the shell script example above.
+The main difference is that, with Nix, repeated executions of these build instructions will always produce the same result.[^7]
+
+Nix achieves this by copying all input files to the Nix store, where they cannot change, and always working on the immutable copies.
+
+A side effect of evaluating the above expression with `nix-instantiate` is the creation of the the following build task:
+
+```json
+{
+  "/nix/store/ccdzzm0mzmavzmf8vyr6wx95ihm2lpzr-example.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/spvfs5qfrf113ll4vhcc5lby4gqmc532-example"
+      }
+    },
+    "inputSrcs": ["/nix/store/wsziwdqamp7mx03mdwciyhs7z733dlik-sh"],
+    "inputDrvs": {},
+    "system": "x86_64-darwin",
+    "builder": "/nix/store/wsziwdqamp7mx03mdwciyhs7z733dlik-sh",
+    "args": ["-c", "echo hello > $out"],
+    "env": {
+      "builder": "/nix/store/wsziwdqamp7mx03mdwciyhs7z733dlik-sh",
+      "name": "example",
+      "out": "/nix/store/spvfs5qfrf113ll4vhcc5lby4gqmc532-example",
+      "system": "x86_64-darwin"
+    }
+  }
+}
+```
+
+Nix calls this structure a _store derivation_: a build task with unambiguously specified dependencies, persisted in the Nix store.
+Note how the `builder` is not `/bin/sh` any more, but a file in `/nix/store`, uniquely identified by the hash of its contents.
+
+The unwieldy syntax and the specifics of wiring up the build execution with `env` and `args` are rather arbitrary and have historical reasons.
+What matters here is that this construction has all properties of a purely functional programming language:
+
+- Declarative: Build tasks can be composed.
+
+  The build result of one can be used as build input for another.
+  The order of operations is determined by data dependencies, and otherwise irrelevant.
+
+- Pure: The `builder` will always produce the same result for the same inputs.
+
+  Assuming the `builder` process is sufficiently isolated from its host system, the transformation it performs on its arguments acts like a pure function.
+
+- Functional: A derivation (as opposed to its build result) can be used as a build input.
+
+  At least in principle[^8].
+
+Following the analogy of build systems and programming languages, this diagram illustrates the derivation as pure data transformation:
+
+```mermaid
+flowchart
+subgraph derivation
+  inp2[x86-64-darwin] --> |system| drv
+  inp3["-c echo hello > $out"] -->|args| drv
+	inp1["/nix/store/wszi...-sh"] -->|builder| drv["/nix/store/ccdz...-example.drv"] -->|out| out["/nix/store/spvf...-example"]
+end
+```
+
+Evaluating Nix language expressions only produces build tasks. Evaluating the build tasks produces build results. The Nix package manager’s command line tools in turn allow exposing build results to the Unix environment.
 
 NixOS pushes this idea to the limit by capturing as much operating system state as possible into the realm of [declarative programming][dclp].
 
@@ -182,11 +266,18 @@ what if everything on our computers was, in fact, a computer program?
 [^1]: Special thanks to: John Ericson (@Ericson2314) from Obsidian Systems and Attila Gulyas (@toraritte) for taking time to discuss research papers and collaborating on explanations and terminology table; Neil Mitchell for checking that the results from "Build Systems à la Carte" are represented correctly; my colleague Théophane Hufschmitt (@regnat), who asked for a proper introduction to the leading motif of this article, and prompted a more detailed research on the history of ideas in computing; my colleague Jackline Yim (@JacklineYim) for her tireless support with wielding the English language.
 [^2]: Under the most favorable conditions, where file names can be completely arbitrary, file systems can only accurately model static trees with labeled nodes. A similar attempt will fail for directed acyclic graphs, as directories cannot have more than one parent. Even when encoding structure as file paths in symlinks and file contents, changes to that structure cannot be accounted for by the file system itself.
 [^3]: Even though relational databases and object stores are ubiquitous in application development, there exists no widely used computing environment which is not ultimately based on files in a file system. Interestingly, [non-programmers are increasingly confronted with user interfaces that do not mention files at all][students-files].
+
+[students-files]: https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z
+
 [^4]: Eric Raymond offers a critical view on hierarchical file systems in [The Art of Unix Programming][taoup] (2003), and mentions research taking different directions. See [capability-based operating systems][capos] for examples.
 
 [taoup]: http://www.catb.org/~esr/writings/taoup/html/ch20s03.html#id3019140
 [capos]: https://en.wikipedia.org/wiki/Capability-based_operating_system
 
 [^5]: Even the term "file descriptor" for a reference to an object in a computer system shows its historic roots in associating digital electronic data with the contents of paper files.
+[^6]: The built-in Nix language function `derivation` is so basic, and building actual software is so involved, that you will probably never see it in practice. Instead, in `nixpkgs` sophisticated wrappers such as `mkDerivation` are used.
+[^7]: To that end it also requires specifying a `system`, a combination of instruction set architecture and operating system, on which the build is supposed to run – a different `system` will produce different build results.
+[^8]: This feature is a planned addition described in [RFC 92][rfc-92], which is [not yet implemented][rfc-92-tracking] at the time of writing this article.
 
-[students-files]: https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z
+[rfc-92]: https://github.com/NixOS/rfcs/blob/master/rfcs/0092-plan-dynamism.md
+[rfc92-tracking]: https://github.com/NixOS/nix/issues/6316
