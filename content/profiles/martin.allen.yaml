@@ -1,0 +1,64 @@
+slug: martin.allen
+name: Martin Allen
+github: martyall
+
+shortDescription: |
+  Martin is a software developer specializing in functional programming. He
+  uses advanced tooling, testing, and formal methods to ensure that software
+  is both robust and performant.
+
+bio: |
+
+  Martin started programming as a Haskell engineer in 2015 and has since worked in
+  a variety of settings, including web development, blockchain engineering,
+  numerical analysis, and event-driven systems. He has extensive experience 
+  in the Blockchain space, and has been working at several levels in this industry since 2016.
+  He also has a passion for open source software and has contributed to or led on much of 
+  Haskell and PureScript tooling around Ethereum. 
+
+  Prior to programming he was pursuing a PhD in Mathematics in the field of Algebraic
+  Geometry. As a software developer, this has transformed into an interest in the use 
+  of various methods to prove program correctness.
+
+  Martin enjoys endurance sports and is an avid trail runner, cyclist, and skier. 
+  Outside of work, you can find him in the mountains in his home state of 
+  Oregon in the US.
+
+links:
+  GitHub: https://github.com/martyall
+  Personal: https://martyall.github.io
+
+skills:
+  - Haskell
+  - PureScript
+  - Blockchain
+  - Linux
+  - Mathematics
+
+speaks:
+  - English
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 - present
+    description:
+  - employer: FOAM
+    role: Senior Software Engineer
+    years: 2017 - 2022
+  - employer: Blockapps
+    role: Senior Blockchain Engineer
+    years: 2017 - 2017
+  - employer: VFiles
+    role: Full Stack Developer
+    years: 2016 - 2017
+
+education:
+  - qualification: Masters of Science
+    name: Mathematics
+    institution: University of Paris-Sud
+    years: 2012-2014
+  - qualification: Bachelor of Science
+    name: Mathematics
+    institution: University of Washington
+    years: 2006-2010
