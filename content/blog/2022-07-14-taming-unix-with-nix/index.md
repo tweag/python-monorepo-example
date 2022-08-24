@@ -1,5 +1,5 @@
 ---
-title: Nix – taming Unix with functional programming
+title: Taming Unix with functional programming
 author: Valentin Gagarin
 tags: [nix]
 description: "Nix is all about applying functional programming to files and processes."
