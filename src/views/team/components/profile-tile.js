@@ -86,6 +86,11 @@ export const ProfileTile = ({
     width,
   })
 
+  const keyPressHandler = event => {
+    if (event.key !== `Enter`) return
+    clickHandler(event)
+  }
+
   // Positional styles
   const positionalStyles = parsePositionalStyles(start, width, height)
 
@@ -122,6 +127,7 @@ export const ProfileTile = ({
         "--tile-color": TILE_COLORS[colorIndex],
       }}
       onClick={notShowingTile ? null : clickHandler}
+      onKeyPress={notShowingTile ? null : keyPressHandler}
       onPointerOut={event => {
         const target = event.currentTarget
         const removeForceActive = () =>
@@ -134,6 +140,7 @@ export const ProfileTile = ({
         }, 100)
       }}
       id={id}
+      tabIndex={notShowingTile ? `-1` : `0`}
     >
       <div className={styles.shadowContainer}>
         <img
