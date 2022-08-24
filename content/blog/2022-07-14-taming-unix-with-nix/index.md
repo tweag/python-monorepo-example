@@ -227,14 +227,7 @@ What matters here is that this construction has all properties of a purely funct
 
 Following the analogy of build systems and programming languages, this diagram illustrates the derivation as pure data transformation:
 
-```mermaid
-flowchart
-subgraph derivation
-  inp2[x86-64-darwin] --> |system| drv
-  inp3["-c echo hello > $out"] -->|args| drv
-	inp1["/nix/store/wszi...-sh"] -->|builder| drv["/nix/store/ccdz...-example.drv"] -->|out| out["/nix/store/spvf...-example"]
-end
-```
+![Derivation as program](derivation.svg)
 
 Evaluating Nix language expressions only produces build tasks. Evaluating the build tasks produces build results. The Nix package manager’s command line tools in turn allow exposing build results to the Unix environment.
 
