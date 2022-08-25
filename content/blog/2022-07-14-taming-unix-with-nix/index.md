@@ -213,7 +213,7 @@ Nix calls this structure a _store derivation_: a build task with unambiguously s
 Note how the `builder` is not `/bin/sh` any more, but a file in `/nix/store`, uniquely identified by the hash of its contents.
 
 The unwieldy syntax and the specifics of wiring up the build execution with `env` and `args` are rather arbitrary and have historical reasons.
-What matters here is that this construction has all properties of a purely functional programming language:
+What matters here is that this construction has properties of a purely functional programming language:
 
 - Declarative: Build tasks can be composed.
 
