@@ -1,0 +1,100 @@
+slug: matthew.healy
+name: Matthew Healy
+pronouns: they/them
+github: matthew-healy
+shortDescription: |
+  Matthew is a software engineer, (recovering) mathematician and type system
+  enthusiast with a decade of experience across a variety of industries and
+  technologies. They're also an amateur stand-up comedian, just in case your 
+  team is missing one of those.
+bio: |
+  After graduating from a mathematics degree and narrowly avoiding a career
+  in tax accountancy, Matthew taught themselves to code while working as a
+  software tester in order to automate a boring & repetitive set of smoke 
+  tests. From there, they spent several years building iOS applications,
+  had a stint teaching Ruby and JavaScript at a software bootcamp, and somehow
+  ended up leading the authentication team for a business with ~75 million 
+  monthly active users.
+
+  Matthew cares deeply about software quality, writing maintainable code,
+  and efficient software engineering processes. They're also a skilled mentor,
+  taking great satisfaction in supporting the development of those around them.
+
+  Over the last few years, Matthew has become particularly interested in 
+  programming language design, both from a developer-experience perspective,
+  and as an application of the foundational mathematics they studied at university.
+  They're excited to work on anything that helps bring advances in type systems 
+  into the hands of everyday programmers.
+
+  Outside of work, Matthew enjoys making experimental music, performing 
+  experimental stand-up comedy, and eating in fancy experimental restaurants.
+  They also play a lot of video games & are always up for a game of Mario Kart.
+skills:
+  - Haskell
+  - Scala
+  - Rust
+  - Swift
+  - Testing
+  - Domain-driven design
+  - Software development processes
+  - Teaching & mentoring
+speaks:
+  - English (native)
+  - German (basic)
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 - Present
+  - employer: SoundCloud
+    role: Senior Software Engineer
+    years: 2018 - 2022
+    description:
+      - Led efforts to overhaul the authentication domain, which had lacked
+        ownership for several years prior. Implemented an OAuth 2.1 compliant
+        authorization server. Transitioned both first- and third-party clients
+        to the new implementation with minimal disruption. Also handled
+        Engineering Manager duties.
+      - Technical lead on multiple projects for the SoundCloud iOS app. Designed
+        and built an integration testing framework to enable "headless" feature
+        code to be exercised fully without incurring the costs of UI testing.
+      - Technical mentor for engineers on SoundCloud's internal training program.
+  - employer: Clue
+    role: Senior Software Engineer
+    years: 2017 - 2018
+    description:
+      - Designed & built a backend-driven UI framework while maintaining a leagcy
+        application.
+      - Increased iOS app unit test coverage 10x.
+  - employer: CodeClan
+    role: Senior Software Engineering Instructor
+    years: 2016 - 2017
+    description: # TODO
+      - Lead a team of instructors teaching a 16 week bootcamp on software
+        engineering fundamentals in Ruby, Java and JavaScript.
+      - Wrote & maintained course materials.
+      - Mentored students & junior instructors.
+      - Wrote a small script to set-up student laptops saving 20+ hours of manual
+        work per cohort.
+  - employer: FanDuel
+    role: Software Engineer
+    years: 2015 - 2016
+    description:
+      - Feature development on the Webby-award winning fantasy sports app.
+      - Kickstarted Swift adoption on the iOS team by running workshops for
+        colleagues.
+      - Ran weekly "Code & Cake" knowledge-sharing meetings for the engineering
+        org.
+      - Scrum master for the iOS team.
+  - employer: Tesco Bank
+    role: Software Engineer
+    years: 2014 - 2015
+    description:
+      - Learned software engineering fundamentals while contributing to projects
+        across a variety of tech stacks.
+education:
+  - qualification: BSc (Hons)
+    name: Mathematics
+    institution: The University of Edinburgh
+    years: 2009 - 2014
+talks:
+  - "Evolutionary Architecture for Mobile Applications, Turing Fest Edinburgh 2019"
