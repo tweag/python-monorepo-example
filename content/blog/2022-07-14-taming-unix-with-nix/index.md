@@ -157,7 +157,7 @@ The derivation language is a key mechanism in Nix, but not really visible as suc
 
 When you run the programs declared in this language, it transforms build inputs into build results.
 The programs use part of the file system as memory, which Nix calls it the Nix store, and its memory objects are files.
-The language's evaluator is a build scheduler – the Nix package manager has one built-in; the [Hydra][hydra] build system, used to run continuous integration for `nixpkgs` and NixOS, is another.
+The language's evaluator is the build scheduler.
 
 [hydra]: https://github.com/NixOS/hydra
 
