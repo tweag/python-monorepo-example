@@ -150,14 +150,17 @@ The following table shows equivalence in terminology between build systems and p
 
 What Nix has been doing successfully since 2004 is encoding the [place-oriented][plop] paradigm of files and processes in terms of a [dataflow-oriented][dfop] programming language, and hooking its evaluation results back into the operating system.
 
-Maybe surprisingly, that programming language is _not_ the Nix language, but what we could tentatively call the _derivation language_ for lack of a better term.
-The Nix language itself is merely a user interface to declare objects and their relations (i.e., values and functions) as expressions in that derivation language.
+Maybe surprisingly, that programming language is _not_ the Nix language.
+Rather, Nix uses what we may call the _derivation language_, for lack of a better term.
 
-The derivation language is a key mechanism in Nix, but not really visible as such, as it is deeply buried in implementation details.
+The derivation language is a key mechanism in Nix, but users are rarely exposed to it.
+The Nix language itself is merely syntactic sugar that helps us encode objects and their relations (i.e., values and functions) as expressions in the derivation language.
 
-When you run the programs declared in this language, it transforms build inputs into build results.
-The programs use part of the file system as memory, which Nix calls it the Nix store, and its memory objects are files.
-The language's evaluator is the build scheduler.
+Programs written in the derivation language transform build inputs into build results.
+These programs use the file system as memory, and their memory objects are files.
+Nix calls this part of the filesystem the Nix store.
+
+To run programs written in the derivation language, we evaluate them with the build scheduler.
 
 [hydra]: https://github.com/NixOS/hydra
 
