@@ -1,0 +1,119 @@
+slug: jose-luis.lafuente
+
+name: José Luis Lafuente
+
+github: jlesquembre
+
+shortDescription: |
+  José Luis is a pragmatic programmer who fell in love with functional
+  programming after learning about Clojure and Nix.
+  Around 2017 he installed NixOS on his laptop and never looked back. He is
+  always interested in learning more about any topic related to programming.
+
+bio: |
+  José Luis was always interested in technology and computers, which led him to
+  study Computer Engineering. Working as a software engineer since 2007,
+  mainly on web-related projects, he has worked with a wide range of
+  programming languages, like Java, Typescript, Go, Rust and Clojure.
+
+  He started his career working with Java and Python, but after some years, he
+  switched to functional programming languages. In particular, Nix and Clojure
+  resonated with him.
+
+  When working on a new project, he likes to get the full picture, and to work
+  on all the different sides, from the web frontend to the server
+  configuration. José Luis defends the goodness of functional programming and
+  Nix but recognizes that the most important part of a project is the people.
+  He believes in empowering people, reaching agreements, and encouraging
+  communication to get better outcomes.
+
+skills:
+  - Clojure
+  - Nix
+  - Typescript
+  - Web technologies (Web APIs, CSS, HTML)
+  - Kubernetes
+  - DevOps
+
+speaks:
+  - Spanish (native)
+  - English
+  - German (intermediate)
+
+links:
+  Github: https://github.com/jlesquembre
+  Twitter: https://twitter.com/jlesquembre
+  Website: https://www.lafuente.me/
+
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: 2022 - Present
+    description:
+
+  - employer: Raiffeisen Bank International AG
+    role: Software Engineer
+    years: 2021 - 2022
+    description:
+      - Internal credit management solution
+      - Clojure / ClojureScript, AWS
+
+  - employer: 5G Systems GmbH
+    role: Software Engineer
+    years: 2020 - 2021
+    description:
+      - Build end-to-end products for the gaming industry
+      - Introduce web standards in a new company project, while starting to
+        migrate existing frontend projects to web standards (the goal was to
+        remove 3rd party dependencies, like React or Angular)
+      - Typescript, Web Components, Java, Vert.x, MongoDB, AWS
+
+  - employer: Yelster Digital GmbH / Solocal Group
+    role: Software Engineer / Lead Engineer
+    years: 2014 - 2020
+    description:
+      - Technical lead for the Site Privilège project, a platform to produce and
+        host websites for SMEs
+      - Migrated platform to Kubernetes on Google Cloud Platform
+      - Handled recruitment and training of team members
+      - Javascript, Python and PostgreSQL, but also Rust and Clojure
+
+  - employer: Ubimet GmbH
+    role: Software Engineer
+    years: 2013 - 2014
+    description:
+      - Backend developer for the morecast.com project (Weather app)
+      - Python, PostgreSQL, MongoDB
+
+  - employer: Cellent AG / Bundesministerium für Inneres (AT)
+    role: Software Engineer
+    years: 2012 - 2013
+    description:
+      - Austrian registration office (ZMR) internal web app
+      - Java, GWT
+
+  - employer: Freelancer
+    role: Software Engineer
+    years: 2010 - 2012
+    description:
+      - Multiple projects, mainly web related.
+      - JavaScript, Python, PHP
+
+  - employer: BOC GmbH
+    role: QA Engineer
+    years: 2009 - 2010
+    description:
+      - Integration testing with Java and TestNG
+
+  - employer: Indra SA
+    role: Software developer / Tech support
+    years: 2007 - 2011
+    description:
+      - Tech Support and Developer for a mobile game platform.
+      - Java
+
+education:
+  - qualification: Bachelor of Engineering
+    name: Computer Engineering
+    institution: University of Alicante
+    years: 2000-2006
