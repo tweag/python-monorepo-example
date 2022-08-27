@@ -157,12 +157,9 @@ The derivation language is a key mechanism in Nix, but users are rarely exposed 
 The Nix language itself is merely syntactic sugar that helps us encode objects and their relations (i.e., values and functions) as expressions in the derivation language.
 
 Programs written in the derivation language transform build inputs into build results.
-These programs use the file system as memory, and their memory objects are files.
+These programs use part of the file system as memory, and their memory objects are files.
 Nix calls this part of the filesystem the Nix store.
-
 To run programs written in the derivation language, we evaluate them with the build scheduler.
-
-[hydra]: https://github.com/NixOS/hydra
 
 The following example is a most basic[^6] Nix language expression:
 
