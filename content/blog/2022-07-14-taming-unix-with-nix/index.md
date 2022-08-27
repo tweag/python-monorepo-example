@@ -210,9 +210,9 @@ Nix calls this structure a _store derivation_: a build task with unambiguously s
 Note how the `builder` is not `/bin/sh` any more, but a file in `/nix/store`, uniquely identified by the hash of its contents.
 
 The unwieldy syntax and the specifics of wiring up the build execution with `env` and `args` are rather arbitrary and have historical reasons.
-What matters here is that this construction has properties of a purely functional programming language:
+What matters here is that this construction has properties of a dataflow programming language:
 
-- Declarative: Build tasks can be composed.
+- Dataflow oriented: Build tasks can be composed.
 
   The build result of one can be used as build input for another.
   The order of operations is determined by data dependencies, and otherwise irrelevant.
@@ -220,10 +220,6 @@ What matters here is that this construction has properties of a purely functiona
 - Pure: The `builder` will always produce the same result for the same inputs.
 
   Assuming the `builder` process is sufficiently isolated from its host system, the transformation it performs on its arguments acts like a pure function.
-
-- Functional: A derivation (as opposed to its build result) can be used as a build input.
-
-  At least in principle[^8].
 
 Following the analogy of build systems and programming languages, this diagram illustrates the derivation as pure data transformation:
 
@@ -245,6 +241,8 @@ A build function also amounts to an operating system process (not depicted).
 
 ![Functional Mapping](functional-mapping.svg)
 
+# What next?
+
 Since its inception, Nix development has been primarily occupied with imposing the abstraction of functional programming onto the messy, real world of our Unix lineage:
 encoding and correctly dealing with object references in the file system, ensuring purity of function application, and working around built-in assumptions behind the mechanisms of different language ecosystems and build procedures — all while keeping performance acceptable.
 
@@ -253,6 +251,10 @@ Currently there is much work in progress to improve the user experience by prese
 
 However, something much more interesting lives in the long-term.
 Which other results from programming language theory and mathematics will we be able to leverage to make software build quickly, work reliably, and further tame Unix?
+
+For example, what if the derivation language was not only pure, but also functional, to use derivations as build inputs?[^8]
+What if the derivation language also had types, to describe constraints to composing packages and configurations?
+
 Nix is begging the question:
 what if everything on our computers was, in fact, a computer program?
 
