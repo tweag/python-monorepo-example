@@ -10,8 +10,8 @@ const Logo = () => (
   <Link to="/">
     <img
       sx={{
-        width: `auto`,
-        height: `27px`,
+        width: `175px`,
+        height: `auto`,
         transition: `filter 0.4s ease`,
         ".navbar-inverted &": {
           filter: `invert(100%)`,
