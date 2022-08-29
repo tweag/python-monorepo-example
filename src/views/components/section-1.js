@@ -12,7 +12,7 @@ export default function Section1() {
   return (
     <React.Fragment>
       <Grid
-        columns={[1, 1, 2]}
+        columns={[1, 2]}
         sx={{
           margin: [`auto`, `auto`, `0 15%`],
           textAlign: [`center`, `start`],

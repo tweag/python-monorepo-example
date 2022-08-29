@@ -62,7 +62,7 @@ function Section5() {
           &amp; innovators
         </Text>
       </Box>
-      <Grid columns={[2]} gap={[`20px`, `60px`]}>
+      <Grid columns={[2, 3]} gap={[`20px`, `60px`]}>
         {partners.map(({ src, name }, i) => (
           <Box
             key={name}
