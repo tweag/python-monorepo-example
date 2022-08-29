@@ -253,10 +253,16 @@ However, something much more interesting lives in the long-term.
 Which other results from programming language theory and mathematics will we be able to leverage to make software build quickly, work reliably, and further tame Unix?
 
 For example, what if the derivation language was not only pure, but also functional, to use derivations as build inputs?[^8]
-What if the derivation language also had types, to describe constraints to composing packages and configurations?
+What if it also had types, to describe constraints to composing packages and configurations?
 
 Nix is begging the question:
 what if everything on our computers was, in fact, a computer program?
+
+---
+
+Edited 2022-08-29:
+Expanded on the derivation language, added examples and explanations.
+Originally it was only briefly mentioned as a key mechanism underlying Nix.
 
 [^1]: Special thanks to: John Ericson (@Ericson2314) from Obsidian Systems and Attila Gulyas (@toraritte) for taking time to discuss research papers and collaborating on explanations and terminology table; Neil Mitchell for checking that the results from "Build Systems à la Carte" are represented correctly; my colleague Théophane Hufschmitt (@regnat), who asked for a proper introduction to the leading motif of this article, and prompted a more detailed research on the history of ideas in computing; my colleague Jackline Yim (@JacklineYim) for her tireless support with wielding the English language.
 [^2]: Under the most favorable conditions, where file names can be completely arbitrary, file systems can only accurately model static trees with labeled nodes. A similar attempt will fail for directed acyclic graphs, as directories cannot have more than one parent. Even when encoding structure as file paths in symlinks and file contents, changes to that structure cannot be accounted for by the file system itself.
