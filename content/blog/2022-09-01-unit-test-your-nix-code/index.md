@@ -5,9 +5,9 @@ tags: [nix]
 description: "Cleanly and seamlessly add unit tests to your nix functions."
 ---
 
-At Tweag, we write a lot of [Nix][nixos] code. Most of that code produces derivations or packages but occasionally we write small helper functions that are algorithmic in nature. As diligent developers and when appropriate, we should write unit tests to ensure the correctness and maintainability of our code. This post will demonstrate and compare various ways available in the Nix ecosystem to add unit testing to your Nix code -- specifically Nix functions.
+At Tweag, we write a lot of code using the [Nix language][nix-language]. Most of that code produces derivations or packages but occasionally we write small helper functions that are algorithmic in nature. As diligent developers and when appropriate, we should write unit tests to ensure the correctness and maintainability of our code. This post will demonstrate and compare various ways available in the Nix ecosystem to add unit testing to your Nix code -- specifically Nix functions.
 
-[nixos]: https://nixos.org/
+[nix-language]: https://nixos.org/manual/nix/stable/language/index.html
 [nix-unit-testing]: https://github.com/tweag/nix-unit-testing
 
 ## Minimal Examples
@@ -62,7 +62,7 @@ You can see in the returned list, there is a single attribute set with the name 
 
 ### Nixt
 
-[Nixt][nixt] is a CLI Nix unit testing framework. The way Nixt creates tests is a bit different from `runTests`; you create test suites with multiple test cases. Below is the code from a file called `test.nixt`. Notice the file extension; Nixt has a [few special rules][nixt-rules] for how test files should be named.
+[Nixt][nixt] is a CLI unit testing framework for the Nix language. The way Nixt creates tests is a bit different from `runTests`; you create test suites with multiple test cases. Below is the code from a file called `test.nixt`. Notice the file extension; Nixt has a [few special rules][nixt-rules] for how test files should be named.
 
 [nixt]: https://github.com/nix-community/nixt
 [nixt-rules]: https://github.com/nix-community/nixt#writing-tests
@@ -110,7 +110,7 @@ Found 2 cases in 1 suites over 1 files.
 
 ### Pythonix
 
-[Pythonix][pythonix] is Python package that uses Nix internals to evaluate Nix expressions. This allows us to use any Python unit testing framework we like to test our Nix code. Below we have our `test_isEven.py` file and we will use the same `math.nix` file from before. At the time of writing this post, the Pythonix maintainer has archived the project; if this project is meaningful to you, contact them about adopting the project.
+[Pythonix][pythonix] is Python package that uses Nix language internals to evaluate Nix expressions. This allows us to use any Python unit testing framework we like to test our Nix code. Below we have our `test_isEven.py` file and we will use the same `math.nix` file from before. At the time of writing this post, the Pythonix maintainer has archived the project; if this project is meaningful to you, contact them about adopting the project.
 
 [pythonix]: https://github.com/Mic92/pythonix
 
