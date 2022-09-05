@@ -131,7 +131,7 @@ Said acceptance/rejection step is the second part of the transition kernel and c
 It involves calculating an acceptance probability $p_\mathrm{acc}(x_{i+1}|x_i)$ and accepting the proposal $x_{i+1}$ with that probability as the next state in the chain.
 Drawing the next state $x_{i+1}$ from $T(x_{i+1}|x_i)$ is then done as follows:
 first, a proposal state $x_{i+1}$ is drawn from $q(x_{i+1}|x_i)$.
-It is then accepted as the next state with probability $p_\mathrm{acc}(x_{i+1}|x_i)$ or rejected with probability $1-p_\mathrm{acc}(x\_{i+1}|x_i)$, in which case the current state is copied as the next state.
+It is then accepted as the next state with probability $p_\mathrm{acc}(x_{i+1}|x_i)$ or rejected with probability $1-p_\mathrm{acc}(x_{i+1}|x_i)$, in which case the current state is copied as the next state.
 
 We thus have
 
@@ -158,7 +158,7 @@ $$
 Now here's where the magic happens:
 we know $\pi$ only up to a constant, but it doesn't matter, because that unknown constant cancels out in the expression for $p_\mathrm{acc}$!
 It is this property of $p_\mathrm{acc}$ which makes algorithms based on Metropolis-Hastings work for unnormalized distributions.
-Often, symmetric proposal distributions with $q(x_i|x_{i+1})=q(x\_{i+1}|x_i)$ are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
+Often, symmetric proposal distributions with $q(x_i|x_{i+1})=q(x_{i+1}|x_i)$ are used, in which case the Metropolis-Hastings algorithm reduces to the original, but less general Metropolis algorithm developed in 1953 and for which
 
 $$
 p_\mathrm{acc}(x_{i+1}|x_i) = \mathrm{min} \left\{1, \frac{\pi(x_{i+1})}{\pi(x_i)} \right\} \ \text .
@@ -208,7 +208,7 @@ def sample_MH(x_old, log_prob, stepsize):
     # here we determine whether we accept the new state or not:
     # we draw a random number uniformly from [0,1] and compare
     # it with the acceptance probability
-    accept = np.random.random() < p_acc(x_new, x_old, log_prob)
+    accept = np.random.random() < p_acc_MH(x_new, x_old, log_prob)
     if accept:
         return accept, x_new
     else:
