@@ -264,6 +264,8 @@ Edited 2022-08-29:
 Expanded on the derivation language, added examples and explanations.
 Originally it was only briefly mentioned as a key mechanism underlying Nix.
 
+Thanks to Ian Henry (@ianthehenry) for detailed feedback and specifically for pointing out that gap.
+
 [^1]: Special thanks to: John Ericson (@Ericson2314) from Obsidian Systems and Attila Gulyas (@toraritte) for taking time to discuss research papers and collaborating on explanations and terminology table; Neil Mitchell for checking that the results from "Build Systems à la Carte" are represented correctly; my colleague Théophane Hufschmitt (@regnat), who asked for a proper introduction to the leading motif of this article, and prompted a more detailed research on the history of ideas in computing; my colleague Jackline Yim (@JacklineYim) for her tireless support with wielding the English language.
 [^2]: Under the most favorable conditions, where file names can be completely arbitrary, file systems can only accurately model static trees with labeled nodes. A similar attempt will fail for directed acyclic graphs, as directories cannot have more than one parent. Even when encoding structure as file paths in symlinks and file contents, changes to that structure cannot be accounted for by the file system itself.
 [^3]: Even though relational databases and object stores are ubiquitous in application development, there exists no widely used computing environment which is not ultimately based on files in a file system. Interestingly, [non-programmers are increasingly confronted with user interfaces that do not mention files at all][students-files].
