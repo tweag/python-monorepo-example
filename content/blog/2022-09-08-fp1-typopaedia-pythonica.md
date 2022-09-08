@@ -409,33 +409,33 @@ article._
 <!-- Footnotes -->
 
 [^1]:
-  We are not limited to Python; these techniques can be applied in
-  any language with suitable support, libraries and tooling.
+    We are not limited to Python; these techniques can be applied in
+    any language with suitable support, libraries and tooling.
 
 [^2]:
-  Why they're "algebraic" is because algebraic data types form a
-  [semiring][wiki-semiring]; a structure from abstract algebra. Bartosz
-  Milewski [goes into depth][milewski-2015] on this, with a slight
-  Haskell bent.
+    Why they're "algebraic" is because algebraic data types form a
+    [semiring][wiki-semiring]; a structure from abstract algebra. Bartosz
+    Milewski [goes into depth][milewski-2015] on this, with a slight
+    Haskell bent.
 
 [^3]:
-  Since Python 3.9, standard collections [can be used][pep-585] as
-  their own type annotations. Prior to this, collection types could be
-  found in the [`typing`][py3-typing] standard library module.
+    Since Python 3.9, standard collections [can be used][pep-585] as
+    their own type annotations. Prior to this, collection types could be
+    found in the [`typing`][py3-typing] standard library module.
 
 [^4]:
-  The [`attrs`][pypi-attrs] library is a common dependency that
-  achieves a similar goal, while `dataclasses` fulfils the ["Pareto
-  principle"][wiki-pareto] from within the Python standard library.
+    The [`attrs`][pypi-attrs] library is a common dependency that
+    achieves a similar goal, while `dataclasses` fulfils the ["Pareto
+    principle"][wiki-pareto] from within the Python standard library.
 
 [^5]:
-  It would be more useful here to split the `TypingDiscipline`
-  enumeration into two `Enums`: one for strong/weak and the other for
-  static/dynamic. As I say, it's just an example!
+    It would be more useful here to split the `TypingDiscipline`
+    enumeration into two `Enums`: one for strong/weak and the other for
+    static/dynamic. As I say, it's just an example!
 
 [^6]:
-  You may be familiar with Python's [`functools.reduce`][py3-reduce],
-  which is a _left_ fold.
+    You may be familiar with Python's [`functools.reduce`][py3-reduce],
+    which is a _left_ fold.
 
 <!-- Links -->
 
