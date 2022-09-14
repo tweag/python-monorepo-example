@@ -307,7 +307,6 @@ The version of `assemble_assets` shown below has been simplified a little for cl
 load("@rules_pkg//pkg:zip.bzl", "pkg_zip")
 
 def assemble_assets(name):
-
     # Convert xml mesh data to ogre binary format.
     mesh_converter = "@ogre//:bin/OgreXMLConverter"
     native.genrule(
@@ -348,7 +347,7 @@ but for maps this extra step is needed:
 def assemble_map(name):
     assemble_assets(name)
 
-    # Build kdtree for collision detection.
+    # Build k-d tree for collision detection.
     native.genrule(
         name = "{name}_collision",
         srcs = [":{name}-geometry.xml"],
@@ -374,14 +373,13 @@ fonts, etc.
 ## Running the game
 
 With both the code and data building we now turn to actually running the game.
-For the `server` executable this is relatively straight forward. It does no
-rendering so it only depends on the map collision data.
+For the `server` executable this is relatively straight forward. Its only data
+dependency is the map collision data.
 
-However the Ogre3D graphics engine used by `client` requires a `resources.cfg`
-file specifying all the assets that should be loaded. It also needs to load
-various plugins with [`dlopen`][dlopen]. This is facilitated by a wrapper
-script which enumerates all the resources and sets the plugin folder
-appropriately:
+However the Ogre3D graphics engine used by `client` requires all the assets to
+be listed in a `resources.cfg` file. It also needs to dynamically load various
+plugins with [`dlopen`][dlopen]. This is facilitated by a wrapper script which
+enumerates all the resources and sets the plugin folder appropriately:
 
 ```python
 write_file(
