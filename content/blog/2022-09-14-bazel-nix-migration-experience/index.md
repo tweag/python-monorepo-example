@@ -179,9 +179,9 @@ $ tree $(nix-build '<nixpkgs>' -A enet)
         `-- libenet.pc
 ```
 
-This information will be useful when crafting the `build_file_content`
-parameter, which is written to a `BUILD.bazel` file in the root of the `@enet`
-repository created by `nixpkgs_package`. Again in `WORKSPACE.bazel`:
+This information will be useful when crafting `build_file_content`. The value
+given for this parameter is written to a `BUILD.bazel` file in the root of the
+`@enet` repository. Again in `WORKSPACE.bazel`:
 
 ```python
 nixpkgs_package(
