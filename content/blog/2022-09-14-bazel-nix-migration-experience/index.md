@@ -156,7 +156,7 @@ If `attribute_path` is not given it defaults to the value given for the `name`
 parameter, so for `enet` it can be left out. Once you've found a Nix package
 you can examine what files it contains:
 
-```bash
+```
 $ tree $(nix-build '<nixpkgs>' -A enet)
 /nix/store/75xz5q742sla5q4l0kj6cm90vgzh8qv3-enet-1.3.17
 |-- include
