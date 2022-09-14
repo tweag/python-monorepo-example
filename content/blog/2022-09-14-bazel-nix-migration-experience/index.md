@@ -7,7 +7,6 @@ author: Ben Radford
 description: |
   Getting an old Make based project building again after 10 years with the help of Bazel and Nix.
 
-
 tags:
   - bazel
   - nix
@@ -471,8 +470,8 @@ confidence Bazel provides here is great for developer productivity.
 
 [^1]:
     The `shared_library` parameter should exactly match the shared library name
-    in the dynamic section of the executable. Use `readelf -d EXECUTABLE` to check
-    this.
+    in the dynamic section of the executable. You can use `readelf -d EXECUTABLE`
+    to check this.
 
 <!-- Links -->
 
