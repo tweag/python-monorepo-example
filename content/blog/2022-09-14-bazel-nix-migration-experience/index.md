@@ -139,8 +139,8 @@ load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_package")
 
 The [`nixpkgs_package`][nixpkgs_package] macro loaded by the last line can be
 used to import a Nix package as a Bazel repository. It has many optional
-parameters, allowing its behaviour to be customised precisely as needed. Though
-this might require some familiarity with Nix and Bazel.
+parameters, allowing its behaviour to be customised precisely as needed (though
+this requires some familiarity with Nix and Bazel).
 
 The [`attribute_path`][attribute-path] parameter indicates the particular Nix
 package to be imported. You can find attribute paths by searching for a Nix
