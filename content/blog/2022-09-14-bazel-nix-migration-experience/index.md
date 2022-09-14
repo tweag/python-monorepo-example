@@ -456,8 +456,8 @@ build outputs (e.g. tools) are themselves used as part of the build. When you
 change something Bazel will rebuild exactly what is necessary and it will do so
 in the correct order.
 
-Clearly not building more than necessary saves time, but not building less does
-too. When a build system neglects to rebuild something it should have, the
+Clearly, not building more than necessary saves time, but not building less
+does too. When a build system neglects to rebuild something it should have, the
 result is confusion and wasted time because runtime behaviour does not match
 code. After being bitten by this a few times developers will tend to clean the
 build more frequently, incurring the cost of a full rebuild each time. So the
