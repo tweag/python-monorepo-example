@@ -453,7 +453,7 @@ Having easy access to over 80,000 packages is reason enough to pair Bazel with
 Nix, but if reproducible builds matter to you [it makes even more
 sense][blog-bazel-nix].
 
-Perfectly [correct and incremental builds][correct-incremental-builds] are
+Perfectly [correct and incremental][correct-incremental-builds] builds are
 awesome. Bazel is very good at managing complex dependency graphs where some
 build outputs (e.g. tools) are themselves used as part of the build. When you
 change something Bazel will rebuild exactly what is necessary and it will do so
