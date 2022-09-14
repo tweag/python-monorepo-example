@@ -2,7 +2,7 @@
 title: "Type-checking plugins, Part III: writing a type-checking plugin"
 shortTitle: "Writing a type-checking plugin"
 author: Sam Derbyshire
-tags: [haskell, ghc]
+tags: [haskell, ghc, fellowship]
 description: "A tutorial on how to write a type-checking plugin for GHC"
 ---
 
@@ -319,7 +319,7 @@ type family Id a where
 ```
 
 `Id` takes two arguments; one invisible and one visible.
-For instance: `Id @Type Int`, `Id @Nat 17`.  
+For instance: `Id @Type Int`, `Id @Nat 17`.
 When dealing with type family arguments, one must not forget to account
 for these invisible arguments; they are treated the same as the visible arguments
 within a type-checking plugin.
@@ -333,7 +333,7 @@ data Reduction = Reduction Coercion !Type
 ```
 
 That is, to rewrite the type family application `F a_1 ... a_n` to `xi`,
-a rewriter plugin should answer with a `Reduction co xi`, where `co :: F a_1 ... a_n ~# xi`.  
+a rewriter plugin should answer with a `Reduction co xi`, where `co :: F a_1 ... a_n ~# xi`.
 Note in particular that the coercion is oriented left-to-right: the original type family application
 is on the left, and the rewritten type is on the right.
 
@@ -345,7 +345,7 @@ to simply pass an unsafe universal coercion, using `mkUnivCo`.
 ### tcTrace
 
 To start off, it can be useful to see precisely what constraints the plugin is seeing.
-To immediately print out all the constraints that the plugin is provided with, use  
+To immediately print out all the constraints that the plugin is provided with, use
 [`tcPluginTrace :: String -> SDoc -> TcPluginM ()`](https://hackage.haskell.org/package/ghc-tcplugin-api/docs/GHC-TcPlugin-API.html#v:tcPluginTrace)
 
 ```haskell

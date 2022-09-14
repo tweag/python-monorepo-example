@@ -2,7 +2,7 @@
 title: "Type-checking plugins, Part II: GHC's constraint solver"
 shortTitle: "GHC's constraint solver"
 author: Sam Derbyshire
-tags: [haskell, ghc]
+tags: [haskell, ghc, fellowship]
 description: "In part two of this series on type-checking plugins, we will see how GHC's constraint solver works."
 ---
 
@@ -100,7 +100,7 @@ it provides **evidence** that the typeclass constraint is satisfied. This eviden
 runtime, as in the explicit dictionary-passing example.[^2]
 
 This means that defining a typeclass is tantamount to defining a record type, whose values will be obtained
-from constraint solving and passed implicitly (we will cover constraint solving in more detail later, see [§ Constraint solving](#constraint-solving)).  
+from constraint solving and passed implicitly (we will cover constraint solving in more detail later, see [§ Constraint solving](#constraint-solving)).
 For instance, when calling `elem1 (3 :: Int) [4,5]`, GHC will look up the instance `Eq Int`
 to obtain the dictionary, whereas the user would have to manually pass a record
 of type `EqDict Int` to use `elem2` instead.
@@ -183,9 +183,9 @@ up a unboxed coercion. We can then cast `x` using the coercion `co2 = Sub ( Sym 
 GHC has a vast collection of coercions, which serves as its type-level proof language.
 It is important to be able to recognise some common coercions,
 as type-checking plugins will often manipulate them, and debugging a type-checker
-plugin often involves inspecting coercions.  
+plugin often involves inspecting coercions.
 We provide here a short and non-exhaustive inventory of coercions one is liable to encounter
-in the depths of Core (refer to the [GHC Core specification](https://gitlab.haskell.org/ghc/ghc/-/blob/master/docs/core-spec/core-spec.pdf) for a complete list).  
+in the depths of Core (refer to the [GHC Core specification](https://gitlab.haskell.org/ghc/ghc/-/blob/master/docs/core-spec/core-spec.pdf) for a complete list).
 In the following, `r` denotes the **role** of the coercion:
 either `N` (Nominal) or `R` (Representational), with `~r` denoting `~#` or `~R#`, respectively.
 
@@ -273,7 +273,7 @@ Before reviewing how GHC goes about solving constraints,
 let's first look at how GHC itself rewrites constraints and classifies them into different categories.
 
 User-written constraints are born **non-canonical**: as GHC typechecks a type signature,
-it adds the constraints it comes across to its **work list**, to be processed later.  
+it adds the constraints it comes across to its **work list**, to be processed later.
 Initially, GHC hasn't analysed these constraints to determine their nature.
 For instance, one might have a type family
 
@@ -348,7 +348,7 @@ considers fully processed. As noted previously, addition of new information migh
 to take place, in which case GHC could **kick out** a constraint (removing it from the inert set),
 to continue working on it later.
 
-Next, we canonicalise `[W] $dEq_List_a :: Eq [a]`, which is also clearly a dictionary constraint.  
+Next, we canonicalise `[W] $dEq_List_a :: Eq [a]`, which is also clearly a dictionary constraint.
 We then notice that the constraint `Eq [a]` matches with the class instance head
 
 ```haskell
@@ -384,7 +384,7 @@ and take it through the interaction pipeline:
 
 In the "inert reactions" stage, the work item interacts with the constraints in the inert set.
 For instance, if the work item is a Wanted constraint, we might want to know whether we can solve it
-using Givens in the inert set (or perhaps just simplify it).  
+using Givens in the inert set (or perhaps just simplify it).
 In the "top-level reactions" stage, we use top-level instances. This is what happened when we used
 the top-level instance `instance forall x. Eq x => Eq [x]` to solve `[W] Eq [a]` using `[G] Eq a`.
 
@@ -582,7 +582,7 @@ arguments.
 
 ### Type family coercion axioms
 
-We've just seen some basic aspects of type-family reduction in Haskell.  
+We've just seen some basic aspects of type-family reduction in Haskell.
 When writing a type-checking plugin, it's also important to know about the implementation
 of type families in GHC. As type families come from equations between types, it should come
 as no surprise that they are closely tied with coercions.
@@ -624,9 +624,9 @@ with three branches:
 
 Now, looking at `g1` first:
 
-- In `g1`, we use the `0`-th equation of `F` to obtain the coercion `F[0] :: F Word ~# Int`.  
+- In `g1`, we use the `0`-th equation of `F` to obtain the coercion `F[0] :: F Word ~# Int`.
   We then apply the `Maybe` type constructor to `F[0]` to obtain
-  `Maybe F[0] :: Maybe (F Word) ~# Maybe Int`.  
+  `Maybe F[0] :: Maybe (F Word) ~# Maybe Int`.
   This allows us to typecheck `\ mb_x -> fmap negate ( mb_x |> Maybe F[0] )`
   at the type `Maybe (F Word) -> Maybe Int`.
 

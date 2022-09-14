@@ -2,7 +2,7 @@
 title: "Type-checking plugins, Part I: Why write a type-checking plugin?"
 shortTitle: "Why write a type-checking plugin?"
 author: Sam Derbyshire
-tags: [haskell, ghc]
+tags: [haskell, ghc, fellowship]
 description: "Why would you want to write a type-checking plugin? Many limitations of the GHC type-checker are exposed here."
 ---
 
