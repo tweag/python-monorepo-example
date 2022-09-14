@@ -25,9 +25,7 @@ The [project][space-game] is an unfinished game with around fifteen thousand
 lines of C++ code. It was originally built using some very convoluted makefiles
 and is structured as follows:
 
-<br>
 ![Project structure](./project-structure.svg)
-<br>
 
 One advantage of Bazel is how well it supports building projects that use
 multiple languages. That doesn't apply here, but there are other attributes
@@ -277,9 +275,7 @@ a format more suitable for distribution and optimised for runtime use. For
 proper games the asset pipeline can be quite complicated and might take hours
 to run in full, but for this project it is simple:
 
-<br>
 ![Asset transformations](./asset-transformations.svg)
-<br>
 
 Files with no incoming arrows are checked into source control while the rest
 are produced by Bazel during the build. A brief description of each follows:
