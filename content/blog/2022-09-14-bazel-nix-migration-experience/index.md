@@ -206,10 +206,9 @@ cc_library(
 ```
 
 The [`cc_import`][bazel-cc-import] rule is necessary because `libenet.so` is
-prebuilt by Nix (`cc_library` is for source files). Note that the particular
-symlink chosen for `shared_library` matters[^1]. You will get a runtime error
-if you choose wrong, but fortunately the error will indicate the correct
-choice.
+prebuilt by Nix. Note that the particular symlink chosen for `shared_library`
+matters[^1]. You will get a runtime error if you choose wrong, but fortunately
+the error will indicate the correct choice.
 
 Next a `cc_library` rule is used to pull in the header files. This rule is the
 one that the `net` module will depend upon directly and the `cc_import` rule
