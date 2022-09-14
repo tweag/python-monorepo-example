@@ -378,9 +378,9 @@ With both the code and data building we now turn to actually running the game.
 For the `server` executable this is relatively straight forward. Its only data
 dependency is the map collision data.
 
-However the Ogre3D graphics engine used by `client` requires all the assets to
-be listed in a `resources.cfg` file. It also needs to dynamically load various
-plugins with [`dlopen`][dlopen]. This is facilitated by a wrapper script which
+However the graphics engine used by `client` requires all assets to be listed
+in a `resources.cfg` file. It also needs to dynamically load various plugins
+with [`dlopen`][dlopen]. This is facilitated by a wrapper script which
 enumerates all the resources and sets the plugin folder appropriately:
 
 ```python
@@ -422,7 +422,7 @@ sh_binary(
 )
 ```
 
-Bazel ensures all the data dependencies are available in the
+Bazel ensures that all the data dependencies are available in the
 `run-client.runfiles` directory where they will be found by the
 `enumerate-resources.sh` script. The full path to the plugin directory is
 obtained by using [`location`][bazel-variables] to resolve the
