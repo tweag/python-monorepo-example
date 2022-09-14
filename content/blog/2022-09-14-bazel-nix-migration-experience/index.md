@@ -25,7 +25,9 @@ The [project][space-game] is an unfinished game with around fifteen thousand
 lines of C++ code. It was originally built using some very convoluted makefiles
 and is structured as follows:
 
-![Project structure](./project-structure.svg)
+<p align="center">
+<img src=project-structure.svg alt="Project structure" style="width: 100% !important;" />
+</p>
 
 One advantage of Bazel is how well it supports building projects that use
 multiple languages. That doesn't apply here, but there are other attributes
