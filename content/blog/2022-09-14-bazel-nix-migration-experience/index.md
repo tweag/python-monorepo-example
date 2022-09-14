@@ -275,7 +275,9 @@ a format more suitable for distribution and optimised for runtime use. For
 proper games the asset pipeline can be quite complicated and might take hours
 to run in full, but for this project it is simple:
 
-![Asset transformations](./asset-transformations.svg)
+<p align="center">
+<img src=asset-transformations.svg alt="Asset transformations" style="width: 100% !important;" />
+</p>
 
 Files with no incoming arrows are checked into source control while the rest
 are produced by Bazel during the build. A brief description of each follows:
