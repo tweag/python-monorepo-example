@@ -44,7 +44,7 @@ that make this game an interesting case study:
 
 - One particular transformation is handled by the custom `zonebuild` tool. If
   any of the source code that goes into this tool changes and it gets rebuilt,
-the data transformation it performs also needs to be rerun.
+  the data transformation it performs also needs to be rerun.
 
 ## Building the source code
 
@@ -142,7 +142,6 @@ used to import a Nix package as a Bazel repository. It has many optional
 parameters, allowing its behaviour to be customised precisely as needed. Though
 this might require some familiarity with Nix and Bazel.
 
-
 The [`attribute_path`][attribute-path] parameter indicates the particular Nix
 package to be imported. You can find attribute paths by searching for a Nix
 package with the [`nix-env`][nix-env-install] command:
@@ -214,7 +213,7 @@ choice.
 
 Next a `cc_library` rule is used to pull in the header files. This rule is the
 one that the `net` module will depend upon directly and the `cc_import` rule
-will be a transitive dependency.  This general pattern is used for all the
+will be a transitive dependency. This general pattern is used for all the
 third party dependencies, including `boost`.
 
 Now that we have the necessary dependencies, let's see how the `net` module is
