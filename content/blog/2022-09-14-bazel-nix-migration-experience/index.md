@@ -1,0 +1,512 @@
+---
+title: "Bazel and Nix: A Migration Experience"
+shortTitle: A Bazel and Nix Migration
+
+author: Ben Radford
+
+description: |
+  An experience report on using Bazel to get an old project building again.
+
+tags:
+  - bazel
+  - build-systems
+  - nix
+---
+
+I’ve recently been learning how to use [Bazel][bazel-build] to build projects.
+Reading documentation and playing around with [codelabs][codelabs] is a great
+way to get started, but when learning a new technology there comes a point
+where you have to start applying it for real to make further progress. To this
+end I decided to migrate an old hobby project of mine to use Bazel. This post
+describes my experience and I hope serves as a useful example for others who
+are also new to Bazel.
+
+The [project][space-game] is an unfinished game with around fifteen thousand
+lines of C++ code. It was originally built using some very convoluted makefiles
+and is structured as follows:
+
+<br>
+![Project structure](./project-structure.svg)
+<br>
+
+One advantage of Bazel is how well it supports building projects that use
+multiple languages. That doesn't apply here, but there are other attributes
+that make this game an interesting case study:
+
+- It has a non-trivial structure with modules shared between client and server
+  executables.
+
+- It depends on several third party libraries. Previously these were manually
+  built from source. Now they are fetched prebuilt from [Nix][nixpkgs] with the
+  aid of [`rules_nixpkgs`][rules_nixpkgs].
+
+- In addition to code that needs to be built, the game has assets like 3D
+  meshes and textures that need to be transformed into a format that can be
+  loaded at run time.
+
+- One particular transformation is handled by the custom `zonebuild` tool. If
+  any of the source code that goes into this tool changes and it gets rebuilt,
+the data transformation it performs also needs to be rerun.
+
+## Building the source code
+
+Every Bazel project requires a [`WORKSPACE.bazel`][bazel-workspace] file at its
+root. As the migration advances this file will grow in complexity, but to begin
+with it simply specifies the workspace name:
+
+```python
+workspace(name = "space-game")
+```
+
+A Bazel workspace is organised into [packages][bazel-packages] by `BUILD.bazel`
+files. There are many ways you might do this (e.g. a separate package for each
+module and executable) but for a project of this scale it is reasonable to
+build all the source code from a single package named `//common/src`.
+
+As it has no dependencies, building the `core` module is a good place to start.
+It just requires a [`cc_library`][bazel-cc-library] rule in
+`common/src/BUILD.bazel`:
+
+```python
+cc_library(
+    name = "core",
+    hdrs = glob(["core/*.hpp"]),
+    srcs = glob(["core/*.hpp", "core/*.cpp"]),
+    copts = ["-std=c++17"],
+    includes = ["."],
+    visibility = ["//visibility:public"],
+)
+```
+
+At this point it is possible to build the `core` module by running the following command:
+
+```bash
+bazel build //common/src:core
+```
+
+Bazel does not pollute the source tree with intermediate build files and output
+files. These are instead created within the [`outputRoot`][bazel-output]
+directory and some convenient symlinks are added to the workspace root. If you
+follow the `bazel-bin` symlink you'll find that `cc_library` has produced both
+static and shared libraries:
+
+```bash
+bazel-bin/common/src/libcore.a
+bazel-bin/common/src/libcore.so
+```
+
+This is pretty cool. In the old days, linking even a moderately complex project
+was quite a tricky affair. Even more so when shared libraries were involved
+since there were compiler flags like [`-fPIC`][fpic-flag] to worry about. With
+Bazel all those messy details have been abstracted away.
+
+Next let's examine how the `net` module is built. If you check the graph above
+you'll see that `net` depends on `core` and two third party libraries,
+[`boost`][boost-lib] and [`enet`][enet-lib]. As mentioned in the introduction,
+these libraries will be fetched from Nix. This requires some additions to
+`WORKSPACE.bazel`:
+
+```python
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# Import the rules_nixpkgs repository.
+http_archive(
+    name = "io_tweag_rules_nixpkgs",
+    sha256 = "b01f170580f646ee3cde1ea4c117d00e561afaf3c59eda604cf09194a824ff10",
+    strip_prefix = "rules_nixpkgs-0.9.0",
+    urls = ["https://github.com/tweag/rules_nixpkgs/archive/v0.9.0.tar.gz"],
+)
+
+# Import the transitive dependencies of rules_nixpkgs.
+load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
+rules_nixpkgs_dependencies()
+
+# Import a repository for the particular version of nixpkgs we want.
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_git_repository")
+nixpkgs_git_repository(
+    name = "nixpkgs",
+    revision = "22.05",
+    sha256 = "0f8c25433a6611fa5664797cd049c80faefec91575718794c701f3b033f2db01",
+)
+
+# Configure a toolchain from the nixpkgs repository above.
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_cc_configure")
+nixpkgs_cc_configure(
+    name = "nixpkgs_config_cc",
+    repository = "@nixpkgs",
+)
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_package")
+```
+
+The [`nixpkgs_package`][nixpkgs_package] macro loaded by the last line can be
+used to import a Nix package as a Bazel repository. It has many optional
+parameters, allowing its behaviour to be customised precisely as needed. Though
+this might require some familiarity with Nix and Bazel.
+
+
+The [`attribute_path`][attribute-path] parameter indicates the particular Nix
+package to be imported. You can find attribute paths by searching for a Nix
+package with the [`nix-env`][nix-env-install] command:
+
+```bash
+$ nix-env -qaP '.*enet.*'    # Note, the last argument is a regex.
+nixpkgs.enet                                           enet-1.3.17
+nixpkgs.freenet                                        freenet-build01480
+```
+
+If `attribute_path` is not given it defaults to the value given for the `name`
+parameter, so for `enet` it can be left out. Once you've found a Nix package
+you can examine what files it contains:
+
+```bash
+$ tree $(nix-build '<nixpkgs>' -A enet)
+/nix/store/75xz5q742sla5q4l0kj6cm90vgzh8qv3-enet-1.3.17
+|-- include
+|   `-- enet
+|       |-- callbacks.h
+|       |-- enet.h
+|       |-- list.h
+|       |-- protocol.h
+|       |-- time.h
+|       |-- types.h
+|       |-- unix.h
+|       |-- utility.h
+|       `-- win32.h
+`-- lib
+    |-- libenet.la
+    |-- libenet.so -> libenet.so.7.0.5
+    |-- libenet.so.7 -> libenet.so.7.0.5
+    |-- libenet.so.7.0.5
+    `-- pkgconfig
+        `-- libenet.pc
+```
+
+This information will be useful when crafting the `build_file_content`
+parameter, which is written to a `BUILD.bazel` file in the root of the `@enet`
+repository created by `nixpkgs_package`. Again in `WORKSPACE.bazel`:
+
+```python
+nixpkgs_package(
+    name = "enet",
+    repository = "@nixpkgs",
+    build_file_content = """\
+cc_import(
+    name = "enet-import",
+    hdrs = glob(["include/**/*.h"]),
+    shared_library = "lib/libenet.so.7",
+    visibility = ["//visibility:public"],
+)
+cc_library(
+    name = "enet",
+    hdrs = glob(["include/**/*.h"]),
+    includes = ["include"],
+    deps = [":enet-import"],
+    visibility = ["//visibility:public"],
+)
+""",
+)
+```
+
+The [`cc_import`][bazel-cc-import] rule is necessary because `libenet.so` is
+prebuilt by Nix (`cc_library` is for source files). Note that the particular
+symlink chosen for `shared_library` matters[^1]. You will get a runtime error
+if you choose wrong, but fortunately the error will indicate the correct
+choice.
+
+Next a `cc_library` rule is used to pull in the header files. This rule is the
+one that the `net` module will depend upon directly and the `cc_import` rule
+will be a transitive dependency.  This general pattern is used for all the
+third party dependencies, including `boost`.
+
+Now that we have the necessary dependencies, let's see how the `net` module is
+built:
+
+```python
+cc_library(
+    name = "net",
+    hdrs = glob(["net/*.hpp"]),
+    srcs = glob(["net/*.hpp", "net/*.cpp"]),
+    copts = ["-std=c++17"],
+    includes = ["."],
+    deps = [
+        "//common/src:core",
+        "@boost",
+        "@enet",
+    ],
+    visibility = ["//visibility:public"],
+)
+```
+
+Note that the `@enet` dependency is syntactic sugar for `@enet//:enet` and this
+target is just the `cc_library(name="enet", ...)` rule defined a little
+earlier. The remaining modules (`math`, `physics` and `script`) are built in a
+similar fashion.
+
+The final piece of the puzzle is to build the executables. Taking `client` as
+an example:
+
+```python
+cc_binary(
+    name = "client",
+    srcs = glob(["client/*.hpp", "client/*.cpp"]),
+    copts = ["-std=c++17"],
+    includes = ["."],
+    deps = [
+        "//common/src:core",
+        "//common/src:net",
+        "//common/src:physics",
+        "@cegui",
+        "@ogre",
+        "@ois",
+    ],
+    visibility = ["//visibility:public"],
+)
+```
+
+Apart from using [`cc_binary`][bazel-cc-binary], this looks much the same as
+the rules we have already seen.
+
+## The asset transformation pipeline
+
+Having seen how the code is built, let's turn to the game assets. An asset
+could be a polygon mesh or a texture for a 3D model. It could be a music track,
+a voice recording or a pre-rendered video. These assets are usually authored
+and stored in a high resolution lossless format. They must be transformed into
+a format more suitable for distribution and optimised for runtime use. For
+proper games the asset pipeline can be quite complicated and might take hours
+to run in full, but for this project it is simple:
+
+<br>
+![Asset transformations](./asset-transformations.svg)
+<br>
+
+Files with no incoming arrows are checked into source control while the rest
+are produced by Bazel during the build. A brief description of each follows:
+
+- `geometry.xml`: List of the triangles and faces comprising a mesh.
+- `texture.tga`: [UV mapped][uv-map] texture for the mesh.
+- `material.script`: A high level representation of a [shader program][shader-program].
+- `mesh.bin`: An efficient binary format for meshes used by Ogre3D.
+- `assets.zip`: Contains all the assets needed to render a 3D model.
+- `collision.dat`: Stores map geometry in a [k-d tree][kdtree] for fast collision detection.
+
+Bazel has no built-in rules for these transformations but
+[`genrule`][bazel-genrule] can be used to run arbitrary Bash commands. To avoid
+duplication I decided to define a couple of helper macros in a
+[`resources.bzl`][resources-bzl] extension file. The `assemble_assets` macro is
+used in `//common/data/ships` like this:
+
+```python
+load("//common/data:resources.bzl", "assemble_assets")
+
+assemble_assets("bomber")
+assemble_assets("spider")
+assemble_assets("warbird")
+```
+
+The version of `assemble_assets` shown below has been simplified a little for clarity:
+
+```python
+load("@rules_pkg//pkg:zip.bzl", "pkg_zip")
+
+def assemble_assets(name):
+
+    # Convert xml mesh data to ogre binary format.
+    mesh_converter = "@ogre//:bin/OgreXMLConverter"
+    native.genrule(
+        name = "convert_{name}_mesh",
+        srcs = [":{name}-geometry.xml"],
+        outs = ["{name}-mesh.bin"],
+        tools = [mesh_converter],
+        cmd = """$(execpath {mesh_converter}) \
+            $(rootpath {name}-geometry.xml) \
+            $(execpath {name}-mesh.bin)
+        """,
+    )
+
+    # Package the assets into a zip.
+    pkg_zip(
+        name = "zip_{name}_assets",
+        out = "{name}-assets.zip",
+        srcs = [
+            "{name}-mesh.bin",
+            "{name}-texture.tga",
+            "{name}-material.script",
+        ]
+    )
+```
+
+The most interesting thing here is that the `OgreXMLConverter` tool is being
+used to transform mesh data. This tool comes as part of the Nix package for
+`ogre` and it must be [explicitly exported from `BUILD.bazel`][ogre-converter].
+It also needs to be passed to the [`tools`][bazel-tools] parameter of the
+`genrule` or else Bazel will complain that it has not been declared as a
+prerequisite.
+
+Ships are treated as spherical objects by the physics engine so they do not
+need their geometry to be transformed into a k-d tree for collision detection,
+but for maps this extra step is needed:
+
+```python
+def assemble_map(name):
+    assemble_assets(name)
+
+    # Build kdtree for collision detection.
+    native.genrule(
+        name = "{name}_collision",
+        srcs = [":{name}-geometry.xml"],
+        tools = ["//common/src:zonebuild"],
+        cmd = """$(execpath //common/src:zonebuild) \
+            $(rootpath {name}-geometry.xml) \
+            $(execpath {name}-collision.dat)
+        """,
+        outs = ["{name}-collision.dat"],
+    )
+```
+
+Maps have meshes, textures and materials and the transformation of those is
+delegated to `assemble_assets`. Then the k-d tree is built by invoking
+`zonebuild` from another `genrule`. This is essentially the same as invoking
+`OgreXMLConverter` except this time the tool is built in the main repository
+instead of coming prebuilt from an external repository.
+
+Beyond what we have seen above there are some [`pkg_zip` rules][common-data]
+for various other game resources like background textures, configuration files,
+fonts, etc.
+
+## Running the game
+
+With both the code and data building we now turn to actually running the game.
+For the `server` executable this is relatively straight forward. It does no
+rendering so it only depends on the map collision data.
+
+However the Ogre3D graphics engine used by `client` requires a `resources.cfg`
+file specifying all the assets that should be loaded. It also needs to load
+various plugins with [`dlopen`][dlopen]. This is facilitated by a wrapper
+script which enumerates all the resources and sets the plugin folder
+appropriately:
+
+```python
+write_file(
+    name = "write-run-client-sh",
+    out = "run-client.sh",
+    content = [
+        "sed -i \"s|^PluginFolder=.*|PluginFolder=$1|\" plugins.cfg",
+        "scripts/enum-resources.sh . >resources.cfg",
+        "common/src/client",
+    ]
+)
+```
+
+The script above is invoked by a [`sh_binary`][bazel-sh-binary] rule:
+
+```python
+sh_binary(
+    name = "run-client",
+    srcs = [":run-client.sh"],
+    data = [
+        "//common/data/maps:base03.dat",
+        "//common/data/maps:base03.zip",
+        "//common/data/ships:bomber.zip",
+        "//common/data/ships:spider.zip",
+        "//common/data/ships:warbird.zip",
+        "//common/data:cegui",
+        "//common/data:config",
+        "//common/data:materials.zip",
+        "//common/data:particles.zip",
+        "//common/data:textures.zip",
+        "//common/src:client",
+        "//scripts:enum-resources.sh",
+        "@ogre//:lib/OGRE",
+    ],
+    args = [
+        "$(location @ogre//:lib/OGRE)",
+    ],
+)
+```
+
+Bazel ensures all the data dependencies are available in the
+`run-client.runfiles` directory where they will be found by the
+`enumerate-resources.sh` script. We use [`location`][bazel-variables] to
+resolve the `@ogre//:lib/OGRE` label into a full path and pass it as an
+argument to `run-client.sh` where it is substituted into `plugins.cfg`.
+
+Now the entire game can be [built and run][build-and-run] from a Nix shell with just two commands:
+
+```bash
+bazel run //common:run-server
+bazel run //common:run-client
+```
+
+## Conclusion
+
+It took around three days to complete the migration from start to finish.
+However the majority of that time was spent updating the code to work with
+C++17 and fixing various issues that arose from upgrading to newer versions of
+the third party libraries. The Bazel migration itself was fairly easy and
+wouldn't have taken more than a day if the code had been otherwise up-to-date.
+Of course this was a pretty small project so your mileage may vary.
+
+I was initially concerned that there might not be Nix packages for some of the
+more obscure dependencies but I was pleasantly surprised. Every single one of
+the libraries I had chosen for this project in 2009 can now be found in Nix.
+Having easy access to over 80,000 packages is reason enough to pair Bazel with
+Nix, but if reproducible builds matter to you [it makes even more
+sense][blog-bazel-nix].
+
+Perfectly [correct and incremental builds][correct-incremental-builds] are
+awesome. Bazel is very good at managing complex dependency graphs where some
+build outputs (e.g. tools) are themselves used as part of the build. When you
+change something Bazel will rebuild exactly what is necessary and it will do so
+in the correct order.
+
+Clearly not building more than necessary saves time, but not building less does
+too. When a build system neglects to rebuild something it should have, the
+result is confusion and wasted time because runtime behaviour does not match
+code. After being bitten by this a few times developers will tend to clean the
+build more frequently, incurring the cost of a full rebuild each time. So the
+confidence Bazel provides here is great for developer productivity.
+
+<!-- Footnotes -->
+
+[^1]:
+    The `shared_library` parameter should exactly match the shared library name
+    in the dynamic section of the executable. Use `readelf -d EXECUTABLE` to check
+    this.
+
+<!-- Links -->
+
+[attribute-path]: https://github.com/tweag/rules_nixpkgs#nixpkgs_package-attribute_path
+[bazel-build]: https://bazel.build/
+[bazel-cc-binary]: https://bazel.build/reference/be/c-cpp#cc_binary
+[bazel-cc-import]: https://bazel.build/reference/be/c-cpp#cc_import
+[bazel-cc-library]: https://bazel.build/reference/be/c-cpp#cc_library
+[bazel-genrule]: https://bazel.build/reference/be/general#genrule
+[bazel-output]: https://bazel.build/remote/output-directories#layout
+[bazel-packages]: https://docs.bazel.build/versions/main/build-ref.html#packages
+[bazel-sh-binary]: https://docs.bazel.build/versions/main/be/shell.html#sh_binary
+[bazel-tools]: https://bazel.build/reference/be/general#genrule.tools
+[bazel-variables]: https://bazel.build/reference/be/make-variables#predefined_label_variables
+[bazel-workspace]: https://docs.bazel.build/versions/main/build-ref.html#workspace
+[blog-bazel-nix]: https://www.tweag.io/blog/2018-03-15-bazel-nix/
+[boost-lib]: https://www.boost.org/
+[build-and-run]: https://github.com/benradf/space-game#building-and-running
+[codelabs]: https://github.com/bazelbuild/codelabs
+[common-data]: https://github.com/benradf/space-game/blob/master/common/data/BUILD.bazel
+[common-src]: https://github.com/benradf/space-game/blob/master/common/src/BUILD.bazel
+[correct-incremental-builds]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
+[dlopen]: https://man7.org/linux/man-pages/man3/dlopen.3.html
+[enet-lib]: http://enet.bespin.org/
+[exports-files]: https://bazel.build/reference/be/functions#exports_files
+[fpic-flag]: https://stackoverflow.com/questions/966960/what-does-fpic-mean-when-building-a-shared-library
+[kdtree]: https://en.wikipedia.org/wiki/K-d_tree
+[nix-env-install]: https://nixos.org/manual/nix/stable/command-ref/nix-env.html#operation---install
+[nixpkgs]: https://github.com/NixOS/nixpkgs#readme
+[nixpkgs_package]: https://github.com/tweag/rules_nixpkgs#nixpkgs_package
+[ogre-converter]: https://github.com/benradf/space-game/blob/master/WORKSPACE.bazel#L264
+[resources-bzl]: https://github.com/benradf/space-game/blob/master/common/data/resources.bzl
+[rules_nixpkgs]: https://github.com/tweag/rules_nixpkgs#nixpkgs-rules-for-bazel
+[shader-program]: https://en.wikipedia.org/wiki/Shader
+[space-game]: https://github.com/benradf/space-game#space-game
+[uv-map]: https://en.wikipedia.org/wiki/UV_mapping
