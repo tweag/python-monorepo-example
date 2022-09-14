@@ -42,7 +42,7 @@ that make this game an interesting case study:
 
 - In addition to code that needs to be built, the game has assets like 3D
   meshes and textures that need to be transformed into a format that can be
-  loaded at run time.
+  loaded at runtime.
 
 - One particular transformation is handled by the custom `zonebuild` tool. If
   any of the source code that goes into this tool changes and it gets rebuilt,
