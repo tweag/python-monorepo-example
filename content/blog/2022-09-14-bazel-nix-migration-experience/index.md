@@ -422,11 +422,13 @@ sh_binary(
 
 Bazel ensures all the data dependencies are available in the
 `run-client.runfiles` directory where they will be found by the
-`enumerate-resources.sh` script. We use [`location`][bazel-variables] to
-resolve the `@ogre//:lib/OGRE` label into a full path and pass it as an
-argument to `run-client.sh` where it is substituted into `plugins.cfg`.
+`enumerate-resources.sh` script. The full path to the plugin directory is
+obtained by using [`location`][bazel-variables] to resolve the
+`@ogre//:lib/OGRE` label. This path is then passed as an argument to
+`run-client.sh` and there substituted into `plugins.cfg`.
 
-Now the entire game can be [built and run][build-and-run] from a Nix shell with just two commands:
+Now the entire game can be [built and run][build-and-run] from a Nix shell with
+just two commands:
 
 ```bash
 bazel run //common:run-server
