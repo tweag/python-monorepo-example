@@ -5,7 +5,8 @@ shortTitle: A Bazel and Nix Migration
 author: Ben Radford
 
 description: |
-  An experience report on getting an old Make based project to build again with Bazel and Nix.
+  Getting an old Make based project building again after 10 years with the help of Bazel and Nix.
+
 
 tags:
   - bazel
