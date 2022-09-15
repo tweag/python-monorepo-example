@@ -100,7 +100,7 @@ is used for the build, others will default to simply picking up binaries
 from the `PATH`. Nothing prevents these binaries to vary from machine to
 machine. The built-in C and C++ rules are notorious for this kind of
 behavior. It is worth paying attention to what kind of rules you are using
-and what their guaratees with respect to hermeticity and reproducibility
+and what their guarantees with respect to hermeticity and reproducibility
 are.
 
 ## Workspace status
