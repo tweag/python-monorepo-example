@@ -33,8 +33,8 @@ One advantage of Bazel is how well it supports building projects that use
 multiple languages. That doesn't apply here, but there are other attributes
 that make this game an interesting case study:
 
-- It has a non-trivial structure with modules shared between client and server
-  executables.
+- It has a non-trivial structure with modules[^1] shared between client and
+  server executables.
 
 - It depends on several third party libraries. Previously these were manually
   built from source. Now with [`rules_nixpkgs`][rules_nixpkgs] they are
@@ -221,7 +221,7 @@ cc_library(
 
 The [`cc_import`][bazel-cc-import] rule is necessary because `libenet.so` is
 prebuilt by Nix. Note that the particular symlink chosen for `shared_library`
-matters[^1]. You will get a runtime error if you choose wrong, but fortunately
+matters[^2]. You will get a runtime error if you choose wrong, but fortunately
 the error will indicate the correct choice.
 
 Next a `cc_library` rule is used to pull in the header files. This rule is the
@@ -481,6 +481,11 @@ confidence Bazel provides here is great for developer productivity.
 <!-- Footnotes -->
 
 [^1]:
+    The term _module_ is used here informally to refer to a grouping of related
+    source files in a directory under `//common/src`. These are not [C++20
+    modules][cpp-modules].
+
+[^2]:
     The `shared_library` parameter should exactly match the shared library name
     in the dynamic section of the executable. You can use `readelf -d EXECUTABLE`
     to check this.
@@ -506,6 +511,7 @@ confidence Bazel provides here is great for developer productivity.
 [common-data]: https://github.com/benradf/space-game/blob/master/common/data/BUILD.bazel
 [common-src]: https://github.com/benradf/space-game/blob/master/common/src/BUILD.bazel
 [correct-incremental-builds]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
+[cpp-modules]: https://en.cppreference.com/w/cpp/language/modules
 [dlopen]: https://man7.org/linux/man-pages/man3/dlopen.3.html
 [enet-lib]: http://enet.bespin.org/
 [exports-files]: https://bazel.build/reference/be/functions#exports_files
