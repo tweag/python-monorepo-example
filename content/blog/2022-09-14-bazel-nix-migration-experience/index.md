@@ -37,8 +37,9 @@ that make this game an interesting case study:
   executables.
 
 - It depends on several third party libraries. Previously these were manually
-  built from source. Now they are fetched prebuilt from [Nix][nixpkgs] with the
-  aid of [`rules_nixpkgs`][rules_nixpkgs].
+  built from source. Now with [`rules_nixpkgs`][rules_nixpkgs] they are
+  provided by [Nix][nixpkgs]. Typically this means they will be fetched prebuilt
+  from the Nix cache. <!-- , saving us compilation time. -->
 
 - In addition to code that needs to be built, the game has assets like 3D
   meshes and textures that need to be transformed into a format that can be
@@ -103,8 +104,20 @@ Bazel all those messy details have been abstracted away.
 Next let's examine how the `net` module is built. If you check the graph above
 you'll see that `net` depends on `core` and two third party libraries,
 [`boost`][boost-lib] and [`enet`][enet-lib]. As mentioned in the introduction,
-these libraries will be fetched from Nix. This requires some additions to
-`WORKSPACE.bazel`:
+these libraries will be fetched from Nix. First we need a `nixpkgs.nix` file:
+
+```nix
+let nixpkgs = fetchTarball {
+  url = "https://github.com/NixOS/nixpkgs/archive/ce6aa13369b667ac2542593170993504932eb836.tar.gz";
+  sha256 = "0d643wp3l77hv2pmg2fi7vyxn4rwy0iyr8djcw1h5x72315ck9ik";
+};
+in import nixpkgs
+```
+
+This pins the nixpkgs version to git commit [`ce6aa13`][nixpkgs-22-05], which
+corresponds to the 22.05 release. You can pick any commit you like but if you
+are unsure, picking the commit with the latest [release tag][nixpkgs-tags] is a
+good place to start. Next some additions to `WORKSPACE.bazel` are required:
 
 ```python
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -121,12 +134,11 @@ http_archive(
 load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
 rules_nixpkgs_dependencies()
 
-# Import a repository for the particular version of nixpkgs we want.
-load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_git_repository")
-nixpkgs_git_repository(
+# Import a repository for the version of nixpkgs we pinned in nixpkgs.nix above.
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_local_repository")
+nixpkgs_local_repository(
     name = "nixpkgs",
-    revision = "22.05",
-    sha256 = "0f8c25433a6611fa5664797cd049c80faefec91575718794c701f3b033f2db01",
+    nix_file = "//:nixpkgs.nix",
 )
 
 # Configure a toolchain from the nixpkgs repository above.
@@ -149,7 +161,7 @@ package to be imported. You can find attribute paths by searching for a Nix
 package with the [`nix-env`][nix-env-install] command:
 
 ```bash
-$ nix-env -qaP '.*enet.*'    # Note, the last argument is a regex.
+$ nix-env -f nixpkgs.nix -qaP '.*enet.*'  # Note, the last argument is a regex.
 nixpkgs.enet                                           enet-1.3.17
 nixpkgs.freenet                                        freenet-build01480
 ```
@@ -159,7 +171,7 @@ parameter, so for `enet` it can be left out. Once you've found a Nix package
 you can examine what files it contains:
 
 ```
-$ tree $(nix-build '<nixpkgs>' -A enet)
+$ tree $(nix-build nixpkgs.nix -A enet)
 /nix/store/75xz5q742sla5q4l0kj6cm90vgzh8qv3-enet-1.3.17
 |-- include
 |   `-- enet
@@ -500,6 +512,8 @@ confidence Bazel provides here is great for developer productivity.
 [fpic-flag]: https://stackoverflow.com/questions/966960/what-does-fpic-mean-when-building-a-shared-library
 [kdtree]: https://en.wikipedia.org/wiki/K-d_tree
 [nix-env-install]: https://nixos.org/manual/nix/stable/command-ref/nix-env.html#operation---install
+[nixpkgs-22-05]: https://github.com/NixOS/nixpkgs/commit/ce6aa13369b667ac2542593170993504932eb836
+[nixpkgs-tags]: https://github.com/NixOS/nixpkgs/tags
 [nixpkgs]: https://github.com/NixOS/nixpkgs#readme
 [nixpkgs_package]: https://github.com/tweag/rules_nixpkgs#nixpkgs_package
 [ogre-converter]: https://github.com/benradf/space-game/blob/master/WORKSPACE.bazel#L264
