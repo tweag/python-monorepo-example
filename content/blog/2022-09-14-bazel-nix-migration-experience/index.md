@@ -39,7 +39,7 @@ that make this game an interesting case study:
 - It depends on several third party libraries. Previously these were manually
   built from source. Now with [`rules_nixpkgs`][rules_nixpkgs] they are
   provided by [Nix][nixpkgs]. Typically this means they will be fetched prebuilt
-  from the Nix cache. <!-- , saving us compilation time. -->
+  from the Nix cache, saving the time it would have taken to compile them.
 
 - In addition to code that needs to be built, the game has assets like 3D
   meshes and textures that need to be transformed into a format that can be
