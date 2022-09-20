@@ -1,0 +1,93 @@
+---
+slug: daniel.thagard
+name: Daniel Thagard
+pronouns: He/His/Him
+
+github: tshaynik
+
+shortDescription: |
+  Daniel is a software engineer at Tweag.
+  He appreciates working with and on declarative and deterministic tools for building and deploying software,
+  drawn from his experience managing large and small server infrastructures
+  and his interest in functional pogramming.
+  He also spends a lot of time playing music, running, and reading.
+
+bio: |
+  Daniel is a software engineer at Tweag, with a keen interest in deterministically building and deploying software.
+  His professional work has largely revolved around and writing software to deploy and manage server infrastructure.
+  Dan first studied geography at university, focusing on the applications of GIS to human geography.
+  He then studied computer science, with a particular interest in distributed systems,
+  while administering the systems of non-profit community organizations.
+  He then went on to build tooling to test and deploy Kubernetes clusters.
+
+  Daniel is always excited about learning new technologies,
+  and supporting the development of open source tools that solve real world problems.
+  He became excited about Nix and NixOS several years ago,
+  and has used them for personal and consulting projects, contributed to the open source ecosystem, and participated in Summer of Nix.
+
+  Dan lives in Montreal, Canada.
+  Outside of work performs music regularly, playing klezmer music on the tsimbl (hammered dulcimer).
+  He combines his interests in traditional music, computer science, and social sciences with an interest
+  in the field of computational ethnomusicology, and has worked on a project to digitize
+  and build a knowledge graph of klezmer manuscripts.
+
+links:
+  GitHub: http://github.com/tshaynik
+
+skills:
+  - DevOps methodologies
+  - Functional Programming
+  - Nix
+  - Python
+  - Rust
+  - Unix Systems
+  - Technical Writing and Communication
+
+speaks:
+  - English (native)
+  - French (fluent)
+
+experience:
+  - employer: Tweag I/O
+    role: Software Engineer
+    years: September 2022 - Present
+
+  - employer: Klezmer Archive Project
+    role: Software Developer
+    years: January 2020 - Present
+    description:
+      - Co-founded a Digital Humanities project for digitizing old manuscripts of
+        klezmer music and building a knowledge graph
+
+  - employer: Koumbit
+    role: Software Developer - Infrastructure
+    years: February 2019 -- January 2020
+    description:
+      - Managed internal server infrastructure, and consulted for non-profit
+        clients adopting, deploying, and maintaining open source software.
+
+  - employer: Nuance Communications
+    role: Software Developer - Devops
+    years: January 2018 -- February 2019
+    description:
+      - Worked on the Kubernetes Infrastructure, building tooling for deploying
+        and testing large Kubernetes clusters.
+
+  - employer: Santropol Roulant
+    role: System Administrator
+    years: June 2015 -- July 2018
+    description:
+      - |
+        Administered the organization's server infrastructure, and contributed to the web applications
+        for managing a Meals on Wheels service.
+
+education:
+  - qualification: Graduate Diploma
+    name: Computer Science
+    years: 2016
+    institution: Concordia University
+
+  - qualification: Bachelor's Degree
+    name: Geography
+    years: 2013
+    institution: McGill University
