@@ -1,0 +1,191 @@
+---
+slug: david.dumas
+name: David Dumas
+pronouns: He/Him
+
+github: maesterz
+gitlab: davdumas
+
+shortDescription: |
+  David is a senior engineer, deeply invested into infrastructure and automation.
+  A meister at deploying software into highly available and scalable production environments.
+
+bio: |
+  As an engineer, David views technologies as a means to achieve goals and not as an end.
+  Started with mainframes, proprietary software & virtualization, then moved on to
+  cloud computing, open-source, and containerization. He is a disciple of the KISS principle and
+  balances his love for trying out new technologies with tried-and-true solutions to build
+  reliable and scalable architectures.
+
+  When David is not debugging production incidents, he might be climbing or wakeboarding
+  as he enjoys not only a good old terminal, but also new heights and waves.
+
+links:
+  GitHub: https://github.com/maesterz
+  GitLab: https://gitlab.com/davdumas
+
+skills:
+  - Shell Script
+  - Go
+  - Python
+  - Infrastructure architecture
+  - DevOps
+  - Automation
+  - Monitoring
+  - Networking
+  - Cloud computing
+  - Infrastructure as code
+  - Containerization
+  - Docker
+  - Kubernetes
+speaks:
+  - French
+  - English
+  - Spanish
+
+experience:
+  - employer: Tweag
+    role: Senior DevOps Engineer
+    years: 2022 - present
+    description:
+      - Helping with infrastructure and DevOps challenges
+
+  - employer: Integral Ad Science
+    role: Senior DevOps Engineer
+    years: 2021 - 2021
+    description:
+      - |
+        Migration of micro-services to Kubernetes
+        * Audit and correction of cluster security and availability
+        * Containers best practices
+        * Blue/Green or Canary deployments with Flagger
+        * Monitoring and alerting with Prometheus and Elastic Stack
+      - |
+        Stack :
+        * Cloud : AWS
+        * CI/CD : Jenkins, FluxCD, Flagger
+        * Containers : Docker, Kubernetes (EKS), Helm, Istio
+        * Automation/scripts : GitOps
+        * Monitoring : Prometheus, Thanos, Grafana, Elastic Stack (ELK + Metricbeat)
+
+  - employer: BCG GAMMA
+    role: Senior DevOps Engineer
+    years: 2021 - 2021
+    description:
+      - |
+        Smartbanking AI - Data science project of BCG Gamma (proprietary software)
+        * Migration from AWS ECS vers EKS and delivery of HA production infrastructure
+        * Security audit, fixes (encryption, networking, authentification)
+        * Containers best practices
+        * CI/CD pipelines
+      - |
+        Stack:
+        * Cloud : AWS
+        * CI/CD : CircleCI, Octopus
+        * Containers : Docker, Kubernetes (EKS), Helm
+        * Data : PostgreSQL (Aurora), Redis (ElastiCache)
+        * Automation/scripting : Bash, Terraform, Python
+        * Security : Okta, OIDC, Kong
+        * Monitoring : Sumo Logic, CloudTrail
+
+  - employer: BCG Digital Ventures
+    role: Senior DevOps Engineer
+    years: 2021 - 2021
+    description:
+      - |
+        Building a private Slack bot to automate creating and securing AWS accounts for new projects
+      - |
+        Stack: Terraform, Python; AWS Lambda, Config Service, Guard Duty, Security Hub, Cloud Trail
+
+  - employer: Keyrus
+    role: Senior DevOps Engineer
+    years: 2020 - 2021
+    description:
+      - |
+        * Deploy GitLab CE with automatic updates and backups
+        * Deploy Firefox Send
+        * Automate creation of new project workspaces in Python
+      - |
+        Stack: AWS EC2, S3, SSM, ALB/NLB, ACM, WAF, SES
+
+  - employer: ConsenSys
+    role: DevOps Engineer
+    years: 2020 - 2020
+    description:
+      - |
+        Covantis - Project based on a private Ethereum blockchain
+        * Finalization et delivery of production infrastructure
+        * Monitoring using Azure managed solutions (instead of Prometheus/Alertmanager/Grafana)
+        * Resolution of performance issues
+      - |
+        Stack:
+        * Cloud : Azure
+        * CI/CD : GitLab
+        * Containerization : AKS, Helm, Kaniko
+        * Data : Postgres, Redis, Kafka (Azure EventHub)
+        * Automation/scripts : Bash, Terraform, Python
+        * Security : Azure Key Vault, OpenVPN
+        * Monitoring : Prometheus, Grafana, Azure Monitor + Log Analytics + Dashboards/Workbooks
+        * Blockchain : Orchestrate, Kaleido
+
+  - employer: BCG GAMMA
+    role: DevOps Engineer
+    years: 2019 - 2020
+    description:
+      - |
+        Source AI - Data science project of BCG Gamma (proprietary software)
+        * Per team/customer cluster creation/management/deletion (up to 30)
+        * Product architecture: advise on the roadmap and help with the implementation of new features in the infrastructure
+        * Docker & Kubernetes best practices training: security, performance, scaling
+      - |
+        Stack:
+        * Multi-cloud: AWS, Azure
+        * CI/CD: GitHub Enterprise, CircleCI, Jenkins
+        * Containerization: Docker Enterprise, Kubernetes (via Kops, EKS, AKS)
+        * Hashicorp suite: Consul, Vault, Terraform
+        * Data: Pachyderm, MongoDB, Spark
+        * Scripting: Bash, Go, Python
+        * Security: OpenVPN, Twistlock, Keycloak, Okta
+        * Monitoring: ELK, Prometheus, Alertmanager, Grafana
+
+  - employer: Effilab
+    role: DevOps Engineer
+    years: 2016 - 2018
+    description:
+      - |
+        Full infrastructure migration from AWS to in-house services at OVH
+        Target: dev/preprod/prod highly available clusters (multi-region, failover and scaling)
+        Original @AWS: EC2, ECS, EBS, RDS, ElastiCache, Route53, ELB/ALB, S3, CloudWatch, etc.
+        New @OVH: metal + OpenStack, vRack, IP Load Balancer, Failover IPs, Ceph
+      - |
+        Stack:
+        * Cloud: OVH
+        * CI/CD: Gitlab EE
+        * Automation: Ansible + AWX/Tower
+        * Containerization: Kubernetes with Weave, Traefik, Helm
+        * Data: RabbitMQ, Redis, PostgreSQL, PrestoDB, Hadoop, Hive, NiFi
+        * BPM: Bonita
+        * API management: Kong
+        * Python apps: Flower, Celery, Flask
+        * Ruby on Rails apps: Puma, Sidekiq
+        * Monitoring: Prometheus, Alertmanager, Grafana
+
+  - employer: BNP Paribas
+    role: System Z Engineer
+    years: 2013 - 2016
+    description:
+      - |
+        IBM mainframe storage specialist: DS8800, TS7700, C07, TS3500
+
+  - employer: IBM
+    role: System Z Engineer (Apprenticeship)
+    years: 2009 - 2012
+    description:
+      - |
+        z/OS software support
+
+education:
+  - qualification: Engineer's degree
+    name: Master of Science - Computer Systems, Networking and Telecommunications
+    institution: ESIEE Paris
+    years: 2006 - 2012
