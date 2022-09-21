@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from "react"
 import ClickAwayListener from "react-click-away-listener"
 import { Link } from "gatsby"
 import { globalHistory } from "@reach/router"
-import blackLogo from "../images/logo_tweag_header.png"
+import blackLogo from "../images/logo_tweag_modus_header.png"
 
 const Logo = () => (
   <Link to="/">
     <img
       sx={{
-        width: `175px`,
+        width: `300px`,
         height: `auto`,
         transition: `filter 0.4s ease`,
         ".navbar-inverted &": {
