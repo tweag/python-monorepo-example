@@ -1,0 +1,80 @@
+slug: johann.eicher
+name: Johann Eicher
+github: jeicher
+
+shortDescription: |
+  Johann is an engineer based in Cape Town, South Africa. With an academic
+  background in the life sciences, over the years he has moved into software
+  engineering. He enjoys the functional programming paradigm, and applying
+  tried-and-tested engineering principles to real-world problems.
+bio: |
+  Johann obtained his Ph.D. in Biochemistry, which focussed on constructing
+  dynamic models of metabolism in bacteria. During this time he worked on
+  building a software package to process quantitative nuclear magnetic
+  resonance spectroscopy data. This marked the beginning of a new career
+  direction in software engineering.
+
+  Johann has since worked in a number of academic and commercial contexts as a
+  software engineer – most recently for a genomics startup. While the life
+  sciences are dominated by languages like Python – which favour the imperative
+  mode – it was in this context that he discovered the power of functional
+  programming, and specifically, Haskell's purity and strong type system for
+  developing maintainable and readable code.
+
+  Johann enjoys spending his leisure time reading, converting his garden into a
+  more indigenous green space, exercising his two greyhounds, and surfing the
+  many beautiful beaches of Cape Town.
+skills:
+  - Haskell
+  - Elixir
+  - Python
+  - Go
+  - C++
+links:
+  GitHub: https://github.com/jeicher
+  LinkedIn: https://www.linkedin.com/in/camillabriedj
+speaks:
+  - English
+  - Afrikaans
+experience:
+  - employer: Tweag
+    role: Data Engineer
+    years: 2022 - present
+  - employer: Hyrax Biosciences
+    role: Software Engineer
+    years: 2017 - 2022
+    description:
+      - Development of a genomic sequence alignment and variant calling web platform
+  - employer: Stellenbosch University
+    role: Software Engineer and Post-doctoral Researcher
+    years: 2013 - 2016
+    description:
+      - Building and maintenance of and online repository and simulator of ODE and stoichiometric models
+education:
+  - qualification: PhD
+    name: Biochemistry
+    institution: Stellenbosch University
+    years: 2009 - 2013
+    description:
+      - |
+        thesis title: Understanding glycolysis in Escherichia coli: a systems approach using nuclear magnetic resonance spectroscopy.
+  - qualification: MSc
+    name: Structural Biology
+    institution: University of Cape Town
+    years: 2006 - 2007
+    description:
+      - |
+        thesis title: Ph-dependence of the quaternary structure of the cyanide dihydratase from Bacillus pumilus.
+  - qualification: BSc (Hons)
+    name: Molecular Biology
+    institution: University of Cape Town
+    years: 2005
+  - qualification: BSc
+    name: Biochemistry and Microbiology
+    institution: University of Cape Town
+    years: 2002 - 2004
+publications:
+  - description: "Eicher, J.J., Snoep, J.L. and Rohwer, J.M., 2012. Determining enzyme kinetics for systems biology with nuclear magnetic resonance spectroscopy. Metabolites, 2(4), pp.818-843."
+  - description: "Peters, M., Eicher, J.J., Van Niekerk, D.D., Waltemath, D. and Snoep, J.L., 2017. The JWS online simulation database. Bioinformatics, 33(10), pp.1589-1590."
+  - description: "Snoep, J.L., Green, K., Eicher, J., Palm, D.C., Penkler, G., du Toit, F., Walters, N., Burger, R., Westerhoff, H.V. and van Niekerk, D.D., 2015. Quantitative analysis of drug effects at the whole-body level: a case study for glucose metabolism in malaria patients. Biochemical Society Transactions, 43(6), pp.1157-1163."
+  - description: "Kouril, T., Eicher, J.J., Siebers, B. and Snoep, J.L., 2017. Phosphoglycerate kinase acts as a futile cycle at high temperature. Microbiology, 163(11), pp.1604-1612."
