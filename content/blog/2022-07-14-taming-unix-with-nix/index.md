@@ -6,16 +6,16 @@ description: "Nix is all about applying functional programming to files and proc
 ---
 
 You may be aware of [Nix or NixOS][nixos].
-Users love it for being a superior tool for building, deploying, and managing software.
-Yet, it is generally perceived as notoriously hard to learn.
+Users love them for being superior tools for building, deploying, and managing software.
+Yet, Nix is generally perceived as notoriously hard to learn.
 
 The core Nix ecosytem consists of several distinct components:
 
-- The _Nix package manager_ comes with a configuration language to declare software components, the _Nix language_.
-- Software made available through the package manager is centrally maintained in the _Nix package collection_, also known as `nixpkgs`.
-- There also exists a Linux distribution called _NixOS_, which is based on the package manager and the package collection.
+- _Nix_ is a build system and package manager that comes with a configuration language to declare software components, the _Nix language_.
+- Software made available through Nix is centrally maintained in a massive package collection called _Nixpkgs_.
+- There also exists a Linux distribution called _NixOS_, which is based on Nix and Nixpkgs.
 
-In an attempt to provide an alternative learning approach, this article discusses the Nix package manager (hereafter simply referred to as Nix) and its underlying principles in the context of the history of computing.
+In an attempt to provide an alternative learning approach, this article discusses the Nix and its underlying principles in the context of the history of computing.
 The condensed findings presented here reflect only some of our ongoing community effort[^1], started this year to improve documentation and make the benefits of Nix more accessible to software developers, and eventually computer users in general.
 
 ## Everything is a… what?
@@ -246,7 +246,7 @@ A build function also amounts to an operating system process (not depicted).
 Since its inception, Nix development has been primarily occupied with imposing the abstraction of functional programming onto the messy, real world of our Unix lineage:
 encoding and correctly dealing with object references in the file system, ensuring purity of function application, and working around built-in assumptions behind the mechanisms of different language ecosystems and build procedures — all while keeping performance acceptable.
 
-Despite numerous rough edges remaining due to the enormous scope of the undertaking, Nix, `nixpkgs`, and NixOS have been working products for many years.
+Despite numerous rough edges remaining due to the enormous scope of the undertaking, Nix, Nixpkgs, and NixOS have been working products for many years.
 Currently there is much work in progress to improve the user experience by presenting a more consistent command line interface and better error messages.
 
 However, something much more interesting lives in the long-term.
@@ -266,6 +266,11 @@ Originally it was only briefly mentioned as a key mechanism underlying Nix.
 
 Thanks to Ian Henry (@ianthehenry) for detailed feedback and specifically for pointing out that gap.
 
+---
+
+Edited 2022-09-22:
+Renamed `nixpkgs` to Nixpkgs to follow naming conventions and avoid confusion.
+
 [^1]: Special thanks to: John Ericson (@Ericson2314) from Obsidian Systems and Attila Gulyas (@toraritte) for taking time to discuss research papers and collaborating on explanations and terminology table; Neil Mitchell for checking that the results from "Build Systems à la Carte" are represented correctly; my colleague Théophane Hufschmitt (@regnat), who asked for a proper introduction to the leading motif of this article, and prompted a more detailed research on the history of ideas in computing; my colleague Jackline Yim (@JacklineYim) for her tireless support with wielding the English language.
 [^2]: Under the most favorable conditions, where file names can be completely arbitrary, file systems can only accurately model static trees with labeled nodes. A similar attempt will fail for directed acyclic graphs, as directories cannot have more than one parent. Even when encoding structure as file paths in symlinks and file contents, changes to that structure cannot be accounted for by the file system itself.
 [^3]: Even though relational databases and object stores are ubiquitous in application development, there exists no widely used computing environment which is not ultimately based on files in a file system. Interestingly, [non-programmers are increasingly confronted with user interfaces that do not mention files at all][students-files].
@@ -278,9 +283,9 @@ Thanks to Ian Henry (@ianthehenry) for detailed feedback and specifically for po
 [capos]: https://en.wikipedia.org/wiki/Capability-based_operating_system
 
 [^5]: Even the term "file descriptor" for a reference to an object in a computer system shows its historic roots in associating digital electronic data with the contents of paper files.
-[^6]: The built-in Nix language function `derivation` is so basic, and building actual software is so involved, that you will probably never see it in practice. Instead, in `nixpkgs` sophisticated wrappers such as `mkDerivation` are used.
+[^6]: The built-in Nix language function `derivation` is so basic, and building actual software is so involved, that you will probably never see it in practice. Instead, in Nixpkgs sophisticated wrappers such as `mkDerivation` are used.
 [^7]: To that end it also requires specifying a `system`, a combination of instruction set architecture and operating system, on which the build is supposed to run – a different `system` will produce different build results.
 [^8]: This feature is a planned addition described in [RFC 92][rfc-92], which is [not yet implemented][rfc-92-tracking] at the time of writing this article.
 
 [rfc-92]: https://github.com/NixOS/rfcs/blob/master/rfcs/0092-plan-dynamism.md
-[rfc92-tracking]: https://github.com/NixOS/nix/issues/6316
+[rfc-92-tracking]: https://github.com/NixOS/nix/issues/6316
