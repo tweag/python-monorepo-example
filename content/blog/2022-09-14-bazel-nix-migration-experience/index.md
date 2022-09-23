@@ -327,7 +327,7 @@ def assemble_assets(name):
         outs = ["{name}-mesh.bin"],
         tools = [mesh_converter],
         cmd = """$(execpath {mesh_converter}) \
-            $(rootpath {name}-geometry.xml) \
+            $(execpath {name}-geometry.xml) \
             $(execpath {name}-mesh.bin)
         """,
     )
@@ -365,7 +365,7 @@ def assemble_map(name):
         srcs = [":{name}-geometry.xml"],
         tools = ["//common/src:zonebuild"],
         cmd = """$(execpath //common/src:zonebuild) \
-            $(rootpath {name}-geometry.xml) \
+            $(execpath {name}-geometry.xml) \
             $(execpath {name}-collision.dat)
         """,
         outs = ["{name}-collision.dat"],
@@ -427,7 +427,7 @@ sh_binary(
         "@ogre//:lib/OGRE",
     ],
     args = [
-        "$(location @ogre//:lib/OGRE)",
+        "$(rootpath @ogre//:lib/OGRE)",
     ],
 )
 ```
