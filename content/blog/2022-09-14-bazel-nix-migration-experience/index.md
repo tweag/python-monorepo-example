@@ -29,9 +29,7 @@ and is structured as follows:
 <img src=project-structure.svg alt="Project structure" style="width: 100% !important;" />
 </p>
 
-One advantage of Bazel is how well it supports building projects that use
-multiple languages. That doesn't apply here, but there are other attributes
-that make this game an interesting case study:
+This game has a few attributes that make it an interesting case study:
 
 - It has a non-trivial structure with modules[^1] shared between client and
   server executables.
