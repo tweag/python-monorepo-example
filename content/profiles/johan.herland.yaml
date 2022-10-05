@@ -1,0 +1,135 @@
+---
+slug: johan.herland
+name: Johan Herland
+pronouns: He/His/Him
+
+github: jherland
+website: https://herland.net/johan
+
+shortDescription: |
+  Johan is a Developer Productivity Engineer at Tweag. Originally from Western
+  Norway, he is currently based in Delft, NL, and enjoys this opportunity to
+  discover the Netherlands and the rest of continental Europe. Johan has almost
+  twenty years of industry experience, mostly working with Linux and open
+  source software within the embedded realm. He has a passion for designing and
+  implementing elegant and useful solutions to challenging problems, and is
+  always looking for underlying root causes to the problems that face software
+  developers today. Outside of work, he enjoys playing jazz piano and cycling.
+
+bio: |
+  After completing a computer engineering degree in Canada, Johan moved to Oslo
+  in 2004 and completed two long industry stints, at Opera Software (2004 –
+  2011) and Cisco Systems (2011 – 2022). Although both jobs were ostensibly
+  focused on programming in C++, Johan found himself gradually moving towards
+  the tooling and infrastructure side of things: At Opera, he championed and
+  implemented a company-wide migration from CVS to Git, and at Cisco he helped
+  a similar migration from Subversion to Git. At both places he taught his
+  colleagues how to use Git effectively, and became the de facto in-house Git
+  Guru. At Cisco he also delved into the in-house build systems, and helped
+  scale them to teams comprising hundreds of developers across many time zones.
+
+  When focusing on the underlying tooling that developers face every day –
+  build systems, version control, developer tooling, etc. – Johan has found
+  that his efforts can have a multiplicative effect on the productivity of a
+  team: making everybody more productive when the tools work well.
+
+  Along the way, Johan has built up expertise in systems programming with
+  Python, as well as embedded Linux development in general. These days, he's
+  continuing to expand his knowledge in relevant technologies such as Nix and
+  Bazel. He has been an open source enthusiast since the late 90s and is
+  looking to keep contributing back to the community that has now grown to
+  become the backbone of the entire software industry.
+
+  Outside of work, Johan plays the piano, mostly within various jazz genres,
+  together with others or by himself. He also enjoys road cycling, and will
+  travel with his bike to good cycling destinations. The Pyrenees mountains
+  has a special place in his cycling heart.
+
+links:
+  Website: https://herland.net/johan
+  GitHub: http://github.com/jherland
+  LinkedIn: https://www.linkedin.com/in/jherland/
+  Twitter: https://twitter.com/jherland
+
+skills:
+  - Python
+  - Git
+  - Embedded Linux
+  - Systems programming
+  - C/C++
+  - Technical Writing and Communication
+
+speaks:
+  - English (fluent)
+  - Norwegian (native)
+  - Dutch (elementary)
+
+experience:
+  - employer: Tweag
+    role: Developer Productivity Engineer
+    years: September 2022 – Present
+
+  - employer: Cisco Systems Norway
+    role: Softare Engineer
+    years: October 2011 – September 2022
+    description:
+      - Platform developer in the Webex Devices team, part of the Collaboration
+        Technology Group.
+      - Development of multiple generations of Webex/TelePresence video
+        conferencing endpoints.
+      - Embedded Linux development, integration of open‐source and 3rd‐party
+        components.
+      - Maintenance of build systems for application development towards
+        various custom H/W platforms.
+      - |
+        Git expert: trained developers and administered in‐house Git
+        infrastructure.
+      - Improved the developer experience in a large and complex codebase.
+
+  - employer: Git project
+    role: Contributor
+    years: May 2007 – November 2014
+    description:
+      - Primary author of the `git notes` feature for attaching useful metadata
+        to Git objects.
+      - Active participant in the Git community.
+
+  - employer: Opera Software
+    role: Core developer
+    years: July 2004 – September 2011
+    description:
+      - Responsible for central infrastructure and utilities, making them
+        lightweight, efficient, and portable to a wide variety of platforms.
+      - Maintainer of legacy encoding support, Unicode funtionality, selftest
+        infrastructure, etc.
+      - Championed and implemented company‐wide version control transition
+        from CVS to Git.
+      - |
+        Unix developer until September 2007: Developed and ported Opera to
+        embedded Unix/Linux‐based platforms.
+
+education:
+  - qualification: Bachelor of Science with First Class Honours
+    name: Computer Engineering, Software Option
+    institution: Queen's University
+    years: 2000 – 2004
+    description:
+      - |
+        Received Dean's Award (above 80% grade average) in 2002 and 2003.
+        Final standing: 84% grade average.
+      - Focus on software architecture, software development and real-time
+        systems.
+      - |
+        4-year intensive program with a final-year thesis project:
+        Robot Pool "Straight-Shot" Planner and Executor.
+
+publications:
+  - description: |
+      "Fei Long, J. Herland, M.-C. Tessier, D. Naulls, A. Roth, G. Roth, M.
+      Greenspan. Robotic pool: an experiment in automatic potting. IEEE 2004"
+
+talks:
+  - "The Git Parable. At NDC TechTown 2018, ACCU 2013, and elsewhere."
+  - "Building useful project utils in Python, NDC TechTown 2018."
+  - "Making a Headless Android Device (with Patricia Aas), NDC TechTown 2017."
+  - "Elegant Filesystem Interactions in Python using pathlib, ACCU 2016."
