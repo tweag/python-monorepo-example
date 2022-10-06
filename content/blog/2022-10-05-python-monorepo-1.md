@@ -6,8 +6,17 @@ tags: [python]
 description: "How to build your python monorepo from scratch: structure and tooling"
 ---
 
+In an organization, delivering interdependent software across teams can be quite challenging.
+Changes in a package can require changes in one of its dependencies.
+To do that, it is usually required to first make the changes in the dependency and publish a new release of it.
+Only then can the original package be update accordingly.
+In the context of a bigger organization with many interdependent packages, those processes can quickly add up, leading to numerous cascading Pull Requests (PRs) across many repos.
+
+An alternative is to "live at HEAD": instead of waiting for releases and cascading PRs, a developer can work on all related packages at once in one PR and publish them all in one go.
+Such a development workflow requires the use of a monorepo.
+
 Starting a monorepo from scratch can be challenging: there are lot of choices to make and these choices will impact the development process of many engineers.
-In this post, we describe the design of a python monorepo: the structure we chose, which tool we favored, the alternatives that were considered, and the possible improvements.
+In this post, we describe the design of a Python monorepo: how we structure it, which tool we favore, alternatives that were considered, and some possible improvements.
 
 ## Projects and libraries
 
