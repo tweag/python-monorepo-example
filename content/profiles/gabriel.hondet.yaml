@@ -1,0 +1,58 @@
+slug: gabriel.hondet
+name: Gabriel Hondet
+pronouns: he/him, they/them
+github: gabrielhdt
+shortDescription: |
+  Gabriel would like to see a future where any developer would enthusiastically
+  use formal methods to produce safe code. When he's not thinking about that
+  future, Gabriel likes to play the flute or the guitar, listen to anything
+  between jazz and progressive rock, do gardening or drink tea.
+bio: |
+  Gabriel started learning functional programming along with artificial
+  intelligence in the French Civil Aviation university. There, he discovered
+  that programming languages could be more than a mere list of instructions.
+  To understand more thoroughly programming languages, and do more with them,
+  he decided to follow the path of formal methods.
+  In that context, Gabriel worked to improve interoperability between proof
+  assistants during his PhD at ENS Paris-Saclay. More specifically his PhD
+  targeted the Prototype Verification System (commonly abbreviated PVS).
+links: |
+  - http://tilde.club/~koizel
+  - https://eldritch.cafe/@koizel
+skills:
+  - OCaml
+  - Common Lisp
+  - Haskell
+  - Prolog
+  - C
+  - Python
+speaks:
+  - French
+  - English
+experience:
+  - employer: IUT Orsay
+    role: Teaching assistant
+    years: 2021 - 2021
+  - employer: ENS Paris-Saclay
+    role: Teaching assistant
+    years: 2019 - 2021
+education:
+  - qualification: PhD
+    name: Computer Science
+    institution: Inria
+    years: 2019 - 2022
+    description:
+      - |
+        thesis title: ‘Expressing predicate subtyping in computational logical frameworks’
+  - qualification: Engineer degree
+    institution: ENAC (French Civil Aviation University)
+    years: 2016 - 2019
+  - qualification: Master degree
+    name: Computer science: Data and knowledge representation
+    institution: ENAC and Paul Sabatier university
+    years: 2019
+publications:
+  - description: "Frédéric Blanqui, Gilles Dowek, Emilie Grienenberger, Gabriel Hondet, François Thiré: Some Axioms for Mathematics. FSCD 2021"
+  - description: "Gabriel Hondet, Frédéric Blanqui: Encoding of Predicate Subtyping with Proof Irrelevance in the λΠ-Calculus Modulo Theory. TYPES 2020"
+  - description: "Gabriel Hondet, Frédéric Blanqui: The New Rewriting Engine of Dedukti (System Description). FSCD 2020"
+  - description: "Gabriel Hondet, Luis Delgado, Gérald Gurtner: Airline Disruption Management System with Aircraft Swapping and Reinforcement Learning. SID 2018"
