@@ -3,7 +3,7 @@ title: "Python monorepo: an example, 1/2"
 shortTitle: "Python monorepo: an example, 1/2"
 author: Guillaume Desforges, Clément Hurlin
 tags: [python]
-description: "How to build your python monorepo from scratch: structure and tooling"
+description: "How to build your Python monorepo from scratch: structure and tooling"
 ---
 
 In an organization, delivering interdependent software across teams can be quite challenging.
@@ -20,7 +20,7 @@ In this post, we describe the design of a Python monorepo: how we structure it, 
 
 ## Projects and libraries
 
-In python, there is no significant difference between projects and libraries.
+In Python, there is no significant difference between projects and libraries.
 Projects are simply pieces of code that are not meant to be reused by other projects.
 Because of that, we make no difference between the two, except that the monorepo structure has two top-level folders for projects and libraries:
 
@@ -181,7 +181,7 @@ For example suppose we have one library named `fancylib`, making the monorepo st
 To create `fancylib`'s development environment, go to directory `libs/fancylib` and execute:
 
 ```shell
-python3 -m venv .venv  # Calls python "venv" module, to create the ".venv" folder
+python3 -m venv .venv  # Calls Python "venv" module, to create the ".venv" folder
 source .venv/bin/activate  # Make the sandbox active in the current shell session
 # Install pinned pip first
 pip install -r $(git rev-parse --show-toplevel)/pip-requirements.txt
