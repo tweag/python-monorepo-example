@@ -37,11 +37,10 @@ This top-level organization highlights that libraries are to be shared across th
 To create a project or a library, a folder needs to be created in one or the other.
 It should be then populated with the following:
 
-- A `pyproject.toml` file.
-  It contains loose non-transitive dependencies of your package.
-- A `requirements.txt` file.
-  It contains pinned transitive dependencies of your package.
-  This file serves as the basis for creating local sandboxes for developers and also as the default testing environment in continuous integration (CI).
+- A `pyproject.toml` file which defines the Python package.
+  It contains its meta data (name, version, description) and the list of dependencies for dependency resolution.
+- A `requirements.txt` file which serves as the basis for creating local sandboxes for developers and also as the default testing environment in continuous integration (CI), in the same way as a lock file.
+  It has to list all dependencies, direct and transitive, frozen at a specific version, in pip's "requirement file" format.
 - A `README.md` file.
   This file's purpose is to list the owners of this package:
   the persons to contact if the package needs to evolve or is broken.
