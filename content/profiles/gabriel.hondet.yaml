@@ -43,12 +43,12 @@ education:
     years: 2019 - 2022
     description:
       - |
-        thesis title: ‘Expressing predicate subtyping in computational logical frameworks’
+        thesis title: Expressing predicate subtyping in computational logical frameworks
   - qualification: Engineer degree
     institution: ENAC (French Civil Aviation University)
     years: 2016 - 2019
   - qualification: Master degree
-    name: Computer science: Data and knowledge representation
+    name: "Computer science: Data and knowledge representation"
     institution: ENAC and Paul Sabatier university
     years: 2019
 publications:
