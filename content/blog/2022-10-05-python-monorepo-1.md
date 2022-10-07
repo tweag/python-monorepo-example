@@ -18,16 +18,24 @@ In this post, we describe a design for a Python monorepo: how we structure it, w
 
 ## Projects and libraries
 
-In Python, there is no significant difference between projects and libraries.
-Projects are simply pieces of code that are not meant to be reused by other projects.
-Because of that, we make no difference between the two, except that the monorepo structure has two top-level folders for projects and libraries:
+In an organization, each team will be owner of its own projects.
+For instance, there could be a Web API, a collection of data processing job, and Machine Learning training pipelines.
+While each team is working on its own projects, it is most likely that a portion of their code is shared.
+Following the DRY (Don't Repeat Yourself) principle, it is best to refactor those shared portions into libraries.
+
+We have found that, in Python, there is no significant difference between projects and libraries: they are Python packages.
+Because of that, we make no difference between the two.
+However, for the sake of clarity, we split the monorepo structure into two top-level folders, one for projects and one for libraries:
 
 ```
 ├── libs
 └── projects
 ```
 
-To create a project or a library, you should populate its folder with the following:
+This top-level organization highlights that libraries are to be shared across the entire organization.
+
+To create a project or a library, a folder needs to be created in one or the other.
+It should be then populated with the following:
 
 - A `pyproject.toml` file.
   It contains loose non-transitive dependencies of your package.
