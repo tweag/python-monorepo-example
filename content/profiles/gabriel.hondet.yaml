@@ -11,14 +11,14 @@ bio: |
   Gabriel started learning functional programming along with artificial
   intelligence in the French Civil Aviation university. There, he discovered
   that programming languages could be more than a mere list of instructions.
-  To understand more thoroughly programming languages, and do more with them,
+  To more thoroughly understand programming languages, and do more with them,
   he decided to follow the path of formal methods.
   In that context, Gabriel worked to improve interoperability between proof
   assistants during his PhD at ENS Paris-Saclay. More specifically his PhD
   targeted the Prototype Verification System (commonly abbreviated PVS).
 links: |
-  - http://tilde.club/~koizel
-  - https://eldritch.cafe/@koizel
+  - Site: http://tilde.club/~koizel
+  - Mastodon: https://eldritch.cafe/@koizel
 skills:
   - OCaml
   - Common Lisp
