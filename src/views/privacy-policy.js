@@ -49,14 +49,17 @@ const PrivacyPolicy = () => {
             and usage of their personal identifiable information (“data”). This
             privacy policy serves as a declaration of how we collect data, why
             we collect, and your rights as a user (“you,” “user,” “visitor”)
-            across the website www.tweag.io, advertising, and offline activities
-            during the course of business.
+            across the website <a href="www.tweag.io">www.tweag.io</a>,
+            advertising, and offline activities during the course of business.
             <br />
             <Text as="div" sx={{ pt: `1.5rem` }}>
               If you have any questions, cannot use the automated unsubscribe
               options, or receive communications from Tweag after opting out,
-              contact us immediately by emailing dataprotection@tweag.io, or by
-              mail: 207 Rue de Bercy, Paris, 75012, France.
+              contact us immediately by emailing{` `}
+              <a href="mailto:dataprotection@tweag.io">
+                dataprotection@tweag.io
+              </a>
+              , or by mail: 207 Rue de Bercy, Paris, 75012, France.
             </Text>
           </Box>
           <Divider />
@@ -122,15 +125,19 @@ const PrivacyPolicy = () => {
 
           <Box sx={{ fontSize: `1.5rem` }}>
             Cookies gathered through Google properties are subject to Google’s
-            storage terms, read more here:
-            https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage.
+            storage terms, read more here:{` `}
+            <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">
+              https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage.
+            </a>
             <br />
             <Text as="div" sx={{ py: `1.5rem` }}>
               For user-volunteered information on web-based forms that Modus
               gathers, we will store contact information until the user opts
               out, requests deletion, or the retention period is met. For more
-              information on the retention period please contact us at
-              dataprotection@moduscreate.com
+              information on the retention period please contact us at{` `}
+              <a href="mailto:dataprotection@tweag.io">
+                dataprotection@tweag.io
+              </a>
             </Text>
             <Divider />
           </Box>
@@ -206,11 +213,14 @@ const PrivacyPolicy = () => {
             <br />
             <Text as="div" sx={{ pb: `1.5rem` }}>
               If you would like to withdraw your consent or have your personal
-              data deleted, you may contact us at any time by emailing
-              dataprotection@tweag.io, mailing us at: 207 Rue de Bercy, Paris,
-              75012, France. Please use the same contact process to file
-              requests based on the CCPA, GDPR, LGPD, or other applicable data
-              protection legislation with the Tweag team.
+              data deleted, you may contact us at any time by emailing{` `}
+              <a href="mailto:dataprotection@tweag.io">
+                dataprotection@tweag.io
+              </a>
+              , mailing us at: 207 Rue de Bercy, Paris, 75012, France. Please
+              use the same contact process to file requests based on the CCPA,
+              GDPR, LGPD, or other applicable data protection legislation with
+              the Tweag team.
             </Text>
           </Box>
 
@@ -246,8 +256,10 @@ const PrivacyPolicy = () => {
             <Text as="div" sx={{ py: `1.5rem` }}>
               We have enabled IP Anonymization within the Google suite to
               prevent the capturing of explicit IP addresses. For more
-              information on Google, read their data processing terms:
-              https://privacy.google.com/businesses/processorterms/
+              information on Google, read their data processing terms:{` `}
+              <a href="https://privacy.google.com/businesses/processorterms/">
+                https://privacy.google.com/businesses/processorterms/
+              </a>
             </Text>
           </Box>
 
@@ -263,8 +275,10 @@ const PrivacyPolicy = () => {
             <br />
             <Text as="div" sx={{ py: `1.5rem` }}>
               Learn more about the cookies set by HubSpot when a user visits our
-              site here:
-              https://knowledge.hubspot.com/articles/KCS_Article/Reports/What-cookies-does-HubSpot-set-in-a-visitor-s-browser
+              site here:{` `}
+              <a href="https://knowledge.hubspot.com/articles/KCS_Article/Reports/What-cookies-does-HubSpot-set-in-a-visitor-s-browser">
+                https://knowledge.hubspot.com/articles/KCS_Article/Reports/What-cookies-does-HubSpot-set-in-a-visitor-s-browser
+              </a>
             </Text>
           </Box>
           <Divider />
@@ -316,8 +330,10 @@ const PrivacyPolicy = () => {
             Using Google Analytics and Google AdWords, we engage in remarketing;
             retargeting content to users based on their behavior on our site.
             Please refer to Google’s site for more information on their
-            remarketing services:
-            https://support.google.com/analytics/answer/2611268.
+            remarketing services:{` `}
+            <a href="https://support.google.com/analytics/answer/2611268">
+              https://support.google.com/analytics/answer/2611268.
+            </a>
           </Box>
 
           <Box sx={{ py: `1.5rem`, fontSize: `2rem`, fontWeight: 600 }}>
@@ -367,7 +383,8 @@ const PrivacyPolicy = () => {
             object to marketing communications, Right to restrict our processing
             of your personal information and a Right to complain to the
             competent data protection authority. For more information regarding
-            your rights, please contact us at dataprotection@tweag.io
+            your rights, please contact us at {` `}
+            <a href="mailto:dataprotection@tweag.io">dataprotection@tweag.io</a>
           </Box>
         </Box>
       </div>
