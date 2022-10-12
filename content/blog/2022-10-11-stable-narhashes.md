@@ -100,7 +100,7 @@ I have extensively refactored a codebase, and not had to worry that I accidental
 ## Applications
 
 You can use this on your personal systems to make sure your refactors are pure, but where it really shines is in the CI for critical systems.
-This strategy was developed in collaboration with [Bevuta](https://www.bevuta.com/), a company working on emergency services.
+This strategy was developed in collaboration with [bevuta](https://www.bevuta.com/), a company working on emergency services.
 
 The way we've set it up, on every merge request, the new hashes are checked against all the deployed machines.
 If there are no changes, we can confidently push to production.
