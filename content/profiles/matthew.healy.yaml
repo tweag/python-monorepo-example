@@ -49,14 +49,17 @@ experience:
     role: Senior Software Engineer
     years: 2018 - 2022
     description:
-      - Led efforts to overhaul the authentication domain, which had lacked
-        ownership for several years prior. Implemented an OAuth 2.1 compliant
-        authorization server. Transitioned both first- and third-party clients
-        to the new implementation with minimal disruption. Also handled
-        Engineering Manager duties.
-      - Technical lead on multiple projects for the SoundCloud iOS app. Designed
-        and built an integration testing framework to enable "headless" feature
-        code to be exercised fully without incurring the costs of UI testing.
+      - Led efforts to re-architect the authentication domain, which had lacked
+        ownership for several years prior. Designed & implemented an OAuth 2.1
+        compliant authorization server. Oversaw the transition of both first-
+        and third-party clients to the new implementation with minimal
+        disruption. Also handled Engineering Manager duties for the auth team,
+        while scaling it from 2 people up to 7.
+      - Technical lead on multiple projects for the SoundCloud iOS app, with a
+        focus on creator-targeted features such as content editing and audio
+        upload. Designed and built an integration testing framework to enable
+        "headless" feature code to be exercised fully without incurring the
+        costs of UI testing.
       - Technical mentor for engineers on SoundCloud's internal training program.
   - employer: Clue
     role: Senior Software Engineer
@@ -68,13 +71,13 @@ experience:
   - employer: CodeClan
     role: Senior Software Engineering Instructor
     years: 2016 - 2017
-    description: # TODO
+    description:
       - Lead a team of instructors teaching a 16 week bootcamp on software
         engineering fundamentals in Ruby, Java and JavaScript.
       - Wrote & maintained course materials.
       - Mentored students & junior instructors.
-      - Wrote a small script to set-up student laptops saving 20+ hours of manual
-        work per cohort.
+      - Automated student laptop setup saving 20+ hours of manual work per
+        cohort.
   - employer: FanDuel
     role: Software Engineer
     years: 2015 - 2016
