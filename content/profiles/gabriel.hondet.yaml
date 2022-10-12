@@ -16,9 +16,9 @@ bio: |
   In that context, Gabriel worked to improve interoperability between proof
   assistants during his PhD at ENS Paris-Saclay. More specifically his PhD
   targeted the Prototype Verification System (commonly abbreviated PVS).
-links: |
-  - Site: http://tilde.club/~koizel
-  - Mastodon: https://eldritch.cafe/@koizel
+links:
+  Site: http://tilde.club/~koizel
+  Mastodon: https://eldritch.cafe/@koizel
 skills:
   - OCaml
   - Common Lisp
