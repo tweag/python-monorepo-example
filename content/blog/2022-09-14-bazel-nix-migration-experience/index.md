@@ -302,8 +302,13 @@ are produced by Bazel during the build. A brief description of each follows:
 Bazel has no built-in rules for these transformations but
 [`genrule`][bazel-genrule] can be used to run arbitrary Bash commands. To avoid
 duplication I decided to define a couple of helper macros in a
-[`resources.bzl`][resources-bzl] extension file. The `assemble_assets` macro is
-used in `//common/data/ships` like this:
+[`resources.bzl`][resources-bzl] extension file. In Bazel a
+[macro][bazel-macros] is a function that can instantiate rules. The
+`assemble_assets` macro is used in `//common/data/ships` like this:
+
+
+
+
 
 ```python
 load("//common/data:resources.bzl", "assemble_assets")
@@ -500,6 +505,7 @@ confidence Bazel provides here is great for developer productivity.
 [bazel-cc-import]: https://bazel.build/reference/be/c-cpp#cc_import
 [bazel-cc-library]: https://bazel.build/reference/be/c-cpp#cc_library
 [bazel-genrule]: https://bazel.build/reference/be/general#genrule
+[bazel-macros]: https://bazel.build/extending/macros
 [bazel-output]: https://bazel.build/remote/output-directories#layout
 [bazel-packages]: https://docs.bazel.build/versions/main/build-ref.html#packages
 [bazel-sh-binary]: https://docs.bazel.build/versions/main/be/shell.html#sh_binary
