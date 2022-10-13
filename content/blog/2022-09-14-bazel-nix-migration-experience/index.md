@@ -391,7 +391,9 @@ dependency is the map collision data.
 However the graphics engine used by `client` requires all assets to be listed
 in a `resources.cfg` file. It also needs to dynamically load various plugins
 with [`dlopen`][dlopen]. This is facilitated by a wrapper script which
-enumerates all the resources and sets the plugin folder appropriately:
+enumerates all the resources and sets the plugin folder appropriately. To
+preserve the locality of the logic, it is convenient to inline such scripts
+directly in `BUILD.bazel` using a [`write_file`][write_file] rule:
 
 ```python
 write_file(
@@ -405,7 +407,9 @@ write_file(
 )
 ```
 
-The script above is invoked by a [`sh_binary`][bazel-sh-binary] rule:
+This causes Bazel to generate the script file as needed and avoids the hassle
+of creating and committing another file to version control. The script is
+invoked by a [`sh_binary`][bazel-sh-binary] rule:
 
 ```python
 sh_binary(
@@ -526,3 +530,4 @@ confidence Bazel provides here is great for developer productivity.
 [shader-program]: https://en.wikipedia.org/wiki/Shader
 [space-game]: https://github.com/benradf/space-game#space-game
 [uv-map]: https://en.wikipedia.org/wiki/UV_mapping
+[write_file]: https://github.com/bazelbuild/bazel-skylib/blob/main/docs/write_file_doc.md
