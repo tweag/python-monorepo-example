@@ -47,7 +47,7 @@ It should be then populated with the following:
   This file also contains a short description of what the package is about and example commands to run the code or test it.
   It's supposed to be a gentle introduction to newcomers to this package.
 
-In our scenario, we chose to stick to [pip](https://pypi.org/project/pip/) for populating sandboxes, because [poetry](https://python-poetry.org/) still doesn't work [100% smoothly](https://github.com/python-poetry/poetry/issues/6409) with a popular data-science: [pytorch](https://pytorch.org/).
+In our scenario, we chose to stick to [pip](https://pypi.org/project/pip/) for populating sandboxes, because [poetry](https://python-poetry.org/) still doesn't work [100% smoothly](https://github.com/python-poetry/poetry/issues/6409) with a popular data-science tool: [pytorch](https://pytorch.org/).
 We refer the reader to the [poetry](#poetry) section below for a solution using `poetry`.
 
 For reproducibility reasons, we pin the version of `pip` thanks to a top-level `pip-requirements.txt` file that contains a single line: the version of pip to use.
@@ -154,7 +154,7 @@ Like for `pip` and other tools, pinning `pyright`'s version helps making local d
 ## Testing
 
 To test our code, we choose [pytest](https://docs.pytest.org/en/7.1.x/).
-This is an obvious choice, because all concerned developers had experience with it and there was no contender.
+This is an obvious choice, because all concerned developers had experience with it and there was no other contender.
 
 Among `pytest`'s qualities, we can cite its good progress reporting while the tests are running and easy integration with test coverage.
 
