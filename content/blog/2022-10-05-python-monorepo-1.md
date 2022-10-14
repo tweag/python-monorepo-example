@@ -14,9 +14,51 @@ An alternative is to "live at HEAD": instead of waiting for releases and cascadi
 Such a development workflow requires to go from numerous code repositories to a single repository, called "monorepo".
 However, designing a monorepo can be challenging as it impacts the development workflow of all engineers.
 
-In this post, we describe a design for a Python monorepo: how we structure it, which tool we favore, alternatives that were considered, and some possible improvements.
+In this post, we describe a design for a Python monorepo: how we structure it, which tool we favor, alternatives that were considered, and some possible improvements.
 
-## Projects and libraries
+## Python environments: one global vs many local
+
+Working on a Python project requires a Python environment (a.k.a a sandbox), with a Python interpreter and the right Python dependencies (packages).
+When working on multiple projects, one can either use a single shared sandbox for all projects, or many specific ones, for each project.
+
+On one hand, a single sandbox for all projects makes it trivial to ensure that all developers and projects use a common set of dependencies.
+This is desirable as it reduces the scope of things to manage when implementing and debugging.
+Also, it ensures that all employees are working towards a shared, common knowledge about its software.
+
+On the other hand, it makes it impossible for different projects to use different versions of external dependencies.
+It is also mandatory to install the dependencies for all projects, even when they only need a subset of them to work on a single project.
+
+In order not to lose flexibility when needed, we decided to use _multiple sandboxes_, one per project.
+We can later improve the consistency of external dependencies across Python environments with some tooling.
+
+A sandbox can be created anytime with Nix in any folder, for a specific Python version (here 3.9):
+
+```
+$ nix shell nixpkgs#python39 --command python -m venv .venv --copies
+$ source .venv/bin/activate
+(.venv) $ which python
+/some/path/.venv/bin/python
+```
+
+We will later describe how this is put to use.
+
+## Choosing a Python package manager
+
+In our scenario, we chose to stick to [pip](https://pypi.org/project/pip/) for populating sandboxes, because [poetry](https://python-poetry.org/) still doesn't work [100% smoothly](https://github.com/python-poetry/poetry/issues/6409) with [pytorch](https://pytorch.org/), a core library in the data ecosystem.
+We refer the reader to the [poetry](#poetry) section below for a solution using `poetry`.
+
+For the past years, pip has undergone many important breaking changes, such as [PEP 660](https://peps.python.org/pep-0660/).
+To improve reproducibility, we pin the version of `pip` in a top-level `pip-requirements.txt` file, with the exact version of pip to use.
+
+`pip-requirements.txt`
+```
+# Install a specific version of pip before installing any other package.
+pip==22.2.2
+```
+
+It will be important to update pip to this version before installing anything else.
+
+## Creating projects and libraries
 
 In an organization, each team will be owner of its own projects.
 For instance, there could be a Web API, a collection of data processing job, and Machine Learning training pipelines.
@@ -46,16 +88,6 @@ It should be then populated with the following:
   the persons to contact if the package needs to evolve or is broken.
   This file also contains a short description of what the package is about and example commands to run the code or test it.
   It's supposed to be a gentle introduction to newcomers to this package.
-
-In our scenario, we chose to stick to [pip](https://pypi.org/project/pip/) for populating sandboxes, because [poetry](https://python-poetry.org/) still doesn't work [100% smoothly](https://github.com/python-poetry/poetry/issues/6409) with a popular data-science tool: [pytorch](https://pytorch.org/).
-We refer the reader to the [poetry](#poetry) section below for a solution using `poetry`.
-
-For reproducibility reasons, we pin the version of `pip` thanks to a top-level `pip-requirements.txt` file that contains a single line: the version of pip to use.
-
-```
-# Install a specific version of pip before installing any other package.
-pip==22.2.2
-```
 
 ## Formatting and linting
 
@@ -186,23 +218,15 @@ For example suppose we have one library named `fancylib`, making the monorepo st
 To create `fancylib`'s development environment, go to directory `libs/fancylib` and execute:
 
 ```shell
-python3 -m venv .venv  # Calls Python "venv" module, to create the ".venv" folder
-source .venv/bin/activate  # Make the sandbox active in the current shell session
+nix shell nixpkgs#python39 --command python -m venv .venv --copies # Calls Python "venv" module, to create the ".venv" folder
+source .venv/bin/activate # Make the sandbox active in the current shell session
 # Install pinned pip first
 pip install -r $(git rev-parse --show-toplevel)/pip-requirements.txt
 # Install shared development dependencies and project/library-specific dependencies
 pip install -r $(git rev-parse --show-toplevel)/dev-requirements.txt -r requirements.txt
 ```
 
-This can be shortened by defining a [git alias](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) to return the root a repository, by adding the following to `$HOME/.gitconfig`:
-
-```shell
-[alias]
-	root = rev-parse --show-toplevel
-```
-
-This makes it possible to use `git root` in the snippet above instead of `git rev-parse --show-toplevel`, making it slightly more amenable.
-This can shortened even more by using `nox`, as explained in the [improvements](#improvements) section below.
+This can shortened by using `nox`, as explained in the [improvements](#improvements) section below.
 
 ## Configuration of one package
 
