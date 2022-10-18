@@ -316,7 +316,7 @@ computations as step-by-step modifications of one original computation.
 
 ## Further work
 
-There are now many interesting questions on the more theoretical side to be
+There are now many interesting questions on the more theoretical side to
 investigate.
 
 - What's the right set of logical connectives?
@@ -356,7 +356,7 @@ question to rule them all is: What's `modifyLtl`, really?
 
 [previous-post]: https://www.tweag.io/blog/2022-01-26-property-based-testing-of-monadic-code/
 [cooked-validators]: https://github.com/tweag/plutus-libs/tree/main/cooked-validators
-[ltl-implementation]: https://github.com/tweag/plutus-libs/blob/main/cooked-validators/src/Cooked/Ltl.hs
-[attack-implementation]: https://github.com/tweag/plutus-libs/blob/main/cooked-validators/src/Cooked/Attack.hs
+[ltl-implementation]: https://github.com/tweag/plutus-libs/blob/ed5e8c9ba90eb507bff1f8ae2a31ec39755e3584/cooked-validators/src/Cooked/Ltl.hs
+[attack-implementation]: https://github.com/tweag/plutus-libs/tree/ed5e8c9ba90eb507bff1f8ae2a31ec39755e3584/cooked-validators/src/Cooked/Attack
 [wiki-ltl]: https://en.wikipedia.org/wiki/Linear_temporal_logic
-[monadmodal-instance]: https://github.com/tweag/plutus-libs/blob/48ab77cf4a02695b3fb0d9e333dc342e557b76f9/cooked-validators/src/Cooked/Ltl.hs#L293
+[monadmodal-instance]: https://github.com/tweag/plutus-libs/blob/ed5e8c9ba90eb507bff1f8ae2a31ec39755e3584/cooked-validators/src/Cooked/Ltl.hs#L293
