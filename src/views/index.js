@@ -9,13 +9,6 @@ import { Section1, Section2, Section3, Section4, Section5 } from "./components"
 const IndexPage = () => {
   return (
     <FullPageLayout>
-      <script
-        src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-        type="text/javascript"
-        charset="UTF-8"
-        data-domain-script="3a05f346-a11c-458d-9bec-8c7fb98aa3aa"
-      ></script>
-      <script type="text/javascript">function OptanonWrapper()</script>
       <SEO title="Software innovation lab" />
       <div className="section s_white">
         <Section1 />
