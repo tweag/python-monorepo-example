@@ -50,13 +50,12 @@ We refer the reader to the [poetry](#poetry) section below for a solution using 
 For the past years, pip has undergone many important breaking changes, such as [PEP 660](https://peps.python.org/pep-0660/).
 To improve reproducibility, we pin the version of `pip` in a top-level `pip-requirements.txt` file, with the exact version of pip to use.
 
-`pip-requirements.txt`
 ```
 # Install a specific version of pip before installing any other package.
 pip==22.2.2
 ```
 
-It will be important to update pip to this version before installing anything else.
+It will be important to install `pip` with this exact version before installing anything else.
 
 ## Creating projects and libraries
 
@@ -82,7 +81,8 @@ It should be then populated with the following:
 - A `pyproject.toml` file which defines the Python package.
   It contains its meta data (name, version, description) and the list of dependencies for dependency resolution.
 - A `requirements.txt` file which serves as the basis for creating local sandboxes for developers and also as the default testing environment in continuous integration (CI), in the same way as a lock file.
-  It has to list all dependencies, direct and transitive, frozen at a specific version, in pip's "requirement file" format.
+  It has to list all dependencies, direct and transitive, frozen at a specific version, in pip's
+  [requirement file format](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
 - A `README.md` file.
   This file's purpose is to list the owners of this package:
   the persons to contact if the package needs to evolve or is broken.
@@ -147,6 +147,28 @@ To recap what we described so far, at this point our monorepo's structure is:
 ├── pip-requirements.txt
 └── projects
 ```
+
+With this setup, you format and lint code deterministically locally
+and on the CI with:
+
+```shell
+python3 -m venv .venv --copies
+# Make the sandbox active in the current shell session
+source .venv/bin/activate
+# Install pinned pip first
+pip install -r pip-requirements.txt
+# Install shared development dependencies, in a second step
+# to use the pinned pip version
+pip install -r dev-requirements.txt
+# black, flake8, and isort are now available. Use them as follows:
+black --check .
+flake8 .
+isort --check-only .
+```
+
+Note that it is possible to do this at the top-level, because `black`,
+`flake8`, and `isort` don't need external dependencies of your code
+to be installed. In our setup with This means that, in a context with multiple sandboxes,
 
 ## Typechecking
 
@@ -225,6 +247,8 @@ source .venv/bin/activate
 pip install -r $(git rev-parse --show-toplevel)/pip-requirements.txt
 # Install shared development dependencies and project/library-specific dependencies
 pip install -r $(git rev-parse --show-toplevel)/dev-requirements.txt -r requirements.txt
+# With project-specific dependencies installed, typecheck your code as follows:
+pyright .
 ```
 
 This can shortened by using `nox`, as explained in the [improvements](#improvements) section below.
