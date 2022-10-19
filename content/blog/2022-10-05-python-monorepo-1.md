@@ -31,10 +31,10 @@ It is also mandatory to install the dependencies for all projects, even when the
 In order not to lose flexibility when needed, we decided to use _multiple sandboxes_, one per project.
 We can later improve the consistency of external dependencies across Python environments with some tooling.
 
-A sandbox can be created anytime with Nix in any folder, for a specific Python version (here 3.9):
+A sandbox can be created with python's base library:
 
 ```
-$ nix shell nixpkgs#python39 --command python -m venv .venv --copies
+$ python3 -m venv .venv --copies
 $ source .venv/bin/activate
 (.venv) $ which python
 /some/path/.venv/bin/python
@@ -218,8 +218,9 @@ For example suppose we have one library named `fancylib`, making the monorepo st
 To create `fancylib`'s development environment, go to directory `libs/fancylib` and execute:
 
 ```shell
-nix shell nixpkgs#python39 --command python -m venv .venv --copies # Calls Python "venv" module, to create the ".venv" folder
-source .venv/bin/activate # Make the sandbox active in the current shell session
+python3 -m venv .venv --copies
+# Make the sandbox active in the current shell session
+source .venv/bin/activate
 # Install pinned pip first
 pip install -r $(git rev-parse --show-toplevel)/pip-requirements.txt
 # Install shared development dependencies and project/library-specific dependencies

@@ -168,5 +168,4 @@ TODO project pipeline/library pipeline.
 
 - script to check consistency across TOML files
 - make a template to facilitate
-- use poetry2nix for 100% reproducibility
 - nox
