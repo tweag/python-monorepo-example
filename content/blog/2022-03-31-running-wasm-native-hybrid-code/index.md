@@ -53,7 +53,7 @@ are explicitly provided by the engine.
 
 ## GHC test suite and cross compilation
 
-```sh
+```shell
 $ /opt/wasi-sdk/bin/clang hello.c -o hello.wasm
 $ wasmtime run hello.wasm
 Hello world!
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-```sh
+```shell
 $ cc qemu-system-wasm32.c -o qemu-system-wasm32
 $ proot -q ./qemu-system-wasm32
 $ ./hello.wasm
