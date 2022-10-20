@@ -1,0 +1,5 @@
+flowchart LR
+    A[package.yaml] -- hpack --> B[example-servant-elm.cabal]
+    B -- bazel run :gazelle --> C[BUILD.bazel]
+
+

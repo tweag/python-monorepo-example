@@ -1,0 +1,12 @@
+flowchart LR;
+  subgraph library:api
+    server/src/Api.hs
+  end
+  subgraph executable:server
+    server/src/Main.hs
+  end
+  subgraph executable:generate-elm
+    client/GenerateElm.hs
+  end
+  library:api --> executable:server
+  library:api --> executable:generate-elm
