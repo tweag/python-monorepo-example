@@ -1,0 +1,93 @@
+slug: maria.knorps
+name: Maria Knorps
+pronouns: she/her
+github: mknorps
+shortDescription: |
+  Maria is a mathematician at heart and by education. Before she joined the industry, 
+  she worked in academia on untangling two-phase turbulence problems. From there she 
+  made a non-Markovian jump to data science and developed interest in functional programming.
+bio: |
+  Maria's professional goal is to improve the environment by understanding it first in
+  the language of mathematics and then applying the gained knowledge.
+  After graduating in applied mathematics, Maria began research on the two-phase turbulent flows.
+  Knowledge of mathematical modeling helped her better understand the small-scale physical effects 
+  and allowed her to more accurately model two-phase turbulence while reducing computational costs.
+
+  After completing her PhD, Maria began to work as a data scientist. 
+  She was responsible for all stages of data processing, from creating ETL pipelines, through modeling 
+  to visualization of the results and leading 2-5 people projects.
+  Being on the implementation and design side of things pushed her towards functional programming. 
+  She wrote parts of the data processing pipelines in Haskell, where system of types and expressiveness are 
+  closer to the language of mathematics.
+  Maria likes to keep the code neat and tidy, ensuring that things are reusable and well documented.
+
+  Diversity in the IT industry and encouraging girls and women to program are matters dear to her heart.
+  As a mother of two kids, she doesn't have much time for other hobbies, but ...
+  sometimes she jumps on motorcycle and rides outside of the city.
+
+links:
+  Google Scholar profile: https://scholar.google.com/citations?view_op=list_works&hl=en&user=wro7MEQAAAAJ
+skills:
+  - Python
+  - Haskell
+  - Mathematical modelling
+  - Data science
+  - Data engineering
+speaks:
+  - Polish (native)
+  - English
+experience:
+  - employer: Tweag
+    role: Data Engineer
+    years: Sep 2022-present
+    location: Gdynia, Poland
+
+  - employer: Airspace Intelligence
+    role: Machine Learning Engineer
+    years: Jan 2022 - Jul 2022
+    location: Gdansk, Poland
+    description:
+      - I was responsible for designing and implementing reliable data processing pipelines.
+
+  - employer: IF Research Poland
+    role: Data Scientist
+    years: Jul 2018 - Dec 2021
+    location: Gdansk, Poland
+    description:
+      - I led small-scale data science projects, designed and implemented
+        data processing pipelines, machine learning algorithms and data visualizations.
+
+  - employer: OpusCapita
+    role: Implementation Specialst
+    years: Sep 2015 - Jun 2018
+    location: PTorun, Poland
+    description:
+      - I was responsible for data pipelines and customer demanded changes in invoices processing system.
+
+  - employer: Institute of Fluid Flow Machinery, Polish Academy of Sciences
+    role: Research Assistant
+    years: Oct 2009 - Jun 2017
+    location: Gdansk, Poland
+    description:
+      - I conducted research on modelling and a nature of two-phase turbulent flows.
+
+  - employer: Gdansk University of Technology
+    role: Teaching Assistant
+    years: Feb 2011 - Jun 2014
+    location: Gdansk, Poland
+    description:
+      - I taught courses on probability theory, functional analysis and mathematical modelling.
+
+education:
+  - qualification: PhD
+    name: Fluid Mechanics
+    institution: Institute of Fluid Flow Machinery, Polish Academy of Sciences
+    years: 2009-2018
+  - qualification: Eng.
+    name: Technical Physics and Energy Conversion
+    institution: Gdansk University of Technology
+    years: 2007-2012
+  - qualification: MsC, Eng.
+    name: Applied Mathematics, with honours
+    institution: Gdansk University of Technology
+    years: 2004-2009
