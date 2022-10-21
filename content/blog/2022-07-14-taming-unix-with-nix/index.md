@@ -92,7 +92,7 @@ The following figure illustrates the analogy of memory structures in programs an
 
 As an example of this equivalence, take the following shell script:
 
-```sh
+```shell
 #!/usr/bin/sh
 echo hello
 ```

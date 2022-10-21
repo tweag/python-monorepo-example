@@ -185,7 +185,7 @@ in the cachegrind manual.
 
 The second section:
 
-```sh
+```shell
 --------------------------------------------------------------------------------
 Ir                   I1mr           ILmr           Dr                  D1mr             DLmr           Dw                  D1mw               DLmw
 --------------------------------------------------------------------------------
@@ -198,7 +198,7 @@ I'll reproduce it here. There are 3 kinds of simulated CPU caches, a first-level
 instruction cache (I1), a data cache (D1), and a "Last-Level" cache (LL), and
 several kinds of metrics about these caches:
 
-```sh
+```shell
 Ir   --> cache reads, specifically the number of instructions executed
 I1mr --> instruction cache read misses (we needed to fetch something from RAM)
 ILmr --> the "Last-Level" (LL) cache instruction read misses. Think an L3 cache
@@ -283,7 +283,7 @@ and data cache. We'll return to this point later.
 
 Alright, now for the leaky version:
 
-```sh
+```shell
 -------------------------------------------------
 Ir                      Dr                     D1mr                DLmr                Dw                     D1mw                DLmw
 -------------------------------------------------
@@ -294,7 +294,7 @@ We can see that our instruction count (`Ir`) has exploded from `315,065,912` to
 `17,722,854,207`! That's many more instructions to process. Let's look at the
 function section.
 
-```sh
+```shell
 Ir                     D1mr                DLmr                D1mw                DLmw                file:function
 ---------------------------
 2,851,984,623 (16.09%)  4,325,884 ( 6.67%)    789,401 ( 1.99%)        315 ( 0.00%)        65 ( 0.00%)  ???:evacuate

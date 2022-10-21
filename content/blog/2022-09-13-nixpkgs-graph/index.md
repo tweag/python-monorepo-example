@@ -43,7 +43,7 @@ For example, in this interpretation, the Nix derivation `chromium` has four depe
 
 One of the easiest and most direct ways to get the list of all derivations under Nixpkgs is to use the [nix search](https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-search.html) command:
 
-```sh
+```shell
 $ nix search --json nixpkgs
 ```
 

@@ -61,7 +61,7 @@ fixing problems becomes much harder.
 NixOS currently doesn't not have very good traceability. You can ask a
 NixOS system what version of Nixpkgs it was built from:
 
-```console
+```shell
 $ nixos-version --json | jq -r .nixpkgsRevision
 a84b797b28eb104db758b5cb2b61ba8face6744b
 ```
@@ -133,7 +133,7 @@ nix.extraOptions = ''
 Let's create a flake that contains the configuration for a NixOS
 container.
 
-```console
+```shell
 $ git init my-flake
 $ cd my-flake
 $ nix flake init -t templates#simpleContainer
@@ -144,7 +144,7 @@ Note that the `-t` flag to `nix flake init` specifies a _template_
 from which to copy the initial contents of the flake. This is useful
 for getting started. To see what templates are available, you can run:
 
-```console
+```shell
 $ nix flake show templates
 ```
 
@@ -195,7 +195,7 @@ a pre-flake NixOS configuration.)
 Let's create and start the container! (Note that `nixos-container`
 currently requires you to be `root`.)
 
-```console
+```shell
 # nixos-container create flake-test --flake /path/to/my-flake
 host IP is 10.233.4.1, container IP is 10.233.4.2
 
@@ -204,7 +204,7 @@ host IP is 10.233.4.1, container IP is 10.233.4.2
 
 To check whether the container works, let's try to connect to it:
 
-```console
+```shell
 $ curl http://flake-test/
 <html><body><h1>It works!</h1></body></html>
 ```
@@ -212,7 +212,7 @@ $ curl http://flake-test/
 As an aside, if you just want to _build_ the container without the
 `nixos-container` command, you can do so as follows:
 
-```console
+```shell
 $ nix build /path/to/my-flake#nixosConfigurations.container.config.system.build.toplevel
 ```
 
@@ -228,7 +228,7 @@ One big difference between "regular" NixOS systems and flake-based
 NixOS systems is that the latter record the Git revisions from which
 they were built. We can query this as follows:
 
-```console
+```shell
 # nixos-container run flake-test -- nixos-version --json
 {"configurationRevision":"9190c396f4dcfc734e554768c53a81d1c231c6a7"
 ,"nixosVersion":"20.03.20200622.13c15f2"
@@ -242,7 +242,7 @@ locks all flake inputs such as `nixpkgs`, knowing the revision
 a later point in time. For example, if you want to deploy this
 particular configuration to a container, you can do:
 
-```console
+```shell
 # nixos-container update flake-test \
     --flake /path/to/my-flake?rev=9190c396f4dcfc734e554768c53a81d1c231c6a7
 ```
@@ -259,7 +259,7 @@ adminAddr = "rick@example.org";
 
 and redeploy the container, you will get:
 
-```console
+```shell
 # nixos-container update flake-test
 warning: Git tree '/path/to/my-flake' is dirty
 ...
@@ -268,7 +268,7 @@ reloading container...
 
 and the container will no longer have a configuration Git revision:
 
-```console
+```shell
 # nixos-container run flake-test -- nixos-version --json | jq .configurationRevision
 null
 ```
@@ -277,7 +277,7 @@ While this may be convenient for testing, in production we really want
 to ensure that systems are deployed from clean Git trees. One way is
 to disallow dirty trees on the command line:
 
-```console
+```shell
 # nixos-container update flake-test --no-allow-dirty
 error: --- Error -------------------- nix
 Git tree '/path/to/my-flake' is dirty
@@ -330,7 +330,7 @@ Finally, we enable the NixOS module provided by the `hydra` flake:
 
 Note that we can discover the name of this module by using `nix flake show`:
 
-```console
+```shell
 $ nix flake show github:NixOS/hydra
 github:NixOS/hydra/d0deebc4fc95dbeb0249f7b774b03d366596fbed
 ├───…
@@ -352,7 +352,7 @@ and `nixos-container` that make updating lock file more
 convenient. A very common action is to update a flake input to the
 latest version; for example,
 
-```console
+```shell
 $ nixos-container update flake-test --update-input nixpkgs --commit-lock-file
 ```
 
@@ -365,7 +365,7 @@ you to point a flake input to another location, completely overriding
 the input location specified by `flake.nix`. For example, this is how
 you can build the container against a local Git checkout of Hydra:
 
-```console
+```shell
 $ nixos-container update flake-test --override-input hydra /path/to/my/hydra
 ```
 
@@ -398,7 +398,7 @@ Above we saw how to manage NixOS containers using flakes. Managing
 "real" NixOS systems works much the same, except using `nixos-rebuild`
 instead of `nixos-container`. For example,
 
-```console
+```shell
 # nixos-rebuild switch --flake /path/to/my-flake#my-machine
 ```
 

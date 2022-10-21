@@ -26,7 +26,7 @@ But if I just copy this output path to another machine, and try to rebuild `hell
 
 This is very frustrating, as it means that the following won't work:
 
-```console
+```shell
 $ nix copy --to ssh://somewhereelse nixpkgs.hello
 # Try to build with `--max-jobs 0` to make it fail if it needs to rebuild anything
 $ ssh somewhereelse nix build nixpkgs.hello --max-jobs 0
@@ -50,7 +50,7 @@ With this in hand, we now can run `nix copy --to ssh://somewhereelse /nix/store/
 Likewise, `nix copy nixpkgs.hello` will be a shortcut for `nix copy /nix/store/xxx-hello.drv`.
 And now we can do
 
-```console
+```shell
 $ nix copy --to ssh://somewhereelse nixpkgs.hello
 # Try to build with `--max-jobs 0` to make it fail if it needs to rebuild anything
 $ ssh somewhereelse nix build nixpkgs.hello --max-jobs 0

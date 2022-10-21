@@ -35,7 +35,7 @@ It will depend on the `bash` and `hello` derivations as we refer to them in the 
 
 We can build this derivation and execute it:
 
-```console
+```shell
 $ nix-build hello.nix
 $ ./result
 Hello, world!
@@ -57,7 +57,7 @@ where `${placeholder "out"}` is a magic value that will be replaced by the outpu
 
 We can build this and run the result just fine
 
-```console
+```shell
 $ nix-build hello-its-me.nix
 $ ./result
 Hello, world! This is /nix/store/c0qw0gbp7rfyzm7x7ih279pmnzazg86p-hello-its-me
@@ -65,7 +65,7 @@ Hello, world! This is /nix/store/c0qw0gbp7rfyzm7x7ih279pmnzazg86p-hello-its-me
 
 And we can check that the file is indeed who it claims to be:
 
-```console
+```shell
 $ /nix/store/c0qw0gbp7rfyzm7x7ih279pmnzazg86p-hello-its-me
 Hello, world! This is /nix/store/c0qw0gbp7rfyzm7x7ih279pmnzazg86p-hello-its-me
 ```
