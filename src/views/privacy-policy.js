@@ -315,7 +315,7 @@ const PrivacyPolicy = () => {
             Cookies
           </Box>
           <Box sx={{ fontSize: `1.5rem` }}>
-            Modus’ site uses cookies to save and retrieve information. These
+            Tweag’s site uses cookies to save and retrieve information. These
             cookies identify users in an anonymized way. The settings of what
             cookies your browser retains and uses can be set within the
             browser’s settings menu.
