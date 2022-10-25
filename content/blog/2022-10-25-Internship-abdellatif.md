@@ -16,7 +16,7 @@ A common approach to sampling well-behaved distributions involves [Markov chain 
 basic Metropolis-Hastings algorithm; building a Markov chain that has the desired distribution as its stationary distribution.
 The major benefit of Metropolis-Hastings over more "direct" sampling methods is that it doesn't require the target distribution to be normalized.
 But it does have a big flaw:
-if the distribution presents multiple modes separated by areas of low probability, the Markov Chain tends to get stuck in one mode, and thus samples the distribution incorrectly.\
+if the distribution presents multiple modes separated by areas of low probability, the Markov chain tends to get stuck in one mode, and thus samples the distribution incorrectly.\
 My work mainly consisted in improving Chainsail's way of handling Bayesian data analysis problems.
 
 ## Replica Exchange
@@ -159,7 +159,7 @@ Let $Z$ be the normalizing constant of an unnormalized distribution $p$ that can
 We note that $Z$ can be written as
 
 $$
-Z=\int p(-E(x)) \mathrm{d}x \ \mathrm{,}
+Z=\int \exp(-E(x)) \mathrm{d}x \ \mathrm{,}
 $$
 
 which is a potentially high-dimensional integral over the full parameter space and therefore costs a lot of computation time to estimate.
