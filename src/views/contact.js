@@ -70,8 +70,8 @@ const ContactPage = () => {
     e.preventDefault()
 
     // Create the new request
-    const portalid = `6929938`
-    const formid = `d7302341-7237-4d17-a810-1f1148846f5e`
+    const portalid = `1907998`
+    const formid = `2899e599-a211-48fb-a012-302441f855a3`
     const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalid}/${formid}`
     const form = document.querySelector(`#contactform`)
     const formData = new FormData(form)
