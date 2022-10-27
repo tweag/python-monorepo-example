@@ -240,7 +240,9 @@ const Footer = () => (
             <br />
             <span>All rights reserved</span>
             <br />
-            <span>Privacy Policy</span>
+            <Link to="/privacy-policy">
+              <div sx={{ color: `#ffffff` }}>Privacy Policy</div>
+            </Link>
           </span>
         </span>
       </div>
