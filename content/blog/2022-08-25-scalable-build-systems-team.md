@@ -1,7 +1,7 @@
 ---
 title: "Introducing the Scalable Build Systems Team"
 author: Andreas Herrmann
-tags: [build-systems, bazel, nix]
+tags: [bazel, nix]
 description: "Introducing the Scalable Build Systems Team"
 ---
 

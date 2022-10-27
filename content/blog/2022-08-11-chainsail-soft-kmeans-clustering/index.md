@@ -2,7 +2,7 @@
 title: "Better soft k-means clustering with Chainsail - multimodality treated right"
 shortTitle: "Soft k-means clustering with Chainsail"
 author: Etienne Jean, Simeon Carstens
-tags: [data science, statistics, MCMC, bayesian statistics]
+tags: [data-science, statistics, MCMC]
 ---
 
 <!-- TODO: The link to the anouncement blog post is not working until PR #1256 lands. Make sure the link is right before merging this one. -->

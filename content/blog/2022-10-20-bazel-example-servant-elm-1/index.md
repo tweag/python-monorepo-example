@@ -1,7 +1,7 @@
 ---
 title: "Converting a polyglot project build to Bazel: part 1"
 author: Karol Czułkowski
-tags: [bazel, haskell, elm]
+tags: [bazel, haskell]
 description: "Painlessly switch your Haskell build from Cabal to Bazel"
 ---
 

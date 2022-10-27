@@ -3,7 +3,7 @@ redirect_from: [/posts/2020-01-30-haskell-profiling.html]
 title: "Locating Performance Bottlenecks in  Large Haskell codebases"
 shortTitle: "Profiling Large Haskell Codebases"
 author: Juan Raphael Diaz Simões
-tags: [haskell]
+tags: [haskell, profiling]
 description: "This post describes a profiling technique for Haskell codebases that yields faithful results and is well adapted to large repositories."
 ---
 

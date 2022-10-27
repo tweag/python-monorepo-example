@@ -2,7 +2,7 @@
 title: Simulating Tenderbake
 description: "Announcing a simulator for Tenderbake"
 author: Mark Karpov, Divesh Otwani
-tags: [ocaml, blockchain, distributed-algorithms]
+tags: [ocaml, blockchain]
 ---
 
 _This is a repost of [this blog post][nl-post] originally published on the Nomadic Labs blog._

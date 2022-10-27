@@ -2,7 +2,7 @@
 title: Comparing strict and lazy
 shortTitle: Comparing strict and lazy
 author: Arnaud Spiwack
-tags: [haskell, ocaml, programming-languages]
+tags: [haskell, ocaml]
 description: Arnaud takes a step back from the slogans and examines the trade-offs between lazy and strict languages.
 ---
 

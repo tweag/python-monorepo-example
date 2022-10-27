@@ -1,7 +1,7 @@
 ---
 title: "Arrows, through a different lens"
 author: Juan Raphael Diaz Simões
-tags: [haskell]
+tags: [haskell, optics]
 description: "How to use lenses and other optics within an Arrow-based framework."
 ---
 

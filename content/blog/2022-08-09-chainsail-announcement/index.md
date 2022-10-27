@@ -2,7 +2,7 @@
 title: "Announcing Chainsail: a web service for sampling multimodal probability distributions"
 shortTitle: "Chainsail: sampling multimodal distributions made easy"
 author: Simeon Carstens, Dorran Howell, Etienne Jean, Saeed Hadikhanloo, Guillaume Desforges
-tags: [data science, MCMC, Bayesian statistics]
+tags: [data-science, MCMC, statistics]
 description: "Tweag announces Chainsail, a simple-to-use web service
     for better sampling of multimodal distributions with a scalable
 	and auto-tuning Replica Exchange algorithm at its core."
