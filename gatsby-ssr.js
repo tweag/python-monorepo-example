@@ -3,6 +3,10 @@ import { React } from "react"
 
 const headComponents = [
   <script
+    type="text/javascript"
+    src="https://cdn.cookielaw.org/consent/3a05f346-a11c-458d-9bec-8c7fb98aa3aa/OtAutoBlock.js"
+  ></script>,
+  <script
     src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
     type="text/javascript"
     charset="UTF-8"
