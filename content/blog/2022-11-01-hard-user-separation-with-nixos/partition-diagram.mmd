@@ -1,0 +1,69 @@
+flowchart TB
+    classDef subgraph_padding fill:none,stroke:none
+    subgraph physical [physical disk /dev/sda]
+    subgraph subgraph_padding1 [ ]
+      sda1
+      sda2
+    end
+    end
+    subgraph sda2 [sda2 partition]
+    subgraph subgraph_padding4 [ ]
+      LVM
+    end
+    end
+    subgraph sda1 [boot partition]
+    subgraph subgraph_padding2 [ ]
+      /boot
+    end
+    end
+
+    subgraph LVM [Logicial volumes managed with LVM]
+    subgraph subgraph_padding3 [ ]
+      root-work
+      root-private
+      nix-store
+    end
+    end
+    subgraph root-work
+      crypto-root-work(LUKS volume crypto-root-work)
+    end
+    subgraph nix-store
+      crypto-nix-store(LUKS volume crypto-nix-store)
+    end
+    subgraph root-private
+      crypto-root-private(LUKS volume crypto-root-private)
+    end
+    subgraph work-environment
+      1/(/)
+      1/nix-store(/nix)
+      1/nix-store-config(/nix/config)
+      1/etc/nixos(/etc/nixos)
+    end
+    subgraph private-environment
+      2/(/)
+      2/nix-store(/nix)
+      2/nix-store-config(/nix/config)
+      2/etc/nixos(/etc/nixos)
+    end
+
+    crypto-root-work --> 1/
+    crypto-nix-store --> 1/nix-store
+    1/nix-store -->|contains| 1/nix-store-config
+    1/nix-store-config -->|mount --bind| 1/etc/nixos
+
+    crypto-root-private --> 2/
+    crypto-nix-store --> 2/nix-store
+    2/nix-store -->|contains| 2/nix-store-config
+    2/nix-store-config -->|mount --bind| 2/etc/nixos
+
+    nixos-rebuild(nixos-rebuild to manage both environment)
+    2/etc/nixos --> nixos-rebuild
+    1/etc/nixos --> nixos-rebuild
+
+    private-environment -->|unlocked with| passphrase1(LUKS passphrase #1) 
+    work-environment -->|unlocked with| passphrase2(LUKS passphrase #2)
+
+    class subgraph_padding1 subgraph_padding
+    class subgraph_padding2 subgraph_padding
+    class subgraph_padding3 subgraph_padding
+    class subgraph_padding4 subgraph_padding
