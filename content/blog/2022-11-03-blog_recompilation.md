@@ -37,8 +37,8 @@ any modification would trigger the recompilation of all the modules transitively
 That was the case in version 0.15 of `rules_haskell`, before the improvements discussed here.
 
 [^simple-case]:
-  If the module uses Template Haskell or a plugin,
-  this is not sufficient, as explained in next footnote.
+    If the module uses Template Haskell or a plugin,
+    this is not sufficient, as explained in next footnote.
 
 ## How GHC deals with recompilation avoidance
 
@@ -66,11 +66,11 @@ The relevant bits for the recompilation avoidance mechanism are summarised in an
 > a changed ABI hash is a necessary but not sufficient condition for recompilation[^and-object].
 
 [^and-object]:
-  This does not apply if the importing modules use Template Haskell or a plugin,
-  since in this case the result of compiling a module can depend on the implementation of imported modules,
-  not just their interfaces.
-  In both cases, to decide if a recompilation should be performed,
-  GHC simply relies on the hash of the generated object file rather than just the interface file.
+    This does not apply if the importing modules use Template Haskell or a plugin,
+    since in this case the result of compiling a module can depend on the implementation of imported modules,
+    not just their interfaces.
+    In both cases, to decide if a recompilation should be performed,
+    GHC simply relies on the hash of the generated object file rather than just the interface file.
 
 ## Example
 
@@ -195,10 +195,10 @@ One can also modify the definition of a symbol in `B` (but not its type):
 ```
 
 [^no-unfoldings]:
-  Unfoldings of functions defined in a module `X` are exposed to the other modules
-  if optimisations are turned on (using `ghc -O`) and the compiler decides that they should be included in the interface file
-  (either because the definition is quite short and might be useful to enable further optimisations,
-  or because the programmer added a pragma regarding inlining).
+    Unfoldings of functions defined in a module `X` are exposed to the other modules
+    if optimisations are turned on (using `ghc -O`) and the compiler decides that they should be included in the interface file
+    (either because the definition is quite short and might be useful to enable further optimisations,
+    or because the programmer added a pragma regarding inlining).
 
 All those modifications affect the part of the interface file of `B` regarding imports, hence it changes `B.hi`.
 So, with version 0.15 of `rules_haskell`, `C`, which depends on `B`, would have been recompiled.
@@ -249,12 +249,12 @@ Hence, the non-consideration of the inputs listed in this field when computing t
 However, it is not clear from the documentation that Bazel can use those inputs when recompiling.
 
 [^safety]:
-  Even if the target module uses Template Haskell or a plugin,
-  it is safe to hide the interface files from Bazel's caching mechanism.
-  As mentionned in previous notes, in those cases, it could happen that recompilation is required whereas no ABI hash changed.
-  But the object files of all the modules it depends on is given as input to the Bazel rule compiling this kind of module.
-  Hence any modification affecting an object file will trigger recompilation,
-  no matter its impact on the ABI hash.
+    Even if the target module uses Template Haskell or a plugin,
+    it is safe to hide the interface files from Bazel's caching mechanism.
+    As mentionned in previous notes, in those cases, it could happen that recompilation is required whereas no ABI hash changed.
+    But the object files of all the modules it depends on is given as input to the Bazel rule compiling this kind of module.
+    Hence any modification affecting an object file will trigger recompilation,
+    no matter its impact on the ABI hash.
 
 ## Benchmark
 
