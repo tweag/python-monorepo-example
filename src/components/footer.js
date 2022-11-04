@@ -63,7 +63,15 @@ const Footer = () => (
       color: `white`,
       "--bg-color": `black`,
       "--fg-color": `white`,
-      p: [`40px 0`, `40px 0`, `80px 50px 0`, null, null, null, `60px 120px`],
+      p: [
+        `40px 0`,
+        `40px 0`,
+        `70px 50px 0`,
+        `90px 50px 0`,
+        `120px 50px 0`,
+        null,
+        `60px 120px`,
+      ],
       width: `100%`,
     }}
   >
