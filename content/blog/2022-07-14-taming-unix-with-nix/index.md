@@ -35,7 +35,7 @@ Ken Thompson and Dennis Ritchie inherited the novelty of a hierarchical file sys
 > — [The UNIX Time-Sharing System][unix] (1974)
 
 Although arguably it is a severely limiting abstraction[^2], it remains largely unquestioned as a cornerstone of software development practice[^3].
-The rise of object oriented-programming brought about a number of experimental systems[^4] where everything is an object — an idea attributed to Alan Kay's [Smalltalk][smalltalk] (1972) — but none of them saw mass adoption.
+The rise of object oriented-programming brought about a number of experimental systems[^4] where everything is an object – an idea attributed to Alan Kay's [Smalltalk][smalltalk] (1972) – but none of them saw mass adoption.
 
 Part of the [Unix philosophy][unix-philosophy] later even turned into the malapropism [everything is a file][everything-is-a-file].
 Linus Torvalds clarified in various public emails that it was really about small, composable tools operating on uniform interfaces, not the specific mapping of names to contents:
@@ -177,9 +177,11 @@ a precise description of how contents of existing files are used to derive new f
 
 The build instructions encoded in this derivation create a file with contents `hello`.
 This does the same thing as capturing the output of the shell script example above.
-The main difference is that, with Nix, repeated executions of these build instructions will always produce the same result.[^7]
 
-Nix achieves this by copying all input files to the Nix store, where they cannot change, and always working on the immutable copies.
+The main difference is that, with Nix, repeated executions of these build instructions will always produce the same result, regardless of what happens to the original input files.
+In addition, changing any of the parameters of a derivation will produce a distinctly different result that cannot be mistaken for the original one.
+Nix achieves this by copying all input files to the Nix store, where they cannot change, and always working with these immutable copies that are identified by their content hash.[^7]
+The build result itself also gets a unique name, which is based on the hashes of all the build inputs and parameters.
 
 A side effect of evaluating the above expression with `nix-instantiate` is the creation of the the following build task:
 
@@ -207,10 +209,12 @@ A side effect of evaluating the above expression with `nix-instantiate` is the c
 ```
 
 Nix calls this structure a _store derivation_: a build task with unambiguously specified dependencies, persisted in the Nix store.
+
 Note how the `builder` is not `/bin/sh` any more, but a file in `/nix/store`, uniquely identified by the hash of its contents.
+The file system path `outputs.out.path` will be populated when the derivation is built, and would be different if we changed any parameter to `derivation` – or the contents of `/bin/sh` – before evaluatinng the Nix expression.
 
 The unwieldy syntax and the specifics of wiring up the build execution with `env` and `args` are rather arbitrary and have historical reasons.
-What matters here is that this construction has properties of a dataflow programming language:
+What matters here is that this construction has properties of a [dataflow programming][dfop] language:
 
 - Dataflow oriented: Build tasks can be composed.
 
@@ -244,7 +248,7 @@ A build function also amounts to an operating system process (not depicted).
 # What next?
 
 Since its inception, Nix development has been primarily occupied with imposing the abstraction of functional programming onto the messy, real world of our Unix lineage:
-encoding and correctly dealing with object references in the file system, ensuring purity of function application, and working around built-in assumptions behind the mechanisms of different language ecosystems and build procedures — all while keeping performance acceptable.
+encoding and correctly dealing with object references in the file system, ensuring purity of function application, and working around built-in assumptions behind the mechanisms of different language ecosystems and build procedures – all while keeping performance acceptable.
 
 Despite numerous rough edges remaining due to the enormous scope of the undertaking, Nix, Nixpkgs, and NixOS have been working products for many years.
 Currently there is much work in progress to improve the user experience by presenting a more consistent command line interface and better error messages.
@@ -257,6 +261,11 @@ What if it also had types, to describe constraints to composing packages and con
 
 Nix is begging the question:
 what if everything on our computers was, in fact, a computer program?
+
+---
+
+Edited 2022-11-09:
+Explained more precisely the effects of changing inputs and parameters of derivations.
 
 ---
 
