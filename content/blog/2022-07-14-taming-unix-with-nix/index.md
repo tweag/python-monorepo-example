@@ -9,7 +9,7 @@ You may be aware of [Nix or NixOS][nixos].
 Users love them for being superior tools for building, deploying, and managing software.
 Yet, Nix is generally perceived as notoriously hard to learn.
 
-The core Nix ecosytem consists of several distinct components:
+The core Nix ecosystem consists of several distinct components:
 
 - _Nix_ is a build system and package manager that comes with a configuration language to declare software components, the _Nix language_.
 - Software made available through Nix is centrally maintained in a massive package collection called _Nixpkgs_.

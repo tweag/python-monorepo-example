@@ -8,7 +8,7 @@ tags: [nix, data-science, python, statistics]
 ---
 
 The development of user-friendly and powerful probabilistic programming libraries (PPLs) has been making Bayesian data analysis easily accessible:
-PPLs allow a statistician to define a statistical model for their data programatically in either domain-specific or common popular programming languages and provide powerful inference algorithms to sample posterior- and other probability distributions.
+PPLs allow a statistician to define a statistical model for their data programmatically in either domain-specific or common popular programming languages and provide powerful inference algorithms to sample posterior- and other probability distributions.
 Under the hood, many PPLs make use of big libraries such as TensorFlow, JAX or Theano / Aesara (a fork of Theano) that provide fast, vectorized array and matrix computations and, for gradient-based inference algorithms, automatic differentiation.
 In practice, if a user wants to use a PPL, they have to make sure these dependencies (and their dependencies!) are installed, too, which often can be difficult and/or irreproducible:
 want to compile your compute graph to C code?
@@ -28,7 +28,7 @@ This concept is implemented very strictly in Nix.
 For example, a Python application packaged in Nix has not only its immediate Python dependencies exactly declared (with specific versions and all their dependencies), but also the Python version it is supposed to work with and any system dependencies (think BLAS, OpenCV, C compiler, glibc, ...).
 
 Nix and its ecosystem is an extremely large and active open source project, as indicated by the [Nix package collection](https://github.com/NixOS/nixpkgs) containing build instructions for over 80,000 packages.
-All these packages can be made available to developers in completely reproducible shells that are guaranteed to provide _exactly_ the same software environment on your laptop, your AWS virtual machine or your continous integration (CI) runner.
+All these packages can be made available to developers in completely reproducible shells that are guaranteed to provide _exactly_ the same software environment on your laptop, your AWS virtual machine or your continuous integration (CI) runner.
 A limitation of Nix is that it runs only on Linux-like systems and that it requires `sudo` privileges for installation.
 You can also use Nix in Windows Subsystem for Linux (WSL) and on MacOS, but support for the latter is not as good as for standard Linux systems.
 After you [installed](https://nixos.org/download.html) Nix, you can get a shell in which, for example, Python 3.9, `numpy`, and OpenCV are available simply by typing:

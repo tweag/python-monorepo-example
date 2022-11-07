@@ -271,7 +271,7 @@ content-addressable storage. If the hash determined by the hash of a task and
 its inputs has not changed since a previous pipeline run, work need not be
 repeated.
 
-Another property which disinguishes build systems is whether or not they support
+Another property which distinguishes build systems is whether or not they support
 dynamic dependencies, or those for which the relationships themselves may vary with task output(s). This property depends on the build systems' approach to
 modeling graphs of tasks, and in a functional paradigm is determined by whether
 or not tasks are modeled using monadic effects[^a-la-carte]. `funflow2` uses

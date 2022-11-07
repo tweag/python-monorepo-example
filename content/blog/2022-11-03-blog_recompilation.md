@@ -251,7 +251,7 @@ However, it is not clear from the documentation that Bazel can use those inputs 
 [^safety]:
     Even if the target module uses Template Haskell or a plugin,
     it is safe to hide the interface files from Bazel's caching mechanism.
-    As mentionned in previous notes, in those cases, it could happen that recompilation is required whereas no ABI hash changed.
+    As mentioned in previous notes, in those cases, it could happen that recompilation is required whereas no ABI hash changed.
     But the object files of all the modules it depends on is given as input to the Bazel rule compiling this kind of module.
     Hence any modification affecting an object file will trigger recompilation,
     no matter its impact on the ABI hash.
@@ -288,7 +288,7 @@ an accuracy of 80%.
 It is not on par with tools using the native recompilation avoidance mechanism of GHC (like `stack`)
 because there are more criteria used by GHC than just a change of the ABI hash, which is only a necessary condition.
 More on the precise condition used by GHC can be found in the [GHC Wiki][ghc wiki recompilation] and
-an example of unrequired recompilation despite a change in the ABI hash of a dependency was sent to the [Haskell mailing list][mailing list example]
+an example of unnecessary recompilation despite a change in the ABI hash of a dependency was sent to the [Haskell mailing list][mailing list example]
 
 ## Closing Remarks
 

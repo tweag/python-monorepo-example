@@ -9,7 +9,7 @@ between its parts. But, did you account for _implicit_ software dependencies,
 like system libraries and compiler toolchains?
 
 Implicit dependencies give rise to the biggest and most common problem with
-software builds - the lack of _hermiticity_. Without hermetic builds,
+software builds - the lack of _hermeticity_. Without hermetic builds,
 _reproducibility_ and _cacheability_ are lost.
 
 This post motivates the desire for reproducibility and cacheability, and

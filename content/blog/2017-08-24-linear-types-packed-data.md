@@ -122,7 +122,7 @@ a `Branch` node. The left subtree comes immediately after, so that one
 is readily available. But there is a problem: we have no way to know
 where the right subtree starts in the array, so we can't just jump to
 it. The only way we will be able to access subtrees is by doing
-left-to-right traversals, the pinacle of cache-friendliness.
+left-to-right traversals, the pinnacle of cache-friendliness.
 
 If this all starts to sound a little crazy. It's probably because it
 kind of is. **It is very tricky to program with such a data

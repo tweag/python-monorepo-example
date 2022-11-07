@@ -16,7 +16,7 @@ Changing the defaults in existing tooling would be very difficult as it would br
 
 In order to motivate this new tool, let's take a look at how Go dependency management evolved.
 
-The developmentent of [Trustix][trustix] (which Gomod2nix was developed for) is funded by [NLNet foundation][nlnet] and the European Commission's [Next Generation Internet][ngi] programme through the [NGI Zero PET][pet] (privacy and trust enhancing technologies) fund.
+The development of [Trustix][trustix] (which Gomod2nix was developed for) is funded by [NLNet foundation][nlnet] and the European Commission's [Next Generation Internet][ngi] programme through the [NGI Zero PET][pet] (privacy and trust enhancing technologies) fund.
 
 # A history of Go packaging
 

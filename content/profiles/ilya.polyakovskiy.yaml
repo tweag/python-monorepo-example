@@ -31,7 +31,7 @@ experience:
     role: Senior Software Developer
     years: 2016 - 2020
     description:
-      - Worked on incremenal Python notebook kernel for Datalore.
+      - Worked on incremental Python notebook kernel for Datalore.
       - Created fast and memory-efficient embedded log-structured storage for python objects.
       - Designed and developed algorithms for tracking dependencies between python objects
       - Was maintaining an internal fork of the standard python serialization library

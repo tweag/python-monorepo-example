@@ -75,7 +75,7 @@ The Leapfrog algorithm is the standard integrator used in HMC. The intuition beh
 
 (source: [Steve McMillan, Drexel University](http://www.physics.drexel.edu/~steve/Courses/Comp_Phys/Integrators/leapfrog))
 
-This behaviour has given the Leapfrog algorithm its name. More precisley, the updates look like the following,
+This behaviour has given the Leapfrog algorithm its name. More precisely, the updates look like the following,
 
 $$
 x_{i+1}= x_n +   v_{i + 1/2} \Delta t

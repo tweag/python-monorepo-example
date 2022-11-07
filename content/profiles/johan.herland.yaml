@@ -100,7 +100,7 @@ experience:
     description:
       - Responsible for central infrastructure and utilities, making them
         lightweight, efficient, and portable to a wide variety of platforms.
-      - Maintainer of legacy encoding support, Unicode funtionality, selftest
+      - Maintainer of legacy encoding support, Unicode functionality, selftest
         infrastructure, etc.
       - Championed and implemented company‐wide version control transition
         from CVS to Git.

@@ -348,7 +348,7 @@ Improving over the current state is only reliably possible if the current state,
 Despite thorough [initial overview](https://gist.github.com/fricklerhandwerk/78f8f77ff73aef848649f58a34575d0e#tutorials) it took me a while to even stumble upon relevant materials after sitting down again and again to dig through countless Discourse threads and NixOS Wiki pages:
 
 - [Nix documentation task force](https://discourse.nixos.org/t/nixcon-2019-documentation-task-force-meeting-outcome/4551) (NixCon 2019)
-- [Make Nix friendler to beginners](https://media.ccc.de/v/nixcon2015-3-MakeNixfriendlierforBeginners#t=202) (NixCon 2015)
+- [Make Nix friendlier to beginners](https://media.ccc.de/v/nixcon2015-3-MakeNixfriendlierforBeginners#t=202) (NixCon 2015)
 - [Reading the Nix language](https://youtu.be/hbJkMl631FE?t=1572) (NixCon 2019)
 
 Oftentimes, such research reveals underlying problems (as opposed to mere symptoms) or what caused those problems in the first place.

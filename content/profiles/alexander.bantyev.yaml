@@ -14,7 +14,7 @@ bio: |
   machines, uses Emacs (but only as an editor).
 
   Loves helping people get familiar with Linux, Nix and NixOS: runs a
-  russian-speaking NixOS group, is active in the official NixOS matrix
+  Russian-speaking NixOS group, is active in the official NixOS matrix
   room, answers Linux-related questions on Reddit.
 
   Hobbies include repairing broken electronics, jogging and hiking,
@@ -54,7 +54,7 @@ experience:
 education:
   - qualification: BSc (in progress)
     name: Informatics and computer engineering
-    institution: Moscow Polytechnic Universtity
+    institution: Moscow Polytechnic University
     years: 2020-2025
 publications:
   - description: |

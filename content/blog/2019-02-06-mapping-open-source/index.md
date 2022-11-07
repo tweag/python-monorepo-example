@@ -146,7 +146,7 @@ other packages. The ego network of _cmake_ is mixed into a similar region of
 the graph.
 
 Python2.7 and Python3.6 form neat clusters with three central hub nodes that
-correpond to the python interpreter, the package management tool _pip_, and the
+correspond to the python interpreter, the package management tool _pip_, and the
 build and installation tool _setuptools_. Python2.7 is used more often by
 packages outside of its cluster than Python3.6. In contrast to Python, Perl has
 only a single hub node for each specific version but it forms similarly dense
@@ -277,7 +277,7 @@ the meta information that is needed to build them. I then extracted the package
 dependencies from each derivation file in the store with a small Haskell code
 and saved them as a graph `.dot` file ([here is the Nix and Haskell
 code][store-graph]). Due to the graph's size, I merged derivations with the
-same package and version name, ignoring other build characeristics that are
+same package and version name, ignoring other build characteristics that are
 typically identified with a unique hash by Nix.
 
 The graph was laid out and visualized with the program [gephi][gephi] using a
