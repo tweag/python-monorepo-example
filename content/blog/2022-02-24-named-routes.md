@@ -353,7 +353,7 @@ We now have all the pieces required to understand how `BooksCRUD` can be served:
 
 ```haskell
 type ToServant routes mode = GToServant (Rep (routes mode))
-type ToServantApi routes = ToServantApi AsApi
+type ToServantApi routes = ToServant routes AsApi
 
 app :: Application
 app = serve (Proxy @(ToServantApi BooksCRUD) (toServant server)
