@@ -23,7 +23,7 @@ Nonetheless, from their definition it is not obvious how functions could be used
 
 Let's explore together how we could implement programs using only functions.
 
-## The <span style="text-transform: none">$\mathit{max}$</span> between two integers
+## The <span style="text-transform: none">$\textrm{max}$</span> between two integers
 
 As a starting point, let's try to define a program that, given two integers, returns the greatest one.
 
@@ -32,31 +32,31 @@ To implement it as a function, we need to think first about its domain, which de
 Hence, the [signature](https://en.wikipedia.org/wiki/Type_signature) of our function will be:
 
 $$
-\mathit{max} : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}
+\textrm{max} : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}
 $$
 
 Next, we would like to implement it along these lines: if we call $x$ and $y$ the two inputs, if $x$ is greater than or equal to $y$ then we output $x$, otherwise we output $y$.
 Notice that to describe our implementation, we are referring to "if" and "greater than". And, guess what? They are functions themselves!
 
-$\mathit{if}$ could be seen as a function that receives three arguments: a Boolean (i.e., from the set $\{\mathit{true},\mathit{false}\}$); an integer to be used as output when the Boolean is $\mathit{true}$; and another integer which should be the output when the Boolean is $\mathit{false}$:
+$\textrm{if}$ could be seen as a function that receives three arguments: a Boolean (i.e., from the set $\{\textrm{true},\textrm{false}\}$); an integer to be used as output when the Boolean is $\textrm{true}$; and another integer which should be the output when the Boolean is $\textrm{false}$:
 
 $$
-\mathit{if} : \mathit{Bool} \times \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}
+\textrm{if} : \textrm{Bool} \times \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}
 $$
 
-Similarly, $\mathit{greater\_than}$ could be seen as a function that receives two integers, and outputs $\mathit{true}$ if the first is greater than or equal to the second, or $\mathit{false}$ otherwise:
+Similarly, $\textrm{greater\_than}$ could be seen as a function that receives two integers, and outputs $\textrm{true}$ if the first is greater than or equal to the second, or $\textrm{false}$ otherwise:
 
 $$
-\mathit{greater\_than} : \mathbb{Z} \times \mathbb{Z} \to \mathit{Bool}
+\textrm{greater\_than} : \mathbb{Z} \times \mathbb{Z} \to \textrm{Bool}
 $$
 
-At this point, it becomes clear that we can implement $\mathit{max}$ by carefully composing these two functions:
+At this point, it becomes clear that we can implement $\textrm{max}$ by carefully composing these two functions:
 
 $$
-\mathit{max} \, (x, y) = \mathit{if} \, (\mathit{greater\_than} \, (x, y), x, y)
+\textrm{max} \, (x, y) = \textrm{if} \, (\textrm{greater\_than} \, (x, y), x, y)
 $$
 
-## The <span style="text-transform: none">$\mathit{max}$</span> among a set of integers
+## The <span style="text-transform: none">$\textrm{max}$</span> among a set of integers
 
 We are now able to compute the maximum of two integers. It should be easy enough now to generalize this to compute the maximum of an arbitrary non-empty finite set of integers.
 
@@ -65,45 +65,45 @@ First, as always, let's try to think about the domain and the codomain of the fu
 Hence, what we would like to define is the following function:
 
 $$
-\mathit{multi\_max} : \mathscr{F} \mathbb{Z} \to \mathbb{Z}
+\textrm{multi\_max} : \mathscr{F} \mathbb{Z} \to \mathbb{Z}
 $$
 
 Let's try to think about the implementation. If you had to do such a computation in your head, you would probably do something like the following:
 
 - If our input set contains just one element, then that element is already the maximum of the set, and we are done.
-- On the other hand, if our set contains at least two elements, we could compute their $\mathit{max}$ and keep it in memory.
-- Then we take another element of our input set, if it exists, and we compute the $\mathit{max}$ between the value we kept in memory and this new element, and then we replace the value in memory with the result.
+- On the other hand, if our set contains at least two elements, we could compute their $\textrm{max}$ and keep it in memory.
+- Then we take another element of our input set, if it exists, and we compute the $\textrm{max}$ between the value we kept in memory and this new element, and then we replace the value in memory with the result.
 - We continue in this fashion until we are left with no other elements to compare. At that point, the value we have in memory is the maximum of the set.
 
-Functions have no memory, though. They can rely only on their inputs to compute their outputs. Therefore, we need to shuffle things around a bit to be able to provide the result of every step as an input for the next one. We can do this by observing that the maximum of a set $X$ with at least two elements, containing an element $x$, is just the $max$ between $x$ and $\mathit{multi\_max} \, (X \setminus \{x\})$, where $X \setminus \{x\}$ is the set $X$ with the element $x$ [removed](<https://en.wikipedia.org/wiki/Complement_(set_theory)#/Relative_complement>):
+Functions have no memory, though. They can rely only on their inputs to compute their outputs. Therefore, we need to shuffle things around a bit to be able to provide the result of every step as an input for the next one. We can do this by observing that the maximum of a set $X$ with at least two elements, containing an element $x$, is just the $max$ between $x$ and $\textrm{multi\_max} \, (X \setminus \{x\})$, where $X \setminus \{x\}$ is the set $X$ with the element $x$ [removed](<https://en.wikipedia.org/wiki/Complement_(set_theory)#/Relative_complement>):
 
 $$
 \begin{array}{lccl}
-\mathit{multi\_max} & \{x\} & = & x \\
-\mathit{multi\_max} & (\{x\} \cup (X \setminus \{x\})) & = & \mathit{max} \, (x, \mathit{multi\_max}\, (X \setminus \{x\}))
+\textrm{multi\_max} & \{x\} & = & x \\
+\textrm{multi\_max} & (\{x\} \cup (X \setminus \{x\})) & = & \textrm{max} \, (x, \textrm{multi\_max}\, (X \setminus \{x\}))
 \end{array}
 $$
 
 With $A \cup B$ we denote the [union](<https://en.wikipedia.org/wiki/Union_(set_theory)>) of two sets $A$ and $B$, which is the set that contains all the elements from both $A$ and $B$.
 
-This definition is [recursive](https://en.wikipedia.org/wiki/Recursion) since $\mathit{multi\_max}$ is defined in terms of $\mathit{multi\_max}$ itself. This works because we are calling $\mathit{multi\_max}$ on a smaller set and, since $X$ is finite, we can be certain that if we continue to do so, sooner or later we will arrive at a set containing a single element, and the recursion will stop.
+This definition is [recursive](https://en.wikipedia.org/wiki/Recursion) since $\textrm{multi\_max}$ is defined in terms of $\textrm{multi\_max}$ itself. This works because we are calling $\textrm{multi\_max}$ on a smaller set and, since $X$ is finite, we can be certain that if we continue to do so, sooner or later we will arrive at a set containing a single element, and the recursion will stop.
 
-Recursion is a typical tool that is often used in functional programming since iterations (in the form of [$\mathit{for}$ loops](https://en.wikipedia.org/wiki/For_loop), for example) need to resort to things that could not be directly implemented as functions, like mutation of an iterator.
+Recursion is a typical tool that is often used in functional programming since iterations (in the form of [$\textrm{for}$ loops](https://en.wikipedia.org/wiki/For_loop), for example) need to resort to things that could not be directly implemented as functions, like mutation of an iterator.
 
 ## How does execution work?
 
-Suppose we want to compute the maximum of the set $\{5, 2, 7, 4\}$ using our $\mathit{multi\_max}$ function.
+Suppose we want to compute the maximum of the set $\{5, 2, 7, 4\}$ using our $\textrm{multi\_max}$ function.
 
-The only thing we need to use is the equality provided by the definition of $\mathit{multi\_max}$:
+The only thing we need to use is the equality provided by the definition of $\textrm{multi\_max}$:
 
 $$
 \begin{array}{lcl}
-\mathit{multi\_max} \, \{5, 2, 7, 4\} & = & \mathit{max} \, (5, \mathit{multi\_max} \, \{2, 7, 4\}) \\
-& = & \mathit{max} \, (5, \mathit{max} \, (2, \mathit{multi\_max} \, \{7, 4\})) \\
-& = & \mathit{max} \, (5, \mathit{max} \, (2, \mathit{max} \, (7, \mathit{multi\_max} \, \{4\}))) \\
-& = & \mathit{max} \, (5, \mathit{max} \, (2, \mathit{max} \, (7, 4))) \\
-& = & \mathit{max} \, (5, \mathit{max} \, (2, 7)) \\
-& = & \mathit{max} \, (5, 7) \\
+\textrm{multi\_max} \, \{5, 2, 7, 4\} & = & \textrm{max} \, (5, \textrm{multi\_max} \, \{2, 7, 4\}) \\
+& = & \textrm{max} \, (5, \textrm{max} \, (2, \textrm{multi\_max} \, \{7, 4\})) \\
+& = & \textrm{max} \, (5, \textrm{max} \, (2, \textrm{max} \, (7, \textrm{multi\_max} \, \{4\}))) \\
+& = & \textrm{max} \, (5, \textrm{max} \, (2, \textrm{max} \, (7, 4))) \\
+& = & \textrm{max} \, (5, \textrm{max} \, (2, 7)) \\
+& = & \textrm{max} \, (5, 7) \\
 & = & 7
 \end{array}
 $$
@@ -112,14 +112,14 @@ All of these expressions are equivalent to one another. It just so happens that 
 
 From this perspective, computing is the same thing as simplifying.
 
-## What if we wanted the <span style="text-transform: none">$\mathit{min}$</span> instead?
+## What if we wanted the <span style="text-transform: none">$\textrm{min}$</span> instead?
 
-Now, for a twist, suppose we want to compute the minimum of a non-empty finite set of integers. We could just copy and paste our definition of $\mathit{multi\_max}$ and replace $\mathit{max}$ with $\mathit{min}$ everywhere:
+Now, for a twist, suppose we want to compute the minimum of a non-empty finite set of integers. We could just copy and paste our definition of $\textrm{multi\_max}$ and replace $\textrm{max}$ with $\textrm{min}$ everywhere:
 
 $$
 \begin{array}{lccl}
-\mathit{multi\_min} & \{x\} & = & x \\
-\mathit{multi\_min} & (\{x\} \cup (X \setminus \{x\})) & = & \mathit{min} (x, \mathit{multi\_min} \, (X \setminus \{x\}))
+\textrm{multi\_min} & \{x\} & = & x \\
+\textrm{multi\_min} & (\{x\} \cup (X \setminus \{x\})) & = & \textrm{min} (x, \textrm{multi\_min} \, (X \setminus \{x\}))
 \end{array}
 $$
 
@@ -129,33 +129,33 @@ However, we might not be extremely happy about this. A lot of the definition is 
 
 The main trick to removing duplication when writing in this style is to keep the common parts and extract the different ones as inputs.
 
-In this case, the only difference is in the usage of either the $\mathit{max}$ or the $\mathit{min}$ functions. They are both members of the [set of functions](<https://en.wikipedia.org/wiki/Function_(mathematics)#Set_exponentiation>) from $\mathbb{Z} \times \mathbb{Z}$ to $\mathbb{Z}$, which we denote by $\mathbb{Z}^{\mathbb{Z} \times \mathbb{Z}}$.
+In this case, the only difference is in the usage of either the $\textrm{max}$ or the $\textrm{min}$ functions. They are both members of the [set of functions](<https://en.wikipedia.org/wiki/Function_(mathematics)#Set_exponentiation>) from $\mathbb{Z} \times \mathbb{Z}$ to $\mathbb{Z}$, which we denote by $\mathbb{Z}^{\mathbb{Z} \times \mathbb{Z}}$.
 
 Using this insight, we can now define
 
 $$
-\mathit{multi} : \mathbb{Z}^{\mathbb{Z} \times \mathbb{Z}} \times \mathscr{F} \mathbb{Z} \to \mathbb{Z}
+\textrm{multi} : \mathbb{Z}^{\mathbb{Z} \times \mathbb{Z}} \times \mathscr{F} \mathbb{Z} \to \mathbb{Z}
 $$
 
 which takes as its inputs a function to combine two integers and a non-empty finite set of integers, and returns an integer as its result.
 
-Its implementation is similar to our previous $\mathit{multi\_max}$ and $\mathit{multi\_min}$[^2]:
+Its implementation is similar to our previous $\textrm{multi\_max}$ and $\textrm{multi\_min}$[^2]:
 
 $$
 \begin{array}{lccl}
-\mathit{multi} & (f, \{x\}) & = & x \\
-\mathit{multi} & (f, (\{x\} \cup (X \setminus \{x\}))) & = & f (x, \mathit{multi} \, (f, X \setminus \{x\}))
+\textrm{multi} & (f, \{x\}) & = & x \\
+\textrm{multi} & (f, (\{x\} \cup (X \setminus \{x\}))) & = & f (x, \textrm{multi} \, (f, X \setminus \{x\}))
 \end{array}
 $$
 
-Now we can redefine $\mathit{multi\_max}$ and $\mathit{multi\_min}$ by using $\mathit{max}$ and $\mathit{min}$, respectively, as the first argument $f$:
+Now we can redefine $\textrm{multi\_max}$ and $\textrm{multi\_min}$ by using $\textrm{max}$ and $\textrm{min}$, respectively, as the first argument $f$:
 
 $$
-\mathit{multi\_min} \, X = \mathit{multi} \, (\mathit{min}, X) \\
-\mathit{multi\_max} \, X = \mathit{multi} \, (\mathit{max}, X)
+\textrm{multi\_min} \, X = \textrm{multi} \, (\textrm{min}, X) \\
+\textrm{multi\_max} \, X = \textrm{multi} \, (\textrm{max}, X)
 $$
 
-Our newly defined $\mathit{multi}$ is much more general and opens up new possibilities. For example, we could define a function to compute the sum or the product of all the elements in a set just by plugging in $+$ or $*$ as the first argument.
+Our newly defined $\textrm{multi}$ is much more general and opens up new possibilities. For example, we could define a function to compute the sum or the product of all the elements in a set just by plugging in $+$ or $*$ as the first argument.
 
 ## Conclusion
 
