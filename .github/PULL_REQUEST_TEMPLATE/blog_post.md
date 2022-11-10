@@ -1,39 +1,30 @@
-YOUR_DESCRIPTION_HERE
+New blog post
 
-### Phase 0: Pre Review
+### Phase 0: Self-review
 
-- [ ] Check [`codespell`](https://github.com/codespell-project/codespell) suggestions
-      (`$ codespell --write-changes --interactive=3 post.md`)
+- Content
 
-### Phase 1: Content Review
+  - For the following, please refer to ["Blog - Setting clear expectations"](https://github.com/tweag/meta/blob/master/handbook/blog.md#setting-clear-expectations) from the handbook
 
-- [ ] Comments on meaning and phrasing of sentences and code.
+  - [ ] Checked that title makes clear what is achieved in the end
+  - [ ] Checked that introduction lays out the "How" and the "What", as well as the target audience
+  - [ ] Checked that conclusion recalls "What" was achieved, and the qualities of the "How" compared to alternatives
 
-### Phase 2: Style
+- Spelling
+  - [ ] Check spelling
+  - [ ] Check [`codespell`](https://github.com/codespell-project/codespell) suggestions
+        (`$ codespell --write-changes --interactive=3 post.md`)
+- Render
+  - [ ] Made sure all the links work
+  - [ ] Checked that footnotes are properly rendered
 
-- [ ] Markup
-- [ ] Capitalization
-- [ ] Meta tags (a good description and relevant tags are required, and a seo_image is encouraged)
-- [ ] Correct date
+### Phase 1: Technical Review
 
-Responsible: Juan (@guaraqe)
+- [ ] Asked relevant people for a review on the technical content
+- [ ] Gathered and applied technical reviews
 
-### Phase 3: Proof Checking
+### Phase 2: Editorial review
 
-- [ ] Make sure all the code snippets run.
-      Responsible: Author.
+- [ ] Notified Juan (@guaraqe) to get an editorial review
 
-- [ ] Grammar, spelling check and phrasing.
-      Responsibles: Robert (@rdbuckley).
-
-- [ ] Make sure all the links work.
-      Responsible: Juan (@guaraqe).
-
-- [ ] Add links to related Tweag posts.
-      Responsible: Juan (@guaraqe).
-
-- [ ] Check media image for Twitter on https://cards-dev.twitter.com/validator. Should be done after merging master.
-      Responsible: Juan (@guaraqe)
-
-- [ ] Check that the rendered version is suitable for all screen sizes.
-      Responsible: Juan (@guaraqe)
+Next phases will be checked by the editorial team.
