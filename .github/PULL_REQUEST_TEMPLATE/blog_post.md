@@ -3,6 +3,7 @@ New blog post
 ### Phase 0: Self-review
 
 - Content
+
   - [ ] I have read ["Blog - Setting clear expectations"](https://github.com/tweag/meta/blob/master/handbook/blog.md#setting-clear-expectations) from the handbook
 
   - [ ] Checked that title makes clear what is achieved in the end
