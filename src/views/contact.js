@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Grid, Box, Text, Label, Input, Textarea, Flex } from "theme-ui"
+import { jsx, Grid, Box, Text, Label, Input, Textarea, Flex, Select } from "theme-ui"
 import { useState, Fragment } from "react"
 
 import { DefaulLayout as Layout } from "../layouts"
@@ -173,6 +173,44 @@ const ContactPage = () => {
               gap={[`100px`]}
             >
               <Grid gap={[`40px`]}>
+                <CustomLabel>First Name*</CustomLabel>
+                <Input
+                  name="firstname"
+                  type="text"
+                  placeholder="First name"
+                  sx={{
+                    fontSize: [`24px`, `24px`, `42px`],
+                    border: [0],
+                    padding: [`0 !important`],
+                    "::placeholder": {
+                      opacity: 0.3,
+                    },
+                    "&:focus": {
+                      outline: `none`,
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid gap={[`40px`]}>
+                <CustomLabel>Last Name*</CustomLabel>
+                <Input
+                  name="lastname"
+                  type="text"
+                  placeholder="Last name"
+                  sx={{
+                    fontSize: [`24px`, `24px`, `42px`],
+                    border: [0],
+                    padding: [`0 !important`],
+                    "::placeholder": {
+                      opacity: 0.3,
+                    },
+                    "&:focus": {
+                      outline: `none`,
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid gap={[`40px`]}>
                 <CustomLabel>Email*</CustomLabel>
                 <Input
                   name="email"
@@ -192,7 +230,74 @@ const ContactPage = () => {
                 />
               </Grid>
               <Grid gap={[`40px`]}>
-                <CustomLabel>Message*</CustomLabel>
+                <CustomLabel>Company Name*</CustomLabel>
+                <Input
+                  name="company"
+                  type="text"
+                  placeholder="Acme, Inc."
+                  sx={{
+                    fontSize: [`24px`, `24px`, `42px`],
+                    border: [0],
+                    padding: [`0 !important`],
+                    "::placeholder": {
+                      opacity: 0.3,
+                    },
+                    "&:focus": {
+                      outline: `none`,
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid gap={[`40px`]}>
+                <CustomLabel>Industry</CustomLabel>
+                <Input
+                  name="industry"
+                  type="text"
+                  placeholder="Technology, Healthcare, etc."
+                  sx={{
+                    fontSize: [`24px`, `24px`, `42px`],
+                    border: [0],
+                    padding: [`0 !important`],
+                    "::placeholder": {
+                      opacity: 0.3,
+                    },
+                    "&:focus": {
+                      outline: `none`,
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid gap={[`40px`]}>
+                <CustomLabel>What can we do for you?*</CustomLabel>
+                <Select
+                  name="what_can_we_do_for_you"
+                  defaultValue={'Please select'}
+                  arrow={' '}
+                  options
+                  sx={{
+                    border: [0],
+                    height: [`3em`],
+                    "::placeholder": {
+                      opacity: 0.3,
+                    },
+                    "&:focus": {
+                      outline: `none`,
+                    },
+                  }}
+                >
+                  <option value="">Please select</option>
+                  <option value="Product design and development">App modernization</option>
+                  <option value="Atlassian support">Atlassian</option>
+                  <option value="Cloud migration">Cloud migration</option>
+                  <option value="Enterprise customer experience">Customer experience</option>
+                  <option value="Product Development">Product development</option>
+                  <option value="Product strategy">Product strategy</option>
+                  <option value="Security">Security</option>
+                  <option value="Other">Other</option>
+                </Select>
+              </Grid>
+              <Grid gap={[`40px`]}>
+                <CustomLabel>Anything else we should know?*</CustomLabel>
                 <Textarea
                   name="message"
                   placeholder="Write your message"
