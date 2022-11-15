@@ -355,13 +355,13 @@ post.
 <!-- Footnotes -->
 
 [^1]:
-  In short, this is because GHC can't distinguish between the base and
-  recursive instances with `Nat`s as easily as it can with `Peano`s
+    In short, this is because GHC can't distinguish between the base and
+    recursive instances with `Nat`s as easily as it can with `Peano`s
 
 [^2]: Core is the main intermediate language used inside GHC.
 [^3]:
-  In my case, the full path was:
-  `.stack-work/dist/x86_64-linux-nix/Cabal-3.4.1.0/build/compile-recurse-tests/compile-recurse-tests-tmp/test/CompileRecurseTests.dump-simpl`.
+    In my case, the full path was:
+    `.stack-work/dist/x86_64-linux-nix/Cabal-3.4.1.0/build/compile-recurse-tests/compile-recurse-tests-tmp/test/CompileRecurseTests.dump-simpl`.
 
 <!-- Links -->
 
