@@ -271,8 +271,8 @@ const ContactPage = () => {
                 <CustomLabel>What can we do for you?*</CustomLabel>
                 <Select
                   name="what_can_we_do_for_you"
-                  defaultValue={'Please select'}
-                  arrow={' '}
+                  defaultValue={`"Please select"`}
+                  arrow={`""`}
                   options
                   sx={{
                     border: [0],
