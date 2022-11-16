@@ -223,12 +223,12 @@ pytest-cov==3.0.0  # Coverage extension
 ## Sandboxes
 
 With all of the above in place, we are now able to create sandboxes to obtain comfortable development environments.
-For example suppose we have one library named `fancylib`, making the monorepo structure as follows:
+For example suppose we have one library named `baselib`, making the monorepo structure as follows:
 
 ```shell
 ├── dev-requirements.txt
 ├── libs
-│   └── fancylib
+│   └── baselib
 │       ├── pyproject.toml
 │       ├── README.md
 │       └── requirements.txt
@@ -238,7 +238,7 @@ For example suppose we have one library named `fancylib`, making the monorepo st
 └── tox.ini
 ```
 
-To create `fancylib`'s development environment, go to directory `libs/fancylib` and execute:
+To create `baselib`'s development environment, go to directory `libs/baselib` and execute:
 
 ```shell
 python3 -m venv .venv --copies
@@ -259,7 +259,7 @@ This can shortened by using `nox`, as explained in the [improvements](#improveme
 We use a common namespace in all projects and libraries.
 This avoids one level of nesting by avoiding the `src` folder (which is the historical way of doing, called the [src layout](https://packaging.python.org/en/latest/tutorials/packaging-projects/#a-simple-project)).
 
-Supposing that we choose `mycorp` as the namespace, this means that the code of library `libs/fancylib` lives in directory `libs/fancylib/mycorp` and the `pyproject.toml` of the library must contain:
+Supposing that we choose `mycorp` as the namespace, this means that the code of library `libs/baselib` lives in directory `libs/baselib/mycorp` and the `pyproject.toml` of the library must contain:
 
 ```toml
 packages = [
@@ -268,6 +268,104 @@ packages = [
 ```
 
 We now come to a very important topic: the difference between `pyproject.toml` and `requirements.txt` for declaring dependencies.
-TODO.
 
-  <!-- [SO explanation](https://stackoverflow.com/questions/14399534/reference-requirements-txt-for-the-install-requires-kwarg-in-setuptools-setup-py/33685899#33685899) -->
+### `requirements.txt`
+
+`requirements.txt` files are used for 1/ populating sandboxes of developers,
+and 2/ are the basis for testing code in the CI. `requirements.txt` files
+specify both local dependencies (dependencies over libraries developed
+in the monorepo itself) and external dependencies (dependencies which
+are usually hosted on [pypi](https://pypi.org/), such as `numpy` and `pandas`).
+
+For provisioning local dependencies, we use
+[editable installs](https://setuptools.pypa.io/en/latest/userguide/development_mode.html).
+If a library `A` depends on a library `B`, this makes changes to `B` immediately
+available to users of `A`: `A` depends on the code of `B` that is next to it
+in the monorepo, not on a released version.
+
+The `requirements.txt` file of a library should include both direct dependencies
+of this library as well as all its transitive dependencies. By using both
+pinned dependencies and listing transitive dependencies in `requirements.txt`,
+we achieve a great level of [reproducibility](https://en.wikipedia.org/wiki/Reproducibility).
+
+### `pyproject.toml`
+
+Generally speaking, `pyproject.toml` files are used to configure a project or library.
+In this section we only deal with specifying dependencies,
+i.e. how we write the `[tool.poetry.dependencies]` section.
+
+In our setup, `pyproject.toml` files specify dependencies for deployment.
+Because of that, dependencies in `pyproject.toml` files should be loose, to avoid blocking
+using your code in a variety of environment.
+When code is deployed into an environment with many other packages,
+it will possibly be in presence of version of dependencies that haven't been used so far.
+Specifying exact version numbers in `pyproject.toml` would make this impossible and as such is not desirable.
+
+Using `numypy` as en example, a simple rule to specify dependencies
+in this scenario is to use `numpy = ^X.Y.Z` where either
+1/ `X.Y.Z` is the version number of `numpy` used when starting to use it, or
+2/ `X.Y.Z` is the version of `numpy` introducing a feature depended upon.
+[poetry's documentation](https://python-poetry.org/docs/dependency-specification/#version-constraints)
+provides good guidance on possible specifiers.
+
+### Example
+
+To make this setup concrete, let's introduce a new library `libs/fancylib`
+that depends upon `libs/baselib` and `numpy`:
+
+```shell
+...as above...
+└── libs
+    ├── baselib
+    │   └── ...as above...
+    └── fancylib
+        ├── pyproject.toml
+        ├── README.md
+        └── requirements.txt
+```
+
+`libs/fancylib/requirements.txt` is as follows:
+
+```
+-e ../baselib  # local dependency, use editable install
+numpy==1.22.3  # external dependency, installed from pypi
+```
+
+`libs/fancylib/pyproject.toml` is as follows:
+
+```toml
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "mycorp-fancy"
+version = "0.0.1"
+description = "Mycorp's fancy library"
+authors = [ "Tweag <contact@tweag.io>", ]
+packages = [
+  { include = "mycorp" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+numpy = "^1.2.3"
+mycorp_base = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+pytest-mock = "^3"
+black = "^22.3.0"
+flake8 = "^4.0.1"
+pyright = "^1.1.258"
+mycorp_base = {path = "../baselib", develop = false}
+
+# tooling configuration, omitted
+```
+
+In the spirit of our explanations above:
+
+* `requirements.txt` uses an editable install to specify the dependency
+  to `libs/baselib`, with `-e ../baselib`.
+* `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
+  to `libs/baselib`.
