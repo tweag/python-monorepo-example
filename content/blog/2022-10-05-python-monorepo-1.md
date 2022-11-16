@@ -7,7 +7,7 @@ description: "How to build your Python monorepo from scratch: structure and tool
 ---
 
 Delivering interdependent software across teams of an organization is challenging.
-When changes in a package require changes in one of its dependencies, it is usually required to first make the changes in the dependency and publish a new release of it, only then can the original package be update accordingly.
+When changes in a package require changes in one of its dependencies, it is usually required to first make the changes in the dependency and publish a new release of it, only then can the original package be updated accordingly.
 In the context of a bigger organization with many interdependent packages, those processes can quickly add up, leading to numerous cascading Pull Requests (PRs) across many repos, which is hard to manage and adds friction to the development workflow.
 
 An alternative is to "live at HEAD": instead of waiting for releases and cascading PRs, a developer works on all related packages at once in one PR and publishes them all in one go.
@@ -26,10 +26,10 @@ This is desirable as it reduces the scope of things to manage when implementing 
 Also, it ensures that all employees are working towards a shared, common knowledge about its software.
 
 On the other hand, it makes it impossible for different projects to use different versions of external dependencies.
-It is also mandatory to install the dependencies for all projects, even when they only need a subset of them to work on a single project.
+It is also mandatory to install the dependencies for all projects, even when they only need a subset of them to work on a single project. These two facts can create frictions amongst developers and reduce throughput.
 
-In order not to lose flexibility when needed, we decided to use _multiple sandboxes_, one per project.
-We can later improve the consistency of external dependencies across Python environments with some tooling.
+To avoid losing flexibility, we decided to use _multiple sandboxes_, one per project.
+We will later improve the consistency of external dependencies across Python environments with dedicated tooling.
 
 A sandbox can be created with python's base library:
 
@@ -64,7 +64,7 @@ For instance, there could be a Web API, a collection of data processing job, and
 While each team is working on its own projects, it is most likely that a portion of their code is shared.
 Following the DRY (Don't Repeat Yourself) principle, it is best to refactor those shared portions into libraries.
 
-We have found that, in Python, there is no significant difference between projects and libraries: they are Python packages.
+In Python, there is no significant difference between projects and libraries: they are Python packages.
 Because of that, we make no difference between the two.
 However, for the sake of clarity, we split the monorepo structure into two top-level folders, one for projects and one for libraries:
 
@@ -73,13 +73,13 @@ However, for the sake of clarity, we split the monorepo structure into two top-l
 └── projects
 ```
 
-This top-level organization highlights that libraries are to be shared across the entire organization.
+This top-level organization highlights that libraries are shared across the entire organization.
 
 To create a project or a library, a folder needs to be created in one or the other.
 It should be then populated with the following:
 
 - A `pyproject.toml` file which defines the Python package.
-  It contains its meta data (name, version, description) and the list of dependencies for dependency resolution.
+  It contains its metadata (name, version, description) and the list of dependencies for dependency resolution.
 - A `requirements.txt` file which serves as the basis for creating local sandboxes for developers and also as the default testing environment in continuous integration (CI), in the same way as a lock file.
   It has to list all dependencies, direct and transitive, frozen at a specific version, in pip's
   [requirement file format](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
@@ -115,6 +115,7 @@ ignore = ["setup.py", "__init__.py"]
 
 [tool.isort]
 profile = "black"
+known_first_party = ["mycorp"]  # see package configuration below
 ```
 
 ```toml
