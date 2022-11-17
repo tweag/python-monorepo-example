@@ -4,12 +4,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - run: npm ci --only=production
       - run: npm run build
       - name: Deploy to Netlify
@@ -23,7 +23,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - name: Add commit status
-        uses: Sibz/github-status-action@v1.1.0
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -34,9 +34,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - run: npm ci
       - run: npm run lint
