@@ -1,5 +1,15 @@
 /** @jsx jsx */
-import { jsx, Grid, Box, Text, Label, Input, Textarea, Flex, Select } from "theme-ui"
+import {
+  jsx,
+  Grid,
+  Box,
+  Text,
+  Label,
+  Input,
+  Textarea,
+  Flex,
+  Select,
+} from "theme-ui"
 import { useState, Fragment } from "react"
 
 import { DefaulLayout as Layout } from "../layouts"
@@ -286,11 +296,17 @@ const ContactPage = () => {
                   }}
                 >
                   <option value="">Please select</option>
-                  <option value="Product design and development">App modernization</option>
+                  <option value="Product design and development">
+                    App modernization
+                  </option>
                   <option value="Atlassian support">Atlassian</option>
                   <option value="Cloud migration">Cloud migration</option>
-                  <option value="Enterprise customer experience">Customer experience</option>
-                  <option value="Product Development">Product development</option>
+                  <option value="Enterprise customer experience">
+                    Customer experience
+                  </option>
+                  <option value="Product Development">
+                    Product development
+                  </option>
                   <option value="Product strategy">Product strategy</option>
                   <option value="Security">Security</option>
                   <option value="Other">Other</option>
