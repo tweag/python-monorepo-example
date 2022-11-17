@@ -9,8 +9,7 @@ with pkgs;
 mkShell {
   buildInputs = [
     python3
-    nodejs-slim # the combination of nodejs-slim and npm makes a more recent version of npm available
-    nodePackages.npm
+    yarn
     autoconf
     automake
     nasm

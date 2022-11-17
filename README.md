@@ -65,13 +65,13 @@ To install and build the website (run from inside the `nix-shell` to
 ensure you have Node.js installed):
 
 ```
-$ npm install
+$ yarn install
 ```
 
 To start the website in development mode locally:
 
 ```
-$ npm run develop
+$ yarn develop
 ```
 
 The webserver's address will be shown in the commands' output.
@@ -79,16 +79,16 @@ The webserver's address will be shown in the commands' output.
 To test the production build, just to be sure:
 
 ```
-$ npm run build
+$ yarn build
 ```
 
 ## Submitting a change
 
 Before committing a change, make sure to have installed
-the website before with `npm install`, then run the code formatter and linter:
+the website before with `yarn install`, then run the code formatter and linter:
 
 ```
-$ npm run format
+$ yarn format
 ```
 
 CI builds will fail during the linting stage if you omit this step.

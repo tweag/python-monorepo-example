@@ -29,6 +29,7 @@ module.exports = {
     "react/prop-types": `off`,
     "require-jsdoc": `off`,
     "valid-jsdoc": `off`,
+    "react/no-unknown-property": `off`,
   },
   settings: {
     react: {

@@ -10,8 +10,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm ci --only=production
-      - run: npm run build
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
       - name: Deploy to Netlify
         id: deploy
         run: |
@@ -38,5 +38,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm ci
-      - run: npm run lint
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint

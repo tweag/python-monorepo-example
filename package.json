@@ -70,13 +70,13 @@
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "npm-run-all --continue-on-error -p format:code format:other",
-    "format:code": "npm run lint:code -- --fix",
-    "format:other": "npm run prettier -- --write",
+    "format:code": "yarn lint:code -- --fix",
+    "format:other": "yarn prettier -- --write",
     "lint": "npm-run-all --continue-on-error -p lint:code lint:other",
     "lint:code": "eslint --cache --ext .js,.jsx,.ts,.tsx .",
-    "lint:other": "npm run prettier -- --cache true --check",
+    "lint:other": "yarn prettier -- --cache true --check",
     "prettier": "prettier \"**/*.{md,css,scss,yaml,yml}\"",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   }
