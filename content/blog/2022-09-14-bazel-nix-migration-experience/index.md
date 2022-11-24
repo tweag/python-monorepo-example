@@ -117,9 +117,12 @@ bazel-bin/common/src/libcore.so
 ```
 
 This is pretty cool. In the old days, linking even a moderately complex project
-was quite a tricky affair. Even more so when shared libraries were involved
-since there were compiler flags like [`-fPIC`][fpic-flag] to worry about. With
-Bazel all those messy details have been abstracted away.
+was quite a tricky affair. You had to determine which parts it made sense to
+link statically and which parts dynamically. Code going into a shared library
+needed to be compiled with [`-fPIC`][fpic-flag] because shared libraries get
+relocated arbitrarily in process address space. Getting something wrong usually
+led to unhelpful linker errors about missing or duplicate symbols. With Bazel
+all those messy details have been abstracted away.
 
 Next let's examine how the `net` module is built. If you check the graph above
 you'll see that `net` depends on `core` and two third party libraries,
