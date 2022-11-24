@@ -199,8 +199,8 @@ nixpkgs.enet                                           enet-1.3.17
 nixpkgs.freenet                                        freenet-build01480
 ```
 
-If `attribute_path` is not given it defaults to the value given for the `name`
-parameter, so for `enet` it can be left out. Once you've found a Nix package
+If `attribute_path` is not given, it defaults to the value given for the `name`
+parameter. So for `enet` it can be left out. Once you've found a Nix package
 you can examine what files it contains:
 
 ```
@@ -377,9 +377,9 @@ def assemble_assets(name):
 ```
 
 The most interesting thing here is that the `OgreXMLConverter` tool is being
-used to transform mesh data. This tool comes as part of the Nix package for
-`ogre` and it must be [explicitly exported from `BUILD.bazel`][ogre-converter].
-It also needs to be passed to the [`tools`][bazel-tools] parameter of the
+used to transform mesh data. This tool comes as part of the `ogre` Nix package
+and it must be [explicitly exported from `BUILD.bazel`][ogre-converter]. It
+also needs to be passed to the [`tools`][bazel-tools] parameter of the
 `genrule` or else Bazel will complain that it has not been declared as a
 prerequisite.
 
@@ -417,7 +417,7 @@ fonts, etc.
 ## Running the game
 
 With both the code and data building we now turn to actually running the game.
-For the `server` executable this is relatively straight forward. Its only data
+For the `server` executable this is relatively straightforward. Its only data
 dependency is the map collision data.
 
 However the graphics engine used by `client` requires all assets to be listed
@@ -473,7 +473,7 @@ Bazel ensures that all the data dependencies are available in the
 `enumerate-resources.sh` script. The full path to the plugin directory is
 obtained by using [`location`][bazel-variables] to resolve the
 `@ogre//:lib/OGRE` label. This path is then passed as an argument to
-`run-client.sh` and there substituted into `plugins.cfg`.
+`run-client.sh` and then substituted into `plugins.cfg`.
 
 Now the entire game can be [built and run][build-and-run] from a Nix shell with
 just two commands:
