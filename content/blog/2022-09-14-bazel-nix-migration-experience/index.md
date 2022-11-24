@@ -180,7 +180,8 @@ nixpkgs_local_repository(
     nix_file = "//:nixpkgs.nix",
 )
 
-# Configure a toolchain from the nixpkgs repository above.
+# Configure a toolchain from the nixpkgs repository above. This means we will
+# use a fixed version of the C++ compiler, which helps with reproducible builds.
 load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_cc_configure")
 nixpkgs_cc_configure(
     name = "nixpkgs_config_cc",
