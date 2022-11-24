@@ -69,6 +69,12 @@ This game has a few attributes that make it an interesting case study:
   any of the source code that goes into this tool changes and it gets rebuilt,
   the data transformation it performs also needs to be rerun.
 
+In a more traditional build system it is difficult to express a build graph for
+the above in a way that gives perfectly [correct and
+incremental][correct-incremental] builds. Things tend to be more ad-hoc and
+changes to tools or across language boundaries are usually best dealt with by
+cleaning and rebuilding from scratch.
+
 ## Building the source code
 
 Every Bazel project requires a [`WORKSPACE.bazel`][bazel-workspace] file at its
@@ -499,11 +505,11 @@ Having easy access to over 80,000 packages is reason enough to pair Bazel with
 Nix, but if reproducible builds matter to you [it makes even more
 sense][blog-bazel-nix].
 
-Perfectly [correct and incremental][correct-incremental-builds] builds are
-awesome. Bazel is very good at managing complex dependency graphs where some
-build outputs (e.g. tools) are themselves used as part of the build. When you
-change something Bazel will rebuild exactly what is necessary and it will do so
-in the correct order.
+[Correct and incremental][correct-incremental] builds are awesome. Bazel is
+very good at managing complex dependency graphs where some build outputs (e.g.
+tools) are themselves used as part of the build. When you change something
+Bazel will rebuild exactly what is necessary and it will do so in the correct
+order.
 
 Clearly, not building more than necessary saves time but not building less does
 too. When a build system neglects to rebuild something it should have, the
@@ -550,7 +556,7 @@ confidence Bazel provides here is great for developer productivity.
 [codelabs]: https://github.com/tweag/nix_bazel_codelab/tree/main#nixbazel-codelab
 [common-data]: https://github.com/benradf/space-game/blob/master/common/data/BUILD.bazel
 [common-src]: https://github.com/benradf/space-game/blob/master/common/src/BUILD.bazel
-[correct-incremental-builds]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
+[correct-incremental]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
 [cpp-modules]: https://en.cppreference.com/w/cpp/language/modules
 [dlopen]: https://man7.org/linux/man-pages/man3/dlopen.3.html
 [enet-lib]: http://enet.bespin.org/
