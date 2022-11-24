@@ -24,8 +24,8 @@ useful example for others.
 Bazel is a fantastic build system which by itself provides [many
 benefits][bazel-competencies]. However dependency management could be
 considered an area of weakness for it. This is understandable given its
-monorepo origins at Google but when not working in a monorepo, what is the best
-way to provide the dependencies a project needs?
+[monorepo][monorepo] origins at Google but when not working in a monorepo, what
+is the best way to provide the dependencies a project needs?
 
 One approach is to simply assume the dependencies exist in the environment
 (having been put there by `apt install` or the like), but this is just ignoring
@@ -563,6 +563,7 @@ confidence Bazel provides here is great for developer productivity.
 [exports-files]: https://bazel.build/reference/be/functions#exports_files
 [fpic-flag]: https://stackoverflow.com/questions/966960/what-does-fpic-mean-when-building-a-shared-library
 [kdtree]: https://en.wikipedia.org/wiki/K-d_tree
+[monorepo]: https://en.wikipedia.org/wiki/Monorepo
 [nix-env-install]: https://nixos.org/manual/nix/stable/command-ref/nix-env.html#operation---install
 [nixpkgs-22-05]: https://github.com/NixOS/nixpkgs/commit/ce6aa13369b667ac2542593170993504932eb836
 [nixpkgs-tags]: https://github.com/NixOS/nixpkgs/tags
