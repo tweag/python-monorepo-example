@@ -191,7 +191,7 @@ nixpkgs_cc_configure(
 load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_package")
 ```
 
-The [`nixpkgs_package`][nixpkgs_package] macro loaded by the last line can be
+The [`nixpkgs_package`][nixpkgs_package] rule loaded by the last line can be
 used to import a Nix package as a Bazel repository. It has many optional
 parameters, allowing its behaviour to be customised precisely as needed (though
 this requires some familiarity with Nix and Bazel).
@@ -339,10 +339,6 @@ duplication I decided to define a couple of helper macros in a
 [`resources.bzl`][resources-bzl] extension file. In Bazel a
 [macro][bazel-macros] is a function that can instantiate rules. The
 `assemble_assets` macro is used in `//common/data/ships` like this:
-
-
-
-
 
 ```python
 load("//common/data:resources.bzl", "assemble_assets")
@@ -521,9 +517,7 @@ confidence Bazel provides here is great for developer productivity.
 
 <!-- Footnotes -->
 
-[^1]:
-    For example, elsewhere on the filesystem or from a remote Git repository.
-
+[^1]: For example, elsewhere on the filesystem or from a remote Git repository.
 [^2]:
     The term _module_ is used here informally to refer to a grouping of related
     source files in a directory under `//common/src`. These are not [C++20
