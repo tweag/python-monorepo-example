@@ -478,7 +478,7 @@ sh_binary(
 Bazel ensures that all the data dependencies are available in the
 `run-client.runfiles` directory where they will be found by the
 `enumerate-resources.sh` script. The full path to the plugin directory is
-obtained by using [`location`][bazel-variables] to resolve the
+obtained by using [`rootpath`][bazel-variables] to resolve the
 `@ogre//:lib/OGRE` label. This path is then passed as an argument to
 `run-client.sh` and then substituted into `plugins.cfg`.
 
