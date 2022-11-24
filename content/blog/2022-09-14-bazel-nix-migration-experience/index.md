@@ -222,35 +222,25 @@ nixpkgs_package(
     name = "enet",
     repository = "@nixpkgs",
     build_file_content = """\
-cc_import(
-    name = "enet-import",
-    hdrs = glob(["include/**/*.h"]),
-    shared_library = "lib/libenet.so.7",
-    visibility = ["//visibility:public"],
-)
 cc_library(
     name = "enet",
     hdrs = glob(["include/**/*.h"]),
+    srcs = ["lib/libenet.so.7"],
     includes = ["include"],
-    deps = [":enet-import"],
     visibility = ["//visibility:public"],
 )
 """,
 )
 ```
 
-The [`cc_import`][bazel-cc-import] rule is necessary because `libenet.so` is
-prebuilt by Nix. Note that the particular symlink chosen for `shared_library`
-matters[^3]. You will get a runtime error if you choose wrong, but fortunately
-the error will indicate the correct choice.
+The `cc_library` rule is quite versatile. It is not obvious from the name but
+its `srcs` parameter can take prebuilt libraries in addition to source files.
+Note that there are multiple symlinks for the shared library but you cannot
+choose one arbitrarily[^3]. You will get a runtime error if you choose wrong,
+but fortunately the error will indicate the correct choice.
 
-Next a `cc_library` rule is used to pull in the header files. This rule is the
-one that the `net` module will depend upon directly and the `cc_import` rule
-will be a transitive dependency. This general pattern is used for all the
-third party dependencies, including `boost`.
-
-Now that we have the necessary dependencies, let's see how the `net` module is
-built:
+This general pattern is used for all the third party dependencies (including
+`boost`) so let's see how the `net` module is built:
 
 ```python
 cc_library(
@@ -518,9 +508,9 @@ confidence Bazel provides here is great for developer productivity.
     modules][cpp-modules].
 
 [^3]:
-    The `shared_library` parameter should exactly match the shared library name
-    in the dynamic section of the executable. You can use `readelf -d EXECUTABLE`
-    to check this.
+    The `srcs` parameter should exactly match the shared library name in the
+    dynamic section of the executable. You can use `readelf -d EXECUTABLE` to check
+    this.
 
 <!-- Links -->
 
