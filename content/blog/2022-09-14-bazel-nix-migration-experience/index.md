@@ -298,7 +298,9 @@ cc_binary(
 ```
 
 Apart from using [`cc_binary`][bazel-cc-binary], this looks much the same as
-the rules we have already seen.
+the rules we have already seen. It depends on some internal modules and also on
+`cegui`, `ogre` and `ois`. Like `enet`, these are external repositories
+provided by `rules_nixpkgs`.
 
 ## The asset transformation pipeline
 
