@@ -570,7 +570,7 @@ confidence Bazel provides here is great for developer productivity.
 [nixpkgs-tags]: https://github.com/NixOS/nixpkgs/tags
 [nixpkgs]: https://github.com/NixOS/nixpkgs#readme
 [nixpkgs_package]: https://github.com/tweag/rules_nixpkgs#nixpkgs_package
-[ogre-converter]: https://github.com/benradf/space-game/blob/master/WORKSPACE.bazel#L264
+[ogre-converter]: https://github.com/benradf/space-game/blob/master/WORKSPACE.bazel#L202
 [resources-bzl]: https://github.com/benradf/space-game/blob/master/common/data/resources.bzl
 [rules_nixpkgs]: https://github.com/tweag/rules_nixpkgs#nixpkgs-rules-for-bazel
 [shader-program]: https://en.wikipedia.org/wiki/Shader
