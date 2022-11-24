@@ -38,7 +38,7 @@ itself only takes a few minutes to build.
 Instead, Nix can be used to supply the dependencies to Bazel prebuilt. Nix and
 Bazel are very similar technologies (both build code from source and both place
 strong emphasis on properties like determinism and hermeticity), but without
-[diverging into the details][blog-bazel-nix] it is perhaps best to think of Nix
+[delving into the details][blog-bazel-nix] it is perhaps best to think of Nix
 as a package manager and Bazel as a build system. The advantage of Nix is that
 while it ostensibly builds everything from source, in practice it usually just
 downloads artifacts from a binary cache.
@@ -125,8 +125,8 @@ bazel-bin/common/src/libcore.so
 This is pretty cool. In the old days, linking even a moderately complex project
 was quite a tricky affair. You had to determine which parts it made sense to
 link statically and which parts dynamically. Code going into a shared library
-needed to be compiled with [`-fPIC`][fpic-flag] because shared libraries get
-relocated arbitrarily in process address space. Getting something wrong usually
+needed to be compiled with [`-fPIC`][fpic-flag] because shared libraries might
+be loaded anywhere in process address space. Getting something wrong usually
 led to unhelpful linker errors about missing or duplicate symbols. With Bazel
 all those messy details have been abstracted away.
 
