@@ -482,8 +482,8 @@ obtained by using [`rootpath`][bazel-variables] to resolve the
 `@ogre//:lib/OGRE` label. This path is then passed as an argument to
 `run-client.sh` and then substituted into `plugins.cfg`.
 
-Now the entire game can be [built and run][build-and-run] from a Nix shell with
-just two commands:
+Now the entire game can be [built and run][build-and-run] with just two
+commands:
 
 ```bash
 bazel run //common:run-server
