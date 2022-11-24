@@ -13,17 +13,39 @@ tags:
   - build-systems
 ---
 
-I’ve recently been learning how to use [Bazel][bazel-build] to build projects.
-Reading documentation and playing around with [codelabs][codelabs] is a great
-way to get started, but when learning a new technology there comes a point
-where you have to start applying it for real to make further progress. To this
-end I decided to migrate an old hobby project of mine to use Bazel. This post
-describes my experience and I hope serves as a useful example for others who
-are also new to Bazel.
+I’ve recently been learning how to use [Bazel][bazel-build] and [Nix][nixpkgs]
+to build projects. Reading documentation and playing around with
+[codelabs][codelabs] is a great way to get started, but when learning a new
+technology there comes a point where you have to start applying it for real to
+make further progress. To this end I decided to migrate an old hobby project of
+mine to use Bazel. This post describes my experience and I hope serves as a
+useful example for others.
 
-The [project][space-game] is an unfinished game with around fifteen thousand
-lines of C++ code. It was originally built using some very convoluted makefiles
-and is structured as follows:
+Bazel is a fantastic build system which by itself provides [many
+benefits][bazel-competencies]. However dependency management could be
+considered an area of weakness for it. This is understandable given its
+monorepo origins at Google but when not working in a monorepo, what is the best
+way to provide the dependencies a project needs?
+
+One approach is to simply assume the dependencies exist in the environment
+(having been put there by `apt install` or the like), but this is just ignoring
+the problem. Bazel has the concept of [external repositories][bazel-external]
+and is able to fetch and build source code from a variety of places[^1]. While
+this might be okay under some circumstances, we probably don't want to spend
+significant amounts of time building a large dependency tree for a project that
+itself only takes a few minutes to build.
+
+Instead, Nix can be used to supply the dependencies to Bazel prebuilt. Nix and
+Bazel are very similar technologies (both build code from source and both place
+strong emphasis on properties like determinism and hermeticity), but without
+[diverging into the details][blog-bazel-nix] it is perhaps best to think of Nix
+as a package manager and Bazel as a build system. The advantage of Nix is that
+while it ostensibly builds everything from source, in practice it usually just
+downloads artifacts from a binary cache.
+
+The [project][space-game] I migrated is an unfinished game with around fifteen
+thousand lines of C++ code. It was originally built using some very convoluted
+makefiles and is structured as follows:
 
 <p align="center">
 <img src=project-structure.svg alt="Project structure" style="width: 100% !important;" />
@@ -31,13 +53,13 @@ and is structured as follows:
 
 This game has a few attributes that make it an interesting case study:
 
-- It has a non-trivial structure with modules[^1] shared between client and
+- It has a non-trivial structure with modules[^2] shared between client and
   server executables.
 
 - It depends on several third party libraries. Previously these were manually
-  built from source. Now with [`rules_nixpkgs`][rules_nixpkgs] they are
-  provided by [Nix][nixpkgs]. Typically this means they will be fetched prebuilt
-  from the Nix cache, saving the time it would have taken to compile them.
+  built from source. Now with the help of [`rules_nixpkgs`][rules_nixpkgs] they
+  are provided by Nix. Typically this means they will be fetched prebuilt from
+  the Nix cache, saving the time it would have taken to compile them.
 
 - In addition to code that needs to be built, the game has assets like 3D
   meshes and textures that need to be transformed into a format that can be
@@ -219,7 +241,7 @@ cc_library(
 
 The [`cc_import`][bazel-cc-import] rule is necessary because `libenet.so` is
 prebuilt by Nix. Note that the particular symlink chosen for `shared_library`
-matters[^2]. You will get a runtime error if you choose wrong, but fortunately
+matters[^3]. You will get a runtime error if you choose wrong, but fortunately
 the error will indicate the correct choice.
 
 Next a `cc_library` rule is used to pull in the header files. This rule is the
@@ -488,11 +510,14 @@ confidence Bazel provides here is great for developer productivity.
 <!-- Footnotes -->
 
 [^1]:
+    For example, elsewhere on the filesystem or from a remote Git repository.
+
+[^2]:
     The term _module_ is used here informally to refer to a grouping of related
     source files in a directory under `//common/src`. These are not [C++20
     modules][cpp-modules].
 
-[^2]:
+[^3]:
     The `shared_library` parameter should exactly match the shared library name
     in the dynamic section of the executable. You can use `readelf -d EXECUTABLE`
     to check this.
@@ -504,6 +529,8 @@ confidence Bazel provides here is great for developer productivity.
 [bazel-cc-binary]: https://bazel.build/reference/be/c-cpp#cc_binary
 [bazel-cc-import]: https://bazel.build/reference/be/c-cpp#cc_import
 [bazel-cc-library]: https://bazel.build/reference/be/c-cpp#cc_library
+[bazel-competencies]: https://bazel.build/about/vision#bazel-core-competencies
+[bazel-external]: https://bazel.build/docs/external
 [bazel-genrule]: https://bazel.build/reference/be/general#genrule
 [bazel-macros]: https://bazel.build/extending/macros
 [bazel-output]: https://bazel.build/remote/output-directories#layout
@@ -515,7 +542,7 @@ confidence Bazel provides here is great for developer productivity.
 [blog-bazel-nix]: https://www.tweag.io/blog/2018-03-15-bazel-nix/
 [boost-lib]: https://www.boost.org/
 [build-and-run]: https://github.com/benradf/space-game#building-and-running
-[codelabs]: https://github.com/bazelbuild/codelabs
+[codelabs]: https://github.com/tweag/nix_bazel_codelab/tree/main#nixbazel-codelab
 [common-data]: https://github.com/benradf/space-game/blob/master/common/data/BUILD.bazel
 [common-src]: https://github.com/benradf/space-game/blob/master/common/src/BUILD.bazel
 [correct-incremental-builds]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
