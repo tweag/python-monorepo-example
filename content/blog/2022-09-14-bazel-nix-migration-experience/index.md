@@ -140,7 +140,17 @@ in import nixpkgs
 This pins the nixpkgs version to git commit [`ce6aa13`][nixpkgs-22-05], which
 corresponds to the 22.05 release. You can pick any commit you like but if you
 are unsure, picking the commit with the latest [release tag][nixpkgs-tags] is a
-good place to start. Next some additions to `WORKSPACE.bazel` are required:
+good place to start. The correct `sha256` value can be determined by setting it
+to empty and running `bazel build //...`. You will get an error telling you
+what the hash should be:
+
+```
+error: hash mismatch in file downloaded from 'https://github.com/NixOS/nixpkgs/archive/ce6aa13369b667ac2542593170993504932eb836.tar.gz':
+         specified: sha256:0000000000000000000000000000000000000000000000000000
+         got:       sha256:0d643wp3l77hv2pmg2fi7vyxn4rwy0iyr8djcw1h5x72315ck9ik
+```
+
+Next some additions to `WORKSPACE.bazel` are required:
 
 ```python
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
