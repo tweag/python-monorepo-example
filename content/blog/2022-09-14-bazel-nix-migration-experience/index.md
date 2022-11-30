@@ -11,6 +11,7 @@ tags:
   - bazel
   - nix
   - build-systems
+  - tutorial
 ---
 
 I’ve recently been learning how to use [Bazel][bazel-build] and [Nix][nixpkgs]
