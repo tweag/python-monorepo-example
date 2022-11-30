@@ -41,7 +41,7 @@ strong emphasis on properties like determinism and hermeticity), but without
 [delving into the details][blog-bazel-nix] it is perhaps best to think of Nix
 as a package manager and Bazel as a build system. The advantage of Nix is that
 while it ostensibly builds everything from source, in practice it usually just
-downloads artifacts from a binary cache.
+downloads artifacts from the Nix binary cache.
 
 The [project][space-game] I migrated is an unfinished game with around fifteen
 thousand lines of C++ code. It was originally built using some very convoluted
