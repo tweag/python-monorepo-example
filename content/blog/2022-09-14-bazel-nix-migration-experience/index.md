@@ -14,8 +14,8 @@ tags:
 ---
 
 I’ve recently been learning how to use [Bazel][bazel-build] and [Nix][nixpkgs]
-to build projects. Reading documentation and playing around with
-[codelabs][codelabs] is a great way to get started, but when learning a new
+to build projects. Reading documentation and playing around with [codelab
+exercises][codelabs] is a great way to get started, but when learning a new
 technology there comes a point where you have to start applying it for real to
 make further progress. To this end I decided to migrate an old hobby project of
 mine to use Bazel. This post describes my experience and I hope serves as a
