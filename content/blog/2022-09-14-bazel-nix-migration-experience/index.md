@@ -30,10 +30,10 @@ is the best way to provide the dependencies a project needs?
 One approach is to simply assume the dependencies exist in the environment
 (having been put there by `apt install` or the like), but this is just ignoring
 the problem. Bazel has the concept of [external repositories][bazel-external]
-and is able to fetch and build source code from a variety of places[^1]. While
-this might be okay under some circumstances, we probably don't want to spend
-significant amounts of time building a large dependency tree for a project that
-itself only takes a few minutes to build.
+and is able to fetch and build source code from a variety of places[^1]. Under
+some circumstances this might be a reasonable solution, but we probably don't
+want to spend significant amounts of time building a large dependency tree for
+a project that itself only takes a few minutes to build.
 
 Instead, Nix can be used to supply the dependencies to Bazel prebuilt. Nix and
 Bazel are very similar technologies (both build code from source and both place
