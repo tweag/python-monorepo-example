@@ -550,8 +550,8 @@ confidence Bazel provides here is great for developer productivity.
 [boost-lib]: https://www.boost.org/
 [build-and-run]: https://github.com/benradf/space-game#building-and-running
 [codelabs]: https://github.com/tweag/nix_bazel_codelab/tree/main#nixbazel-codelab
-[common-data]: https://github.com/benradf/space-game/blob/master/common/data/BUILD.bazel
-[common-src]: https://github.com/benradf/space-game/blob/master/common/src/BUILD.bazel
+[common-data]: https://github.com/benradf/space-game/blob/1edcdf95cc2e372090561eb8077d3f3ecc321397/common/data/BUILD.bazel
+[common-src]: https://github.com/benradf/space-game/blob/1edcdf95cc2e372090561eb8077d3f3ecc321397/common/src/BUILD.bazel
 [correct-incremental]: https://docs.bazel.build/versions/main/guide.html#correct-incremental-rebuilds
 [cpp-modules]: https://en.cppreference.com/w/cpp/language/modules
 [dlopen]: https://man7.org/linux/man-pages/man3/dlopen.3.html
@@ -565,8 +565,8 @@ confidence Bazel provides here is great for developer productivity.
 [nixpkgs-tags]: https://github.com/NixOS/nixpkgs/tags
 [nixpkgs]: https://github.com/NixOS/nixpkgs#readme
 [nixpkgs_package]: https://github.com/tweag/rules_nixpkgs#nixpkgs_package
-[ogre-converter]: https://github.com/benradf/space-game/blob/master/WORKSPACE.bazel#L202
-[resources-bzl]: https://github.com/benradf/space-game/blob/master/common/data/resources.bzl
+[ogre-converter]: https://github.com/benradf/space-game/blob/1edcdf95cc2e372090561eb8077d3f3ecc321397/WORKSPACE.bazel#L202
+[resources-bzl]: https://github.com/benradf/space-game/blob/1edcdf95cc2e372090561eb8077d3f3ecc321397/common/data/resources.bzl
 [rules_nixpkgs]: https://github.com/tweag/rules_nixpkgs#nixpkgs-rules-for-bazel
 [shader-program]: https://en.wikipedia.org/wiki/Shader
 [space-game]: https://github.com/benradf/space-game#space-game
