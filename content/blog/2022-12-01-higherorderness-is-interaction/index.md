@@ -20,7 +20,7 @@ But this approach is also practical, shedding a new light on existing
 programming techniques and programming language features. We will review the
 example of higher-order contracts in this post. We will also present direct
 application of interactive semantics in the design and the implementation
-programming languages.
+of programming languages.
 
 ## Denotational semantics
 
