@@ -210,6 +210,7 @@ papers:
   - title: "Linearly Qualified Types: Generic inference for capabilities and uniqueness"
     status: ICFP 2022
     links:
+      Link: https://doi.org/10.1145/3547626
       Arxiv: https://arxiv.org/abs/2103.06127
     tags:
       - haskell
