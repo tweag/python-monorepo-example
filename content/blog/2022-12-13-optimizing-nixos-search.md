@@ -9,7 +9,7 @@ With their introduction in Nix 2.4, [flakes](https://www.tweag.io/blog/2020-05-2
 
 To allow for better user experience and composability for existing flakes, discoverability of flakes is a necessary feature.
 
-The site [search.nixos.org](search.nixos.org) is used to search for packages, options, and flakes. It also provides metadata information such as descriptions, maintainers, and compatible platforms.
+The site [search.nixos.org](https://search.nixos.org) is used to search for packages, options, and flakes. It also provides metadata information such as descriptions, maintainers, and compatible platforms.
 
 Currently, search.nixos.org imports flake metadata through custom nix code that wraps flake evaluations. However, wrapping employs too much memory when used with large repositories such as `nixpkgs`. This causes a segmentation fault. As currently implemented, search.nixos.org cannot show all flakes.
 
