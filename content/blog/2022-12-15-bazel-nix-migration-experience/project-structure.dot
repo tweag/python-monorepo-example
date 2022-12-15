@@ -1,0 +1,97 @@
+digraph {
+    rankdir="BT";
+
+    subgraph {
+        label = "Legend";
+        legend [
+            shape="none";
+            //margin=0.1;
+            label=<
+
+                <table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+                    <tr><td align="left">Legend:</td></tr>
+                    <tr><td align="left"><font color="#a0a0a0"><i>Third Party Libraries</i></font></td></tr>
+                    <tr><td align="left"><font color="#6b9fff"><i>Internal Modules</i></font></td></tr>
+                    <tr><td align="left"><font color="#47ff60"><i>Executables</i></font></td></tr>
+                </table>
+
+            >;
+        ];
+    }
+
+
+    subgraph {
+
+        //rankdir="BT";
+
+
+        node [
+            shape="box";
+            style="filled";
+            color="#3f3f3f";
+            penwidth=0.2;
+        ];
+
+        edge [
+            arrowsize=0.5;
+            color="#3f3f3f";
+            penwidth=0.2;
+        ];
+
+        {
+            rank=min;
+            node [fillcolor="#99ffa7"];
+            client;
+            server;
+            zonebuild;
+        }
+
+        {
+            node [fillcolor="#b0ccff"];
+            core;
+            math;
+            net;
+            physics;
+            script;
+        }
+
+        {
+            rank=sink;
+            node [fillcolor="#e0e0e0"];
+            argtable;
+            boost;
+            cegui;
+            enet;
+            expat;
+            lua;
+            ogre;
+            ois;
+        }
+
+        // Internal dependencies
+        net -> core;
+        physics -> core;
+        physics -> math;
+        script -> core;
+        script -> math;
+        client -> core;
+        client -> net;
+        client -> physics;
+        server -> core;
+        server -> net;
+        server -> physics;
+        server -> script;
+        zonebuild -> core;
+        zonebuild -> physics;
+
+        // External dependencies
+        net -> boost;
+        net -> enet;
+        script -> lua;
+        client -> cegui;
+        client -> ogre;
+        client -> ois;
+        server -> argtable;
+        zonebuild -> expat;
+    }
+}
