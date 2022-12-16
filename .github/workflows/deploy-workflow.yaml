@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
+          cache: "yarn"
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - name: Deploy to Netlify
