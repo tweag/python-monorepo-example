@@ -17,6 +17,7 @@ mkShell {
     libtool
     libpng
     pkg-config
+    codespell
     util-linux # to make lscpu available to gatsby
   ];
   shellHook = ''
