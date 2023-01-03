@@ -1,0 +1,61 @@
+slug: douglas.massolari
+name: Douglas Massolari
+pronouns: He/His/Him
+github: Massolari
+shortDescription: |
+  Douglas is a Software Engineer who values functional programming and clean code. He constantly improves his skills and stays current in the field. Douglas aims to provide top user experiences for clients and users.
+bio: |
+  Douglas is a frontend engineer with a passion for functional programming.
+  He started learning about programming at a young age and has been dedicated to improving his skills ever since.
+
+  Douglas approaches his work with a user-centered mindset, always striving to create intuitive and seamless experiences for the end user.
+  After getting into university, he was able to secure a job as a fullstack engineer, where he has continued grow as a professional.
+
+  In his free time, Douglas enjoys spending time with his family, watching movies and reading.
+links:
+  LinkedIn: https://www.linkedin.com/in/massolari
+  Github: https://www.github.com/Massolari
+skills:
+  - Elm
+  - React
+  - Vue.js
+  - CSS
+  - PHP
+  - Nix
+speaks:
+  - Portuguese (native)
+  - English (fluent)
+  - French (beginner)
+  - Esperanto (beginner)
+experience:
+  - employer: Tweag
+    role: Software Engineer
+    years: Apr 2022 - Present
+  - employer: Cálculo Jurídico
+    role: Frontend Engineer
+    years: 2020 - 2022
+    description:
+      - Frontend development with Elm and Typescript
+  - employer: Materialize
+    role: Fullstack Engineer
+    years: 2019 - 2022
+    description:
+      - Backend development with PHP and Go
+      - Frontend development with Elm
+  - employer: Nasajon
+    role: Fullstack Engineer
+    years: 2018 - 2019
+    description:
+      - Backend development with PHP and PostgreSQL database
+      - Frontend development with AngularJS
+  - employer: Emgepron
+    role: Fullstack Engineer
+    years: 2012 - 2018
+    description:
+      - Backend development with Java and PHP with Oracle and MySQL databases
+      - Frontend development with jQuery and Vue.js
+education:
+  - qualification: Bachelor
+    name: Computer Science
+    institution: Unicarioca
+    years: 2019
