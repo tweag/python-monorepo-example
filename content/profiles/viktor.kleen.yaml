@@ -1,0 +1,54 @@
+slug: viktor.kleen
+name: Viktor Kleen
+github: vkleen
+shortDescription: |
+  Viktor is a mathematician turned software engineer. After almost a decade of
+  thinking about algebraic geometry and homotopy theory, he joined Tweag in 2022
+  to work on more concrete problems.
+bio: |
+  A computer nerd from childhood, he
+  has long been interested in infrastructure as code methods to manage his
+  fleet of machines. As a mathematician, he is enamored with functional
+  languages and strong type systems as tools to achieve more correct software.
+  As a software engineer, he values reproducible and hermetic builds and solid
+  developer tooling.
+
+  Viktor is always interested in learning new skills, whether at work or in his
+  free time. Find him tinkering with electronics and embedded systems when not
+  on the clock.
+
+links:
+  GitHub: https://github.com/vkleen
+skills:
+  - Haskell
+  - Rust
+  - C++
+  - Nix
+speaks:
+  - German
+  - English
+education:
+  - description:
+      - Some Stable Splittings in Motivic Homotopy Theory
+    institution: University of Southern California
+    name: Mathematics
+    qualification: PhD
+    years: 2014-2019
+  - institution: Ludwig-Maximilians-Universität
+    name: Mathematics
+    qualification: Masters
+    years: 2012-2014
+  - institution: Ludwig-Maximilians-Universität
+    name: Mathematics
+    qualification: Bachelors
+    years: 2009-2012
+experience:
+  - employer: Tweag
+    years: 2022-present
+    role: Software Engineer
+  - employer: Universität Duisburg-Essen
+    years: 2019-2022
+    role: Postdoctoral Researcher
+    description:
+      - |
+        Research on geometric methods for understanding unstable motivic homotopy groups of spheres.
