@@ -8725,6 +8725,11 @@ gatsby-remark-smartypants@^5.21.0:
     retext-smartypants "^4.0.0"
     unist-util-visit "^2.0.3"
 
+gatsby-remark-video-tweag@./plugins/gatsby-remark-video-tweag:
+  version "1.0.4"
+  dependencies:
+    unist-util-visit "^1.4.0"
+
 gatsby-script@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/gatsby-script/-/gatsby-script-1.9.0.tgz#6fdc1ba4c5930cb251a35a958fafee44a99a6f78"
@@ -17352,7 +17357,7 @@ unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.1.1:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
 
-unist-util-visit@^1.3.1:
+unist-util-visit@^1.3.1, unist-util-visit@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.1.tgz#4724aaa8486e6ee6e26d7ff3c8685960d560b1e3"
   integrity sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==
