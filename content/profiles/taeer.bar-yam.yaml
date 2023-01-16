@@ -13,16 +13,16 @@ bio: |
   that he got his Bachelors in Mathematics from Cornell University, during which
   time he adopted and fell in love with Nix(OS).
 
-  Taeer enjoys programming in a wide variety of languages: C, perl, ruby, bash,
-  nix, and more. He likes thinking about the differences between those languages
-  and what makes them suited to different purposes.
+  Taeer enjoys programming in a wide variety of languages: C, Rust, perl, ruby,
+  bash, nix, and more. He likes thinking about the differences between those
+  languages and what makes them suited to different purposes.
 
   In his previous job, Taeer programmed multicast protocols for routers /
   firewalls, and remains fascinated by the technology and brilliant ideas that
   have gone into the internet.
 
-  Taeer's tech stack includes: Astroid (Mail), Qutebrowser, Doom Emacs, XMonad,
-  and NixOS, running on a Thinkpad T430 with the T420 keyboard and heatsink.
+  Taeer's tech stack includes: Astroid (Mail), Qutebrowser, Neovim, XMonad, and
+  NixOS, running on a Thinkpad T430 with the T420 keyboard and heatsink.
 
   Sometimes, Taeer spends his time on things unrelated to programming or math.
   When it's safe to do so, he likes to go social dancing (mostly blues fusion
@@ -36,6 +36,7 @@ skills:
   - NixOS
   - Haskell
   - C
+  - Rust
   - OCaml
   - Perl
   - TCP/IP

@@ -1,0 +1,28 @@
+{
+  "name": "gatsby-remark-video-tweag",
+  "version": "1.0.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bump": "npm version patch -m 'bump %s' && git push origin master && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tweag/www"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "remark",
+    "video"
+  ],
+  "author": "djacu",
+  "contributors": [
+    "Taher"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "unist-util-visit": "^1.4.0"
+  }
+}
