@@ -25,6 +25,6 @@ New blog post
 
 ### Phase 2: Editorial review
 
-- [ ] Notified Juan (@guaraqe) to get an editorial review
+- [ ] Notified @tweag/blog-editing to get an editorial review
 
 Next phases will be checked by the editorial team.
