@@ -52,7 +52,7 @@ They are small, easily digestible, and ready to be customized.
 ### Better Python kernels
 
 It used to be difficult to select particular Python packages because we were tied to `nixpkgs`.
-jupyterWith now use [Poetry][poetry-homepage] and [poetry2nix][poetry2nix-repo] to install kernels that are packaged with Python and their dependencies.
+jupyterWith now uses [Poetry][poetry-homepage] and [poetry2nix][poetry2nix-repo] to install kernels that are packaged with Python and their dependencies.
 Poetry allows users to easily select the desired version of a package and can resolve dependencies.
 poetry2nix greatly simplifies the kernel files, which helps with readability and maintainability.
 

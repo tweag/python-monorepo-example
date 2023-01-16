@@ -1,0 +1,37 @@
+digraph {
+
+    node [
+        shape="box";
+        style="filled";
+        color="#3f3f3f";
+        penwidth=0.2;
+        fillcolor="#dbfdff";
+    ];
+
+    edge [
+        arrowsize=0.5;
+        color="#3f3f3f";
+        penwidth=0.2;
+    ];
+
+    {
+        rank=min;
+        mesh_xml [label="geometry.xml"];
+        texture [label="texture.tga"];
+        material [label="material.script"];
+    }
+
+    mesh_bin [label="mesh.bin"];
+
+    {
+        rank=max;
+        collision_dat [label="collision.dat"];
+        assets_zip [label="assets.zip"];
+    }
+
+    mesh_xml -> collision_dat;
+    mesh_xml -> mesh_bin;
+    mesh_bin -> assets_zip;
+    texture -> assets_zip;
+    material -> assets_zip;
+}

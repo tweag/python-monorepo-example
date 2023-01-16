@@ -282,7 +282,9 @@ along the path in the dependency graph are changed or not. A
 remedy for this could be to use a feature of Bazel to report when an
 input hasn't been used (i.e. [`unused_inputs_list`][unused_inputs_list]),
 which at the time of this writing still needs to be
-[investigated][pending_unused_inputs_list].
+[investigated][pending_unused_inputs_list]. Please, see the follow up
+[post][recompilation_avoidance] on the evolution of this issue since
+the time of this writing.
 
 ## Performance assessment
 
@@ -331,6 +333,7 @@ experience with these tools and receiving your contributions!
 [pending_unused_inputs_list]: https://github.com/tweag/rules_haskell/issues/1760
 [stack]: https://docs.haskellstack.org/en/stable/README/
 [recompilation_checker]: https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/compiler/recompilation-avoidance
+[recompilation_avoidance]: https://www.tweag.io/blog/2022-11-03-blog_recompilation/
 [reuse_sandbox_directories]: https://bazel.build/reference/command-line-reference#flag--experimental_reuse_sandbox_directories
 [rules_haskell]: https://github.com/tweag/rules_haskell
 [sandbox_base]: https://bazel.build/reference/command-line-reference#flag--sandbox_base

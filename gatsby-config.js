@@ -48,6 +48,12 @@ their vision, from research to product delivery.
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: `gatsby-remark-video-tweag`,
+            options: {
+              spanStyleMaxWidth: 590,
+            },
+          },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,

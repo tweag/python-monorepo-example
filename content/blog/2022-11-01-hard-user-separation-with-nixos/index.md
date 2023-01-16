@@ -163,7 +163,7 @@ fileSystems."/" =
     fsType = "ext4";
   };
 
-boot.initrd.luks.devices."crypto-work" = "/dev/disk/by-uuid/xxxxxx-something";
+boot.initrd.luks.devices."crypto-work".device = "/dev/disk/by-uuid/xxxxxx-something";
 ```
 
 by
@@ -174,7 +174,7 @@ fileSystems."/" =
     fsType = "ext4";
   };
 
-boot.initrd.luks.devices."crypto-work" = "/dev/pool/root-work";
+boot.initrd.luks.devices."crypto-work".device = "/dev/pool/root-work";
 ```
 
 We need two configuration files to describe our two environments, we will

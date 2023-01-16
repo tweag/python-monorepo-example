@@ -14,13 +14,15 @@ function parseAuthors(authors) {
   const result = authors.map((author, index) => {
     if (author.tweag) {
       return (
-        <span sx={{ color: `#4D22A8` }}>{`${author.name}${
+        <span key={index} sx={{ color: `#4D22A8` }}>{`${author.name}${
           index < authors.length - 1 ? `, ` : ``
         }`}</span>
       )
     } else {
       return (
-        <span>{`${author.name}${index < authors.length - 1 ? `, ` : ``}`}</span>
+        <span key={index}>
+          {`${author.name}${index < authors.length - 1 ? `, ` : ``}`}
+        </span>
       )
     }
   })
