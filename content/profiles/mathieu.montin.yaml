@@ -3,32 +3,28 @@ name: Mathieu Montin
 pronouns: he/him
 github: mmontin
 shortDescription: |
-  Mathieu is an engineer and researcher from France, with skills ranging from
-  model driven engineering to formal methods and Agda. He has a deep interest
-  in functional programming and dependently typed languages.
+  Mathieu is an engineer and doctor from France, with skills ranging
+  from model driven engineering to functional programming and formal
+  methods. Mathieu leads the High Assurance Software team.
 bio: |
-  Mathieu is an engineer and researcher, interested in functional programming
-  and dependently typed languages. He studied computer sciences and applied
-  mathematics in Toulouse, after which he obtained a PhD on a topic combining
-  separations of concerns, behavioral semantics and formal methods. During this
-  process he discovered, and fell in love, with Agda. And how could he not?
-  Doesn't Agda combine a dependently typed system with a purely functional
-  Haskell-y way of programming? Mathieu hopes that one day reliable and scalable
-  software could be effectively written in Agda, a goal that seems so close, yet
-  so far.
+  Mathieu is an engineer and doctor, interested in functional
+  programming and dependently typed languages. He studied computer
+  sciences and applied mathematics in Toulouse, and conducted his PhD
+  on a topic combining software engineering (through separations of
+  concerns), safety properties (through behavioural semantics) and
+  formal methods (using Agda).
 
-  While Mathieu has always worked behind a computer screen, he compensates for
-  this lack of sun exposure with a variety of outdoor activities, from
-  occasional hikes to regular bike rides in the hilly landscapes of France. He
-  can also be found online enjoying a chess game with friends or complete
-  strangers, a hobby almost as old as his coding addiction. In addition, Mathieu
-  is always eager to have a chat about other's hobbies, as he feels that talking
-  with somebody passionate about a specific topic is the best way to learn and
-  get a feeling about it. These discussions can last for a while, especially if
-  you start mentioning to him the conceptual revolutions that arose in
-  theoretical physics at the beginning of the 20th century.
+  Mathieu is interested in dependently typed languages in general and
+  Agda in particular. He hopes that one day reliable and scalable
+  software can be efficiently developed using this language.
+
+  Outside of work, Mathieu can likely be found riding the hilly
+  landscapes of France on his bicycle or motorcycle, online enjoying
+  some chess games, or at a violin rehearsal.
 skills:
   - Formal methods
+  - Haskell
+  - Cardano blockchain
   - Agda
   - Functional programming
   - Language engineering
@@ -37,8 +33,13 @@ speaks:
   - French
 experience:
   - employer: Tweag
+    role: Leader of the High Assurance Software team
+    years: august 2022 - present
+    description:
+      - Leading the smart contract auditing and formal methods activities within Tweag.
+  - employer: Tweag
     role: Software verification and audit engineer
-    years: 2022 - present
+    years: mars 2022 - august 2022
     description:
       - Auditing smart contracts for client and improving the audit process
         through research activities.
