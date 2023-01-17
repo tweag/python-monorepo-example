@@ -23,20 +23,20 @@ export default function Services() {
   return (
     <Grid
       className="section s_white  viewport-section transition-section"
-      columns={[1, 1, 4, 4, 4, 4, 4, 5]}
-      gap={[`15px`, `15px`, `30px`]}
+      columns={[1, 4, 5]}
+      gap={[`15px`, `30px`]}
       sx={{
-        pt: [`60px`, `60px`, `130px`],
+        pt: [`60px`, `130px`],
       }}
     >
       <Grid
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-        gap={[`35px`, `35px`]}
+        gap={[`35px`]}
         sx={{
-          px: [`15px`, `15px`, `0px`],
-          pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-          gridColumnStart: [`auto`, `auto`, 1],
-          gridColumnEnd: [`auto`, `auto`, 4, 4, 4, 4, 3, 4],
+          px: [`15px`, `0px`],
+          pl: [`15px`, `60px`, `120px`],
+          gridColumnStart: [`auto`, 1],
+          gridColumnEnd: [`auto`, 4],
           gridAutoRows: [`max-content`],
         }}
       >
@@ -51,7 +51,7 @@ export default function Services() {
         <Text
           as="div"
           sx={{
-            fontSize: [`34px`, `34px`, `66px`],
+            fontSize: [`34px`, `66px`],
             fontWeight: [700],
             lineHeight: [1],
             textTransform: `uppercase`,
@@ -63,9 +63,9 @@ export default function Services() {
           columns={1}
           gap={[`15px`]}
           sx={{
-            fontSize: [`18px`, `18px`, `27px`],
-            lineHeight: [1.2, 1.2, `35px`],
-            maxWidth: [`100%`, `100%`, `90%`],
+            fontSize: [`18px`, `27px`],
+            lineHeight: [1.2, `35px`],
+            maxWidth: [`100%`, `90%`],
           }}
         >
           {content.paras.map((para, idx) => (
@@ -79,10 +79,10 @@ export default function Services() {
         className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
         sx={{
           alignSelf: `center`,
-          gridColumnStart: [`auto`, `auto`, 4, 4, 4, 4, 4, 5],
-          gridColumnEnd: [`auto`, `auto`, 6],
+          gridColumnStart: [`auto`, 4, 5],
+          gridColumnEnd: [`auto`, 6],
           marginTop: `200px`,
-          display: [`none`, `none`, `block`],
+          display: [`none`, `block`],
         }}
       >
         <img src={img6} alt="" />

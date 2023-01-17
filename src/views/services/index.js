@@ -13,7 +13,7 @@ const ServicesPage = () => {
         <Box
           className="section viewport-section s_orange transition-section"
           sx={{
-            mt: [`30px`, `30px`, `60px`],
+            mt: [`30px`, `60px`],
           }}
         >
           <CallToActionFooter
@@ -21,7 +21,7 @@ const ServicesPage = () => {
             backdropVariant={3}
             transitionClass={`transition-section__transition--slide-fade-in`}
             customWrapperSx={{
-              py: [`40px`, `40px`, `60px`],
+              py: [`40px`, `60px`],
             }}
           />
         </Box>
@@ -33,7 +33,7 @@ const ServicesPage = () => {
       <WhatWeDo />
       <Divider
         customSx={{
-          mx: [`20px`, `20p`, `60px`],
+          mx: [`20px`, `60px`],
           my: [`60px`],
         }}
       />

@@ -59,10 +59,10 @@ export const Year = ({ articles, year, key }) => {
       css={`
         display: grid;
         gap: 1rem;
-        grid-template: "year articles" / 1fr 6fr;
+        grid-template: "year" "articles" / 1fr;
 
-        @media screen and (max-width: ${t.breakpoints[1]}) {
-          grid-template: "year" "articles" / 1fr;
+        @media screen and (min-width: ${t.breakpoints[1]}) {
+          grid-template: "year articles" / 1fr 6fr;
         }
       `}
     >

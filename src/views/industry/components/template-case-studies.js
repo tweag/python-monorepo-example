@@ -11,17 +11,17 @@ function TemplateCaseStudies({ caseStudies }) {
   return (
     <Grid
       className="viewport-section transition-section"
-      columns={[1, 1, 3]}
-      gap={[`60px`, `60px`, `60px`]}
+      columns={[1, 3]}
+      gap={[`60px`]}
       sx={{
-        py: [`60px`, `60px`, `120px`],
+        py: [`60px`, `120px`],
       }}
     >
       <Box
         className="transition-section__transition--slide-fade-in left-in only-above-1 delayed"
         sx={{
-          gridRow: [2, 2, 1],
-          width: [`190px`, `190px`, `100%`],
+          gridRow: [2, 1],
+          width: [`190px`, `100%`],
           justifySelf: `start`,
           alignSelf: `center`,
         }}
@@ -31,16 +31,16 @@ function TemplateCaseStudies({ caseStudies }) {
       <Grid
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
-          pl: [`15px`, `15px`, `20px`, `20px`, `20px`, `20px`],
-          pr: [`15px`, `15px`, `20px`, `20px`, `20px`, `120px`],
-          gridColumnStart: [`auto`, `auto`, 2],
-          gridColumnEnd: [`auto`, `auto`, 4],
-          maxWidth: [`100%`, `100%`, `100%`, `90%`, `90%`, `80%`],
-          ml: [0, 0, `auto`],
-          my: [0, 0, `auto`],
+          pl: [`15px`, `20px`],
+          pr: [`15px`, `20px`, `120px`],
+          gridColumnStart: [`auto`, 2],
+          gridColumnEnd: [`auto`, 4],
+          maxWidth: [`100%`, `100%`, `80%`],
+          ml: [0, `auto`],
+          my: [0, `auto`],
           gridAutoRows: `max-content`,
         }}
-        gap={[`25px`, `25px`]}
+        gap={[`25px`]}
       >
         <SectionHeading
           customSx={{
@@ -52,11 +52,11 @@ function TemplateCaseStudies({ caseStudies }) {
         <Text
           as="div"
           sx={{
-            fontSize: [`34px`, `34px`, `66px`],
+            fontSize: [`34px`, `66px`],
             fontWeight: [700],
             lineHeight: [1],
             textTransform: `uppercase`,
-            width: [`80%`, `80%`, `80%`, `80%`, `80%`, `80%`, `90%`],
+            width: [`80%`, `80%`, `90%`],
           }}
         >
           Learn more about our projects
@@ -64,8 +64,8 @@ function TemplateCaseStudies({ caseStudies }) {
         <Grid
           columns={[2]}
           sx={{
-            pt: [`30px`, `30px`],
-            pb: [`80px`, `80px`],
+            pt: [`30px`],
+            pb: [`80px`],
           }}
         >
           {projects.map(({ client, description }, i) => (
@@ -73,21 +73,13 @@ function TemplateCaseStudies({ caseStudies }) {
               <Text
                 as="div"
                 sx={{
-                  fontSize: [
-                    `18px`,
-                    `18px`,
-                    `27px`,
-                    `27px`,
-                    `27px`,
-                    `27px`,
-                    `34px`,
-                  ],
+                  fontSize: [`18px`, `27px`, `34px`],
                   fontWeight: [700],
                 }}
               >
                 {client}
               </Text>
-              <Text as="div" sx={{ fontSize: [`18px`, `18px`] }}>
+              <Text as="div" sx={{ fontSize: [`18px`] }}>
                 {description}
               </Text>
             </Grid>
@@ -97,15 +89,7 @@ function TemplateCaseStudies({ caseStudies }) {
           <Text
             as="div"
             sx={{
-              fontSize: [
-                `18px`,
-                `18px`,
-                `27px`,
-                `27px`,
-                `27px`,
-                `27px`,
-                `34px`,
-              ],
+              fontSize: [`18px`, `27px`, `34px`],
               fontWeight: 700,
               lineHeight: 1.1,
             }}

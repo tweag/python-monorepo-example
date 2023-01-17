@@ -13,23 +13,23 @@ const Manifesto = () => {
     <div className="section s_white">
       <Grid
         className="viewport-section transition-section"
-        columns={[1, 1, 4, 4, 4, 4, 4, 4]}
-        gap={[`15px`, `15px`, `30px`]}
+        columns={[1, 4]}
+        gap={[`15px`, `30px`]}
         sx={{
-          pt: [`60px`, `60px`, `130px`, `130px`, `130px`, `130px`, `160px`],
-          pb: [`35px`, `35px`],
+          pt: [`60px`, `130px`, `160px`],
+          pb: [`35px`],
         }}
       >
         <Grid
           className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-          gap={[`35px`, `35px`]}
+          gap={[`35px`]}
           sx={{
-            px: [`15px`, `15px`, `0px`],
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            gridColumnStart: [`auto`, `auto`, 1],
-            gridColumnEnd: [`auto`, `auto`, 4],
+            px: [`15px`, `0px`],
+            pl: [`15px`, `60px`, `120px`],
+            gridColumnStart: [`auto`, 1],
+            gridColumnEnd: [`auto`, 4],
             gridAutoRows: [`max-content`],
-            width: [`100%`, `100%`, `100%`, `100%`, `100%`, `100%`, `80%`],
+            width: [`100%`, `100%`, `80%`],
           }}
         >
           <SectionHeading
@@ -43,20 +43,12 @@ const Manifesto = () => {
           <Text
             as="div"
             sx={{
-              fontSize: [`34px`, `34px`, `66px`],
+              fontSize: [`34px`, `66px`],
               fontWeight: [700],
               lineHeight: [1],
               textTransform: `uppercase`,
-              minHeight: [
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `auto`,
-              ],
-              mt: [`5px`, `5px`, `15px`],
+              minHeight: [`100px`, `100px`, `auto`],
+              mt: [`5px`, `15px`],
             }}
           >
             Optimize your Bazel implementation
@@ -65,9 +57,9 @@ const Manifesto = () => {
             columns={1}
             gap={[`15px`]}
             sx={{
-              fontSize: [`18px`, `18px`, `27px`],
-              lineHeight: [1.2, 1.2, `35px`],
-              maxWidth: [`100%`, `100%`, `90%`, `90%`, `90%`, `90%`, `100%`],
+              fontSize: [`18px`, `27px`],
+              lineHeight: [1.2, `35px`],
+              maxWidth: [`100%`, `90%`, `100%`],
             }}
           >
             {[
@@ -95,20 +87,16 @@ const Manifesto = () => {
           className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
           sx={{
             alignSelf: `start`,
-            gridColumnStart: [`auto`, `auto`],
-            gridColumnEnd: [`auto`, `auto`],
-            marginTop: [`0px`, `0px`, `200px`, `200px`, `200px`],
+            gridColumnStart: [`auto`],
+            gridColumnEnd: [`auto`],
+            marginTop: [`0px`, `200px`],
             marginLeft: [`auto`],
-            width: [`100%`, `100%`, `100%`],
-            display: [`none`, `none`, `flex`],
+            width: [`100%`],
+            display: [`none`, `flex`],
             justifyContent: `flex-end`,
           }}
         >
-          <img
-            sx={{ width: [`100%`, `100%`, `87%`, `87%`, `87%`, `87%`, `80%`] }}
-            src={img12}
-            alt=""
-          />
+          <img sx={{ width: [`100%`, `87%`, `80%`] }} src={img12} alt="" />
         </Box>
       </Grid>
     </div>
@@ -130,8 +118,8 @@ const Community = ({ title, bgColor, children, bgImage }) => {
         as="div"
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
-          flexBasis: [`100%`, `100%`, `30%`],
-          fontSize: [`34px`, `34px`, `66px`],
+          flexBasis: [`100%`, `30%`],
+          fontSize: [`34px`, `66px`],
           fontWeight: [700],
           lineHeight: [1],
           minHeight: [`100px`],
@@ -144,10 +132,10 @@ const Community = ({ title, bgColor, children, bgImage }) => {
       <Box
         className="transition-section__transition--slide-fade-in bottom-in only-above-1"
         sx={{
-          flexBasis: [`100%`, `100%`, `65%`, `65%`, `65%`, `65%`, `50%`],
-          fontSize: [`18px`, `18px`, `27px`],
-          lineHeight: [1, 1, 1.2],
-          pl: [`auto`, `auto`, `100px`],
+          flexBasis: [`100%`, `65%`, `50%`],
+          fontSize: [`18px`, `27px`],
+          lineHeight: [1, 1.2],
+          pl: [`auto`, `100px`],
         }}
       >
         {children}
@@ -179,7 +167,7 @@ const BazelPage = () => {
             backdropVariant={3}
             transitionClass={`transition-section__transition--slide-fade-in`}
             customWrapperSx={{
-              py: [`40px`, `40px`, `60px`],
+              py: [`40px`, `60px`],
             }}
           />
         </Box>

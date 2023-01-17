@@ -16,9 +16,9 @@ function SectionHeading({ customSx, children }) {
     <Text
       as="div"
       sx={{
-        fontSize: [`18px`, `18px`],
-        lineHeight: [`22px`, `22px`],
-        fontWeight: [400, 400],
+        fontSize: [`18px`],
+        lineHeight: [`22px`],
+        fontWeight: [400],
         borderBottom: [`1px solid var(--fg-color)`],
         pb: [`10px`],
         ...customSx,

@@ -22,16 +22,16 @@ const TagPage = ({ data, pageContext }) => {
       <div
         className="section s_white  viewport-section transition-section"
         sx={{
-          pt: [`65px`, `65px`, `130px`, `130px`, `130px`, `130px`, `160px`],
+          pt: [`65px`, `130px`, `160px`],
         }}
       >
         <Grid
           className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed-0"
           gap={`20px`}
           sx={{
-            px: [`15px`, `15px`, 0],
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            width: [`100%`, `100%`, `50%`],
+            px: [`15px`, 0],
+            pl: [`15px`, `60px`, `120px`],
+            width: [`100%`, `50%`],
           }}
         >
           <SectionHeading
@@ -47,13 +47,11 @@ const TagPage = ({ data, pageContext }) => {
           sx={{
             mt: [`20px`],
             mb: [`40px`],
-            px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            // pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            rowGap: [`60px`, `60px`, `40px`],
-            columnGap: [0, 0, `30px`, `50px`, `5%`],
+            px: [`15px`, `60px`, `120px`],
+            rowGap: [`60px`, `40px`],
+            columnGap: [0, `30px`, `5%`],
           }}
-          columns={[1, 1, 3]}
-          // gap={[`60px`, `60px`, 0]}
+          columns={[1, 3]}
         >
           {edges.map((post, i) => {
             // Display a pattern periodically.

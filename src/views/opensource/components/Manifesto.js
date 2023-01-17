@@ -60,22 +60,22 @@ export default function Manifesto() {
     <div className="section s_white">
       <Grid
         className="viewport-section transition-section"
-        columns={[1, 1, 4, 4, 4, 4, 4, 4]}
-        gap={[`15px`, `15px`, `30px`]}
+        columns={[1, 4]}
+        gap={[`15px`, `30px`]}
         sx={{
-          pt: [`60px`, `60px`, `130px`, `130px`, `130px`, `130px`, `160px`],
+          pt: [`60px`, `130px`, `160px`],
         }}
       >
         <Grid
           className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-          gap={[`35px`, `35px`]}
+          gap={[`35px`]}
           sx={{
-            px: [`15px`, `15px`, `0px`],
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            gridColumnStart: [`auto`, `auto`, 1],
-            gridColumnEnd: [`auto`, `auto`, 4],
+            px: [`15px`, `0px`],
+            pl: [`15px`, `60px`, `120px`],
+            gridColumnStart: [`auto`, 1],
+            gridColumnEnd: [`auto`, 4],
             gridAutoRows: [`max-content`],
-            width: [`100%`, `100%`, `100%`, `100%`, `100%`, `100%`, `80%`],
+            width: [`100%`, `100%`, `80%`],
           }}
         >
           <SectionHeading
@@ -89,20 +89,12 @@ export default function Manifesto() {
           <Text
             as="div"
             sx={{
-              fontSize: [`34px`, `34px`, `66px`],
+              fontSize: [`34px`, `66px`],
               fontWeight: [700],
               lineHeight: [1],
               textTransform: `uppercase`,
-              minHeight: [
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `100px`,
-                `auto`,
-              ],
-              mt: [`5px`, `5px`, `15px`],
+              minHeight: [`100px`, `100px`, `auto`],
+              mt: [`5px`, `15px`],
             }}
           >
             {content.heading}
@@ -111,9 +103,9 @@ export default function Manifesto() {
             columns={1}
             gap={[`15px`]}
             sx={{
-              fontSize: [`18px`, `18px`, `27px`],
-              lineHeight: [1.2, 1.2, `35px`],
-              maxWidth: [`100%`, `100%`, `90%`, `90%`, `90%`, `90%`, `100%`],
+              fontSize: [`18px`, `27px`],
+              lineHeight: [1.2, `35px`],
+              maxWidth: [`100%`, `90%`, `100%`],
             }}
           >
             {content.firstParas.map((para, idx) => (
@@ -127,37 +119,33 @@ export default function Manifesto() {
           className="transition-section__transition--slide-fade-in right-in only-above-1 delayed"
           sx={{
             alignSelf: `start`,
-            gridColumnStart: [`auto`, `auto`],
-            gridColumnEnd: [`auto`, `auto`],
-            marginTop: [`0px`, `0px`, `200px`, `200px`, `200px`],
+            gridColumnStart: [`auto`],
+            gridColumnEnd: [`auto`],
+            marginTop: [`0px`, `200px`],
             marginLeft: [`auto`],
-            width: [`100%`, `100%`, `100%`],
-            display: [`none`, `none`, `flex`],
+            width: [`100%`],
+            display: [`none`, `flex`],
             justifyContent: `flex-end`,
           }}
         >
-          <img
-            sx={{ width: [`100%`, `100%`, `87%`, `87%`, `87%`, `87%`, `80%`] }}
-            src={img12}
-            alt=""
-          />
+          <img sx={{ width: [`100%`, `87%`, `80%`] }} src={img12} alt="" />
         </Box>
       </Grid>
       <Grid
         className="section s_white transition-section viewport-section"
-        columns={[1, 1, 4]}
-        gap={[`30px`, `30px`]}
+        columns={[1, 4]}
+        gap={[`30px`]}
         sx={{
-          pt: [`35px`, `35px`, `60px`, `60px`, 0],
+          pt: [`35px`, `60px`, 0],
         }}
       >
         <Box
           className="transition-section__transition--slide-fade-in left-in only-above-1"
           sx={{
-            width: [`250px`, `250px`, `100%`],
-            alignSelf: [`center`, `center`, `center`],
-            gridRow: [2, 2, `auto`],
-            mt: [0, 0, `50px`],
+            width: [`250px`, `100%`],
+            alignSelf: [`center`],
+            gridRow: [2, `auto`],
+            mt: [0, `50px`],
           }}
         >
           <img
@@ -171,23 +159,15 @@ export default function Manifesto() {
         <Grid
           className="transition-section__transition--slide-fade-in right-in only-above-1"
           sx={{
-            pr: [`15px`, `15px`, `0px`],
-            marginLeft: [
-              `auto`,
-              `auto`,
-              `auto`,
-              `auto`,
-              `auto`,
-              `auto`,
-              `auto`,
-            ],
-            marginRight: [`auto`, `auto`, `auto`],
-            mb: [`0px`, `0px`, `0px`, `auto`],
-            mt: [0, 0, `30px`, `30px`, `30px`, `30px`, `80px`],
-            pl: [`15px`, `15px`, 0, 0, 0, 0, `120px`],
-            maxWidth: [`100%`, `100%`, `75%`, `75%`, `75%`, `75%`, `66.7%`],
-            gridColumnStart: [`auto`, `auto`, 2],
-            gridColumnEnd: [`auto`, `auto`, 5],
+            pr: [`15px`, `0px`],
+            marginLeft: [`auto`],
+            marginRight: [`auto`],
+            mb: [`0px`, `0px`, `auto`],
+            mt: [0, `30px`, `80px`],
+            pl: [`15px`, 0, `120px`],
+            maxWidth: [`100%`, `75%`, `66.7%`],
+            gridColumnStart: [`auto`, 2],
+            gridColumnEnd: [`auto`, 5],
             gridAutoRows: [`min-content`],
           }}
           gap={[`20px`]}
@@ -196,9 +176,9 @@ export default function Manifesto() {
             columns={1}
             gap={[`15px`]}
             sx={{
-              fontSize: [`18px`, `18px`, `27px`],
-              lineHeight: [1.2, 1.2, `35px`],
-              maxWidth: [`100%`, `100%`, `90%`, `90%`, `90%`, `90%`, `100%`],
+              fontSize: [`18px`, `27px`],
+              lineHeight: [1.2, `35px`],
+              maxWidth: [`100%`, `90%`, `100%`],
             }}
           >
             {content.secondParas.map((para, idx) => (
@@ -211,32 +191,32 @@ export default function Manifesto() {
       </Grid>
       <Grid
         className="viewport-section transition-section"
-        columns={[1, 1, 4, 4, 4, 4, 4, 4]}
-        gap={[`15px`, `15px`, `30px`]}
+        columns={[1, 4]}
+        gap={[`15px`, `30px`]}
         sx={{
-          pt: [`60px`, `60px`, `45px`, `80px`],
+          pt: [`60px`, `45px`, `80px`],
         }}
       >
         <Grid
           className="transition-section__transition--slide-fade-in bottom-in only-above-1"
-          gap={[`35px`, `35px`]}
+          gap={[`35px`]}
           sx={{
-            px: [`15px`, `15px`, `0px`],
-            pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-            gridColumnStart: [`auto`, `auto`, 1],
-            gridColumnEnd: [`auto`, `auto`, 4],
+            px: [`15px`, `0px`],
+            pl: [`15px`, `60px`, `120px`],
+            gridColumnStart: [`auto`, 1],
+            gridColumnEnd: [`auto`, 4],
             gridAutoRows: [`max-content`],
-            width: [`100%`, `100%`, `100%`, `100%`, `100%`, `100%`, `80%`],
-            mt: [0, 0, 0, 0, 0, `80px`],
+            width: [`100%`, `100%`, `80%`],
+            mt: [0, 0, `80px`],
           }}
         >
           <Grid
             columns={1}
             gap={[`15px`]}
             sx={{
-              fontSize: [`18px`, `18px`, `27px`],
-              lineHeight: [1.2, 1.2, `35px`],
-              maxWidth: [`100%`, `100%`, `100%`, `100%`, `95%`, `70%`, `85%`],
+              fontSize: [`18px`, `27px`],
+              lineHeight: [1.2, `35px`],
+              maxWidth: [`100%`, `100%`, `85%`],
             }}
           >
             {content.thirdParas.map((para, idx) => (
@@ -250,10 +230,10 @@ export default function Manifesto() {
           className="transition-section__transition--slide-fade-in right-in only-above-1"
           sx={{
             alignSelf: `center`,
-            gridColumnStart: [`auto`, `auto`],
-            gridColumnEnd: [`auto`, `auto`],
-            display: [`none`, `none`, `block`],
-            my: [0, 0, `80px`],
+            gridColumnStart: [`auto`],
+            gridColumnEnd: [`auto`],
+            display: [`none`, `block`],
+            my: [0, `80px`],
           }}
         >
           <img sx={{ width: `100%` }} src={img14} alt="" />

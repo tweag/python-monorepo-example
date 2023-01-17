@@ -244,8 +244,8 @@ export const globalStyles = t => {
         `
       })}
 
-      &.min-1--none {
-        @media only screen and (min-width: ${t.breakpoints[1]}) {
+      &.min-0--none {
+        @media only screen and (min-width: ${t.breakpoints[0]}) {
           transform: none;
           opacity: 1;
           visibility: visible;
@@ -300,21 +300,10 @@ export const globalStyles = t => {
       }
 
       &.min-5__button-large {
-        @media (min-width: ${t.breakpoints[5]}) {
+        @media (min-width: ${t.breakpoints[2]}) {
           ${buttonSize.large}
         }
       }
-
-      ${[5].reduce(
-        (acc, breakpoint) => `${acc}
-            &.min-${breakpoint}__button-large {
-              @media (min-width: ${t.breakpoints[breakpoint]}) {
-                ${buttonSize.large}
-              }
-            }
-          `,
-        ``
-      )}
 
       &.button-link {
         transition: all 0.4s ease;
