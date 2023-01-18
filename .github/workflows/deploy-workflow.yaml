@@ -41,3 +41,8 @@ jobs:
           node-version: 16
       - run: yarn install --frozen-lockfile
       - run: yarn lint
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
