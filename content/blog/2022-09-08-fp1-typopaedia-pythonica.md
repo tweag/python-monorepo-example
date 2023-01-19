@@ -398,9 +398,10 @@ ensures the correctness at each level of abstraction and is a robust
 philosophy for writing well-behaved software.
 
 I have shown that the axiomatic level -- types -- can now be imitated in
-the Python ecosystem to achieve the same end. In the next episode, I'll
-generalise this further and implement some nifty computer science
-concepts to assuage Python's "mechanical sympathies".
+the Python ecosystem to achieve the same end. In the [next
+episode][blog-fp2], I'll generalise this further and implement some
+nifty computer science concepts to assuage Python's "mechanical
+sympathies".
 
 _Thanks to Gala Camacho, Simeon Carstens, Guillaume Desforges, Clément
 Hurlin, Steve Purcell and Noon van der Silk for their reviews of this
@@ -439,6 +440,7 @@ article._
 
 <!-- Links -->
 
+[blog-fp2]: ../2023-01-19-fp2-dial-m-for-monoid
 [gist-sumtype-metaclass]: https://gist.github.com/Xophmeister/8d5ed64058e0191378d7f32a88e79564
 [gvr-2005]: https://www.artima.com/weblogs/viewpost.jsp?thread=98196
 [gvr-2009]: https://neopythonic.blogspot.com/2009/04/final-words-on-tail-calls.html
