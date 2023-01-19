@@ -5,8 +5,7 @@ shortTitle: Dial M for Monoid
 author: Christopher Harrison
 
 description: |
-  Commandeering techniques from richly typed, functional languages into
-  Python for fun and profit.
+  Commandeering techniques from richly typed, functional languages into Python for fun and profit.
 
   In this episode: Typeclasses and continuation-passing style.
 
