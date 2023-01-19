@@ -4,7 +4,7 @@ New blog post
 
 - Content
 
-  - For the following, please refer to ["Blog - Setting clear expectations"](https://github.com/tweag/meta/blob/master/handbook/blog.md#setting-clear-expectations) from the handbook
+  - For the following, please refer to ["Blog - Setting clear expectations"](https://meta.tweag.io/handbook/blog/#setting-clear-expectations) from the handbook
 
   - [ ] Checked that title makes clear what is achieved in the end
   - [ ] Checked that introduction lays out the "How" and the "What", as well as the target audience
