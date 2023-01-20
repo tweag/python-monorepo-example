@@ -233,7 +233,7 @@ monads, being the same, are, in particular, strong.
 [topological-group-link]: https://en.wikipedia.org/wiki/Topological_group
 [abelian-group-link]: https://en.wikipedia.org/wiki/Abelian_group
 [linear-types]: https://www.tweag.io/posts/2017-03-13-linear-types.html
-[linear-list]: https://www.tweag.io/tag/linear-types.html
+[linear-list]: https://www.tweag.io/blog/tags/linear-types
 [enriched-cat-wiki]: https://en.wikipedia.org/wiki/Enriched_category
 [monoidal-closed-nlab]: https://ncatlab.org/nlab/show/closed+monoidal+category
 [strong-monad-wiki]: https://en.wikipedia.org/wiki/Strong_monad

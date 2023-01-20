@@ -228,7 +228,7 @@ Haskell with the JVM currently.
 
 [inline-java]: https://github.com/tweag/inline-java
 [lineario]: https://github.com/tweag/linear-base/blob/dd65d1381de03fb567e52b8b8b6b7f9bf693544f/src/System/IO/Linear.hs
-[linear-types-tag]: https://www.tweag.io/tag/linear-types.html
+[linear-types-tag]: https://www.tweag.io/blog/tags/linear-types
 [linear-types-ghc]: https://github.com/tweag/ghc/tree/linear-types#ghc-branch-with-linear-types
 [linear-types-proposal]: https://github.com/tweag/ghc-proposals/blob/linear-types2/proposals/0000-linear-types.rst
 [monadic-regions]: http://okmij.org/ftp/Haskell/regions.html#light-weight

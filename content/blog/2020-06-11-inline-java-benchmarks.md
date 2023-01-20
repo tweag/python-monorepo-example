@@ -148,7 +148,7 @@ alternative. Furthermore, depending on the bottlenecks of the solution
 at hand, the overhead of crossing language runtimes may become
 negligible, turning the multi-language integration path into the ideal one.
 
-[previous-posts]: https://www.tweag.io/tag/inline-java.html
+[previous-posts]: https://www.tweag.io/blog/tags/inline-java
 [framework-benchmarks]: https://www.techempower.com/benchmarks
 [inline-java]: https://github.com/tweag/inline-java
 [jvm-package]: https://github.com/tweag/inline-java/tree/master/jvm
