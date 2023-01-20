@@ -341,6 +341,6 @@ There are some future improvements we have in mind:
 [libffi]: https://sourceware.org/libffi
 [libffi-closure]: http://www.chiark.greenend.org.uk/doc/libffi-dev/html/The-Closure-API.html
 [libffi-static-trampoline]: https://sourceware.org/pipermail/libffi-discuss/2021/002579.html
-[libffi-wasm32]: https://github.com/tweag/libffi-wasm32
+[libffi-wasm32]: https://gitlab.haskell.org/ghc/libffi-wasm
 [wasm32-cabi]: https://github.com/WebAssembly/tool-conventions/blob/main/BasicCABI.md
 [wasm32-call_indirect]: https://webassembly.github.io/spec/core/syntax/instructions.html#syntax-instr-control
