@@ -84,7 +84,9 @@ compilers can be put to cooperate on the task. First, GHC
 infers the types of the antiquoted variables and the return type which
 is expected of the quasiquotation. Then, these types are translated to
 Java types. The translation is conducted by a machinery of type classes
-living in the [jvm](https://github.com/tweag/inline-java/jvm) package.
+living in the
+[jvm](https://github.com/tweag/inline-java/tree/abcd11765ab5674b19a8f424464a12ca9c65c476/jvm)
+package.
 The details of this process are not important at this point. What
 matters is that it enables us to translate types across languages. For
 instance,
