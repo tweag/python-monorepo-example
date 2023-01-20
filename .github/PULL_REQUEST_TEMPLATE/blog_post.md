@@ -15,7 +15,9 @@ New blog post
   - [ ] Check [`codespell`](https://github.com/codespell-project/codespell) suggestions
         (`$ codespell --write-changes --interactive=3 post.md`)
 - Render
-  - [ ] Made sure all the links work
+  - [ ] Made sure all the links work (`yarn run link-check post.md`).
+        Tip: if you have a link to code (for example, on Github), pin it to a specific commit,
+        so that it's more likely to stay valid.
   - [ ] Checked that footnotes are properly rendered
 
 ### Phase 1: Technical Review
