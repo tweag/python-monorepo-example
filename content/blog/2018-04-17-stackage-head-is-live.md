@@ -22,7 +22,7 @@ The current workflow (which is slightly different from what was described in
 the original blog post) is the following:
 
 1. Our CI script runs in CircleCI inside a container instantiated
-   from [a Docker image](our-container) derived
+   from [a Docker image][our-container] derived
    from [`snoyberg/stackage:nightly`][snoyberg-container]. There are
    several reasons to use a separate image but all of them have to do
    with the same thing: hermeticity. The image `snoyberg/stackage:nightly`

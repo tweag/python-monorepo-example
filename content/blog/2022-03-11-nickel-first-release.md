@@ -351,7 +351,7 @@ know about it!
 
 [nickel-1]: https://www.tweag.io/blog/2020-10-22-nickel-open-sourcing/
 [nickel-repo]: https://github.com/tweag/nickel/
-[user-manual]: https://nickel-lang.org/user-manual/
+[user-manual]: https://nickel-lang.org/user-manual/introduction/
 [nickel-lsp]: https://github.com/tweag/nickel/tree/master/lsp
 [nickel-vscode]: https://github.com/tweag/nickel/tree/master/lsp#vs-code
 [nickel-nix]: https://github.com/nickel-lang/nickel-nix

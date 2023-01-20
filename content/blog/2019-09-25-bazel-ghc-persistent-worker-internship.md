@@ -44,7 +44,7 @@ Today, many of the main Bazel-enabled languages hosted under [`bazelbuild`][baze
 
 ### Chasing Incremental Builds
 
-Fast, correct incremental builds are such a fundamental Bazel goal they're the first thing mentioned in [_Why Bazel?_](bazel-build) at the top of Bazel's homepage. To fulfill this promise, though, Bazel needs sufficient knowledge about dependencies between the build artifacts. Let's get back to our example to explain this better.
+Fast, correct incremental builds are such a fundamental Bazel goal they're the first thing mentioned in [_Why Bazel?_][bazel-build] at the top of Bazel's homepage. To fulfill this promise, though, Bazel needs sufficient knowledge about dependencies between the build artifacts. Let's get back to our example to explain this better.
 
 [bazel-build]: https://bazel.build/
 
