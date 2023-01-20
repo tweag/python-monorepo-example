@@ -255,5 +255,5 @@ progress (thanks to the help of [Giuseppe Castagna](https://www.irif.fr/~gc/))
 and the implementation has just started.
 
 In the meantime, you can follow the progress on the github pages of the
-project, on <https://github.com/regnat/tix-papers> for the theoretical part and
-<https://github.com/regnat/tix> for the implementation.
+project, on <https://github.com/thufschmitt/tix-papers> for the theoretical part and
+<https://github.com/thufschmitt/tix> for the implementation.
