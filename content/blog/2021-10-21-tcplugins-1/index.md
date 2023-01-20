@@ -236,7 +236,7 @@ type family a + b where
 ```
 
 The proof that `5 + 0` reduces to `5`, in the coercion language that will be explained
-in [Part II: § Constraint solving](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#constraint-solving),
+in [Part II: § Constraint solving](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#constraint-solving),
 is as follows:
 
 ```haskell

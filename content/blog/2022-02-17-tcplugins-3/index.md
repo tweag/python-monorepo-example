@@ -223,7 +223,7 @@ in this particular constraint-solving problem.
 
 #### Inspecting constraints
 
-As we saw in [Part II: § Constraint canonicalisation](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#constraint-canonicalisation),
+As we saw in [Part II: § Constraint canonicalisation](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#constraint-canonicalisation),
 constraints fall into the following categories:
 
 | Predicate   | Examples                              | Evidence      |
@@ -239,14 +239,14 @@ to sort constraints into one of the above categories. This is preferable to manu
 
 #### Providing evidence
 
-We saw in [Part II: § Solving constraints](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#solving-constraints) that when solving constraints,
+We saw in [Part II: § Solving constraints](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#solving-constraints) that when solving constraints,
 a type-checking plugin's solver must provide evidence. For a typeclass constraint,
 this is a dictionary of its methods; for an equality constraint, a coercion.
 
 ##### Creating dictionary evidence
 
 For class evidence, we need to build up a dictionary of the right type, much like in the original example
-from [Part II: § Dictionary constraints](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#dictionary-constraints).
+from [Part II: § Dictionary constraints](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#dictionary-constraints).
 
 We start by using `classDataCon :: Class -> DataCon` to obtain the data constructor associated
 with the class dictionary. To create evidence for the typeclass constraint, we then apply the obtained `DataCon` to Core expressions of the methods using
@@ -259,7 +259,7 @@ This will result in a `CoreExpr` that can be turned into an evidence term using 
 
 ##### Creating equality evidence
 
-For coercions, recall the syntax of coercions from [Part II: § Coercions, a reading guide](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#coercions-a-reading-guide).
+For coercions, recall the syntax of coercions from [Part II: § Coercions, a reading guide](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#coercions-a-reading-guide).
 Note however that, most of the time, a plugin can get away creating unsafe coercions using `mkUnivCo`:
 
 ```haskell
@@ -309,7 +309,7 @@ to emit custom type errors when rewriting. Note that this behaviour is rather di
 from how GHC usually goes about rewriting type family applications, as GHC otherwise never
 emits new constraints as a byproduct of reducing a type family application.
 
-It is important to remember that, as per [Part II: § A primer on type family reduction](https://www.tweag.io/posts/2021-12-09-tcplugins-2.html#a-primer-on-type-family-reduction),
+It is important to remember that, as per [Part II: § A primer on type family reduction](https://www.tweag.io/blog/2021-12-09-tcplugins-2/#a-primer-on-type-family-reduction),
 the type family arguments also include all the invisible arguments. For example:
 
 ```haskell
