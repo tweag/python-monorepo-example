@@ -11,7 +11,6 @@ description: "Tweag intern Abdellatif summarizes his internship,
 [^1]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.94.018105
 [^2]: https://pubs.acs.org/doi/10.1021/ct0502864
 
-
 During my internship at Tweag, I got the opportunity to work on [Chainsail](https://chainsail.io/) (see the [announcement blog post](https://www.tweag.io/blog/2022-08-09-chainsail-announcement/)), a web service that helps to sample from multimodal probability distributions.
 A common approach to sampling well-behaved distributions involves [Markov chain Monte Carlo (MCMC) methods](https://www.tweag.io/blog/2019-10-25-mcmc-intro1) derived from the
 basic Metropolis-Hastings algorithm; building a Markov chain that has the desired distribution as its stationary distribution.

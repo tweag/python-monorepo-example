@@ -149,7 +149,7 @@ have
 - `bench_name`: the benchmark name, as a `keyword`, which is a string field
   type that ES can index,
 - `time_in_nanos`: the measured execution time for the given benchmark,
-- `timestamp`: an ES [date](es-date) which will be used as the canonical
+- `timestamp`: an ES [date][es-date] which will be used as the canonical
   timestamp (to clarify we specify the format, the number of seconds since the
   epoch).
 
