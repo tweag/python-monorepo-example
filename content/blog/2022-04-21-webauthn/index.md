@@ -49,7 +49,7 @@ We will now look at the steps of these ceremonies in some detail.
 The image below depicts the steps of the registration ceremony, showing how the web server, the browser and the authenticator interact with each other through the WebAuthn API.
 
 ![Web Authentication API registration component and dataflow diagram](./registration.png)
-[This figure](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) depicting the registration component of WebAuthn by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/About/contributors.txt) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+[This figure](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) depicting the registration component of WebAuthn by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
 
 **Step 0**: The client informs the web server that a user wishes to register a credential.
 This initial message is implementation-specific, but typically it contains the desired username.
@@ -128,7 +128,7 @@ When a user wishes to authenticate themselves, this happens through the [authent
 The goal of this ceremony is for the user to securely prove that they are in possession of the authenticator that holds the private key corresponding to a public key previously registered to the users account.
 
 ![WebAuthn authentication component and dataflow diagram](./authentication.png)
-[This figure](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) depicting the authentication component of WebAuthn by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/About/contributors.txt) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+[This figure](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) depicting the authentication component of WebAuthn by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
 
 **Step 0**: The client informs the web server that a user authenticate themselves.
 This initial message is implementation specific.
