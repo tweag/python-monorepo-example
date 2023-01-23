@@ -7,7 +7,7 @@ rather than for every message in a discussion.
 
 ## Cloning the website
 
-This repo uses [Git Large File Storage](https://git-lfs.github.com/)
+This repo uses [Git Large File Storage](https://git-lfs.com/)
 to avoid keeping around large blobs inflating the repository, instead
 only keep a pointer in the repo and download blobs during checkout
 when necessary. This is accomplished by git filter magic.
