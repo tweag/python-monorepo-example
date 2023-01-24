@@ -1,8 +1,8 @@
 ---
-title: "Nix with with Nickel"
+title: "Nix with; with Nickel"
 author: François Caddet
 tags: [nix, nickel, rust]
-description: "The Nix with keyword is challenging, but we transpiled it to Nickel anyway."
+description: "The Nix `with` keyword is challenging, but we transpiled it to Nickel anyway."
 ---
 
 Tweag is a big supporter and user of Nix and NixOS. In our experience,
