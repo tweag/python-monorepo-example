@@ -408,8 +408,8 @@ but ultimately, it will be really different from its Nix cousin.
 [^nickel-inherit]: See Nickel's [field punning][nickel-issue747] proposal.
 [^nested-with]: See Nix [issue #490][nix-issue490] and [#1361][nix-issue1361].
 [^with-debugging]:
-  For example, see Nixpkgs [PR #101139][nixpkgs-pr101139] and, again,
-  the [`with` antipattern][with-antipattern].
+    For example, see Nixpkgs [PR #101139][nixpkgs-pr101139] and, again,
+    the [`with` antipattern][with-antipattern].
 
 [^transpile-note]: Heads up: This is a print-out of the AST, which may differ from the result of parsing.
 
