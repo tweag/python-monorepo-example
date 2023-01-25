@@ -46,7 +46,7 @@ This won't do for our purposes.
 Blockchains are closer to our case: they are open to anyone to join, they don't trust any individual actor, and the costs of a single corrupted block are high.
 
 At its core, the solution is to have all participants in the block-chain vote, and take whatever the majority says.
-Now in order to hijack the system a bad actor needs to control a majority of the votes, known as a [51% attack](https://en.wikipedia.org/wiki/Double-spending#51%_attack).
+Now in order to hijack the system a bad actor needs to control a majority of the votes, known as a [51% attack](https://en.wikipedia.org/wiki/Double-spending#51%25_attack).
 
 There is one additional challenge, which is dealing with "voter fraud".
 Voting in a simple and anonymous digital system comes at essentially zero cost; a single bad actor can simply vote a million times to gain a majority of votes.

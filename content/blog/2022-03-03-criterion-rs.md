@@ -46,7 +46,7 @@ To summarise, quick-mode can significantly shorten your iteration time but you s
 
 ## Tabulating and Comparing Results
 
-Notice how the results in the [previous section](##trading-accuracy-for-speed-quick-mode) are neatly tabulated? Yeah, that is actually a new feature. Previously, comparing results would look like this:
+Notice how the results in the [previous section](#trading-accuracy-for-speed-quick-mode) are neatly tabulated? Yeah, that is actually a new feature. Previously, comparing results would look like this:
 
 ```
 faster_hex_decode       time:   [41.061 us 41.083 us 41.105 us]

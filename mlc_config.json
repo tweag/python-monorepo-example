@@ -1,0 +1,8 @@
+{
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "https://tweag.io/"
+    }
+  ]
+}

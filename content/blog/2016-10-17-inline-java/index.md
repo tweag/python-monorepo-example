@@ -282,7 +282,7 @@ snippet. The `$` sigil is there to disambiguate between variables
 bound in the Haskell context (aka antiquotation) and in the Java
 context.
 
-[quasiquotation]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell-quasi-quotation
+[quasiquotation]: https://downloads.haskell.org/~ghc/7.0.2/docs/html/users_guide/template-haskell.html#th-quasiquotation
 
 You might have noticed a difference with `inline-c`: in `inline-java`
 we don't need to annotate quasiquotations with the return type nor

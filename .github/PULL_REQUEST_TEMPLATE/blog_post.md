@@ -4,7 +4,7 @@ New blog post
 
 - Content
 
-  - For the following, please refer to ["Blog - Setting clear expectations"](https://github.com/tweag/meta/blob/master/handbook/blog.md#setting-clear-expectations) from the handbook
+  - For the following, please refer to ["Blog - Setting clear expectations"](https://meta.tweag.io/handbook/blog/#setting-clear-expectations) from the handbook
 
   - [ ] Checked that title makes clear what is achieved in the end
   - [ ] Checked that introduction lays out the "How" and the "What", as well as the target audience
@@ -15,7 +15,9 @@ New blog post
   - [ ] Check [`codespell`](https://github.com/codespell-project/codespell) suggestions
         (`$ codespell --write-changes --interactive=3 post.md`)
 - Render
-  - [ ] Made sure all the links work
+  - [ ] Made sure all the links work (`yarn run link-check post.md`).
+        Tip: if you have a link to code (for example, on Github), pin it to a specific commit,
+        so that it's more likely to stay valid.
   - [ ] Checked that footnotes are properly rendered
 
 ### Phase 1: Technical Review

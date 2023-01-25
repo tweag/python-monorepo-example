@@ -13,7 +13,7 @@ As described in the [announcement post][ormolu-internship-ann], I worked on supp
 
 ### Upgrading `ghc-lib-parser`
 
-Like most modern tools operating on Haskell source files, Ormolu leverages the parser in GHC via [`ghc-lib-parser`](ghc-lib-parser). As major GHC upgrades often result in significant changes in the exposed compiler API, upgrading Ormolu to a new version of `ghc-lib-parser` often involves a non-trivial amount of work. At the start of my internship, the upgrade to `ghc-lib-parser-9.0` was long overdue. After playing type tetris for a while to get everything to compile, I had to dive into the details in order to debug subtle failures in the test suite.
+Like most modern tools operating on Haskell source files, Ormolu leverages the parser in GHC via [`ghc-lib-parser`][ghc-lib-parser]. As major GHC upgrades often result in significant changes in the exposed compiler API, upgrading Ormolu to a new version of `ghc-lib-parser` often involves a non-trivial amount of work. At the start of my internship, the upgrade to `ghc-lib-parser-9.0` was long overdue. After playing type tetris for a while to get everything to compile, I had to dive into the details in order to debug subtle failures in the test suite.
 
 One cool change in the GHC API which allowed me to simplify the code at several places works like this: In GHC 8.8, the pattern match coverage checker got smarter in detecting that constructors containing a `Void`-like type can not occur.
 

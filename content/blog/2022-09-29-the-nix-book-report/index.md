@@ -148,7 +148,7 @@ This report shows what became of "The Nix Book".
 - [NixOS/nix.dev#294](https://github.com/NixOS/nix.dev/pull/294) update sponsor sidebar
 - [NixOS/nix.dev#301](https://github.com/NixOS/nix.dev/pull/301) update list of recommended Nix language tutorials
 - [NixOS/nix.dev#302](https://github.com/NixOS/nix.dev/pull/302) update site description
-- [NixOS/nix.dev#306](https://github.com/NixOS/nix.dev/pull/306) Update [glossary.md](http://glossary.md/)
+- [NixOS/nix.dev#306](https://github.com/NixOS/nix.dev/pull/306) Update [glossary.md](https://nix.dev/glossary)
 - [NixOS/nix.dev#308](https://github.com/NixOS/nix.dev/pull/308) fix rendering issue with nested markdown
 - [NixOS/nix.dev#313](https://github.com/NixOS/nix.dev/pull/313) fix typo
 - [NixOS/nix.dev#315](https://github.com/NixOS/nix.dev/pull/315) update installation instructions

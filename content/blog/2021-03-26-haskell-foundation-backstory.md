@@ -195,7 +195,7 @@ set a public launch date for November.
 
 ## Announcement and bootstrapping
 
-[hf-interim-board]: https://haskell.foundation/en/who-we-are/
+[hf-interim-board]: https://haskell.foundation/who-we-are/
 
 Right away there was a new chicken-and-egg problem: we wanted the
 Board of Foundation to be drawn from the wider community, and yet we
