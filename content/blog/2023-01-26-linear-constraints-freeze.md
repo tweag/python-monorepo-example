@@ -80,7 +80,7 @@ runST $ do
 
 This is why the
 function is called _unsafe_. It would be quite possible to make a safe
-`freeze` function: simply make a copy the array. Now there doesn't
+`freeze` function: simply make a copy of the array. Now there doesn't
 exist an `MArray` pointer to the `Array` and we are safe, but the cost
 is that freezing is no longer constant time. This is a cost we are typically
 not willing to pay.
