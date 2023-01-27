@@ -11,6 +11,8 @@ bio: |
   Yves-Stan is currently working on rules_haskell, the Bazel rules for
   compiling Haskell projects.
 
+  Before this, he was part of the OCaml team at Mina Foundation contributing to the blockchain.
+
   Prior to joining the Tweag team, he worked as INRIA research
   engineer at the Paris ENS, doing static analysis of C code by
   abstract interpretation.
@@ -41,6 +43,9 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: March 2021-present
+    description:
+      - |
+        OCaml development for the Mina blockchain and Bazel development for the rules_haskell ruleset.
   - employer: INRIA
     role: Research Engineer
     years: 2017 - 2020
