@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, Text } from "theme-ui"
 import { useState, useEffect, useRef } from "react"
-import ClickAwayListener from "react-click-away-listener"
 import { Link } from "gatsby"
-import { globalHistory } from "@reach/router"
 import blackLogo from "../images/logo_tweag_modus_header.png"
+
+const navLinkClassName = `button min-1__button-link-bottom-lined`
 
 const Logo = () => (
   <Link to="/">
@@ -28,6 +28,82 @@ const ExternalLink = ({ to, children, ...restProps }) => (
   <a {...restProps} href={to}>
     {children}
   </a>
+)
+
+const Dropdown = ({ title, items }) => (
+  <Box
+    sx={{
+      mx: [0, `15px`, `25px`],
+      mb: [`15px`, 0],
+      textAlign: [`center`, `start`],
+      bg: `inherit`,
+      ".header-drop-down-transition__show-in": {
+        display: [`none`, `flex`],
+        opacity: 0,
+        transform: [null, `translateY(-1000px)`],
+        transition: [null, `opacity 0.4s ease, transform 0.1s ease 0.4s`],
+      },
+      "&:hover .header-drop-down-transition__show-in": {
+        display: `flex`,
+        opacity: 1,
+        transform: [null, `translateY(0px)`],
+        transition: [null, `opacity 0.4s ease`],
+      },
+    }}
+  >
+    <Text
+      as="div"
+      sx={{
+        minWidth: [`fit-content`],
+        fontSize: [`27px`, `16px`, `18px`],
+        lineHeight: [1.1],
+        cursor: `pointer`,
+        userSelect: `none`,
+        transition: `all 0.4s ease`,
+        color: `black`,
+        ".navbar-inverted &": {
+          color: `white !important`,
+          "::after": {
+            bg: `white`,
+          },
+        },
+      }}
+      className={navLinkClassName}
+      tabIndex={1}
+    >
+      {title}
+    </Text>
+    <Flex
+      className={`header-drop-down-transition__show-in`}
+      sx={{
+        bg: `var(--bg-color)`,
+        ".navbar-inverted &": {
+          bg: `transparent`,
+        },
+        position: [null, `absolute`],
+        flexDirection: `column`,
+        pt: [`15px`, `10px`],
+        pb: [0, `10px`],
+        mx: [`-15px`],
+        px: [`15px`],
+        alignItems: [`center`, `start`],
+      }}
+    >
+      {items.map(({ title: itemTitle, to }) => (
+        <NavLink
+          key={itemTitle}
+          to={to}
+          customSx={{
+            mb: `10px`,
+            fontSize: [`23px`, `16px`, `18px`],
+          }}
+          customClassName={navLinkClassName}
+        >
+          {itemTitle}
+        </NavLink>
+      ))}
+    </Flex>
+  </Box>
 )
 
 const NavLink = ({
@@ -112,17 +188,7 @@ const MobileMenuOpener = ({ onClick }) => (
 
 function Header({ inverted, fullpage = false }) {
   const headerRef = useRef(null)
-  const dropDownKeyIndustriesEle = useRef(null)
   const [navbarState, setNavbarState] = useState(false)
-
-  useEffect(() => {
-    return globalHistory.listen(({ action }) => {
-      if (action === `PUSH`) {
-        setNavbarState(false)
-        hideDropDown()
-      }
-    })
-  }, [])
 
   useEffect(() => {
     const headerEle = headerRef.current
@@ -134,22 +200,6 @@ function Header({ inverted, fullpage = false }) {
   }, [navbarState])
 
   const toggleNav = () => setNavbarState(p => !p)
-
-  const navLinkClassName = `button min-1__button-link-bottom-lined`
-
-  const hideDropDown = () => {
-    if (!dropDownKeyIndustriesEle.current) return
-    dropDownKeyIndustriesEle.current.classList.remove(
-      `header-drop-down-transition__show-in--on`
-    )
-  }
-
-  const setDropDownVisible = () => {
-    if (!dropDownKeyIndustriesEle.current) return
-    dropDownKeyIndustriesEle.current.classList.add(
-      `header-drop-down-transition__show-in--on`
-    )
-  }
 
   return (
     <Flex
@@ -210,99 +260,25 @@ function Header({ inverted, fullpage = false }) {
         >
           Services
         </NavLink>
-        <ClickAwayListener onClickAway={() => hideDropDown(`key-industries`)}>
-          <Box
-            onMouseEnter={() => setDropDownVisible(`key-industries`)}
-            onMouseLeave={() => hideDropDown(`key-industries`)}
-            onClick={() => setDropDownVisible(`key-industries`)}
-            onFocus={() => setDropDownVisible(`key-industries`)}
-            onBlur={() => hideDropDown(`key-industries`)}
-            sx={{
-              mx: [0, `15px`, `25px`],
-              mb: [`15px`, 0],
-              textAlign: [`center`, `start`],
-              bg: `inherit`,
-              ".header-drop-down-transition__show-in": {
-                display: [`none`, `flex`],
-                opacity: 0,
-                transform: [null, `translateY(-1000px)`],
-                transition: [
-                  null,
-                  `opacity 0.4s ease, transform 0.1s ease 0.4s`,
-                ],
-              },
-              ".header-drop-down-transition__show-in--on": {
-                display: `flex`,
-                opacity: 1,
-                transform: [null, `translateY(0px)`],
-                transition: [null, `opacity 0.4s ease`],
-              },
-            }}
-          >
-            <Text
-              as="div"
-              sx={{
-                minWidth: [`fit-content`],
-                fontSize: [`27px`, `16px`, `18px`],
-                lineHeight: [1.1],
-                cursor: `pointer`,
-                userSelect: `none`,
-                transition: `all 0.4s ease`,
-                color: `black`,
-                ".navbar-inverted &": {
-                  color: `white !important`,
-                  "::after": {
-                    bg: `white`,
-                  },
-                },
-              }}
-              className={navLinkClassName}
-              tabIndex={0}
-            >
-              Key industries
-            </Text>
-            <Flex
-              ref={dropDownKeyIndustriesEle}
-              className={`header-drop-down-transition__show-in`}
-              sx={{
-                bg: `var(--bg-color)`,
-                ".navbar-inverted &": {
-                  bg: `transparent`,
-                },
-                position: [null, `absolute`],
-                flexDirection: `column`,
-                pt: [`15px`, `10px`],
-                pb: [0, `10px`],
-                mx: [`-15px`],
-                px: [`15px`],
-                alignItems: [`center`, `start`],
-              }}
-            >
-              {[
-                [`Biotech`, `biotech`],
-                [`Fintech`, `fintech`],
-                [`Autonomous Vehicles`, `autonomous`],
-              ].map(([t, route], i) => (
-                <NavLink
-                  key={t}
-                  to={`/industry/${route}`}
-                  customSx={{
-                    mb: `10px`,
-                    fontSize: [`23px`, `16px`, `18px`],
-                  }}
-                  customClassName={navLinkClassName}
-                >
-                  {t}
-                </NavLink>
-              ))}
-            </Flex>
-          </Box>
-        </ClickAwayListener>
+        <Dropdown
+          title="Key industries"
+          items={[
+            { title: `Biotech`, to: `/industry/biotech` },
+            { title: `Fintech`, to: `/industry/fintech` },
+            { title: `Autonomous Vehicles`, to: `/industry/autonomous` },
+          ]}
+        />
+        <Dropdown
+          title="Team"
+          items={[
+            { title: `Members`, to: `/team` },
+            { title: `Groups`, to: `/groups` },
+          ]}
+        />
         {[
           [`Open source`, `/opensource`],
           [`Contact`, `/contact`],
           [`Careers`, `//boards.greenhouse.io/tweag`, true],
-          [`Team`, `/team`],
           [`Research`, `/research`],
           [`Blog`, `/blog`],
         ].map(([t, route, isExternal], i, arr) => (
