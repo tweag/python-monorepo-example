@@ -28,6 +28,13 @@ their vision, from research to product delivery.
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/groups`,
+        name: `groups`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/src/images`,
         name: `images`,
       },

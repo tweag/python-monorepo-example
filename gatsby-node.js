@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+  const groupTemplate = path.resolve(`./src/templates/group.tsx`)
   const blogTagTemplate = path.resolve(`./src/templates/blog-tag.js`)
   const cvTemplate = path.resolve(`./src/templates/cvs/template-1.js`)
   const cvListTemplate = path.resolve(`./src/templates/cvs/allCvs.js`)
@@ -23,10 +24,33 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
+  const groupsResult = await graphql(
+    `
+      {
+        groupsRemark: allMarkdownRemark(
+          filter: { frontmatter: { key: { eq: "group" } } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                slug
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
   const result = await graphql(
     `
       {
         postsRemark: allMarkdownRemark(
+          filter: { frontmatter: { key: { ne: "group" } } }
           sort: { fields: [fields___slug], order: DESC }
           limit: 1000
         ) {
@@ -51,9 +75,24 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    throw result.errors
+  const errors = groupsResult.errors || result.errors
+  if (errors) {
+    throw errors
   }
+
+  // Create group pages.
+  const groups = groupsResult.data.groupsRemark.edges
+  groups.forEach((group, index) => {
+    createPage({
+      path: group.node.fields.slug,
+      component: groupTemplate,
+      context: {
+        slug: group.node.fields.slug,
+        // previous,
+        // next,
+      },
+    })
+  })
 
   // Create blog posts pages.
   const posts = result.data.postsRemark.edges
@@ -144,19 +183,27 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+  if (node.internal.type !== `MarkdownRemark`) {
+    return
+  }
+
+  const value = createFilePath({ node, getNode })
+
+  let slug = `/group${value}`
+  if (node.frontmatter.key !== `group`) {
+    slug = `/blog${value}`
     createNodeField({
       node,
       name: `date`,
       value: value.match(/\d\d\d\d-\d\d-\d\d/)[0],
     })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: `/blog${value}`,
-    })
   }
+
+  createNodeField({
+    node,
+    name: `slug`,
+    value: slug,
+  })
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -196,6 +243,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     publications: [PublicationYaml]
     experience: [ProfilesYamlExperience]
     education: [ProfilesYamlEducation]
+  }
+
+  type MarkdownRemark implements Node {
+    members: [ProfilesYaml] @link(by: "slug", from: "frontmatter.members")
   }
   `
   createTypes(typeDefs)
