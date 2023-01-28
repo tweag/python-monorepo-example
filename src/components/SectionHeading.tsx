@@ -1,17 +1,21 @@
-/* eslint-disable no-unused-vars */
-/** @jsx jsx */
-import { jsx, SxStyleProp } from "theme-ui"
+import React from "react"
+import { ThemeUIStyleObject } from "theme-ui"
 import { Text } from "theme-ui"
+
+type Props = {
+  customSx?: ThemeUIStyleObject
+}
 
 /**
  * Renders a Section Heading component. Text underlined by a strong border.
  *
- * @typedef Props
- * @property {SxStyleProp} customSx
  * - You can pass all the theme-ui sx props to furthur style the header.
- * @param {Props} props
+ * @param props
  */
-function SectionHeading({ customSx, children }) {
+const SectionHeading: React.FC<React.PropsWithChildren<Props>> = ({
+  customSx,
+  children,
+}): JSX.Element => {
   return (
     <Text
       as="div"
