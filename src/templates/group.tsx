@@ -72,7 +72,7 @@ const GroupTemplate: React.FC<Props> = ({ data }) => {
 
       <Grid
         className="section s_white  viewport-section transition-section"
-        columns={[2, "5fr 1fr"]}
+        columns={[2, `5fr 1fr`]}
         sx={{
           px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
           pt: [`60px`, `60px`, `130px`],
