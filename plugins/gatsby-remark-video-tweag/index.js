@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 /*
  * Copied from https://github.com/nullhook/gatsby-remark-video
  * Modified to add a span tag surrounding the video to fit the Tweag blog.
  * Modified to have defaults.
  */
 const visit = require(`unist-util-visit`)
-const { DEFAULT_OPTIONS } = require(`./constants`)
+const { DEFAULT_OPTIONS } = require(`./constants.js`)
 
 const matchRegExp = new RegExp(
   // Look for a "video" and then possibly ':' and then a space

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require(`path`)
 const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
@@ -82,14 +84,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create group pages.
   const groups = groupsResult.data.groupsRemark.edges
-  groups.forEach((group, index) => {
+  groups.forEach(group => {
     createPage({
       path: group.node.fields.slug,
       component: groupTemplate,
       context: {
         slug: group.node.fields.slug,
-        // previous,
-        // next,
       },
     })
   })
@@ -192,10 +192,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug = `/group${value}`
   if (node.frontmatter.key !== `group`) {
     slug = `/blog${value}`
+    const matches = value.match(/\d\d\d\d-\d\d-\d\d/) || [``]
     createNodeField({
       node,
       name: `date`,
-      value: value.match(/\d\d\d\d-\d\d-\d\d/)[0],
+      value: matches[0],
     })
   }
 
@@ -209,7 +210,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-  type  ProfilesYamlExperience   {
+  type ProfilesYamlExperience   {
      employer: String
      role: String
      years: String
@@ -217,13 +218,12 @@ exports.createSchemaCustomization = ({ actions }) => {
      description: [String]
   }
 
-  type  ProfilesYamlEducation  {
+  type ProfilesYamlEducation  {
     qualification: String
     name: String
     institution: String
     years: String
     description: [String]
-
   }
 
   type PublicationYaml {
