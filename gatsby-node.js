@@ -41,6 +41,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 slug
               }
+              members {
+                slug
+              }
             }
           }
         }
@@ -85,11 +88,13 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create group pages.
   const groups = groupsResult.data.groupsRemark.edges
   groups.forEach(group => {
+    const membersSlugs = group.node.members.map(member => member.slug)
     createPage({
       path: group.node.fields.slug,
       component: groupTemplate,
       context: {
         slug: group.node.fields.slug,
+        members: membersSlugs,
       },
     })
   })
