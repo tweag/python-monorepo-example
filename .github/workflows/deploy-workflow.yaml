@@ -1,7 +1,15 @@
 name: Continuous integration
 on: push
+
 jobs:
   deploy:
+    # Allows the Sibz/github-status-action action to update the status.
+    permissions:
+      statuses: write
+      id-token: write
+      contents: read
+      pull-requests: read
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
