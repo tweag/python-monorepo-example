@@ -2,7 +2,7 @@
 title: announcing jupyenv 0.1.0
 author: Daniel Baker
 tags: [jupyenv, jupyter, nix]
-description: "jupiterWith gets a new name and updates."
+description: "jupyterWith gets a new name and updates."
 ---
 
 In November 2022, we released an API update to jupyterWith.
