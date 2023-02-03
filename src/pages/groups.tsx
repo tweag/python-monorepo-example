@@ -35,10 +35,27 @@ type Group = {
   }
 }
 
-type GroupCardProps = {
-  group: Group
+type GroupGridProps = {
+  edges: Edge[]
 }
-const GroupCard: React.FC<GroupCardProps> = ({ group }) => (
+
+const GroupGrid: React.FC<GroupGridProps> = ({ edges }) => (
+  <Grid
+    sx={{
+      mt: [`80px`],
+      mb: [`40px`],
+      rowGap: [`60px`, `60px`, `40px`],
+      columnGap: [0, 0, `30px`, `50px`, `5%`],
+    }}
+    columns={[1, 1, 3]}
+  >
+    {edges.map(({ node }, i) => (
+      <GroupCard key={i} group={node} />
+    ))}
+  </Grid>
+)
+
+const GroupCard: React.FC<{ group: Group }> = ({ group }) => (
   <Flex
     sx={{
       borderTop: `solid 1px black;`,
@@ -84,16 +101,20 @@ const GroupCard: React.FC<GroupCardProps> = ({ group }) => (
   </Flex>
 )
 
+type Edge = {
+  node: Group
+}
+
 type Props = {
   data: {
     allMarkdownRemark: {
-      edges: Array<{ node: Group }>
+      edges: Edge[]
     }
   }
 }
 
 const Groups: React.FC<Props> = ({ data }) => {
-  const groups = data.allMarkdownRemark.edges
+  const { edges } = data.allMarkdownRemark
 
   return (
     <Layout>
@@ -146,19 +167,7 @@ const Groups: React.FC<Props> = ({ data }) => {
             <img src={img14} />
           </Flex>
         </Grid>
-        <Grid
-          sx={{
-            mt: [`80px`],
-            mb: [`40px`],
-            rowGap: [`60px`, `60px`, `40px`],
-            columnGap: [0, 0, `30px`, `50px`, `5%`],
-          }}
-          columns={[1, 1, 3]}
-        >
-          {groups.map((group, i) => (
-            <GroupCard key={i} group={group.node} />
-          ))}
-        </Grid>
+        <GroupGrid edges={edges} />
       </Grid>
     </Layout>
   )
