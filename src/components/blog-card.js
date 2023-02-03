@@ -77,7 +77,7 @@ export const TopCard = ({ node }) => {
   )
 }
 
-const BlogCard = ({ node }) => {
+export const BlogCard = ({ node }) => {
   const title = node.frontmatter.shortTitle || node.frontmatter.title
   const tags = node.frontmatter.tags
   return (

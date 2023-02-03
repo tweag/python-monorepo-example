@@ -38,8 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                title
-                slug
+                tags
               }
               members {
                 slug
@@ -95,6 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: group.node.fields.slug,
         members: membersSlugs,
+        tags: group.node.frontmatter.tags,
       },
     })
   })

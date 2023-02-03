@@ -11,6 +11,9 @@ members:
   - alexander.bantyev
   - alexander.esgen
   - alexandre.prestele
+tags:
+  - devops
+  - bazel
 ---
 
 Correct, efficient, and reliable builds are critical for developers to
