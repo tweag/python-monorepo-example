@@ -18,6 +18,10 @@ experience:
   - employer: Tweag
     role: Software Engineer (Developer Productivity)
     years: 2021 - present
+    description:
+      - Part of the devops team at Nomadic Labs focusing on Gitlab CI improvements.
+      - Managed the deployment automation for the Tezos nodes, including monitoring and alerting.
+      - Wrote a utility tool in OCaml to analyse the usage of smart contracts on the Tezos blockchain.
   - employer: Adobe
     role: SRE
     years: 2017 - 2021
