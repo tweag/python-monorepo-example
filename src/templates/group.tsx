@@ -141,7 +141,7 @@ const RelatedArticles: React.FC<{ edges: ArticleEdge[] }> = ({ edges }) => (
         alignItems: `flex-end`,
       }}
     >
-      Related articles
+      Articles from this team on our blog
     </SectionHeading>
     <Grid
       sx={{
