@@ -128,36 +128,42 @@ type Article = {
   }
 }
 
-const RelatedArticles: React.FC<{ edges: ArticleEdge[] }> = ({ edges }) => (
-  <Grid
-    sx={{
-      mt: [`80px`],
-    }}
-  >
-    <SectionHeading
-      customSx={{
-        width: `fit-content`,
-        display: `flex`,
-        alignItems: `flex-end`,
-      }}
-    >
-      Articles from this team on our blog
-    </SectionHeading>
+const RelatedArticles: React.FC<{ edges: ArticleEdge[] }> = ({ edges }) => {
+  if (edges.length === 0) {
+    return <></>
+  }
+
+  return (
     <Grid
       sx={{
-        mt: [`40px`],
-        mb: [`40px`],
-        rowGap: [`60px`, `60px`, `40px`],
-        columnGap: [0, 0, `30px`, `50px`, `5%`],
+        mt: [`80px`],
       }}
-      columns={[1, 1, 3]}
     >
-      {edges.map(({ node }, i) => (
-        <BlogCard key={i} node={node} />
-      ))}
+      <SectionHeading
+        customSx={{
+          width: `fit-content`,
+          display: `flex`,
+          alignItems: `flex-end`,
+        }}
+      >
+        Articles from this team on our blog
+      </SectionHeading>
+      <Grid
+        sx={{
+          mt: [`40px`],
+          mb: [`40px`],
+          rowGap: [`60px`, `60px`, `40px`],
+          columnGap: [0, 0, `30px`, `50px`, `5%`],
+        }}
+        columns={[1, 1, 3]}
+      >
+        {edges.map(({ node }, i) => (
+          <BlogCard key={i} node={node} />
+        ))}
+      </Grid>
     </Grid>
-  </Grid>
-)
+  )
+}
 
 type MemberWithPicture = {
   picture?: string
@@ -258,7 +264,6 @@ type Props = {
 
 const GroupTemplate: React.FC<Props> = ({ data }) => {
   const group = data.markdownRemark
-  console.log({ articles: data.articles })
 
   const membersWithPicture = group.members.map(member => ({
     ...member,
