@@ -5,6 +5,7 @@ github: GuillaumeDesforges
 shortDescription: |
   Guillaume is a versatile engineer based in Paris, with fluency in machine
   learning, data engineering, web development and functional programming.
+
 bio: |
   Guillaume graduated from the prestigious Ecole des Ponts ParisTech in Paris,
   as well as from the Master 2 of Data Science at Institut Polytechnique de
@@ -17,14 +18,16 @@ bio: |
 
   At any step in a project, from prototyping to a full-blown application in
   production, Guillaume is a good pick to help you move forward.
+
 skills:
-  - Machine Learning
   - Data Engineering
-  - TypeScript
-  - Python
-  - Nix
   - Haskell
+  - Machine Learning
+  - Nix
+  - Python
+  - Rust
   - Scala
+  - TypeScript
 
 speaks:
   - French (native)
@@ -33,13 +36,44 @@ speaks:
 experience:
   - employer: Tweag
     role: Software & Data Engineer
-    years: September 2021 - present
+    years: 2021 - present
+    description:
+      - |
+        ##### Technical expertise for an AI MedTech early-stage startup
+        - Allowed reading data from DICOM files natively by building [spark-dicom](https://github.com/kaiko-ai/spark-dicom), a Spark extension in Scala
+        - Unleashed the power of distributed computing to process data and train models at scale with [Ray](https://www.ray.io/) on kubernetes clusters on Azure
+        - Provided technical expertise on lakehouse storage for medical imaging through code analysis and benchmarks
+        - Facilitated cooperation across teams by implementing the "live at HEAD" workflow with a single Python monorepo for the entire organization
+        - Provided guidance on Python tooling and coding best practices
+        - Made it possible to read a complex medical imaging file format (Mirax) directly from cloud storage by rewriting part of a C library to a new, simpler Python library
+      - |
+        ##### Member of the Editorial Team of the Tweag blog
+
+        Helping Tweagers publish awesome stories
+      - |
+        ##### Speaker at conferences
+
+        NixCon 2022, FOSDEM 2023, PyConFR 2023
   - employer: Ecole des Ponts ParisTech
     role: Stand-in teacher
-    years: September 2021 - present
+    years: 2021 - present
+    description:
+      - Teaching the course "Techniques de Developpement Logiciel", mentoring students on a software engineering project
   - employer: Polar Analytics
     role: Data & Backend Engineer
-    years: November 2020 - August 2021
+    years: 2020 - 2021
+    description:
+      - |
+        ##### Build core components of a data product
+        - Get access to user data using OAuth
+        - Automatize Airflow DAG creation based on collected OAuth
+        - Implement ETLs for various data sources
+        - Build a unified internal system to CRUD data pipelines via a third-party ETL platform
+  - employer: Freelance
+    role: Software Engineer
+    years: 2019 - 2020
+    description:
+      - Building MVPs of Web application for startups with TypeScript, React and NodeJS.
 
 education:
   - qualification: Master of Science

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Grid, Text, Box, Image } from "theme-ui"
 import { graphql } from "gatsby"
+import { micromark } from "micromark"
 
 import { CV } from "../../layouts"
 
@@ -162,9 +163,11 @@ const TemplateCV1 = ({ data }) => {
             >
               {shortDescription}
             </Text>
-            <Text as="p" sx={{ fontSize: `13px`, lineHeight: 1.3 }}>
-              {bio}
-            </Text>
+            <Text
+              as="p"
+              sx={{ fontSize: `13px`, lineHeight: 1.3 }}
+              dangerouslySetInnerHTML={{ __html: micromark(bio) }}
+            />
           </Grid>
           <Grid sx={{ gridAutoRows: `max-content` }}>
             {experience && experience.length && <H1>experience</H1>}
@@ -197,9 +200,8 @@ const TemplateCV1 = ({ data }) => {
                         lineHeight: 1.3,
                         fontWeight: `normal`,
                       }}
-                    >
-                      {desc}
-                    </Text>
+                      dangerouslySetInnerHTML={{ __html: micromark(desc) }}
+                    />
                   ))}
                 </div>
               ))}
@@ -257,9 +259,8 @@ const TemplateCV1 = ({ data }) => {
                             lineHeight: 1.3,
                             fontWeight: `normal`,
                           }}
-                        >
-                          {desc}
-                        </Text>
+                          dangerouslySetInnerHTML={{ __html: micromark(desc) }}
+                        />
                       ))}
                     </Grid>
                   )
