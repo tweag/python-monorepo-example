@@ -1,13 +1,26 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Grid, Box } from "theme-ui"
 
 import homeAnim from "../../images/home.svg"
+import homePreview from "../../images/home_preview.png"
 
 import { Arrow } from "../../components"
 
 export default function Section1() {
+  // check for the Samsung Browser, because
+  // its default Dark Mode messes up svgs
+  // for reference:
+  // https://www.ctrl.blog/entry/samsung-internet-night-mode.html
+  // https://github.com/mdn/browser-compat-data/issues/17408
+  const [isSamsungBrowser, setIsSamsungBrowser] = useState(false)
+
+  useEffect(() => {
+    if (navigator.userAgent.includes(`SamsungBrowser`))
+      setIsSamsungBrowser(true)
+  }, [])
+
   return (
     <React.Fragment>
       <Grid
@@ -24,7 +37,7 @@ export default function Section1() {
           <img
             width="600"
             height="600"
-            src={homeAnim}
+            src={isSamsungBrowser ? homePreview : homeAnim}
             sx={{
               width: `100%`,
               height: `auto`,

@@ -1,9 +1,22 @@
 /** @jsx jsx */
+import { useEffect, useState } from "react"
 import { jsx, Grid, Box, Text } from "theme-ui"
 import { Link } from "gatsby"
 import visionaries from "../../images/img2.svg"
+import visionariesPng from "../../images/img2.png"
 
 function Section2() {
+  // check for the Samsung Browser, because
+  // its default Dark Mode messes up svgs
+  // for reference:
+  // https://www.ctrl.blog/entry/samsung-internet-night-mode.html
+  // https://github.com/mdn/browser-compat-data/issues/17408
+  const [isSamsungBrowser, setIsSamsungBrowser] = useState(false)
+
+  useEffect(() => {
+    if (navigator.userAgent.includes(`SamsungBrowser`))
+      setIsSamsungBrowser(true)
+  }, [])
   return (
     <Grid
       columns={[1, 2]}
@@ -42,7 +55,7 @@ function Section2() {
               maxWidth: [`100%`, `100%`, `80%`],
               width: [`auto`, `auto`, `70%`],
             }}
-            src={visionaries}
+            src={isSamsungBrowser ? visionariesPng : visionaries}
             alt=""
           />
         </Box>
