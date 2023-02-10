@@ -4,13 +4,31 @@ slug: scalable.builds
 title: Scalable Builds
 description: |
   The state of the art of build systems should be led by the open source ecosystem. The necessary tools and infrastructure should be readily available and accessible for anyone from open source to enterprise projects.
+resources:
+  - name: Build.news
+    link: https://www.build.news/
 members:
-  - adrian.robert
-  - alexei.drake
-  - alex.shabalin
-  - alexander.bantyev
-  - alexander.esgen
-  - alexandre.prestele
+  - slug: alois.cochard
+  - slug: andreas.herrmann
+    role: leader
+  - slug: ben.radford
+  - slug: bryan.honof
+  - slug: christopher.harrison
+  - slug: claudio.bley
+  - slug: daniel.thagard
+  - slug: guillaume.maudoux
+  - slug: ilya.polyakovskiy
+  - slug: johan.herland
+  - slug: konstantinos.sideris
+  - slug: mark.karpov
+  - slug: mathieu.boespflug
+  - slug: matthias.meschede
+  - slug: soham.chowdhury
+  - slug: torsten.schmits
+  - slug: valentin.gagarin
+  - slug: viktor.kleen
+  - slug: yuriy.taraday
+  - slug: yvesstan.lecornec
 tags:
   - devops
   - bazel

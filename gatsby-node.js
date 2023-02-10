@@ -39,9 +39,9 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 tags
-              }
-              members {
-                slug
+                members {
+                  slug
+                }
               }
             }
           }
@@ -87,7 +87,9 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create group pages.
   const groups = groupsResult.data.groupsRemark.edges
   groups.forEach(group => {
-    const membersSlugs = group.node.members.map(member => member.slug)
+    const membersSlugs = group.node.frontmatter.members.map(
+      member => member.slug
+    )
     createPage({
       path: group.node.fields.slug,
       component: groupTemplate,
@@ -251,7 +253,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
 
   type MarkdownRemark implements Node {
-    members: [ProfilesYaml] @link(by: "slug", from: "frontmatter.members")
+    members: [ProfilesYaml] @link(by: "slug", from: "frontmatter.members.slug")
   }
   `
   createTypes(typeDefs)
