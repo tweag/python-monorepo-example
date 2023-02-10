@@ -309,8 +309,7 @@ const MemberCard: React.FC<{ member: FullMember }> = ({ member }) => {
       <Box css={roleStyle.imgWrapper}>
         <img
           src={
-            member.picture ||
-            `https://placehold.co/100x150?text=${member.name}}`
+            member.picture || `https://placehold.co/100x150?text=No+Picture}`
           }
           alt={member.name}
           style={{
