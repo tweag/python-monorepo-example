@@ -5,9 +5,18 @@ import { Link } from "gatsby"
 
 import Backdrop from "./Backdrop"
 
+/**
+ * @typedef {Object} CallToActionFooterProps
+ * @property {string} title
+ * @property {number} backdropVariant
+ * @property {string} transitionClass
+ * @property {SxStyleProp} customWrapperSx
+ * @param {CallToActionFooterProps} props
+ */
 function CallToActionFooter({
   title,
-  backdropVariant = ``,
+
+  backdropVariant,
   transitionClass,
   customWrapperSx,
 }) {
