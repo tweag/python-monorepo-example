@@ -8,26 +8,18 @@ resources:
   - name: Build.news
     link: https://www.build.news/
 members:
-  - slug: alois.cochard
   - slug: andreas.herrmann
     role: leader
+  - slug: alois.cochard
   - slug: ben.radford
-  - slug: bryan.honof
-  - slug: christopher.harrison
   - slug: claudio.bley
   - slug: daniel.thagard
   - slug: guillaume.maudoux
   - slug: ilya.polyakovskiy
-  - slug: johan.herland
   - slug: konstantinos.sideris
   - slug: mark.karpov
-  - slug: mathieu.boespflug
-  - slug: matthias.meschede
   - slug: soham.chowdhury
-  - slug: torsten.schmits
-  - slug: valentin.gagarin
   - slug: viktor.kleen
-  - slug: yuriy.taraday
   - slug: yvesstan.lecornec
 tags:
   - devops
