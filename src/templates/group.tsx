@@ -1,10 +1,11 @@
 import { css } from "@emotion/react"
 import { graphql } from "gatsby"
 import React from "react"
-import { Box, Flex, Grid, Text } from "theme-ui"
+import { Box, Flex, Grid, Text, useThemeUI } from "theme-ui"
 import {
   BlogCard,
   BlogPostContent,
+  CallToActionFooter,
   Divider,
   SectionHeading,
   SEO,
@@ -134,35 +135,48 @@ type FullMember = {
   role?: string
 } & Member
 
-const Description: React.FC<{ group: Group }> = ({ group }) => (
-  <Grid
-    gap={`35px`}
-    className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed-0"
-  >
-    <SectionHeading customSx={{ width: `fit-content` }}>
-      Group profile
-    </SectionHeading>
-    <Box
-      as="div"
-      sx={{
-        px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-        fontSize: [`34px`, `34px`, `66px`],
-        lineHeight: [1],
-        fontWeight: 700,
-        textTransform: `uppercase`,
-      }}
+const Description: React.FC<{ group: Group }> = ({ group }) => {
+  const { theme } = useThemeUI()
+  return (
+    <Grid
+      gap={`35px`}
+      className="transition-section__transition--slide-fade-in bottom-in only-above-1 delayed-0"
     >
-      {group.frontmatter.title}
-    </Box>
-    <Box>
-      <BlogPostContent
-        dangerouslySetInnerHTML={{
-          __html: group.html,
+      <SectionHeading customSx={{ width: `fit-content` }}>
+        Group profile
+      </SectionHeading>
+      <Box
+        as="div"
+        sx={{
+          fontSize: [`34px`, `34px`, `66px`],
+          lineHeight: [1],
+          fontWeight: 700,
+          textTransform: `uppercase`,
         }}
-      />
-    </Box>
-  </Grid>
-)
+      >
+        {group.frontmatter.title}
+      </Box>
+      <Box>
+        <Text
+          as="div"
+          css={css`
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+
+            @media (min-width: ${theme.breakpoints[1]}) {
+              width: 65%;
+              max-width: 1000px;
+            }
+          `}
+          dangerouslySetInnerHTML={{
+            __html: group.html,
+          }}
+        />
+      </Box>
+    </Grid>
+  )
+}
 
 const Resources: React.FC<{ resources: Resource[] }> = ({ resources }) => (
   <Grid
@@ -214,6 +228,7 @@ const RelatedArticles: React.FC<{ edges: ArticleEdge[] }> = ({ edges }) => {
           fontWeight: [700],
           textTransform: `uppercase`,
           textAlign: `center`,
+          pt: [`40px`],
         }}
       >
         Articles from this team on our blog
@@ -308,9 +323,7 @@ const MemberCard: React.FC<{ member: FullMember }> = ({ member }) => {
     >
       <Box css={roleStyle.imgWrapper}>
         <img
-          src={
-            member.picture || `https://placehold.co/100x150?text=No+Picture}`
-          }
+          src={member.picture || `https://placehold.co/100x150?text=No+Picture`}
           alt={member.name}
           style={{
             width: `100px`,
@@ -385,6 +398,17 @@ const GroupTemplate: React.FC<Props> = ({ data }) => {
         <MemberList members={membersWithPicture} />
         <RelatedArticles edges={data.articles.edges} />
       </Grid>
+
+      <Box className="section viewport-section s_grey transition-section">
+        <CallToActionFooter
+          title={`Want to know more about this group?`}
+          backdropVariant={5}
+          transitionClass={`transition-section__transition--slide-fade-in`}
+          customWrapperSx={{
+            py: [`40px`, `40px`, `60px`],
+          }}
+        />
+      </Box>
     </Layout>
   )
 }
