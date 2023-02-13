@@ -1,10 +1,10 @@
 slug: steven.shaw
 name: Steven Shaw
-pronouns: he/him
 github: steshaw
 
 shortDescription: |
-  Steven is a software engineer who loves programming languages.
+  Steven is a software engineer who likes to write simple, reliable code and
+  loves programming languages.
 
 bio: |
   He has 30 years of hands-on industry experience across many domains,
@@ -34,9 +34,8 @@ links:
   GitHub: https://github.com/steshaw/
 
 skills:
-  - Software Development
-  - Haskell
-  - DevOps
+  - Haskell, Scala, Java, JavaScript.
+  - CI/CD, DevOps, IaC
   - Nix
 
 speaks:
@@ -46,18 +45,38 @@ experience:
   - employer: Tweag
     role: Software Engineer
     years: 2022 - present
+    description:
+      - Minor contributions to Nickel.
+      - Worked on smart contract project for a blockchain client.
 
   - employer: TLC SRC
     role: Senior Software Engineer
     years: 2003 - 2022
+    description:
+      - Enhanced and maintained SaaS product for HR client (Haskell).
+      - Built banking integration software for travel industry client (Java).
+      - Helped to integrate off-the-shelf treasury product for banking client (Java).
+      - Built clearing house integration product for finance client (Java).
+      - Helped design AMQP and build an open source implementation the protocol (Java, C++).
+      - Maintained partner integration interface for telecommunications client (Java, C++).
+      - Built new CRM system for telecommunications client (Java, Flex).
+      - Provided architectural guidance to insurance client (Java).
 
   - employer: Tiny
     role: Principal Software Engineer
     years: 2013 - 2014
+    description:
+      - Worked on next-generation rich text editor product built in JavaScript (which became the foundation for TinyMCE 5).
+      - Worked on existing rich text editor product implemented as a Java Swing applet. This became a legacy product as browser support for Java applets was removed.
 
   - employer: ADC Telecommunications
     role: Senior Technical Software Developer
     years: 1999 - 2003
+    description:
+      - Helped build the first customer self-service portal and assisted professional services division to successfully deliver to prominant client (Java).
+      - Lead small projects and mentored engineers.
+      - Worked on convergent billing product (C++).
+      - Worked on highly configurable CRM product (C, Delphi).
 
   - employer: Dialog Information Technology
     role: Senior Analyst Programmer
