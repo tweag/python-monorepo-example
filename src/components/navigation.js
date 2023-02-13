@@ -30,81 +30,84 @@ const ExternalLink = ({ to, children, ...restProps }) => (
   </a>
 )
 
-const Dropdown = ({ title, items }) => (
-  <Box
-    sx={{
-      mx: [0, `15px`, `25px`],
-      mb: [`15px`, 0],
-      textAlign: [`center`, `start`],
-      bg: `inherit`,
-      ".header-drop-down-transition__show-in": {
-        display: [`none`, `flex`],
-        opacity: 0,
-        transform: [null, `translateY(-1000px)`],
-        transition: [null, `opacity 0.4s ease, transform 0.1s ease 0.4s`],
-      },
-      "&:hover .header-drop-down-transition__show-in": {
-        display: `flex`,
-        opacity: 1,
-        transform: [null, `translateY(0px)`],
-        transition: [null, `opacity 0.4s ease`],
-      },
-    }}
-  >
-    <Text
-      as="div"
+const Dropdown = ({ title, items }) => {
+  const dropDownClass = `.header-drop-down-transition__show-in`
+  return (
+    <Box
       sx={{
-        minWidth: [`fit-content`],
-        fontSize: [`27px`, `16px`, `18px`],
-        lineHeight: [1.1],
-        cursor: `pointer`,
-        userSelect: `none`,
-        transition: `all 0.4s ease`,
-        color: `black`,
-        ".navbar-inverted &": {
-          color: `white !important`,
-          "::after": {
-            bg: `white`,
+        mx: [0, `15px`, `25px`],
+        mb: [`15px`, 0],
+        textAlign: [`center`, `start`],
+        bg: `inherit`,
+        [dropDownClass]: {
+          display: [`none`, `flex`],
+          opacity: 0,
+          transform: [null, `translateY(-1000px)`],
+          transition: [null, `opacity 0.4s ease, transform 0.1s ease 0.4s`],
+        },
+        [`&:hover ${dropDownClass}, &:focus-within ${dropDownClass}`]: {
+          display: `flex`,
+          opacity: 1,
+          transform: [null, `translateY(0px)`],
+          transition: [null, `opacity 0.4s ease`],
+        },
+      }}
+    >
+      <Text
+        as="div"
+        sx={{
+          minWidth: [`fit-content`],
+          fontSize: [`27px`, `16px`, `18px`],
+          lineHeight: [1.1],
+          cursor: `pointer`,
+          userSelect: `none`,
+          transition: `all 0.4s ease`,
+          color: `black`,
+          ".navbar-inverted &": {
+            color: `white !important`,
+            "::after": {
+              bg: `white`,
+            },
           },
-        },
-      }}
-      className={navLinkClassName}
-      tabIndex={1}
-    >
-      {title}
-    </Text>
-    <Flex
-      className={`header-drop-down-transition__show-in`}
-      sx={{
-        bg: `var(--bg-color)`,
-        ".navbar-inverted &": {
-          bg: `transparent`,
-        },
-        position: [null, `absolute`],
-        flexDirection: `column`,
-        pt: [`15px`, `10px`],
-        pb: [0, `10px`],
-        mx: [`-15px`],
-        px: [`15px`],
-        alignItems: [`center`, `start`],
-      }}
-    >
-      {items.map(({ title: itemTitle, to }) => (
-        <NavLink
-          key={itemTitle}
-          to={to}
-          customSx={{
-            mb: `10px`,
-            fontSize: [`23px`, `16px`, `18px`],
-          }}
-          customClassName={navLinkClassName}
-        >
-          {itemTitle}
-        </NavLink>
-      ))}
-    </Flex>
-  </Box>
-)
+        }}
+        className={navLinkClassName}
+        tabIndex={1}
+      >
+        {title}
+      </Text>
+      <Flex
+        className={`header-drop-down-transition__show-in`}
+        sx={{
+          bg: `var(--bg-color)`,
+          ".navbar-inverted &": {
+            bg: `transparent`,
+          },
+          position: [null, `absolute`],
+          flexDirection: `column`,
+          pt: [`15px`, `10px`],
+          pb: [0, `10px`],
+          mx: [`-15px`],
+          px: [`15px`],
+          alignItems: [`center`, `start`],
+        }}
+      >
+        {items.map(({ title: itemTitle, to }) => (
+          <NavLink
+            key={itemTitle}
+            to={to}
+            customSx={{
+              mb: `10px`,
+              fontSize: [`23px`, `16px`, `18px`],
+            }}
+            customClassName={navLinkClassName}
+          >
+            {itemTitle}
+          </NavLink>
+        ))}
+      </Flex>
+    </Box>
+  )
+}
 
 const NavLink = ({
   children,
