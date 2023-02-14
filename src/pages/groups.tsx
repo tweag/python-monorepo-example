@@ -63,6 +63,10 @@ const GroupCard: React.FC<{ group: Group }> = ({ group }) => (
       flexDirection: `column`,
       justifyContent: `space-between`,
       minHeight: [`auto`, `auto`, `350px`],
+      "&:hover": {
+        transform: `scale(1.05)`,
+      },
+      transition: `transform 0.2s ease-in-out`,
     }}
   >
     <Link to={group.fields.slug} style={{ color: `#000` }}>
