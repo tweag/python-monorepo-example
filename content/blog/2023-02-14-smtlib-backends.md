@@ -27,8 +27,8 @@ In this post I'll share some of the outcomes of my internship at Tweag[^2],
 during which I worked on optimizing [Pirouette][pirouette] (a Haskell tool for
 finding counterexamples to properties specified about programs[^3]) and its
 SMT-LIB-based interaction with SMT solvers. Pirouette was unfortunately not fast
-enough to be used in practice and, while this limitation still remains, my work
-has contributed to improve its runtime significantly.
+enough to be used on advanced examples and, while this limitation still remains,
+my work has contributed to improve the runtime performance significantly.
 
 The main improvement was to evaluate SMT-LIB commands through the solver's
 bindings instead of calling it through an external process, which halved the time spent interacting with [Z3][wiki-z3] in our measurements.
