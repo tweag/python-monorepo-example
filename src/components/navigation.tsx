@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Text } from "theme-ui"
+import React from "react"
+import { Flex, Box, Text, jsx } from "theme-ui"
 import { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
 import blackLogo from "../images/logo_tweag_modus_header.png"
@@ -30,7 +31,11 @@ const ExternalLink = ({ to, children, ...restProps }) => (
   </a>
 )
 
-const Dropdown = ({ title, items }) => {
+type DropDownProps = {
+  title: string
+  items: Array<{ title: string; to: string }>
+}
+const Dropdown: React.FC<DropDownProps> = ({ title, items }) => {
   const dropDownClass = `.header-drop-down-transition__show-in`
   return (
     <Box
@@ -71,7 +76,6 @@ const Dropdown = ({ title, items }) => {
           },
         }}
         className={navLinkClassName}
-        tabIndex={1}
       >
         {title}
       </Text>
@@ -284,7 +288,7 @@ function Header({ inverted, fullpage = false }) {
           [`Careers`, `//boards.greenhouse.io/tweag`, true],
           [`Research`, `/research`],
           [`Blog`, `/blog`],
-        ].map(([t, route, isExternal], i, arr) => (
+        ].map(([t, route, isExternal]: [string, string, boolean?], i, arr) => (
           <NavLink
             customClassName={navLinkClassName}
             key={t}
