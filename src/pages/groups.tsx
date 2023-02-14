@@ -139,31 +139,26 @@ const Groups: React.FC<Props> = ({ data }) => {
         </SectionHeading>
 
         <Grid columns={2}>
-          <Grid columns={1} gap="35px">
-            <Text
-              as="div"
-              sx={{
-                textTransform: `uppercase`,
-                fontSize: [`34px`, `34px`, `66px`],
-                fontWeight: 700,
-                lineHeight: [1, 1],
-                mt: [`20px`, `20px`, `50px`],
-              }}
-            >
-              Organising around a problem space
-            </Text>
-            <Text
-              as="div"
-              sx={{
-                fontSize: [`18px`, `18px`, `27px`],
-                lineHeight: [1.2, 1.2, `35px`],
-              }}
-            >
-              When a number of Tweag engineers work in a particular problem
-              space that has clear client interest and wide potential for
-              impact, a Technical Group is formed
-            </Text>
-          </Grid>
+          <Text
+            as="div"
+            sx={{
+              fontSize: [`18px`, `18px`, `27px`],
+              lineHeight: [1.2, 1.2, `35px`],
+            }}
+          >
+            <p>
+              The Tweag team’s collective goal is to have a positive impact on
+              the software industry’s practices. To do this, we apply, develop
+              and evolve tools and techniques to better address tricky problems,
+              and share those solutions with our clients and the software
+              community.
+            </p>
+            <p>
+              Technical groups within Tweag focus on specific industry problem
+              spaces, and our current groups are listed here:
+            </p>
+          </Text>
+
           <Flex
             className="transition-section__transition--slide-fade-in right-in only-above-1"
             sx={{ justifyContent: `flex-end` }}
