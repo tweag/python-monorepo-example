@@ -27,6 +27,9 @@ skills:
   - Python
   - Rust
   - Scala
+  - Databricks
+  - Azure/AWS
+  - Spark
   - TypeScript
 
 speaks:
@@ -46,6 +49,7 @@ experience:
         - Facilitated cooperation across teams by implementing the "live at HEAD" workflow with a single Python monorepo for the entire organization
         - Provided guidance on Python tooling and coding best practices
         - Made it possible to read a complex medical imaging file format (Mirax) directly from cloud storage by rewriting part of a C library to a new, simpler Python library
+        - worked on a secured Azure Databricks stack
       - |
         ##### Member of the Editorial Team of the Tweag blog
 
