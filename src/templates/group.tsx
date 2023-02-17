@@ -137,6 +137,8 @@ type FullMember = {
 
 const Description: React.FC<{ group: Group }> = ({ group }) => {
   const { theme } = useThemeUI()
+  const firstBreakpoint = theme.breakpoints?.[1] || `768px`
+
   return (
     <Grid
       gap={`35px`}
@@ -164,7 +166,7 @@ const Description: React.FC<{ group: Group }> = ({ group }) => {
             line-height: 1.5;
             margin-bottom: 20px;
 
-            @media (min-width: ${theme.breakpoints[1]}) {
+            @media (min-width: ${firstBreakpoint}) {
               width: 65%;
               max-width: 1000px;
             }
@@ -390,7 +392,7 @@ const GroupTemplate: React.FC<Props> = ({ data }) => {
         gap={`5rem`}
         sx={{
           px: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-          pt: [`60px`, `60px`, `130px`],
+          pt: [`60px`, `130px`],
         }}
       >
         <Description group={group} />
