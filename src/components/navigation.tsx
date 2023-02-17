@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import blackLogo from "../images/logo_tweag_modus_header.png"
 
 const navLinkClassName = `button min-1__button-link-bottom-lined`
+const menuItemFontSize = [`27px`, `1.5vw`, `1.3vw`]
 
 const Logo = () => (
   <Link to="/">
@@ -62,8 +63,8 @@ const Dropdown: React.FC<DropDownProps> = ({ title, items }) => {
         as="div"
         sx={{
           minWidth: [`fit-content`],
-          fontSize: [`27px`, `16px`, `18px`],
           lineHeight: [1.1],
+          fontSize: menuItemFontSize,
           cursor: `pointer`,
           userSelect: `none`,
           transition: `all 0.4s ease`,
@@ -133,7 +134,7 @@ const NavLink = ({
           },
         },
         transition: `all 0.4s ease`,
-        fontSize: [`27px`, `16px`, `18px`],
+        fontSize: menuItemFontSize,
         lineHeight: [1.8, 1.1],
         "&:visited": {
           color: `black`,
