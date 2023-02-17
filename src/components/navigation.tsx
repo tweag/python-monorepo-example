@@ -283,16 +283,20 @@ function Header({ inverted, fullpage = false }) {
           ]}
         />
         {[
-          [`Open source`, `/opensource`],
-          [`Contact`, `/contact`],
-          [`Careers`, `//boards.greenhouse.io/tweag`, true],
-          [`Research`, `/research`],
-          [`Blog`, `/blog`],
-        ].map(([t, route, isExternal]: [string, string, boolean?], i, arr) => (
+          { title: `Open source`, to: `/opensource` },
+          { title: `Contact`, to: `/contact` },
+          {
+            title: `Careers`,
+            to: `//boards.greenhouse.io/tweag`,
+            isExternal: true,
+          },
+          { title: `Research`, to: `/research` },
+          { title: `Blog`, to: `/blog` },
+        ].map(({ title, to, isExternal }, i, arr) => (
           <NavLink
             customClassName={navLinkClassName}
-            key={t}
-            to={route}
+            key={title}
+            to={to}
             isExternal={isExternal}
             customSx={{
               mx: [0, `15px`, `25px`],
@@ -301,7 +305,7 @@ function Header({ inverted, fullpage = false }) {
               mb: [`15px`, 0],
             }}
           >
-            {t}
+            {title}
           </NavLink>
         ))}
       </Flex>
