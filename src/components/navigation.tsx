@@ -195,23 +195,11 @@ const MobileMenuOpener = ({ onClick }) => (
 )
 
 function Header({ inverted, fullpage = false }) {
-  const headerRef = useRef(null)
-  const [navbarState, setNavbarState] = useState(false)
-
-  useEffect(() => {
-    const headerEle = headerRef.current
-    if (navbarState) {
-      headerEle.classList.add(`in-viewport`, `menu-active`)
-    } else {
-      headerEle.classList.remove(`in-viewport`, `menu-active`)
-    }
-  }, [navbarState])
-
-  const toggleNav = () => setNavbarState(p => !p)
+  const [isMobileNavbarOpened, setIsMobileNavbarOpened] = useState(false)
+  const toggleNav = () => setIsMobileNavbarOpened(p => !p)
 
   return (
     <Flex
-      ref={headerRef}
       sx={{
         flexWrap: `wrap`,
         p: [`15px`, `25px`, `35px`],
@@ -225,7 +213,9 @@ function Header({ inverted, fullpage = false }) {
         mt: [0, `-16px`, fullpage ? `-14px` : null],
         transition: `all 0.4s ease`,
       }}
-      className={`transition-section header ${inverted && `navbar-inverted`}`}
+      className={`transition-section header ${inverted && `navbar-inverted`} ${
+        isMobileNavbarOpened && `in-viewport menu-active`
+      }`}
     >
       <Box
         sx={{
