@@ -4,27 +4,31 @@ github: Xophmeister
 
 shortDescription: |
   Chris is a recovering mathematician and software engineer at Tweag. He
-  has spent much of his career working for academia, from both the
-  business and the research sides of the industry. He perceives a
-  universe where code and poetry exist in the same space, with all that
-  entails.
+  has spent his career working for academia, from both the
+  business and the research sides of the industry. He particularly
+  enjoys writing well-tested, maintainable code that serves a pragmatic
+  end, with a side-helping of DevOps to keep services ticking with
+  minimal fuss.
 
 bio: |
-  Outside his significant steeping in STEM, Chris enjoys analogue
-  pursuits (the more creative, the better), suffusion within the natural
-  world and any opportunity to broaden his horizons. This has manifested
-  itself in, amongst other things, reading, writing, cooking (he's a
-  trained chocolatier), birding and road cycling.
+  Outside his STEM roots, Chris enjoys more analogue pursuits; the more
+  creative, the better. This has largely manifested itself in, amongst
+  other things, language and the written word, cooking and baking (he's
+  a trained chocolatier), nature watching and road cycling.
 
 # links:
 
 skills:
   - Python
-  - C
-  - Terraform
+  - Rust
+  - Infrastructure as Code (Terraform, Ansible)
   - Bash
   - SQL
+  - C
   - HPC and big-data
+  - Azure (VMs, networking, Databricks)
+  - AWS (EC2, S3, Redshift)
+  - Technical writing and editing
 
 speaks:
   - English
@@ -34,6 +38,16 @@ experience:
   - employer: Tweag
     role: "Software Engineer: Developer Productivity"
     years: November 2021 - Present
+    description:
+      - Design, engineering (Terraform) and CI/CD of a secured Azure
+        Databricks stack, orchestrated by GitHub Actions.
+      - Design, engineering (Python) and CI/CD of the mouth of a
+        terabyte-scale ETL pipeline that fed an AWS Redshift database,
+        automated with Jenkins, with infrastructure managed in
+        Terraform.
+      - Engineering and maintenance (Rust) of a universal formatter
+        tool.
+      - Blog editor.
 
     # description:
   - employer: Wellcome Sanger Institute
