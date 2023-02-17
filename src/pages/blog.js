@@ -6,7 +6,10 @@ export default Blog
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [fields___slug], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { key: { ne: "group" } } }
+      sort: { fields: [fields___slug], order: DESC }
+    ) {
       edges {
         node {
           excerpt(pruneLength: 280)

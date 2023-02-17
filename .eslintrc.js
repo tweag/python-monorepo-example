@@ -2,6 +2,7 @@
 // https://github.com/gatsbyjs/gatsby/tree/master/.eslintrc.js.
 
 module.exports = {
+  parser: `@typescript-eslint/parser`,
   env: {
     browser: true,
     es6: true,
@@ -10,6 +11,8 @@ module.exports = {
   extends: [
     `google`,
     `eslint:recommended`,
+    `plugin:@typescript-eslint/eslint-recommended`,
+    `plugin:@typescript-eslint/recommended`,
     `plugin:react/recommended`,
     `prettier`,
   ],
@@ -20,7 +23,12 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: `module`,
   },
-  plugins: [`filenames`, `prettier`, `react`],
+  plugins: [
+    `filenames`,
+    `prettier`,
+    `react`,
+    `@typescript-eslint/eslint-plugin`,
+  ],
   rules: {
     "filenames/match-regex": [`error`, `^[a-z-\\d\\.]+$`, true],
     "prettier/prettier": `error`,

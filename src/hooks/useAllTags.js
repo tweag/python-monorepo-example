@@ -3,7 +3,10 @@ import { graphql, useStaticQuery } from "gatsby"
 const useAllTags = ({ withLinks = false, appendGeneral = `` }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(sort: { fields: [fields___slug], order: DESC }) {
+      allMarkdownRemark(
+        filter: { frontmatter: { key: { ne: "group" } } }
+        sort: { fields: [fields___slug], order: DESC }
+      ) {
         edges {
           node {
             excerpt(pruneLength: 280)

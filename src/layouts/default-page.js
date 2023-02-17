@@ -12,7 +12,7 @@ import "../fonts/icomoon.css"
 
 import { useEffect } from "react"
 
-const Layout = ({ children, footer, fullPageFooter = false }) => {
+const Layout = ({ children, footer = <div></div>, fullPageFooter = false }) => {
   preventScrollJumpOnRefresh()
 
   return (

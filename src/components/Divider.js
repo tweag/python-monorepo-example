@@ -7,7 +7,7 @@ import { Box } from "theme-ui"
  * Renders a Divider component
  *
  * @typedef Props
- * @property {number | number[]} level
+ * @property {number | number[]} [level]
  * - the width of the divider;
  * - default to 1 i.e 1px.
  * - You can pass an array of numbers that will be used by the theme-ui jsx for different break-points;
