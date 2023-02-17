@@ -36,7 +36,7 @@ type DropDownProps = {
   items: Array<{ title: string; to: string }>
 }
 const Dropdown: React.FC<DropDownProps> = ({ title, items }) => {
-  const dropDownClass = `.header-drop-down-transition__show-in`
+  const dropDownClass = `header-drop-down-transition__show-in`
   return (
     <Box
       sx={{
@@ -44,14 +44,14 @@ const Dropdown: React.FC<DropDownProps> = ({ title, items }) => {
         mb: [`15px`, 0],
         textAlign: [`center`, `start`],
         bg: `inherit`,
-        [dropDownClass]: {
           display: [`none`, `flex`],
+        [`.${dropDownClass}`]: {
           opacity: 0,
           transform: [null, `translateY(-1000px)`],
           transition: [null, `opacity 0.4s ease, transform 0.1s ease 0.4s`],
         },
-        [`&:hover ${dropDownClass}, &:focus-within ${dropDownClass}`]: {
           display: `flex`,
+        [`&:hover .${dropDownClass}, &:focus-within .${dropDownClass}`]: {
           opacity: 1,
           transform: [null, `translateY(0px)`],
           transition: [null, `opacity 0.4s ease`],
@@ -80,7 +80,7 @@ const Dropdown: React.FC<DropDownProps> = ({ title, items }) => {
         {title}
       </Text>
       <Flex
-        className={`header-drop-down-transition__show-in`}
+        className={dropDownClass}
         sx={{
           bg: `var(--bg-color)`,
           ".navbar-inverted &": {
