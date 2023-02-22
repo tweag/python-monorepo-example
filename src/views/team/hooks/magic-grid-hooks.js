@@ -81,7 +81,7 @@ export function findBreakpoint() {
 }
 
 /**
- * @param {MutableRefObject<HTMLElement>} mainRef
+ * @param {MutableRefObject<HTMLElement | null>} mainRef
  * @param {string} eventName
  * @param {Function} eventHandler
  * @param {Array<any>} requirements
