@@ -87,9 +87,17 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create group pages.
   const groups = groupsResult.data.groupsRemark.edges
   groups.forEach(group => {
-    const membersSlugs = group.node.frontmatter.members.map(
-      member => member.slug
-    )
+    const membersSlugs = group.node.frontmatter.members.map(member => {
+      if (
+        profiles.data.profiles.nodes.find(({ slug }) => slug === member.slug)
+      ) {
+        return member.slug
+      }
+      throw new Error(
+        `Member ${member.slug} of group ${group.node.fields.slug} not found in profiles`
+      )
+    })
+
     createPage({
       path: group.node.fields.slug,
       component: groupTemplate,
