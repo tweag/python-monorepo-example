@@ -45,6 +45,13 @@ export class TileSet {
    *    width: number,
    *    rounding: number,
    *  }
+   *  onToggleBio?: (person?: {
+   *  name: string,
+   *  bio: string,
+   *  role: string,
+   *  tags: string[],
+   *  slug: string,
+   *  }) => void;
    * }} options
    */
   constructor({
@@ -55,6 +62,7 @@ export class TileSet {
     breakpoint,
     arbitraryAllocations,
     activeBioProfile,
+    onToggleBio,
   }) {
     this.finalTiles = []
     this.lastActiveProfile = ``
@@ -64,6 +72,7 @@ export class TileSet {
     this.photos = photos
     this.activeBioProfile = activeBioProfile
     this.arbitraryAllocations = arbitraryAllocations
+    this.onToggleBio = onToggleBio
     this.roundings = new Map()
     this.profileColors = new Map()
     this.bioHeight =
@@ -172,6 +181,7 @@ export class TileSet {
     }
     this.prePositionedStuff = this.parseActiveBioProfile()
     this.tilesGrid = this.generateGrid()
+    window.location.hash = newProfile ? `#${newProfile.person.slug}` : ``
     this.generateTiles()
   }
 
@@ -430,6 +440,7 @@ export class TileSet {
     }
     return (
       <ProfileTile
+        onClick={this.onToggleBio}
         person={target}
         photo={this.photos[slug]}
         key={`profile:${slug}`}
@@ -462,6 +473,7 @@ export class TileSet {
     const target = this.validProfiles.find(person => person.slug === slug)
     return (
       <ProfileTile
+        onClick={this.onToggleBio}
         person={target}
         photo={this.photos[slug]}
         key={`profile:${slug}`}
@@ -498,6 +510,7 @@ export class TileSet {
 
     return (
       <Bio
+        onClose={this.onToggleBio}
         relativePosition={bioRelativePosition}
         start={this.prePositionedStuff.activeBio.start}
         height={this.prePositionedStuff.activeBio.height}
@@ -605,6 +618,7 @@ export class TileSet {
     ) {
       this.finalTiles = [
         <Bio
+          onClose={this.onToggleBio}
           relativePosition={
             this.prePositionedStuff.activeBio.start.y <
             this.prePositionedStuff.activeProfile.start.y

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, useThemeUI } from "theme-ui"
+import * as React from "react"
+import { CSSProperties, get, useThemeUI, Box } from "theme-ui"
 import { useState, useRef, useEffect } from "react"
 
 import {
@@ -17,20 +17,18 @@ import {
   useSearchManager,
   dispatchFilterEvent,
 } from "../utils/search"
+import { css } from "@emotion/react"
+import { Person, TileInfo } from "./profile-tile"
 
-/**
- * @param {{
- *  gap?: string,
- *  margin?: string,
- *  columns?: number,
- * }} props - gap and margins must contain valid css sizes.
- * @returns {{
- *  "--magic-grid-gap": string,
- *  "--magic-grid-margin": string,
- *  "--magic-grid-columns": number
- * } | {}}
- */
-function parseCssVariables({ gap, margin, columns }) {
+function parseCssVariables({
+  gap,
+  margin,
+  columns,
+}: {
+  gap?: string
+  margin?: string
+  columns?: number
+}): CSSProperties {
   const result = {}
 
   if (gap) {
@@ -48,10 +46,125 @@ function parseCssVariables({ gap, margin, columns }) {
   return result
 }
 
-const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
+const updateResponsiveParameters = ({
+  tileSetRef,
+  color,
+  blank,
+  columns,
+  breakpoint,
+}: {
+  tileSetRef: React.MutableRefObject<TileSet>
+  color: number
+  blank: number
+  columns: number
+  breakpoint: string
+}) => {
+  tileSetRef.current.updateResponsiveParameters({
+    color,
+    blank,
+    columns,
+    breakpoint,
+  })
+}
+
+const setResponsiveCallbacks = (
+  tileSetRef: React.MutableRefObject<TileSet>,
+  profiles: Person[],
+  reRender: React.Dispatch<React.SetStateAction<object>>
+) => {
+  const profilesLengthTimes = (multiplier: number) =>
+    Math.floor(profiles.length * multiplier)
+
+  const defaultParams = {
+    tileSetRef,
+    color: profilesLengthTimes(0.11),
+  }
+
+  const fnWithReRender = (fn: () => void) => () => {
+    fn()
+    reRender({})
+  }
+
+  return useResponsiveCallbacks({
+    xs: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: 0,
+          columns: 3,
+          breakpoint: `xs`,
+        })
+      ),
+    ],
+    sm: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: 0,
+          columns: 3,
+          breakpoint: `sm`,
+        })
+      ),
+    ],
+    md: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: profilesLengthTimes(0.41),
+          columns: 6,
+          breakpoint: `md`,
+        })
+      ),
+    ],
+    lg: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: profilesLengthTimes(0.41),
+          columns: 8,
+          breakpoint: `lg`,
+        })
+      ),
+    ],
+    xl: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: profilesLengthTimes(0.41),
+          columns: 8,
+          breakpoint: `xl`,
+        })
+      ),
+    ],
+    xxl: [
+      fnWithReRender(() =>
+        updateResponsiveParameters({
+          ...defaultParams,
+          blank: profilesLengthTimes(0.41),
+          columns: 8,
+          breakpoint: `xxl`,
+        })
+      ),
+    ],
+  })
+}
+
+type Props = {
+  gap?: string
+  margin?: string
+  profiles: Person[]
+  photos: Array<{ [slug: string]: string }>
+  tags: string[]
+}
+const MagicGrid: React.FC<Props> = ({
+  gap,
+  margin,
+  profiles,
+  photos,
+  tags,
+}) => {
   // Setting up re-render function
-  // eslint-disable-next-line no-unused-vars
-  const [uselessState, reRender] = useState({})
+  const [, reRender] = useState({})
 
   // Render parameters
   const renderParameters = {
@@ -60,15 +173,29 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
     columns: 6,
   }
 
-  let breakpoint = findBreakpoint().breakpoint
+  let breakpoint: string = findBreakpoint().breakpoint
 
   if (breakpoint === `xs` || breakpoint === `sm`) {
     renderParameters.blank = 0
     renderParameters.columns = 3
   }
 
+  const toggleBio = (tileInfo?: TileInfo) => {
+    if (tileSetRef.current.activeBioProfile) {
+      tileSetRef.current.setActiveProfile(null)
+      reRender({})
+      return
+    }
+
+    tileSetRef.current.setActiveProfile(tileInfo)
+    if (breakpoint === `sm` || breakpoint === `xs`) {
+      ajusterRef.current?.scrollIntoView()
+    }
+    reRender({})
+  }
+
   // tile set
-  const tileSetRef = useRef(
+  const tileSetRef = useRef<TileSet>(
     new TileSet({
       people: profiles,
       tags: tags,
@@ -77,112 +204,18 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
         color: renderParameters.color,
         blank: renderParameters.blank,
       },
-      activeBioProfile: null,
+      activeBioProfile: undefined,
       photos,
       breakpoint,
+      onToggleBio: toggleBio,
     })
   )
 
-  /**
-   * @param {{
-   *  color: number,
-   *  blank: number,
-   *  columns: number,
-   *  breakpoint: string,
-   * }} options
-   */
-  const updateResponsiveParameters = ({
-    color,
-    blank,
-    columns,
-    breakpoint,
-  }) => {
-    tileSetRef.current.updateResponsiveParameters({
-      color,
-      blank,
-      columns,
-      breakpoint,
-    })
-    reRender({})
-  }
-
-  breakpoint = useResponsiveCallbacks({
-    xs: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: 0,
-          columns: 3,
-          breakpoint: `xs`,
-        }),
-    ],
-    sm: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: 0,
-          columns: 3,
-          breakpoint: `sm`,
-        }),
-    ],
-    md: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 6,
-          breakpoint: `md`,
-        }),
-    ],
-    lg: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 8,
-          breakpoint: `lg`,
-        }),
-    ],
-    xl: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 8,
-          breakpoint: `xl`,
-        }),
-    ],
-    xxl: [
-      () =>
-        updateResponsiveParameters({
-          color: Math.floor(profiles.length * 0.11),
-          blank: Math.floor(profiles.length * 0.41),
-          columns: 8,
-          breakpoint: `xxl`,
-        }),
-    ],
-  })
+  breakpoint = setResponsiveCallbacks(tileSetRef, profiles, reRender)
 
   // Bio Events
-  const mainRef = useRef()
-  const ajusterRef = useRef()
-  const bioEventHandlerRef = useRef()
-  const bioEventHandler = event => {
-    const toActivate = event.tileInfo
-    if (tileSetRef.current.activeBioProfile) {
-      tileSetRef.current.setActiveProfile(null)
-    } else {
-      tileSetRef.current.setActiveProfile(toActivate)
-      if (breakpoint === `sm` || breakpoint === `xs`) {
-        ajusterRef.current.scrollIntoView()
-      }
-    }
-    reRender({})
-  }
-  bioEventHandlerRef.current = bioEventHandler
-  useAddEventListener(mainRef, `toggle-bio`, event =>
-    bioEventHandlerRef.current(event)
-  )
+  const mainRef = useRef<HTMLDivElement>(null)
+  const ajusterRef = useRef<HTMLDivElement>(null)
   useAddEventListener(mainRef, `filter`, () => {
     tileSetRef.current.setActiveProfile(null)
     reRender({})
@@ -229,14 +262,14 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
       <div
         className="magicGridContainer"
         ref={mainRef}
-        css={`
+        css={css`
           display: grid;
           place-items: center;
           grid-template: "action-bar" "magic-grid" / 1fr;
           --magic-grid-max-width: 100rem;
         `}
       >
-        <div
+        <Box
           className="actionBar"
           sx={{
             pl: [`15px`, `60px`, `120px`],
@@ -246,6 +279,7 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
             flexDirection: [`column`, `row`],
             flexWrap: `nowrap`,
             justifyContent: `space-between`,
+            alignItems: `center`,
             width: `100%`,
             maxWidth: `var(--magic-grid-max-width)`,
           }}
@@ -261,14 +295,14 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
             }
             onClick={reShuffle}
           />
-        </div>
+        </Box>
         <BioContext.Provider
           value={tileSetRef.current.activeBioProfile?.person?.slug ?? null}
         >
           <div
             className="magicGrid"
             style={sizingVariables}
-            css={`
+            css={css`
               grid-area: magic-grid;
               justify-self: center;
               --magic-grid-width: min(var(--magic-grid-max-width), 100vw);
@@ -297,11 +331,11 @@ const MagicGrid = ({ gap, margin, profiles, photos, tags }) => {
               animation: slowFadeIn 2s linear;
               animation-fill-mode: backwards;
 
-              @media screen and (min-width: ${t.breakpoints[1]}) {
+              @media screen and (min-width: ${get(t, `breakpoints.1`)}) {
                 --magic-grid-margin: 60px;
               }
 
-              @media screen and (min-width: ${t.breakpoints[2]}) {
+              @media screen and (min-width: ${get(t, `breakpoints.2`)}) {
                 --magic-grid-margin: 120px;
               }
 
