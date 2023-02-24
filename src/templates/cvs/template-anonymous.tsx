@@ -1,27 +1,90 @@
 /** @jsx jsx */
-import { jsx, Grid, Text, Box, Image } from "theme-ui"
+
 import { graphql } from "gatsby"
 import { micromark } from "micromark"
-
+import React, { useEffect, useState } from "react"
+import { Box, Grid, Image, jsx, Text } from "theme-ui"
 import { CV } from "../../layouts"
-import { TitleName, ListFeature, H1, H5 } from "./view"
-
-import blackPattern from "../../images/pattern-black-1.svg"
+import { H1, H5, ListFeature, TitleName } from "./view"
 import tweaglogo from "../../images/logo_tweag_black_cv_template.svg"
+import blackPattern from "../../images/pattern-black-1.svg"
+import { css } from "@emotion/react"
 
-const TemplateCV1 = ({ data }) => {
-  const {
-    name,
-    pronouns,
-    github,
-    shortDescription,
-    bio,
-    skills,
-    speaks,
-    publications,
-    experience,
-    education,
-  } = data.profile
+export const pageQuery = graphql`
+  query ProfileBySlug($slug: String!) {
+    profile: profilesYaml(slug: { eq: $slug }) {
+      slug
+      name
+      pronouns
+      github
+      shortDescription
+      bio
+      skills
+      speaks
+      publications {
+        description
+        link
+      }
+      experience {
+        employer
+        role
+        years
+        description
+      }
+      education {
+        qualification
+        name
+        institution
+        years
+        description
+      }
+    }
+  }
+`
+
+type Profile = {
+  slug: string
+  name: string
+  pronouns: string
+  github: string
+  shortDescription: string
+  bio: string
+  skills: string[]
+  speaks: string[]
+  publications: {
+    description: string
+    link: string
+  }[]
+  experience: {
+    employer: string
+    role: string
+    years: string
+    description: string[]
+  }[]
+  education: {
+    qualification: string
+    name: string
+    institution: string
+    years: string
+    description: string[]
+  }[]
+}
+
+type Props = {
+  data: {
+    profile: Profile
+  }
+}
+
+const TemplateAnonymous: React.FC<Props> = ({ data }) => {
+  const { profile } = data
+  const [title, setTitle] = useState(`Loading...`)
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search)
+    const titleParam = queryParams.get(`t`)
+    setTitle(titleParam ? atob(titleParam) : `Functional Engineer`)
+  })
 
   return (
     <CV>
@@ -40,10 +103,10 @@ const TemplateCV1 = ({ data }) => {
             columnGap: `2rem`,
           }}
         >
-          <TitleName fullname={name} pronouns={pronouns} github={github} />
+          <TitleName fullname={title} isAnonymous={true} />
           <Grid columns={2}>
-            <ListFeature title={`Key Skills`} features={skills || []} />
-            <ListFeature title={`Languages`} features={speaks || []} />
+            <ListFeature title={`Key Skills`} features={profile.skills || []} />
+            <ListFeature title={`Languages`} features={profile.speaks || []} />
           </Grid>
           <Grid sx={{ gridAutoRows: `max-content` }}>
             <H1>bio</H1>
@@ -51,61 +114,64 @@ const TemplateCV1 = ({ data }) => {
               as="p"
               sx={{ fontSize: `13px`, lineHeight: 1.3, breakInside: `avoid` }}
             >
-              {shortDescription}
+              {profile.shortDescription}
             </Text>
             <Text
               as="p"
               sx={{ fontSize: `13px`, lineHeight: 1.3 }}
-              dangerouslySetInnerHTML={{ __html: micromark(bio) }}
+              dangerouslySetInnerHTML={{ __html: micromark(profile.bio) }}
             />
           </Grid>
           <Grid sx={{ gridAutoRows: `max-content` }}>
-            {experience && experience.length && <H1>experience</H1>}
-            {experience &&
-              experience.length &&
-              experience.map(({ employer, role, years, description }, i) => (
-                <div
-                  key={i}
-                  gap={`2px`}
-                  css={`
-                    display: inline-block;
-                  `}
-                >
-                  <H5>
-                    {employer} &#8212; {role}
-                  </H5>
-                  <H5
-                    customSx={{
-                      fontWeight: `normal`,
-                    }}
+            {profile.experience && profile.experience.length && (
+              <H1>experience</H1>
+            )}
+            {profile.experience &&
+              profile.experience.length &&
+              profile.experience.map(
+                ({ employer, role, years, description }, i) => (
+                  <div
+                    key={i}
+                    css={css`
+                      display: inline-block;
+                    `}
                   >
-                    {years}
-                  </H5>
-                  {(description || []).map((desc, i) => (
-                    <Text
-                      as="div"
-                      key={i}
-                      sx={{
-                        fontSize: `13px`,
-                        lineHeight: 1.3,
+                    <H5>
+                      {employer} &#8212; {role}
+                    </H5>
+                    <H5
+                      customSx={{
                         fontWeight: `normal`,
                       }}
-                      dangerouslySetInnerHTML={{ __html: micromark(desc) }}
-                    />
-                  ))}
-                </div>
-              ))}
+                    >
+                      {years}
+                    </H5>
+                    {(description || []).map((desc, i) => (
+                      <Text
+                        as="div"
+                        key={i}
+                        sx={{
+                          fontSize: `13px`,
+                          lineHeight: 1.3,
+                          fontWeight: `normal`,
+                        }}
+                        dangerouslySetInnerHTML={{ __html: micromark(desc) }}
+                      />
+                    ))}
+                  </div>
+                )
+              )}
           </Grid>
           <Grid
             sx={{
               gridRow: [6, 3],
             }}
           >
-            {publications && publications.length && (
+            {profile.publications && profile.publications.length && (
               <Grid sx={{ gridAutoRows: `max-content` }}>
                 <H1>Key Publications</H1>
                 <Grid>
-                  {publications.map((publication, index) => (
+                  {profile.publications.map((publication, index) => (
                     <Text
                       as="div"
                       key={index}
@@ -127,10 +193,10 @@ const TemplateCV1 = ({ data }) => {
             )}
           </Grid>
           <Grid sx={{ gridRow: [5, 3], pb: [0, `180px`] }}>
-            {education && education.length && (
+            {profile.education && profile.education.length && (
               <Grid sx={{ gridAutoRows: `max-content` }}>
                 <H1>Education</H1>
-                {education.map(
+                {profile.education.map(
                   (
                     { qualification, name, institution, years, description },
                     index
@@ -181,36 +247,4 @@ const TemplateCV1 = ({ data }) => {
   )
 }
 
-export default TemplateCV1
-
-export const pageQuery = graphql`
-  query ProfileBySlug($slug: String!) {
-    profile: profilesYaml(slug: { eq: $slug }) {
-      slug
-      name
-      pronouns
-      github
-      shortDescription
-      bio
-      skills
-      speaks
-      publications {
-        description
-        link
-      }
-      experience {
-        employer
-        role
-        years
-        description
-      }
-      education {
-        qualification
-        name
-        institution
-        years
-        description
-      }
-    }
-  }
-`
+export default TemplateAnonymous
