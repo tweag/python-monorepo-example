@@ -291,7 +291,7 @@ requirements for the test rule we'd like to have in `rules_haskell`.
 
 #### Creating a test in the form of a nested workspace
 
-`rules_basel_integration_test` offers a way to express testcases in form of directories with Bazel
+`rules_bazel_integration_test` offers a way to express testcases in form of directories with Bazel
 workspaces. In contrast `go_bazel_test` expects the workspace to be specified as a string of a specific
 format inside a test scenario. I find the former much clearer and easy to read and
 understand. In addition it provides clear and valid example of rules usage which the ruleset can refer to
