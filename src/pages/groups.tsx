@@ -131,7 +131,7 @@ const Groups: React.FC<Props> = ({ data }) => {
         sx={{
           px: [`15px`, `15px`, `0px`],
           pl: [`15px`, `15px`, `60px`, `60px`, `60px`, `60px`, `120px`],
-          pt: [`60px`, `60px`, `130px`],
+          pt: [`60px`, `130px`],
         }}
       >
         <SectionHeading customSx={{ width: `fit-content` }}>
