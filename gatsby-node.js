@@ -3,6 +3,7 @@
 const path = require(`path`)
 const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const md5 = require(`md5`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
@@ -11,6 +12,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const groupTemplate = path.resolve(`./src/templates/group.tsx`)
   const blogTagTemplate = path.resolve(`./src/templates/blog-tag.js`)
   const cvTemplate = path.resolve(`./src/templates/cvs/template-1.js`)
+  const cvAnonymousTemplate = path.resolve(
+    `./src/templates/cvs/template-anonymous.tsx`
+  )
   const cvListTemplate = path.resolve(`./src/templates/cvs/allCvs.js`)
 
   const profiles = await graphql(
@@ -179,6 +183,14 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   profiles.data.profiles.nodes.forEach(({ slug }) => {
+    createPage({
+      path: `/cv/${md5(slug)}`,
+      component: cvAnonymousTemplate,
+      context: {
+        slug,
+      },
+    })
+
     createPage({
       path: `/cv/${slug}`,
       component: cvTemplate,
