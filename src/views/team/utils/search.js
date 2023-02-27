@@ -2,6 +2,7 @@
 import { createContext, useRef, useState, useContext } from "react"
 import lunr from "lunr"
 
+/** @type {React.Context<SearchManager>} */
 export const SearchContext = createContext(null)
 
 /**

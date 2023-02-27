@@ -18,18 +18,15 @@ const LEFT_ROUNDINGS = [
   styles.roundBottomRightCorner,
 ]
 
-const CloseButton = () => {
-  const onClick = event => {
-    event.target.dispatchEvent(new Event(`toggle-bio`, { bubbles: true }))
-  }
+const CloseButton = ({ onClose }) => {
   const onKeyPress = event => {
     if (event.key !== `Enter`) return
-    onClick(event)
+    onClose()
   }
   return (
     <div
       className={styles.closeButton}
-      onClick={onClick}
+      onClick={onClose}
       onKeyPress={onKeyPress}
       tabIndex="0"
     />
@@ -65,10 +62,19 @@ export const BioContext = createContext(null)
  *  width: number,
  *  key: number | string,
  *  relativePosition: 'left' | 'right' | 'none'
+ *  onClose: () => void
  * }} props
  * @returns {JSX.Element}
  */
-const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
+const Bio = ({
+  person,
+  rounding,
+  start,
+  height,
+  width,
+  relativePosition,
+  onClose,
+}) => {
   let roundingToUse
   if (relativePosition === `left`) {
     roundingToUse = LEFT_ROUNDINGS[rounding]
@@ -103,7 +109,7 @@ const Bio = ({ person, rounding, start, height, width, relativePosition }) => {
           </span>
         </div>
         <div className={styles.personRole}>{person.role}</div>
-        <CloseButton />
+        <CloseButton onClose={onClose} />
       </div>
       <div className={styles.tags}>
         {person.tags.map(tag => (

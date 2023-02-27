@@ -5,7 +5,6 @@ import loadable from "@loadable/component"
 import { SectionHeading } from "../../components"
 import { DefaulLayout as Layout } from "../../layouts"
 import { SEO } from "../../components"
-// import MagicGrid from "./components/magic-grid"
 import { parsePhotos, parseProfiles } from "./utils/query"
 
 import introImage from "../../images/img18.svg"
