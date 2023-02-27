@@ -1,7 +1,6 @@
 slug: tor.hovland
 name: Tor Hovland
 github: torhovland
-twitter: "@torhovland"
 shortDescription: |
   Tor is a Rust developer at Tweag who lives in Trondheim, Norway with his wife
   and two sons.
@@ -24,16 +23,16 @@ bio: |
   see his YouTube channel!
 links:
   Github: https://github.com/torhovland/
-  Twitter: https://twitter.com/torhovland
+  Mastodon: https://functional.cafe/@tor
   Youtube: https://www.youtube.com/channel/UCnMVt-vE4g0YYKBDb3t6J4Q
 skills:
   - Rust
-  - DevOps
-  - Infrastructure as code
-  - Nix
   - Cloud computing
   - C++ and .NET
   - Web and TypeScript
+  - Nix
+  - DevOps
+  - Infrastructure as code
 speaks:
   - Norwegian (native)
   - English
@@ -42,18 +41,29 @@ experience:
   - employer: Tweag
     role: Rust Developer
     years: June 2022 - present
+    description:
+      - Implementation of the Rust based engine of Topiary, the universal code
+        formatter built on Tree-sitter. Also some initial language formatting.
+      - Implementation of infrastructure as code and business code for a health
+        industry cloud computing company, involving Terraform, Azure,
+        Kubernetes, and Python.
+
   - employer: Bekk
     role: Software Developer
     years: October 2018 - June 2022
+
   - employer: Powel
     role: Chief Architect, Business Manager, Cloud Engineer
     years: January 2014 - September 2018
+
   - employer: Programmator
     role: Co-founder, Software Consultant
     years: May 2010 - December 2013
+
   - employer: Powel
     role: Software Developer
     years: June 2004 - June 2010
+
   - employer: Proxycom
     role: Software Consultant
     years: July 2001 - June 2004
