@@ -2,17 +2,33 @@
 title: "Python monorepo: an example, 1/2"
 shortTitle: "Python monorepo: an example, 1/2"
 author: Guillaume Desforges, Clément Hurlin
-tags: [python]
+tags: [python, monorepo]
 description: "How to build your Python monorepo from scratch: structure and tooling"
 ---
 
-Delivering interdependent software across teams of an organization is challenging.
-When changes in a package require changes in one of its dependencies, it is usually required to first make the changes in the dependency and publish a new release of it, only then can the original package be updated accordingly.
-In the context of a bigger organization with many interdependent packages, those processes can quickly add up, leading to numerous cascading Pull Requests (PRs) across many repos, which is hard to manage and adds friction to the development workflow.
+At Tweag, we strive for software development team to perform as best as possible.
+For a team to be successful, you need excellent communication. That is why we want to build
+systems that foster cross-team communication. Using a monorepo is an excellent
+way to do that. A monorepo provides:
 
-An alternative is to "live at HEAD": instead of waiting for releases and cascading PRs, a developer works on all related packages at once in one PR and publishes them all in one go.
-Such a development workflow requires to go from numerous code repositories to a single repository, called "monorepo".
-However, designing a monorepo can be challenging as it impacts the development workflow of all engineers.
+* Visibility: by seeing the pull requests (PRs) of colleagues, you are easily informed
+  of what other teams are doing.
+* Uniformity: by working in one central repository, it is easier to share
+  the configuration of linters, formatters, etc. This makes it easy
+  to use the same code style and documentation standards.
+
+  Uniformity smoothes onboarding of newcomers as well as reassigning engineers
+  to different internal projects.
+* Continuous integration (CI) for free: if appropriately configured, new code is picked
+  up automatically by CI, ensuring uniformity and best practices.
+* Atomic changes: because all libraries and projects are in one place, a large change
+  can be implemented in one PR. This avoids the usual workflow of cascading updates.
+  This cascading causes mistakes to be caught later than sooner and causes
+  friction in development.
+
+Designing a monorepo can be challenging as it impacts the development workflow of all engineers.
+In addition, monorepos come with their own scaling challenges. Special care for tooling
+is required for a monorepo to stay performant as a team is growing.
 
 In this post, we describe a design for a Python monorepo: how we structure it, which tool we favor, alternatives that were considered, and some possible improvements.
 
