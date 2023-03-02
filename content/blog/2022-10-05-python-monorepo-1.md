@@ -239,12 +239,12 @@ pytest-cov==3.0.0  # Coverage extension
 ## Sandboxes
 
 With all of the above in place, we are now able to create sandboxes to obtain comfortable development environments.
-For example suppose we have one library named `baselib`, making the monorepo structure as follows:
+For example suppose we have one library named `base`, making the monorepo structure as follows:
 
 ```shell
 ├── dev-requirements.txt
 ├── libs
-│   └── baselib
+│   └── base
 │       ├── pyproject.toml
 │       ├── README.md
 │       └── requirements.txt
@@ -254,7 +254,7 @@ For example suppose we have one library named `baselib`, making the monorepo str
 └── tox.ini
 ```
 
-To create `baselib`'s development environment, go to directory `libs/baselib` and execute:
+To create `base`'s development environment, go to directory `libs/base` and execute:
 
 ```shell
 python3 -m venv .venv --copies
@@ -275,7 +275,7 @@ This can shortened by using `nox`, as explained in the [improvements](#improveme
 We use a common namespace in all projects and libraries.
 This avoids one level of nesting by avoiding the `src` folder (which is the historical way of doing, called the [src layout](https://packaging.python.org/en/latest/tutorials/packaging-projects/#a-simple-project)).
 
-Supposing that we choose `mycorp` as the namespace, this means that the code of library `libs/baselib` lives in directory `libs/baselib/mycorp` and the `pyproject.toml` of the library must contain:
+Supposing that we choose `mycorp` as the namespace, this means that the code of library `libs/base` lives in directory `libs/base/mycorp` and the `pyproject.toml` of the library must contain:
 
 ```toml
 packages = [
@@ -326,13 +326,13 @@ provides good guidance on possible specifiers.
 
 ### Example
 
-To make this setup concrete, let's introduce a new library `libs/fancylib`
-that depends upon `libs/baselib` and `numpy`:
+To make this setup concrete, let's introduce a new library `libs/fancy`
+that depends upon `libs/base` and `numpy`:
 
 ```shell
 ...as above...
 └── libs
-    ├── baselib
+    ├── base
     │   └── ...as above...
     └── fancylib
         ├── pyproject.toml
@@ -343,7 +343,7 @@ that depends upon `libs/baselib` and `numpy`:
 `libs/fancylib/requirements.txt` is as follows:
 
 ```
--e ../baselib  # local dependency, use editable install
+-e ../base  # local dependency, use editable install
 numpy==1.22.3  # external dependency, installed from pypi
 ```
 
@@ -374,7 +374,7 @@ pytest-mock = "^3"
 black = "^22.3.0"
 flake8 = "^4.0.1"
 pyright = "^1.1.258"
-mycorp_base = {path = "../baselib", develop = false}
+mycorp_base = {path = "../base", develop = false}
 
 # tooling configuration, omitted
 ```
@@ -382,6 +382,26 @@ mycorp_base = {path = "../baselib", develop = false}
 In the spirit of our explanations above:
 
 * `requirements.txt` uses an editable install to specify the dependency
-  to `libs/baselib`, with `-e ../baselib`.
+  to `libs/base`, with `-e ../base`.
 * `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
-  to `libs/baselib`.
+  to `libs/base`.
+
+Using an editable install in `requirements.txt` means the monorepo lives at HEAD,
+while the loose qualifier in `pyproject.toml` is designed to work well with releases of the monorepo.
+We describe these two mechanisms in the next section.
+
+## Living at HEAD
+
+_Living at HEAD_ is a term popularized by [a Google engineer](https://www.youtube.com/watch?v=tISy7EJQPzI).
+It means that all code in a monorepo depends on the code that is next to it on disk.
+In our simple example above, it means that library `fancy` depends on the code of library `base`
+that is next to it on disk (hence the `git` term at `HEAD`), not on a released version of `base`.
+This makes it possible to perform atomic updates of the entire monorepo in a single PR.
+Whereas, in a traditional polyrepo setup with separate releases, to use a new version of `base`,
+one would have to update `base` first (in its own PR), then release it, then update
+`fancy` to update the latest version of `base` (in another PR). In the wild,
+a polyrepo setup creates cascading PRs, increasing the time it takes to perform updates crossing
+various libraries (or defeating them at all, causing code to be duplicated instead).
+
+In this vein, the use of editable install in our setup is our python specific implementation
+of _living at HEAD_.
