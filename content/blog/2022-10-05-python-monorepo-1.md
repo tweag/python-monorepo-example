@@ -290,19 +290,33 @@ We now come to a very important topic: the difference between `pyproject.toml` a
 `requirements.txt` files are used for 1/ populating sandboxes of developers,
 and 2/ are the basis for testing code in the CI. `requirements.txt` files
 specify both local dependencies (dependencies over libraries developed
-in the monorepo itself) and external dependencies (dependencies which
-are usually hosted on [pypi](https://pypi.org/), such as `numpy` and `pandas`).
+in the monorepo itself), external dependencies (dependencies which
+are usually hosted on [pypi](https://pypi.org/), such as `numpy` and `pandas`),
+and dependencies of dependencies transitively.
 
 For provisioning local dependencies, we use
 [editable installs](https://setuptools.pypa.io/en/latest/userguide/development_mode.html).
 If a library `A` depends on a library `B`, this makes changes to `B` immediately
 available to users of `A`: `A` depends on the code of `B` that is next to it
 in the monorepo, not on a released version.
+This allows to implement a _live at HEAD_ workflow as detailed [#live-at-HEAD](below).
 
 The `requirements.txt` file of a library should include both direct dependencies
 of this library as well as all its transitive dependencies. By using both
 pinned dependencies and listing transitive dependencies in `requirements.txt`,
 we achieve a great level of [reproducibility](https://en.wikipedia.org/wiki/Reproducibility).
+
+This effectively makes our `requirements.txt` manually maintained lockfiles.
+We would have loved to use `poetry`, that provides a dedicated CLI for managing lockfiles.
+However, `poetry` doesn't play well with an essential datascience package:
+[pytorch](https://pytorch.org/). We are not going to detail it here, but
+multiplatform lockfiles support for projects that depend on pytorch is still
+an issue today. See
+[python-poetry/poetry/issues/4231](https://github.com/python-poetry/poetry/issues/4231),
+[python-poetry/poetry/issues/4704](https://github.com/python-poetry/poetry/issues/4704), and
+[python-poetry/poetry/issues/6939](https://github.com/python-poetry/poetry/issues/6939#issuecomment-1302552755)
+for recent developments. In this post, we hence stick to a simpler `pip`-based approach,
+that can be easily amended to use `poetry` instead.
 
 ### `pyproject.toml`
 
@@ -386,14 +400,10 @@ In the spirit of our explanations above:
 * `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
   to `libs/base`.
 
-Using an editable install in `requirements.txt` means the monorepo lives at HEAD,
-while the loose qualifier in `pyproject.toml` is designed to work well with releases of the monorepo.
-We describe these two mechanisms in the next section.
-
 ## Living at HEAD
 
-_Living at HEAD_ is a term popularized by [a Google engineer](https://www.youtube.com/watch?v=tISy7EJQPzI).
-It means that all code in a monorepo depends on the code that is next to it on disk.
+_Living at HEAD_ is a term popularized by [Titus Winters](https://www.youtube.com/watch?v=tISy7EJQPzI),
+from Google. It means that all code in a monorepo depends on the code that is next to it on disk.
 In our simple example above, it means that library `fancy` depends on the code of library `base`
 that is next to it on disk (hence the `git` term at `HEAD`), not on a released version of `base`.
 This makes it possible to perform atomic updates of the entire monorepo in a single PR.
@@ -403,5 +413,22 @@ one would have to update `base` first (in its own PR), then release it, then upd
 a polyrepo setup creates cascading PRs, increasing the time it takes to perform updates crossing
 various libraries (or defeating them at all, causing code to be duplicated instead).
 
-In this vein, the use of editable install in our setup is our python specific implementation
+In this vein, the use of editable installs in our setup is our python specific implementation
 of _living at HEAD_.
+
+## Conclusion
+
+So far we have seen a monorepo structure that features:
+
+* a streamlined structure for libraries and projects,
+* unified formatting, linting, and typechecking, and
+* a python implementation of the live at HEAD workflow.
+
+<!-- TODO add links when the next blogposts are ready -->
+In the next blogpost, we will describe how to implement a CI for this monorepo,
+using simple [GitHub actions]() and how templating can be used to ease onboarding and
+maintenance of consistency as more developers start working in the monorepo.
+In the third last blogpost of the serie, we will demonstrate the use of
+[Pants](https://www.pantsbuild.org/)
+to prepare the monorepo's CI for scaling, and for providing tooling that is
+used similarly on local machines and on the CI.
