@@ -2,13 +2,17 @@
 title: "Python monorepo: an example, 2/2"
 shortTitle: "Python monorepo: an example, 2/2"
 author: Guillaume Desforges, Clément Hurlin
-tags: [python]
+tags: [python, monorepo]
 description: "How to build your python monorepo from scratch: CI/CD and improvements"
 ---
 
 In the [previous article](TODO link),
 we described our python monorepo structure and tooling.
 We continue by describing the CI/CD.
+
+Before diving in the details, we would like to acknowledge
+the support we had from our client [Kaiko](https://www.kaiko.ai/),
+for which we did most of the work described in this series of blogposts.
 
 ## CI/CD
 

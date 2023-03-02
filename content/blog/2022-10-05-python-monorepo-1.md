@@ -31,6 +31,9 @@ In addition, monorepos come with their own scaling challenges. Special care for 
 is required for a monorepo to stay performant as a team is growing.
 
 In this post, we describe a design for a Python monorepo: how we structure it, which tool we favor, alternatives that were considered, and some possible improvements.
+Before diving in the details, we would like to acknowledge
+the support we had from our client [Kaiko](https://www.kaiko.ai/),
+for which we did most of the work described in this series of blogposts.
 
 ## Python environments: one global vs many local
 
@@ -400,7 +403,7 @@ In the spirit of our explanations above:
 * `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
   to `libs/base`.
 
-## Living at HEAD
+## Living at HEAD {living-at-HEAD}
 
 _Living at HEAD_ is a term popularized by [Titus Winters](https://www.youtube.com/watch?v=tISy7EJQPzI),
 from Google. It means that all code in a monorepo depends on the code that is next to it on disk.
