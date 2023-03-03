@@ -11,17 +11,18 @@ For a team to be successful, you need excellent communication. That is why we wa
 systems that foster cross-team communication. Using a monorepo is an excellent
 way to do that. A monorepo provides:
 
-* Visibility: by seeing the pull requests (PRs) of colleagues, you are easily informed
+- Visibility: by seeing the pull requests (PRs) of colleagues, you are easily informed
   of what other teams are doing.
-* Uniformity: by working in one central repository, it is easier to share
+- Uniformity: by working in one central repository, it is easier to share
   the configuration of linters, formatters, etc. This makes it easy
   to use the same code style and documentation standards.
 
   Uniformity smoothes onboarding of newcomers as well as reassigning engineers
   to different internal projects.
-* Continuous integration (CI) for free: if appropriately configured, new code is picked
+
+- Continuous integration (CI) for free: if appropriately configured, new code is picked
   up automatically by CI, ensuring uniformity and best practices.
-* Atomic changes: because all libraries and projects are in one place, a large change
+- Atomic changes: because all libraries and projects are in one place, a large change
   can be implemented in one PR. This avoids the usual workflow of cascading updates.
   This cascading causes mistakes to be caught later than sooner and causes
   friction in development.
@@ -301,7 +302,7 @@ For provisioning local dependencies, we use
 If a library `A` depends on a library `B`, this makes changes to `B` immediately
 available to users of `A`: `A` depends on the code of `B` that is next to it
 in the monorepo, not on a released version.
-This allows to implement a _live at HEAD_ workflow as detailed [#live-at-HEAD](below).
+This allows to implement a _live at HEAD_ workflow as detailed [below](#live-at-HEAD).
 
 The `requirements.txt` file of a library should include both direct dependencies
 of this library and possibly its transitive dependencies. By using both
@@ -400,9 +401,9 @@ mycorp_base = {path = "../base", develop = false}
 
 In the spirit of our explanations above:
 
-* `requirements.txt` uses an editable install to specify the dependency
+- `requirements.txt` uses an editable install to specify the dependency
   to `libs/base`, with `-e ../base`.
-* `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
+- `pyproject.toml` uses the very loose `"*"` qualifier to specify the dependency
   to `libs/base`.
 
 ## Living at HEAD {living-at-HEAD}
@@ -425,11 +426,12 @@ of _living at HEAD_.
 
 So far we have seen a monorepo structure that features:
 
-* a streamlined structure for libraries and projects,
-* unified formatting, linting, and typechecking, and
-* a python implementation of the live at HEAD workflow.
+- a streamlined structure for libraries and projects,
+- unified formatting, linting, and typechecking, and
+- a python implementation of the live at HEAD workflow.
 
 <!-- TODO add links when the next blogposts are ready -->
+
 In the next blogpost, we will describe how to implement a CI for this monorepo,
 using simple [GitHub actions]() and how templating can be used to ease onboarding and
 maintenance of consistency as more developers start working in the monorepo.
