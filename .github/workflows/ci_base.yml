@@ -1,0 +1,18 @@
+---
+name: CI libs/base
+
+on:
+  pull_request:
+    paths:
+      - 'dev-requirements.txt'
+      - 'pip-requirements.txt'
+      - 'libs/base/**'
+  workflow_dispatch:  # Allows to trigger the workflow manually in GitHub UI
+
+jobs:
+  libs-base-ci:
+    uses:
+      ./.github/workflows/ci_python_reusable.yml
+    with:
+      working-directory: libs/base
+    secrets: inherit

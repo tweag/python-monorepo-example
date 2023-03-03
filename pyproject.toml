@@ -1,0 +1,35 @@
+# Technically this section is not required, because this top-level pyproject.ml
+# is only used for configuring tools, not for building anything.
+# But we nevertheless have it, to be consistent with projects and libraries.
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+
+[tool.poetry.dev-dependencies]
+black = "^23.1.0"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+pyright = "^1.1.296"
+pytest = "^7.2.1"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+force-exclude = '''
+^/archives/.*$
+'''
+
+[tool.pylint."messages control"]
+disable = "all"
+enable = ["empty-docstring", "missing-module-docstring", "missing-class-docstring", "missing-function-docstring"]
+ignore = ["setup.py", "__init__.py"]
+ignore-paths = ['.*/tests', ]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+auto_identify_namespace_packages = false
+known_first_party = ["mycorp"]
+extend_skip = ["archives"]

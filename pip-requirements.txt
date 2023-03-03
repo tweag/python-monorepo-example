@@ -1,0 +1,2 @@
+# We pin the version of pip, so that all commands use the same version
+pip==22.2.2
