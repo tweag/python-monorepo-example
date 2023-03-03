@@ -293,9 +293,8 @@ We now come to a very important topic: the difference between `pyproject.toml` a
 `requirements.txt` files are used for 1/ populating sandboxes of developers,
 and 2/ are the basis for testing code in the CI. `requirements.txt` files
 specify both local dependencies (dependencies over libraries developed
-in the monorepo itself), external dependencies (dependencies which
+in the monorepo itself) and external dependencies (dependencies which
 are usually hosted on [pypi](https://pypi.org/), such as `numpy` and `pandas`),
-and dependencies of dependencies transitively.
 
 For provisioning local dependencies, we use
 [editable installs](https://setuptools.pypa.io/en/latest/userguide/development_mode.html).
@@ -305,12 +304,15 @@ in the monorepo, not on a released version.
 This allows to implement a _live at HEAD_ workflow as detailed [#live-at-HEAD](below).
 
 The `requirements.txt` file of a library should include both direct dependencies
-of this library as well as all its transitive dependencies. By using both
-pinned dependencies and listing transitive dependencies in `requirements.txt`,
+of this library and possibly its transitive dependencies. By using both
+pinned dependencies and listing some transitive dependencies in `requirements.txt`,
 we achieve a great level of [reproducibility](https://en.wikipedia.org/wiki/Reproducibility).
+Listing transitive dependencies is not a hard requirement, but more a case by case
+choice if things start to break as updates of transitive dependencies happen.
+Maintaining all transitive dependencies would amount to maintain a lockfile
+manually, which would be very tedious.
 
-This effectively makes our `requirements.txt` manually maintained lockfiles.
-We would have loved to use `poetry`, that provides a dedicated CLI for managing lockfiles.
+On this topic, we would have loved to use `poetry`, that provides a dedicated CLI for managing lockfiles.
 However, `poetry` doesn't play well with an essential datascience package:
 [pytorch](https://pytorch.org/). We are not going to detail it here, but
 multiplatform lockfiles support for projects that depend on pytorch is still
