@@ -6,6 +6,8 @@ on:
     paths:
       - 'dev-requirements.txt'
       - 'pip-requirements.txt'
+      - '.github/workflows/ci_python_reusable.yml'
+      - '.github/workflows/ci_fancy.yml'
       - 'libs/base/**'  # libs/fancy depends on libs/base
       - 'libs/fancy/**'
   workflow_dispatch:  # Allows to trigger the workflow manually in GitHub UI
