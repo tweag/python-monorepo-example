@@ -32,16 +32,17 @@ jobs:
 
       - name: Format Python imports
         run: |
-          isort --check-only .
+          isort --check-only $(git ls-files "*.py")
 
       - name: Format Python
         run: |
-          black --check .
+          black --check $(git ls-files "*.py")
 
       - name: Lint Python
         run: |
-          flake8 .
+          flake8 $(git ls-files "*.py")
 
+      # Are all public symbols documented? (see top-level pyproject.toml configuration)
       - name: Lint Python doc
         run: |
-          pylint .
+          pylint $(git ls-files "*.py")

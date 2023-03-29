@@ -1,5 +1,5 @@
 ---
-name: Reusable job for Python CI
+name: Reusable Python library CI
 
 on:
   workflow_call:
@@ -8,6 +8,16 @@ on:
         required: true
         type: string
         description: "From which folder this pipeline executes"
+      install-packages:
+        description: "Space seperated list of packages to install using apt-get."
+        default: ""
+        type: string
+      # To avoid being billed 360 minutes if a step does not terminate
+      # (we've seen the setup-python step below do so!)
+      ci-timeout:
+        description: "The timeout of the ci job. Default is 25min"
+        default: 25
+        type: number
 
 jobs:
   python-lib-ci:
@@ -28,7 +38,17 @@ jobs:
         uses: actions/setup-python@v4
         timeout-minutes: 5
         with:
-          python-version: ${{ inputs.python-version }}
+          python-version-file: ${{ github.workspace }}/.python-version
+          cache: "pip"
+          cache-dependency-path: |
+            dev-requirements.txt
+            pip-requirements.txt
+            ${{ inputs.working-directory }}/requirements.txt
+
+      - name: Install extra packages
+        if: ${{ inputs.install-packages != ''}}
+        run: |
+          sudo apt-get install -y ${{ inputs.install-packages }}
 
       - name: Install Python dependencies
         run: |
