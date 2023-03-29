@@ -1,3 +1,5 @@
+"""Example module of the fancy library, consuming the base library"""
+
 from mycorp import base
 
 
