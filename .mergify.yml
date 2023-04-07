@@ -1,0 +1,29 @@
+queue_rules:
+  - name: default
+    conditions:
+
+pull_request_rules:
+  - name: automatic merge
+    conditions:
+      - "#approved-reviews-by>=1"
+      - "label=merge-queue"
+      - "base=main"
+    actions:
+      queue:
+        name: default
+        method: merge
+
+  - name: delete head branch after merge
+    conditions:
+      - merged
+      - closed
+    actions:
+      delete_head_branch: {}
+
+  - name: remove from merge-queue after merge
+    conditions:
+      - merged
+    actions:
+      label:
+        remove:
+          - "merge-queue"
