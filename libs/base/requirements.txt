@@ -1,1 +1,1 @@
-numpy==1.21  # Actually unused, for demonstration only
+numpy==1.22.0  # Actually unused, for demonstration only
