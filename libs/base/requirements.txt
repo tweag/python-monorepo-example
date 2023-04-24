@@ -1,1 +1,4 @@
+# Add pinned dependencies to install for development
+# Development dependencies (black, flake8, etc.) are in the top-level dev-requirements.txt file
+
 numpy==1.22.0  # Actually unused, for demonstration only
