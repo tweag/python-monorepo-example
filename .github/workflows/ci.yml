@@ -30,6 +30,12 @@ jobs:
           pip install -r pip-requirements.txt
           pip install -r dev-requirements.txt
 
+      # in order to test the template as well, we create a temporary library in the CI
+      - name: Create library with template
+        run: |
+          cookiecutter --no-input templates/pylibrary --output-dir libs/
+          git add libs/library_name  # So that checks below apply to generated library
+
       - name: Format Python imports
         run: |
           isort --check-only $(git ls-files "*.py")

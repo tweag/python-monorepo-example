@@ -1,0 +1,30 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+
+[tool.poetry.dependencies]
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+flake8 = "^4.0.1"
+pytest = "^7.1.2"
+pyright = "^1.1.258"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.pyright]
+reportMissingParameterType = true
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+
+[tool.pylint."messages control"]
+disable = "all"
+enable = ["empty-docstring", "missing-module-docstring", "missing-class-docstring", "missing-function-docstring"]
+ignore = ["setup.py", "__init__.py"]
+ignore-paths = ["tests"]
+

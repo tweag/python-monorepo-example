@@ -1,0 +1,2 @@
+# Add pinned dependencies to install for development
+# Development dependencies (black, flake8, etc.) are in the top-level dev-requirements.txt file
