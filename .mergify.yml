@@ -1,6 +1,5 @@
 queue_rules:
   - name: default
-    conditions:
 
 pull_request_rules:
   - name: automatic merge
