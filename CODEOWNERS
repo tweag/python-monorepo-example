@@ -1,0 +1,58 @@
+# CODEOWNERS
+
+# This file declares which users are qualified to review and approve changes to
+# specific files or paths in this repository. It helps contributors to identify
+# whom to consult for assistance on merge requests.
+
+# To understand the syntax and semantics of this file, see:
+#   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Note that rules defined later in the file take precedence over the rules
+# defined earlier.
+
+# The owners in this rule will be the default owners for everything in
+# the repo (if no other rule below matches the path of a modified file)
+*                       @smelc
+
+# Global files. Review load should be spread among engineers,
+# to avoid burying one person under review duties
+.gitignore              @smelc
+.mergify.yml            @GuillaumeDesforges
+
+# Python tooling. In a real setup, we recommend to create a GitHub team
+# (https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams)
+# in charge of Python tooling. So the owner would be @your_org/python_team
+.python-version         @smelc
+dev-requirements.txt    @smelc
+pip-requirements.txt    @smelc
+pyproject.toml          @smelc
+tox.ini                 @smelc
+
+# CI. In a real setup, we recommend to create a GitHub team
+# (https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams)
+# in charge of CI/CD. So the owner would be @your_org/cicd_team
+# Note that the leading slash makes the rule include all nested subdirectories
+/.github/workflows      @smelc
+
+# Libraries. The owner of a library is usually its first author, naturally
+# spreading review load.
+/libs/base              @smelc
+/libs/fancy             @GuillaumeDesforges
+
+# Scripts
+/scripts                @GuillaumeDesforges
+
+# Templates
+/templates              @smelc
+
+# CODEOWNERS Owners
+#
+# These users are authorized to change authorizations.
+#
+# Note that this stanza MUST appear LAST so that it takes precedence over prior rules.
+# This should be unnecessary if rules above are correct, but being safe.
+#
+# In a real setup, we recommend to create a GitHub team
+# (https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams)
+# to group the administrators. So the owner would be @your_org/admins
+/CODEOWNERS             @smelc
