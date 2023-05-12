@@ -2,7 +2,7 @@
 
 A Python package by mycorp.
 
-The project owner is by our gentleman [@GuillaumeDesforges](https://github.com/GuillaumeDesforges).
+The project owner is our gentleman [@GuillaumeDesforges](https://github.com/GuillaumeDesforges).
 
 ## Development
 
