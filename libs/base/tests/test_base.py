@@ -13,7 +13,7 @@ def test_zero() -> None:
 
 
 def test_some() -> None:
-    """Some unit tests"""
+    """Some unit tests of add2"""
     assert base.adder2.add2(1, 3) == 4
     assert base.adder2.add2(1, 3) == base.adder2.add2(3, 1)
     assert base.adder2.add2(100, 2) == (base.adder2.add2(100, 1) + base.adder2.add2(1, 0))
