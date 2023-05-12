@@ -58,3 +58,7 @@ jobs:
       - name: Typecheck
         run: |
           pyright .
+
+      - name: Test
+        run: |
+          python3 -m pytest tests/  # Assume that tests are in folder "tests/"
