@@ -10,7 +10,7 @@ pull_request_rules:
     actions:
       queue:
         name: default
-        method: merge
+        method: rebase
 
   - name: delete head branch after merge
     conditions:
