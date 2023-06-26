@@ -31,5 +31,6 @@ ignore-paths = ['.*/tests', ]
 profile = "black"
 line_length = 100
 auto_identify_namespace_packages = false
+force_single_line = true # pyright doesn't like implicit namespace + single line (related to https://github.com/microsoft/pyright/issues/2882?)
 known_first_party = ["mycorp"]
 extend_skip = ["archives"]
