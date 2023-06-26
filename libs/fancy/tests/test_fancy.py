@@ -2,7 +2,10 @@
 Tests of adder3
 """
 
-from mycorp import base, fancy
+# from mycorp import base, fancy # don't! This makes pyright not able to link
+# one of the two packages (is it https://github.com/microsoft/pyright/issues/2882?)
+from mycorp import base
+from mycorp import fancy
 
 
 def test_zero() -> None:
