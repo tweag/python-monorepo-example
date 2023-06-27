@@ -1,6 +1,7 @@
 """Script to generate the CI a new library."""
 
 MODULE_NAME: str = "{{ cookiecutter.module_name }}"
+PACKAGE_NAME: str = "{{ cookiecutter.package_name }}"
 CI_FILE_PATH: str = f"../../.github/workflows/ci_{MODULE_NAME}.yml"
 
 with open(CI_FILE_PATH, "w") as handle:
@@ -19,7 +20,7 @@ on:
   workflow_dispatch:  # Allows to trigger the workflow manually in GitHub UI
 
 jobs:
-  ci-libs-{MODULE_NAME}:
+  ci-libs-{PACKAGE_NAME}:
     uses:
       ./.github/workflows/ci_python_reusable.yml
     with:
