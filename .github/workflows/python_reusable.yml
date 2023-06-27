@@ -20,7 +20,7 @@ on:
         type: number
 
 jobs:
-  python-lib-ci:
+  local-ci-py-template:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
 
