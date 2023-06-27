@@ -34,3 +34,9 @@ see above) as follows:
 ```
 python3 -m pytest tests/
 ```
+
+Execute the library's CI locally with [act](https://github.com/nektos/act) as follows:
+
+```
+act -j ci-libs-{{ cookiecutter.package_name }}
+```
