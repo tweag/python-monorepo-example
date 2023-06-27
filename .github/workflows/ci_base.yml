@@ -6,15 +6,15 @@ on:
     paths:
       - 'dev-requirements.txt'
       - 'pip-requirements.txt'
-      - '.github/workflows/ci_python_reusable.yml'
+      - '.github/workflows/python_reusable.yml'
       - '.github/workflows/ci_base.yml'
       - 'libs/base/**'
   workflow_dispatch:  # Allows to trigger the workflow manually in GitHub UI
 
 jobs:
-  libs-base-ci:
+  ci-libs-base:
     uses:
-      ./.github/workflows/ci_python_reusable.yml
+      ./.github/workflows/python_reusable.yml
     with:
       working-directory: libs/base
     secrets: inherit

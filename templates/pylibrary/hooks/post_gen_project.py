@@ -19,7 +19,7 @@ on:
   workflow_dispatch:  # Allows to trigger the workflow manually in GitHub UI
 
 jobs:
-  libs-{MODULE_NAME}-ci:
+  ci-libs-{MODULE_NAME}:
     uses:
       ./.github/workflows/ci_python_reusable.yml
     with:
