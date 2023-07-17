@@ -8,8 +8,15 @@ you can duplicate it by using
 [_Creating a repository from a template_](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) in the GitHub UI. It will create
 a copy of this repository that is not a fork.
 
-This repository's design is explained in the Tweag blogpost
-[Python monorepo; part 1](https://www.tweag.io/blog/2023-04-04-python-monorepo-1/).
+This repository's design is explained on the Tweag blog:
+
+* [Python monorepo; part 1](https://www.tweag.io/blog/2023-04-04-python-monorepo-1/)
+  describes the monorepo's structure, how libraries are linked together and which
+  tools are used.
+* [Python monorepo; part 2](https://www.tweag.io/blog/2023-07-13-python-monorepo-2)
+  describes the monorepo's CI, striking a good balance between being easy to use and being
+  featureful.
+
 The design strives to be simple, to work well in a startup environment where
 CI specialists are not yet available, and yet to achieve a great deal
 of [reproducibility](https://reproducible-builds.org/) to prepare for scaling.
