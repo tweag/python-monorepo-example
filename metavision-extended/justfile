@@ -1,0 +1,16 @@
+# Test with pytest
+test *flags:
+    @echo "🚀 Testing code: Running pytest"
+    pytest -vv --cov --cov-config=pyproject.toml --cov-report xml:coverage.xml --junitxml=report.xml {{flags}}
+
+# Analyze Python code with Sonarqube
+analyze *flags:
+    @echo "🚀 Publishing wheels"
+    pysonar-scanner -Dtoml.path=pyproject.toml \
+        -Dsonar.projectKey=metavision-extended-py \
+        -Dsonar.python.version=3.10 \
+        -Dsonar.python.coeverage.reportPaths=coverage.xml \
+        -Dsonar.c.file.suffixes=- \
+        -Dsonar.toml.file.suffixes=- \
+        -Dsonar.yaml.file.suffixes=- \
+        -Dsonar.coverage.exclusions=python/tests/** {{flags}}

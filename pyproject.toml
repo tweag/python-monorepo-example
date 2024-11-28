@@ -1,36 +1,146 @@
-# Technically this section is not required, because this top-level pyproject.ml
-# is only used for configuring tools, not for building anything.
-# But we nevertheless have it, to be consistent with projects and libraries.
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[project]
+name = "monorepo-poc"
+version = "0.1"
+dependencies = ["metavision-base", "metavision-extended"]
+requires-python = ">=3.10,<4.0"
 
-[tool.poetry]
+[project.urls]
+Repository = "https://github.com/barnou-psee/monorepo-poc"
+Documentation = "https://barnou-psee.github.io/monorepo-poc/"
 
-[tool.poetry.dev-dependencies]
-black = "^23.1.0"
-flake8 = "^6.0.0"
-isort = "^5.12.0"
-pyright = "^1.1.296"
-pytest = "^7.2.1"
+[tool.uv]
+dev-dependencies = []
 
-[tool.black]
-line-length = 100
-target-version = ['py39']
-force-exclude = '''
-^/archives/.*$
-'''
+[tool.uv.sources]
+metavision-base = { workspace = true }
+metavision-extended = { workspace = true }
 
-[tool.pylint."messages control"]
-disable = "all"
-enable = ["empty-docstring", "missing-module-docstring", "missing-class-docstring", "missing-function-docstring"]
-ignore = ["setup.py", "__init__.py"]
-ignore-paths = ['.*/tests', ]
+[tool.uv.workspace]
+members = ["metavision-base", "metavision-extended"]
 
-[tool.isort]
-profile = "black"
-line_length = 100
-auto_identify_namespace_packages = false
-force_single_line = true # pyright doesn't like implicit namespace + single line (related to https://github.com/microsoft/pyright/issues/2882?)
-known_first_party = ["mycorp"]
-extend_skip = ["archives"]
+[project.optional-dependencies]
+docs = [
+  "mkdocs>=1.6.1",
+  "mkdocs-autorefs>=1.2.0",
+  "mkdocs-material>=9.5.39",
+  "griffe>=1.2.0",
+  "mkdocstrings[python]>=0.26.1",
+  "mkdoxy>=1.2.4",
+]
+dev = [
+  "commitizen>=3.29.1",
+  "cz-github-jira-conventional>=3.0.0",
+  "mypy>=1.5.1",
+  "deptry>=0.20.0",
+  "ruff>=0.6.9",
+  "cibuildwheel>=2.21.2",
+  "cmake>=3.24",
+  "conan>=2.8.0",
+  "gcovr>=8.2.0",
+  "pre-commit>=3.7.1",
+  "pysonar-scanner>=0.1.0.340",
+]
+test = [
+  "pytest>=8.3.3",
+  "pytest-cov>=4.1.0",
+  "pytest-mock>=3.12.0",
+]
+all = [
+  "monorepo-poc[docs]",
+  "monorepo-poc[dev]",
+  "monorepo-poc[test]",
+]
+
+[tool.mypy]
+files = ["**/python/**"]
+exclude = '^(conanfile.py | test_package/)$'
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_no_return = true
+warn_unreachable = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+fix = true
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.lint]
+select = [
+  # flake8-2020
+  "YTT",
+  # flake8-bandit
+  "S",
+  # flake8-bugbear
+  "B",
+  # flake8-builtins
+  "A",
+  # flake8-comprehensions
+  "C4",
+  # flake8-debugger
+  "T10",
+  # flake8-simplify
+  "SIM",
+  # isort
+  "I",
+  # mccabe
+  "C90",
+  # pycodestyle
+  "E",
+  "W",
+  # pyflakes
+  "F",
+  # pygrep-hooks
+  "PGH",
+  # pyupgrade
+  "UP",
+  # ruff
+  "RUF",
+  # tryceratops
+  "TRY",
+]
+ignore = [
+  # LineTooLong
+  "E501",
+  # DoNotAssignLambda
+  "E731",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+relative_files = true
+branch = true
+
+
+[tool.commitizen]
+name = "cz_github_jira_conventional"
+version = "0.0.4"
+version_files = [
+  "CMakeLists.txt",
+  "conanfile.py:cz_version",
+  "pyproject.toml:version",
+]
+update_changelog_on_bump = true
+changelog_incremental = true
+github_repo = "prophesee-ai/metavision-libraw"
+jira_base_url = "https://prophesee.atlassian.net"
+tag_format = "v$version"
