@@ -42,7 +42,10 @@ repos:
     rev: v1.6.1
     hooks:
       - id: mypy
-        args: ["--config-file", "pyproject.toml", "--explicit-package-bases"]
+        language: system
+        # using mypy.ini configuration file because cannot set flags for sub packages [mypy-metavision.*] when using pyproject.toml
+        args: ["--config-file", "mypy.ini"]
+        verbose: true
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.4.18

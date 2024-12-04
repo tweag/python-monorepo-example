@@ -51,23 +51,6 @@ all = [
   "monorepo-poc[test]",
 ]
 
-[tool.mypy]
-files = ["**/python/**"]
-exclude = '^(conanfile.py | test_package/)$'
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-disallow_any_unimported = true
-no_implicit_optional = true
-check_untyped_defs = true
-warn_return_any = true
-warn_unused_ignores = true
-show_error_codes = true
-warn_redundant_casts = true
-warn_no_return = true
-warn_unreachable = true
-warn_unused_configs = true
-
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
